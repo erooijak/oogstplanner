@@ -1,25 +1,36 @@
-﻿using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System;
 using System.Web.Mvc;
-using SowingCalendar;
+using NUnit.Framework;
 using SowingCalendar.Controllers;
+using SowingCalendar.Models;
+using SowingCalendar.Repositories;
+using SowingCalendar.Tests.Fakes;
 
-namespace SowingCalendar.Tests
+namespace SowingCalendar.Tests.Controllers
 {
     [TestFixture]
-    public class HomeControllerTest
+    public class CropControllerTest
     {
-        [Test]
-        public void Index()
+        readonly ISowingCalendarContext _db;
+        readonly Repository _repo;
+        private CropController _controller;
+
+        [TestFixtureSetUp]
+        public void Setup()
         {
             // Arrange
-            var controller = new HomeController();
+            _db = new FakeSowingCalendarContext();
+            _controller = new CropController();
+        }
+
+        [Test]
+        public void Controllers_Crop_Success()
+        {
+            // Arrange
+
 
             // Act
-            var result = (ViewResult)controller.Index();
+            var result = (ViewResult)_controller.Index();
 
             var mvcName = typeof(Controller).Assembly.GetName();
             var isMono = Type.GetType("Mono.Runtime") != null;

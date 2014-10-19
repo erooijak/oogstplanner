@@ -1,21 +1,60 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using SowingCalendar.Models;
-using SowingCalendar.Repository;
+using SowingCalendar.Repositories;
 
 namespace SowingCalendar.Controllers
 {
     public class CropController : Controller
     {
-        private IRepository repo;
-        private ISowingCalendarContext db;
+        readonly IRepository _repo;
 
-        public ActionResult Index() 
+        #region Constructors
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="Controllers.CropController"/> class which
+        ///     makes use of the real Entity Framework context that connects with the database.
+        /// </summary>
+        public CropController()
+        {
+            _repo = new Repository();
+        }
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="Controllers.CropController"/> class which
+        ///     can make use of a "Fake" Entity Framework context for unit testing purposes.
+        /// </summary>
+        /// <param name="db">Database context.</param>
+        public CropController(ISowingCalendarContext db)
+        {
+            _repo = new Repository(db);
+        }
+
+        #endregion
+
+        /// <summary>
+        ///     GET: /index
+        /// </summary>
+        [HttpGet]
+        public ViewResult Index() 
         {
             return View();
+        }
+
+        /// <summary>
+        ///     GET: /index/[id]
+        /// </summary>
+        /// <param name="id">Identifier.</param>
+        /// <example>
+        ///     GET: /index/1
+        /// </example>
+        /// <returns>
+        ///     A crop with the id parameter as primary key.
+        /// </returns>
+        [HttpGet]
+        public ViewResult Crop(int id)
+        {
+            var crop = _repo.GetCrop(id);
+            return View(crop);
         }
 
     }

@@ -1,7 +1,7 @@
 ﻿using System;
 using SowingCalendar.Models;
 
-namespace SowingCalendar.Repository
+namespace SowingCalendar.Repositories
 {
     /// <summary>
     ///     Interface of repository used for methods that access the database.

@@ -1,10 +1,11 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="firefox" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="SowingCalendar/Repository/Repository.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="SowingCalendar.Tests/Controllers/HomeControllerTest.cs">
     <Files>
-      <File FileName="SowingCalendar/Repository/Repository.cs" Line="6" Column="6" />
-      <File FileName="SowingCalendar/Models/SowingCalendarContext.cs" Line="9" Column="9" />
-      <File FileName="SowingCalendar/Models/ISowingCalendarContext.cs" Line="10" Column="10" />
+      <File FileName="SowingCalendar/Controllers/CropController.cs" Line="31" Column="31" />
+      <File FileName="SowingCalendar/Repositories/Repository.cs" Line="65" Column="65" />
+      <File FileName="SowingCalendar/Models/SowingCalendarContext.cs" Line="75" Column="75" />
+      <File FileName="SowingCalendar.Tests/Controllers/HomeControllerTest.cs" Line="34" Column="34" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
