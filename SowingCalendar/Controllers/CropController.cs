@@ -57,5 +57,22 @@ namespace SowingCalendar.Controllers
             return View(crop);
         }
 
+        /// <summary>
+        ///     GET: /index/[name]
+        /// </summary>
+        /// <param name="name">Name of the crop.</param>
+        /// <example>
+        ///     GET: /index/Broccoli
+        /// </example>
+        /// <returns>
+        ///     A crop with the name parameter as name.
+        /// </returns>
+        [HttpGet]
+        public ViewResult Crop(string name)
+        {
+            var crop = _repo.GetCrop(name);
+            return View(crop);
+        }
+
     }
 }

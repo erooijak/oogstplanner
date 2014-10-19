@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Web.Mvc;
 using NUnit.Framework;
 using SowingCalendar.Controllers;
@@ -46,6 +47,22 @@ namespace SowingCalendar.Tests.Controllers
             // Assert
             Assert.AreEqual(expectedResult, actualResult,
                 "Since there is a broccoli with ID 1 in the database the crop method should return it.");
+        }
+
+        [Test]
+        public void Controllers_Crop_From_Name_Success()
+        {
+            // Arrange
+            var name = "Broccoli";
+
+            // Act
+            var viewResult = _controller.Crop(name);
+            var result = ((Crop)viewResult.ViewData.Model).SowingMonths;
+
+            // Assert
+            Assert.AreEqual(Month.May ^ Month.June ^ Month.October ^ Month.November, result,
+                "Since there is a crop with the name broccoli in the database the crop method should return it" +
+                "and the sowing months should be may, june, october and november.");
         }
     }
 }

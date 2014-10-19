@@ -17,6 +17,13 @@ namespace SowingCalendar.Repositories
         /// <param name="id">Identifier.</param>
         Crop GetCrop(int id);
 
+        /// <summary>
+        ///     Gets a crop based on the name.
+        /// </summary>
+        /// <returns>The crop with the specified name.</returns>
+        /// <param name="name">Name of the crop.</param>
+        Crop GetCrop(string name);
+
         #endregion
     }
 }
