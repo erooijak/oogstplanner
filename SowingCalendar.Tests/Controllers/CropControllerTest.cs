@@ -45,7 +45,7 @@ namespace SowingCalendar.Tests.Controllers
 
             // Assert
             Assert.AreEqual(expectedResult, actualResult,
-                "Since there is a broccoli with ID 1 in the database the crop method should erturn it.");
+                "Since there is a broccoli with ID 1 in the database the crop method should return it.");
         }
     }
 }
