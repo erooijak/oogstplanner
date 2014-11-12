@@ -21,11 +21,8 @@ namespace Zk.Tests
 			// Act
 			var result = (ViewResult)controller.Index ();
 
-			var mvcName = typeof(Controller).Assembly.GetName ();
-			var isMono = Type.GetType ("Mono.Runtime") != null;
-
-			var expectedVersion = mvcName.Version.Major;
-			var expectedRuntime = isMono ? "Mono" : ".NET";
+			const string expectedVersion = "5.2";
+			const string expectedRuntime = "Mono";
 
 			// Assert
 			Assert.AreEqual (expectedVersion, result.ViewData ["Version"]);
