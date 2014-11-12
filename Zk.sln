@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zk", "Zk\Zk.csproj", "{B0FB3234-7C0E-43D4-9EB3-693F67B05779}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zk.Tests", "Zk.Tests\Zk.Tests.csproj", "{365484CC-B85E-41D6-AEAD-37FBDF0C62BD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{365484CC-B85E-41D6-AEAD-37FBDF0C62BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{365484CC-B85E-41D6-AEAD-37FBDF0C62BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{365484CC-B85E-41D6-AEAD-37FBDF0C62BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{365484CC-B85E-41D6-AEAD-37FBDF0C62BD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B0FB3234-7C0E-43D4-9EB3-693F67B05779}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B0FB3234-7C0E-43D4-9EB3-693F67B05779}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B0FB3234-7C0E-43D4-9EB3-693F67B05779}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B0FB3234-7C0E-43D4-9EB3-693F67B05779}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Zk\Zk.csproj
+	EndGlobalSection
+EndGlobal
