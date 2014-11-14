@@ -8,7 +8,7 @@ namespace Zk.Models
 		#region Constructors
 
 		/// <summary>
-		///     Initializes a new instance of the <see cref="Zk.ZkContext"/> class.
+		///     Initializes a new instance of the <see cref="Zk.Models.ZkContext"/> class.
 		/// </summary>
 		public ZkContext() : base("ZkDatabaseConnection")
 		{
