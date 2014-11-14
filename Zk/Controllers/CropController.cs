@@ -8,8 +8,6 @@ namespace Zk.Controllers
 	{
 		readonly IRepository _repo;
 
-		#region Constructors
-
 		/// <summary>
 		///     Initializes a new instance of the <see cref="Controllers.CropController"/> class which
 		///     makes use of the real Entity Framework context that connects with the database.
@@ -28,9 +26,7 @@ namespace Zk.Controllers
 		{
 			_repo = new Repository(db);
 		}
-
-		#endregion
-
+			
 		/// <summary>
 		///     GET: /index
 		/// </summary>
