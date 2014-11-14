@@ -10,6 +10,7 @@ TestResults
 *.user
 *.sln.docstates
 *.web.config
+*.userprefs
 # Build results
 [Dd]ebug/
 [Rr]elease/
