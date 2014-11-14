@@ -8,7 +8,6 @@ namespace Zk.Repositories
 	/// </summary>
 	public interface IRepository
 	{
-		#region Crop
 
 		/// <summary>
 		///     Gets a crop based on the CropId primary key.
@@ -24,6 +23,5 @@ namespace Zk.Repositories
 		/// <param name="name">Name of the crop.</param>
 		Crop GetCrop(string name);
 
-		#endregion
 	}
 }

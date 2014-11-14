@@ -10,8 +10,6 @@ namespace Zk.Repositories
 	{
 		readonly IZkContext _db; // The interface to Entity Framework database context
 
-		#region Constructors
-
 		/// <summary>
 		///     Initializes a new instance of the <see cref="Repositories.Repository"/>class which
 		///     makes use of the real Entity Framework context that connects with the database.
@@ -30,11 +28,7 @@ namespace Zk.Repositories
 		{
 			_db = dbParam;
 		}
-
-		#endregion
-
-		#region Crops
-
+			
 		public Crop GetCrop(int id)
 		{
 			var crop = _db.Crops.Single(c => c.Id == id);
@@ -51,6 +45,5 @@ namespace Zk.Repositories
 			return crop;
 		}
 
-		#endregion
 	}
 }
