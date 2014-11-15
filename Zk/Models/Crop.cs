@@ -7,6 +7,9 @@ namespace Zk.Models
 	{
 		public int Id { get; set; }
 		public string Name { get; set; }
+		public double AreaPerCrop { get; set; }
+		public double AreaPerBag { get; set; }
+		public decimal PricePerBag { get; set; }
 		public Month SowingMonths { get; set;}
 	}       
 }

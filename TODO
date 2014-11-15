@@ -7,6 +7,7 @@ Deployment omgeving regelen.
 
 Datamodel (Model)
 Classes en relaties
+Uitzoeken kilogrammen en grondtypes (FutDev)
 
 Business logic (Controllers)
 Pseudo code voor berekeningen
@@ -23,3 +24,4 @@ Puzzelen met CSS om mooie (responsieve) views te krijgen
 
 Extra info:
 11 november ging 90-dagen licentie in voor Xamarin.
+
