@@ -99,7 +99,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Controllers\CropController.cs" />
     <Compile Include="Models\Crop.cs" />
     <Compile Include="Models\Enums.cs" />
     <Compile Include="Models\IZkContext.cs" />
@@ -108,6 +107,7 @@
     <Compile Include="Models\Calendar.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\FarmingMonth.cs" />
+    <Compile Include="Controllers\CropController.cs" />
     <Compile Include="Controllers\CalendarController.cs" />
   </ItemGroup>
   <ItemGroup>

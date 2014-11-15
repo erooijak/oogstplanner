@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace Zk.Controllers
 {
-	public class CropController : Controller
+	public class CalendarController : Controller
 	{
 		readonly Repository _repo;
 
@@ -13,7 +13,7 @@ namespace Zk.Controllers
 		///     Initializes a new instance of the <see cref="Controllers.CropController"/> class which
 		///     makes use of the real Entity Framework context that connects with the database.
 		/// </summary>
-		public CropController()
+		public CalendarController()
 		{
 			_repo = new Repository();
 		}
@@ -23,74 +23,26 @@ namespace Zk.Controllers
 		///     can make use of a "Fake" Entity Framework context for unit testing purposes.
 		/// </summary>
 		/// <param name="db">Database context.</param>
-		public CropController(IZkContext db)
+		public CalendarController(IZkContext db)
 		{
 			_repo = new Repository(db);
 		}
-			
-		/// <summary>
-		///     GET: /index
-		/// </summary>
-		[HttpGet]
-		public ViewResult Index() 
-		{
-			// Get all crops and return to the view for display.
-			var crops = _repo.GetAllCrops ();
-			return View(crops);
-		}
 
 		/// <summary>
-		///     GET: /index/[id]
-		/// </summary>
-		/// <param name="id">Identifier.</param>
-		/// <example>
-		///     GET: /index/1
-		/// </example>
-		/// <returns>
-		///     A crop with the id parameter as primary key.
-		/// </returns>
-		[HttpGet]
-		public ViewResult Crop(int id)
-		{
-			var crop = _repo.GetCrop(id);
-			return View(crop);
-		}
-
-		/// <summary>
-		///     GET: /index/[name]
-		/// </summary>
-		/// <param name="name">Name of the crop.</param>
-		/// <example>
-		///     GET: /index/Broccoli
-		/// </example>
-		/// <returns>
-		///     A crop with the name parameter as name.
-		/// </returns>
-		[HttpGet]
-		public ViewResult Crop(string name)
-		{
-			var crop = _repo.GetCrop(name);
-			return View(crop);
-		}
-
-		/// <summary>
-		/// 	Submits the calendar that the user has entered on the view and update the current calendar
+		/// 	POST: /UpdateCalendar/{FarmingMonth} 
+		/// 	Update the current calendar with the new data from the month.
 		/// </summary>
 		/// <returns></returns>
-		/// <param name="submittedCalendar">Submitted calendar.</param>
+		/// <param name="submittedMonth">Submitted month.</param>
 		[HttpPost]
-		public ViewResult SubmitCalendar(Calendar submittedCalendar)
+		public ViewResult UpdateCalendar(FarmingMonth submittedMonth)
 		{
-			//   Get crops from SUBMITTEDcalendar
+		    // Get data from submittedMonth
 
-			//   Get CURRENTcalendar of user
-			//   _db.Calendars.Where(c => c.User.Name = "UserName");
-
-			// Implement logic to update CURRENT calendar with SUBMITTED calendar.
+			// Implement logic to update CURRENT calendar with SUBMITTED month.
 
 			return View();
 		}
-
-
+			
 	}
 }
