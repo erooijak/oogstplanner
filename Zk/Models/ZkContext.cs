@@ -18,12 +18,13 @@ namespace Zk.Models
 		///  implementation of this method does nothing, but it can be overridden in a derived class
 		///  such that the model can be further configured before it is locked down.
 		/// </summary>
-		/// <remarks>Set initialization to null to prevent login errors. 
-		/// See http://stackoverflow.com/questions/12545228/npgsql-and-entity-framework-code-first-setup-problems</remarks>
+		/// <remarks></remarks>
 		/// <param name="modelBuilder">The builder that defines the model for the context being created.</param>
 		protected override void OnModelCreating(DbModelBuilder modelBuilder)
 		{
-			Database.SetInitializer<ZkContext>(null);
+			// PostgreSQL has by default uses schema public.
+			modelBuilder.HasDefaultSchema("public");
+
 		}
 
 		public IDbSet<Crop> Crops { get; set; } 

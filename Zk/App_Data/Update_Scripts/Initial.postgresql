@@ -1,0 +1,46 @@
+--Commands to create and open database on Mint
+
+-- Create user, database and schema
+sudo adduser zktest
+sudo su - postgres
+createdb ZkTestDatabase
+psql ZkTestDatabase
+
+-- Now press CTRL-D twice to leave database and postgres login.
+
+-- Login with new user
+sudo su - zktest
+psql ZkTestDatabase
+
+-- Add table
+CREATE TABLE IF NOT EXISTS Crops (
+  "Id"     			INT PRIMARY KEY     NOT NULL,
+  "Name"    		TEXT                NOT NULL,
+  "SowingMonths"	INT
+);
+
+-- Allow access
+GRANT ALL PRIVILEGES ON TABLE "Crops" TO zktest;
+
+-- Add some crops for testing purposes:
+INSERT INTO "Crops" ("Id" Name, SowingMonths)
+SELECT 1, 'Huzaren', 1
+WHERE
+    NOT EXISTS (
+        SELECT "Id" FROM "Crops" WHERE "Id" = 1
+    );
+
+INSERT INTO "Crops" ("Id", Name, SowingMonths)
+SELECT 2, 'Broccoli', 4
+WHERE
+    NOT EXISTS (
+        SELECT "Id" FROM "Crops" WHERE "Id" = 2
+    );
+INSERT INTO "Crops" ("Id", Name, SowingMonths)
+SELECT 3, 'IJsberg', 257
+WHERE
+    NOT EXISTS (
+        SELECT "Id" FROM "Crops" WHERE "Id" = 3
+    );
+
+ALTER TABLE crops RENAME TO "Crops";
