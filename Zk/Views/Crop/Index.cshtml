@@ -1,0 +1,21 @@
+﻿@model IEnumerable<Zk.Models.Crop>
+
+@{
+    ViewBag.Title = "Gewassen";
+}
+<h2>Dit zijn de gewassen in de database:</h2>
+<table>
+    <tr>
+    	<th>Gewas</th><th>Zaaimaanden</th>
+    </tr>
+	<tbody>
+		@foreach (var crop in Model) {
+	    <tr>
+	    	<td>crop.Name</td><td>crop.SowingMonths</td>
+	    </tr>
+		}
+	</tbody>
+</table>
+
+
+<a href="/Crop/Index">Naar de gewassen.</a>

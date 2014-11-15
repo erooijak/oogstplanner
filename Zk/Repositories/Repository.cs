@@ -1,12 +1,13 @@
 ﻿using System.Linq;
 using Zk.Models;
+using System.Collections.Generic;
 
 namespace Zk.Repositories
 {
 	/// <summary>
 	///     Repository used for methods that access the database.
 	/// </summary>
-	public class Repository : IRepository
+	public class Repository
 	{
 		readonly IZkContext _db; // The interface to Entity Framework database context
 
@@ -32,7 +33,6 @@ namespace Zk.Repositories
 		public Crop GetCrop(int id)
 		{
 			var crop = _db.Crops.Single(c => c.Id == id);
-			_db.SaveChanges();
 
 			return crop;
 		}
@@ -40,9 +40,15 @@ namespace Zk.Repositories
 		public Crop GetCrop(string name)
 		{
 			var crop = _db.Crops.Single(c => c.Name == name);
-			_db.SaveChanges();
 
 			return crop;
+		}
+
+		public IEnumerable<Crop> GetAllCrops()
+		{
+			var crops = _db.Crops;
+
+			return crops;
 		}
 
 	}

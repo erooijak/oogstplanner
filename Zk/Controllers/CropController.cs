@@ -6,7 +6,7 @@ namespace Zk.Controllers
 {
 	public class CropController : Controller
 	{
-		readonly IRepository _repo;
+		readonly Repository _repo;
 
 		/// <summary>
 		///     Initializes a new instance of the <see cref="Controllers.CropController"/> class which
@@ -33,7 +33,9 @@ namespace Zk.Controllers
 		[HttpGet]
 		public ViewResult Index() 
 		{
-			return View();
+			// Get all crops and return to the view for display.
+			var crops = _repo.GetAllCrops ();
+			return View(crops);
 		}
 
 		/// <summary>

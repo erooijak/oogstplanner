@@ -12,7 +12,7 @@ namespace Zk.Controllers
 	public class HomeController : Controller
 	{
 
-		readonly IRepository _repo;
+		readonly Repository _repo;
 
 		/// <summary>
 		///     Initializes a new instance of the <see cref="Controllers.HomeController"/> class which
