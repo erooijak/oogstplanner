@@ -1,0 +1,25 @@
+BACKLOG:
+
+Opzetten omgeving
+Stap 1: Overzetten van oude Zaaikalender naar nieuwe Zk!
+Database connectie leggen.
+Deployment omgeving regelen.
+
+Datamodel (Model)
+Classes en relaties
+
+Business logic (Controllers)
+Pseudo code voor berekeningen
+Pseudo code naar echte code
+Error handling
+
+Notifications (Controllers/View)
+Wanneer implementeren?
+Implementatie herinneringen
+Implementatie grappen
+
+UI (View)
+Puzzelen met CSS om mooie (responsieve) views te krijgen 
+
+Extra info:
+11 november ging 90-dagen licentie in voor Xamarin.

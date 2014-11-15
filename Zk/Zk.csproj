@@ -75,9 +75,7 @@
       <HintPath>..\packages\MySql.Data.6.9.5\lib\net45\MySql.Data.dll</HintPath>
     </Reference>
     <Reference Include="Mono.Data.Sqlite" />
-    <Reference Include="Mono.Security">
-      <HintPath>..\packages\Npgsql.2.2.2\lib\net45\Mono.Security.dll</HintPath>
-    </Reference>
+    <Reference Include="Mono.Security" />
     <Reference Include="Npgsql">
       <HintPath>..\packages\Npgsql.2.2.2\lib\net45\Npgsql.dll</HintPath>
     </Reference>
