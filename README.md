@@ -10,17 +10,20 @@ TODO
 
 First time clone: `git clone https://www.github.com/erooijak/zaaikalender`.
 
-Start:
-1. Get latest version: `git pull origin master`.
-2. See changes: `git status`.
-3. Add changes: `git add -A` (add all with -A flag, or specify specific file)
-4. Commit changes: `git commit -m "Descriptive message of what you did"
-5. Push to GitHub: `git push origin master` (make sure solution builds).
-6. Repeat.
+For collaborators:
+
+ 1. Get latest version: `git pull origin master`.
+ 2. See changes: `git status`.
+ 3. Add changes: `git add -A` (add all with -A flag, or specify specific file)
+ 4. Commit changes: `git commit -m "Descriptive message of what you did"
+ 5. Push to GitHub: `git push origin master` (make sure solution builds).
+ 6. Repeat.
 
 ## Installation
 
-TODO
+Update packages with NuGet. If you run with Monodevelop or Xamarin Studio this happens automatically.
+Install PostgreSQL database.	
+Run database script from /App_Data/Update_Scripts/Initial.postgresql.
 
 ## Tests
 
