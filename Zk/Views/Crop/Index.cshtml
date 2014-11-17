@@ -7,15 +7,18 @@
 
 <table class="table table-striped">
     <tr>
-    	<th>Gewas</th><th>Zaaimaanden</th>
+    	<th>Id</th><th>Naam</th><th>Ras</th><th>Categorie</th><th>Opp. per 1</th>
+    		<th>Opp. per zak</th><th>Prijs per zakje</th><th>Zaaimaanden</th><th>Oogstmaanden</th>
     </tr>
 	<tbody>
 		@foreach (var crop in Model) {
 	    <tr>
-	    	<td>@crop.Name</td><td>@crop.SowingMonths</td>
+	    	<td>@crop.Id</td><td>@crop.Name</td><td>@crop.Race</td><td>@crop.Category</td><td>@crop.AreaPerCrop</td>
+	    		<td>@crop.AreaPerBag</td><td>@crop.PricePerBag</td>
+	    		<td>@crop.SowingMonths</td><td>@crop.HarvestingMonths</td>
 	    </tr>
 		}
-	</tbody>
+	</tbody>	
 </table>
 
 

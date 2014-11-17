@@ -46,7 +46,7 @@ namespace Zk.Repositories
 
 		public IEnumerable<Crop> GetAllCrops()
 		{
-			var crops = _db.Crops;
+			var crops = _db.Crops.OrderBy(c => c.Id);
 
 			return crops;
 		}

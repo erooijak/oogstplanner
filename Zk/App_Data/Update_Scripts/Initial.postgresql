@@ -1,44 +1,31 @@
---Commands to create and open database on Mint
+--Commands to create and open database on Mint	
 
 -- Create user, database and schema
-sudo adduser zktest
+sudo adduser zktest -- Give user zktest password "Broccoli"
 sudo su - postgres
 createdb ZkTestDatabase
 psql ZkTestDatabase
 
--- Now press CTRL-D twice to leave database and postgres login.
-
--- Login with new user
-sudo su - zktest
-psql ZkTestDatabase
+-- Run the following script from beginning to end in psql terminal
+-- NOTE: Change the path in copy statement below!
 
 -- Add table
 CREATE TABLE IF NOT EXISTS "Crops" (
-  "Id"     			INT PRIMARY KEY     NOT NULL,
-  "Name"    		TEXT                NOT NULL,
-  "SowingMonths"	INT
+  	"Id"                INTEGER          PRIMARY KEY,
+	"Name"              VARCHAR(30)         NOT NULL,
+  	"Race"              VARCHAR(50)                 ,
+  	"Category"          VARCHAR(50)                 ,
+  	"AreaPerCrop"       DOUBLE PRECISION            ,
+	"AreaPerBag"        DOUBLE PRECISION            ,
+	"PricePerBag"       DECIMAL(12,2)               ,
+	"SowingMonths"      SMALLINT            NOT NULL,
+	"HarvestingMonths"  SMALLINT            NOT NULL
 );
 
--- Allow access for user
+-- Add data from CSV file (use own path after FROM) into table
+COPY "Crops" FROM '/home/erwin/zaaikalender/CropData.csv' DELIMITER ',' CSV;
+
+-- Grant access
 GRANT ALL PRIVILEGES ON TABLE "Crops" TO zktest;
 
--- Add some crops for testing purposes:
-INSERT INTO "Crops" ("Id", "Name", "SowingMonths")
-SELECT 1, 'Huzaren', 1
-WHERE
-    NOT EXISTS (
-        SELECT "Id" FROM "Crops" WHERE "Id" = 1
-    );
-
-INSERT INTO "Crops" ("Id", "Name", "SowingMonths")
-SELECT 2, 'Broccoli', 4
-WHERE
-    NOT EXISTS (
-        SELECT "Id" FROM "Crops" WHERE "Id" = 2
-    );
-INSERT INTO "Crops" ("Id", "Name", "SowingMonths")
-SELECT 3, 'IJsberg', 257
-WHERE
-    NOT EXISTS (
-        SELECT "Id" FROM "Crops" WHERE "Id" = 3
-    );
+-- Now press CTRL-D twice to leave database and postgres login.
