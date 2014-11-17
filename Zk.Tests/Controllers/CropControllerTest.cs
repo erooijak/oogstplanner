@@ -26,7 +26,7 @@ namespace Zk.Tests.Controllers
 					{
 						Id = 1,
 						Name = "Broccoli", 
-						SowingMonths = Month.May ^ Month.June ^ Month.October ^ Month.November 
+						SowingMonths = Month.Mei ^ Month.Juni ^ Month.Oktober ^ Month.November 
 					}
 				}
 				};
@@ -60,7 +60,7 @@ namespace Zk.Tests.Controllers
 			var result = ((Crop)viewResult.ViewData.Model).SowingMonths;
 
 			// Assert
-			Assert.AreEqual(Month.May ^ Month.June ^ Month.October ^ Month.November, result,
+			Assert.AreEqual(Month.Mei ^ Month.Juni ^ Month.Oktober ^ Month.November, result,
 				"Since there is a crop with the name broccoli in the database the crop method should return it" +
 				"and the sowing months should be may, june, october and november.");
 		}
