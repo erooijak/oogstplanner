@@ -1,7 +1,7 @@
 --Commands to create and open database on Mint	
 
 -- Create user, database and schema
-sudo adduser zktest -- Give user zktest password "Broccoli"
+sudo adduser zktest -- Give user zktest password "broccoli"
 sudo su - postgres
 createdb ZkTestDatabase
 psql ZkTestDatabase
