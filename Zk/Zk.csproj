@@ -68,13 +68,6 @@
     <Reference Include="EntityFramework.SqlServer">
       <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
-    <Reference Include="MySql.Data.Entity.EF6">
-      <HintPath>..\packages\MySql.Data.Entities.6.8.3.0\lib\net45\mysql.data.entity.EF6.dll</HintPath>
-    </Reference>
-    <Reference Include="MySql.Data">
-      <HintPath>..\packages\MySql.Data.6.9.5\lib\net45\MySql.Data.dll</HintPath>
-    </Reference>
-    <Reference Include="Mono.Data.Sqlite" />
     <Reference Include="Mono.Security" />
     <Reference Include="Npgsql">
       <HintPath>..\packages\Npgsql.2.2.2\lib\net45\Npgsql.dll</HintPath>
