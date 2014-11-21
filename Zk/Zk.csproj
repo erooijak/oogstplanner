@@ -116,6 +116,7 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Crop\Index.cshtml" />
     <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\responsive-square-elements.css" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
