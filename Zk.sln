@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zk", "Zk\Zk.csproj", "{B0FB
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zk.Tests", "Zk.Tests\Zk.Tests.csproj", "{365484CC-B85E-41D6-AEAD-37FBDF0C62BD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zk.Migrations", "Zk.Migrations\Zk.Migrations.csproj", "{72DFF461-3E0B-4EFB-919B-4CA33C950B8C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,12 +17,20 @@ Global
 		{365484CC-B85E-41D6-AEAD-37FBDF0C62BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{365484CC-B85E-41D6-AEAD-37FBDF0C62BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{365484CC-B85E-41D6-AEAD-37FBDF0C62BD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{72DFF461-3E0B-4EFB-919B-4CA33C950B8C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{72DFF461-3E0B-4EFB-919B-4CA33C950B8C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{72DFF461-3E0B-4EFB-919B-4CA33C950B8C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{72DFF461-3E0B-4EFB-919B-4CA33C950B8C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B0FB3234-7C0E-43D4-9EB3-693F67B05779}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B0FB3234-7C0E-43D4-9EB3-693F67B05779}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B0FB3234-7C0E-43D4-9EB3-693F67B05779}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B0FB3234-7C0E-43D4-9EB3-693F67B05779}.Release|Any CPU.Build.0 = Release|Any CPU
+		{36B994C5-4690-428E-BD4B-93CCF6F0319E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{36B994C5-4690-428E-BD4B-93CCF6F0319E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{36B994C5-4690-428E-BD4B-93CCF6F0319E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{36B994C5-4690-428E-BD4B-93CCF6F0319E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = Zk\Zk.csproj
+		StartupItem = Zk.Migrations\Zk.Migrations.csproj
 	EndGlobalSection
 EndGlobal

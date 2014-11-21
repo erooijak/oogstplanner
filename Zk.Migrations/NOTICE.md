@@ -1,0 +1,1 @@
+Copyright 2013 Dario Malfatti https://github.com/darionato/PostgreSqlMigrationSqlGenerator. 
