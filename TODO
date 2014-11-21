@@ -12,6 +12,7 @@ Datamodel (Model)
 Classes en relaties
 Datamodel relaties inbouwen (foreign keys)
 Uitzoeken kilogrammen en grondtypes (FutDev)
+TODO: JSONB data type i.p.v. JSON met PostgreSQL 9.4
 
 Business logic (Controllers)
 Pseudo code voor berekeningen

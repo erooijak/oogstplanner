@@ -9,7 +9,7 @@ psql ZkTestDatabase
 -- Run the following script from beginning to end in psql terminal
 -- NOTE: Change the path in copy statement below!
 
--- Add table
+-- Add table for the crop data
 CREATE TABLE IF NOT EXISTS "Crops" (
   	"Id"                INTEGER          PRIMARY KEY,
 	"Name"              VARCHAR(30)         NOT NULL,
@@ -27,5 +27,18 @@ COPY "Crops" FROM '/home/erwin/zaaikalender/CropData.csv' DELIMITER ',' CSV;
 
 -- Grant access
 GRANT ALL PRIVILEGES ON TABLE "Crops" TO zktest;
+
+-- Add table for user calendar
+CREATE TABLE IF NOT EXISTS "Calendar" (
+  	"Id"                INTEGER          PRIMARY KEY,
+	"Name"              VARCHAR(30)         NOT NULL,
+  	"Race"              VARCHAR(50)                 ,
+  	"Category"          VARCHAR(50)                 ,
+  	"AreaPerCrop"       DOUBLE PRECISION            ,
+	"AreaPerBag"        DOUBLE PRECISION            ,
+	"PricePerBag"       DECIMAL(12,2)               ,
+	"SowingMonths"      SMALLINT            NOT NULL,
+	"HarvestingMonths"  SMALLINT            NOT NULL
+);
 
 -- Now press CTRL-D twice to leave database and postgres login.
