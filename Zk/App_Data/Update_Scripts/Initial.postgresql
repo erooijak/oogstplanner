@@ -29,16 +29,6 @@ COPY "Crops" FROM '/home/erwin/zaaikalender/CropData.csv' DELIMITER ',' CSV;
 GRANT ALL PRIVILEGES ON TABLE "Crops" TO zktest;
 
 -- Add table for user calendar
-CREATE TABLE IF NOT EXISTS "Calendar" (
-  	"Id"                INTEGER          PRIMARY KEY,
-	"Name"              VARCHAR(30)         NOT NULL,
-  	"Race"              VARCHAR(50)                 ,
-  	"Category"          VARCHAR(50)                 ,
-  	"AreaPerCrop"       DOUBLE PRECISION            ,
-	"AreaPerBag"        DOUBLE PRECISION            ,
-	"PricePerBag"       DECIMAL(12,2)               ,
-	"SowingMonths"      SMALLINT            NOT NULL,
-	"HarvestingMonths"  SMALLINT            NOT NULL
-);
+-- TODO, see if we can get code first migrations to work...
 
 -- Now press CTRL-D twice to leave database and postgres login.
