@@ -22,7 +22,7 @@ namespace Zk.Models
 		/// <param name="modelBuilder">The builder that defines the model for the context being created.</param>
 		protected override void OnModelCreating(DbModelBuilder modelBuilder)
 		{
-			// PostgreSQL has by default uses schema public.
+			// PostgreSQL uses schema public by default.
 			modelBuilder.HasDefaultSchema("public");
 
 		}

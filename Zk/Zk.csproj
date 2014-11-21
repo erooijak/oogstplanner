@@ -75,6 +75,7 @@
     <Reference Include="Npgsql.EntityFramework">
       <HintPath>..\packages\Npgsql.EntityFramework.2.2.2\lib\net45\Npgsql.EntityFramework.dll</HintPath>
     </Reference>
+    <Reference Include="System.Data" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\" />
@@ -86,7 +87,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="App_Data\Update_Scripts\" />
     <Folder Include="Views\Crop\" />
-    <Folder Include="Migrations\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\HomeController.cs" />
@@ -103,7 +103,6 @@
     <Compile Include="Models\FarmingMonth.cs" />
     <Compile Include="Controllers\CropController.cs" />
     <Compile Include="Controllers\CalendarController.cs" />
-    <Compile Include="Migrations\Configuration.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Web.config" />

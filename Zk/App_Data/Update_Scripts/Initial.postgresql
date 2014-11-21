@@ -31,4 +31,14 @@ GRANT ALL PRIVILEGES ON TABLE "Crops" TO zktest;
 -- Add table for user calendar
 -- TODO, see if we can get code first migrations to work...
 
+-- Example of code necessary to increase primary keys:
+--CREATE SEQUENCE "primary_key_increase"
+--INCREMENT 1
+--MINVALUE 1
+--MAXVALUE 9223372036854775807
+--START 999
+--CACHE 1;
+--ALTER TABLE "Primary_key_increase" OWNER TO zktest; 
+--ALTER TABLE "Crops" ALTER COLUMN "Id" SET DEFAULT nextval('"primary_key_increase"');  
+
 -- Now press CTRL-D twice to leave database and postgres login.

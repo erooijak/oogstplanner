@@ -57,8 +57,7 @@ namespace System.Data.Entity.Migrations.Sql
 
             Check.NotNull(migrationOperations, "migrationOperations");
 
-            DetectHistoryRebuild(migrationOperations).Each<dynamic>(o => Generate(o));
-
+			DetectHistoryRebuild(migrationOperations).Each<dynamic>(o => Generate(o));
         }
 
         private void InitializeProviderServices(string providerManifestToken)

@@ -20,7 +20,8 @@ namespace Zk.Migrations
 		public static void Main (string[] args)
 		{
 			var config = new Configuration();
-			var scaffolder = new MigrationScaffolder(config);
+			var scaffolder = new MigrationScaffolder(config); 
+			// ^^ Not working because of MultipleActiveResultSets which are set to true somewhere unknown...
 			var migration = scaffolder.Scaffold("Initial");
 
 			File.WriteAllText(migration.MigrationId + ".cs", migration.UserCode);

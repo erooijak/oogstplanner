@@ -36,6 +36,7 @@ namespace Zk.Controllers
 		{
 			// Get all crops and return to the view for display.
 			var crops = _repo.GetAllCrops ();
+
 			return View(crops);
 		}
 
@@ -72,7 +73,7 @@ namespace Zk.Controllers
 			var crop = _repo.GetCrop(name);
 			return View(crop);
 		}
-
+			
 		/// <summary>
 		/// 	Submits the calendar that the user has entered on the view and update the current calendar
 		/// </summary>
