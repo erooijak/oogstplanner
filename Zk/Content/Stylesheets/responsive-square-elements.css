@@ -1,13 +1,11 @@
-﻿/* Code modified from http://jsfiddle.net/webtiki/MpXYr/3/light/ */
-
-@import url(http://fonts.googleapis.com/css?family=Lato:400,900); 
+﻿@import url(http://fonts.googleapis.com/css?family=Lato:400,900);  /* <-- Just for the demo, Yes I like pretty fonts... */
 
 .square {
     float:left;
     position: relative;
-    width: 22.5%; /* changed from 30 to 22.5 to allow for 3x4 grid */
+    width: 30%;
     padding-bottom : 30%; /* = width for a 1:1 aspect ratio */
-    margin:1.24%; /* changed from 1.66 to 1.66/4 * 3  = 1.245*/
+    margin:1.66%;
     background-color:#1E1E1E;
     overflow:hidden;
 }
@@ -89,12 +87,7 @@ p{
     font-size:100px;
 }
 
-.links{
-    font-weight:300;
-    font-size:30px;
-}
-
-#top {
+#bottom {
     clear:both;
     margin:0 1.66%;
     width:89.68%;
@@ -102,11 +95,11 @@ p{
     background-color:#1E1E1E;
     color: #fff;
 }
-#top p{
+#bottom p{
     text-align:center;
     line-height:2em;
 }
-top a{
+#bottom a{
     color: #000;
     text-decoration:none;
     border:1px solid #000;
@@ -119,11 +112,7 @@ top a{
     border-radius: 5px;
 }
 
-a{
-	color: #fff;
-}
-
-#top a:hover{
+#bottom a:hover{
     background:#ECECEC;
     border:1px solid #fff;
-}	
+}
