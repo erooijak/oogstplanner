@@ -3,10 +3,26 @@
 <head>
     <title>Zaaikalender | @ViewBag.Title</title>
 	<!---<link rel="stylesheet" href="/Content/Stylesheets/bootstrap.css"> -->
+
+	<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="/Scripts/flowtype.js"></script>
+    <script src="/Scripts/font-settings.js"></script>
+
 </head>
 <body>
 	<div class="container">
 	@RenderBody()
 	</div>
+
+	<script>
+		/* Using flowtype.js to adjust the size of the names of the seasons and months */
+		$('body').flowtype({
+		   minimum   : 200,
+		   maximum   : 1200,
+		   minFont   : 12,
+		   maxFont   : 80,
+		   fontRatio : 30
+		});
+	</script>
 </body>
 </html>

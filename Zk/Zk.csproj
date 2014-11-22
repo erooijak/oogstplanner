@@ -80,7 +80,6 @@
   <ItemGroup>
     <Folder Include="Content\" />
     <Folder Include="Models\" />
-    <Folder Include="Scripts\" />
     <Folder Include="Repositories\" />
     <Folder Include="Views\Home\" />
     <Folder Include="Views\Shared\" />
@@ -89,6 +88,7 @@
     <Folder Include="Views\Crop\" />
     <Folder Include="Content\Stylesheets\" />
     <Folder Include="Content\Images\" />
+    <Folder Include="Scripts\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\HomeController.cs" />
@@ -119,25 +119,26 @@
     <Content Include="Views\Crop\Index.cshtml" />
     <Content Include="Content\Stylesheets\bootstrap.css" />
     <Content Include="Content\Stylesheets\responsive-square-elements.css" />
-    <Content Include="Content\Images\Autumn\1.jpg" />
     <Content Include="Content\Images\Autumn\2.jpg" />
     <Content Include="Content\Images\Autumn\3.jpg" />
-    <Content Include="Content\Images\Autumn\4.jpg" />
     <Content Include="Content\Images\Spring\1.jpg" />
     <Content Include="Content\Images\Spring\2.jpg" />
-    <Content Include="Content\Images\Spring\3.jpg" />
-    <Content Include="Content\Images\Spring\4.jpg" />
     <Content Include="Content\Images\Spring\5.jpg" />
-    <Content Include="Content\Images\Summer\1.jpg" />
     <Content Include="Content\Images\Summer\2.jpg" />
-    <Content Include="Content\Images\Summer\3.jpg" />
-    <Content Include="Content\Images\Summer\4.jpg" />
-    <Content Include="Content\Images\Summer\5.jpg" />
     <Content Include="Content\Images\Winter\1.jpg" />
     <Content Include="Content\Images\Winter\2.jpg" />
     <Content Include="Content\Images\Winter\3.jpg" />
     <Content Include="Content\Images\Winter\4.jpg" />
     <Content Include="Content\Images\Winter\5.jpg" />
+    <Content Include="Content\Images\Autumn\1.jpg" />
+    <Content Include="Content\Images\Autumn\4.jpg" />
+    <Content Include="Content\Images\Summer\1.jpg" />
+    <Content Include="Content\Images\Summer\3.jpg" />
+    <Content Include="Content\Images\Summer\4.jpg" />
+    <Content Include="Content\Images\Spring\3.jpg" />
+    <Content Include="Content\Images\Spring\4.jpg" />
+    <Content Include="Scripts\flowtype.js" />
+    <Content Include="Scripts\font-settings.js" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>

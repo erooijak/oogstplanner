@@ -1,118 +1,177 @@
-﻿@import url(http://fonts.googleapis.com/css?family=Lato:400,900);  /* <-- Just for the demo, Yes I like pretty fonts... */
+﻿/* Responsive square elements are adjusted from http://jsfiddle.net/webtiki/MpXYr/3/light/ by http://web-tiki.com/ */
+
+@import url(http://fonts.googleapis.com/css?family=Lato:400,900);
 
 .square {
-    float:left;
+    float: left;
     position: relative;
-    width: 30%;
-    padding-bottom : 30%; /* = width for a 1:1 aspect ratio */
-    margin:1.66%;
-    background-color:#1E1E1E;
-    overflow:hidden;
+    margin: 0.25%;
+    width: 24.5%; /* This is ( 100 - (8 * 0.25) ) / 4, where 4 amount of squares and 0.25 margin between squares */
+    padding-bottom : 24.5%; /* = width for a 1:1 aspect ratio */
+    background-color: #1E1E1E;
+    overflow: hidden;
 }
-
+.rectangle {
+    float: left;
+    position: relative;
+    margin: 0.25%;
+    width: 24.5%; /* This is ( 100 - (8 * 0.25) ) / 4, where 4 amount of squares and 0.25 margin between squares */
+    padding-bottom : 12.25%; /* = width for a 2:1 aspect ratio */
+    background-color: #1E1E1E;
+    overflow: hidden;
+}
 .content {
-    position:absolute;
-    height:90%; /* = 100% - 2*5% padding */
-    width:90%; /* = 100% - 2*5% padding */
+    position: absolute;
+    height: 90%; /* = 100% - 2*5% padding */
+    width: 90%; /* = 100% - 2*5% padding */
     padding: 5%;
-    
 }
-.table{
-    display:table;
-    width:100%;
-    height:100%;
+.table {
+    display: table;
+    width: 100%;
+    height: 100%;
 }
-.table-cell{
-    display:table-cell;
-    vertical-align:middle;
-}
-/*  For list */
-ul{
-    text-align:left;
-    margin:5% 0 0;
-    padding:0;
-    list-style-position:inside;
-}
-li{
-    margin: 0 0 0 5%;
-    padding:0;
+.table-cell {
+    display: table-cell;
+    vertical-align: middle;
 }
 
+/*  For list */
+ul {
+    text-align:left;
+    margin: 5% 0 0;
+    padding: 0;
+    list-style-position: inside;
+}
+li {
+    margin: 0 0 0 5%;
+    padding: 0;
+}
 
 /*  For responsive images */
-
-.content .rs{
-    width:auto;
-    height:auto;
-    max-height:90%;
-    max-width:100%;
+.content .rs {
+    width: auto;
+    height: auto;
+    max-height: 90%;
+    max-width: 100%;
 }
+
 /*  For responsive images as background */
-
 .bg{
-    background-position:center center;
-    background-repeat:no-repeat;
-    background-size:cover; /* you change this to "contain" if you don't want the images to be cropped */
-    color:#fff;
-}
-
-.img1{
-    background-image: url('https://farm3.staticflickr.com/2827/10384422264_d9c7299146.jpg');
-}
-.img2{
-    background-image: url('https://farm7.staticflickr.com/6217/6216951796_e50778255c.jpg');
-}
-.img3{
-    background-image: url('https://farm4.staticflickr.com/3794/13893055574_3df0ab636b.jpg');
-}
-
-/*  following just for the demo */
-
-
-body {
-    font-size:20px;
-    font-family: 'Lato',verdana, sans-serif;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover; /* you change this to "contain" if you don't want the images to be cropped */
     color: #fff;
-    text-align:center;
-    background:#ECECEC;
-}
-p{
-    margin:0;
-    padding:0;
-    text-align:left;
 }
 
-.numbers{
-    font-weight:900;
-    font-size:100px;
+/*  Images for the seasons displayed on the squares */
+.imgwinter1 {
+    background-image: url('../Images/Winter/1.jpg');
+}
+.imgwinter2 {
+    background-image: url('../Images/Winter/2.jpg');
+}
+.imgwinter3 {
+    background-image: url('../Images/Winter/3.jpg');
+}
+.imgwinter4 {
+	background-image: url('../Images/Winter/4.jpg');
+}
+.imgwinter5 {
+    background-image: url('../Images/Winter/5.jpg');
+}
+.imgsummer1 {
+    background-image: url('../Images/Summer/1.jpg');
+}
+.imgsummer2 {
+    background-image: url('../Images/Summer/2.jpg');
+}
+.imgsummer3 {
+    background-image: url('../Images/Summer/3.jpg');
+}
+.imgsummer4 {
+    background-image: url('../Images/Summer/4.jpg');
+}
+.imgsummer5 {
+    background-image: url('../Images/Summer/5.jpg');
+}
+.imgautumn1 {
+    background-image: url('../Images/Autumn/1.jpg');
+}
+.imgautumn2 {
+    background-image: url('../Images/Autumn/2.jpg');
+}
+.imgautumn3 {
+    background-image: url('../Images/Autumn/3.jpg');
+}
+.imgautumn4 {
+    background-image: url('../Images/Autumn/4.jpg');
+}
+.imgspring1 {
+    background-image: url('../Images/Spring/1.jpg');
+}
+.imgspring2 {
+    background-image: url('../Images/Spring/2.jpg');
+}
+.imgspring3 {
+    background-image: url('../Images/Spring/3.jpg');
+}
+.imgspring4 {
+    background-image: url('../Images/Spring/4.jpg');
+}
+.imgspring5 {
+    background-image: url('../Images/Spring/5.jpg');
+}
+
+/*  following just for the original demo, but we like it */
+body {
+    font-family: 'Lato',verdana, sans-serif;
+    font-size: 20px;
+    color: #fff;
+    text-align: center;
+    background: #ECECEC;
+}
+p {
+    margin: 0;
+    padding: 0;
+    text-align: left;
+}
+
+.seasons {
+    /* font-size is made responsive with the flowtype.js script* /
+    font-weight: 900;
+}
+.months {
+    /* font-size is made responsive with the flowtype.js script */
+    font-weight: 900;
 }
 
 #bottom {
-    clear:both;
-    margin:0 1.66%;
-    width:89.68%;
+    clear: both;
+    margin: 0 1.66%;
+    width: 89.68%;
     padding: 3.5%;
-    background-color:#1E1E1E;
+    background-color: #1E1E1E;
     color: #fff;
 }
-#bottom p{
-    text-align:center;
-    line-height:2em;
+#bottom p {
+    text-align: center;
+    line-height: 2em;
 }
-#bottom a{
+#bottom a {
     color: #000;
-    text-decoration:none;
-    border:1px solid #000;
-    padding:10px 20px 12px;
-    line-height:70px;
-    background:#ccc;
+    text-decoration: none;
+    border: 1px solid #000;
+    padding: 10px 20px 12px;
+    line-height: 70px;
+    background: #ccc;
     
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     border-radius: 5px;
 }
 
-#bottom a:hover{
-    background:#ECECEC;
-    border:1px solid #fff;
+#bottom a:hover {
+    background: #ECECEC;
+    border: 1px solid #fff;
 }
