@@ -16,11 +16,11 @@ seasons=("Spring" "Summer" "Autumn" "Winter");
 
 for season in "${seasons[@]}"; do
   i=1;
-  for image in $season/*.jpg; do
+  for image in $season/*.jp*; do
     convert $image -resize 300x -quality 80% $season/$i.jpg;
     rm $image;
     ((i++));
   done
 done
 
-echo "All jpgs are converted to 300 pixels and 80% quality."
+echo "All jp(e)gs are converted to 300 pixels and 80% quality."
