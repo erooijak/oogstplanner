@@ -1,12 +1,21 @@
-﻿/* Responsive square elements are adjusted from http://jsfiddle.net/webtiki/MpXYr/3/light/ by http://web-tiki.com/ */
+﻿/* Responsive square elements stylesheet is adjusted from http://jsfiddle.net/webtiki/MpXYr/3/light/ which was designed by http://web-tiki.com/ */
 
 @import url(http://fonts.googleapis.com/css?family=Lato:400,900);
 
+#bar {
+    float: left;
+    position: relative;
+    margin: 0.25%;
+    width: 99.5%; /* This is ( 100 - (2 * 0.25) ), where 0.25 is the margin between the bar and the sides */
+    padding-bottom : 18.375%; /* = width for a 4:3 aspect ratio */
+    background-color: #000;
+    overflow: hidden;
+}
 .square {
     float: left;
     position: relative;
     margin: 0.25%;
-    width: 24.5%; /* This is ( 100 - (8 * 0.25) ) / 4, where 4 amount of squares and 0.25 margin between squares */
+    width: 24.5%; /* This is ( 100 - (8 * 0.25) ) / 4, where 4 amount of squares and 0.25 margin between squares and sides */
     padding-bottom : 24.5%; /* = width for a 1:1 aspect ratio */
     background-color: #1E1E1E;
     overflow: hidden;
@@ -15,8 +24,8 @@
     float: left;
     position: relative;
     margin: 0.25%;
-    width: 24.5%; /* This is ( 100 - (8 * 0.25) ) / 4, where 4 amount of squares and 0.25 margin between squares */
-    padding-bottom : 12.25%; /* = width for a 2:1 aspect ratio */
+    width: 24.5%; /* This is ( 100 - (8 * 0.25) ) / 4, where 4 amount of squares and 0.25 margin between squares and sides */
+    padding-bottom : 6.125%; /* = width for a 4:1 aspect ratio, similar to bar */
     background-color: #1E1E1E;
     overflow: hidden;
 }
@@ -25,6 +34,12 @@
     height: 90%; /* = 100% - 2*5% padding */
     width: 90%; /* = 100% - 2*5% padding */
     padding: 5%;
+}
+.rectangle-content {
+    position: absolute;
+    height: 97.5%; /* = 100% - 2*1.25% padding */
+    width: 97.5%; /* = 100% - 2*1.25% padding */
+    padding: 1.25%;
 }
 .table {
     display: table;
@@ -123,7 +138,7 @@ li {
     background-image: url('../Images/Spring/5.jpg');
 }
 
-/*  following just for the original demo, but we like it */
+/*  Some styling that we like */
 body {
     font-family: 'Lato',verdana, sans-serif;
     font-size: 20px;
@@ -136,7 +151,6 @@ p {
     padding: 0;
     text-align: left;
 }
-
 .seasons {
     /* font-size is made responsive with the flowtype.js script* /
     font-weight: 900;
@@ -145,8 +159,7 @@ p {
     /* font-size is made responsive with the flowtype.js script */
     font-weight: 900;
 }
-
-#bottom {
+#top {
     clear: both;
     margin: 0 1.66%;
     width: 89.68%;
@@ -154,11 +167,11 @@ p {
     background-color: #1E1E1E;
     color: #fff;
 }
-#bottom p {
+#top p {
     text-align: center;
     line-height: 2em;
 }
-#bottom a {
+#top a {
     color: #000;
     text-decoration: none;
     border: 1px solid #000;
@@ -171,7 +184,12 @@ p {
     border-radius: 5px;
 }
 
-#bottom a:hover {
+#top a:hover {
     background: #ECECEC;
     border: 1px solid #fff;
+}
+.footer {
+	color: #1E1E1E;
+	font-size: 14px;
+	padding: 5%;
 }

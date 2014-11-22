@@ -4,9 +4,19 @@
 
 <link rel="stylesheet" href="/Content/Stylesheets/responsive-square-elements.css">
 
-<!-- Row of rectangles for the seasons -->
+<!-- Top bar -->
+<div id="bar">
+    <div class="rectangle-content">
+        <div class="table">
+            <div class="table-cell header">
+            	<h1>Zaaikalender</h1>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Row of rectangles the seasons -->
 <div class="rectangle">
-    <div class="content">
+    <div class="rectangle-content">
         <div class="table">
             <div class="table-cell seasons">
             	HERFST
@@ -15,7 +25,7 @@
     </div>
 </div>
 <div class="rectangle">
-    <div class="content">
+    <div class="rectangle-content">
         <div class="table">
             <div class="table-cell seasons">
             	WINTER
@@ -24,7 +34,7 @@
     </div>
 </div>
 <div class="rectangle">
-    <div class="content">
+    <div class="rectangle-content">
         <div class="table">
             <div class="table-cell seasons">
             	LENTE
@@ -33,7 +43,7 @@
     </div>
 </div>
 <div class="rectangle">
-    <div class="content">
+    <div class="rectangle-content">
         <div class="table">
             <div class="table-cell seasons">
             	ZOMER
@@ -159,7 +169,6 @@
 
 <!-- END OF RESPONSIVE GRID LAY-OUT-->
 
-<!---<h2>Welcome to ASP.NET MVC @ViewData["Version"] on @ViewData["Runtime"]!</h2>
-    ZAAIKALENDER
-
-<a href="/Crop/Index">Naar de gewassen!</a> -->
+<footer class="footer">
+	Powered by ASP.NET MVC @ViewData["Version"] on @ViewData["Runtime"]!
+</footer>
