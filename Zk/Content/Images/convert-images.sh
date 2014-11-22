@@ -1,9 +1,9 @@
 #!/bin/bash
 
 # Summary: 
-#   This script will change all .jpg images collected in the Winter, Summer, Autumn and Spring folders 
-#   to 80% quality and a width of 300 pixels while keeping original ratio. Files are renamed with 
-#   increasing numbers per folder.
+#   This script will change all .jpg and .jpeg images collected in the Winter, Summer, Autumn and Spring 
+#   folders to 80% quality and a width of 300 pixels while keeping original ratio. Files are renamed with 
+#   increasing numbers per folder. Images were obtained from http://pixabay.com/.
 #   Note: original images will be removed.
 #
 # Dependency: 
