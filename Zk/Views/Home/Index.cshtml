@@ -1,20 +1,27 @@
 ﻿@{ 
     ViewBag.Title = "Home";
 
-    // Seasons in Dutch (singular: "seizoen"; plural: "seizoenen") used for displayal in top row.
-    var seizoenen = new[] { "herfst", "winter", "lente", "zomer" };
-
     // Seasons used for the CSS classes which refer to the different images.
     var seasons = new[] { "autumn", "winter", "spring", "summer" };
 
-    // Months are for display in the boxes. 
-    // Note: A normal queue does not work because of Razor threading issues so a ConcurrentQueue is used.
-    var months = new ConcurrentQueue<string>(new[] {    "september",  "december",     "maart",    "juni", 
+    // Seasons in Dutch (singular: "seizoen"; plural: "seizoenen") used for displayal in top row.
+    var seizoenen = new[] { "herfst", "winter", "lente", "zomer" };
+
+    // Months in English are usd for the CSS classes to add to the squares.
+    // Months in Dutch (singular: "maand"; plural: "maanden") used for displayal within the square.
+    // Notes: * A normal queue does not work because of Razor threading issues so a ConcurrentQueue is used.
+    //        * Getting months from System.Globalization.CultureInfo.CurrentCulture.DateTimeFormat.MonthGenitiveNames
+    //          per culture and reshuffling them in the correct format is left as an exercise.
+    var months = new ConcurrentQueue<string>(new[] {    "september",  "december",     "march",    "june", 
+                                                        "october",    "january",      "april",    "july", 
+                                                        "november",   "february",     "may",      "august"});
+    var maanden = new ConcurrentQueue<string>(new[] {   "september",  "december",     "maart",    "juni", 
                                                         "oktober",    "januari",      "april",    "juli", 
                                                         "november",   "februari",     "mei",      "augustus"});
     
-    // Item for display (necessary for TryDequeue method)
+    // Items necessary as out parameter of TryDequeue(out string result) method of ConcurrentQueues
     string month;
+    string maand;
 
 
     // START RESPONSIVE GRID LAYOUT
@@ -49,18 +56,21 @@
     {
         foreach (var season in seasons)
         {
-            <div class="@string.Format("square bg img{0}{1}", season, imageIndex)">
-               <div class="content">
-                    <div class="table">
-                        <div class="table-cell months">
-                        @if (months.TryDequeue(out month)) 
-                        {
-                            @month.ToUpper()
-                        }
-                        </div> 
+            if (months.TryDequeue(out month) && maanden.TryDequeue(out maand)) 
+            {
+                // To the outer square div the string.Format methods adds:
+                // 1.) A CSS class for the image so a fitting image can be displayed. 
+                // 2.) A CSS class for the month, so we can identify which month is clicked on.
+                <div class="square bg @string.Format("img{0}{1} {2}", season, imageIndex, month)">
+                   <div class="content">
+                        <div class="table">
+                            <div class="table-cell months">
+                                @maand.ToUpper()
+                            </div> 
+                        </div>
                     </div>
                 </div>
-            </div>
+            }
         }
     }
 
