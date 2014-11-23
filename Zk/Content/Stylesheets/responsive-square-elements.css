@@ -39,7 +39,7 @@
     position: absolute;
     height: 97.5%; /* = 100% - 2*1.25% padding */
     width: 97.5%; /* = 100% - 2*1.25% padding */
-    padding: 5% 1.25%;
+    padding: 1.25%;
 }
 .table {
     display: table;
@@ -72,60 +72,73 @@ li {
 }
 
 /*  For responsive images as background */
-.bg {
+.bg:before {
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover; /* you change this to "contain" if you don't want the images to be cropped */
-    color: #fff;
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    right: 0; bottom: 0;
+    opacity: 0.5;
+}
+
+/*  Change opacity on hover */
+.bg:hover:before {
+    opacity: 0.7;
 }
 
 /*  Images for the seasons displayed on the squares */
-.imgwinter1 {
+.imgwinter1:before {
     background-image: url('../Images/Winter/1.jpg');
+    opacity:1;
 }
-.imgwinter2 {
+.imgwinter1:before:hover {
+    opacity: 1;
+}
+.imgwinter2:before {
     background-image: url('../Images/Winter/2.jpg');
 }
-.imgwinter3 {
+.imgwinter3:before {
     background-image: url('../Images/Winter/3.jpg');
 }
-.imgwinter4 {
+.imgwinter4:before {
 	background-image: url('../Images/Winter/4.jpg');
 }
-.imgsummer1 {
+.imgsummer1:before {
     background-image: url('../Images/Summer/1.jpg');
 }
-.imgsummer2 {
+.imgsummer2:before {
     background-image: url('../Images/Summer/2.jpg');
 }
-.imgsummer3 {
+.imgsummer3:before {
     background-image: url('../Images/Summer/3.jpg');
 }
-.imgsummer4 {
+.imgsummer4:before {
     background-image: url('../Images/Summer/4.jpg');
 }
-.imgautumn1 {
+.imgautumn1:before {
     background-image: url('../Images/Autumn/1.jpg');
 }
-.imgautumn2 {
+.imgautumn2:before {
     background-image: url('../Images/Autumn/2.jpg');
 }
-.imgautumn3 {
+.imgautumn3:before {
     background-image: url('../Images/Autumn/3.jpg');
 }
-.imgautumn4 {
+.imgautumn4:before {
     background-image: url('../Images/Autumn/4.jpg');
 }
-.imgspring1 {
+.imgspring1:before {
     background-image: url('../Images/Spring/1.jpg');
 }
-.imgspring2 {
+.imgspring2:before {
     background-image: url('../Images/Spring/2.jpg');
 }
-.imgspring3 {
+.imgspring3:before {
     background-image: url('../Images/Spring/3.jpg');
 }
-.imgspring4 {
+.imgspring4:before {
     background-image: url('../Images/Spring/4.jpg');
 }
 
