@@ -1,173 +1,72 @@
 ﻿@{ 
-    ViewBag.Title = "Home"; 
-} 
+    ViewBag.Title = "Home";
 
-<!-- Top bar -->
-<div id="bar">
-    <div class="rectangle-content">
-        <div class="table">
-            <div class="table-cell header">
-            	<h1>Zaaikalender</h1>
-            </div>
-        </div>
-    </div>
-</div>
+    // Seasons in Dutch (singular: "seizoen"; plural: "seizoenen") used for displayal in top row.
+    var seizoenen = new[] { "herfst", "winter", "lente", "zomer" };
 
-<!-- Row of rectangles for the seasons -->
-<div class="rectangle">
-    <div class="rectangle-content">
-        <div class="table">
-            <div class="table-cell seasons">
-            	HERFST
-            </div>
-        </div>
-    </div>
-</div>
-<div class="rectangle">
-    <div class="rectangle-content">
-        <div class="table">
-            <div class="table-cell seasons">
-            	WINTER
-            </div>
-        </div>
-    </div>
-</div>
-<div class="rectangle">
-    <div class="rectangle-content">
-        <div class="table">
-            <div class="table-cell seasons">
-            	LENTE
-            </div>
-        </div>
-    </div>
-</div>
-<div class="rectangle">
-    <div class="rectangle-content">
-        <div class="table">
-            <div class="table-cell seasons">
-            	ZOMER
-            </div>
-        </div>
-    </div>
-</div>
+    // Seasons used for the CSS classes which refer to the different images.
+    var seasons = new[] { "autumn", "winter", "spring", "summer" };
 
-<!-- All rows will consist of an autumn, winter, spring and summer image -->
-<!-- 1st row -->
-<div class="square bg imgautumn1">
-   <div class="content">
-        <div class="table">
-            <div class="table-cell months text">
-                SEPTEMBER
-            </div>
-        </div>
-    </div>
-</div>
-<div class="square bg imgwinter1">
-   <div class="content">
-        <div class="table">
-            <div class="table-cell months">
-                DECEMBER
-            </div>
-        </div>
-    </div>
-</div>
-<div class="square bg imgspring1">
-   <div class="content">
-        <div class="table">
-            <div class="table-cell months">
-                MAART
-            </div>
-        </div>
-    </div>
-</div>
-<div class="square bg imgsummer1">
-   <div class="content">
-        <div class="table">
-            <div class="table-cell months">
-                JUNI
-            </div>
-        </div>
-    </div>
-</div>
+    // Months are for display in the boxes. 
+    // Note: A normal queue does not work because of Razor threading issues so a ConcurrentQueue is used.
+    var months = new ConcurrentQueue<string>(new[] {    "september",  "december",     "maart",    "juni", 
+                                                        "oktober",    "januari",      "april",    "juli", 
+                                                        "november",   "februari",     "mei",      "augustus"});
+    
+    // Item for display (necessary for TryDequeue method)
+    string month;
 
-<!-- 2nd row -->
-<div class="square bg imgautumn2">
-   <div class="content">
-        <div class="table">
-            <div class="table-cell months">
-                OKTOBER
-            </div>
-        </div>
-    </div>
-</div>
-<div class="square bg imgwinter2">
-   <div class="content">
-        <div class="table">
-            <div class="table-cell months">
-                JANUARI
-            </div>
-        </div>
-    </div>
-</div>
-<div class="square bg imgspring2">
-   <div class="content">
-        <div class="table">
-            <div class="table-cell months">
-                APRIL
-            </div>
-        </div>
-    </div>
-</div>
-<div class="square bg imgsummer2">
-   <div class="content">
-        <div class="table">
-            <div class="table-cell months">
-                JULI
-            </div>
-        </div>
-    </div>
-</div>
 
-<!-- 3rd row -->
-<div class="square bg imgautumn3">
-   <div class="content">
-        <div class="table">
-            <div class="table-cell months">
-                NOVEMBER
-            </div>
-        </div>
-    </div>
-</div>
-<div class="square bg imgwinter3">
-   <div class="content">
-        <div class="table">
-            <div class="table-cell months">
-                FEBRUARI
-            </div>
-        </div>
-    </div>
-</div>
-<div class="square bg imgspring3">
-   <div class="content">
-        <div class="table">
-            <div class="table-cell months">
-                MEI
-            </div>
-        </div>
-    </div>
-</div>
-<div class="square bg imgsummer3">
-   <div class="content">
-        <div class="table">
-            <div class="table-cell months">
-                AUGUSTUS
-            </div>
-        </div>
-    </div>
-</div>
+    // START RESPONSIVE GRID LAYOUT
 
-<!-- END OF RESPONSIVE GRID LAY-OUT-->
+    // Top bar
+    <div id="bar">
+        <div class="rectangle-content">
+            <div class="table">
+                <div class="table-cell header">
+                    <h1>Zaaikalender</h1>
+                </div>
+            </div>
+        </div>
+    </div>
 
-<footer class="footer">
-	Powered by ASP.NET MVC @ViewData["Version"] on @ViewData["Runtime"]!
-</footer>
+    // Row of rectangles for the seasons
+    foreach (var seizoen in seizoenen)
+    {
+        <div class="rectangle">
+            <div class="rectangle-content">
+                <div class="table">
+                    <div class="table-cell seasons">
+                        @seizoen.ToUpper()
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+
+    // Four rows which each consist of an autumn, winter, spring and summer image.
+    for (var imageIndex = 1; imageIndex <= 3; imageIndex++)
+    {
+        foreach (var season in seasons)
+        {
+            <div class="@string.Format("square bg img{0}{1}", season, imageIndex)">
+               <div class="content">
+                    <div class="table">
+                        <div class="table-cell months">
+                        @if (months.TryDequeue(out month)) 
+                        {
+                            @month.ToUpper()
+                        }
+                        </div> 
+                    </div>
+                </div>
+            </div>
+        }
+    }
+
+    // END OF RESPONSIVE GRID LAY-OUT
+
+    <footer class="footer">
+    	Powered by ASP.NET MVC @ViewData["Version"] on @ViewData["Runtime"]!
+    </footer>
+}

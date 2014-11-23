@@ -85,7 +85,7 @@ li {
 
 /*  Change opacity on hover */
 .bg:hover:before {
-    opacity: 0.7;
+    opacity: 1;
 }
 
 /*  Images for the seasons displayed on the squares */
