@@ -73,6 +73,7 @@
     <Reference Include="Npgsql.EntityFramework">
       <HintPath>..\packages\Npgsql.EntityFramework.2.2.2\lib\net45\Npgsql.EntityFramework.dll</HintPath>
     </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\" />
