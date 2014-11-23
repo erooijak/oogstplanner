@@ -39,7 +39,7 @@
     position: absolute;
     height: 97.5%; /* = 100% - 2*1.25% padding */
     width: 97.5%; /* = 100% - 2*1.25% padding */
-    padding: 1.25%;
+    padding: 5% 1.25%;
 }
 .table {
     display: table;
@@ -72,7 +72,7 @@ li {
 }
 
 /*  For responsive images as background */
-.bg{
+.bg {
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover; /* you change this to "contain" if you don't want the images to be cropped */
@@ -92,9 +92,6 @@ li {
 .imgwinter4 {
 	background-image: url('../Images/Winter/4.jpg');
 }
-.imgwinter5 {
-    background-image: url('../Images/Winter/5.jpg');
-}
 .imgsummer1 {
     background-image: url('../Images/Summer/1.jpg');
 }
@@ -106,9 +103,6 @@ li {
 }
 .imgsummer4 {
     background-image: url('../Images/Summer/4.jpg');
-}
-.imgsummer5 {
-    background-image: url('../Images/Summer/5.jpg');
 }
 .imgautumn1 {
     background-image: url('../Images/Autumn/1.jpg');
@@ -133,9 +127,6 @@ li {
 }
 .imgspring4 {
     background-image: url('../Images/Spring/4.jpg');
-}
-.imgspring5 {
-    background-image: url('../Images/Spring/5.jpg');
 }
 
 /*  Some styling that we like */
