@@ -10,7 +10,7 @@ namespace Zk.Controllers
 		readonly Repository _repo;
 
 		/// <summary>
-		///     Initializes a new instance of the <see cref="Controllers.CropController"/> class which
+        ///     Initializes a new instance of the <see cref="Controllers.CalendarController"/> class which
 		///     makes use of the real Entity Framework context that connects with the database.
 		/// </summary>
 		public CalendarController()
@@ -19,7 +19,7 @@ namespace Zk.Controllers
 		}
 
 		/// <summary>
-		///     Initializes a new instance of the <see cref="Controllers.CropController"/> class which
+        ///     Initializes a new instance of the <see cref="Controllers.CalendarController"/> class which
 		///     can make use of a "Fake" Entity Framework context for unit testing purposes.
 		/// </summary>
 		/// <param name="db">Database context.</param>

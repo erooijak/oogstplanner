@@ -76,6 +76,7 @@
       <HintPath>..\packages\Npgsql.EntityFramework.2.2.2\lib\net45\Npgsql.EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http.WebRequest" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\" />
@@ -105,6 +106,7 @@
     <Compile Include="Models\FarmingMonth.cs" />
     <Compile Include="Controllers\CropController.cs" />
     <Compile Include="Controllers\CalendarController.cs" />
+    <Compile Include="Controllers\FarmingMonthController.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Web.config" />
@@ -138,6 +140,7 @@
     <Content Include="Content\Images\Spring\4.jpg" />
     <Content Include="Scripts\flowtype.js" />
     <Content Include="Scripts\font-settings.js" />
+    <Content Include="Scripts\month-click-listeners.js" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
