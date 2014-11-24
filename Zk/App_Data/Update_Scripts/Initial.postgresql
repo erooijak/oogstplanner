@@ -17,7 +17,7 @@ CREATE TABLE IF NOT EXISTS "Crops" (
   	"Category"          VARCHAR(50)                 ,
   	"AreaPerCrop"       DOUBLE PRECISION            ,
 	"AreaPerBag"        DOUBLE PRECISION            ,
-	"PricePerBag"       DECIMAL(12,2)               ,
+	"PricePerBag"       DECIMAL(18,2)               ,
 	"SowingMonths"      SMALLINT            NOT NULL,
 	"HarvestingMonths"  SMALLINT            NOT NULL
 );

@@ -26,13 +26,17 @@
     <Externalconsole>true</Externalconsole>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Data" />
+    <Reference Include="Microsoft.CSharp" />
     <Reference Include="EntityFramework">
       <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer">
       <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
-    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="Mono.Security">
       <HintPath>..\packages\Npgsql.2.2.2\lib\net45\Mono.Security.dll</HintPath>
     </Reference>
@@ -42,33 +46,32 @@
     <Reference Include="Npgsql.EntityFramework">
       <HintPath>..\packages\Npgsql.EntityFramework.2.2.2\lib\net45\Npgsql.EntityFramework.dll</HintPath>
     </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Data" />
-    <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Configuration.cs" />
-    <Compile Include="PostgreSqlBuilder.cs" />
-    <Compile Include="PostgreSqlGenerator.cs" />
-    <Compile Include="PostgreSqlMigrationSqlGenerator.cs" />
-    <Compile Include="PostgreSqlVisitor.cs" />
-    <Compile Include="Utilities\ByteExtensions.cs" />
-    <Compile Include="Utilities\DatabaseName.cs" />
-    <Compile Include="Utilities\EnumerableExtensions.cs" />
-    <Compile Include="Utilities\StringExtensions.cs" />
-    <Compile Include="Utilities\ThrowHelper.cs" />
     <Compile Include="MigrationsTool.cs" />
+    <Compile Include="PostgreSqlMigrationSqlGenerator\Interfaces\IPostgreSqlFragment.cs" />
+    <Compile Include="PostgreSqlMigrationSqlGenerator\Utilities\ByteExtensions.cs" />
+    <Compile Include="PostgreSqlMigrationSqlGenerator\Utilities\DatabaseName.cs" />
+    <Compile Include="PostgreSqlMigrationSqlGenerator\Utilities\EnumerableExtensions.cs" />
+    <Compile Include="PostgreSqlMigrationSqlGenerator\Utilities\StringExtensions.cs" />
+    <Compile Include="PostgreSqlMigrationSqlGenerator\Utilities\ThrowHelper.cs" />
+    <Compile Include="PostgreSqlMigrationSqlGenerator\PostgreSqlBuilder.cs" />
+    <Compile Include="PostgreSqlMigrationSqlGenerator\PostgreSqlGenerator.cs" />
+    <Compile Include="PostgreSqlMigrationSqlGenerator\PostgreSqlMigrationSqlGenerator.cs" />
+    <Compile Include="PostgreSqlMigrationSqlGenerator\PostgreSqlVisitor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Interfaces\IPostgreSqlFragment.cs" />
+    <Compile Include="201411242235080_Initial.Designer.cs" />
+    <Compile Include="201411242235080_Initial.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <None Include="App.config" />
     <None Include="Zk.Migrations.csproj" />
     <None Include="packages.config" />
-    <None Include="LICENSE.md" />
-    <None Include="NOTICE.md" />
+    <None Include="PostgreSqlMigrationSqlGenerator\LICENSE.md" />
+    <None Include="PostgreSqlMigrationSqlGenerator\NOTICE.md" />
+    <None Include="201411242235080_Initial.resources.resx" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Zk\Zk.csproj">
@@ -77,6 +80,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Utilities\" />
+    <Folder Include="PostgreSqlMigrationSqlGenerator\" />
   </ItemGroup>
 </Project>

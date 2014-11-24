@@ -22,8 +22,8 @@
             console.log('Calling controller for month: ' + month);
 
             // Note: In the call to the Edit method a query string parameter is necessary because normal 
-            //       parameter binding does not work in Mono.
-            $.getJSON('/FarmingMonth/Edit?month=' + month, function( data ) {
+            //       parameter binding does not seem to work in our version of Mono.
+            $.getJSON('/FarmingMonth/Edit?month=' + month, function(data) {
                 console.log('Called controller for month: ' + month);
                 console.log(data);
             });

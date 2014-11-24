@@ -8,7 +8,7 @@ namespace Zk.Models
 		/// <summary>
 		///     Initializes a new instance of the <see cref="Zk.Models.ZkContext"/> class.
 		/// </summary>
-		public ZkContext() : base("ZkTestDatabaseConnection")
+        public ZkContext() : base("name=ZkTestDatabaseConnection")
 		{
 		}
 
@@ -28,6 +28,9 @@ namespace Zk.Models
 		}
 
 		public IDbSet<Crop> Crops { get; set; } 
+        //public IDbSet<User> Users { get; set; }
+        //public IDbSet<Calendar> Calendars { get; set; }
+        //public IDbSet<FarmingMonth> FarmingMonths { get; set; }
 
 	}
 }

@@ -1,7 +1,6 @@
-﻿using System;
-using System.Data.Entity.Migrations;
-using Zk.Models;
+﻿using System.Data.Entity.Migrations;
 using System.Data.Entity.Migrations.Sql;
+using Zk.Models;
 
 namespace Zk.Migrations
 {
@@ -10,9 +9,8 @@ namespace Zk.Migrations
 		public Configuration ()
 		{
 			AutomaticMigrationsEnabled = false;
-			SetSqlGenerator("Npgsql", new PostgreSqlMigrationSqlGenerator());
+            SetSqlGenerator("Npgsql", new PostgreSqlMigrationSqlGenerator());
 		}
 
 	}
 }
-

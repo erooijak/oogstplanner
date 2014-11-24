@@ -1,5 +1,5 @@
 ﻿/* Copyright 2013 Dario Malfatti https://github.com/darionato/PostgreSqlMigrationSqlGenerator. 
-   See LICENSE in Zk.Migrations. */
+   See LICENSE. */
 
 using System;
 using System.Data.Entity.Core.Common.CommandTrees;
