@@ -1,7 +1,4 @@
-﻿<div class="section flow-type">
-    <div class="slide">
-
-@{ 
+﻿@{ 
     ViewBag.Title = "Home";
 
     // Seasons used for the CSS classes which refer to the different images.
@@ -83,12 +80,3 @@
     	Powered by ASP.NET MVC @ViewData["Version"] on @ViewData["Runtime"]!
     </footer>
 }
-    </div> <!--- End slide -->
-    <div class="slide"><!-- Section slide for adjusting the selected farming month -->
-        <h2 class="farmingMonth"></h2>
-
-        <input type="button" onclick='$.fn.fullpage.moveSlideLeft();' value="Terug"/>
-
-        @Html.ActionLink("Gewasjes bekijken", "Index", "Crop", null, null)
-    </div>
-</div> <!-- End page -->

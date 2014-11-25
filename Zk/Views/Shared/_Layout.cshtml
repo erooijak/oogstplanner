@@ -4,27 +4,21 @@
     <title>Zaaikalender | @ViewBag.Title</title>
 	
 	<link rel="stylesheet" href="/Content/Stylesheets/responsive-square-elements.css">
-    <link rel="stylesheet" href="/Content/Stylesheets/jquery.fullPage.css" />
-
+    
     <!--[if lte IE 8]>
         <script src="//cdnjs.cloudflare.com/ajax/libs/es5-shim/4.0.3/es5-shim.min.js"></script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv-printshiv.min.js"></script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-
-    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-    <script src="/Scripts/Vendors/jquery.easings.min.js"></script>
-    <!-- This following line needed in the case of using the fullPage plugin option scrollOverflow:true -->
-    <script src="/Scripts/Vendors/jquery.slimscroll.min.js"></script>
-    <script src="/Scripts/jquery.fullPage.min.js"></script>
+	<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="/Scripts/flowtype.js"></script>
-    <script src="/Scripts/zk.site-settings.js"></script>
-    <script src="/Scripts/zk.month-click-listeners.js"></script>
+    <script src="/Scripts/font-settings.js"></script>
+    <script src="/Scripts/month-click-listeners.js"></script>
 
 </head>
 <body>
-	<div id="fullpage">
-        @RenderBody()
+	<div class="container">
+		@RenderBody()
 	</div>
 </body>
 </html>
