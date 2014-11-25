@@ -117,7 +117,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Crop\Index.cshtml" />
     <Content Include="Content\Stylesheets\bootstrap.css" />
-    <Content Include="Content\Stylesheets\responsive-square-elements.css" />
     <Content Include="Content\Images\Autumn\2.jpg" />
     <Content Include="Content\Images\Autumn\3.jpg" />
     <Content Include="Content\Images\Spring\1.jpg" />
@@ -136,8 +135,10 @@
     <Content Include="Content\Images\Spring\3.jpg" />
     <Content Include="Content\Images\Spring\4.jpg" />
     <Content Include="Scripts\flowtype.js" />
-    <Content Include="Scripts\month-click-listeners.js" />
-    <Content Include="Scripts\site-settings.js" />
+    <Content Include="Content\Stylesheets\zk.styles.css" />
+    <Content Include="Scripts\zk.month-click-listeners.js" />
+    <Content Include="Scripts\zk.site-settings.js" />
+    <Content Include="Content\Stylesheets\zk.responsive-square-elements.css" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>

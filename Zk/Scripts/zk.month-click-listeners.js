@@ -2,17 +2,17 @@
 
 	/* Add click event listeners to the squares of the month. */
 
-    // The months that correspond to the CSS classes of the squares.
-    var months = [ 'january', 
-                   'february', 
-                   'march', 
+    // The months (in Dutch) that correspond to the CSS classes of the squares.
+    var months = [ 'januari', 
+                   'februari', 
+                   'maart', 
                    'april', 
-                   'may', 
-                   'june', 
-                   'july', 
-                   'august', 
+                   'mei', 
+                   'juni', 
+                   'juli', 
+                   'augustus', 
                    'september', 
-                   'october', 
+                   'oktober', 
                    'november', 
                    'december' ]
 
