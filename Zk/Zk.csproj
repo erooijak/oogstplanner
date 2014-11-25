@@ -136,8 +136,8 @@
     <Content Include="Content\Images\Spring\3.jpg" />
     <Content Include="Content\Images\Spring\4.jpg" />
     <Content Include="Scripts\flowtype.js" />
-    <Content Include="Scripts\font-settings.js" />
     <Content Include="Scripts\month-click-listeners.js" />
+    <Content Include="Scripts\site-settings.js" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
