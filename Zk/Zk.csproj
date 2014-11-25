@@ -114,7 +114,6 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Web.config" />
-    <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Crop\Index.cshtml" />
     <Content Include="Content\Stylesheets\bootstrap.css" />
     <Content Include="Content\Images\Autumn\2.jpg" />
@@ -139,6 +138,14 @@
     <Content Include="Scripts\zk.month-click-listeners.js" />
     <Content Include="Scripts\zk.site-settings.js" />
     <Content Include="Content\Stylesheets\zk.responsive-square-elements.css" />
+    <Content Include="Content\Stylesheets\jquery.fullPage.css" />
+    <Content Include="Scripts\jquery.fullPage.js" />
+    <Content Include="Scripts\Vendors\jquery.easings.min.js" />
+    <Content Include="Scripts\Vendors\jquery.slimscroll.min.js" />
+    <Content Include="Scripts\jquery.fullPage.min.js" />
+    <Content Include="Scripts\zk.js" />
+    <Content Include="Views\Home\_FarmingMonth.cshtml" />
+    <Content Include="Views\_ViewStart.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>

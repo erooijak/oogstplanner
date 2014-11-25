@@ -1,4 +1,6 @@
-﻿@{ 
+﻿<div id="main">
+    <div class="slide">
+@{ 
     ViewBag.Title = "Home";
 
     // Seasons used for the CSS classes which refer to the different images.
@@ -23,7 +25,7 @@
     // START RESPONSIVE GRID LAYOUT
 
     // Top bar
-    <div id="bar">
+    <div class="top-bar">
         <div class="rectangle-content">
             <div class="table">
                 <div class="table-cell header">
@@ -76,3 +78,11 @@
     	Powered by ASP.NET MVC @ViewData["Version"] on @ViewData["Runtime"]!
     </footer>
 }
+    </div><!-- End of main slide -->
+
+    <!-- Slide for editing and viewing a specific month -->
+    <div class="slide">
+        @{Html.RenderPartial("_FarmingMonth");}
+    </div>
+
+</div><!-- End of main page -->

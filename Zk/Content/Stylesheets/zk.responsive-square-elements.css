@@ -1,6 +1,6 @@
 ﻿/* Responsive square elements stylesheet is adjusted from http://jsfiddle.net/webtiki/MpXYr/3/light/ which was designed by http://web-tiki.com/ */
 
-#bar {
+.top-bar {
     float: left;
     position: relative;
     margin: 0.25%;
@@ -89,10 +89,6 @@ li {
 /*  Images for the seasons displayed on the squares */
 .imgwinter1:before {
     background-image: url('../Images/Winter/1.jpg');
-    opacity:1;
-}
-.imgwinter1:before:hover {
-    opacity: 1;
 }
 .imgwinter2:before {
     background-image: url('../Images/Winter/2.jpg');
