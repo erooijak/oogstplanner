@@ -37,8 +37,12 @@ namespace Zk.Controllers
         /// <param name="month">Requested month.</param>
         public ActionResult Edit(Month month)
         {
-
-            return Json(new { month = month }, JsonRequestBehavior.AllowGet);
+            // TODO Call database instead of returning hard-coded farming month.
+            var farmingMonth = new FarmingMonth {
+                MonthStr = month.ToString(),
+                JsonHarvestingPatternTemporyTestString = "{1010: 1, 2020: 3}"
+            };
+            return Json(new { month = farmingMonth }, JsonRequestBehavior.AllowGet);
         }
 
     }

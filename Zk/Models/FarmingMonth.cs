@@ -22,6 +22,7 @@ namespace Zk.Models
 	{
 		public int Id { get; set; }
 		public Month Month { get; set; } // A farming month needs to know which month it is.
+        public string MonthStr { get; set; } // TEMPORARY
 
 		// Sowing and harvesting patterns are stored as JSON in the database and not mapped with Entity Framework
 		[NotMapped]
@@ -41,6 +42,8 @@ namespace Zk.Models
 			get { return ToJson(HarvestingPattern); }
 			set { HarvestingPattern = FromJson(value); }
 		}
+
+        public string JsonHarvestingPatternTemporyTestString { get; set; }
 
 		// Helper methods to convert to and from JSON.
 		// See: http://stackoverflow.com/questions/8973027/ef-code-first-map-dictionary-or-custom-type-as-an-nvarchar#8973093
