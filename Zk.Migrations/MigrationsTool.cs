@@ -70,6 +70,7 @@ namespace Zk.Migrations
             }
 
             // If a new migation is created the database can be updated and the PostgreSQL script be created.
+            // TODO: This does not work yet.
             else 
             {
                 // Write to database (PowerShell: Update-Database)
