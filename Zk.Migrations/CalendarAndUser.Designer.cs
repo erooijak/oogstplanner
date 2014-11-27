@@ -7,13 +7,13 @@ namespace Zk.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.1-30610")]
-    public sealed partial class Initial : IMigrationMetadata
+    public sealed partial class CalendarAndUser : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Initial));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(CalendarAndUser));
         
         string IMigrationMetadata.Id
         {
-            get { return "201411272108369_Initial"; }
+            get { return "201411272218183_CalendarAndUser"; }
         }
         
         string IMigrationMetadata.Source

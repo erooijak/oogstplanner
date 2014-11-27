@@ -82,11 +82,11 @@
     <Folder Include="Views\Home\" />
     <Folder Include="Views\Shared\" />
     <Folder Include="App_Data\" />
-    <Folder Include="App_Data\Update_Scripts\" />
     <Folder Include="Views\Crop\" />
     <Folder Include="Content\Stylesheets\" />
     <Folder Include="Content\Images\" />
     <Folder Include="Scripts\" />
+    <Folder Include="App_Data\Migrations\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\HomeController.cs" />
@@ -156,7 +156,9 @@
     </MonoDevelop>
   </ProjectExtensions>
   <ItemGroup>
-    <None Include="App_Data\Update_Scripts\Initial.postgresql" />
     <None Include="Content\Images\convert-images.sh" />
+    <None Include="App_Data\Migrations\201411272239Setup.postgresql" />
+    <None Include="App_Data\Migrations\201411272304Initial.postgresql" />
+    <None Include="App_Data\Migrations\201411271120CalendarAndUser.postgresql" />
   </ItemGroup>
 </Project>

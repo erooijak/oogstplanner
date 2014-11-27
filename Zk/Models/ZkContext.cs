@@ -28,8 +28,8 @@ namespace Zk.Models
 		}
 
 		public IDbSet<Crop> Crops { get; set; } 
-        //public IDbSet<User> Users { get; set; }
-        //public IDbSet<Calendar> Calendars { get; set; }
+        public IDbSet<User> Users { get; set; }
+        public IDbSet<Calendar> Calendars { get; set; }
         //public IDbSet<FarmingMonth> FarmingMonths { get; set; }
 
 	}

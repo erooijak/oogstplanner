@@ -9,6 +9,8 @@ namespace Zk.Models
 	/// </summary>
 	public class Calendar
 	{
+        public int CalendarId { get; set; }
+
 		[ForeignKey("User")]
 		public int UserId { get; set; } // One-to-one relationship (each calendar belongs to one user)
 

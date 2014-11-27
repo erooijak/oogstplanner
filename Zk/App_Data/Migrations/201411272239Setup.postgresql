@@ -1,0 +1,13 @@
+﻿-- Commands to create and open database in PostgreSQL on Linux (adjust creation of user to own system)
+-- Create user, database and schema
+sudo adduser zktest -- Give user zktest password "broccoli"
+sudo su - postgres
+createdb ZkTestDatabase
+psql ZkTestDatabase
+
+GRANT ALL PRIVILEGES ON DATABASE "ZkTestDatabase" TO zktest;
+GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO zktest;
+GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA public TO zktest;
+
+-- Run initial script and add data from CSV file (use own path after FROM) into table with:
+COPY "Crops" FROM '/home/erwin/zaaikalender/CropData.csv' DELIMITER ',' CSV;

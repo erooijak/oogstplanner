@@ -32,7 +32,7 @@ namespace Zk.Migrations
             // and include the created files in the project and set resource file to EmbeddedResource. 
             // After creating a migration run UPDATE_DATABASE to update the database.
 
-            const DatabaseStep step = DatabaseStep.ADD_MIGRATION;
+            const DatabaseStep step = DatabaseStep.UPDATE_DATABASE;
 
             // Specify the name of the database migration in case of ADD-MIGRATION.
             // Note: Make sure to create a new name for each new migration.
@@ -41,9 +41,9 @@ namespace Zk.Migrations
             //       .Designer.cs files with the name specified below.
             //       Last but not least set the .resx file's build action to EmbeddedResource by right
             //       clicking on it.
-            // Make sure that the Initial.postgresql script has run manually to create the database user.
+            // Make sure that the Setup.postgresql script has run manually to create the database user.
 
-            const string MIGRATION_NAME = "Initial";
+            const string MIGRATION_NAME = "CalendarAndUser";
 
             // END USER INPUT /////////////////////////////////////////////////////////////////////////////
 
@@ -63,10 +63,10 @@ namespace Zk.Migrations
                 var migrationsPath = Regex.Replace(executingPath, "bin/.*", "");
             
                 // Write migrations
-                File.WriteAllText (migrationsPath + migration.MigrationId + ".cs", migration.UserCode);
-                File.WriteAllText (migrationsPath + migration.MigrationId + ".Designer.cs", migration.DesignerCode);
+                File.WriteAllText (migrationsPath + MIGRATION_NAME + ".cs", migration.UserCode);
+                File.WriteAllText (migrationsPath + MIGRATION_NAME + ".Designer.cs", migration.DesignerCode);
 
-                using (var writer = new ResXResourceWriter (migrationsPath + migration.MigrationId + ".resx")) 
+                using (var writer = new ResXResourceWriter (migrationsPath + MIGRATION_NAME + ".resx")) 
                 {
                     foreach (var resource in migration.Resources) 
                     {
@@ -74,10 +74,47 @@ namespace Zk.Migrations
                     }
                 }
                 Console.WriteLine("EF code migration {0} written to Migrations folder...\n\n" +
-                    "Make sure to include them in the project by right clicking on the project > " +  
+                    "Next step is to include the .cs, .resx and .Designer.cs file in the project" + 
+                    "by right clicking on the project and selecting " +  
                     "\"Add files from folder.\"\n" +
-                    "And right click on {0}.resx and set build action to \"EmbeddedResource\""
+                    "Then right click on {0}.resx and set build action to \"EmbeddedResource\""
                     , migration.MigrationId);
+            }
+
+            else if (step == DatabaseStep.CREATE_SCRIPT)
+            {
+                var config = new Configuration();
+                var migrator = new DbMigrator(config);
+                var scriptor = new MigratorScriptingDecorator(migrator);
+
+                // Determine name of the previous run migration if exists.
+                string lastMigration = migrator.GetDatabaseMigrations().LastOrDefault();
+
+                // Get the script 
+                string script = scriptor.ScriptUpdate(sourceMigration: lastMigration, targetMigration: MIGRATION_NAME);
+
+                // Create the PostgreSQL update script based on last migration on database and 
+                // current migration.
+                string formattedScript = string.Format
+                    ("/* * * * * * * * * * * * * * * * * * * * * * *\n" +
+                    " *\n" +
+                    " * Migration:\t\t{0}\n *\n" +
+                    " * Date and time:\t{1}\n" +
+                    " *\n" +
+                    " * * * * * * * * * * * * * * * * * * * * * * */\n\n" +
+                    "{2}", 
+                    MIGRATION_NAME, 
+                    DateTime.Now,
+                    script);
+
+                // Write string to file in Migrations folder of main project
+                var updateScriptPath = Regex.Replace(executingPath, "Zk.Migrations/.*", "Zk/App_Data/Migrations/");
+                File.WriteAllText(updateScriptPath + MIGRATION_NAME + ".postgresql", formattedScript);
+                Console.WriteLine("Update script {0}.postgresql written to Zk/App_Data/Migrations folder.\n" +
+                    "Please include the script by right clicking on the folder and selecting " + 
+                    "\"Add files to folder\"," +
+                    "\nIt is recommended to prefix the filename with the current datetime.", 
+                    MIGRATION_NAME);
             }
 
             // If a new migration is created the database can be updated. (PowerShell: Update-Database)
@@ -90,7 +127,7 @@ namespace Zk.Migrations
                 migrator.Update();
 
                 // Show which migrations were applied.
-                var migrationNames = string.Join(", ", migrator.GetDatabaseMigrations().ToArray());
+                var migrationNames = string.Join(", ", migrator.GetDatabaseMigrations().ToArray().First());
                 Console.WriteLine("Applied migration {0} to database.", migrationNames);
             }
 		}
@@ -101,6 +138,7 @@ namespace Zk.Migrations
         private enum DatabaseStep 
         {
             ADD_MIGRATION,
+            CREATE_SCRIPT,
             UPDATE_DATABASE
         }
 
