@@ -126,8 +126,8 @@ namespace Zk.Migrations
                 // Write to database
                 migrator.Update();
 
-                // Show which migrations were applied.
-                var migrationNames = string.Join(", ", migrator.GetDatabaseMigrations().First());
+                // Show which migrations are applied.
+                var migrationNames = string.Join(", ", migrator.GetDatabaseMigrations().ToArray());
                 Console.WriteLine("Applied migration {0} to database.", migrationNames);
             }
 		}

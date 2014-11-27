@@ -1,10 +1,37 @@
 ## Synopsis
 
-TODO
+MVC 4 sowing calendar app.
 
 ## Motivation
 
-TODO
+The living environment of the modern man consists of multimedia. As philosopher of Mankind and Technique Peter-Paul Verbeek states: "we are what we app". To bring sustainability in a nature-technical manner into the living pattern of the contemporay man the *Zaaikalender DevOps* team a sowing calendar app. This application will determine in a playful manner when to sow and when to harvest. With one press of a button a shopping cart can then be filled with biological seeds of sustainable farmers. In this way the sowing calendar application will provide a natural interaction between man and technique and help for a brighter future.
+
+## Installation on Mono
+
+ 1. Install an IDE as [*Xamarin Studio*, *MonoDevelop*](http://www.monodevelop.com/download/) and if necessary the [*Mono runtime*](http://www.mono-project.com/download/).
+ 2. Clone the repository with `git clone https://www.github.com/erooijak/zaaikalender`.
+ 3. Open the solution and get the packages with NuGet. <br>Note: Do not update to a later version of MVC since the app depends on MVC4.
+
+4. Install a PostgreSQL database and create a user, test database and schema and grant the user access:
+
+    sudo adduser zktest -- Give user zktest password "broccoli"
+    sudo su - postgres
+    createdb ZkTestDatabase
+    psql ZkTestDatabase
+    
+    GRANT ALL PRIVILEGES ON DATABASE "ZkTestDatabase" TO zktest;
+    GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO zktest;
+    GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA public TO zktest;
+
+    Press CTRL-D twice to leave the psql terminal and login.
+
+Now set `Zk.Migrations` as the startup project and select `var step = Database.Update_Database`. This will update the database to the latest migration.
+
+For Visual Studio users just open the project and have it converted and take similar steps as above.
+
+## Tests
+
+Run with NUnit.
 
 ## Git
 
@@ -15,19 +42,9 @@ For collaborators:
  1. Get latest version: `git pull origin master`.
  2. See changes: `git status`.
  3. Add changes: `git add -A` (add all with -A flag, or specify specific file)
- 4. Commit changes: `git commit -m "Descriptive message of what you did"
+ 4. Commit changes: `git commit -m "Descriptive message of what you did"`
  5. Push to GitHub: `git push origin master` (make sure solution builds).
  6. Repeat.
-
-## Installation
-
-Update packages with NuGet. If you run with Monodevelop or Xamarin Studio this happens automatically.
-Install PostgreSQL database.	
-Run database script from /App_Data/Update_Scripts/Initial.postgresql.
-
-## Tests
-
-Run with NUnit.
 
 ## Contributors
 
