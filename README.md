@@ -6,9 +6,9 @@ MVC 4 sowing calendar app.
 
  1. Install an IDE as [*Xamarin Studio*, *MonoDevelop*](http://www.monodevelop.com/download/) and if necessary the [*Mono runtime*](http://www.mono-project.com/download/).
  2. Clone the repository with `git clone https://www.github.com/erooijak/zaaikalender`.
- 3. Open the solution and get the packages with NuGet. <br>Note: Do not update to a later version of MVC since the app depends on MVC4.
+ 3. Open the solution and get the packages with NuGet. *Note: Do not update to a later version of MVC since the app depends on MVC4.*
 
-4. Install a PostgreSQL database and create a user, test database and schema and grant the user access:
+ 4. Install a PostgreSQL database and create a user, test database and schema and grant the user access:  
     `sudo adduser zktest -- Give user zktest password "broccoli"`  
     `sudo su - postgres`  
     `createdb ZkTestDatabase`  
