@@ -127,13 +127,13 @@ namespace Zk.Migrations
                 migrator.Update();
 
                 // Show which migrations were applied.
-                var migrationNames = string.Join(", ", migrator.GetDatabaseMigrations().ToArray().First());
+                var migrationNames = string.Join(", ", migrator.GetDatabaseMigrations().First());
                 Console.WriteLine("Applied migration {0} to database.", migrationNames);
             }
 		}
 
         /// <summary>
-        /// Enumeration for specifying the step in the migration.
+        ///     Enumeration for specifying the step in the migration.
         /// </summary>
         private enum DatabaseStep 
         {
