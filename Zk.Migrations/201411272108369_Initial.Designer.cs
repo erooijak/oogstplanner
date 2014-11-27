@@ -13,7 +13,7 @@ namespace Zk.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201411242235080_Initial"; }
+            get { return "201411272108369_Initial"; }
         }
         
         string IMigrationMetadata.Source

@@ -1,13 +1,24 @@
 --Commands to create and open database on Mint	
 
--- Create user, database and schema
+-- Create user, database and priviliges on database to user
 sudo adduser zktest -- Give user zktest password "broccoli"
 sudo su - postgres
 createdb ZkTestDatabase
 psql ZkTestDatabase
+GRANT ALL PRIVILEGES ON DATABASE "ZkTestDatabase" to zktest;
 
--- Run the following script from beginning to end in psql terminal
--- NOTE: Change the path in copy statement below!
+-- Now run the database migrations via Zk.Migrations.
+
+-- Then run the below script to add the CSV file with crop data into the correct table.
+-- NOTES: Change the path in copy statement below!
+
+-- Add data from CSV file (use own path after FROM) into table
+COPY "Crops" FROM '/home/erwin/zaaikalender/CropData.csv' DELIMITER ',' CSV;
+   
+-- Now press CTRL-D twice to leave database and postgres login.
+
+
+-- Manual scripts:
 
 -- Add table for the crop data
 CREATE TABLE IF NOT EXISTS "Crops" (
@@ -21,24 +32,3 @@ CREATE TABLE IF NOT EXISTS "Crops" (
 	"SowingMonths"      SMALLINT            NOT NULL,
 	"HarvestingMonths"  SMALLINT            NOT NULL
 );
-
--- Add data from CSV file (use own path after FROM) into table
-COPY "Crops" FROM '/home/erwin/zaaikalender/CropData.csv' DELIMITER ',' CSV;
-
--- Grant access
-GRANT ALL PRIVILEGES ON TABLE "Crops" TO zktest;
-
--- Add table for user calendar
--- TODO, see if we can get code first migrations to work...
-
--- Example of code necessary to increase primary keys:
---CREATE SEQUENCE "primary_key_increase"
---INCREMENT 1
---MINVALUE 1
---MAXVALUE 9223372036854775807
---START 999
---CACHE 1;
---ALTER TABLE "Primary_key_increase" OWNER TO zktest; 
---ALTER TABLE "Crops" ALTER COLUMN "Id" SET DEFAULT nextval('"primary_key_increase"');  
-
--- Now press CTRL-D twice to leave database and postgres login.

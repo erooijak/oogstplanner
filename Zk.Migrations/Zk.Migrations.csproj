@@ -61,8 +61,8 @@
     <Compile Include="PostgreSqlMigrationSqlGenerator\PostgreSqlMigrationSqlGenerator.cs" />
     <Compile Include="PostgreSqlMigrationSqlGenerator\PostgreSqlVisitor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="201411242235080_Initial.Designer.cs" />
-    <Compile Include="201411242235080_Initial.cs" />
+    <Compile Include="201411272108369_Initial.Designer.cs" />
+    <Compile Include="201411272108369_Initial.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -71,7 +71,7 @@
     <None Include="packages.config" />
     <None Include="PostgreSqlMigrationSqlGenerator\LICENSE.md" />
     <None Include="PostgreSqlMigrationSqlGenerator\NOTICE.md" />
-    <None Include="201411242235080_Initial.resources.resx" />
+    <None Include="201411272108369_Initial.resx" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Zk\Zk.csproj">

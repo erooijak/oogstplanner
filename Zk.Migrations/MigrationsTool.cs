@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Data.Entity.Migrations;
-using Zk.Models;
 using System.Data.Entity.Migrations.Design;
+using System.Data.Entity.Migrations.Infrastructure;
 using System.IO;
+using System.Linq;
 using System.Resources;
 using System.Text.RegularExpressions;
-using System.Data.Entity.Migrations.Infrastructure;
 
 namespace Zk.Migrations
 {
@@ -26,24 +26,33 @@ namespace Zk.Migrations
         /// </summary>
 		public static void Main()
 		{
-            // USER INPUT
+            // USER INPUT /////////////////////////////////////////////////////////////////////////////////
 
-            // While specifiying true here only a new Migration is Added. 
-            // Specify false to run Update-Database and create a script.
-            const bool ADD_NEW_MIGRATION = true;
+            // Always first create a new database migration with DatabaseStep.ADD_MIGRATION,
+            // and include the created files in the project and set resource file to EmbeddedResource. 
+            // After creating a migration run UPDATE_DATABASE to update the database.
 
-            // Specify the name of the database migration
-            // Note: make sure to create a new name for each new migration and prefix with
+            const DatabaseStep step = DatabaseStep.ADD_MIGRATION;
+
+            // Specify the name of the database migration in case of ADD-MIGRATION.
+            // Note: Make sure to create a new name for each new migration.
+            //       After creating migration include the files in the folder by right clicking on 
+            //       Zk.Migrations and selecting "Add files from folder". Then add the .cs, .resx and
+            //       .Designer.cs files with the name specified below.
+            //       Last but not least set the .resx file's build action to EmbeddedResource by right
+            //       clicking on it.
+            // Make sure that the Initial.postgresql script has run manually to create the database user.
+
             const string MIGRATION_NAME = "Initial";
 
-            // END USER INPUT
+            // END USER INPUT /////////////////////////////////////////////////////////////////////////////
 
 
             // Get executing path from which the location of the Update_Scripts and new Migrations can be determined.
             var executingPath = AppDomain.CurrentDomain.BaseDirectory; 
 
             // Add a new migration (PowerShell: Add-Migration)
-            if (ADD_NEW_MIGRATION) {
+            if (step == DatabaseStep.ADD_MIGRATION) {
     
                 // Initialize the wrapper classes around the Entity Framework PowerShell API.
                 var config = new Configuration();
@@ -64,29 +73,37 @@ namespace Zk.Migrations
                         writer.AddResource(resource.Key, resource.Value);
                     }
                 }
-                Console.WriteLine("EF code migration {0} written to Migrations folder...\n" +
-                    "Make sure to include them in the project by right clicking on the project >" +  
-                    "Add files from folder.", migration.MigrationId);
+                Console.WriteLine("EF code migration {0} written to Migrations folder...\n\n" +
+                    "Make sure to include them in the project by right clicking on the project > " +  
+                    "\"Add files from folder.\"\n" +
+                    "And right click on {0}.resx and set build action to \"EmbeddedResource\""
+                    , migration.MigrationId);
             }
 
-            // If a new migation is created the database can be updated and the PostgreSQL script be created.
-            // TODO: This does not work yet.
-            else 
+            // If a new migration is created the database can be updated. (PowerShell: Update-Database)
+            else if (step == DatabaseStep.UPDATE_DATABASE)
             {
-                // Write to database (PowerShell: Update-Database)
                 var config = new Configuration();
                 var migrator = new DbMigrator(config);
+
+                // Write to database
                 migrator.Update();
 
-                // Now create the PostgreSQL update script.
-                var scriptor = new MigratorScriptingDecorator (migrator);
-                string script = scriptor.ScriptUpdate (sourceMigration: null, targetMigration: null);
-
-                var updateScriptPath = Regex.Replace (executingPath, "Zk.Migrations/.*", "Zk/App_Data/Update_Scripts");
-                File.WriteAllText (updateScriptPath + MIGRATION_NAME + ".postgresql", script);
-                Console.WriteLine ("Update script {0} written to App_Data/Update_Scripts folder", MIGRATION_NAME);
+                // Show which migrations were applied.
+                var migrationNames = string.Join(", ", migrator.GetDatabaseMigrations().ToArray());
+                Console.WriteLine("Applied migration {0} to database.", migrationNames);
             }
 		}
+
+        /// <summary>
+        /// Enumeration for specifying the step in the migration.
+        /// </summary>
+        private enum DatabaseStep 
+        {
+            ADD_MIGRATION,
+            UPDATE_DATABASE
+        }
+
 	}
 
 }
