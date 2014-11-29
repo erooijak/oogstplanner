@@ -1,6 +1,8 @@
 ﻿<div id="main">
     <div class="slide">
 @{ 
+    //TODO Get month from Month enum.
+
     ViewBag.Title = "Home";
 
     // Seasons used for the CSS classes which refer to the different images.
@@ -12,8 +14,6 @@
     // Months in Dutch (singular: "maand"; plural: "maanden") are usd for the CSS classes 
     // to add to the squares and for displayal within the square.
     // Notes: * A normal queue does not work because of Razor threading issues so a ConcurrentQueue is used.
-    //        * Getting months from System.Globalization.CultureInfo.CurrentCulture.DateTimeFormat.MonthGenitiveNames
-    //          and reshuffling them in the correct format is left as an exercise.
     var months = new ConcurrentQueue<string>(new[] {    "september",  "december",     "maart",    "juni", 
                                                         "oktober",    "januari",      "april",    "juli", 
                                                         "november",   "februari",     "mei",      "augustus"});

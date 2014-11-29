@@ -1,9 +1,8 @@
-﻿using System;
-using System.Web.UI.WebControls;
-using System.ComponentModel.DataAnnotations.Schema;
-
-namespace Zk.Models
+﻿namespace Zk.Models
 {
+    /// <summary>
+    ///     The crop data to calculate certain stuff.
+    /// </summary>
 	public class Crop
 	{
 		public int Id { get; set; }

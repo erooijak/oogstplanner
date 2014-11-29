@@ -43,7 +43,7 @@ namespace Zk.Migrations
             //       clicking on it.
             // Make sure that the Setup.postgresql script has run manually to create the database user.
 
-            const string MIGRATION_NAME = "CalendarAndUser";
+            const string MIGRATION_NAME = "FarmingMonthImproved";
 
             // END USER INPUT /////////////////////////////////////////////////////////////////////////////
 
@@ -88,7 +88,7 @@ namespace Zk.Migrations
                 var scriptor = new MigratorScriptingDecorator(migrator);
 
                 // Determine name of the previous run migration if exists.
-                string lastMigration = migrator.GetDatabaseMigrations().LastOrDefault();
+                string lastMigration = migrator.GetDatabaseMigrations().FirstOrDefault();
 
                 // Get the script 
                 string script = scriptor.ScriptUpdate(sourceMigration: lastMigration, targetMigration: MIGRATION_NAME);

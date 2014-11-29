@@ -9,5 +9,7 @@ GRANT ALL PRIVILEGES ON DATABASE "ZkTestDatabase" TO zktest;
 GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO zktest;
 GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA public TO zktest;
 
+-- Press CTRL-D twice to leave the psql terminal and login.
+
 -- Run initial script and add data from CSV file (use own path after FROM) into table with:
 COPY "Crops" FROM '/home/erwin/zaaikalender/CropData.csv' DELIMITER ',' CSV;

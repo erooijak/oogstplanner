@@ -159,6 +159,7 @@
     <None Include="Content\Images\convert-images.sh" />
     <None Include="App_Data\Migrations\201411272239Setup.postgresql" />
     <None Include="App_Data\Migrations\201411272304Initial.postgresql" />
-    <None Include="App_Data\Migrations\201411271120CalendarAndUser.postgresql" />
+    <None Include="App_Data\Migrations\201411272320CalendarAndUser.postgresql" />
+    <None Include="App_Data\Migrations\201411280056FarmingMonthImproved.postgresql" />
   </ItemGroup>
 </Project>

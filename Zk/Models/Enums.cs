@@ -23,4 +23,13 @@ namespace Zk
 		December 	= 1 << 11	/* 0b100000000000 */
 	}
 
+    /// <summary>
+    ///     Enumeration for the type of farming
+    /// </summary>
+    public enum FarmAction
+    {
+        Harvesting,
+        Sowing
+    }
+
 }

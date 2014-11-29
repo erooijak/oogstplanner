@@ -65,6 +65,8 @@
     <Compile Include="CalendarAndUser.Designer.cs" />
     <Compile Include="CalendarAndUser.cs" />
     <Compile Include="_MigrationsTool.cs" />
+    <Compile Include="FarmingMonthImproved.Designer.cs" />
+    <Compile Include="FarmingMonthImproved.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -86,5 +88,6 @@
   <ItemGroup>
     <EmbeddedResource Include="Initial.resx" />
     <EmbeddedResource Include="CalendarAndUser.resx" />
+    <EmbeddedResource Include="FarmingMonthImproved.resx" />
   </ItemGroup>
 </Project>
