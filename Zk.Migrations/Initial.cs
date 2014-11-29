@@ -19,7 +19,7 @@ namespace Zk.Migrations
                 .Index(t => t.UserId);
             
             CreateTable(
-                "public.FarmingMonths",
+                "public.FarmingActions",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
@@ -65,14 +65,14 @@ namespace Zk.Migrations
         public override void Down()
         {
             DropForeignKey("public.Calendars", "UserId", "public.Users");
-            DropForeignKey("public.FarmingMonths", "Crop_Id", "public.Crops");
-            DropForeignKey("public.FarmingMonths", "Calendar_CalendarId", "public.Calendars");
-            DropIndex("public.FarmingMonths", new[] { "Crop_Id" });
-            DropIndex("public.FarmingMonths", new[] { "Calendar_CalendarId" });
+            DropForeignKey("public.FarmingActions", "Crop_Id", "public.Crops");
+            DropForeignKey("public.FarmingActions", "Calendar_CalendarId", "public.Calendars");
+            DropIndex("public.FarmingActions", new[] { "Crop_Id" });
+            DropIndex("public.FarmingActions", new[] { "Calendar_CalendarId" });
             DropIndex("public.Calendars", new[] { "UserId" });
             DropTable("public.Users");
             DropTable("public.Crops");
-            DropTable("public.FarmingMonths");
+            DropTable("public.FarmingActions");
             DropTable("public.Calendars");
         }
     }

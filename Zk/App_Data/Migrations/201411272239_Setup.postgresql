@@ -15,4 +15,4 @@ GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA public TO zktest;
 COPY "Crops" FROM '/home/erwin/zaaikalender/CropData.csv' DELIMITER ',' CSV;
 
 -- Add some test data
-COPY "FarmingMonths" FROM '/home/erwin/zaaikalender/FarmingMonthsTestData.csv' DELIMITER ',' CSV;
+COPY "FarmingActions" FROM '/home/erwin/zaaikalender/FarmingActionsTestData.csv' DELIMITER ',' CSV;

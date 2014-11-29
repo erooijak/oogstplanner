@@ -26,10 +26,10 @@ namespace Zk
     /// <summary>
     ///     Enumeration for the type of farming
     /// </summary>
-    public enum FarmAction
+    public enum FarmType
     {
-        Harvesting,
-        Sowing
+        Harvesting = 1,
+        Sowing = 2
     }
 
 }

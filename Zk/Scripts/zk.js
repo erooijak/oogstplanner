@@ -8,10 +8,10 @@
         $.fn.fullpage.moveSlideLeft();
     },
 
-    fillFarmingMonth: function(month) {
+    fillFarmingMonth: function(data) {
 
         // Display month on top of page
-        $('#current-month').text(month.name);
+        $('#current-month').text(data.month);
 
         // TODO: Display pattern for edit
     }

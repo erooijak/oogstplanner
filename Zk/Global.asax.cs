@@ -21,16 +21,16 @@ namespace Zk
 
 		}
 
-		public static void RegisterGlobalFilters (GlobalFilterCollection filters)
+		public static void RegisterGlobalFilters(GlobalFilterCollection filters)
 		{
-			filters.Add (new HandleErrorAttribute ());
+			filters.Add(new HandleErrorAttribute ());
 		}
 
 		protected void Application_Start ()
 		{
 			AreaRegistration.RegisterAllAreas ();
-			RegisterGlobalFilters (GlobalFilters.Filters);
-			RegisterRoutes (RouteTable.Routes);
+			RegisterGlobalFilters(GlobalFilters.Filters);
+			RegisterRoutes(RouteTable.Routes);
 		}
 	}
 }

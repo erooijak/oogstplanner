@@ -23,7 +23,7 @@
 
             // Note: In the call to the Edit method a query string parameter is necessary because normal 
             //       parameter binding does not seem to work in our version of Mono.
-            $.getJSON('/FarmingMonth/Edit?month=' + month, function(data) {
+            $.getJSON('/FarmingAction/Edit?month=' + month, function(data) {
 
                 // Switch to the farming month view and display the month and data.
                 zk.toFarmingMonth();

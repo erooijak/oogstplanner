@@ -51,9 +51,9 @@ namespace Zk.Repositories
 			return crops;
 		}
 
-        public IEnumerable<FarmingMonth> GetFarmingMonths(Month month)
+        public IEnumerable<FarmingAction> GetFarmingActions(Month month)
         {
-            return _db.FarmingMonths.Where(fm => fm.Month.HasFlag(month)).ToList();
+            return _db.FarmingActions.Where(fm => fm.Month.HasFlag(month)).ToList();
         }
 
 	}

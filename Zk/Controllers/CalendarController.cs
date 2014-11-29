@@ -29,13 +29,13 @@ namespace Zk.Controllers
 		}
 
 		/// <summary>
-		/// 	POST: /UpdateCalendar/{FarmingMonth} 
+		/// 	POST: /UpdateCalendar/{FarmingAction} 
 		/// 	Update the current calendar with the new data from the month.
 		/// </summary>
 		/// <returns></returns>
 		/// <param name="submittedMonth">Submitted month.</param>
 		[HttpPost]
-		public ViewResult UpdateCalendar(FarmingMonth submittedMonth)
+		public ViewResult UpdateCalendar(FarmingAction submittedMonth)
 		{
 		    // Get data from submittedMonth
 

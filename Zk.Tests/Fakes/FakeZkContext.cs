@@ -12,7 +12,7 @@ namespace Zk.Tests.Fakes
 
 		public IDbSet<Crop> Crops { get; private set; }
 
-        public IDbSet<FarmingMonth> FarmingMonths { get; private set; }
+        public IDbSet<FarmingAction> FarmingMonths { get; private set; }
 
         public IDbSet<Calendar> Calendars { get; private set; }
 

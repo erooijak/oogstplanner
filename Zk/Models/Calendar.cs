@@ -15,7 +15,7 @@ namespace Zk.Models
 		public int UserId { get; set; } // One-to-one relationship (each calendar belongs to one user)
 
 		public virtual User User { get; set; }
-		public virtual ICollection<FarmingMonth> FarmingMonths { get; set; } // One-to-many (each calendar has many
+		public virtual ICollection<FarmingAction> FarmingActions { get; set; } // One-to-many (each calendar has many
 																			 // farming months)
 
 	}
