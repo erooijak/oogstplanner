@@ -32,7 +32,7 @@ namespace Zk.Migrations
             // and include the created files in the project and set resource file to EmbeddedResource. 
             // After creating a migration run UPDATE_DATABASE to update the database.
 
-            const DatabaseStep step = DatabaseStep.UPDATE_DATABASE;
+            const DatabaseStep step = DatabaseStep.ADD_MIGRATION;
 
             // Specify the name of the database migration in case of ADD-MIGRATION.
             // Note: Make sure to create a new name for each new migration.

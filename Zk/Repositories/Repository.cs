@@ -51,5 +51,10 @@ namespace Zk.Repositories
 			return crops;
 		}
 
+        public IEnumerable<FarmingMonth> GetMonths(Month month)
+        {
+            return _db.FarmingMonths.Where(fm => month.HasFlag(fm.Month));
+        }
+
 	}
 }

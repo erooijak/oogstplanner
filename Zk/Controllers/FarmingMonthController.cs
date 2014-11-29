@@ -37,7 +37,11 @@ namespace Zk.Controllers
         /// <param name="month">Requested month.</param>
         public ActionResult Edit(Month month)
         {
-            // TODO: Get farming month (TODO: of user))
+            // Get farming month (TODO: of user))
+            var farmingMonths = _repo.GetMonths(month);
+
+            //JsonConvert.SerializeObject(farmingMonths);
+
             return Json(new { name = month.ToString() }, JsonRequestBehavior.AllowGet);
         }
 

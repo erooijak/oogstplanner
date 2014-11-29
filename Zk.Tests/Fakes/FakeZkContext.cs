@@ -3,7 +3,7 @@ using Zk.Models;
 
 namespace Zk.Tests.Fakes
 {
-	public class FakeZkContext : IZkContext
+    public class FakeZkContext : IZkContext
 	{
 		public FakeZkContext()
 		{
@@ -11,6 +11,12 @@ namespace Zk.Tests.Fakes
 		}
 
 		public IDbSet<Crop> Crops { get; private set; }
+
+        public IDbSet<FarmingMonth> FarmingMonths { get; private set; }
+
+        public IDbSet<Calendar> Calendars { get; private set; }
+
+        public IDbSet<User> Users { get; private set; }
 
 		public int SaveChanges()
 		{
