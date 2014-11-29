@@ -3,6 +3,7 @@ using Zk.Models;
 using Zk.Repositories;
 using System.Linq;
 using System.Net;
+using Newtonsoft.Json;
 
 namespace Zk.Controllers
 {
@@ -38,11 +39,11 @@ namespace Zk.Controllers
         public ActionResult Edit(Month month)
         {
             // Get farming month (TODO: of user))
-            var farmingMonths = _repo.GetMonths(month);
+            var farmingMonths = _repo.GetFarmingMonths(month);
 
-            //JsonConvert.SerializeObject(farmingMonths);
+            var test = JsonConvert.SerializeObject(farmingMonths);
 
-            return Json(new { name = month.ToString() }, JsonRequestBehavior.AllowGet);
+            return Json(new { name = month.ToString(), farmingMonths }, JsonRequestBehavior.AllowGet);
         }
 
     }

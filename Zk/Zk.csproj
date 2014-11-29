@@ -74,6 +74,9 @@
       <HintPath>..\packages\Npgsql.EntityFramework.2.2.2\lib\net45\Npgsql.EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.6\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\" />
@@ -157,9 +160,7 @@
   </ProjectExtensions>
   <ItemGroup>
     <None Include="Content\Images\convert-images.sh" />
-    <None Include="App_Data\Migrations\201411272239Setup.postgresql" />
-    <None Include="App_Data\Migrations\201411272304Initial.postgresql" />
-    <None Include="App_Data\Migrations\201411272320CalendarAndUser.postgresql" />
-    <None Include="App_Data\Migrations\201411280056FarmingMonthImproved.postgresql" />
+    <None Include="App_Data\Migrations\201411272239_Setup.postgresql" />
+    <None Include="App_Data\Migrations\2014112913_Initial.postgresql" />
   </ItemGroup>
 </Project>

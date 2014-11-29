@@ -6,11 +6,12 @@
 	public class FarmingMonth
 	{
 		public int Id { get; set; }
-        public Calendar CalendarId { get; set; }
         public Month Month { get; set; }
         public FarmAction Action { get; set; }
-        public Crop Crop { get; set; }
         public int CropCount { get ; set ; }
+
+        public virtual Crop Crop { get; set; }
+        public virtual Calendar Calendar { get; set; }
        
 	}       
 		

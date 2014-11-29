@@ -32,7 +32,7 @@ namespace Zk.Migrations
             // and include the created files in the project and set resource file to EmbeddedResource. 
             // After creating a migration run UPDATE_DATABASE to update the database.
 
-            const DatabaseStep step = DatabaseStep.ADD_MIGRATION;
+            const DatabaseStep step = DatabaseStep.ADD_MIGRATION; /* Never forget: MIGRATION_NAME below! */
 
             // Specify the name of the database migration in case of ADD-MIGRATION.
             // Note: Make sure to create a new name for each new migration.
@@ -43,7 +43,7 @@ namespace Zk.Migrations
             //       clicking on it.
             // Make sure that the Setup.postgresql script has run manually to create the database user.
 
-            const string MIGRATION_NAME = "FarmingMonthImproved";
+            const string MIGRATION_NAME = "CHANGE_THIS";
 
             // END USER INPUT /////////////////////////////////////////////////////////////////////////////
 
@@ -63,8 +63,8 @@ namespace Zk.Migrations
                 var migrationsPath = Regex.Replace(executingPath, "bin/.*", "");
             
                 // Write migrations
-                File.WriteAllText (migrationsPath + MIGRATION_NAME + ".cs", migration.UserCode);
-                File.WriteAllText (migrationsPath + MIGRATION_NAME + ".Designer.cs", migration.DesignerCode);
+                File.WriteAllText(migrationsPath + MIGRATION_NAME + ".cs", migration.UserCode);
+                File.WriteAllText(migrationsPath + MIGRATION_NAME + ".Designer.cs", migration.DesignerCode);
 
                 using (var writer = new ResXResourceWriter (migrationsPath + MIGRATION_NAME + ".resx")) 
                 {
