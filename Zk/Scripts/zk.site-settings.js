@@ -27,7 +27,7 @@
         keyboardScrolling: false,
 
         // Design
-        verticalCentered: true,
+        verticalCentered: false,
         resize : true,
         responsive: 0,
 
