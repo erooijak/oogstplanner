@@ -16,11 +16,17 @@ p {
     text-align: left;
 }
 .bold {
-    /* font-size is made responsive with the flowtype.js script* /
+    /* font-size is made responsive with the flowtype.js script */
     font-weight: 900;
 }
 .footer {
     color: #1E1E1E;
     font-size: 14px;
     padding: 5%;
-}    
+}
+.sowing {
+    background-color: #3D352A; /* Dark brown */
+}
+.harvesting {
+    background-color: #013220; /* Dark green */
+}

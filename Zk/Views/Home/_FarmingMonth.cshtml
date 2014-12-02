@@ -1,13 +1,14 @@
 ﻿<!-- Top bar -->
-<div class="top-bar">
-    <div class="rectangle-content">
+<div class="top-bar-tiny">
+    <div class="rectangle-content-tiny">
         <div class="table">
-            <div class="table-cell header">
-                <h1 id="current-month"></h1>
+            <div class="table-cell bold">
+                <div id="current-month"></div>
             </div>
         </div>
     </div>
 </div>
+
 <!--- Sowing and harvesting -->
 <div class="rectangle-double">
     <div class="rectangle-content">
@@ -23,38 +24,43 @@
         <div class="table">
             <div class="table-cell bold">
                 OOGSTEN
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Main rectangles -->
-<div class="rectangle-vertical">
-    <div class="rectangle-content">
-        <div class="table">
-            <div class="table-cell">
-                TEST
-            </div>
-        </div>
-    </div>
-</div>
-<div class="rectangle-vertical">
-    <div class="rectangle-content">
-        <div class="table">
-            <div class="table-cell">
-                TEST
-            </div>
-        </div>
-    </div>
-</div>
-<div class="top-bar">
-    <div class="rectangle-content">
-        <div class="table">
-            <div class="table-cell header">
+                <!--Temporary go back function -->
                 <input type="button" value="Terug!" onclick="zk.toMain()" />
             </div>
         </div>
     </div>
 </div>
+
+<!-- Main rectangles -->
+<div class="rectangle-vertical sowing">
+    <div class="rectangle-content bg-no-opacity imgsowing">
+        <div class="table">
+            <div class="table-cell-top">
+                <table class="twbs-table-bordered">
+                    <tr>
+                        <th>Naam</th><th>Ras</th><th>Categorie</th><th>Aantal</th>
+                    </tr>
+                    <tbody id="sowing"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="rectangle-vertical harvesting">
+    <div class="rectangle-content bg-no-opacity imgharvesting">
+        <div class="table">
+            <div class="table-cell-top">
+                <table class="twbs-table-bordered">
+                    <tr>
+                        <th>Naam</th><th>Ras</th><th>Categorie</th><th>Aantal</th>
+                    </tr>
+                    <tbody id="harvesting"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="top-bar">
     <div class="rectangle-content">
         <div class="table">

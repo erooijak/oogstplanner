@@ -118,7 +118,6 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Views\Crop\Index.cshtml" />
-    <Content Include="Content\Stylesheets\bootstrap.css" />
     <Content Include="Content\Images\Autumn\2.jpg" />
     <Content Include="Content\Images\Autumn\3.jpg" />
     <Content Include="Content\Images\Spring\1.jpg" />
@@ -149,6 +148,9 @@
     <Content Include="Scripts\jquery.flowtype.js" />
     <Content Include="Scripts\jquery.easings.min.js" />
     <Content Include="Scripts\jquery.slimscroll.min.js" />
+    <Content Include="Content\Stylesheets\bootstrap.tables.css" />
+    <Content Include="Content\Images\harvesting.jpg" />
+    <Content Include="Content\Images\sowing.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>

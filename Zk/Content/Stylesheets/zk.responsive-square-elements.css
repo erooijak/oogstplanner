@@ -9,6 +9,15 @@
     background-color: #000;
     overflow: hidden;
 }
+.top-bar-tiny {
+    float: left;
+    position: relative;
+    margin: 0.25%;
+    width: 99.5%; /* This is ( 100 - (2 * 0.25) ), where 0.25 is the margin between the bar and the sides */
+    padding-bottom: 6.125%;
+    background-color: #000;
+    overflow: hidden;
+}
 .square {
     float: left;
     position: relative;
@@ -42,7 +51,6 @@
     margin: 0.25%;
     width: 49.5%; /* This is ( 100 - (4 * 0.25) ) / 2, where 2 amount of squares and 0.25 margin between squares and sides */
     padding-bottom : 74.5%; /* = 3 * 24.5% (squares) and 1% padding so same height as main. */
-    background-color: #1E1E1E;
     overflow: hidden;
 }
 .content {
@@ -57,6 +65,12 @@
     width: 97.5%; /* = 100% - 2*1.25% padding */
     padding: 1.25%;
 }
+.rectangle-content-tiny {
+    position: absolute;
+    height: 99.5%; /* = 100% - 2*0.25% padding */
+    width: 99.5%; /* = 100% - 2*0.25% padding */
+    padding: 0.25%;
+}
 .table {
     display: table;
     width: 100%;
@@ -65,6 +79,9 @@
 .table-cell {
     display: table-cell;
     vertical-align: middle;
+}
+.table-cell-top {
+    display: table-cell;
 }
 
 /*  For list */
@@ -87,7 +104,8 @@ li {
     max-width: 100%;
 }
 
-/*  For responsive images as background */
+/*  For responsive images as background
+ *  Note: before is used to not have opacity on the foreground */
 .bg:before {
     background-position: center center;
     background-repeat: no-repeat;
@@ -97,6 +115,15 @@ li {
     top: 0; left: 0;
     right: 0; bottom: 0;
     opacity: 0.5;
+}
+.bg-no-opacity:before {
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    content: '';
+    top: 0; left: 0;
+    right: 0; bottom: 0;
 }
 
 /*  Change opacity on hover */
@@ -152,4 +179,14 @@ li {
 }
 .imgspring4:before {
     background-image: url('../Images/Spring/4.jpg');
+}
+
+/* Images for on the farming months */
+.imgsowing:before {
+    background-image: url('../Images/sowing.jpg');
+    opacity: 0.1;
+}
+.imgharvesting:before {
+    background-image: url('../Images/harvesting.jpg');
+    opacity: 0.05;
 }
