@@ -15,12 +15,8 @@ p {
     padding: 0;
     text-align: left;
 }
-.seasons {
+.bold {
     /* font-size is made responsive with the flowtype.js script* /
-    font-weight: 900;
-}
-.months {
-    /* font-size is made responsive with the flowtype.js script */
     font-weight: 900;
 }
 .footer {

@@ -27,6 +27,24 @@
     background-color: #1E1E1E;
     overflow: hidden;
 }
+.rectangle-double {
+    float: left;
+    position: relative;
+    margin: 0.25%;
+    width: 49.5%; /* This is ( 100 - (4 * 0.25) ) / 2, where 4 amount of squares and 0.25 margin between squares and sides */
+    padding-bottom : 6.125%; /* = width for a 4:1 aspect ratio, similar to bar */
+    background-color: #1E1E1E;
+    overflow: hidden;
+}
+.rectangle-vertical {
+    float: left;
+    position: relative;
+    margin: 0.25%;
+    width: 49.5%; /* This is ( 100 - (4 * 0.25) ) / 2, where 2 amount of squares and 0.25 margin between squares and sides */
+    padding-bottom : 74.5%; /* = 3 * 24.5% (squares) and 1% padding so same height as main. */
+    background-color: #1E1E1E;
+    overflow: hidden;
+}
 .content {
     position: absolute;
     height: 90%; /* = 100% - 2*5% padding */
