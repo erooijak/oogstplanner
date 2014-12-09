@@ -1,34 +1,40 @@
 BACKLOG:
 
-Opzetten omgeving
-Stap 1: Overzetten van oude Zaaikalender naar nieuwe Zk!
-Database connectie leggen.
-Deployment omgeving regelen.
+DONE Opzetten omgeving
+DONE Stap 1: Overzetten van oude Zaaikalender naar nieuwe Zk!
+DONE Database connectie leggen.
+TODO Deployment omgeving regelen.
 
 Autorisatie:
-Gebruiker kan inloggen en model hoort bij hem.
+TODO Gebruiker kan inloggen en agenda hoort bij hem.
+TODO Inlogscherm
 
-Datamodel (Model)
-Classes en relaties
-Datamodel relaties inbouwen (foreign keys)
-Uitzoeken kilogrammen en grondtypes (FutDev)
-TODO: JSONB data type i.p.v. JSON met PostgreSQL 9.4
+DONE Datamodel (Model)
+DONE Datamodel relaties inbouwen (foreign keys)
+TO VERIFY Classes en relaties
+TODO Uitzoeken kilogrammen en grondtypes (FutDev)
 
 Business logic (Controllers)
-Pseudo code voor berekeningen
-Pseudo code naar echte code
-Error handling
+IN PROGRESS JSON van zaai- en oogstmaand naar view en vice versa
+TODO Pseudo code voor berekeningen
+TODO Pseudo code naar echte code
+TODO Error handling
 
 Notifications (Controllers/View)
-Wanneer implementeren?
-Implementatie herinneringen
-Implementatie grappen
+TODO Wanneer implementeren?
+TODO Implementatie herinneringen
+TODO Implementatie grappen
+
+Initiële invulproces
+TODO Over nadenken
+TODO Bouwen
+
+Extra's
+TODO Integratie webshop
 
 User Interface (View)
-Kiezen van CSS open-source implementatie:
-Bijv.: http://metroui.org.ua/
-       http://www.getbootstrap.com/
-Direct meeveranderen van zaaien/oogsten op basis van input (JavaScript/jQuery)
+IN PROGRESS User interface
+TODO Direct meeveranderen van zaaien/oogsten op basis van input (JavaScript/jQuery)
 
 Extra info:
 11 november ging 90-dagen licentie in voor Xamarin.

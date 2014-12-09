@@ -24,9 +24,13 @@ p {
     font-size: 14px;
     padding: 5%;
 }
-.sowing {
+.rectangle-sowing {
     background-color: #3D352A; /* Dark brown */
 }
-.harvesting {
+.rectangle-harvesting {
     background-color: #013220; /* Dark green */
+}
+
+.farmingMonth {
+    font-size = 8px;
 }

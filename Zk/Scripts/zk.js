@@ -24,27 +24,23 @@
     },
 
     fillSowingPattern: function(actions) {
-        // Display name, Race, and Crop count in the sowing table.
+        // Display name, Race, and Crop count in the sowing area.
         actions.forEach(function (a) {
-            $('#sowing').append( $(["<tr>",
-                                "  <td>" + a.Crop.Name      + "</td>",
-                                "  <td>" + a.Crop.Race      + "</td>",
-                                "  <td>" + a.Crop.Category  + "</td>",
-                                "  <td>" + a.CropCount      + "</td>",
-                                "</tr>"
+            $('#sowing').append( $([
+                                "  <span>" + a.CropCount      + " stuks</span>",
+                                "  <span>" + a.Crop.Name      + "</span>",
+                                "  <span>" + a.Crop.Race      + "</span></br>"
                                ].join("\n")));  
         });
     },
 
     fillHarvestingPattern: function(actions) {
-        // Display name, Race, and Crop count in the sowing table.
+        // Display name, Race, and Crop count in the harvesting area.
         actions.forEach(function (a) {
-            $('#harvesting').append( $(["<tr>",
-                                "  <td>" + a.Crop.Name      + "</td>",
-                                "  <td>" + a.Crop.Race      + "</td>",
-                                "  <td>" + a.Crop.Category  + "</td>",
-                                "  <td>" + a.CropCount      + "</td>",
-                                "</tr>"
+            $('#harvesting').append( $([
+                                "  <span>" + a.CropCount      + " stuks</span>",
+                                "  <span>" + a.Crop.Name      + "</span>",
+                                "  <span>" + a.Crop.Race      + "</span></br>"
                                ].join("\n")));  
         });
     },
