@@ -74,24 +74,5 @@ namespace Zk.Controllers
 			return View(crop);
 		}
 			
-		/// <summary>
-		/// 	Submits the calendar that the user has entered on the view and update the current calendar
-		/// </summary>
-		/// <returns></returns>
-		/// <param name="submittedCalendar">Submitted calendar.</param>
-		[HttpPost]
-		public ViewResult SubmitCalendar(Calendar submittedCalendar)
-		{
-			//   Get crops from SUBMITTEDcalendar
-
-			//   Get CURRENTcalendar of user
-			//   _db.Calendars.Where(c => c.User.Name = "UserName");
-
-			// Implement logic to update CURRENT calendar with SUBMITTED calendar.
-
-			return View();
-		}
-
-
 	}
 }

@@ -1,7 +1,9 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web.Mvc;
 using Zk.Models;
 using Zk.Repositories;
-using System.Linq;
 
 namespace Zk.Controllers
 {
@@ -27,22 +29,6 @@ namespace Zk.Controllers
 		{
 			_repo = new Repository(db);
 		}
-
-		/// <summary>
-		/// 	POST: /UpdateCalendar/{FarmingAction} 
-		/// 	Update the current calendar with the new data from the month.
-		/// </summary>
-		/// <returns></returns>
-		/// <param name="submittedMonth">Submitted month.</param>
-		[HttpPost]
-		public ViewResult UpdateCalendar(FarmingAction submittedMonth)
-		{
-		    // Get data from submittedMonth
-
-			// Implement logic to update CURRENT calendar with SUBMITTED month.
-
-			return View();
-		}
-			
+            		
 	}
 }

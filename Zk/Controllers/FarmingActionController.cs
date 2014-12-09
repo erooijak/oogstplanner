@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using Zk.Helpers;
 using Zk.Models;
 using Zk.Repositories;
 
@@ -14,7 +15,7 @@ namespace Zk.Controllers
         readonly Repository _repo;
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="Controllers.FarmingMonthController"/> class which
+        ///     Initializes a new instance of the <see cref="Controllers.FarmingActionController"/> class which
         ///     makes use of the real Entity Framework context that connects with the database.
         /// </summary>
         public FarmingActionController()
@@ -23,7 +24,7 @@ namespace Zk.Controllers
         }
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="Controllers.FarmingMonthController"/> class which
+        ///     Initializes a new instance of the <see cref="Controllers.FarmingActionController"/> class which
         ///     can make use of a "Fake" Entity Framework context for unit testing purposes.
         /// </summary>
         /// <param name="db">Database context.</param>
@@ -35,6 +36,8 @@ namespace Zk.Controllers
         /// <summary>
         ///     GET: /Edit/{month}
         ///     Returns the selected month.
+        /// 
+        ///     TODO: Better model binding! Remove JavaScript and just bind data to partial view. (?)
         /// </summary>
         /// <returns></returns>
         /// <param name="month">Requested month.</param>
@@ -43,24 +46,11 @@ namespace Zk.Controllers
             // Get farming actions (TODO: of user))
             var farmingActions = _repo.GetFarmingActions(month);
 
-            // Serialize to JSON with a the month preprended and converting enum values to string.
+            // Serialize to JSON with a the month prepended and converting enum values to string.
             var farmingActionsJsonString = JsonConvert.SerializeObject(
                 new {month, farmingActions}, new StringEnumConverter());
 
             return new JsonStringResult(farmingActionsJsonString);
-        }
-
-        /// <summary>
-        ///     Helper class to return JSON string.
-        ///     See http://stackoverflow.com/questions/9777731/mvc-how-to-return-a-string-as-json#9777955
-        /// </summary>
-        public class JsonStringResult : ContentResult
-        {
-            public JsonStringResult(string json)
-            {
-                Content = json;
-                ContentType = "application/json";
-            }
         }
 
     }

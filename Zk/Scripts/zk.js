@@ -11,12 +11,19 @@
 
     fillFarmingMonth: function(data) {
 
+        var currentMonth = data.month;
+
         // Display month on top of page
-        $('#current-month').text(data.month);
+        $('#current-month').text(currentMonth);
+
+        // Add data to hidden formfield
+        $('input[name="Month"]').val(currentMonth);
+
+        var farmingActions = data.farmingActions;
 
         // Display all crops that need to be sowed and harvested.
-        var sowingActions = this.getData(data.farmingActions, "Action", "Sowing");
-        var harvestingActions = this.getData(data.farmingActions, "Action", "Harvesting");
+        var sowingActions = this.getData(farmingActions, "Action", "Sowing");
+        var harvestingActions = this.getData(farmingActions, "Action", "Harvesting");
 
         this.fillSowingPattern(sowingActions);
         this.fillHarvestingPattern(harvestingActions);
@@ -27,7 +34,11 @@
         // Display name, Race, and Crop count in the sowing area.
         actions.forEach(function (a) {
             $('#sowing').append( $([
-                                "  <span>" + a.CropCount      + " stuks</span>",
+                                "  <span><input type='text'" 
+                                    + "class='cropcount input form-control'" 
+                                    + "name='CropCount'" 
+                                    + "value='" + a.CropCount 
+                                    + "'></input> stuks</span>",
                                 "  <span>" + a.Crop.Name      + "</span>",
                                 "  <span>" + a.Crop.Race      + "</span></br>"
                                ].join("\n")));  
@@ -38,7 +49,11 @@
         // Display name, Race, and Crop count in the harvesting area.
         actions.forEach(function (a) {
             $('#harvesting').append( $([
-                                "  <span>" + a.CropCount      + " stuks</span>",
+                                "  <span><input type='text'" 
+                                    + "class='cropcount input form-control'" 
+                                    + "name='CropCount'" 
+                                    + "value='" + a.CropCount 
+                                    + "'></input> stuks</span>",
                                 "  <span>" + a.Crop.Name      + "</span>",
                                 "  <span>" + a.Crop.Race      + "</span></br>"
                                ].join("\n")));  

@@ -34,3 +34,11 @@ p {
 .farmingMonth {
     font-size = 8px;
 }
+.cropcount {
+    max-width: 10%;
+}
+.input {
+    /* Bring input fields to front */
+    z-index: 1; 
+    position: relative;
+}

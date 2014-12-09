@@ -90,6 +90,7 @@
     <Folder Include="Content\Images\" />
     <Folder Include="Scripts\" />
     <Folder Include="App_Data\Migrations\" />
+    <Folder Include="Helpers\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\HomeController.cs" />
@@ -107,6 +108,7 @@
     <Compile Include="Controllers\CalendarController.cs" />
     <Compile Include="Models\FarmingAction.cs" />
     <Compile Include="Controllers\FarmingActionController.cs" />
+    <Compile Include="Helpers\JsonStringResult.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Web.config" />

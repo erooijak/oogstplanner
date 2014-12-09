@@ -31,6 +31,11 @@
     </div>
 </div>
 
+@using (Ajax.BeginForm("Update",  new AjaxOptions { OnSuccess = "zk.toMain()" }))
+{
+<!--- Information about the month filled by fillFarmingMonth function in /Scripts/zk.js -->
+<input type="hidden" name="Month" />
+
 <!-- Main rectangles -->
 <div class="rectangle-vertical rectangle-sowing">
     <div class="rectangle-content bg-no-opacity imgsowing">
@@ -55,8 +60,12 @@
     <div class="rectangle-content">
         <div class="table">
             <div class="table-cell header">
+                
+                <input type="submit" value="Bevestigen!" /><br/>
+
                 @Html.ActionLink("Naar de gewassen!", "Index", "Crop", null, null)
             </div>
         </div>
     </div>
 </div>
+} @* End form *@

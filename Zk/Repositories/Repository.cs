@@ -56,5 +56,17 @@ namespace Zk.Repositories
             return _db.FarmingActions.Where(fm => fm.Month.HasFlag(month)).ToList();
         }
 
+        public void UpdateCropCounts(IEnumerable<int> newCounts, Month month)
+        {
+            // Get farming actions from current month from database.
+            var actions = GetFarmingActions(month);
+
+            foreach (var action in actions) 
+            {
+
+            }
+
+        }
+
 	}
 }
