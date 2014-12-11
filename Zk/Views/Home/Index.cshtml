@@ -9,7 +9,7 @@
     // Seasons in Dutch (singular: "seizoen"; plural: "seizoenen") used for displayal in top row.
     var seizoenen = new[] { "herfst", "winter", "lente", "zomer" };
 
-    // Months in Dutch (singular: "maand"; plural: "maanden") are usd for the CSS classes 
+    // Months in Dutch (singular: "maand"; plural: "maanden") are used for the CSS classes 
     // to add to the squares and for displayal within the square.
     // Notes: * A normal queue does not work because of Razor threading issues so a ConcurrentQueue is used.
     var months = new ConcurrentQueue<string>(new[] {    "september",  "december",     "maart",    "juni", 
@@ -78,9 +78,8 @@
 }
     </div><!-- End of main slide -->
 
-    <!-- Slide for editing and viewing a specific month -->
-    <div class="slide">
-        @{Html.RenderPartial("_FarmingMonth");}
-    </div>
+    <!-- Slide for editing and viewing a specific month
+         Partial view data with farming actions is loaded here. -->
+    <div class="slide" id="_FarmingMonth"></div>
 
-</div><!-- End of main page -->
+</div><!-- End of fullPage.js main page -->

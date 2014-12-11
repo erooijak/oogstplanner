@@ -51,21 +51,18 @@ namespace Zk.Repositories
 			return crops;
 		}
 
-        public IEnumerable<FarmingAction> GetFarmingActions(Month month)
+        public IEnumerable<FarmingAction> GetHarvestingActions(Month month)
         {
-            return _db.FarmingActions.Where(fm => fm.Month.HasFlag(month)).ToList();
+            return _db.FarmingActions.Where(
+                fm => fm.Action == FarmType.Harvesting && fm.Month.HasFlag(month))
+                    .ToList();
         }
 
-        public void UpdateCropCounts(IEnumerable<int> newCounts, Month month)
+        public IEnumerable<FarmingAction> GetSowingActions(Month month)
         {
-            // Get farming actions from current month from database.
-            var actions = GetFarmingActions(month);
-
-            foreach (var action in actions) 
-            {
-
-            }
-
+            return _db.FarmingActions.Where(
+                fm => fm.Action == FarmType.Sowing && fm.Month.HasFlag(month))
+                    .ToList();
         }
 
 	}

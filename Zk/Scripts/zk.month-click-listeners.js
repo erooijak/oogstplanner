@@ -18,17 +18,17 @@
 
     // Add a call to the edit method of a farming month on a click on a specific month.
     months.forEach(function(month) {
-
         $('.' + month).bind('click', function() {
 
+            // Below the data is loaded in partial view and switched to the page on success.
             // Note: In the call to the Edit method a query string parameter is necessary because normal 
             //       parameter binding does not seem to work in our version of Mono.
-            $.getJSON('/FarmingAction/Edit?month=' + month, function(data) {
-
-                // Switch to the farming month view and display the month and data.
-                zk.toFarmingMonth();
-                zk.fillFarmingMonth(data);
-            });
+            $.get('/FarmingAction/Edit?month=' + month, function(data) {
+                zk.fillFarmingMonth(month, data);
+            })
+              .done(function() { zk.toFarmingMonth(); })
+              .fail(function() { alert('TODO: Error handling'); });
         });
     });
+
 });

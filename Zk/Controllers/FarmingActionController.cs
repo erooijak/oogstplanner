@@ -1,12 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Web.Mvc;
 using System.Linq;
-using System.Net;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
 using Zk.Helpers;
 using Zk.Models;
 using Zk.Repositories;
+using Zk.ViewModels;
 
 namespace Zk.Controllers
 {
@@ -35,22 +33,19 @@ namespace Zk.Controllers
 
         /// <summary>
         ///     GET: /Edit/{month}
-        ///     Returns the selected month.
-        /// 
-        ///     TODO: Better model binding! Remove JavaScript and just bind data to partial view. (?)
+        ///     Returns the farming actions of the month.
         /// </summary>
         /// <returns></returns>
         /// <param name="month">Requested month.</param>
         public ActionResult Edit(Month month)
         {
-            // Get farming actions (TODO: of user))
-            var farmingActions = _repo.GetFarmingActions(month);
-
-            // Serialize to JSON with a the month prepended and converting enum values to string.
-            var farmingActionsJsonString = JsonConvert.SerializeObject(
-                new {month, farmingActions}, new StringEnumConverter());
-
-            return new JsonStringResult(farmingActionsJsonString);
+            var farmingMonthViewModel = new FarmingMonthViewModel {
+                DisplayMonth = month.ToString(),
+                HarvestingActions = _repo.GetHarvestingActions(month),
+                SowingActions = _repo.GetSowingActions(month)
+            };
+           
+            return PartialView(Url.View("_FarmingMonth", "Home"), farmingMonthViewModel);
         }
 
     }

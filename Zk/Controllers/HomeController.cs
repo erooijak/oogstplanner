@@ -60,9 +60,8 @@ namespace Zk.Controllers
             var month = (Month)Enum.Parse(typeof(Month), fc["Month"]);
 
             // Update crop counts.
-            _repo.UpdateCropCounts(cropCounts, month);
 
-            return Json (new {success = true });
+            return Json (new { success = true });
         }
 	}
 }

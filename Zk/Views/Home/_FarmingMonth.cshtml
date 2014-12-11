@@ -1,9 +1,11 @@
-﻿<!-- Top bar -->
+﻿@model FarmingMonthViewModel
+
+<!-- Top bar -->
 <div class="top-bar-tiny">
     <div class="rectangle-content-tiny">
         <div class="table">
             <div class="table-cell bold">
-                <div id="current-month"></div>
+                <div>@Model.DisplayMonth</div>
             </div>
         </div>
     </div>
@@ -31,41 +33,55 @@
     </div>
 </div>
 
-@using (Ajax.BeginForm("Update",  new AjaxOptions { OnSuccess = "zk.toMain" }))
+
+@using (Ajax.BeginForm("Update", new AjaxOptions { OnSuccess = "zk.toMain", OnFailure = "TODO" }))
 {
-<!--- Information about the month filled by fillFarmingMonth function in /Scripts/zk.js -->
-<input type="hidden" name="Month" />
-
-<!-- Main rectangles -->
-<div class="rectangle-vertical rectangle-sowing">
-    <div class="rectangle-content bg-no-opacity imgsowing">
-        <div class="table">
-            <div class="table-cell-top">
-                <div class="farmingMonth" id="sowing"></div>
+    <!-- Main rectangles -->
+    <div class="rectangle-vertical rectangle-sowing">
+        <div class="rectangle-content bg-no-opacity imgsowing">
+            <div class="table">
+                <div class="table-cell-top">
+                    <div class="farmingMonth" id="sowing">
+                        @foreach (var action in Model.SowingActions)
+                        {
+                            @Html.EditorFor(model => action.CropCount) <span>stuks</span>
+                            @Html.DisplayFor(model => action.Crop.Name)<span> </span>
+                            @Html.DisplayFor(model => action.Crop.Race)
+                            <br/>
+                        }
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-</div>
-<div class="rectangle-vertical rectangle-harvesting">
-    <div class="rectangle-content bg-no-opacity imgharvesting">
-        <div class="table">
-            <div class="table-cell-top">
-                <div class="farmingMonth" id="harvesting"></div>
+    <div class="rectangle-vertical rectangle-harvesting">
+        <div class="rectangle-content bg-no-opacity imgharvesting">
+            <div class="table">
+                <div class="table-cell-top">
+                    <div class="farmingMonth" id="harvesting">
+                        @foreach (var action in Model.HarvestingActions)
+                        {
+                            @Html.EditorFor(model => action.CropCount) <span>stuks</span>
+                            @Html.DisplayFor(model => action.Crop.Name)<span> </span>
+                            @Html.DisplayFor(model => action.Crop.Race)
+                            <br/>
+                        }
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
-<div class="top-bar">
-    <div class="rectangle-content">
-        <div class="table">
-            <div class="table-cell header">
-                
-                <input type="submit" value="Bevestigen!" /><br/>
+    <div class="top-bar">
+        <div class="rectangle-content">
+            <div class="table">
+                <div class="table-cell header">
+                    
+                    <input type="submit" value="Bevestigen!" /><br/>
 
-                @Html.ActionLink("Naar de gewassen!", "Index", "Crop", null, null)
+                    @Html.ActionLink("Naar de gewassen!", "Index", "Crop", null, null)
+                </div>
             </div>
         </div>
     </div>
-</div>
 } @* End form *@

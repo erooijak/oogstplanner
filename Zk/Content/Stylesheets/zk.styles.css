@@ -34,10 +34,10 @@ p {
 .farmingMonth {
     font-size = 8px;
 }
-.cropcount {
+#action_CropCount {
     max-width: 10%;
 }
-.input {
+#sowing, #harvesting {
     /* Bring input fields to front */
     z-index: 1; 
     position: relative;
