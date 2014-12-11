@@ -31,7 +31,7 @@
     </div>
 </div>
 
-@using (Ajax.BeginForm("Update",  new AjaxOptions { OnSuccess = "zk.toMain()" }))
+@using (Ajax.BeginForm("Update",  new AjaxOptions { OnSuccess = "zk.toMain" }))
 {
 <!--- Information about the month filled by fillFarmingMonth function in /Scripts/zk.js -->
 <input type="hidden" name="Month" />

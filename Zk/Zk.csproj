@@ -153,6 +153,11 @@
     <Content Include="Content\Stylesheets\bootstrap.tables.css" />
     <Content Include="Content\Images\harvesting.jpg" />
     <Content Include="Content\Images\sowing.jpg" />
+    <Content Include="Scripts\jquery-1.8.0-vsdoc.js" />
+    <Content Include="Scripts\jquery-1.8.0.js" />
+    <Content Include="Scripts\jquery-1.8.0.min.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
