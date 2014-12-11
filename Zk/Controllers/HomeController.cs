@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web.Mvc;
 using Zk.Repositories;
 using Zk.Models;
+using Zk.ViewModels;
 
 namespace Zk.Controllers
 {
@@ -49,16 +50,10 @@ namespace Zk.Controllers
         ///     TODO: Better model binding! Remove JavaScript and just bind data to partial view.
         /// </summary>
         /// <returns></returns>
-        /// <param name="fc">FormCollection with data of the month and crop count.</param>
+        /// <param name="farmingMonth">FormCollection with data of the month and crop count.</param>
         [HttpPost]
-        public JsonResult Update(FormCollection fc)
+        public JsonResult Update(FarmingMonthViewModel farmingMonth)
         {
-            // Convert the crop count string array to an integer array.
-            var cropCounts = fc["CropCount"].Split(',').Select(int.Parse);
-
-            // Get the month from the collection.
-            var month = (Month)Enum.Parse(typeof(Month), fc["Month"]);
-
             // Update crop counts.
 
             return Json (new { success = true });
