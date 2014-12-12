@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using Zk.Models;
 using System.Collections.Generic;
+using System;
 
 namespace Zk.Repositories
 {
@@ -63,6 +64,35 @@ namespace Zk.Repositories
             return _db.FarmingActions.Where(
                 fm => fm.Action == FarmType.Sowing && fm.Month.HasFlag(month))
                     .ToList();
+        }
+            
+        public void UpdateCropCounts(IList<int> ids, IList<int> counts)
+        {
+            if (ids.Count != counts.Count) throw new ArgumentException(
+                "Different amount of ids and counts.", "counts");
+
+            // Combine each farming id to it's respective farming count in a keyvaluepair (kvp)
+            // where the id is the key and cropCount the value.
+            foreach (var kvp in ids.Zip(counts, (id, count) => new KeyValuePair<int, int>(id, count)))
+            {
+                var action = _db.FarmingActions.Find(kvp.Key);
+                if (action == null) 
+                    throw new ArgumentException("Cannot find primary key in database.", "ids");
+
+                var oldCropCount = action.CropCount;
+                var newCropCount = kvp.Value;
+
+                if (oldCropCount == newCropCount) continue;
+
+                // TODO:    Implement logic to update all related farming actions.
+                // AKA:     The super calculation.
+
+                // Update one crop count of a farming action in the database.
+                action.CropCount = kvp.Value;
+                _db.SetModified(action);
+                _db.SaveChanges();
+
+            }
         }
 
 	}

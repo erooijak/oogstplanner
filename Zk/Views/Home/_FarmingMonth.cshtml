@@ -33,7 +33,6 @@
     </div>
 </div>
 
-
 @using (Ajax.BeginForm("Update", new AjaxOptions { OnSuccess = "zk.toMain", OnFailure = "TODO" }))
 {
     <!-- Main rectangles -->
@@ -44,9 +43,10 @@
                     <div class="farmingMonth" id="sowing">
                         @foreach (var action in Model.SowingActions)
                         {
+                            @Html.HiddenFor(model => action.Id)
                             @Html.EditorFor(model => action.CropCount) <span>stuks</span>
-                            @Html.DisplayFor(model => action.Crop.Name)<span> </span>
-                            @Html.DisplayFor(model => action.Crop.Race)
+                            @action.Crop.Name <span> </span>
+                            @action.Crop.Race
                             <br/>
                         }
                     </div>
@@ -61,9 +61,10 @@
                     <div class="farmingMonth" id="harvesting">
                         @foreach (var action in Model.HarvestingActions)
                         {
+                            @Html.HiddenFor(model => action.Id)
                             @Html.EditorFor(model => action.CropCount) <span>stuks</span>
-                            @Html.DisplayFor(model => action.Crop.Name)<span> </span>
-                            @Html.DisplayFor(model => action.Crop.Race)
+                            <span>@action.Crop.Name </span>
+                            <span>@action.Crop.Race</span>
                             <br/>
                         }
                     </div>

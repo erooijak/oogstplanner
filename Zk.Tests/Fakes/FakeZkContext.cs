@@ -23,5 +23,9 @@ namespace Zk.Tests.Fakes
 			return 0;
 		}
 
+        public void SetModified(object entity)
+        {
+        }
+
 	}
 }

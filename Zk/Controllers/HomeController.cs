@@ -42,21 +42,6 @@ namespace Zk.Controllers
 
 			return View ();
 		}
-
-        /// <summary>
-        ///     POST: /Update/{formCollection} 
-        ///     Update the relevant farming actions with the new data from the month.
-        /// 
-        ///     TODO: Better model binding! Remove JavaScript and just bind data to partial view.
-        /// </summary>
-        /// <returns></returns>
-        /// <param name="farmingMonth">FormCollection with data of the month and crop count.</param>
-        [HttpPost]
-        public JsonResult Update(FarmingMonthViewModel farmingMonth)
-        {
-            // Update crop counts.
-
-            return Json (new { success = true });
-        }
+           
 	}
 }

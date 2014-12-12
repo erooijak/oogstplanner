@@ -9,6 +9,7 @@ namespace Zk.Models
         IDbSet<Calendar> Calendars { get; }
         IDbSet<User> Users { get; }
 
+        void SetModified(object entity);
 		int SaveChanges();
 	}
 }
