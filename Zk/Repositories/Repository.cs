@@ -6,7 +6,7 @@ using System;
 namespace Zk.Repositories
 {
 	/// <summary>
-	///     Repository used for methods that access the database.
+	///     Repository used for methods that access the database ... and some business logic.
 	/// </summary>
 	public class Repository
 	{

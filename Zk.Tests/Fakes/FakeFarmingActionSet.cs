@@ -3,9 +3,9 @@ using Zk.Models;
 
 namespace Zk
 {
-    public class FakeFarmingActionSet : FakeDbSet<FarmingAction>
+	public class FakeCropSet : FakeDbSet<Crop>
 	{
-        public override FarmingAction Find(params object[] keyValues)
+		public override Crop Find(params object[] keyValues)
 		{
 			return this.SingleOrDefault(c => c.Id == (int)keyValues.Single());
 		}

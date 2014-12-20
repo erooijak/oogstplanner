@@ -29,7 +29,7 @@ namespace Zk.Tests.Controllers
 						SowingMonths = Month.Mei ^ Month.Juni ^ Month.Oktober ^ Month.November 
 					}
 				}
-				};
+			};
 			_controller = new CropController(db);
 		}
 

@@ -8,6 +8,7 @@ namespace Zk.Tests.Fakes
 		public FakeZkContext()
 		{
 			Crops = new FakeCropSet();
+            FarmingActions = new FakeFarmingActionSet();
 		}
 
 		public IDbSet<Crop> Crops { get; private set; }

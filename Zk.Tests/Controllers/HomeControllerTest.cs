@@ -21,7 +21,7 @@ namespace Zk.Tests
 			// Act
 			var result = (ViewResult)controller.Index ();
 
-			const string expectedVersion = "5.2";
+			const string expectedVersion = "4.0";
 			const string expectedRuntime = "Mono";
 
 			// Assert

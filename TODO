@@ -14,6 +14,7 @@ DONE Datamodel (Model)
 DONE Datamodel relaties inbouwen (foreign keys)
 TO VERIFY Classes en relaties
 TODO Uitzoeken kilogrammen en grondtypes (FutDev)
+TODO Bepalen groeitijd keukenkruiden, groenbemesters en kiemgroenten
 
 Business logic (Controllers)
 IN PROGRESS JSON van zaai- en oogstmaand naar view en vice versa
@@ -49,3 +50,27 @@ BUGS:
 
 In hoeverre wijk ik af met wat ik als eerste had aangegeven.
 "Initiele invulproces." => Vasthouden.
+
+Weging van de maand. Wanneer oogsten in geval van meerdere maanden (3) zaaien en minder oogsten (2)
+
+Super calculatie:
+
+Stel je hebt vier oogstmaanden en je wilt in september oogsten en je hebt drie zaaimaanden dat betekent dat je
+
+Z. Jun, Jul, Aug
+O. Aug, Sept, Okt, Nov.
+
+Ander voorbeeld met spleten:
+Z. Jan, Feb, Mrt, Apr, Aug, Sept
+O. Mrt, Apr, Mei,      Sep, Okt,
+
+Hoe lang duurt het tot het klaar is? Bijv. twee maanden. Dit is problematisch. Groeitijd twee maanden. Idealiter
+8 - 2 is 6. Maar bestaat niet, dus zit je erboven of onder? Boven is max, onder is min.
+
+Mininum(Max, som)
+
+Oogsten ingevuld. O1 - Z1 = 2 (groeitijd). Resulteert in zaaien is O1 - 2. 
+
+Zaaien = Min (oogstmaand - groeitijd, max(zaaimaanden))
+
+
