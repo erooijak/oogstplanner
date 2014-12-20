@@ -9,7 +9,7 @@ TestResults
 *.suo
 *.user
 *.sln.docstates
-*.web.config
+#*.web.config
 *.userprefs
 # Build results
 [Dd]ebug/

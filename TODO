@@ -8,6 +8,7 @@ TODO Deployment omgeving regelen.
 Autorisatie:
 TODO Gebruiker kan inloggen en agenda hoort bij hem.
 TODO Inlogscherm
+TODO Profiel maken gebruiker
 
 DONE Datamodel (Model)
 DONE Datamodel relaties inbouwen (foreign keys)
@@ -44,3 +45,7 @@ Niet JSON data, maar partial view results en model binding (netter omdat we de J
 
 BUGS:
 2x klikken op maand levert dubbele data op.
+
+
+In hoeverre wijk ik af met wat ik als eerste had aangegeven.
+"Initiele invulproces." => Vasthouden.
