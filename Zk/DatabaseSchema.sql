@@ -92,3 +92,7 @@ CREATE TABLE "Sessions" (
 	"Flags"					integer					NOT NULL,
 	CONSTRAINT sessions_pkey PRIMARY KEY ("SessionId", "ApplicationName")
 );
+
+-- Create user and admin role.
+INSERT INTO "Roles" ("Rolename", "ApplicationName") values ('user', 'Zk');
+INSERT INTO "Roles" ("Rolename", "ApplicationName") values ('admin', 'Zk');
