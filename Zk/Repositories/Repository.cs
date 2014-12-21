@@ -1,8 +1,10 @@
-﻿using System.Linq;
-using Zk.Models;
+﻿using System;
 using System.Collections.Generic;
-using System;
+using System.Linq;
 using System.Linq.Expressions;
+using System.Security.Principal;
+
+using Zk.Models;
 
 namespace Zk.Repositories
 {
@@ -72,5 +74,35 @@ namespace Zk.Repositories
 
             return action;
         }
+
+        public void AddUser(string userName, string fullName, string email)
+        {
+            // Not necessary to check if userprofile already exists since forms does this for us.
+
+            //if (!_db.Users.Any(u => u.Name.ToLower() == userName)) {
+
+                // Else insert into the profile table
+                var user = new User {
+                    Name = userName,
+                    FullName = fullName,
+                    Email = email
+                };
+
+                _db.Users.Add(user);
+                _db.SaveChanges();
+            //}
+
+        }
+
+        public User GetUser(IPrincipal user)
+        {
+            return _db.Users.Single(u => u.Name == user.Identity.Name);
+        }
+
+        public User GetUserById(int id)
+        {
+            return _db.Users.Find(id);
+        }
+
 	}
 }

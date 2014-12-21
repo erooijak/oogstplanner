@@ -8,7 +8,7 @@ using WebMatrix.WebData;
 
 using Zk.Models;
 
-namespace SeashellBrawlCorvee.Controllers
+namespace Zk.Controllers
 {
     [Authorize]
     public partial class AccountController : Controller
@@ -40,7 +40,8 @@ namespace SeashellBrawlCorvee.Controllers
 
             // check if user profile/model is known and Enabled
             var username = OAuthWebSecurity.GetUserName(result.Provider, result.ProviderUserId);
-            if (username != null && WebSecurity.GetUserId(username) > 0 && _db.Users.Find(WebSecurity.GetUserId(username)).Enabled == false)
+            if (username != null && WebSecurity.GetUserId(username) > 0 
+                && _manager.GetUserById(WebSecurity.GetUserId(username)).Enabled == false)
             {
                 ModelState.AddModelError("registration", "Deze account is uitgeschakeld.");
                 return View("Login");
@@ -76,31 +77,16 @@ namespace SeashellBrawlCorvee.Controllers
             if (ModelState.IsValid)
             {
                 // Insert a new user into the database
-                using (var db = new ZkContext())
+                _manager.AddUser(UserName,FullName, Email);
+
+                OAuthWebSecurity.CreateOrUpdateAccount(result.Provider, result.ProviderUserId, UserName);
+
+                // try to login locally
+                if (OAuthWebSecurity.Login(result.Provider, result.ProviderUserId, createPersistentCookie: false))
                 {
-                    // Check if userprofile already exists
-                    if (!db.Users.Any(u => u.Name.ToLower() == UserName))
-                    {
-                        // Else insert into the profile table
-                        var user = new User
-                        {
-                            Name = UserName,
-                            FullName = FullName,
-                            Email = Email
-                        };
-                        db.Users.Add(user);
-                        db.SaveChanges();
-
-                        Roles.AddUserToRole(UserName, "user");
-                    }
-                    OAuthWebSecurity.CreateOrUpdateAccount(result.Provider, result.ProviderUserId, UserName);
-
-                    // try to login locally
-                    if (OAuthWebSecurity.Login(result.Provider, result.ProviderUserId, createPersistentCookie: false))
-                    {
-                        return RedirectToLocal(returnUrl);
-                    }
+                    return RedirectToLocal(returnUrl);
                 }
+
             }
 
             // something went wrong; back to login screen

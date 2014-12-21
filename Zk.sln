@@ -31,7 +31,7 @@ Global
 		{36B994C5-4690-428E-BD4B-93CCF6F0319E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = Zk.Migrations\Zk.Migrations.csproj
+		StartupItem = Zk\Zk.csproj
 		Policies = $0
 		$0.TextStylePolicy = $1
 		$1.FileWidth = 120

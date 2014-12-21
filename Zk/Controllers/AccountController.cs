@@ -6,33 +6,32 @@ using System.Web.Security;
 using Microsoft.Web.WebPages.OAuth;
 using WebMatrix.WebData;
 
+using Zk.BusinessLogic;
 using Zk.Models;
 using Zk.ViewModels;
 
-namespace SeashellBrawlCorvee.Controllers
+namespace Zk.Controllers
 {
     [Authorize]
-    //[InitializeSimpleMembership]
     public partial class AccountController : Controller
     {
-        private IZkContext _db;
+        private UserManager _manager;
 
         public AccountController()
         {
-            _db = new ZkContext();
+            _manager = new UserManager();
         }
 
-        public AccountController(IZkContext db)
+        public AccountController(UserManager manager)
         {
-            _db = db;
+            _manager = manager;
         }
 
         //
         // GET: /Account/Login
         [AllowAnonymous]
-        public ActionResult Login(string returnUrl)
+        public ActionResult Login()
         {
-            ViewBag.ReturnUrl = returnUrl;
             return View();
         }
 
@@ -85,14 +84,16 @@ namespace SeashellBrawlCorvee.Controllers
                 MembershipUser membershipUser = (Membership.Provider).CreateUser(
                     model.UserName, model.Password, model.Email, null, null, true, null, out status);
 
-                if (membershipUser != null)
+                if (status == MembershipCreateStatus.Success)
                 {
                     FormsAuthentication.SetAuthCookie(model.UserName, false);
+                    _manager.AddUser(model.UserName, model.FullName, model.Email);
+
                     return RedirectToAction("Index", "Home");
                 }
                 else
                 {
-                    ModelState.AddModelError("", "Registratie fout.");
+                    ModelState.AddModelError("registration", ErrorCodeToString(status));
                 }
             }
             return View(model);
@@ -227,14 +228,14 @@ namespace SeashellBrawlCorvee.Controllers
 
             if (model.IsAuthenticated)
             {
-                // Hit the database and retrieve the Forename
-                model.FullName = _db.Users.Single(u => u.Name == User.Identity.Name).FullName;
+                // Retrieve the name
+                model.FullName = _manager.GetUser(User).FullName;
 
-                //Return populated ViewModel
+                // Return populated ViewModel
                 return this.PartialView(model);
             }
 
-            //return the model with IsAuthenticated only
+            // Return the model with IsAuthenticated only
             return this.PartialView(model);
         }
 

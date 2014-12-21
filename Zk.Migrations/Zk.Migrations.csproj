@@ -63,6 +63,8 @@
     <Compile Include="_MigrationsTool.cs" />
     <Compile Include="Initial.Designer.cs" />
     <Compile Include="Initial.cs" />
+    <Compile Include="UpdateUser.Designer.cs" />
+    <Compile Include="UpdateUser.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -83,5 +85,6 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Initial.resx" />
+    <EmbeddedResource Include="UpdateUser.resx" />
   </ItemGroup>
 </Project>
