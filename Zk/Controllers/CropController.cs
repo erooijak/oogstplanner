@@ -1,31 +1,29 @@
 ﻿using System.Web.Mvc;
-using Zk.Models;
-using Zk.Repositories;
-using System.Linq;
+
+using Zk.BusinessLogic;
 
 namespace Zk.Controllers
 {
 	public class CropController : Controller
 	{
-		readonly Repository _repo;
+		readonly CropManager _manager;
 
 		/// <summary>
-		///     Initializes a new instance of the <see cref="Controllers.CropController"/> class which
-		///     makes use of the real Entity Framework context that connects with the database.
+		///     Initializes a new instance of the <see cref="Controllers.CropController"/> class.
 		/// </summary>
 		public CropController()
 		{
-			_repo = new Repository();
+            _manager = new CropManager();
 		}
 
 		/// <summary>
 		///     Initializes a new instance of the <see cref="Controllers.CropController"/> class which
 		///     can make use of a "Fake" Entity Framework context for unit testing purposes.
 		/// </summary>
-		/// <param name="db">Database context.</param>
-		public CropController(IZkContext db)
+        /// <param name="manager"></param>
+        public CropController(CropManager manager)
 		{
-			_repo = new Repository(db);
+            _manager = manager;
 		}
 			
 		/// <summary>
@@ -35,44 +33,10 @@ namespace Zk.Controllers
 		public ViewResult Index() 
 		{
 			// Get all crops and return to the view for display.
-			var crops = _repo.GetAllCrops ();
+			var crops = _manager.GetAllCrops();
 
 			return View(crops);
 		}
-
-		/// <summary>
-		///     GET: /index/[id]
-		/// </summary>
-		/// <param name="id">Identifier.</param>
-		/// <example>
-		///     GET: /index/1
-		/// </example>
-		/// <returns>
-		///     A crop with the id parameter as primary key.
-		/// </returns>
-		[HttpGet]
-		public ViewResult Crop(int id)
-		{
-			var crop = _repo.GetCrop(id);
-			return View(crop);
-		}
-
-		/// <summary>
-		///     GET: /index/[name]
-		/// </summary>
-		/// <param name="name">Name of the crop.</param>
-		/// <example>
-		///     GET: /index/Broccoli
-		/// </example>
-		/// <returns>
-		///     A crop with the name parameter as name.
-		/// </returns>
-		[HttpGet]
-		public ViewResult Crop(string name)
-		{
-			var crop = _repo.GetCrop(name);
-			return View(crop);
-		}
-			
+            	
 	}
 }

@@ -1,35 +1,34 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Web.Mvc;
 using System.Linq;
+using System.Web.Mvc;
+
+using Zk.BusinessLogic;
 using Zk.Helpers;
-using Zk.Models;
-using Zk.Repositories;
 using Zk.ViewModels;
 
 namespace Zk.Controllers
 {
     public class FarmingActionController : Controller
     {
-        readonly Repository _repo;
+        readonly FarmingActionManager _manager;
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="Controllers.FarmingActionController"/> class which
-        ///     makes use of the real Entity Framework context that connects with the database.
+        ///     Initializes a new instance of the <see cref="Controllers.FarmingActionController"/> class.
         /// </summary>
         public FarmingActionController()
         {
-            _repo = new Repository();
+            _manager = new FarmingActionManager();
         }
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="Controllers.FarmingActionController"/> class which
-        ///     can make use of a "Fake" Entity Framework context for unit testing purposes.
+        ///     can make use of a "Fake" Entity Framework context in the repo of the manager for unit testing purposes.
         /// </summary>
-        /// <param name="db">Database context.</param>
-        public FarmingActionController(IZkContext db)
+        /// <param name="manager">Manager.</param>
+        public FarmingActionController(FarmingActionManager manager)
         {
-            _repo = new Repository(db);
+            _manager = manager;
         }
 
         /// <summary>
@@ -40,11 +39,7 @@ namespace Zk.Controllers
         /// <param name="month">Requested month.</param>
         public ActionResult Edit(Month month)
         {
-            var farmingMonthViewModel = new FarmingMonthViewModel {
-                DisplayMonth = month.ToString(),
-                HarvestingActions = _repo.GetHarvestingActions(month),
-                SowingActions = _repo.GetSowingActions(month)
-            };
+            var farmingMonthViewModel = GetFarmingMonthViewModel(month);
            
             return PartialView(Url.View("_FarmingMonth", "Home"), farmingMonthViewModel);
         }
@@ -65,7 +60,7 @@ namespace Zk.Controllers
             try 
             {
                 // Update crop counts in database
-                _repo.UpdateCropCounts(farmingActionIds, cropCounts);
+                _manager.UpdateCropCounts(farmingActionIds, cropCounts);
             }
             catch (Exception ex)
             {
@@ -74,6 +69,15 @@ namespace Zk.Controllers
             }
 
             return Json (new { success = true });
+        }
+
+        FarmingMonthViewModel GetFarmingMonthViewModel(Month month)
+        {
+            return new FarmingMonthViewModel {
+                DisplayMonth = month.ToString(),
+                HarvestingActions = _manager.GetHarvestingActions(month),
+                SowingActions = _manager.GetSowingActions(month)
+            };
         }
 
     }

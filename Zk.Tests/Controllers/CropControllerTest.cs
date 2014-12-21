@@ -1,68 +1,57 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using NUnit.Framework;
+
 using Zk.Controllers;
+using Zk.BusinessLogic;
 using Zk.Models;
-using Zk.Repositories;
 using Zk.Tests.Fakes;
+using Zk.Repositories;
 
 namespace Zk.Tests.Controllers
 {
-	[TestFixture]
-	public class CropControllerTest
-	{
-		private CropController _controller;
+    [TestFixture]
+    public class CropControllerTest
+    {
+        private CropController _controller;
 
-		[TestFixtureSetUp]
-		public void Setup()
-		{
-			// Initialize a fake database with one crop.
-			var db = new FakeZkContext
-			{
-				Crops =
-				{
-					new Crop
-					{
-						Id = 1,
-						Name = "Broccoli", 
-						SowingMonths = Month.Mei ^ Month.Juni ^ Month.Oktober ^ Month.November 
-					}
-				}
-			};
-			_controller = new CropController(db);
-		}
+        [TestFixtureSetUp]
+        public void Setup()
+        {
+            // Initialize a fake database with one crop.
+            var db = new FakeZkContext
+            {
+            	Crops =
+            	{
+            		new Crop
+            		{
+            			Id = 1,
+            			Name = "Broccoli", 
+            			SowingMonths = Month.Mei ^ Month.Juni ^ Month.Oktober ^ Month.November 
+            		}
+            	}
+            };
+            var repository = new Repository(db);
+            var manager = new CropManager(repository);
+            _controller = new CropController(manager);
+        }
 
-		[Test]
-		public void Controllers_Crop_From_Id_Success()
-		{
-			// Arrange
-			var id = 1;
-			var expectedResult = "Broccoli";
+        [Test]
+        public void Controllers_Crop_Index_AllCrops()
+        {
+            // Arrange
+            var expectedResult = "Broccoli";
 
-			// Act
-			var viewResult = _controller.Crop(id);
-			var actualResult = ((Crop)viewResult.ViewData.Model).Name;
+            // Act
+            var viewResult = _controller.Index();
+            var actualResult = ((IEnumerable<Crop>)viewResult.ViewData.Model).Single().Name;
 
-			// Assert
-			Assert.AreEqual(expectedResult, actualResult,
-				"Since there is a broccoli with ID 1 in the database the crop method should return it.");
-		}
-
-		[Test]
-		public void Controllers_Crop_From_Name_Success()
-		{
-			// Arrange
-			var name = "Broccoli";
-
-			// Act
-			var viewResult = _controller.Crop(name);
-			var result = ((Crop)viewResult.ViewData.Model).SowingMonths;
-
-			// Assert
-			Assert.AreEqual(Month.Mei ^ Month.Juni ^ Month.Oktober ^ Month.November, result,
-				"Since there is a crop with the name broccoli in the database the crop method should return it" +
-				"and the sowing months should be may, june, october and november.");
-		}
-	}
+            // Assert
+            Assert.AreEqual(expectedResult, actualResult,
+            	"Since there is only a broccoli in the database the index method should return it.");
+        }
+		
+    }
 }

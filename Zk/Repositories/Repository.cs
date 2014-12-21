@@ -2,6 +2,7 @@
 using Zk.Models;
 using System.Collections.Generic;
 using System;
+using System.Linq.Expressions;
 
 namespace Zk.Repositories
 {
@@ -25,11 +26,17 @@ namespace Zk.Repositories
 		///     Initializes a new instance of the <see cref="Repositories.Repository"/> class which
 		///     can make use of a "Fake" Entity Framework context for unit testing purposes.
 		/// </summary>
-		/// <param name="dbParam">Database context.</param>
-		public Repository(IZkContext dbParam)
+		/// <param name="db">Database context.</param>
+		public Repository(IZkContext db)
 		{
-			_db = dbParam;
+			_db = db;
 		}
+
+        public void Update(object entity)
+        {
+            _db.SetModified(entity);
+            _db.SaveChanges();
+        }
 			
 		public Crop GetCrop(int id)
 		{
@@ -52,48 +59,18 @@ namespace Zk.Repositories
 			return crops;
 		}
 
-        public IEnumerable<FarmingAction> GetHarvestingActions(Month month)
+        public IEnumerable<FarmingAction> GetFarmingActions(Expression<Func<FarmingAction, bool>> predicate)
         {
-            return _db.FarmingActions.Where(
-                fm => fm.Action == FarmType.Harvesting && fm.Month.HasFlag(month))
-                    .ToList();
-        }
+            return _db.FarmingActions.Where(predicate).ToList<FarmingAction>();
+        }    
 
-        public IEnumerable<FarmingAction> GetSowingActions(Month month)
+        public FarmingAction FindFarmingAction(int id)
         {
-            return _db.FarmingActions.Where(
-                fm => fm.Action == FarmType.Sowing && fm.Month.HasFlag(month))
-                    .ToList();
+            var action = _db.FarmingActions.Find(id);
+            if (action == null)
+                throw new ArgumentException("Cannot find primary key in database.", "id");
+
+            return action;
         }
-            
-        public void UpdateCropCounts(IList<int> ids, IList<int> counts)
-        {
-            if (ids.Count != counts.Count) throw new ArgumentException(
-                "Different amount of ids and counts.", "counts");
-
-            // Combine each farming id to it's respective farming count in a keyvaluepair (kvp)
-            // where the id is the key and cropCount the value.
-            foreach (var kvp in ids.Zip(counts, (id, count) => new KeyValuePair<int, int>(id, count)))
-            {
-                var action = _db.FarmingActions.Find(kvp.Key);
-                if (action == null) 
-                    throw new ArgumentException("Cannot find primary key in database.", "ids");
-
-                var oldCropCount = action.CropCount;
-                var newCropCount = kvp.Value;
-
-                if (oldCropCount == newCropCount) continue;
-
-                // TODO:    Implement logic to update all related farming actions.
-                // AKA:     The super calculation.
-
-                // Update one crop count of a farming action in the database.
-                action.CropCount = kvp.Value;
-                _db.SetModified(action);
-                _db.SaveChanges();
-
-            }
-        }
-
 	}
 }

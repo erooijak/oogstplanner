@@ -9,24 +9,24 @@ using Zk.Controllers;
 
 namespace Zk.Tests
 {
-	[TestFixture]
-	public class HomeControllerTest
-	{
-		[Test]
-		public void Index ()
-		{
-			// Arrange
-			var controller = new HomeController ();
+    [TestFixture]
+    public class HomeControllerTest
+    {
+        [Test]
+        public void Controllers_Home_Index()
+        {
+            // Arrange
+            var controller = new HomeController();
 
-			// Act
-			var result = (ViewResult)controller.Index ();
+            // Act
+            var result = (ViewResult)controller.Index();
 
-			const string expectedVersion = "4.0";
-			const string expectedRuntime = "Mono";
+            const string expectedVersion = "4.0";
+            const string expectedRuntime = "Mono";
 
-			// Assert
-			Assert.AreEqual (expectedVersion, result.ViewData ["Version"]);
-			Assert.AreEqual (expectedRuntime, result.ViewData ["Runtime"]);
-		}
-	}
+            // Assert
+            Assert.AreEqual(expectedVersion, result.ViewData["Version"]);
+            Assert.AreEqual(expectedRuntime, result.ViewData["Runtime"]);
+        }
+    }
 }

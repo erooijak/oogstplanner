@@ -81,8 +81,8 @@
     <Compile Include="Fakes\FakeCropSet.cs" />
     <Compile Include="Fakes\FakeDbSet.cs" />
     <Compile Include="Fakes\FakeZkContext.cs" />
-    <Compile Include="Controllers\UpdateCropCountsTest.cs" />
     <Compile Include="Fakes\FakeFarmingActionSet.cs" />
+    <Compile Include="Managers\FarmingActionManagerTest.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -91,5 +91,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Fakes\" />
+    <Folder Include="Managers\" />
   </ItemGroup>
 </Project>

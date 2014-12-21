@@ -92,6 +92,7 @@
     <Folder Include="App_Data\Migrations\" />
     <Folder Include="Helpers\" />
     <Folder Include="ViewModels\" />
+    <Folder Include="BusinessLogic\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\HomeController.cs" />
@@ -111,6 +112,8 @@
     <Compile Include="Controllers\FarmingActionController.cs" />
     <Compile Include="Helpers\UrlHelperExtension.cs" />
     <Compile Include="ViewModels\FarmingMonthViewModel.cs" />
+    <Compile Include="BusinessLogic\FarmingActionManager.cs" />
+    <Compile Include="BusinessLogic\CropManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Web.config" />

@@ -1,4 +1,6 @@
 ﻿using NUnit.Framework;
+
+using Zk.BusinessLogic;
 using Zk.Models;
 using Zk.Repositories;
 using Zk.Tests.Fakes;
@@ -7,10 +9,10 @@ using System.Collections.Generic;
 namespace Zk.Tests
 {
 	[TestFixture]
-	public class UpdateCropCountsTest
+	public class FarmingActionManagerTest
 	{
-        // Unit testing the repository...
-        Repository _repo;
+    
+        FarmingActionManager _manager;
         FakeZkContext _db;
 
         [TestFixtureSetUp]
@@ -39,22 +41,24 @@ namespace Zk.Tests
                 }
             };
 
-            _repo = new Repository(_db);
+            var repo = new Repository(_db);
+
+            _manager = new FarmingActionManager(repo);
         }
 
-		[Test]
-		public void CorrectCropIsUpdated()
-		{
+        [Test]
+        public void CorrectCropIsUpdated()
+        {
 			// Arrange
             var cropIds = new List<int> { 1 };
             var cropCounts = new List<int> { 1 };
 
 			// Act
-            _repo.UpdateCropCounts(cropIds, cropCounts);
+            _manager.UpdateCropCounts(cropIds, cropCounts);
 
 			// Assert
             Assert.AreEqual(1, _db.FarmingActions.Find(1).CropCount,
-                "CropCount should be updated to 1");
-		}
-	}
+                "CropCount should be updated to 1 since the crop id with one has a count of one.");
+        }
+    }
 }

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Zk
+namespace Zk.Models
 {
 	public class User
 	{
