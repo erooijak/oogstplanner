@@ -1,3 +1,8 @@
+-- PostgreSQL 8 create user database for role provider
+
+CREATE DATABASE "ZkTestUsersDatabase" OWNER zktest;
+GRANT ALL PRIVILEGES ON DATABASE "ZkTestUsersDatabase" TO zktest;
+
 -- PostgreSQL 8 Membership Provider Schema
 
 CREATE TABLE "Users" (

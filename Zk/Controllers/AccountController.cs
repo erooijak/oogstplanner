@@ -43,25 +43,67 @@ namespace SeashellBrawlCorvee.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Login(LoginModel model, string returnUrl)
         {
-
-            if (ModelState.IsValid && WebSecurity.Login(model.UserName, model.Password, persistCookie: model.RememberMe))
+            if (ModelState.IsValid)
             {
-                return RedirectToLocal(returnUrl);
+                if (Membership.ValidateUser(model.UserName, model.Password))
+                {
+                    FormsAuthentication.SetAuthCookie(model.UserName, model.RememberMe);
+                    if (Url.IsLocalUrl(returnUrl))
+                    {
+                        return Redirect(returnUrl);
+                    }
+                    else
+                    {
+                        return RedirectToAction("Index", "Home");
+                    }
+                }
+                else
+                {
+                    // If we got this far, something failed, redisplay form
+                    ModelState.AddModelError("", "De gebruikersnaam of het wachtwoord is incorrect.");
+                }
             }
-
-            // If we got this far, something failed, redisplay form
-            ModelState.AddModelError("", "De gebruikersnaam of het wachtwoord is incorrect.");
-            ModelState.AddModelError("", "Letop: Sogyo medewerkers loggen in via Google -->");
-
             return View(model);
         }
 
+        //
+        // GET: /Account/Register
+        [AllowAnonymous]
+        public ActionResult Register()
+        {
+            return View();
+        }
+
+        [AllowAnonymous]
+        [HttpPost]
+        public ActionResult Register(RegisterModel model)
+        {           
+            if (ModelState.IsValid)
+            {
+                MembershipCreateStatus status;
+
+                MembershipUser membershipUser = (Membership.Provider).CreateUser(
+                    model.UserName, model.Password, model.Email, null, null, true, null, out status);
+
+                if (membershipUser != null)
+                {
+                    FormsAuthentication.SetAuthCookie(model.UserName, false);
+                    return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Registratie fout.");
+                }
+            }
+            return View(model);
+        }
+       
         //
         // GET: /Account/LogOff
 
         public ActionResult LogOff()
         {
-            WebSecurity.Logout();
+            FormsAuthentication.SignOut();
 
             return RedirectToAction("Index", "Home");
         }
