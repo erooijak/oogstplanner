@@ -41,6 +41,7 @@ TODO Integratie webshop
 User Interface (View)
 IN PROGRESS User interface
 TODO Direct meeveranderen van zaaien/oogsten op basis van input (JavaScript/jQuery)
+TODO Code van de view weghalen naar models en controllers
 
 Extra info:
 11 november ging 90-dagen licentie in voor Xamarin.
