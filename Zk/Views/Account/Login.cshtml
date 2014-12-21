@@ -1,0 +1,47 @@
+﻿@model LoginModel
+
+@{
+    ViewBag.Title = "Inloggen";
+}
+<div class="row">
+    <div class="col-lg-6">
+        <section class="form-signin">
+            @if(ViewData.ModelState.ContainsKey("registration")){ @ViewData.ModelState["registration"].Errors.First().ErrorMessage; }
+            <h3 class="form-signin-heading">Google login:
+            @Html.Action("ExternalLoginsList", new { ReturnUrl = ViewBag.ReturnUrl }) </h3>
+
+        </section>
+    </div>
+    <div class="col-lg-6">
+        <section class="form-signin">
+            <h3 class="form-signin-heading">Zaaikalender account:</h3>
+            @using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+
+                <ol class="nav">
+                    <li>
+                        @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", @placeholder = "Gebruikersnaam" })
+                        @Html.ValidationMessageFor(m => m.UserName)
+                    </li>
+                    <li style="margin-top: 5px">
+                        @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Wachtwoord" })
+                        @Html.ValidationMessageFor(m => m.Password)
+                    </li>
+                    <li style="margin-top: 5px">
+                       <div class="row">
+                            <div class="col-lg-1">
+                            @Html.CheckBoxFor(m => m.RememberMe, new { @class = "checkbox" })
+                        </div>
+                           <div class="col-lg-6">
+                            @Html.LabelFor(m => m.RememberMe)
+                            </div>
+                     </div>
+                    </li>
+                </ol>   
+                <button class="btn btn-block btn-sogyo" style="margin-top: 5px" type="submit">Inloggen </button>
+            }
+        </section>
+    </div>
+</div>

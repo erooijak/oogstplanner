@@ -1,0 +1,36 @@
+﻿@model RegisterModel
+@{
+    ViewBag.Title = "Registreer een gast";
+}
+
+<div class="floatLeft">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary()
+
+        <fieldset>
+            <legend>@ViewBag.Title</legend>
+                <div class="editor-field" style="margin-top: 5px">
+                    @Html.TextBoxFor(m => m.FullName, new { @class = "form-control", @placeholder = "Volledige naam", @AutoComplete ="off" } )
+                </div>
+                <div class="editor-field" style="margin-top: 5px">
+                    @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", @placeholder = "Gebruikersnaam", @Autocomplete = "off" } )
+                </div>
+                <div class="editor-field" style="margin-top: 5px">
+                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @placeholder = "E-mail ", @AutoComplete ="off"})
+                </div>
+                <div class="editor-field" style="margin-top: 5px">
+                    @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Wachtwoord", @AutoComplete ="off"})
+                </div>
+                <div class="editor-field" style="margin-top: 5px">
+                    @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", @placeholder = "Bevestig wachtwoord", @AutoComplete ="off"})
+                </div>
+
+          
+            <button class="btn btn-block btn-sogyo" style="margin-top: 5px" type="submit">Registreer </button>
+        </fieldset>
+        <br />
+        <br />
+    }
+</div>

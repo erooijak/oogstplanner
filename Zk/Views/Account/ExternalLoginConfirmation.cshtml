@@ -1,0 +1,36 @@
+﻿@model RegisterExternalLoginModel
+@{
+    ViewBag.Title = "Registreren";
+}
+
+
+<h1>@ViewBag.Title.</h1>
+<h2>Associeer uw @ViewBag.ProviderDisplayName gebruikersprofiel.</h2>
+
+<div class="floatLeft">
+    <section class="form-signin">
+
+        @using (Html.BeginForm("ExternalLoginConfirmation", "Account", new { ReturnUrl = ViewBag.ReturnUrl }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+
+
+            <p>
+                U bent succesvol geauthenticeerd met <strong>@ViewBag.ProviderDisplayName</strong>.
+            Vult u hieronder alstublieft uw volledige naam in en klik op bevestigen
+            om het inloggen af te ronden.
+
+            </p>
+            <div class="nav">
+                @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", @placeholder = "Volledige naam" })
+                @Html.ValidationMessageFor(m => m.UserName)
+            </div>
+
+            @Html.HiddenFor(m => m.ExternalLoginData)
+            <button class="btn btn-sogyo" style="margin-top: 5px; margin-bottom:10px;" type="submit">Registreer</button>
+            <br />
+        }
+
+    </section>
+</div>

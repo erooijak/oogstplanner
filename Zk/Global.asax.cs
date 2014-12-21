@@ -1,15 +1,22 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+using System.Threading;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Optimization;
 using System.Web.Routing;
+using WebMatrix.WebData;
+using Zk.Models;
 
 namespace Zk
 {
-	public class MvcApplication : System.Web.HttpApplication
+	public class MvcApplication : HttpApplication
 	{
-		public static void RegisterRoutes (RouteCollection routes)
+
+        static SimpleMembershipInitializer _initializer;
+        static object _initializerLock = new object();
+        static bool _isInitialized;
+
+		public static void RegisterRoutes(RouteCollection routes)
 		{
 			routes.IgnoreRoute ("{resource}.axd/{*pathInfo}");
 
@@ -21,16 +28,31 @@ namespace Zk
 
 		}
 
-		public static void RegisterGlobalFilters(GlobalFilterCollection filters)
-		{
-			filters.Add(new HandleErrorAttribute ());
-		}
 
-		protected void Application_Start ()
+		protected void Application_Start()
 		{
-			AreaRegistration.RegisterAllAreas ();
-			RegisterGlobalFilters(GlobalFilters.Filters);
-			RegisterRoutes(RouteTable.Routes);
+            //LazyInitializer.EnsureInitialized(ref _initializer, ref _isInitialized, ref _initializerLock);
+            if (!WebSecurity.Initialized)
+            {
+                WebSecurity.InitializeDatabaseConnection("ZkTestDatabaseConnection", "Users", "UserId", "Name", autoCreateTables: true);
+            }
+
+			AreaRegistration.RegisterAllAreas();
+
+            FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
+            RouteConfig.RegisterRoutes(RouteTable.Routes);
+            BundleConfig.RegisterBundles(BundleTable.Bundles);
+            AuthConfig.RegisterAuth();
+
 		}
 	}
+
+    public class SimpleMembershipInitializer
+    {
+        public SimpleMembershipInitializer()
+        {
+            if (!WebSecurity.Initialized)
+                WebSecurity.InitializeDatabaseConnection("ZkTestDatabaseConnection", "Users", "UserId", "Name", autoCreateTables: true);
+        }
+    }
 }

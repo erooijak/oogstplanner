@@ -1,0 +1,14 @@
+﻿@model ICollection<AuthenticationClientData>
+
+@using (Html.BeginForm("ExternalLogin", "Account", new { ReturnUrl = ViewBag.ReturnUrl }))
+{
+@Html.AntiForgeryToken()
+    <p>
+    @foreach (AuthenticationClientData p in Model)
+    {
+        <br />
+        <button class="btn btn-block btn-sogyo" type="submit" name="provider" value="@p.AuthenticationClient.ProviderName" title="Inloggen met uw @p.DisplayName account">@p.DisplayName</button>
+
+    }
+</p>
+}

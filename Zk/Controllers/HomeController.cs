@@ -3,9 +3,9 @@ using System.Web.Mvc;
 
 namespace Zk.Controllers
 {
+    [Authorize]
 	public class HomeController : Controller
 	{
-
 		public ActionResult Index ()
 		{
 			var mvcName = typeof(Controller).Assembly.GetName ();
