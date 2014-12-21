@@ -13,30 +13,18 @@ namespace Zk.Controllers
     {
         readonly FarmingActionManager _manager;
 
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="Controllers.FarmingActionController"/> class.
-        /// </summary>
         public FarmingActionController()
         {
             _manager = new FarmingActionManager();
         }
 
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="Controllers.FarmingActionController"/> class which
-        ///     can make use of a "Fake" Entity Framework context in the repo of the manager for unit testing purposes.
-        /// </summary>
-        /// <param name="manager">Manager.</param>
         public FarmingActionController(FarmingActionManager manager)
         {
             _manager = manager;
         }
-
-        /// <summary>
-        ///     GET: /Edit/{month}
-        ///     Returns the farming actions of the month.
-        /// </summary>
-        /// <returns></returns>
-        /// <param name="month">Requested month.</param>
+            
+        // GET: /Edit/{month}
+        // Returns the farming actions of the month.
         public ActionResult Edit(Month month)
         {
             var farmingMonthViewModel = GetFarmingMonthViewModel(month);

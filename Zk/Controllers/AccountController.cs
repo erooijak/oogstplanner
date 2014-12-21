@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Web.Mvc;
 using System.Web.Security;
 using Microsoft.Web.WebPages.OAuth;
@@ -30,8 +29,9 @@ namespace Zk.Controllers
         //
         // GET: /Account/Login
         [AllowAnonymous]
-        public ActionResult Login()
+        public ActionResult Login(string returnUrl)
         {
+            ViewBag.ReturnUrl = returnUrl;
             return View();
         }
 
@@ -73,6 +73,8 @@ namespace Zk.Controllers
             return View();
         }
 
+        //
+        // POST: /Account/Register/
         [AllowAnonymous]
         [HttpPost]
         public ActionResult Register(RegisterModel model)
@@ -101,7 +103,6 @@ namespace Zk.Controllers
        
         //
         // GET: /Account/LogOff
-
         public ActionResult LogOff()
         {
             FormsAuthentication.SignOut();
@@ -109,6 +110,7 @@ namespace Zk.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+        //
         // GET: /Account
         public ActionResult Index()
         {

@@ -6,8 +6,11 @@ DONE Database connectie leggen.
 TODO Deployment omgeving regelen.
 
 Autorisatie:
+DONE Forms authenticatie
+IN PROGRESS Inlogscherm
+TODO Gmail authenticatie
+TODO Return url verwijderen (?)
 TODO Gebruiker kan inloggen en agenda hoort bij hem.
-TODO Inlogscherm
 TODO Profiel maken gebruiker
 
 DONE Datamodel (Model)
@@ -17,7 +20,8 @@ TODO Uitzoeken kilogrammen en grondtypes (FutDev)
 TODO Bepalen groeitijd keukenkruiden, groenbemesters en kiemgroenten
 
 Business logic (Controllers)
-IN PROGRESS JSON van zaai- en oogstmaand naar view en vice versa
+DONE van zaai- en oogstmaand naar view en vice versa
+DONE 'echte' businesslogic laag toegevoegd met managers.
 TODO Pseudo code voor berekeningen
 TODO Pseudo code naar echte code
 TODO Error handling

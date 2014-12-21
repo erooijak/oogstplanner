@@ -77,20 +77,17 @@ namespace Zk.Repositories
 
         public void AddUser(string userName, string fullName, string email)
         {
-            // Not necessary to check if userprofile already exists since forms does this for us.
+            // Note: it is not necessary to check if userprofile already exists since membership provider 
+            // does this for us.
 
-            //if (!_db.Users.Any(u => u.Name.ToLower() == userName)) {
+            var user = new User {
+                Name = userName,
+                FullName = fullName,
+                Email = email
+            };
 
-                // Else insert into the profile table
-                var user = new User {
-                    Name = userName,
-                    FullName = fullName,
-                    Email = email
-                };
-
-                _db.Users.Add(user);
-                _db.SaveChanges();
-            //}
+            _db.Users.Add(user);
+            _db.SaveChanges();
 
         }
 
