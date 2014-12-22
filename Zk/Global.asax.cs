@@ -69,13 +69,5 @@ namespace Zk
         } 
 
 	}
-
-    public class SimpleMembershipInitializer
-    {
-        public SimpleMembershipInitializer()
-        {
-            if (!WebSecurity.Initialized)
-                WebSecurity.InitializeDatabaseConnection("ZkTestDatabaseConnection", "Users", "UserId", "Name", autoCreateTables: true);
-        }
-    }
+        
 }
