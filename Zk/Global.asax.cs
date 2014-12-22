@@ -14,10 +14,6 @@ namespace Zk
 	public class MvcApplication : HttpApplication
 	{
 
-        static SimpleMembershipInitializer _initializer;
-        static object _initializerLock = new object();
-        static bool _isInitialized;
-
 		public static void RegisterRoutes(RouteCollection routes)
 		{
 			routes.IgnoreRoute ("{resource}.axd/{*pathInfo}");
@@ -29,11 +25,9 @@ namespace Zk
 			);
 
 		}
-
-
+            
 		protected void Application_Start()
 		{
-            //LazyInitializer.EnsureInitialized(ref _initializer, ref _isInitialized, ref _initializerLock);
             if (!WebSecurity.Initialized)
             {
                 WebSecurity.InitializeDatabaseConnection("ZkTestDatabaseConnection", "Users", "UserId", "Name", autoCreateTables: true);
