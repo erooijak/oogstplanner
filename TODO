@@ -7,9 +7,9 @@ TODO Deployment omgeving regelen.
 
 Autorisatie:
 DONE Forms authenticatie
+DONE Return url verwijderen (?)
 IN PROGRESS Inlogscherm
 TODO Gmail authenticatie
-TODO Return url verwijderen (?)
 TODO Gebruiker kan inloggen en agenda hoort bij hem.
 TODO Profiel maken gebruiker
 TODO Wachtworod reset
