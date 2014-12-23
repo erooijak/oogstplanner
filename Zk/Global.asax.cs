@@ -42,32 +42,6 @@ namespace Zk
 
 		}
 
-        void Application_AuthenticateRequest(object sender, EventArgs e)
-        {
-            string cookieName = FormsAuthentication.FormsCookieName;
-            HttpCookie authCookie = Context.Request.Cookies[cookieName];
-            if (authCookie == null)
-            {
-                /*
-                 There is no authentication cookie. User is not authenticated.
-
-                 Instead of using asp.net built in redirect with the returnUrl querystring,
-                 this will redirect user to login.aspx.
-                 This is done so the URL looks cleaner ("/Account/Login" instead of
-                 "/Account/Login?ReturnUrl=[gibberish]/").
-                 The url of the current page will be checked to prevent the user from
-                 being redirected to index.aspx again when redirected to index.aspx in
-                 the first place.
-                */
-                string[] url = Request.RawUrl.Split('?');
-                if (url[0] != "/Account/Login")
-                {
-                    Response.Redirect("/Account/Login");
-                    return;
-                }   
-            }
-        } 
-
 	}
         
 }
