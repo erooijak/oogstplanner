@@ -56,6 +56,8 @@ namespace Zk.BusinessLogic
                 action.CropCount = kvp.Value;
                 _repository.Update(action);
             }
+
+            _repository.SaveChanges();
         }
 
     }

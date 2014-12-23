@@ -9,7 +9,7 @@ using Zk.Models;
 namespace Zk.Repositories
 {
 	/// <summary>
-	///     Repository used for methods that access the database ... and some business logic.
+	///     Repository used for methods that access the database.
 	/// </summary>
 	public class Repository
 	{
@@ -37,6 +37,11 @@ namespace Zk.Repositories
         public void Update(object entity)
         {
             _db.SetModified(entity);
+        }
+
+        // A "leaky abstraction", why not use context directly?
+        public void SaveChanges()
+        {
             _db.SaveChanges();
         }
 			
