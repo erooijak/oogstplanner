@@ -2,7 +2,7 @@
 
 namespace Zk
 {
-    public class FilterConfig
+    static class FilterConfig
     {
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {

@@ -4,7 +4,7 @@ using DotNetOpenAuth.GoogleOAuth2;
 
 namespace Zk
 {
-    public static class AuthConfig
+    static class AuthConfig
     {
         public static void RegisterAuth()
         {
