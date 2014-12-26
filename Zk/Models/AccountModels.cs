@@ -36,10 +36,10 @@ namespace Zk.Models
     public class LoginModel
     {
         [Required(ErrorMessage = "*")]
-        [Display(Name = "Naam")]
+        [Display(Name = "Gebruikersnaam")]
         public string UserName { get; set; }
 
-        [Required(ErrorMessage = "Wachtwoord is vereist.")]
+        [Required(ErrorMessage = "*")]
         [DataType(DataType.Password)]
         [Display(Name = "Wachtwoord")]
         public string Password { get; set; }
@@ -50,28 +50,24 @@ namespace Zk.Models
 
     public class RegisterModel
     {
-        [Required(ErrorMessage = "*")]
-        [Display(Name = "Volledige Naam")]
+        [Required(ErrorMessage = "Naam is verplicht.")]
+        [Display(Name = "Naam")]
         public string FullName { get; set; }
 
-        [Required(ErrorMessage = "*")]
+        [Required(ErrorMessage = "Gebruikersnaam is verplicht.")]
         [Display(Name = "Gebruikersnaam")]
         public string UserName { get; set; }
 
-        [Required(ErrorMessage = "*")]
+        [Required(ErrorMessage = "E-mailadres is verplicht.")]
         [Display(Name = "E-mailadres")]
         public string Email { get; set; }
 
-        [Required(ErrorMessage = "*")]
+        [Required(ErrorMessage = "Wachtwoord is verplicht.")]
         [StringLength(100, ErrorMessage = "Het {0} moet op zijn minst {2} tekens lang zijn.", MinimumLength = 6)]
         [DataType(DataType.Password)]
-        [Display(Name = "wachtwoord")]
+        [Display(Name = "Wachtwoord")]
         public string Password { get; set; }
 
-        [DataType(DataType.Password)]
-        [Display(Name = "Bevestig wachtwoord")]
-        [Compare("Password", ErrorMessage = "De twee wachtwoorden komen niet overeen.")]
-        public string ConfirmPassword { get; set; }
     }
 
     public class ExternalLogin

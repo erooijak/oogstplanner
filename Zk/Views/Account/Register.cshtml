@@ -1,36 +1,86 @@
 ﻿@model RegisterModel
+
 @{
     ViewBag.Title = "Registreer je vandaag bij de Zaaikalender";
 }
 
-<div class="floatLeft">
-    @using (Html.BeginForm())
-    {
-        @Html.AntiForgeryToken()
-        @Html.ValidationSummary()
+<div class="flowtype-area">
 
-        <fieldset>
-            <legend>@ViewBag.Title</legend>
-                <div class="editor-field" style="margin-top: 5px">
-                    @Html.TextBoxFor(m => m.FullName, new { @class = "form-control", @placeholder = "Volledige naam", @AutoComplete ="off" } )
-                </div>
-                <div class="editor-field" style="margin-top: 5px">
-                    @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", @placeholder = "Gebruikersnaam", @Autocomplete = "off" } )
-                </div>
-                <div class="editor-field" style="margin-top: 5px">
-                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @placeholder = "E-mail ", @AutoComplete ="off"})
-                </div>
-                <div class="editor-field" style="margin-top: 5px">
-                    @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Wachtwoord", @AutoComplete ="off"})
-                </div>
-                <div class="editor-field" style="margin-top: 5px">
-                    @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", @placeholder = "Bevestig wachtwoord", @AutoComplete ="off"})
-                </div>
+<!-- START RESPONSIVE RECTANGLE LAYOUT -->
 
-          
-            <button class="btn btn-block btn-sogyo" style="margin-top: 5px" type="submit">Registreer </button>
-        </fieldset>
-        <br />
-        <br />
-    }
+<!-- Top bar -->
+<div id="top">
+    <h1>Zaaikalender</h1>
 </div>
+
+<!-- Fixed main screen -->
+<div id="login" class="bg imglogin">
+   
+    <!-- Signup box inspired by http://bootsnipp.com/snippets/featured/login-amp-signup-forms-in-panel -->
+    <div id="signupbox" style="padding: 3.5%; font-size: 12px;" class="mainbox col-md-6 col-sm-6 col-xs-6">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <div class="panel-title">Registreer je vandaag bij de Zaaikalender</div>
+                <div style="float:right; font-size: 85%; position: relative; top:-10px">
+                    <a id="signinlink" href="Login">Inloggen</a>
+                </div>
+            </div>  
+            <div class="panel-body" style="padding-top: 30px;">
+
+                @using (Html.BeginForm("Register", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class="form-horizontal", @role="form"}))
+                {
+                    @Html.AntiForgeryToken() 
+                    @Html.ValidationSummary()  
+
+                    <div class="form-group">
+                        <div class="col-md-3" style="color: black;">
+                            @Html.LabelFor(m => m.FullName)
+                        </div>
+                        <div class="col-md-9">
+                            @Html.TextBoxFor(m => m.FullName, new { @class = "form-control", @placeholder = "Volledige naam", @AutoComplete ="off" } )
+                        </div>
+                    </div>
+                        
+                    <div class="form-group">
+                        <div class="col-md-3" style="color: black;">
+                            @Html.LabelFor(m => m.UserName)
+                        </div>
+                        <div class="col-md-9">
+                            @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", @placeholder = "Gebruikersnaam", @Autocomplete = "off" } )
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-3" style="color: black;">
+                            @Html.LabelFor(m => m.Email)
+                        </div>
+                        <div class="col-md-9">
+                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @placeholder = "E-mail ", @AutoComplete ="off"})
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-3" style="color: black;">
+                            @Html.LabelFor(m => m.Password)
+                        </div>
+                        <div class="col-md-9">
+                            @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Wachtwoord", @AutoComplete ="off"})
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <!-- Button -->                                        
+                        <div class="col-md-offset-3 col-md-9">
+                            <button type="submit" class="btn btn-info"><i class="icon-hand-right"></i> &nbsp Registreer</button>
+                        </div>
+                    </div>
+                        
+                }
+
+             </div><!-- End panel body -->
+        </div><!-- End panel -->
+    </div><!-- End signup box -->
+
+</div><!-- End main login div -->
+
+<!-- END RESPONSIVE RECTANGLES LAYOUT -->
+
+</div><!-- End flowtype-area -->

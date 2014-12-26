@@ -14,6 +14,18 @@
         $('#_FarmingMonth').html(data);
     },
 
+    resizeLoginArea: function() {
+        
+        var windowHeight = $(window).innerHeight();
+        var topHeight = $('#top').innerHeight();
+        var padding = windowHeight * 0.025;
+
+        $('#login').css({ 
+            height: windowHeight - topHeight - padding
+        });
+
+    },
+
     // Helper functions:
     capitaliseFirstLetter: function(string) {
         return string.charAt(0).toUpperCase() + string.slice(1);

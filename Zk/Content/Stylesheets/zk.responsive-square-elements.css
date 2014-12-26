@@ -1,14 +1,15 @@
 ﻿/* Responsive square elements stylesheet is adjusted from http://jsfiddle.net/webtiki/MpXYr/3/light/ which was designed by http://web-tiki.com/ */
 
 #top {
-    clear: both;
+    width: 99.5%;
     margin: 0.25%;
-    width: 99.5%%;
-    padding: 0.1%;
-    background-color: #000;
+    background: #000;
+    float: left;
+    clear: both;
+    display: block;
     color: #fff;
+    text-align: center;
 }
-
 .top-bar-tiny {
     float: left;
     position: relative;
@@ -18,15 +19,14 @@
     background-color: #000;
     overflow: hidden;
 }
-#login-screen {
-    float: left;
-    position: relative;
-    height: 99.5%;
+#login {
     width: 99.5%;
-    padding-bottom: 50%;
     margin: 0.25%;
-    overflow: hidden;
-    background-color: #1E1E1E;
+    float: left;
+    clear: both;
+    display: block;
+    color: #fff;
+    text-align: center;
 }
 .square {
     float: left;
@@ -202,7 +202,7 @@ li {
     opacity: 0.05;
 }
 
-/* Login screen background */
-.imgloginscreen {
-    background-image: url('../Images/permaculture-kitchen-garden.jpg');
+/* Login area background */
+.imglogin {
+    background-image: url('../Images/suvajack-design.jpg');
 }

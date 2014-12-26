@@ -4,11 +4,13 @@
 
 body {
     font-family: 'Lato',verdana, sans-serif;
-    font-size: 20px;
     color: #fff;
     text-align: center;
     background: #ECECEC;
     margin: 0;
+}
+.jumbotron {
+    background: rgba(0, 0, 0, 0.5);
 }
 p {
     margin: 0;

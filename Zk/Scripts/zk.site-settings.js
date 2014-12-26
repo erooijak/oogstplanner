@@ -1,6 +1,6 @@
 ﻿$(function() {
 
-	/* Using flowtype.js to adjust the size of the names of the seasons and months */
+	/* Using flowtype.js to adjust the size of the fonts */
     $('.flowtype-area').flowtype({
        minimum   : 200,
        maximum   : 1200,
@@ -9,6 +9,13 @@
        fontRatio : 30
     });
 
+    /* Keep login screen full width initially and on resize */
+    zk.resizeLoginArea();
+    $(window).resize(function() {
+        zk.resizeLoginArea();
+    });
+
+    /* Initialize fullPage.js sliders */
     $('.container').fullpage({
 
         // Scrolling

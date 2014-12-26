@@ -40,8 +40,10 @@ namespace Zk.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public ActionResult Login(LoginModel model, string returnUrl)
+        public ActionResult Login(LoginOrRegisterViewModel viewModel, string returnUrl)
         {
+            var model = viewModel.Login;
+
             if (ModelState.IsValid)
             {
                 if (Membership.ValidateUser(model.UserName, model.Password))
@@ -62,7 +64,8 @@ namespace Zk.Controllers
                     ModelState.AddModelError("", "De gebruikersnaam of het wachtwoord is incorrect.");
                 }
             }
-            return View(model);
+                
+            return View(viewModel);
         }
 
         //
@@ -77,8 +80,10 @@ namespace Zk.Controllers
         // POST: /Account/Register/
         [AllowAnonymous]
         [HttpPost]
-        public ActionResult Register(RegisterModel model)
+        public ActionResult Register(LoginOrRegisterViewModel viewModel)
         {           
+            var model = viewModel.Register;
+
             if (ModelState.IsValid)
             {
                 MembershipCreateStatus status;
@@ -98,6 +103,7 @@ namespace Zk.Controllers
                     ModelState.AddModelError("registration", ErrorCodeToString(status));
                 }
             }
+
             return View(model);
         }
        
