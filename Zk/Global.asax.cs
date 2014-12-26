@@ -25,31 +25,6 @@ namespace Zk
             );
 
         }
-            
-        /* Return to cleaner URL, cannot be used with external logins */
-        void Application_AuthenticateRequest(object sender, EventArgs e)
-        {
-            var cookieName = FormsAuthentication.FormsCookieName;
-            var authCookie = Context.Request.Cookies[cookieName];
-            if (authCookie == null)
-            {
-                /*
-                 There is no authentication cookie. User is not authenticated.
-
-                 Instead of using asp.net built in redirect with the returnUrl querystring,
-                 this will redirect user to login.aspx.
-                 The url of the current page will be checked to prevent the user from
-                 being redirected to index.cshtml again when redirected to index.cshtml in
-                 the first place.
-                */
-                var url = Request.RawUrl.Split('?')[0];
-                if (url != "/Account/Login")
-                {
-                    Response.Redirect("/Account/Login");
-                    return;
-                }   
-            }
-        } 
 
         protected void Application_Start()
         {

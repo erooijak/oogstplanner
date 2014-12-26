@@ -24,9 +24,9 @@ namespace Zk
             //    appSecret: "5a067c318bc027d61a3eda51c6b86c25");
            
             //OAuthWebSecurity.RegisterGoogleClient();
-            var client = new GoogleOAuth2Client("664967518482-ungm4iiv4hufbfkdir6uueqh7ueubpl2.apps.googleusercontent.com", "9ofXNqX_fu4u20ly8L5UXsDR");
-            var extraData = new Dictionary<string, object>();
-            OAuthWebSecurity.RegisterClient(client, "Google", extraData);
+            //var client = new GoogleOAuth2Client("664967518482-ungm4iiv4hufbfkdir6uueqh7ueubpl2.apps.googleusercontent.com", "9ofXNqX_fu4u20ly8L5UXsDR");
+            //var extraData = new Dictionary<string, object>();
+            //OAuthWebSecurity.RegisterClient(client, "Google", extraData);
         }
     }
 }

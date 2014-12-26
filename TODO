@@ -43,6 +43,8 @@ User Interface (View)
 IN PROGRESS User interface
 TODO Direct meeveranderen van zaaien/oogsten op basis van input (JavaScript/jQuery)
 TODO Code van de view weghalen naar models en controllers
+TODO Minder grote bovenkant
+TODO Web-tiki vragen tot doen van verbeteringen middels pull-request
 
 Extra info:
 11 november ging 90-dagen licentie in voor Xamarin.
@@ -79,4 +81,19 @@ Oogsten ingevuld. O1 - Z1 = 2 (groeitijd). Resulteert in zaaien is O1 - 2.
 
 Zaaien = Min (oogstmaand - groeitijd, max(zaaimaanden))
 
+Login schermen:
 
+Registreren:
+Volledige naam
+E-mail
+Wachtwoord
+
+=> Neem de velden mee naar volgende scherm, met validaties:
+Volledige naam
+E-mail
+Wachtwoord
+Gebruikersnaam erbij.
+
+Inloggen:
+E-mail 
+Wachtwoord

@@ -1,7 +1,7 @@
 ﻿$(function() {
 
 	/* Using flowtype.js to adjust the size of the names of the seasons and months */
-    $('.slide').flowtype({
+    $('.flowtype-area').flowtype({
        minimum   : 200,
        maximum   : 1200,
        minFont   : 12,

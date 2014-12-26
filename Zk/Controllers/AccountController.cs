@@ -83,7 +83,7 @@ namespace Zk.Controllers
             {
                 MembershipCreateStatus status;
 
-                MembershipUser membershipUser = (Membership.Provider).CreateUser(
+                (Membership.Provider).CreateUser(
                     model.UserName, model.Password, model.Email, null, null, true, null, out status);
 
                 if (status == MembershipCreateStatus.Success)

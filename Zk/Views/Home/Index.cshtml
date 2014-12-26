@@ -1,5 +1,5 @@
 ﻿<div id="main">
-    <div class="slide">
+    <div class="slide flowtype-area">
 @{ 
     ViewBag.Title = "Home";
 
@@ -22,15 +22,8 @@
 
     // START RESPONSIVE GRID LAYOUT
 
-    // Top bar
-    <div class="top-bar">
-        <div class="rectangle-content">
-            <div class="table">
-                <div class="table-cell header">
-                    <h1>Zaaikalender</h1>
-                </div>
-            </div>
-        </div>
+    <div id="top">
+        <h1>Zaaikalender</h1>
     </div>
 
     // Row of rectangles for the seasons
@@ -80,6 +73,6 @@
 
     <!-- Slide for editing and viewing a specific month
          Partial view data with farming actions is loaded here. -->
-    <div class="slide" id="_FarmingMonth"></div>
+    <div class="slide flowtype-area" id="_FarmingMonth"></div>
 
 </div><!-- End of fullPage.js main page -->
