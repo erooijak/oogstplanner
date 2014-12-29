@@ -8,11 +8,12 @@ TODO Deployment omgeving regelen.
 Autorisatie:
 DONE Forms authenticatie
 DONE Return url verwijderen (moet weg met externe login)
+DONE Inlogscherm
 TODO Gmail/Facebook (?) authenticatie
-IN PROGRESS Inlogscherm
+TODO Inloggen gebruikersnaam of e-mailadres
 TODO Gebruiker kan inloggen en agenda hoort bij hem.
 TODO Profiel maken gebruiker
-TODO Wachtworod reset
+TODO Wachtwoord reset
 
 DONE Datamodel (Model)
 DONE Datamodel relaties inbouwen (foreign keys)
@@ -40,12 +41,13 @@ Extra's
 TODO Integratie webshop
 
 User Interface (View)
+DONE Minder grote bovenkant
+DONE Kleurtjes bij foute invoer.
 IN PROGRESS User interface
+TODO Indien register form groter is pagina langer maken plus wat pixels in zk.resizeLoginArea().
 TODO Direct meeveranderen van zaaien/oogsten op basis van input (JavaScript/jQuery)
-TODO Code van de view weghalen naar models en controllers
-TODO Minder grote bovenkant
+TODO Maanden-code van de view verplaatsen naar models en controllers
 TODO Web-tiki vragen tot doen van verbeteringen middels pull-request
-TODO Kleurtjes bij foute invoer.
 
 Extra info:
 11 november ging 90-dagen licentie in voor Xamarin.
