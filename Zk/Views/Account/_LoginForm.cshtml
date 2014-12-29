@@ -1,0 +1,47 @@
+﻿@model LoginOrRegisterViewModel
+
+@using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class="form-horizontal", @role="form"}))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <div style="margin-bottom: 25px" class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>                                   
+        <span>
+            @Html.TextBoxFor(vm => vm.Login.UserName, new { @class = "form-control", @placeholder = "Gebruikersnaam of e-mailadres" })
+        </span>
+    </div>
+
+    <div style="margin-bottom: 25px" class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+        @Html.PasswordFor(vm => vm.Login.Password, new { @class = "form-control", @placeholder = "Wachtwoord" })
+    </div>
+   
+    <div class="input-group">
+        <div class="checkbox">
+            <label style="color: black;">
+                @Html.CheckBoxFor(vm => vm.Login.RememberMe, new { @class = "checkbox", @value = "1" })
+                Onthoud mij.
+            </label>
+        </div>
+    </div>
+
+    <div style="margin-top: 10px" class="form-group">
+        <!-- Button -->
+        <div class="col-sm-12 controls">
+            <button type="submit" class="btn btn-success">Login  </button>
+            <a id="btn-fblogin" href="#" class="btn btn-primary">Login met Facebook</a>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-12 control">
+            <div style="border-top: 1px solid#888; padding-top: 15px; font-size: 85%; color: black;" >
+                Ik heb nog geen account! 
+                <a href="#" onClick="$('#loginbox').hide(); $('#signupbox').show(); zk.resetValidation();">
+                    Registreren.
+                </a>
+            </div>
+        </div>
+    </div>  
+}    

@@ -26,15 +26,19 @@
 
     },
 
+    registerAjaxEvents: function() {
+        $.validator.unobtrusive.parse('form');
+    },
+
     resetValidation: function() {
 
-        //Removes validation from input-fields
+        // Removes validation from input-fields
         $('.input-validation-error').empty();
 
-        //Removes validation message after input-fields
+        // Removes validation message after input-fields
         $('.field-validation-error').empty();
 
-        //Removes validation summary 
+        // Removes validation summary 
         $('.validation-summary-errors').empty();
 
     },

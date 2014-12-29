@@ -93,8 +93,8 @@ namespace Zk.Controllers
 
                 if (status == MembershipCreateStatus.Success)
                 {
-                    FormsAuthentication.SetAuthCookie(model.UserName, false);
                     _manager.AddUser(model.UserName, model.FullName, model.Email);
+                    FormsAuthentication.SetAuthCookie(model.UserName, false);
 
                     return RedirectToAction("Index", "Home");
                 }
@@ -104,7 +104,7 @@ namespace Zk.Controllers
                 }
             }
 
-            return View(model);
+            return View("Register", viewModel);
         }
        
         //

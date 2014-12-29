@@ -1,0 +1,52 @@
+﻿@model LoginOrRegisterViewModel
+
+@using (Html.BeginForm("Register", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class="form-horizontal", @role="form"}))
+{
+    @Html.AntiForgeryToken() 
+
+    <div class="form-group">
+        @Html.ValidationSummary()  
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-3" style="color: black;">
+            @Html.LabelFor(vm => vm.Register.FullName)
+        </div>
+        <div class="col-md-9">
+            @Html.TextBoxFor(vm => vm.Register.FullName, new { @class = "form-control", @placeholder = "Volledige naam", @AutoComplete ="off" } )
+        </div>
+    </div>
+        
+    <div class="form-group">
+        <div class="col-md-3" style="color: black;">
+            @Html.LabelFor(vm => vm.Register.UserName)
+        </div>
+        <div class="col-md-9">
+            @Html.TextBoxFor(vm => vm.Register.UserName, new { @class = "form-control", @placeholder = "Gebruikersnaam", @Autocomplete = "off" } )
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-3" style="color: black;">
+            @Html.LabelFor(vm => vm.Register.Email)
+        </div>
+        <div class="col-md-9">
+            @Html.TextBoxFor(vm => vm.Register.Email, new { @class = "form-control", @placeholder = "E-mail ", @AutoComplete ="off"})
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-3" style="color: black;">
+            @Html.LabelFor(vm => vm.Register.Password)
+        </div>
+        <div class="col-md-9">
+            @Html.PasswordFor(vm => vm.Register.Password, new { @class = "form-control", @placeholder = "Wachtwoord", @AutoComplete ="off"})
+        </div>
+    </div>
+
+    <div class="form-group">
+        <!-- Button -->                                        
+        <div class="col-md-offset-3 col-md-9">
+            <button type="submit" class="btn btn-info"><i class="icon-hand-right"></i> &nbsp Registreer</button>
+        </div>
+    </div>
+        
+}

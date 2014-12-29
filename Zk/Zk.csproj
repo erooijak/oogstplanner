@@ -244,6 +244,8 @@
     <Content Include="Content\Images\upstate-ny-permaculture-logo.jpg" />
     <Content Include="Content\Images\permaculture-kitchen-garden.jpg" />
     <Content Include="Content\Images\suvajack-design.jpg" />
+    <Content Include="Views\Account\_RegisterForm.cshtml" />
+    <Content Include="Views\Account\_LoginForm.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>

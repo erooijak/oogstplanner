@@ -94,18 +94,6 @@
     display: table-cell;
 }
 
-/*  For list */
-ul {
-    text-align:left;
-    margin: 5% 0 0;
-    padding: 0;
-    list-style-position: inside;
-}
-li {
-    margin: 0 0 0 5%;
-    padding: 0;
-}
-
 /*  For responsive images */
 .content .rs {
     width: auto;
