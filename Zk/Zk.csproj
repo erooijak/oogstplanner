@@ -259,7 +259,7 @@
     <None Include="Content\Images\convert-images.sh" />
     <None Include="App_Data\Migrations\201411272239_Setup.postgresql" />
     <None Include="App_Data\Migrations\201411292313_Initial.postgresql" />
-    <None Include="DatabaseSchema.sql" />
     <None Include="App_Data\Migrations\201412212142_UpdateUser.postgresql" />
+    <None Include="App_Data\Migrations\201412242100_AddMembershipSchema.postgresql" />
   </ItemGroup>
 </Project>
