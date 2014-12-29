@@ -26,6 +26,19 @@
 
     },
 
+    resetValidation: function() {
+
+        //Removes validation from input-fields
+        $('.input-validation-error').empty();
+
+        //Removes validation message after input-fields
+        $('.field-validation-error').empty();
+
+        //Removes validation summary 
+        $('.validation-summary-errors').empty();
+
+    },
+
     // Helper functions:
     capitaliseFirstLetter: function(string) {
         return string.charAt(0).toUpperCase() + string.slice(1);
