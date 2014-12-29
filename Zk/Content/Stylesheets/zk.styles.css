@@ -44,3 +44,6 @@ p {
     z-index: 1; 
     position: relative;
 }
+.validation-summary-errors {
+    color: #F00;
+}
