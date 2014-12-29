@@ -26,10 +26,6 @@
 
     },
 
-    registerAjaxEvents: function() {
-        $.validator.unobtrusive.parse('form');
-    },
-
     resetValidation: function() {
 
         // Removes validation from input-fields
