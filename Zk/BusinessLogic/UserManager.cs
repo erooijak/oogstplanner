@@ -1,4 +1,5 @@
-﻿using System.Web.Security;
+﻿using System;
+using System.Web.Security;
 using System.Security.Principal;
 
 using Zk.Models;
@@ -34,6 +35,22 @@ namespace Zk.BusinessLogic
         public User GetUserById(int id)
         {
             return _repository.GetUserById(id);
+        }
+
+        public MembershipUser GetMembershipUserByEmail(string email)
+        {
+            return _repository.GetMembershipUserByEmail(email);
+        }
+
+        public void StoreResetToken(string email, string token)
+        {
+            var timeResetRequested = DateTime.Now;
+            _repository.StoreResetToken(email, timeResetRequested, token);
+        }
+
+        public MembershipUser GetMembershipUserFromToken(string token)
+        {
+            return _repository.GetMembershipUserFromToken(token);
         }
 
     }

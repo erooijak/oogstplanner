@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Net.Mail;
 using System.Web.Mvc;
 using System.Web.Security;
 using Microsoft.Web.WebPages.OAuth;
@@ -8,6 +10,7 @@ using WebMatrix.WebData;
 using Zk.BusinessLogic;
 using Zk.Models;
 using Zk.ViewModels;
+
 
 namespace Zk.Controllers
 {
@@ -78,8 +81,8 @@ namespace Zk.Controllers
 
         //
         // POST: /Account/Register/
-        [AllowAnonymous]
         [HttpPost]
+        [AllowAnonymous]
         public ActionResult Register(LoginOrRegisterViewModel viewModel)
         {           
             var model = viewModel.Register;
@@ -114,6 +117,108 @@ namespace Zk.Controllers
             FormsAuthentication.SignOut();
 
             return RedirectToAction("Index", "Home");
+        }
+
+        //
+        // GET: /Account/LostPassword
+        [AllowAnonymous]
+        public ActionResult LostPassword()
+        {
+            return View();
+        }
+
+        //
+        // POST: Account/LostPassword
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public ActionResult LostPassword(LostPasswordModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = _manager.GetMembershipUserByEmail(model.Email);
+
+                if (user != null)
+                {
+                    // Generate token that will be used in the email link to authenticate user
+                    var token = Convert.ToBase64String(Guid.NewGuid().ToByteArray());
+
+                    // Generate the html link sent via email
+                    var resetLink = "<a href='"
+                        + Url.Action("ResetPassword", "Account", new { rt = token }, "http")
+                        + "'>klik hier om uw Zaaikalender wachtwoord te resetten.</a>";
+
+                    // Email stuff
+                    var subject = "Reset uw wachtwoord voor de Zaaikalender";
+                    var body = "Uw link: " + resetLink;
+                    var from = "donotreply@zaaikalender.org";
+
+                    var message = new MailMessage(from, model.Email) 
+                    {
+                        Subject = subject,
+                        Body = body
+                    };
+                            
+                    // Attempt to send the email and store the token.
+                    using (var client = new SmtpClient()) 
+                    {
+                        try 
+                        {
+                            client.Send(message);
+                            _manager.StoreResetToken(model.Email, token);
+                        }
+                        catch (Exception e) 
+                        {
+                            ModelState.AddModelError("", "Er is een probleem opgetreden bij het verzenden van de e-mail: " + e.Message);
+                            return View(model);
+                        }
+                    }
+
+                }
+
+            }
+
+            /* You may want to send the user to a "Success" page upon the successful
+            * sending of the reset email link. Right now, if we are 100% successful
+            * nothing happens on the page. :P
+            */
+            return View(model);
+        }
+
+        //
+        // GET: /Account/ResetPassword
+        [AllowAnonymous]
+        public ActionResult ResetPassword(string rt)
+        {
+            var model = new ResetPasswordModel() {
+                ReturnToken = rt
+            };
+
+            return View(model);
+        }
+
+        //
+        // POST: /Account/ResetPassword
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public ActionResult ResetPassword(ResetPasswordModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = _manager.GetMembershipUserFromToken(model.ReturnToken);
+
+                var isChangeSuccess = user.ChangePassword(
+                    user.ResetPassword(),
+                    model.Password
+                );
+
+                ViewBag.Message = isChangeSuccess 
+                    ? "Wachtwoord succesvol veranderd." 
+                    : "Er is iets hopeloos fout gegaan!";
+            }
+
+            return View(model);
         }
 
         //
@@ -197,7 +302,7 @@ namespace Zk.Controllers
                     }
                     catch (Exception)
                     {
-                        ModelState.AddModelError("", String.Format("Het is niet mogelijk om een lokaal gebruikersprofiel te creëren. Een profiel met de naam \"{0}\" bestaat mogelijk al.", User.Identity.Name));
+                        ModelState.AddModelError("", string.Format("Het is niet mogelijk om een lokaal gebruikersprofiel te creëren. Een profiel met de naam \"{0}\" bestaat mogelijk al.", User.Identity.Name));
                     }
                 }
             }

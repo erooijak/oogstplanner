@@ -29,6 +29,7 @@ namespace Zk.Models
 
 		public IDbSet<Crop> Crops { get; set; } 
         public IDbSet<User> Users { get; set; }
+        public IDbSet<PasswordResetModel> PasswordResets { get; set; }
         public IDbSet<Calendar> Calendars { get; set; }
         public IDbSet<FarmingAction> FarmingActions { get; set; }
 

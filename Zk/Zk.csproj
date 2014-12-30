@@ -246,6 +246,10 @@
     <Content Include="Content\Images\suvajack-design.jpg" />
     <Content Include="Views\Account\_RegisterForm.cshtml" />
     <Content Include="Views\Account\_LoginForm.cshtml" />
+    <Content Include="Views\Account\LostPassword.cshtml" />
+    <Content Include="Views\Account\_LostPasswordForm.cshtml" />
+    <Content Include="Views\Account\ResetPassword.cshtml" />
+    <Content Include="Views\Account\_ResetPasswordForm.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
@@ -261,5 +265,6 @@
     <None Include="App_Data\Migrations\201411292313_Initial.postgresql" />
     <None Include="App_Data\Migrations\201412212142_UpdateUser.postgresql" />
     <None Include="App_Data\Migrations\201412242100_AddMembershipSchema.postgresql" />
+    <None Include="App_Data\Migrations\201412301825_AddResetPasswordModel.postgresql" />
   </ItemGroup>
 </Project>

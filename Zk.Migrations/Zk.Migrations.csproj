@@ -65,6 +65,8 @@
     <Compile Include="Initial.cs" />
     <Compile Include="UpdateUser.Designer.cs" />
     <Compile Include="UpdateUser.cs" />
+    <Compile Include="AddResetPasswordModel.Designer.cs" />
+    <Compile Include="AddResetPasswordModel.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -86,5 +88,6 @@
   <ItemGroup>
     <EmbeddedResource Include="Initial.resx" />
     <EmbeddedResource Include="UpdateUser.resx" />
+    <EmbeddedResource Include="AddResetPasswordModel.resx" />
   </ItemGroup>
 </Project>

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Security.Principal;
+using System.Web.Security;
 
 using Zk.Models;
 
@@ -104,6 +105,44 @@ namespace Zk.Repositories
         public User GetUserById(int id)
         {
             return _db.Users.Find(id);
+        }
+
+        public MembershipUser GetMembershipUserByEmail(string email)
+        {
+            if (string.IsNullOrEmpty(email)) 
+                return null;
+
+            var foundUser = _db.Users.Where(u => u.Email == email).FirstOrDefault();
+
+            return foundUser != null 
+                ? Membership.GetUser(foundUser.Name) 
+                : null;
+        }
+
+        public void StoreResetToken(string email, DateTime timeResetRequested, string token)
+        {
+            var passwordReset = new PasswordResetModel 
+            {
+                Email = email,
+                TimeStamp = timeResetRequested,
+                Token = token
+            };
+
+            _db.PasswordResets.Add(passwordReset);
+            _db.SaveChanges();
+        }
+
+        public MembershipUser GetMembershipUserFromToken(string token)
+        {
+            string email = null;
+
+            var passwordResetInstance = _db.PasswordResets.Where(pr => pr.Token == token).FirstOrDefault();
+            if (passwordResetInstance != null) 
+            {
+                email = passwordResetInstance.Email;
+            }
+
+            return GetMembershipUserByEmail(email);
         }
 
 	}

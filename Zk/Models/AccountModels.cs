@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace Zk.Models
 {
@@ -71,10 +72,47 @@ namespace Zk.Models
 
     }
 
+    public class LostPasswordModel
+    {
+        [Required(ErrorMessage = "We hebben uw e-mail nodig om u een resetlink te kunnen sturen!")]
+        [Display(Name = "De email die bij uw account hoort.")]
+        [EmailAddress(ErrorMessage= "Geen valide e-mailadres.")]
+        public string Email { get; set; }
+    }
+
+    /* For storage of tokens in database */
+    public class PasswordResetModel
+    {
+        [Key]
+        public int Id { get; set; }
+        public string Email { get; set; }
+        public string Token { get; set; }
+        public DateTime TimeStamp { get; set; }
+    }
+
+    /* For display on the view */
+    public class ResetPasswordModel
+    {
+        [Required]
+        [Display(Name = "Nieuw wachtwoord")]
+        [DataType(DataType.Password)]
+        public string Password { get; set; }
+
+        [Required]
+        [Display(Name = "Bevestig wachtwoord")]
+        [DataType(DataType.Password)]
+        [Compare("Password", ErrorMessage = "Wachtwoorden zijn niet hetzelfde.")]
+        public string ConfirmPassword { get; set; }
+
+        [Required]
+        public string ReturnToken { get; set; }
+    }
+
     public class ExternalLogin
     {
         public string Provider { get; set; }
         public string ProviderDisplayName { get; set; }
         public string ProviderUserId { get; set; }
     }
+        
 }
