@@ -32,7 +32,7 @@ namespace Zk.Migrations
             // and include the created files in the project and set resource file to EmbeddedResource. 
             // After creating a migration run UPDATE_DATABASE to update the database.
 
-			const DatabaseStep step = DatabaseStep.CREATE_SCRIPT; /* Never forget: MIGRATION_NAME below! */
+            const DatabaseStep step = DatabaseStep.CREATE_SCRIPT; /* Never forget: MIGRATION_NAME below! */
 
             // Specify the name of the database migration in case of ADD-MIGRATION.
             // Note: Make sure to create a new name for each new migration.
@@ -43,7 +43,7 @@ namespace Zk.Migrations
             //       clicking on it.
             // Make sure that the Setup.postgresql script has run manually to create the database user.
 
-            const string MIGRATION_NAME = "AddResetPasswordModel";
+            const string MIGRATION_NAME = "AddPasswordResetTokens";
 
             // END USER INPUT /////////////////////////////////////////////////////////////////////////////
 

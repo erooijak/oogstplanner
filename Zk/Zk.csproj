@@ -265,6 +265,6 @@
     <None Include="App_Data\Migrations\201411292313_Initial.postgresql" />
     <None Include="App_Data\Migrations\201412212142_UpdateUser.postgresql" />
     <None Include="App_Data\Migrations\201412242100_AddMembershipSchema.postgresql" />
-    <None Include="App_Data\Migrations\201412301825_AddResetPasswordModel.postgresql" />
+    <None Include="App_Data\Migrations\201412311422_AddPasswordResetTokens.postgresql" />
   </ItemGroup>
 </Project>

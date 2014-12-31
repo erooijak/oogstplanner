@@ -121,14 +121,14 @@ namespace Zk.Repositories
 
         public void StoreResetToken(string email, DateTime timeResetRequested, string token)
         {
-            var passwordReset = new PasswordResetModel 
+            var passwordReset = new PasswordResetToken 
             {
                 Email = email,
                 TimeStamp = timeResetRequested,
                 Token = token
             };
 
-            _db.PasswordResets.Add(passwordReset);
+            _db.PasswordResetTokens.Add(passwordReset);
             _db.SaveChanges();
         }
 
@@ -136,13 +136,20 @@ namespace Zk.Repositories
         {
             string email = null;
 
-            var passwordResetInstance = _db.PasswordResets.Where(pr => pr.Token == token).FirstOrDefault();
+            var passwordResetInstance = _db.PasswordResetTokens.Where(pr => pr.Token == token).FirstOrDefault();
             if (passwordResetInstance != null) 
             {
                 email = passwordResetInstance.Email;
             }
 
             return GetMembershipUserByEmail(email);
+        }
+
+        public DateTime? GetTokenTimeStamp(string token)
+        {
+            var tokenInfo = _db.PasswordResetTokens.Where(prt => prt.Token == token).FirstOrDefault();
+
+            return tokenInfo != null ? tokenInfo.TimeStamp : (DateTime?)null;
         }
 
 	}

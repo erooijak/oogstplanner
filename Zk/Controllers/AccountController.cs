@@ -208,6 +208,21 @@ namespace Zk.Controllers
             {
                 var user = _manager.GetMembershipUserFromToken(model.ReturnToken);
 
+                var timeStamp = _manager.GetTokenTimeStamp(model.ReturnToken);
+                var currentTime = DateTime.Now;
+
+                if (timeStamp == null) 
+                {
+                    ViewBag.Message = "We hebben de aanvraagtijd van uw wachtwoord reset token niet kunnen vinden.";
+                    return View(model); 
+                }
+
+                if (timeStamp.Value.AddHours(24) < currentTime) 
+                {
+                    ViewBag.Message = "Uw wachtwoord reset token is verlopen.";
+                    return View(model); 
+                }
+
                 var isChangeSuccess = user.ChangePassword(
                     user.ResetPassword(),
                     model.Password
@@ -221,97 +236,6 @@ namespace Zk.Controllers
             return View(model);
         }
 
-        //
-        // GET: /Account
-        public ActionResult Index()
-        {
-            return RedirectToAction("Manage");
-        }
-
-        //
-        // GET: /Account/Manage
-        public ActionResult Manage(ManageMessageId? message)
-        {
-
-            var statusMessage = new Dictionary<ManageMessageId?, String>()
-            {
-                { ManageMessageId.ChangePasswordSuccess, "Uw wachtwoord is veranderd." },
-                { ManageMessageId.SetPasswordSuccess, "Uw wachtwoord is ingesteld." },
-                { ManageMessageId.RemoveLoginSuccess, "De externe login is verwijderd." }
-            };
-            ViewBag.StatusMessage = (null != message && statusMessage.ContainsKey(message)) ? statusMessage[message] : "";
-
-            ViewBag.HasLocalPassword = OAuthWebSecurity.HasLocalAccount(WebSecurity.GetUserId(User.Identity.Name));
-            ViewBag.ReturnUrl = Url.Action("Manage");
-
-            return View();
-        }
-
-        //
-        // POST: /Account/Manage
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Manage(LocalPasswordModel model)
-        {
-
-            bool hasLocalAccount = OAuthWebSecurity.HasLocalAccount(WebSecurity.GetUserId(User.Identity.Name));
-            ViewBag.HasLocalPassword = hasLocalAccount;
-            ViewBag.ReturnUrl = Url.Action("Manage");
-
-            if (hasLocalAccount)
-            {
-                if (ModelState.IsValid)
-                {
-                    // ChangePassword will throw an exception rather than return false in certain failure scenarios.
-                    bool changePasswordSucceeded;
-                    try
-                    {
-                        changePasswordSucceeded = WebSecurity.ChangePassword(User.Identity.Name, model.OldPassword, model.NewPassword);
-                    }
-                    catch (Exception)
-                    {
-                        changePasswordSucceeded = false;
-                    }
-
-                    if (changePasswordSucceeded)
-                    {
-                        return RedirectToAction("Manage", new { Message = ManageMessageId.ChangePasswordSuccess });
-                    }
-                    else
-                    {
-                        ModelState.AddModelError("", "Het huidige wachtwoord is incorrect of het nieuwe wachtwoord is ongeldig.");
-                    }
-                }
-            }
-            else
-            {
-                // User does not have a local password so remove any validation errors caused by a missing
-                // OldPassword field
-                ModelState state = ModelState["OldPassword"];
-                if (state != null)
-                {
-                    state.Errors.Clear();
-                }
-
-                if (ModelState.IsValid)
-                {
-                    try
-                    {
-                        WebSecurity.CreateAccount(User.Identity.Name, model.NewPassword);
-                        return RedirectToAction("Manage", new { Message = ManageMessageId.SetPasswordSuccess });
-                    }
-                    catch (Exception)
-                    {
-                        ModelState.AddModelError("", string.Format("Het is niet mogelijk om een lokaal gebruikersprofiel te creëren. Een profiel met de naam \"{0}\" bestaat mogelijk al.", User.Identity.Name));
-                    }
-                }
-            }
-
-            // If we got this far, something failed, redisplay form
-            return View(model);
-        }
-
-
         #region Helpers
         private ActionResult RedirectToLocal(string returnUrl)
         {
@@ -323,13 +247,6 @@ namespace Zk.Controllers
             {
                 return RedirectToAction("Index", "Home");
             }
-        }
-
-        public enum ManageMessageId
-        {
-            ChangePasswordSuccess,
-            SetPasswordSuccess,
-            RemoveLoginSuccess,
         }
 
         [ChildActionOnly]
@@ -390,5 +307,6 @@ namespace Zk.Controllers
             }
         }
         #endregion
+
     }
 }

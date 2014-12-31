@@ -8,7 +8,7 @@ namespace Zk.Models
         IDbSet<FarmingAction> FarmingActions { get; }
         IDbSet<Calendar> Calendars { get; }
         IDbSet<User> Users { get; }
-        IDbSet<PasswordResetModel> PasswordResets { get; }
+        IDbSet<PasswordResetToken> PasswordResetTokens { get; }
 
         void SetModified(object entity);
 	int SaveChanges();

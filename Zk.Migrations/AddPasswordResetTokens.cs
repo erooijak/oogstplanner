@@ -3,12 +3,12 @@ namespace Zk.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class AddResetPasswordModel : DbMigration
+    public partial class AddPasswordResetTokens : DbMigration
     {
         public override void Up()
         {
             CreateTable(
-                "public.PasswordResetModels",
+                "public.PasswordResetTokens",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
@@ -22,7 +22,7 @@ namespace Zk.Migrations
         
         public override void Down()
         {
-            DropTable("public.PasswordResetModels");
+            DropTable("public.PasswordResetTokens");
         }
     }
 }

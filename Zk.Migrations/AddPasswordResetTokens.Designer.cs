@@ -7,13 +7,13 @@ namespace Zk.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.1-30610")]
-    public sealed partial class AddResetPasswordModel : IMigrationMetadata
+    public sealed partial class AddPasswordResetTokens : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(AddResetPasswordModel));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(AddPasswordResetTokens));
         
         string IMigrationMetadata.Id
         {
-            get { return "201412301825095_AddResetPasswordModel"; }
+            get { return "201412311321030_AddPasswordResetTokens"; }
         }
         
         string IMigrationMetadata.Source

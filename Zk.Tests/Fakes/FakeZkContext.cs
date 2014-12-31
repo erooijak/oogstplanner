@@ -19,7 +19,7 @@ namespace Zk.Tests.Fakes
 
         public IDbSet<User> Users { get; private set; }
 
-        public IDbSet<PasswordResetModel> PasswordResets { get; private set; }
+        public IDbSet<PasswordResetToken> PasswordResetTokens { get; private set; }
 
 		public int SaveChanges()
 		{

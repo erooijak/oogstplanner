@@ -81,7 +81,7 @@ namespace Zk.Models
     }
 
     /* For storage of tokens in database */
-    public class PasswordResetModel
+    public class PasswordResetToken
     {
         [Key]
         public int Id { get; set; }

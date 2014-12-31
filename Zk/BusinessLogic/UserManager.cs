@@ -53,5 +53,10 @@ namespace Zk.BusinessLogic
             return _repository.GetMembershipUserFromToken(token);
         }
 
+        public DateTime? GetTokenTimeStamp(string token)
+        {
+            return _repository.GetTokenTimeStamp(token);
+        }
+
     }
 }
