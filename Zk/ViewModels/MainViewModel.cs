@@ -15,7 +15,7 @@ namespace Zk.ViewModels
     {
         public IEnumerable<string> SeasonsCssClasses { get; set; }
         public IEnumerable<string> SeizoenenForDisplay { get; set; }
-        public Stack<string> MonthsOrderedForDisplay { get; set; }
+        public Stack<string> MonthsOrdered { get; set; }
     }
 
 }

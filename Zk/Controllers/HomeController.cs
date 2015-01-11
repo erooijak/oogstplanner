@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Web.Mvc;
 
 using Zk.ViewModels;
@@ -17,6 +18,11 @@ namespace Zk.Controllers
 			ViewData ["Version"] = mvcName.Version.Major + "." + mvcName.Version.Minor;
 			ViewData ["Runtime"] = isMono ? "Mono" : ".NET";
 
+            // Months are used for the CSS classes 
+            // to add to the squares and for displayal within the square.
+            var months = Enum.GetValues(typeof(Month)).Cast<Month>()
+                .Select(m => m.ToString().ToLower()).ToList();
+                
             var viewModel = new MainViewModel 
             {
                 // Seasons in Dutch (singular: "seizoen"; plural: "seizoenen") used for displayal in top row.
@@ -25,13 +31,12 @@ namespace Zk.Controllers
                 // Seasons used for the CSS classes which refer to the different images.
                 SeasonsCssClasses = new[] { "autumn", "winter", "spring", "summer" },
 
-                // Months in Dutch (singular: "maand"; plural: "maanden") are used for the CSS classes 
-                // to add to the squares and for displayal within the square.
-                MonthsOrderedForDisplay = new Stack<string>(new[] 
-                    {   "augustus", "mei",   "februari", "november",  
-                        "juli",     "april", "januari",  "oktober",      
-                        "juni",     "maart", "december", "september"       
-                    })
+                MonthsOrdered = new Stack<string>(new[] 
+                    {   
+                        months[8], months[5], months[2],  months[11], 
+                        months[7], months[4], months[1],  months[10], 
+                        months[6], months[3], months[12], months[9] 
+                    }) 
             };
 
             return View(viewModel);
