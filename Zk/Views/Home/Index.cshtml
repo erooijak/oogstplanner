@@ -37,22 +37,21 @@
     {
         foreach (var season in Model.SeasonsCssClasses)
         {
-            string month;
-            if (Model.MonthsOrderedForDisplay.TryDequeue(out month)) 
-            {
-                // To the outer square div the string.Format methods adds:
-                // 1.) A CSS class for the image so a fitting image can be displayed. 
-                // 2.) A CSS class for the month, so we can identify which month is clicked on.
-                <div class="square bg @string.Format("img{0}{1} {2}", season, imageIndex, month)">
-                   <div class="content">
-                        <div class="table">
-                            <div class="table-cell">
-                                @month.ToUpper()
-                            </div> 
-                        </div>
+            string month = Model.MonthsOrderedForDisplay.Dequeue();
+
+            // To the outer square div the string.Format methods adds:
+            // 1.) A CSS class for the image so a fitting image can be displayed. 
+            // 2.) A CSS class for the month, so we can identify which month is clicked on.
+            <div class="square bg @string.Format("img{0}{1} {2}", season, imageIndex, month)">
+               <div class="content">
+                    <div class="table">
+                        <div class="table-cell">
+                            @month.ToUpper()
+                        </div> 
                     </div>
                 </div>
-            }
+            </div>
+            
             
         }
     }

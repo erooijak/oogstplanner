@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections.Concurrent;
+using System.Collections.Generic;
 using System.Web.Mvc;
 
 using Zk.ViewModels;
@@ -25,10 +25,9 @@ namespace Zk.Controllers
                 // Seasons used for the CSS classes which refer to the different images.
                 SeasonsCssClasses = new[] { "autumn", "winter", "spring", "summer" },
 
-                    // Months in Dutch (singular: "maand"; plural: "maanden") are used for the CSS classes 
-                    // to add to the squares and for displayal within the square.
-                    // Notes: * A normal queue does not work because of Razor threading issues so a ConcurrentQueue is used.
-                MonthsOrderedForDisplay = new ConcurrentQueue<string>(new[] 
+                // Months in Dutch (singular: "maand"; plural: "maanden") are used for the CSS classes 
+                // to add to the squares and for displayal within the square.
+                MonthsOrderedForDisplay = new Queue<string>(new[] 
                     {   "september",  "december",     "maart",    "juni", 
                         "oktober",    "januari",      "april",    "juli", 
                         "november",   "februari",     "mei",      "augustus"

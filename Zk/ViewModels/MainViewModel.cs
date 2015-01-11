@@ -15,7 +15,7 @@ namespace Zk.ViewModels
     {
         public IEnumerable<string> SeasonsCssClasses { get; set; }
         public IEnumerable<string> SeizoenenForDisplay { get; set; }
-        public ConcurrentQueue<string> MonthsOrderedForDisplay { get; set; }
+        public Queue<string> MonthsOrderedForDisplay { get; set; }
     }
 
 }
