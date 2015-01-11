@@ -21,7 +21,8 @@ namespace Zk.Controllers
             // Months are used for the CSS classes 
             // to add to the squares and for displayal within the square.
             var months = Enum.GetValues(typeof(Month)).Cast<Month>()
-                .Select(m => m.ToString().ToLower()).ToList();
+                .Select(m => m.ToString().ToLower())
+                .ToList();
                 
             var viewModel = new MainViewModel 
             {
