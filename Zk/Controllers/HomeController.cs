@@ -27,10 +27,10 @@ namespace Zk.Controllers
 
                 // Months in Dutch (singular: "maand"; plural: "maanden") are used for the CSS classes 
                 // to add to the squares and for displayal within the square.
-                MonthsOrderedForDisplay = new Queue<string>(new[] 
-                    {   "september",  "december",     "maart",    "juni", 
-                        "oktober",    "januari",      "april",    "juli", 
-                        "november",   "februari",     "mei",      "augustus"
+                MonthsOrderedForDisplay = new Stack<string>(new[] 
+                    {   "augustus", "mei",   "februari", "november",  
+                        "juli",     "april", "januari",  "oktober",      
+                        "juni",     "maart", "december", "september"       
                     })
             };
 

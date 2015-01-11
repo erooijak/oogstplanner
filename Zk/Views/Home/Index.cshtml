@@ -37,7 +37,7 @@
     {
         foreach (var season in Model.SeasonsCssClasses)
         {
-            string month = Model.MonthsOrderedForDisplay.Dequeue();
+            var month = Model.MonthsOrderedForDisplay.Pop();
 
             // To the outer square div the string.Format methods adds:
             // 1.) A CSS class for the image so a fitting image can be displayed. 
