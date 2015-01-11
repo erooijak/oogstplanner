@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Web.Mvc;
+
+using Zk.ViewModels;
 
 namespace Zk.Controllers
 {
@@ -14,7 +17,25 @@ namespace Zk.Controllers
 			ViewData ["Version"] = mvcName.Version.Major + "." + mvcName.Version.Minor;
 			ViewData ["Runtime"] = isMono ? "Mono" : ".NET";
 
-			return View ();
+            var viewModel = new MainViewModel 
+            {
+                // Seasons in Dutch (singular: "seizoen"; plural: "seizoenen") used for displayal in top row.
+                SeizoenenForDisplay = new[] { "herfst", "winter", "lente", "zomer" },
+
+                // Seasons used for the CSS classes which refer to the different images.
+                SeasonsCssClasses = new[] { "autumn", "winter", "spring", "summer" },
+
+                    // Months in Dutch (singular: "maand"; plural: "maanden") are used for the CSS classes 
+                    // to add to the squares and for displayal within the square.
+                    // Notes: * A normal queue does not work because of Razor threading issues so a ConcurrentQueue is used.
+                MonthsOrderedForDisplay = new ConcurrentQueue<string>(new[] 
+                    {   "september",  "december",     "maart",    "juni", 
+                        "oktober",    "januari",      "april",    "juli", 
+                        "november",   "februari",     "mei",      "augustus"
+                    })
+            };
+
+            return View(viewModel);
 		}
            
 	}

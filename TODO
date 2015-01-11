@@ -9,7 +9,7 @@ Autorisatie:
 DONE Forms authenticatie
 DONE Return url verwijderen (moet weg met externe login)
 DONE Inlogscherm
-TODO Wachtwoord reset
+IN PROGRESS Wachtwoord reset (e-mail moet nog netjes worden verzonden)
 TODO Gmail/Facebook (?) authenticatie
 TODO Inloggen gebruikersnaam of e-mailadres
 TODO Gebruiker kan inloggen en agenda hoort bij hem.

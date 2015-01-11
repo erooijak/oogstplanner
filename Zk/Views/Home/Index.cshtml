@@ -1,25 +1,10 @@
-﻿<div id="main">
+﻿@model MainViewModel
+
+<div id="main">
     <div class="slide flowtype-area">
 @{ 
     ViewBag.Title = "Home";
-
-    // Seasons used for the CSS classes which refer to the different images.
-    var seasons = new[] { "autumn", "winter", "spring", "summer" };
-
-    // Seasons in Dutch (singular: "seizoen"; plural: "seizoenen") used for displayal in top row.
-    var seizoenen = new[] { "herfst", "winter", "lente", "zomer" };
-
-    // Months in Dutch (singular: "maand"; plural: "maanden") are used for the CSS classes 
-    // to add to the squares and for displayal within the square.
-    // Notes: * A normal queue does not work because of Razor threading issues so a ConcurrentQueue is used.
-    var months = new ConcurrentQueue<string>(new[] {    "september",  "december",     "maart",    "juni", 
-                                                        "oktober",    "januari",      "april",    "juli", 
-                                                        "november",   "februari",     "mei",      "augustus"});
-    
-    // Item necessary as out parameter of TryDequeue(out string result) method of ConcurrentQueues
-    string month;
-
-
+  
     // START RESPONSIVE GRID LAYOUT
 
     <div id="top">
@@ -34,7 +19,7 @@
     </div>
 
     // Row of rectangles for the seasons
-    foreach (var seizoen in seizoenen)
+    foreach (var seizoen in Model.SeizoenenForDisplay)
     {
         <div class="rectangle">
             <div class="rectangle-content">
@@ -46,13 +31,14 @@
             </div>
         </div>
     }
-
+ 
     // Four rows which each consist of an autumn, winter, spring and summer image.
     for (var imageIndex = 1; imageIndex <= 3; imageIndex++)
     {
-        foreach (var season in seasons)
+        foreach (var season in Model.SeasonsCssClasses)
         {
-            if (months.TryDequeue(out month)) 
+            string month;
+            if (Model.MonthsOrderedForDisplay.TryDequeue(out month)) 
             {
                 // To the outer square div the string.Format methods adds:
                 // 1.) A CSS class for the image so a fitting image can be displayed. 
@@ -67,6 +53,7 @@
                     </div>
                 </div>
             }
+            
         }
     }
 

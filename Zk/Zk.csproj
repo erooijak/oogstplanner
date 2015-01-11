@@ -184,6 +184,7 @@
     <Compile Include="BusinessLogic\CropManager.cs" />
     <Compile Include="BusinessLogic\UserManager.cs" />
     <Compile Include="ViewModels\LoginOrRegisterViewModel.cs" />
+    <Compile Include="ViewModels\MainViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Web.config" />
