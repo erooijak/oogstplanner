@@ -15,13 +15,12 @@ namespace Zk.Controllers
     {
 
         //
-        // POST: /Account/ExternalLogin
-        [HttpPost]
+        // GET: /Account/ExternalLogin
+        [HttpGet]
         [AllowAnonymous]
-        [ValidateAntiForgeryToken]
         public ActionResult ExternalLogin(string provider, string returnUrl)
         {
-            return new ExternalLoginResult(provider, Url.Action("ExternalLoginCallback", new { ReturnUrl = returnUrl }));
+            return new ExternalLoginResult(provider, "http://localhost:8080/Account/ExternalLoginCallback?returnUrl=" + returnUrl);
         }
 
         //
@@ -29,10 +28,11 @@ namespace Zk.Controllers
         [AllowAnonymous]
         public ActionResult ExternalLoginCallback(string returnUrl)
         {
-            DotNetOpenAuth.GoogleOAuth2.GoogleOAuth2Client.RewriteRequest();
-            AuthenticationResult result = OAuthWebSecurity.VerifyAuthentication(Url.Action("ExternalLoginCallback", new { ReturnUrl = returnUrl }));
+            //DotNetOpenAuth.FacebookOAuth2.FacebookOAuth2Client.RewriteRequest();
+            var result = OAuthWebSecurity.VerifyAuthentication("http://localhost:8080/Account/ExternalLoginCallback?returnUrl=" + returnUrl);
 
-            // check if logon at google was successful
+
+            // check if logon at Facebook was successful
             if (!result.IsSuccessful)
             {
                 return RedirectToAction("ExternalLoginFailure");

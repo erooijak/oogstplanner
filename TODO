@@ -9,9 +9,9 @@ Autorisatie:
 DONE Forms authenticatie
 DONE Return url verwijderen (moet weg met externe login)
 DONE Inlogscherm
+DONE Inloggen gebruikersnaam of e-mailadres
 IN PROGRESS Wachtwoord reset (e-mail moet nog netjes worden verzonden)
-TODO Gmail/Facebook (?) authenticatie
-TODO Inloggen gebruikersnaam of e-mailadres
+IN PROGRESS Facebook (?) authenticatie
 TODO Gebruiker kan inloggen en agenda hoort bij hem.
 TODO Profiel maken gebruiker
 
