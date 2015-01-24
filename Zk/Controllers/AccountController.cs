@@ -46,10 +46,13 @@ namespace Zk.Controllers
         public ActionResult Login(LoginOrRegisterViewModel viewModel, string returnUrl)
         {
             var model = viewModel.Login;
+            var user = model.UserName;
+            var password = model.Password;
 
             if (ModelState.IsValid)
             {
-                if (Membership.ValidateUser(model.UserName, model.Password))
+                if (Membership.ValidateUser(user, password)
+                    || Membership.ValidateUser(Membership.GetUserNameByEmail(user), password))
                 {
                     FormsAuthentication.SetAuthCookie(model.UserName, model.RememberMe);
                     if (Url.IsLocalUrl(returnUrl))
