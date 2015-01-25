@@ -34,7 +34,7 @@
             @if(ViewData.ModelState.ContainsKey("registration")){ @ViewData.ModelState["registration"].Errors.First().ErrorMessage; }
 
             @Html.ActionLink("Login met Facebook", "ExternalLogin", "Account", 
-                new { provider = "facebook", returnUrl = "localhost:8080" }, 
+                new { provider = "facebook", returnUrl = ViewBag.ReturnUrl }, 
                 new { @id = "btn-fblogin", @class = "btn btn-primary" } )
             <!--<a id="btn-fblogin" href="/ExternalLogin/" class="btn btn-primary">Login met Facebook</a>-->
         </div>
