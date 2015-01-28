@@ -50,7 +50,31 @@ namespace Zk.BusinessLogic
                 if (oldCropCount == newCropCount) continue;
 
                 // TODO:    Implement logic to update all related farming actions.
-                // AKA:     The super calculation.
+                // AKA:     The calculation.
+
+                // Opletten of hij al bestaat (een actie met die crop, die user, die maand, met alleen ander aantal)
+                // en enkel dient te worden geupdatet. 
+                // Oude updaten
+
+                // Nieuwe farming action aanmaken. Met tegenovergestelde action 
+                // (e.g., indien sowing dan harvesting)
+                // if sowing dan +, if harvesting dan -
+                var newFarmingAction = new FarmingAction();
+
+                newFarmingAction.Action = action.Action == FarmType.Harvesting 
+                    ? newFarmingAction.Action = FarmType.Sowing
+                    : newFarmingAction.Action = FarmType.Harvesting;
+
+                newFarmingAction.Month = action.Action == FarmType.Sowing
+                    ? action.Month + action.Crop.GrowingTime
+                    : action.Month - action.Crop.GrowingTime;
+ 
+                newFarmingAction.Crop = action.Crop;
+                newFarmingAction.CropCount = newCropCount;
+                newFarmingAction.Calendar = action.Calendar;
+
+                // Het aantal is opgegeven aantal. De crop is de aangegeven crop.
+
 
                 // Update one crop count of a farming action in the database.
                 action.CropCount = kvp.Value;

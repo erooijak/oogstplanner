@@ -67,6 +67,8 @@
     <Compile Include="UpdateUser.cs" />
     <Compile Include="AddPasswordResetTokens.Designer.cs" />
     <Compile Include="AddPasswordResetTokens.cs" />
+    <Compile Include="AddGrowingTypeToCrop.Designer.cs" />
+    <Compile Include="AddGrowingTypeToCrop.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -89,5 +91,6 @@
     <EmbeddedResource Include="Initial.resx" />
     <EmbeddedResource Include="UpdateUser.resx" />
     <EmbeddedResource Include="AddPasswordResetTokens.resx" />
+    <EmbeddedResource Include="AddGrowingTypeToCrop.resx" />
   </ItemGroup>
 </Project>

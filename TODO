@@ -11,13 +11,14 @@ DONE Return url verwijderen (moet weg met externe login)
 DONE Inlogscherm
 DONE Inloggen gebruikersnaam of e-mailadres
 IN PROGRESS Wachtwoord reset (e-mail moet nog netjes worden verzonden)
-IN PROGRESS Facebook (?) authenticatie
+CANCELLED Facebook (?) authenticatie (Neen. Wij zijn tegen.)
 TODO Gebruiker kan inloggen en agenda hoort bij hem.
 TODO Profiel maken gebruiker
 
 DONE Datamodel (Model)
 DONE Datamodel relaties inbouwen (foreign keys)
 TO VERIFY Classes en relaties
+TODO Bepalen groeitijd
 TODO Uitzoeken kilogrammen en grondtypes (FutDev)
 TODO Bepalen groeitijd keukenkruiden, groenbemesters en kiemgroenten
 
@@ -58,6 +59,11 @@ Niet JSON data, maar partial view results en model binding (netter omdat we de J
 BUGS:
 2x klikken op maand levert dubbele data op.
 
+Een gebruiker moet de zaaikalender een naam kunnen geven.
+
+Een gebruiker moet de zaaikalender overzichtelijk kunnen zien, en kunnen onderverdelen in zaaikalender of oogstkalender.
+
+Een waarschuwing als je iets wilt oogsten wanneer je te laat ben.
 
 Er dient rekening te houden geworden met de maand.
 
@@ -69,6 +75,16 @@ Weging van de maand. Wanneer oogsten in geval van meerdere maanden (3) zaaien en
 Super calculatie:
 
 Stel je hebt vier oogstmaanden en je wilt in september oogsten en je hebt drie zaaimaanden dat betekent dat je
+
+Je kan wel zaaien of oogsten in maanden dat het eigenlijk niet kan. Wordt aanbevolen of niet aanbevolen.
+Hoe weet je dan wanneer je moet oogsten?
+Eerste maand zaai, eerste maand oogst, dat is zaaitijd.
+Wat is de gemiddelde tijd.
+
+Groeitijd.
+
+Interactief maanden opvoeren.
+De lijst is leuk, maar ik wil iets nieuws. Maar ik wil nieuwe groente.
 
 Z. Jun, Jul, Aug
 O. Aug, Sept, Okt, Nov.
