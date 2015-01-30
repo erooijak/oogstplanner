@@ -1,4 +1,5 @@
 ﻿using NUnit.Framework;
+using System;
 
 namespace Zk.Tests
 {
@@ -81,6 +82,20 @@ namespace Zk.Tests
 
             // ASSERT
             Assert.AreEqual(expected, actual, "February minus 23 months should equal March.");
+        }
+
+        [Test]
+        public void Month_Add_Negative()
+        {   
+            Assert.Throws<ArgumentOutOfRangeException>(() => Month.Februari.Add(-23),
+                "Negative input should throw an ArgumentOutOfRangeException.");
+        }
+
+        [Test]
+        public void Month_Subtract_Negative()
+        {   
+            Assert.Throws<ArgumentOutOfRangeException>(() => Month.Februari.Subtract(-23),
+                "Negative input should throw an ArgumentOutOfRangeException.");
         }
 
     }

@@ -61,7 +61,8 @@ namespace Zk.Controllers
 
         FarmingMonthViewModel GetFarmingMonthViewModel(Month month)
         {
-            return new FarmingMonthViewModel {
+            return new FarmingMonthViewModel 
+            {
                 DisplayMonth = month.ToString(),
                 HarvestingActions = _manager.GetHarvestingActions(month),
                 SowingActions = _manager.GetSowingActions(month)

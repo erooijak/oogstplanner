@@ -35,9 +35,9 @@ namespace Zk.Repositories
             _db = db;
         }
 
-        public void Update(object entity)
+        public void Update(params object[] entities)
         {
-            _db.SetModified(entity);
+            foreach (var entity in entities) _db.SetModified(entity);
         }
 
         // A "leaky abstraction", why not use context directly?
@@ -106,9 +106,9 @@ namespace Zk.Repositories
                 month = action.Month.Add(cropGrowingTime);
             }
 
-            return _db.FarmingActions.Where(fa => fa.Calendar == calendar
+            return _db.FarmingActions.Where(fa => fa.Calendar.CalendarId == calendar.CalendarId
                 && fa.Action == type
-                && fa.Crop == crop
+                && fa.Crop.Id == crop.Id
                 && fa.Month == month).FirstOrDefault();
         }
 

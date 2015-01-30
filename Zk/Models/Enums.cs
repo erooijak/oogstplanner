@@ -25,12 +25,12 @@ namespace Zk
     }
 
     /// <summary>
-    ///     Enumeration for the type of farming
+    ///     Enumeration for action to take.
     /// </summary>
     public enum ActionType
     {
-        Harvesting = 1,
-        Sowing = 2
+        Sowing = 0,
+        Harvesting = 1
     }
 
 }

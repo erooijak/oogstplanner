@@ -50,14 +50,12 @@ namespace Zk.BusinessLogic
                 // Do nothing if value has not changed.
                 if (currentCropCount == newCropCount) continue;
 
-                // Otherwise find and update the related farmingaction
+                // Find the related farmingaction (the sowing or harvesting counter part)
                 var relatedFarmingAction = _repository.FindRelatedFarmingAction(action);
 
                 // Update the crop count of the farming action and related farming action in the database.
-                action.CropCount = newCropCount;
-                relatedFarmingAction.CropCount = newCropCount;
-
-                _repository.Update(action);
+                action.CropCount = relatedFarmingAction.CropCount = newCropCount;
+                _repository.Update(action, relatedFarmingAction);
             }
 
             _repository.SaveChanges();

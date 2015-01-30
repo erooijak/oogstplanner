@@ -5,8 +5,11 @@ namespace Zk
     public static class MonthExtension
     {
 
-        public static Month Add(this Month input, uint amount)
+        public static Month Add(this Month input, int amount)
         {
+            if (amount < 0)
+                throw new ArgumentOutOfRangeException("amount", "Amount can not be negative.");
+
             /* Number of the month (1 to 12) is the base 2 logarithm of the input 
              * because month is a flags enumeration. */
             var monthNumber = Math.Log((int)input, 2);
@@ -17,11 +20,14 @@ namespace Zk
             return (Month)(Math.Pow(2, (monthNumber + amount) % 12));
         }
 
-        public static Month Subtract(this Month input, uint amount)
+        public static Month Subtract(this Month input, int amount)
         {
+            if (amount < 0)
+                throw new ArgumentOutOfRangeException("amount", "Amount can not be negative.");
+
             /* When subtracting we do an addition of (12 - amount % 12). First we take the mod 12
              * of the month because it might be possible we go from December to January. Then we 
-             * add 12 months minus this amount, which equals subtracting when we ignore the years. */
+             * add 12 months minus this amount, which equals subtracting since we ignore the year. */
             return Add(input, 12 - amount % 12);
         }
 
