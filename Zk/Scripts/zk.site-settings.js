@@ -15,6 +15,9 @@
         zk.resizeLoginArea();
     });
 
+    $('#register-link').click(function() { zk.showSignupBox(); });
+    $('#signin-link').click(function() { zk.showLoginBox(); });
+
     /* Initialize fullPage.js sliders */
     $('.container').fullpage({
 

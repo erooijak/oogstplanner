@@ -29,14 +29,10 @@
     <div style="margin-top: 10px" class="form-group">
         <!-- Button -->
         <div class="col-sm-12 controls">
-            <button type="submit" class="btn btn-success">Login  </button>
+            <button type="submit" class="btn btn-success">Inloggen</button>
 
             @if(ViewData.ModelState.ContainsKey("registration")){ @ViewData.ModelState["registration"].Errors.First().ErrorMessage; }
 
-            @Html.ActionLink("Login met Facebook", "ExternalLogin", "Account", 
-                new { provider = "facebook", returnUrl = ViewBag.ReturnUrl }, 
-                new { @id = "btn-fblogin", @class = "btn btn-primary" } )
-            <!--<a id="btn-fblogin" href="/ExternalLogin/" class="btn btn-primary">Login met Facebook</a>-->
         </div>
     </div>
 
@@ -44,7 +40,7 @@
         <div class="col-md-12 control">
             <div style="border-top: 1px solid#888; padding-top: 15px; font-size: 85%; color: black;" >
                 Ik heb nog geen account! 
-                <a href="#" onClick="$('#loginbox').hide(); $('#signupbox').show(); zk.resetValidation();">
+                <a href="#" id="register-link">
                     Registreren.
                 </a>
             </div>

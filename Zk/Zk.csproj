@@ -175,7 +175,6 @@
     <Compile Include="BusinessLogic\FarmingActionManager.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="ViewModels\UserInfoViewModel.cs" />
-    <Compile Include="Controllers\AccountControllerExternal.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="App_Start\AuthConfig.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -234,14 +233,10 @@
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Views\Home\_FarmingMonth.cshtml" />
-    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
-    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\Manage.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Account\_ChangePasswordPartial.cshtml" />
-    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
-    <Content Include="Views\Account\_RemoveExternalLoginsPartial.cshtml" />
     <Content Include="Views\Account\_SetPasswordPartial.cshtml" />
     <Content Include="Content\Images\upstate-ny-permaculture-logo.jpg" />
     <Content Include="Content\Images\permaculture-kitchen-garden.jpg" />

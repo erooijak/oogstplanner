@@ -39,6 +39,18 @@
 
     },
 
+    showSignupBox: function() {
+        $('#loginbox').hide(); 
+        $('#signupbox').show(); 
+        this.resetValidation();
+    },
+
+    showLoginBox: function() {
+        $('#signupbox').hide(); 
+        $('#loginbox').show(); 
+        this.resetValidation()
+    },
+
     // Helper functions:
     capitaliseFirstLetter: function(string) {
         return string.charAt(0).toUpperCase() + string.slice(1);
