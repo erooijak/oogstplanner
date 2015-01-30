@@ -17,16 +17,16 @@ TODO Profiel maken gebruiker
 
 DONE Datamodel (Model)
 DONE Datamodel relaties inbouwen (foreign keys)
-TO VERIFY Classes en relaties
-TODO Bepalen groeitijd
+DONE Classes en relaties
+IN PROGRESS Bepalen groeitijd
+IN PROGRESS Bepalen groeitijd keukenkruiden, groenbemesters en kiemgroenten
 TODO Uitzoeken kilogrammen en grondtypes (FutDev)
-TODO Bepalen groeitijd keukenkruiden, groenbemesters en kiemgroenten
 
 Business logic (Controllers)
 DONE van zaai- en oogstmaand naar view en vice versa
 DONE 'echte' businesslogic laag toegevoegd met managers.
-TODO Pseudo code voor berekeningen
-TODO Pseudo code naar echte code
+DONE Pseudo code voor berekeningen
+DONE Pseudo code naar echte code
 TODO Error handling
 
 Notifications (Controllers/View)
@@ -45,6 +45,7 @@ User Interface (View)
 DONE Minder grote bovenkant
 DONE Kleurtjes bij foute invoer.
 IN PROGRESS User interface
+TODO Menubalk netjes met Bootstrap
 TODO Indien register form groter is pagina langer maken plus wat pixels in zk.resizeLoginArea().
 TODO Direct meeveranderen van zaaien/oogsten op basis van input (JavaScript/jQuery)
 TODO Maanden-code van de view verplaatsen naar models en controllers
