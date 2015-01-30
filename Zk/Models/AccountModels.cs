@@ -75,7 +75,7 @@ namespace Zk.Models
     public class LostPasswordModel
     {
         [Required(ErrorMessage = "We hebben uw e-mail nodig om u een resetlink te kunnen sturen!")]
-        [Display(Name = "De email die bij uw account hoort.")]
+        [Display(Name = "Het emailadres dat bij uw account hoort")]
         [EmailAddress(ErrorMessage= "Geen valide e-mailadres.")]
         public string Email { get; set; }
     }
