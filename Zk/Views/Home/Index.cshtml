@@ -58,7 +58,7 @@
     // END OF RESPONSIVE GRID LAY-OUT
 
     <footer class="footer">
-    	Powered by ASP.NET MVC @ViewData["Version"] on @ViewData["Runtime"]!
+    	Powered by ASP.NET MVC @ViewData["Version"] on @Html.Raw(@ViewData["Runtime"])!
     </footer>
 }
     </div><!-- End of main slide -->
