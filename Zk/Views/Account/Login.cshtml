@@ -15,7 +15,7 @@
 <div id="login" class="bg imglogin">
     <div class="row">
         <div class="col-md-6 col-sm-6 col-xs-6 pull-left">
-            <div style="padding: 3.5%; padding-top: 30px">
+            <div class="jumbotron-box">
                 <div class="jumbotron">
                     <h2>Welkom bij de Oogstplanner.</h2>
                     <p>Blablabla...</p>
@@ -23,20 +23,20 @@
             </div>
         </div>
         <!-- Login box inspired by http://bootsnipp.com/snippets/featured/login-amp-signup-forms-in-panel -->
-        <div id="loginbox" style="font-size: 12px; padding: 3.5%;" class="mainbox col-md-6 col-sm-6 col-xs-6">                    
+        <div id="loginbox" class="mainbox col-md-6 col-sm-6 col-xs-6">                    
            
             <div class="panel panel-info">
 
                 <div class="panel-heading">
                     <div class="panel-title">Inloggen</div>
-                    <div style="float: right; font-size: 80%; position: relative; top:-10px">
+                    <div class="panel-side-link">
                         @Html.ActionLink("Wachtwoord vergeten?", "LostPassword")
                     </div>
                 </div>     
 
-                <div style="padding-top: 30px" class="panel-body" >
+                <div class="panel-body panel-padding">
 
-                    <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
+                    <div id="login-alert" class="alert alert-danger col-sm-12"></div>
 
                     @{ Html.RenderPartial("_LoginForm"); }
 
@@ -44,15 +44,15 @@
             </div><!-- End panel -->
         </div><!-- End login box column-->
 
-        <div id="signupbox" style="padding: 3.5%; display:none; font-size: 12px;" class="mainbox col-md-6 col-sm-6 col-xs-6">
+        <div id="signupbox" class="mainbox col-md-6 col-sm-6 col-xs-6">
             <div class="panel panel-info">
                 <div class="panel-heading">
                     <div class="panel-title">Registreer je vandaag bij de Oogstplanner</div>
-                    <div style="float:right; font-size: 85%; position: relative; top:-10px">
+                    <div class="panel-side-link">
                         <a id="signin-link" href="#">Inloggen</a>
                     </div>
                 </div>  
-                <div class="panel-body" style="padding-top: 30px;">
+                <div class="panel-body panel-padding">
 
                     @{ Html.RenderPartial("_RegisterForm"); }
 
