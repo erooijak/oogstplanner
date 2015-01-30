@@ -185,6 +185,7 @@
     <Compile Include="BusinessLogic\UserManager.cs" />
     <Compile Include="ViewModels\LoginOrRegisterViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
+    <Compile Include="Helpers\MonthExtension.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Web.config" />
@@ -268,5 +269,6 @@
     <None Include="App_Data\Migrations\201412242100_AddMembershipSchema.postgresql" />
     <None Include="App_Data\Migrations\201412311422_AddPasswordResetTokens.postgresql" />
     <None Include="App_Data\Migrations\201501282049_AddGrowingTypeToCrop.postgresql" />
+    <None Include="App_Data\Migrations\201501301854_UIntGrowingTime.postgresql" />
   </ItemGroup>
 </Project>

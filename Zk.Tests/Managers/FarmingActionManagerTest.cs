@@ -18,25 +18,40 @@ namespace Zk.Tests
         [TestFixtureSetUp]
         public void Setup()
         {
+            var calendar = new Calendar { CalendarId = 1 };
+            var broccoli = new Crop 
+            {
+                Id = 1,
+                Name = "Broccoli", 
+                GrowingTime = 4,
+                SowingMonths = Month.Mei ^ Month.Juni ^ Month.Oktober ^ Month.November 
+            };
             // Initialize a fake database with some crops and farming actions.
-            _db = new FakeZkContext {
-                Crops = {
-                    new Crop {
-                        Id = 1,
-                        Name = "Broccoli", 
-                        SowingMonths = Month.Mei ^ Month.Juni ^ Month.Oktober ^ Month.November 
-                    }
+            _db = new FakeZkContext 
+            {
+                Crops = 
+                {
+                    broccoli
                 },
-                FarmingActions = {
-                    new FarmingAction {
+                FarmingActions = 
+                {
+                    new FarmingAction 
+                    {
                         Id = 1,
-                        Crop = new Crop {
-                            Id = 1,
-                            Name = "Broccoli", 
-                            SowingMonths = Month.Mei ^ Month.Juni ^ Month.Oktober ^ Month.November 
-                        },
+                        Calendar = calendar,
+                        Crop = broccoli,
+                        Action = ActionType.Sowing,
                         CropCount = 3,
                         Month = Month.Mei
+                    },
+                    new FarmingAction 
+                    {
+                        Id = 2,
+                        Calendar = calendar,
+                        Crop = broccoli,
+                        Action = ActionType.Harvesting,
+                        CropCount = 3,
+                        Month = Month.September
                     }
                 }
             };
@@ -47,7 +62,7 @@ namespace Zk.Tests
         }
 
         [Test]
-        public void CorrectCropIsUpdated()
+        public void FarmingActionManager_UpdateCropCounts_CorrectCropsAreUpdated()
         {
 			// Arrange
             var cropIds = new List<int> { 1 };
@@ -59,6 +74,8 @@ namespace Zk.Tests
 			// Assert
             Assert.AreEqual(1, _db.FarmingActions.Find(1).CropCount,
                 "CropCount should be updated to 1 since the crop id with one has a count of one.");
+            Assert.AreEqual(1, _db.FarmingActions.Find(2).CropCount,
+                "CropCount of the related farming action should be updated to 1 too.");
         }
     }
 }

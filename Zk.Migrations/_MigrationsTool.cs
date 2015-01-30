@@ -43,7 +43,7 @@ namespace Zk.Migrations
             //       clicking on it.
             // Make sure that the Setup.postgresql script has run manually to create the database user.
 
-            const string MIGRATION_NAME = "AddGrowingTypeToCrop";
+            const string MIGRATION_NAME = "UIntGrowingTime";
 
             // END USER INPUT /////////////////////////////////////////////////////////////////////////////
 

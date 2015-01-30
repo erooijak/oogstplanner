@@ -68,6 +68,9 @@
     <Reference Include="System.Web.Mvc">
       <HintPath>..\packages\Microsoft.AspNet.Mvc.4.0.20710.0\lib\net40\System.Web.Mvc.dll</HintPath>
     </Reference>
+    <Reference Include="Moq">
+      <HintPath>..\packages\Moq.4.2.1409.1722\lib\net40\Moq.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Zk\Zk.csproj">
@@ -83,6 +86,9 @@
     <Compile Include="Fakes\FakeZkContext.cs" />
     <Compile Include="Fakes\FakeFarmingActionSet.cs" />
     <Compile Include="Managers\FarmingActionManagerTest.cs" />
+    <Compile Include="ExtensionMethods\UrlHelperExtensionTest.cs" />
+    <Compile Include="ExtensionMethods\MonthExtensionTest.cs" />
+    <Compile Include="Lib\MvcMockHelpers.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -92,5 +98,7 @@
   <ItemGroup>
     <Folder Include="Fakes\" />
     <Folder Include="Managers\" />
+    <Folder Include="ExtensionMethods\" />
+    <Folder Include="Lib\" />
   </ItemGroup>
 </Project>
