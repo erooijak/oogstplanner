@@ -5,7 +5,7 @@
  *
  * Copyright (C) 2013 alvarotrigo.com - A project by Alvaro Trigo
  *
- * Small edits made by Zaaikalender DevOps team (removed fp-prev and fp-next buttons on sliders)
+ * Small edits made by Oogstplanner DevOps team (removed fp-prev and fp-next buttons on sliders)
  */
 
 (function($) {

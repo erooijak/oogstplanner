@@ -149,12 +149,12 @@ namespace Zk.Controllers
                     // Generate the html link sent via email
                     var resetLink = "<a href='"
                         + Url.Action("ResetPassword", "Account", new { rt = token }, "http")
-                        + "'>klik hier om uw Zaaikalender wachtwoord te resetten.</a>";
+                        + "'>klik hier om uw Oogstplanner wachtwoord te resetten.</a>";
 
                     // Email stuff
-                    var subject = "Reset uw wachtwoord voor de Zaaikalender";
+                    var subject = "Reset uw wachtwoord voor de Oogstplanner";
                     var body = "Uw link: " + resetLink;
-                    var from = "donotreply@zaaikalender.org";
+                    var from = "donotreply@oogstplanner.nl";
 
                     var message = new MailMessage(from, model.Email) 
                     {

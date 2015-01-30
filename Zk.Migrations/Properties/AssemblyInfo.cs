@@ -7,7 +7,7 @@ using System.Runtime.CompilerServices;
 [assembly: AssemblyTitle ("Zk.Migrations")]
 [assembly: AssemblyDescription ("")]
 [assembly: AssemblyConfiguration ("")]
-[assembly: AssemblyCompany ("Zaaikalender DevOps team")]
+[assembly: AssemblyCompany ("Oogstplanner DevOps team")]
 [assembly: AssemblyProduct ("")]
 [assembly: AssemblyCopyright ("Erwin Rooijakkers & Elisa Achterberg")]
 [assembly: AssemblyTrademark ("")]
