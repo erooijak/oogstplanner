@@ -3,21 +3,11 @@
 <div id="main">
     <div class="slide flowtype-area">
 @{ 
-    ViewBag.Title = "Home";
+    ViewBag.Title = "Maandoverzicht";
   
     // START RESPONSIVE GRID LAYOUT
 
-    <div id="top">
-        <div class="row">
-            <div class="col-md-9">
-                <h1>Oogstplanner</h1>
-            </div>
-            <div class="col-md-3">
-                <a href="/Account/Profile" class="btn btn-info"><i class="icon-hand-right"></i> &nbsp; Mijn profiel</a>
-                <a href="/Account/Logoff" class="btn btn-info"><i class="icon-hand-right"></i> &nbsp; Uitloggen</a>
-            </div>
-        </div>
-    </div>
+    <div id="top"></div>
 
     // Row of rectangles for the seasons
     foreach (var seizoen in Model.SeizoenenForDisplay)

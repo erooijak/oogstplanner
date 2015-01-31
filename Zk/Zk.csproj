@@ -247,6 +247,7 @@
     <Content Include="Views\Account\_LostPasswordForm.cshtml" />
     <Content Include="Views\Account\ResetPassword.cshtml" />
     <Content Include="Views\Account\_ResetPasswordForm.cshtml" />
+    <Content Include="Content\Stylesheets\bootstrap-navbar.css" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>

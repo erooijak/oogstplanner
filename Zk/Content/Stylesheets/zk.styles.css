@@ -84,17 +84,6 @@ p {
     display: none;
 }
 
-/* For list */
-ul {
-    text-align:left;
-    padding: 0;
-    list-style-position: inside;
-}
-li {
-    margin: 0 0 0 5%;
-    padding: 0;
-}
-
 /* Validation styling */
 .field-validation-error
 {

@@ -3,12 +3,10 @@
 #top {
     width: 99.5%;
     margin: 0.25%;
-    background: #000;
     float: left;
     clear: both;
     display: block;
-    color: #fff;
-    text-align: center;
+    padding-bottom: 50px;
 }
 .top-bar-tiny {
     float: left;
