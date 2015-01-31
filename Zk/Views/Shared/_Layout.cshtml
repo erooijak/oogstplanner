@@ -16,7 +16,7 @@
         <script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
         
-	<script src="/Scripts/jquery-1.8.0.min.js"></script>
+    <script src="/Scripts/jquery-2.1.3.min.js"></script>
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
     <script src="/Scripts/jquery.unobtrusive-ajax.min.js"></script>
     <script src="/Scripts/jquery.easings.min.js"></script>
@@ -30,44 +30,56 @@
 
 </head>
 <body>
+    @if (Request.IsAuthenticated)
+    {
+        <!-- Fixed navbar -->
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" 
+                        data-toggle="collapse" data-target="#navbar" 
+                        aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Navigatie</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">De oogstplanner</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="/Home/Index">Maandoverzicht</a></li>
+                    <li><a href="/Calendar/TODO">Jaarkalender</a></li>
+                    <li><a href="/Calendar/TODO">Nieuwe kalender invullen</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" 
+                                    role="button" aria-expanded="false">Mijn profiel <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="/Account/ViewProfile">Bekijken</a></li>
+                            <li><a href="/Account/EditProfile">Aanpassen</a></li>
+                            <li class="divider"></li>
+                            <li><a href="/Account/Logoff">Uitloggen</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div><!--/.nav-collapse -->
+        </nav>
+    }
+    else 
+    {
+        <!-- Fixed navbar -->
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">De oogstplanner</a>
+            </div>
+        </nav>
+    }
 
-    <!-- Fixed navbar -->
-    <nav class="navbar navbar-default navbar-fixed-top">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" 
-                    data-toggle="collapse" data-target="#navbar" 
-                    aria-expanded="false" aria-controls="navbar">
-                <span class="sr-only">Navigatie</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#">De oogstplanner</a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-                <li class="active"><a href="/Home/Index">Maandoverzicht</a></li>
-                <li><a href="/Calendar/TODO">Jaarkalender</a></li>
-                <li><a href="/Calendar/TODO">Nieuwe kalender invullen</a></li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" 
-                                role="button" aria-expanded="false">Mijn profiel <span class="caret"></span>
-                    </a>
-                    <ul class="dropdown-menu" role="menu">
-                        <li><a href="/Account/ViewProfile">Bekijken</a></li>
-                        <li><a href="/Account/EditProfile">Aanpassen</a></li>
-                        <li class="divider"></li>
-                        <li class="dropdown-header">Nav header</li> 
-                        <li><a href="/Account/Logoff">Uitloggen</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </div><!--/.nav-collapse -->
-    </nav>
 	<div class="container">
 		@RenderBody()
 	</div>
+
 </body>
 </html>

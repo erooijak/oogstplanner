@@ -227,9 +227,6 @@
     <Content Include="Scripts\jquery.slimscroll.min.js" />
     <Content Include="Content\Images\harvesting.jpg" />
     <Content Include="Content\Images\sowing.jpg" />
-    <Content Include="Scripts\jquery-1.8.0-vsdoc.js" />
-    <Content Include="Scripts\jquery-1.8.0.js" />
-    <Content Include="Scripts\jquery-1.8.0.min.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Views\Home\_FarmingMonth.cshtml" />
@@ -248,6 +245,9 @@
     <Content Include="Views\Account\ResetPassword.cshtml" />
     <Content Include="Views\Account\_ResetPasswordForm.cshtml" />
     <Content Include="Content\Stylesheets\bootstrap-navbar.css" />
+    <Content Include="Scripts\jquery-2.1.3-vsdoc.js" />
+    <Content Include="Scripts\jquery-2.1.3.js" />
+    <Content Include="Scripts\jquery-2.1.3.min.js" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
@@ -266,5 +266,6 @@
     <None Include="App_Data\Migrations\201412311422_AddPasswordResetTokens.postgresql" />
     <None Include="App_Data\Migrations\201501282049_AddGrowingTypeToCrop.postgresql" />
     <None Include="App_Data\Migrations\201501301854_UIntGrowingTime.postgresql" />
+    <None Include="Scripts\jquery-2.1.3.min.map" />
   </ItemGroup>
 </Project>
