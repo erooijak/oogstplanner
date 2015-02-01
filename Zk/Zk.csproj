@@ -174,7 +174,6 @@
     <Compile Include="ViewModels\FarmingMonthViewModel.cs" />
     <Compile Include="BusinessLogic\FarmingActionManager.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="ViewModels\UserInfoViewModel.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="App_Start\AuthConfig.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -182,9 +181,13 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="BusinessLogic\CropManager.cs" />
     <Compile Include="BusinessLogic\UserManager.cs" />
-    <Compile Include="ViewModels\LoginOrRegisterViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
+    <Compile Include="BusinessLogic\CalendarManager.cs" />
+    <Compile Include="ViewModels\YearCalendarViewModel.cs" />
     <Compile Include="Helpers\MonthExtension.cs" />
+    <Compile Include="Helpers\MonthHelper.cs" />
+    <Compile Include="ViewModels\LoginOrRegisterViewModel.cs" />
+    <Compile Include="ViewModels\UserInfoViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Web.config" />
@@ -248,6 +251,7 @@
     <Content Include="Scripts\jquery-2.1.3-vsdoc.js" />
     <Content Include="Scripts\jquery-2.1.3.js" />
     <Content Include="Scripts\jquery-2.1.3.min.js" />
+    <Content Include="Views\Calendar\Year.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>

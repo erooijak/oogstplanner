@@ -86,9 +86,10 @@
     <Compile Include="Fakes\FakeZkContext.cs" />
     <Compile Include="Fakes\FakeFarmingActionSet.cs" />
     <Compile Include="Managers\FarmingActionManagerTest.cs" />
-    <Compile Include="ExtensionMethods\UrlHelperExtensionTest.cs" />
-    <Compile Include="ExtensionMethods\MonthExtensionTest.cs" />
     <Compile Include="Lib\MvcMockHelpers.cs" />
+    <Compile Include="Helpers\UrlHelperExtensionTest.cs" />
+    <Compile Include="Helpers\MonthExtensionTest.cs" />
+    <Compile Include="Helpers\MonthHelperTest.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -98,7 +99,7 @@
   <ItemGroup>
     <Folder Include="Fakes\" />
     <Folder Include="Managers\" />
-    <Folder Include="ExtensionMethods\" />
     <Folder Include="Lib\" />
+    <Folder Include="Helpers\" />
   </ItemGroup>
 </Project>

@@ -1,0 +1,31 @@
+﻿@model Zk.ViewModels.YearCalendarViewModel
+
+@{
+    ViewBag.Title = "Jaarkalender";
+}
+
+<div id="top"></div>
+
+<table class="table">
+    <tr>
+        <td>Maand</td><td>Gewassen</td>
+    </tr>
+
+    @foreach (var kvp in Model)
+    {
+        var month = kvp.Key;
+        var farmingActions = kvp.Value;
+
+        <tr>
+            <td>@month</td>
+            <td>
+                @foreach (var fa in farmingActions)
+                {
+                    @fa.CropCount @fa.Crop.Name <br/>
+                }
+            </td>
+        </tr>
+    }
+</table>
+
+@Html.ActionLink("Terug naar thuis", "Index",  "Home",  null, null)

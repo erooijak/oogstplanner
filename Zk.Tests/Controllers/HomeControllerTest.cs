@@ -1,4 +1,5 @@
 ﻿using NUnit.Framework;
+using System.Linq;
 using System.Collections.Generic;
 using System.Web.Mvc;
 
@@ -24,7 +25,7 @@ namespace Zk.Tests
 
             // Assert
             Assert.AreEqual(expectedVersion, result.ViewData["Version"]);
-            Assert.AreEqual(expectedRuntime, result.ViewData["Runtime"]);
+            Assert.IsTrue(result.ViewData["Runtime"].ToString().Contains(expectedRuntime));
         }
 
         [Test]

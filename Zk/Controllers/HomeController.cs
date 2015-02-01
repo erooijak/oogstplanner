@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 
+using Zk.Helpers;
 using Zk.ViewModels;
 
 namespace Zk.Controllers
@@ -22,7 +23,7 @@ namespace Zk.Controllers
 
             // Months are used for the CSS classes 
             // to add to the squares and for displayal within the square.
-            var months = Enum.GetValues(typeof(Month)).Cast<Month>()
+            var months = MonthHelper.GetAllMonths()
                 .Select(m => m.ToString().ToLower())
                 .ToList();
                 
@@ -36,9 +37,9 @@ namespace Zk.Controllers
 
                 MonthsOrdered = new Stack<string>(new[] 
                     {   
-                        months[8], months[5], months[2],  months[11], 
                         months[7], months[4], months[1],  months[10], 
-                        months[6], months[3], months[12], months[9] 
+                        months[6], months[3], months[0],  months[9], 
+                        months[5], months[2], months[11], months[8] 
                     }) 
             };
 

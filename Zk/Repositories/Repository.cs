@@ -5,6 +5,7 @@ using System.Linq.Expressions;
 using System.Security.Principal;
 using System.Web.Security;
 
+using Zk.Helpers;
 using Zk.Models;
 
 namespace Zk.Repositories
@@ -137,6 +138,16 @@ namespace Zk.Repositories
         public User GetUserById(int id)
         {
             return _db.Users.Find(id);
+        }
+
+        public int GetUserIdByUserName(string name)
+        {
+            var user = _db.Users.Where(u => u.Name == name).First();
+
+            if (user == null)
+                throw new ArgumentException("The user with the specified name does not exist.");
+          
+            return user.UserId; 
         }
 
         public MembershipUser GetMembershipUserByEmail(string email)

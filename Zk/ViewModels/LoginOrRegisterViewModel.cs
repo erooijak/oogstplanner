@@ -1,8 +1,10 @@
-﻿namespace Zk.ViewModels
+﻿using Zk.Models;
+
+namespace Zk.ViewModels
 {
-    public class UserInfoViewModel
+    public class LoginOrRegisterViewModel
     {
-        public bool IsAuthenticated { get; set; }
-        public string FullName { get; set; }
+        public LoginModel Login { get; set; }
+        public RegisterModel Register { get; set; }
     }
 }
