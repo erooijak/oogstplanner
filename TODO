@@ -29,6 +29,9 @@ DONE Pseudo code voor berekeningen
 DONE Pseudo code naar echte code
 TODO Error handling
 
+Security
+TODO 1. check of geupdate acties wel bij de ingelogde gebruiker horen
+
 Notifications (Controllers/View)
 TODO Wanneer implementeren?
 TODO Implementatie herinneringen

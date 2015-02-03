@@ -1,6 +1,6 @@
 ﻿var zk = {
     
-    toFarmingMonth: function() {
+    toMonthCalendar: function() {
         $.fn.fullpage.moveSlideRight();
         $(window).scrollTop(0);
     },
@@ -10,8 +10,8 @@
         $(window).scrollTop(0);
     },
 
-    fillFarmingMonth: function(month, data) {
-        $('#_FarmingMonth').html(data);
+    fillMonthCalendar: function(month, data) {
+        $('#_MonthCalendar').html(data);
     },
 
     resizeLoginArea: function() {

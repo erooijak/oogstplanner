@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web.Security;
 
 using Zk.Helpers;
-using Zk.Models;
 using Zk.ViewModels;
 using Zk.Repositories;
 
@@ -14,33 +10,45 @@ namespace Zk.BusinessLogic
     public class CalendarManager
     {
         readonly Repository _repository;
+        readonly FarmingActionManager _farmingActionManager;
+        readonly UserManager _userManager;
 
         public CalendarManager()
         {
             _repository = new Repository();
+            _farmingActionManager = new FarmingActionManager();
+            _userManager = new UserManager();
         }
 
         public CalendarManager(Repository repository)
         {
             _repository = repository;
+            _farmingActionManager = new FarmingActionManager(repository);
+            _userManager = new UserManager(repository);
         }
 
         public YearCalendarViewModel GetYearCalendar()
         {
-            var vm = new YearCalendarViewModel();
+            var yearCalendar = new YearCalendarViewModel();
+            var currentUserId = _userManager.GetCurrentUserId();
 
-            var userName = Membership.GetUser().UserName;
-            var currentUserId = _repository.GetUserIdByUserName(userName);
-
-            var farmingActionsOfUser = _repository.GetFarmingActions(
-                fa => fa.Calendar.UserId == currentUserId);
-
-            foreach (var month in MonthHelper.GetAllMonths()) 
+            foreach (var month in MonthHelper.GetAllMonths())
             {
-                vm.Add(month, farmingActionsOfUser.Where(fa => fa.Month == month).ToList());
+                var monthCalendar = GetMonthCalendar(currentUserId, month);
+                yearCalendar.Add(monthCalendar);
             }
 
-            return vm;
+            return yearCalendar;
+        }
+
+        public MonthCalendarViewModel GetMonthCalendar(int userId, Month month)
+        {
+            return new MonthCalendarViewModel 
+            {
+                DisplayMonth = month.ToString(),
+                HarvestingActions = _farmingActionManager.GetHarvestingActions(userId, month),
+                SowingActions = _farmingActionManager.GetSowingActions(userId, month)
+            };
         }
 
     }

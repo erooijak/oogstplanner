@@ -1,12 +1,11 @@
-﻿using System.Collections.Generic;
-using Zk.Models;
+﻿using System.Collections.ObjectModel;
 
 namespace Zk.ViewModels
 {
     /// <summary>
     ///     View model used for displaying the year calendar
     /// </summary>
-    public class YearCalendarViewModel : Dictionary<Month, IEnumerable<FarmingAction>>
+    public class YearCalendarViewModel : Collection<MonthCalendarViewModel>
     {
     }
 

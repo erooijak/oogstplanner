@@ -4,6 +4,7 @@ using System.Linq;
 
 using Zk.Models;
 using Zk.Repositories;
+using Zk.ViewModels;
 
 namespace Zk.BusinessLogic
 {
@@ -21,16 +22,18 @@ namespace Zk.BusinessLogic
             _repository = repository;
         }
 
-        public IEnumerable<FarmingAction> GetHarvestingActions(Month month)
+        public IEnumerable<FarmingAction> GetHarvestingActions(int userId, Month month)
         {
-            return _repository.GetFarmingActions(
-                fa => fa.Action == ActionType.Harvesting && fa.Month.HasFlag(month));
+            return _repository.GetFarmingActions(fa => fa.Calendar.UserId == userId
+                && fa.Action == ActionType.Harvesting 
+                && fa.Month.HasFlag(month));
         }
 
-        public IEnumerable<FarmingAction> GetSowingActions(Month month)
+        public IEnumerable<FarmingAction> GetSowingActions(int userId, Month month)
         {
-            return _repository.GetFarmingActions(
-                fa => fa.Action == ActionType.Sowing && fa.Month.HasFlag(month));
+            return _repository.GetFarmingActions(fa => fa.Calendar.UserId == userId
+                && fa.Action == ActionType.Harvesting 
+                && fa.Month.HasFlag(month));
         }
 
         public void UpdateCropCounts(IList<int> ids, IList<int> counts)

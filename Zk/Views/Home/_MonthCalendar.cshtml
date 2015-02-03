@@ -1,4 +1,4 @@
-﻿@model FarmingMonthViewModel
+﻿@model MonthCalendarViewModel
 
 <div id="top"></div>
 
@@ -33,7 +33,7 @@
     </div>
 </div>
 
-@using (Ajax.BeginForm("Update", new AjaxOptions { OnSuccess = "zk.toMain", OnFailure = "TODO" }))
+@using (Ajax.BeginForm("UpdateMonth", new AjaxOptions { OnSuccess = "zk.toMain", OnFailure = "TODO" }))
 {
     <!-- Main rectangles -->
     <div class="rectangle-vertical rectangle-sowing">

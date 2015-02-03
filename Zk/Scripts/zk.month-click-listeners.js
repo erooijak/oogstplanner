@@ -7,10 +7,10 @@
             
             var month = $(monthElement).data('month');
 
-            $.get('/FarmingAction/Edit?month=' + month, function(data) {
-                zk.fillFarmingMonth(month, data);
+            $.get('/Calendar/Month?month=' + month, function(data) {
+                zk.fillMonthCalendar(month, data);
             })
-              .done(function() { zk.toFarmingMonth(); })
+              .done(function() { zk.toMonthCalendar(); })
               .fail(function() { alert('TODO: Error handling'); });
         });
     });

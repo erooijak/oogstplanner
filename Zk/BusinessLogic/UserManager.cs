@@ -32,6 +32,14 @@ namespace Zk.BusinessLogic
             return _repository.GetUser(user);
         }
 
+        public int GetCurrentUserId()
+        {
+            var currentUserName = Membership.GetUser().UserName;
+            var currentUserId = _repository.GetUserIdByUserName(currentUserName);
+
+            return currentUserId;
+        }
+
         public User GetUserById(int id)
         {
             return _repository.GetUserById(id);

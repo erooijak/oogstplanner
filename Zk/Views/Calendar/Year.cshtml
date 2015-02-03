@@ -1,4 +1,4 @@
-﻿@model Zk.ViewModels.YearCalendarViewModel
+﻿@model YearCalendarViewModel
 
 @{
     ViewBag.Title = "Jaarkalender";
@@ -10,16 +10,18 @@
     <tr>
         <td>Maand</td><td>Gewassen</td>
     </tr>
-
-    @foreach (var kvp in Model)
+        
+    @foreach (var month in Model)
     {
-        var month = kvp.Key;
-        var farmingActions = kvp.Value;
 
         <tr>
-            <td>@month</td>
+            <td>@month.DisplayMonth</td>
             <td>
-                @foreach (var fa in farmingActions)
+                @foreach (var fa in month.SowingActions)
+                {
+                    @fa.CropCount @fa.Crop.Name <br/>
+                }
+                @foreach (var fa in month.HarvestingActions)
                 {
                     @fa.CropCount @fa.Crop.Name <br/>
                 }
