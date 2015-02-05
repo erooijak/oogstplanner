@@ -1,8 +1,8 @@
 ## Synopsis
 
-MVC 4 sowing calendar app.
+ASP.NET MVC 4 harvesting planner app running on [Mono](http://www.mono-project.com) using a [PostgreSQL](http://www.postgresql.org/) database.
 
-## Installation on Mono
+## Installation
 
  1. Install an IDE as [*Xamarin Studio*, *MonoDevelop*](http://www.monodevelop.com/download/) and if necessary the [*Mono runtime*](http://www.mono-project.com/download/).
  2. Clone the repository with `git clone https://www.github.com/erooijak/zaaikalender`.
@@ -14,15 +14,9 @@ MVC 4 sowing calendar app.
     `createdb ZkTestDatabase`  
     `psql ZkTestDatabase`  
     
-    `GRANT ALL PRIVILEGES ON DATABASE "ZkTestDatabase" TO zktest;`  
-    `GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO zktest;`  
-    `GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA public TO zktest;`
+    Then follow the database setup and run the migrations on the database in [App_Data/Migrations](https://github.com/erooijak/zaaikalender/tree/master/Zk/App_Data/Migrations). (Note: This is a bit of a hassle now, in the future one script will be created.)
 
-    `Press CTRL-D twice to leave the psql terminal and login.`
-
-Now set `Zk.Migrations` as the startup project and select `var step = Database.Update_Database`. This will update the database to the latest migration.
-
-For Visual Studio users just open the project and have it converted and take similar steps as above.
+For Visual Studio users just open the project, convert it, follow the setup database script and run `Update-Database`.
 
 ## Tests
 
@@ -30,7 +24,7 @@ Run with NUnit.
 
 ## Git
 
-First time clone: `git clone https://www.github.com/erooijak/zaaikalender`.
+First time clone: `git clone https://www.github.com/erooijak/zaaikalender` or pull request.
 
 For collaborators:
 
@@ -49,7 +43,7 @@ Elisa, Jeroen and Erwin.
 
 The MIT License (MIT)
 
-Copyright (c) 2014 Zaaikalender DevOps team
+Copyright (c) 2015 Zaaikalender DevOps team
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
