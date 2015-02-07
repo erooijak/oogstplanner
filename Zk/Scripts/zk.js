@@ -10,7 +10,7 @@
         $(window).scrollTop(0);
     },
 
-    fillMonthCalendar: function(month, data) {
+    fillMonthCalendar: function(data) {
         $('#_MonthCalendar').html(data);
     },
 
