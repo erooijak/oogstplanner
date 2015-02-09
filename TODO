@@ -21,6 +21,7 @@ DONE Classes en relaties
 IN PROGRESS Bepalen groeitijd
 IN PROGRESS Bepalen groeitijd keukenkruiden, groenbemesters en kiemgroenten
 TODO Uitzoeken kilogrammen en grondtypes (FutDev)
+TODO Splitsen repositories
 
 Business logic (Controllers)
 DONE van zaai- en oogstmaand naar view en vice versa
@@ -39,6 +40,7 @@ TODO Implementatie grappen
 
 Initiële invulproces
 TODO Over nadenken
+TODO Bouwen selecteren gewas typeahead implementeren
 TODO Bouwen
 
 Extra's
@@ -108,6 +110,11 @@ Mininum(Max, som)
 Oogsten ingevuld. O1 - Z1 = 2 (groeitijd). Resulteert in zaaien is O1 - 2. 
 
 Zaaien = Min (oogstmaand - groeitijd, max(zaaimaanden))
+
+Initiële invulproces:
+Selecteren op categorie. Zoeken in dropbox.
+jQuery autocomplete
+
 
 Login schermen:
 
