@@ -49,6 +49,13 @@ namespace Zk.Controllers
             return View(calendarViewModel);
         }
 
+        //
+        // GET: /Calendar/Year
+        public ActionResult New()
+        {
+            return View();
+        }
+
         /// <summary>
         ///     POST: /UpdateMonth/{formCollection} 
         ///     Update the relevant farming actions with the new data from the month.

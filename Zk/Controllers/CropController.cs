@@ -1,6 +1,8 @@
 ﻿using System.Web.Mvc;
+using Newtonsoft.Json;
 
 using Zk.BusinessLogic;
+using Zk.Helpers;
 
 namespace Zk.Controllers
 {
@@ -28,6 +30,17 @@ namespace Zk.Controllers
 
 			return View(crops);
 		}
+
+        //
+        // GET: /all
+        [HttpGet]
+        public ActionResult All() 
+        {
+            var crops = _manager.GetAllCrops();
+            var cropsJson = JsonConvert.SerializeObject(crops);
+
+            return new JsonStringResult(cropsJson);
+        }
             	
 	}
 }
