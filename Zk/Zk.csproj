@@ -253,9 +253,9 @@
     <Content Include="Views\Calendar\Year.cshtml" />
     <Content Include="Views\Home\_MonthCalendar.cshtml" />
     <Content Include="Views\Calendar\New.cshtml" />
-    <Content Include="Scripts\zk.crops.js" />
     <Content Include="Scripts\typeahead.bundle.min.js" />
     <Content Include="Scripts\handlebars.min.js" />
+    <Content Include="Scripts\zk.crops-suggestion-engine.js" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>

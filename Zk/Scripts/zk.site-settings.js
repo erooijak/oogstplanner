@@ -11,10 +11,9 @@
 
     /* Keep login screen full width initially and on resize */
     zk.resizeLoginArea();
-    $(window).resize(function() {
-        zk.resizeLoginArea();
-    });
+    $(window).resize(function() { zk.resizeLoginArea(); });
 
+    /* Bind event listeners to hide and show register or signin box when links are clicked. */
     $('#register-link').click(function() { zk.showSignupBox(); });
     $('#signin-link').click(function() { zk.showLoginBox(); });
 
