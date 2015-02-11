@@ -1,7 +1,10 @@
 ﻿/* Create a bloodhound typeahead functionality using bloodhound.js */
 var cropsSuggestionEngine = new Bloodhound({
-    datumTokenizer: function (datum) {
-        return Bloodhound.tokenizers.whitespace(datum.name);
+    datumTokenizer: function(datum) {
+        x = Bloodhound.tokenizers.whitespace(datum.name);
+        y = Bloodhound.tokenizers.whitespace(datum.category);
+        z = Bloodhound.tokenizers.whitespace(datum.race);
+        return x.concat(y).concat(z);
     },
     queryTokenizer: Bloodhound.tokenizers.whitespace,
     prefetch: {
