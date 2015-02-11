@@ -83,6 +83,9 @@ p {
 #signupbox {
     display: none;
 }
+.empty-message {
+    color: black;
+}
 
 /* Validation styling */
 .field-validation-error

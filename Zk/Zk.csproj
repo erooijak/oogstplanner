@@ -256,6 +256,7 @@
     <Content Include="Scripts\typeahead.bundle.min.js" />
     <Content Include="Scripts\handlebars.min.js" />
     <Content Include="Scripts\zk.crops-suggestion-engine.js" />
+    <Content Include="Content\Stylesheets\typeaheadjs.css" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>

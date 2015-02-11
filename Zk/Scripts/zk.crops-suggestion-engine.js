@@ -41,10 +41,10 @@ $(function() {
         source: cropsSuggestionEngine.ttAdapter(),
         templates: {
             empty: ['<div class="empty-message">','Niets gevonden...','</div>'].join('\n'),
-            suggestion: Handlebars.compile('<p><strong>{{name}}</strong> in {{category}}</p>'
-                                         + '<p>Ras: {{race}}.</p>'
-                                         + '<p><i>Groeitijd: {{growingTime}} maanden.</i></p>'
-                                         + '<input type="hidden" name="selected-crop-id" value={{id}}></div>')
+            suggestion: Handlebars.compile('<p><strong>{{name}}</strong> in {{category}}<br/>'
+                                         + 'Ras: {{race}}.<br/>'
+                                         + '<i>Groeitijd: {{growingTime}} maanden.</i><br/>'
+                                         + '<input type="hidden" name="selected-crop-id" value={{id}}></p>')
         }
     }); 
 
