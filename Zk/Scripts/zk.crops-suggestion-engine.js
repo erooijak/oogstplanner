@@ -1,10 +1,9 @@
 ﻿/* Create a bloodhound typeahead functionality using bloodhound.js */
 var cropsSuggestionEngine = new Bloodhound({
     datumTokenizer: function(datum) {
-        x = Bloodhound.tokenizers.whitespace(datum.name);
-        y = Bloodhound.tokenizers.whitespace(datum.category);
-        z = Bloodhound.tokenizers.whitespace(datum.race);
-        return x.concat(y).concat(z);
+        nameDatums = Bloodhound.tokenizers.whitespace(datum.name);
+        raceDatums = Bloodhound.tokenizers.whitespace(datum.race);
+        return nameDatums.concat(raceDatums);
     },
     queryTokenizer: Bloodhound.tokenizers.whitespace,
     prefetch: {
@@ -41,7 +40,8 @@ $(function() {
         source: cropsSuggestionEngine.ttAdapter(),
         templates: {
             empty: ['<div class="empty-message">','Niets gevonden...','</div>'].join('\n'),
-            suggestion: Handlebars.compile('<p><strong>{{name}}</strong> in {{category}}<br/>'
+            suggestion: Handlebars.compile('<p><strong>{{name}}</strong>'
+                                         + '<span class="no-highlighting">in {{category}}</span><br/>'
                                          + '<span class="no-highlighting">Ras:</span> {{race}}.<br/>'
                                          + '<i class="no-highlighting">Groeitijd: {{growingTime}} maanden.</i><br/>'
                                          + '<input type="hidden" name="selected-crop-id" value={{id}}></p>')

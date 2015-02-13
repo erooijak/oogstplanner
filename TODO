@@ -28,6 +28,7 @@ DONE van zaai- en oogstmaand naar view en vice versa
 DONE 'echte' businesslogic laag toegevoegd met managers.
 DONE Pseudo code voor berekeningen
 DONE Pseudo code naar echte code
+TODO Mogelijkheid farming months zelfs toe te voegen
 TODO Error handling
 
 Security
@@ -39,8 +40,8 @@ TODO Implementatie herinneringen
 TODO Implementatie grappen
 
 Initiële invulproces
+DONE Bouwen selecteren gewas typeahead implementeren
 TODO Over nadenken
-TODO Bouwen selecteren gewas typeahead implementeren
 TODO Bouwen
 
 Extra's

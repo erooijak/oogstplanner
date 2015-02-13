@@ -12,7 +12,6 @@
 
         public virtual Crop Crop { get; set; }
         public virtual Calendar Calendar { get; set; }
-       
     }       
 		
 }
