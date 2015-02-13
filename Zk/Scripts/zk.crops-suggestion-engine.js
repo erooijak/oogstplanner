@@ -42,8 +42,8 @@ $(function() {
         templates: {
             empty: ['<div class="empty-message">','Niets gevonden...','</div>'].join('\n'),
             suggestion: Handlebars.compile('<p><strong>{{name}}</strong> in {{category}}<br/>'
-                                         + 'Ras: {{race}}.<br/>'
-                                         + '<i>Groeitijd: {{growingTime}} maanden.</i><br/>'
+                                         + '<span class="no-highlighting">Ras:</span> {{race}}.<br/>'
+                                         + '<i class="no-highlighting">Groeitijd: {{growingTime}} maanden.</i><br/>'
                                          + '<input type="hidden" name="selected-crop-id" value={{id}}></p>')
         }
     }); 

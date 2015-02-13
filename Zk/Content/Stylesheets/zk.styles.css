@@ -86,6 +86,9 @@ p {
 .empty-message {
     color: black;
 }
+.no-highlighting strong {
+    font-weight:normal;
+}
 
 /* Validation styling */
 .field-validation-error
