@@ -16,7 +16,7 @@
 
     resizeCropSelectionBox: function() {
         $('#crop-selection-box').css({
-            height: $('#responsive-square-elements').innerHeight()
+            height: $('#month-overview-responsive-square-elements').innerHeight()
         });
     },
 

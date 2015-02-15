@@ -260,6 +260,7 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Content\Stylesheets\bootstrap.min.css" />
     <Content Include="Scripts\zk.crop-selection-box.js" />
+    <Content Include="Scripts\jquery-ui-1.11.3.min.js" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>

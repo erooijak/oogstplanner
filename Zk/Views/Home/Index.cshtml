@@ -9,7 +9,7 @@
 
     <div id="top"></div>
     <div class="row">
-        <div class="col-md-8" id="responsive-square-elements">
+        <div class="col-md-8" id="month-overview-responsive-square-elements">
 
             <!-- Row of rectangles for the seasons -->
         @foreach (var seizoen in Model.SeizoenenForDisplay)
@@ -56,15 +56,14 @@
                 <input class="typeahead form-control" type="text" placeholder="Zoek een gewas">
             </div>
 
-            <div id="selected-crop-info" class="well">
-                <br/>
+            <div id="selected-crop-info" class="draggable well" draggable="true">
                 <div class="form-text"><strong>Gewas: </strong><span id="selected-crop-name"></span></div>
                 <div class="form-text"><strong>Ras: </strong><span id="selected-crop-race"></span></div>
                 <div class="form-text"><strong>Categorie: </strong><span id="selected-crop-category"></span></div>
                 <div class="form-text"><strong>Groeitijd: </strong><span id="selected-crop-growingTime"></span> maanden</div>
                 <div class="form-text"><strong>Oppervlakte per stuk: </strong><span id="selected-crop-areaPerCrop"></span>m<sup>2</sup></div>
                 <div class="form-text"><strong>Prijs per zakje: </strong>&euro; <span id="selected-crop-pricePerBag"></span></div>
-
+                <input type="hidden" id="selected-crop-hidden-id">
                 <br/>
                 <div class="form-text">Ik wil dit gewas:</div>
 
@@ -83,7 +82,6 @@
                 <br/>
                 <br/>
                 <span class="form-text"><i>Sleep het gewas naar een maand om deze in die maand te <span id="drag-and-drop-sentence-action-type">oogsten</span>.</i></span>
-                <br/>
             </div><!-- End selected crop information field -->
         </div><!-- End right column -->
 
