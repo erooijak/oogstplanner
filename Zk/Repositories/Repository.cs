@@ -113,6 +113,11 @@ namespace Zk.Repositories
                 && fa.Month == month).FirstOrDefault();
         }
 
+        public void AddFarmingAction(FarmingAction farmingAction)
+        {
+            _db.FarmingActions.Add(farmingAction);
+        }
+
         public void AddUser(string userName, string fullName, string email)
         {
             // Note: it is not necessary to check if user profile already exists since membership provider

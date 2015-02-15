@@ -36,6 +36,11 @@ namespace Zk.BusinessLogic
                 && fa.Month.HasFlag(month));
         }
 
+        public void AddFarmingAction(Calendar calendar, Crop crop, Month month, Action action, int count)
+        {
+
+        }
+
         public void UpdateCropCounts(IList<int> ids, IList<int> counts)
         {
             if (ids.Count != counts.Count) throw new ArgumentException(
@@ -46,6 +51,8 @@ namespace Zk.BusinessLogic
             foreach (var kvp in ids.Zip(counts, (id, count) => new KeyValuePair<int, int>(id, count)))
             {
                 var action = _repository.FindFarmingAction(kvp.Key);
+
+                // Add if action is new
 
                 var currentCropCount = action.CropCount;
                 var newCropCount = kvp.Value;

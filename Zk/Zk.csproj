@@ -257,6 +257,9 @@
     <Content Include="Scripts\handlebars.min.js" />
     <Content Include="Scripts\zk.crops-suggestion-engine.js" />
     <Content Include="Content\Stylesheets\typeaheadjs.css" />
+    <Content Include="Scripts\zk.drag-and-drop.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Content\Stylesheets\bootstrap.min.css" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
