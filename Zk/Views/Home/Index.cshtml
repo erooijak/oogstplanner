@@ -8,12 +8,11 @@
     // START RESPONSIVE GRID LAYOUT
 
     <div id="top"></div>
-
     <div class="row">
         <div class="col-md-8">
 
-        // Row of rectangles for the seasons
-        foreach (var seizoen in Model.SeizoenenForDisplay)
+        <!-- Row of rectangles for the seasons -->
+        @foreach (var seizoen in Model.SeizoenenForDisplay)
         {
             <div class="rectangle">
                 <div class="rectangle-content">
@@ -26,16 +25,16 @@
             </div>
         }
      
-        // Four rows which each consist of an autumn, winter, spring and summer image.
-        for (var imageIndex = 1; imageIndex <= 3; imageIndex++)
+        <!-- Four rows which each consist of an autumn, winter, spring and summer image. -->
+        @for (var imageIndex = 1; imageIndex <= 3; imageIndex++)
         {
             foreach (var season in Model.SeasonsCssClasses)
             {
                 var month = Model.MonthsOrdered.Pop();
 
-                // To the outer square div the string.Format methods adds:
-                // 1.) A CSS class for the image so a fitting image can be displayed. 
-                // 2.) A CSS class for the month, so we can identify which month is clicked on.
+                /* To the outer square div the following CSS classes are added in the string.Format method:
+                 *    1.) A class for the image so a fitting image can be displayed. 
+                 *    2.) A class for the month, so we can identify which month is clicked on. */
                 <div class="square bg @string.Format("img{0}{1}", season, imageIndex)" data-month="@month">
                    <div class="content">
                         <div class="table">
@@ -49,15 +48,9 @@
             }
         }
 
-        // END OF RESPONSIVE GRID LAY-OUT
-
-        </div> // End left column
-        <div class="col-md-4">
-
-            <p>This is only a test</p>
-
-        </div>
-    </div> // End row
+        <!-- END OF RESPONSIVE GRID LAY-OUT -->
+        </div> <!-- End column -->
+    </div> <!-- End row -->
 
     <footer class="footer">
     	Powered by ASP.NET MVC @ViewData["Version"] on @Html.Raw(@ViewData["Runtime"])!

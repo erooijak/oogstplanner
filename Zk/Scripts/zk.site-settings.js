@@ -2,11 +2,11 @@
 
 	/* Using flowtype.js to adjust the size of the fonts */
     $('.flowtype-area').flowtype({
-       minimum   : 200,
-       maximum   : 1200,
-       minFont   : 12,
-       maxFont   : 80,
-       fontRatio : 30
+       minimum   : 100,
+       maximum   : 800,
+       minFont   : 8,
+       maxFont   : 60,
+       fontRatio : 38
     });
 
     /* Keep login screen full width initially and on resize */
