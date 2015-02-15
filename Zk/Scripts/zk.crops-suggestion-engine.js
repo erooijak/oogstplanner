@@ -12,7 +12,7 @@ var cropsSuggestionEngine = new Bloodhound({
             return $.map(data, function(crop) {
                 return {
                     id: crop.Id,
-                    name: crop.Name,
+                    name: crop.Name.trim(),
                     race: crop.Race,
                     category: crop.Category,
                     growingTime: crop.GrowingTime,
@@ -43,8 +43,7 @@ $(function() {
             suggestion: Handlebars.compile('<p><strong>{{name}}</strong>'
                                          + '<span class="no-highlighting">in {{category}}</span><br/>'
                                          + '<span class="no-highlighting">Ras:</span> {{race}}.<br/>'
-                                         + '<i class="no-highlighting">Groeitijd: {{growingTime}} maanden.</i><br/>'
-                                         + '<input type="hidden" name="selected-crop-id" value={{id}}></p>')
+                                         + '<i class="no-highlighting">Groeitijd: {{growingTime}} maanden.</i><br/></p>')
         }
     }); 
 

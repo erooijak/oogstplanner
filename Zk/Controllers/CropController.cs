@@ -6,33 +6,33 @@ using Zk.Helpers;
 
 namespace Zk.Controllers
 {
-	public class CropController : Controller
-	{
-		readonly CropManager _manager;
+    public class CropController : Controller
+    {
+        readonly CropManager _manager;
 
-		public CropController()
-		{
+        public CropController()
+        {
             _manager = new CropManager();
-		}
+        }
             
         public CropController(CropManager manager)
-		{
+        {
             _manager = manager;
-		}
-			
-		//
-        // GET: /index
-		[HttpGet]
-		public ViewResult Index() 
-		{
-			// Get all crops and return to the view for display.
-			var crops = _manager.GetAllCrops();
+        }
+        	
+        //
+        // GET: /Index
+        [HttpGet]
+        public ViewResult Index() 
+        {
+            // Get all crops and return to the view for display.
+            var crops = _manager.GetAllCrops();
 
-			return View(crops);
-		}
+            return View(crops);
+        }
 
         //
-        // GET: /all
+        // GET: /All
         [HttpGet]
         public ActionResult All() 
         {
@@ -42,5 +42,5 @@ namespace Zk.Controllers
             return new JsonStringResult(cropsJson);
         }
             	
-	}
+    }
 }

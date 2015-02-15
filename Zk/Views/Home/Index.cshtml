@@ -9,9 +9,9 @@
 
     <div id="top"></div>
     <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-8" id="responsive-square-elements">
 
-        <!-- Row of rectangles for the seasons -->
+            <!-- Row of rectangles for the seasons -->
         @foreach (var seizoen in Model.SeizoenenForDisplay)
         {
             <div class="rectangle">
@@ -25,7 +25,7 @@
             </div>
         }
      
-        <!-- Four rows which each consist of an autumn, winter, spring and summer image. -->
+                <!-- Four rows which each consist of an autumn, winter, spring and summer image. -->
         @for (var imageIndex = 1; imageIndex <= 3; imageIndex++)
         {
             foreach (var season in Model.SeasonsCssClasses)
@@ -49,8 +49,43 @@
         }
 
         <!-- END OF RESPONSIVE GRID LAY-OUT -->
-        </div> <!-- End column -->
-    </div> <!-- End row -->
+        </div><!-- End left column -->
+
+        <div class="col-md-4 well text-left" id="crop-selection-box">
+            <div id="select-crop">
+                <input class="typeahead form-control" type="text" placeholder="Zoek een gewas">
+            </div>
+
+            <div id="selected-crop-info" class="well">
+                <br/>
+                <div class="form-text"><strong>Gewas: </strong><span id="selected-crop-name"></span></div>
+                <div class="form-text"><strong>Ras: </strong><span id="selected-crop-race"></span></div>
+                <div class="form-text"><strong>Categorie: </strong><span id="selected-crop-category"></span></div>
+                <div class="form-text"><strong>Groeitijd: </strong><span id="selected-crop-growingTime"></span> maanden</div>
+                <div class="form-text"><strong>Oppervlakte per stuk: </strong><span id="selected-crop-areaPerCrop"></span>m<sup>2</sup></div>
+                <div class="form-text"><strong>Prijs per zakje: </strong>&euro; <span id="selected-crop-pricePerBag"></span></div>
+
+                <br/>
+                <div class="form-text">Ik wil dit gewas:</div>
+
+                <div class="radio-inline">
+                    <label class="form-text">
+                        <input type="radio" name="action-type-radios" id="sowing-radio-button" value="Zaaien">
+                        Zaaien
+                    </label>
+                </div>
+                <div class="radio-inline">
+                    <label class="form-text">
+                        <input type="radio" name="action-type-radios" id="harvesting-radio-button" value="Oogsten" checked>
+                        Oogsten
+                    </label>
+                </div>
+                <br/>
+                <span class="form-text"><i>Sleep het gewas naar een maand om deze toe te voegen.</i></span>
+            </div><!-- End selected crop information field -->
+        </div><!-- End right column -->
+
+    </div><!-- End row -->
 
     <footer class="footer">
     	Powered by ASP.NET MVC @ViewData["Version"] on @Html.Raw(@ViewData["Runtime"])!

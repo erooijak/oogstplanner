@@ -14,6 +14,12 @@
         $('#_MonthCalendar').html(data);
     },
 
+    resizeCropSelectionBox: function() {
+        $('#crop-selection-box').css({
+            height: $('#responsive-square-elements').innerHeight()
+        });
+    },
+
     resizeLoginArea: function() {
         
         var windowHeight = $(window).innerHeight();

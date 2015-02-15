@@ -13,6 +13,10 @@
     zk.resizeLoginArea();
     $(window).resize(function() { zk.resizeLoginArea(); });
 
+    /* And keep crop-selection-box as big as the responsive square elements initially and on resize */
+    zk.resizeCropSelectionBox();
+    $(window).resize(function() { zk.resizeCropSelectionBox(); });
+
     /* Bind event listeners to hide and show register or signin box when links are clicked. */
     $('#register-link').click(function() { zk.showSignupBox(); });
     $('#signin-link').click(function() { zk.showLoginBox(); });

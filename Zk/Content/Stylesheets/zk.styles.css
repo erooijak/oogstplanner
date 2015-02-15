@@ -83,11 +83,14 @@ p {
 #signupbox {
     display: none;
 }
+#selected-crop-info {
+    font-size: 12px;
+}
 .empty-message {
     color: black;
 }
 .no-highlighting strong {
-    font-weight:normal;
+    font-weight: normal;
 }
 
 /* Validation styling */
