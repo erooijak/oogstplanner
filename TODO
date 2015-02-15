@@ -28,7 +28,7 @@ DONE van zaai- en oogstmaand naar view en vice versa
 DONE 'echte' businesslogic laag toegevoegd met managers.
 DONE Pseudo code voor berekeningen
 DONE Pseudo code naar echte code
-TODO Mogelijkheid farming months zelfs toe te voegen
+IN PROGRESS Mogelijkheid farming months zelfs toe te voegen
 TODO Error handling
 
 Security
@@ -41,8 +41,8 @@ TODO Implementatie grappen
 
 Initiële invulproces
 DONE Bouwen selecteren gewas typeahead implementeren
-TODO Over nadenken
-TODO Bouwen
+DONE Over nadenken
+IN PROGRESS Drag-and-drop
 
 Extra's
 TODO Integratie weer API geavanceerde algoritmes
@@ -53,8 +53,8 @@ DONE Minder grote bovenkant
 DONE Kleurtjes bij foute invoer.
 DONE Maanden-code van de view verplaatsen naar models en controllers
 DONE Menubalk netjes met Bootstrap
+DONE De jaarkalender laten bestaan uit maand kalender view modellen.
 IN PROGRESS User interface maand
-TODO De jaarkalender laten bestaan uit maand kalender view modellen.
 TODO Fixed blokje boven menu? (web-tiki)
 TODO Indien register form groter is pagina langer maken plus wat pixels in zk.resizeLoginArea() (??)
 TODO Direct meeveranderen van zaaien/oogsten op basis van input (JavaScript/jQuery)
@@ -116,6 +116,10 @@ Initiële invulproces:
 Selecteren op categorie. Zoeken in dropbox.
 jQuery autocomplete
 
+Tips:
+Drag en drop op Mobile device:
+jQuery UI Touch Punch
+http://touchpunch.furf.com/
 
 Login schermen:
 
