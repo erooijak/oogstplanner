@@ -20,6 +20,8 @@ DONE Datamodel relaties inbouwen (foreign keys)
 DONE Classes en relaties
 IN PROGRESS Bepalen groeitijd
 IN PROGRESS Bepalen groeitijd keukenkruiden, groenbemesters en kiemgroenten
+TODO Plaatjes erbij zoeken
+TODO Weghalen spaties achter data?
 TODO Uitzoeken kilogrammen en grondtypes (FutDev)
 TODO Splitsen repositories
 
@@ -42,7 +44,8 @@ TODO Implementatie grappen
 Initiële invulproces
 DONE Bouwen selecteren gewas typeahead implementeren
 DONE Over nadenken
-IN PROGRESS Drag-and-drop
+TODO Plaatjes ophalen vanaf server
+TODO Drag-and-drop
 
 Extra's
 TODO Integratie weer API geavanceerde algoritmes
