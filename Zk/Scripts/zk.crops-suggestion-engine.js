@@ -41,7 +41,7 @@ $(function() {
         templates: {
             empty: ['<div class="empty-message">','Niets gevonden...','</div>'].join('\n'),
             suggestion: Handlebars.compile('<p><strong>{{name}}</strong>'
-                                         + '<span class="no-highlighting">in {{category}}</span><br/>'
+                                         + '<span class="no-highlighting"> in {{category}}</span><br/>'
                                          + '<span class="no-highlighting">Ras:</span> {{race}}.<br/>'
                                          + '<i class="no-highlighting">Groeitijd: {{growingTime}} maanden.</i><br/></p>')
         }

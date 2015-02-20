@@ -23,17 +23,4 @@
         $('#drag-and-drop-sentence-action-type').text(actionType.toLowerCase());
     });
 
-    /* Provide draggable styling on mouse-over */
-    $('#selected-crop-info').on('mouseover', function () {
-        $(this).draggable({
-            helper: 'clone',
-            start: function (event, ui) { 
-                $('div[data-month=maart]').toggleClass('activeDroppable'); /*TODO*/
-            },
-            stop: function (event, ui) { 
-                $('div[data-month=maart]').toggleClass('activeDroppable'); /*TODO*/
-            }
-        });
-    });
-
 });
