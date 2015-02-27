@@ -12,21 +12,25 @@ namespace Zk.Controllers
         readonly CalendarManager _calendarManager;
         readonly UserManager _userManager;
         readonly FarmingActionManager _farmingActionManager;
+        readonly CropManager _cropManager;
 
         public CalendarController()
         {
             _calendarManager = new CalendarManager();
             _userManager = new UserManager();
             _farmingActionManager = new FarmingActionManager();
+            _cropManager = new CropManager();
         }
 
         public CalendarController(CalendarManager calendarManager, 
             UserManager userManager, 
-            FarmingActionManager farmingActionManager)
+            FarmingActionManager farmingActionManager,
+            CropManager cropManager)
         {
             _calendarManager = calendarManager;
             _userManager = userManager;
             _farmingActionManager = farmingActionManager;
+            _cropManager = cropManager;
         }
 
         // 
@@ -72,6 +76,18 @@ namespace Zk.Controllers
                 // TODO: Implement logging
                 return Json(new { success = false });
             }
+
+            return Json(new { success = true });
+        }
+
+        [HttpPost]
+        public JsonResult AddFarmingAction(int cropId, Month month, ActionType actionType)
+        {
+
+            var crop = _cropManager.GetCrop(cropId);
+            var currentUserId = _userManager.GetCurrentUserId();
+
+            // TODO: create farming action and update related.
 
             return Json(new { success = true });
         }

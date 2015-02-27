@@ -24,5 +24,10 @@ namespace Zk.BusinessLogic
             return _repository.GetAllCrops();
         }
 
+        public Crop GetCrop(int id)
+        {
+            return _repository.GetCrop(id);
+        }
+
     }
 }

@@ -14,6 +14,10 @@
         $('#_MonthCalendar').html(data);
     },
 
+    addFarmingAction: function(cropId, month, actionType) {
+        $.post('/Calendar/AddFarmingAction', { cropId: cropId, month: month, actionType: actionType } );
+    },
+
     resizeCropSelectionBox: function() {
         $('#crop-selection-box').css({
             height: $('#month-overview-responsive-square-elements').innerHeight()
