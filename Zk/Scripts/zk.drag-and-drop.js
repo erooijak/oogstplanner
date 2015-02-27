@@ -5,10 +5,10 @@
         $(this).draggable({
             helper: 'clone',
             start: function(event, ui) { 
-                $('div[data-month=maart]').toggleClass('activeDroppable'); /*TODO*/
+                $('div[data-month=maart]').toggleClass('highlight');
             },
             stop: function(event, ui) { 
-                $('div[data-month=maart]').toggleClass('activeDroppable'); /*TODO*/
+                $('div[data-month=maart]').toggleClass('highlight');
             }
         });
     });
