@@ -17,7 +17,7 @@
 
     /* Make month squares droppable */
     $('*[data-month]').droppable({
-        hoverClass: 'border',
+        hoverClass: 'droppable-hover',
         drop: function (event, ui) {
             console.log($('#selected-crop-hidden-id').val());
             console.log($(event.target).data().month);

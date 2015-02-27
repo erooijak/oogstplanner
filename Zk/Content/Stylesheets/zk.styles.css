@@ -102,6 +102,9 @@ p {
     width: 100%;
     cursor: all-scroll;
 }
+.droppable-hover {
+    background-image: url('../Images/sowing.jpg');
+}
 
 /* Validation styling */
 .field-validation-error
