@@ -60,7 +60,7 @@
     toggleHighlightOnRecommendedMonths: function() {
 
         // Get the css class sub string based on action type text and collected recommended harvesting or sowing months.
-        var cssClassActionTypeSubstring = $('#drag-and-drop-sentence-action-type').text() === 'oogsten' ? 'harvest' : 'sow';
+        var cssClassActionTypeSubstring = $('.drag-and-drop-sentence-action-type:first').text() === 'oogsten' ? 'harvest' : 'sow';
         var recommendedMonths = $('#selected-crop-hidden-' + cssClassActionTypeSubstring + 'ingMonths').val().split(',');
 
         // Loop over the recommended harvesting or sowing months and toggle the highlighting.

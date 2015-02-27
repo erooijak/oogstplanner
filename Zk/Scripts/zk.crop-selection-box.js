@@ -22,7 +22,7 @@
     /* Display action type in the drag and drop explanation sentence. */
     $('input[name=action-type-radios]').on('change', function() {
         var actionType = this.value;
-        $('#drag-and-drop-sentence-action-type').text(actionType.toLowerCase());
+        $('.drag-and-drop-sentence-action-type').text(actionType.toLowerCase());
     });
 
 });
