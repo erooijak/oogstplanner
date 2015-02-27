@@ -70,6 +70,10 @@
 
     },
 
+    toggleHighlightOnHover: function() {
+        $('[data-month]').toggleClass('hover-highlight');
+    },
+
     // Helper functions:
     capitaliseFirstLetter: function(string) {
         return string.charAt(0).toUpperCase() + string.slice(1);

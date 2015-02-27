@@ -35,7 +35,7 @@
                 /* To the outer square div the following CSS classes are added in the string.Format method:
                  *    1.) A class for the image so a fitting image can be displayed. 
                  *    2.) A class for the month, so we can identify which month is clicked on. */
-                <div class="square bg @string.Format("img{0}{1}", season, imageIndex)" data-month="@month">
+                <div class="square bg hover-highlight @string.Format("img{0}{1}", season, imageIndex)" data-month="@month">
                    <div class="content">
                         <div class="table">
                             <div class="table-cell">

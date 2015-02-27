@@ -5,9 +5,11 @@
         $(this).draggable({
             helper: 'clone',
             start: function(e, ui) {
+                zk.toggleHighlightOnHover();
                 zk.toggleHighlightOnRecommendedMonths();
             },
             stop: function(e, ui) { 
+                zk.toggleHighlightOnHover();
                 zk.toggleHighlightOnRecommendedMonths();
             }
         });
@@ -15,7 +17,11 @@
 
     /* Make month squares droppable */
     $('*[data-month]').droppable({
+        hoverClass: 'border',
         drop: function (event, ui) {
+            console.log($('#selected-crop-hidden-id').val());
+            console.log($(event.target).data().month);
+            console.log($('.drag-and-drop-sentence-action-type').first().text());
             var cropId = $('#selected-crop-hidden-id').val();
             var month = $(event.target).data().month;
         }
