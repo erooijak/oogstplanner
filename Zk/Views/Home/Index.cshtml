@@ -5,7 +5,7 @@
 @{ 
     ViewBag.Title = "Maandoverzicht";
   
-    // START RESPONSIVE GRID LAYOUT
+        <!-- START RESPONSIVE GRID LAYOUT -->
 
     <div id="top"></div>
     <div class="row">
@@ -49,6 +49,7 @@
         }
 
         <!-- END OF RESPONSIVE GRID LAY-OUT -->
+
         </div><!-- End left column -->
 
         <div class="col-md-4 well text-left" id="crop-selection-box">
@@ -89,8 +90,8 @@
 
     </div><!-- End row -->
 
-    <footer class="footer">
-    	Powered by ASP.NET MVC @ViewData["Version"] on @Html.Raw(@ViewData["Runtime"])!
+    <footer>
+    	<h6 style="color: black;">Powered by ASP.NET MVC @ViewData["Version"] on @Html.Raw(@ViewData["Runtime"])!</h6>
     </footer>
 }
     </div><!-- End of main slide -->

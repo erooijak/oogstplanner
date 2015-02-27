@@ -4,11 +4,11 @@
     $('#selected-crop-info').on('mouseover', function () {
         $(this).draggable({
             helper: 'clone',
-            start: function(event, ui) { 
-                $('div[data-month=maart]').toggleClass('highlight');
+            start: function(e, ui) {
+                zk.toggleHighlightOnRecommendedMonths();
             },
-            stop: function(event, ui) { 
-                $('div[data-month=maart]').toggleClass('highlight');
+            stop: function(e, ui) { 
+                zk.toggleHighlightOnRecommendedMonths();
             }
         });
     });
