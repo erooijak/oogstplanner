@@ -18,7 +18,9 @@ var cropsSuggestionEngine = new Bloodhound({
                     growingTime: crop.GrowingTime,
                     areaPerCrop: crop.AreaPerCrop,
                     areaPerBag: crop.AreaPerBag,
-                    pricePerBag: crop.PricePerBag
+                    pricePerBag: crop.PricePerBag,
+                    harvestingMonths: crop.HarvestingMonths,
+                    sowingMonths: crop.SowingMonths
                 };
             });
         }

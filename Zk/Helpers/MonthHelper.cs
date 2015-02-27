@@ -10,6 +10,16 @@ namespace Zk.Helpers
         {
             return Enum.GetValues(typeof(Month)).Cast<Month>().Skip(1);
         }
+
+        public static IEnumerable<Month> GetMonths(Month input)
+        {
+            foreach (var value in GetAllMonths()) 
+            {
+                if (input.HasFlag(value))
+                    yield return value;
+            }
+        }
+            
     }
 }
 

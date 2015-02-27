@@ -188,6 +188,7 @@
     <Compile Include="ViewModels\UserInfoViewModel.cs" />
     <Compile Include="ViewModels\MonthCalendarViewModel.cs" />
     <Compile Include="Helpers\JsonStringResult.cs" />
+    <Compile Include="Helpers\MonthEnumConverter.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Web.config" />

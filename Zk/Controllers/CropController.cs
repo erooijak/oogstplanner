@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Web.Mvc;
 using Newtonsoft.Json;
 
 using Zk.BusinessLogic;
@@ -37,7 +38,7 @@ namespace Zk.Controllers
         public ActionResult All() 
         {
             var crops = _manager.GetAllCrops();
-            var cropsJson = JsonConvert.SerializeObject(crops);
+            var cropsJson = JsonConvert.SerializeObject(crops, new MonthEnumConverter());
 
             return new JsonStringResult(cropsJson);
         }
