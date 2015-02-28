@@ -85,11 +85,7 @@
 
         // Every crop count input field needs a span label with crop or crops depending on the count.
         $('.crop-count-crop-word').prev('input').change(function() {
-            if ($(this).val() == 1) { 
-                $(this).next('span').text('plant');
-            } else {
-                $(this).next('span').text('planten');
-            }
+            $(this).next('span').text( $(this).val() == 1 ? 'plant' : 'planten' );
         });
 
         // Ensure text is correct on load by triggering change event.
