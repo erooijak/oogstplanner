@@ -3,19 +3,22 @@
     toMonthCalendar: function() {
         $.fn.fullpage.moveSlideRight();
         $(window).scrollTop(0);
+        this.makeNumericTextBoxesNumeric();
+        this.makeCropPluralWhenCropCountIsBiggerThan1();
     },
     
     toMain: function() {
         $.fn.fullpage.moveSlideLeft();
         $(window).scrollTop(0);
+        this.makeNumericTextBoxesNumeric();
     },
 
     fillMonthCalendar: function(data) {
         $('#_MonthCalendar').html(data);
     },
 
-    addFarmingAction: function(cropId, month, actionType) {
-        $.post('/Calendar/AddFarmingAction', { cropId: cropId, month: month, actionType: actionType } );
+    addFarmingAction: function(cropId, month, actionType, cropCount) {
+        $.post('/Calendar/AddFarmingAction', { cropId: cropId, month: month, actionType: actionType, cropCount: cropCount } );
     },
 
     resizeCropSelectionBox: function() {
@@ -55,27 +58,42 @@
             // Allow: backspace, delete, tab, escape, enter and .
             if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110, 190]) !== -1 ||
 
-                // Allow: Ctrl+A
+                // Allow: Ctrl+A.
                 (e.keyCode === 65 && e.ctrlKey === true) || 
 
-                // Allow: home, end, left, right, down, up
+                // Allow: home, end, left, right, down, up.
                 (e.keyCode >= 35 && e.keyCode <= 40)) {
 
-                    // If field would become empty by backspace or delete disable the move
+                    // If field would become empty by backspace or delete disable the move.
                     if ( (e.keyCode === 46 || e.keyCode === 8) && $(this).val().length === 1 ) {
                         e.preventDefault();
                     }
 
-                    // Otherwise let it happen, don't do anything
+                    // Otherwise let it happen, don't do anything.
                     return;
             }
 
-            // Ensure that it is a number and stop the keypress
+            // Ensure that it is a number and stop the keypress.
             if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
                 e.preventDefault();
             }
 
         });
+    },
+
+    makeCropPluralWhenCropCountIsBiggerThan1: function() {
+
+        // Every crop count input field needs a span label with crop or crops depending on the count.
+        $('.crop-count-crop-word').prev('input').change(function() {
+            if ($(this).val() == 1) { 
+                $(this).next('span').text('plant');
+            } else {
+                $(this).next('span').text('planten');
+            }
+        });
+
+        // Ensure text is correct on load by triggering change event.
+        $('.crop-count-crop-word').prev('input').trigger('change');
     },
 
     showSignupBox: function() {

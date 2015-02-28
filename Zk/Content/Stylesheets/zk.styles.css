@@ -36,9 +36,6 @@ p {
 .farmingMonth {
     font-size = 8px;
 }
-#action_CropCount {
-    max-width: 10%;
-}
 #sowing, #harvesting {
     /* Bring input fields to front */
     z-index: 1; 
@@ -85,6 +82,9 @@ p {
 }
 #selected-crop-info {
     font-size: 12px;
+}
+.crop-counter-textbox {
+    width: 50px;
 }
 .empty-message {
     color: black;

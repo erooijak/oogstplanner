@@ -44,8 +44,13 @@
                         @foreach (var action in Model.SowingActions)
                         {
                             @Html.HiddenFor(model => action.Id)
-                            @Html.EditorFor(model => action.CropCount) <span>stuks</span>
-                            @action.Crop.Name <span> </span>
+                            <div class="form-inline">
+                                <div class="form-group form-text">
+                                @Html.TextBoxFor(model => action.CropCount, new { @class = "numeric-text-box crop-counter-textbox", type = "number", min = "1" }) 
+                                <span class="crop-count-crop-word"> plant(en)</span>
+                                </div>
+                            </div>
+                            @Html.DisplayFor(model => action.Crop.Name) <span> </span>
                             @action.Crop.Race
                             <br/>
                         }

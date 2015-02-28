@@ -68,7 +68,7 @@
                 <input type="hidden" id="selected-crop-hidden-harvestingMonths">
                 <input type="hidden" id="selected-crop-hidden-sowingMonths">
                 <br/>
-                <div class="form-text">Ik wil dit gewas:</div>
+                <label for="action-type-radios" class="form-text">Ik wil dit gewas:</label>
 
                 <div class="radio-inline">
                     <label class="form-text">
@@ -84,15 +84,16 @@
                 </div>
                 <br/>
                 <br/>
-                <div class="form-text">Aantal planten:</div>
 
                 <div class="form-inline">
-                    <input type="number" name="selected-crop-count" class="form-control numeric-text-box" min="1" value="1" />
+                    <div class="form-group form-text">
+                        <label for="selected-crop-count-number-field">Aantal planten: </label>
+                        <input type="number" name="selected-crop-count" id="selected-crop-count-number-field" class="numeric-text-box" min="1" value="1" />
+                    </div>
                 </div>
                 <br/>
-                <br/>
 
-                <span class="form-text">
+                <span id="drag-and-drop-sentence" class="form-text">
                     <i>Sleep het gewas naar een maand om deze in die maand te 
                         <span class="drag-and-drop-sentence-action-type">oogsten</span>.
                         <br/>

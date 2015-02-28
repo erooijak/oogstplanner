@@ -81,7 +81,7 @@ namespace Zk.Controllers
         }
 
         [HttpPost]
-        public JsonResult AddFarmingAction(int cropId, Month month, ActionType actionType)
+        public JsonResult AddFarmingAction(int cropId, Month month, ActionType actionType, int cropCount)
         {
 
             var crop = _cropManager.GetCrop(cropId);
