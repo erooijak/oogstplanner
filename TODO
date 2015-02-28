@@ -60,6 +60,7 @@ DONE Maanden-code van de view verplaatsen naar models en controllers
 DONE Menubalk netjes met Bootstrap
 DONE De jaarkalender laten bestaan uit maand kalender view modellen.
 TODO Afkappen decimalen.
+TODO Niet groter dan 999 in veld
 TODO Inlogscherm kleiner
 IN PROGRESS User interface maand
 TODO Zorgen dat het selecteer scherm (netjes) onder de maand overview komt op Mobile.

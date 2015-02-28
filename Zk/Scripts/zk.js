@@ -54,7 +54,7 @@
 
     makeNumericTextBoxesNumeric: function() {
         $(".numeric-text-box").keydown(function (e) {
-
+            
             // Allow: backspace, delete, tab, escape, enter and .
             if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110, 190]) !== -1 ||
 
@@ -65,7 +65,10 @@
                 (e.keyCode >= 35 && e.keyCode <= 40)) {
 
                     // If field would become empty by backspace or delete disable the move.
-                    if ( (e.keyCode === 46 || e.keyCode === 8) && $(this).val().length === 1 ) {
+                    if ( (e.keyCode === 46 || e.keyCode === 8) && $(this).val().length === 1) {
+                        
+                        // TODO: If field would become larger than 999 disable the move.
+
                         e.preventDefault();
                     }
 

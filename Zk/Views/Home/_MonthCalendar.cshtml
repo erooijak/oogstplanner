@@ -38,21 +38,21 @@
     <!-- Main rectangles -->
     <div class="rectangle-vertical rectangle-sowing">
         <div class="rectangle-content bg-no-opacity imgsowing">
-            <div class="table">
-                <div class="table-cell-top">
-                    <div class="farmingMonth" id="sowing">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="farmingMonth form-text text-left" id="sowing">
                         @foreach (var action in Model.SowingActions)
                         {
                             @Html.HiddenFor(model => action.Id)
                             <div class="form-inline">
                                 <div class="form-group form-text">
-                                @Html.TextBoxFor(model => action.CropCount, new { @class = "numeric-text-box crop-counter-textbox", type = "number", min = "1" }) 
-                                <span class="crop-count-crop-word"> plant(en)</span>
+                                    @Html.TextBoxFor(model => action.CropCount, new { @class = "form-control input-xs numeric-text-box crop-counter-textbox", type = "number", min = "1", max = "999" }) 
+                                    @Html.DisplayFor(model => action.Crop.Name)
+                                    @action.Crop.Race
+                                    <span class="crop-count-crop-word">plant(en)</span>
+                                    <br/>
                                 </div>
                             </div>
-                            @Html.DisplayFor(model => action.Crop.Name) <span> </span>
-                            @action.Crop.Race
-                            <br/>
                         }
                     </div>
                 </div>
@@ -61,16 +61,21 @@
     </div>
     <div class="rectangle-vertical rectangle-harvesting">
         <div class="rectangle-content bg-no-opacity imgharvesting">
-            <div class="table">
-                <div class="table-cell-top">
-                    <div class="farmingMonth" id="harvesting">
-                        @foreach (var action in Model.HarvestingActions)
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="farmingMonth form-text text-left" id="harvesting">
+                        @foreach (var action in Model.SowingActions)
                         {
                             @Html.HiddenFor(model => action.Id)
-                            @Html.EditorFor(model => action.CropCount) <span>stuks</span>
-                            <span>@action.Crop.Name </span>
-                            <span>@action.Crop.Race</span>
-                            <br/>
+                            <div class="form-inline">
+                                <div class="form-group form-text">
+                                    @Html.TextBoxFor(model => action.CropCount, new { @class = "form-control input-xs numeric-text-box crop-counter-textbox", type = "number", min = "1", max = "999" }) 
+                                    @Html.DisplayFor(model => action.Crop.Name)
+                                    @action.Crop.Race
+                                    <span class="crop-count-crop-word">plant(en)</span>
+                                    <br/>
+                                </div>
+                            </div>
                         }
                     </div>
                 </div>
