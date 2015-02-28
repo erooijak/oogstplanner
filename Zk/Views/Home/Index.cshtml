@@ -4,8 +4,8 @@
     <div class="slide flowtype-area">
 @{ 
     ViewBag.Title = "Maandoverzicht";
-  
-        <!-- START RESPONSIVE GRID LAYOUT -->
+
+    <!-- START RESPONSIVE GRID LAYOUT -->
 
     <div id="top"></div>
     <div class="row">
@@ -48,7 +48,7 @@
             }
         }
 
-        <!-- END OF RESPONSIVE GRID LAY-OUT -->
+    <!-- END OF RESPONSIVE GRID LAY-OUT -->
 
         </div><!-- End left column -->
 
@@ -62,7 +62,7 @@
                 <div class="form-text"><strong>Ras: </strong><span id="selected-crop-race"></span></div>
                 <div class="form-text"><strong>Categorie: </strong><span id="selected-crop-category"></span></div>
                 <div class="form-text"><strong>Groeitijd: </strong><span id="selected-crop-growingTime"></span> maanden</div>
-                <div class="form-text"><strong>Oppervlakte per stuk: </strong><span id="selected-crop-areaPerCrop"></span>m<sup>2</sup></div>
+                <div class="form-text"><strong>Oppervlakte per plant: </strong><span id="selected-crop-areaPerCrop"></span>m<sup>2</sup></div>
                 <div class="form-text"><strong>Prijs per zakje: </strong>&euro; <span id="selected-crop-pricePerBag"></span></div>
                 <input type="hidden" id="selected-crop-hidden-id">
                 <input type="hidden" id="selected-crop-hidden-harvestingMonths">
@@ -84,6 +84,14 @@
                 </div>
                 <br/>
                 <br/>
+                <div class="form-text">Aantal planten:</div>
+
+                <div class="form-inline">
+                    <input type="number" name="selected-crop-count" class="form-control numeric-text-box" min="1" value="1" />
+                </div>
+                <br/>
+                <br/>
+
                 <span class="form-text">
                     <i>Sleep het gewas naar een maand om deze in die maand te 
                         <span class="drag-and-drop-sentence-action-type">oogsten</span>.

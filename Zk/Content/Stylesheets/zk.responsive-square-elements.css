@@ -179,7 +179,7 @@
     background-image: url('../Images/Spring/4.jpg');
 }
 
-/* Images for on the farming months */
+/* Images for backgrounds of month calendar detail view */
 .imgsowing:before {
     background-image: url('../Images/sowing.jpg');
     opacity: 0.1;
