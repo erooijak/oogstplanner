@@ -8,7 +8,7 @@
 
 -- PostgreSQL 8 create user database for role provider
 
-CREATE DATABASE "ZkTestUsersDatabase" OWNER zktest;
+CREATE DATABASE IF NOT EXISTS "ZkTestUsersDatabase" OWNER zktest;
 GRANT ALL PRIVILEGES ON DATABASE "ZkTestUsersDatabase" TO zktest;
 
 -- PostgreSQL 8 Membership Provider Schema
@@ -104,3 +104,11 @@ CREATE TABLE "Sessions" (
 -- Create user and admin role.
 INSERT INTO "Roles" ("Rolename", "ApplicationName") values ('user', 'Zk');
 INSERT INTO "Roles" ("Rolename", "ApplicationName") values ('admin', 'Zk');
+
+-- Assure zktest has the rights:
+GRANT ALL PRIVILEGES ON TABLE "Users" TO zktest;
+GRANT ALL PRIVILEGES ON TABLE "Roles" TO zktest;
+GRANT ALL PRIVILEGES ON TABLE "UsersInRoles" TO zktest;
+GRANT ALL PRIVILEGES ON TABLE "Profiles" TO zktest;
+GRANT ALL PRIVILEGES ON TABLE "ProfileData" TO zktest;
+GRANT ALL PRIVILEGES ON TABLE "Sessions" TO zktest;
