@@ -4,8 +4,8 @@
 1575,Asia salat,Red giant,Blad- en stengel gewassen,0.0625,10,2.12,416,1984,2
 1840,Bataviasla ,Batavia Blonde de Paris ,Blad- en stengel gewassen,0.09,20,2.12,252,1016,2
 1780,Bindsla ,Little Leprechaun ,Blad- en stengel gewassen,0.09,20,2.12,252,1016,2
-1032,Bladmosterd,Golden Frills,Blad- en stengel gewassen,,7,2.12,508,1016,2
-1035,Bladmosterd,Purple Frills,Blad- en stengel gewassen,,7,2.12,508,1016,2
+1032,Bladmosterd,Golden Frills,Blad- en stengel gewassen,0,7,2.12,508,1016,2
+1035,Bladmosterd,Purple Frills,Blad- en stengel gewassen,0,7,2.12,508,1016,2
 1360,Groenlof ,Zuckerhut ,Blad- en stengel gewassen,0.045,5,2.12,96,1920,2
 1370,Groenselderij ,Tall Utah ,Blad- en stengel gewassen,0.1225,43,2.12,48,896,2
 1380,Kardoen ,,Blad- en stengel gewassen,0.48,4,2.12,16,768,2
@@ -26,17 +26,17 @@
 1725,Raapsteel ,Mizuna,Blad- en stengel gewassen,0.025,5,2.39,399,796,2
 1760,Rucola ,Coltivata (Esmee) ,Blad- en stengel gewassen,0.01,5,2.39,1008,992,2
 1765,Rucola ,Selvatica (wilde rucola) ,Blad- en stengel gewassen,0.01,10,2.39,1008,992,2
-1833,Sla,Salad bowl,Blad- en stengel gewassen,,20,2.12,252,1016,2
-1835,Sla,Red salad bowl,Blad- en stengel gewassen,,20,2.12,252,1016,2
+1833,Sla,Salad bowl,Blad- en stengel gewassen,0,20,2.12,252,1016,2
+1835,Sla,Red salad bowl,Blad- en stengel gewassen,0,20,2.12,252,1016,2
 1885,Snijbiet ,Five Colours ,Blad- en stengel gewassen,0.12,4,2.39,120,992,2
 1900,Snijbiet ,Donkergroene Gladde Witribbige 3,Blad- en stengel gewassen,0.12,4,2.12,252,1008,2
 1890,Snijbiet ,Groene Gewone ,Blad- en stengel gewassen,0.12,4,2.12,252,1008,2
 1910,Snijbiet ,Rhubarb Chard ,Blad- en stengel gewassen,0.12,4,2.12,240,960,2
-1930,Spinazie ,"Nores, type Noorman ",Blad- en stengel gewassen,0.36,4,2.39,254,1020,2
+1930,Spinazie ,Nores: type Noorman ,Blad- en stengel gewassen,0.36,4,2.39,254,1020,2
 1610,Spinazie ,Nieuw-Zeelandse,Blad- en stengel gewassen,0.36,10,2.39,24,1008,2
 1920,Spinazie ,Vroeg Reuzenblad,Blad- en stengel gewassen,0.36,4,2.39,399,1854,2
 1935,Spinazie ,Winterreuzen,Blad- en stengel gewassen,0.36,4,2.39,899,3599,2
-1980,Tuinkers ,Cressida ,Blad- en stengel gewassen,,,2.12,252,504,2
+1980,Tuinkers ,Cressida ,Blad- en stengel gewassen,0,0,2.12,252,504,2
 1990,Tuinmelde ,Lichtgroene,Blad- en stengel gewassen,0.09,5,2.12,124,248,2
 2000,Tuinmelde ,Rode ,Blad- en stengel gewassen,0.09,5,2.12,124,248,2
 1870,Veldsla ,Grote Noordhollandse ,Blad- en stengel gewassen,0.005,7,2.39,384,3584,2
@@ -69,7 +69,7 @@
 1270,Rijsdoperwt ,Eerste Vroege Mei ,Peulvruchten,0.02,1.5,3.18,12,96,2
 1290,Rijsdoperwt ,Senator ,Peulvruchten,0.02,1.5,3.18,12,192,2
 1300,Sugar Snap,Norli ,Peulvruchten,0.02,1.5,3.18,12,96,2
-1305,Rijspeul ,Sweet Horizon,Peulvruchten,,,3.18,0,0,2
+1305,Rijspeul ,Sweet Horizon,Peulvruchten,0,0,3.18,0,0,2
 1330,Rijspeul ,Grijze Roodbloeiende,Peulvruchten,0.02,1.5,3.18,12,192,2
 1320,Rijspeul ,Hendriks ,Peulvruchten,0.02,1.5,3.18,12,192,2
 1310,Rijspeul ,Heraut ,Peulvruchten,0.02,1.5,3.18,28,96,2
@@ -113,7 +113,7 @@
 1687,Pompoen ,Sweet dumpling,Vruchtgewassen,0.6666666667,1.3333333333,2.39,48,768,2
 1680,Pompoen ,Zapallito,Vruchtgewassen,0.8,2.4,2.12,48,768,2
 1940,Suikermais ,Golden Bantam ,Vruchtgewassen,0.15,4,2.12,48,768,2
-1948,Tomaat,Bartelly,Vruchtgewassen,,,4.24,12,384,2
+1948,Tomaat,Bartelly,Vruchtgewassen,0,0,4.24,12,384,2
 1945,Tomaat,Bolstar Granda (p),Vruchtgewassen,0.45,10,2.39,12,384,2
 1971,Tomaat,Cerise (noire),Vruchtgewassen,0.45,10,2.39,12,384,2
 1972,Tomaat,Clementine,Vruchtgewassen,0.45,10,2.39,12,384,2
@@ -125,7 +125,7 @@
 1970,Tomaat,Zuckertraube ,Vruchtgewassen,0.45,10,2.39,12,384,2
 2027,Watermeloen,Sugar baby,Vruchtgewassen,1,5,2.39,24,96,2
 1390,Kliswortel ,Tonkinokawa Long ,Wortel- en knolgewassen,0.1575,4,2.12,24,896,2
-1410,Knolselderij ,Roem van Zwijndrecht ,Wortel- en knolgewassen,0.2,,2.12,4,512,2
+1410,Knolselderij ,Roem van Zwijndrecht ,Wortel- en knolgewassen,0.2,0,2.12,4,512,2
 1420,Knolvenkel ,Fino ,Wortel- en knolgewassen,6,6,2.39,112,896,2
 1590,Koolraap ,Friese Gele ,Wortel- en knolgewassen,0.2,25,2.12,48,768,2
 1710,Meiraap,Goldana type Ronde Gele ,Wortel- en knolgewassen,0.03,15,2.39,140,560,2
@@ -149,57 +149,57 @@
 2050,Witlof ,Hollandse Middelvroeg ,Wortel- en knolgewassen,0.042,8,2.39,16,1536,2
 3210,Wortelpeterselie,,Wortel- en knolgewassen,0.0375,8,2.12,252,1792,2
 2060,Zomerwortel ,Nantes 2 ,Wortel- en knolgewassen,0.00125,7,2.39,126,960,2
-3010,Alsem,,Keukenkruiden,0.25,,2.12,56,0,2
-3015,Anijs,,Keukenkruiden,0.03,,2.12,12,0,2
-3020,Basilicum,Genovese,Keukenkruiden,0.09,,2.12,16,0,2
-3030,Basilicum,Rood,Keukenkruiden,0.09,,2.12,16,0,2
-3035,Basilicum,Kaneel,Keukenkruiden,0.09,,2.12,16,0,2
-3040,"Bieslook, fijne ",,Keukenkruiden,0.04,,2.12,4092,0,2
-3050,Bonenkruid,,Keukenkruiden,0.06,,2.12,56,0,2
-3060,Chinese bieslook,,Keukenkruiden,0.05,,2.12,4064,0,2
-3080,Citroenmelisse,,Keukenkruiden,0.12,,2.12,16,0,2
-3090,Dille,,Keukenkruiden,0.04,,2.12,4095,0,2
-3110,Hyssop,,Keukenkruiden,0.09,,2.12,56,0,2
-3120,Karwij,,Keukenkruiden,0.04875,,2.12,24,0,2
-3130,Kervel,Fijne Krul,Keukenkruiden,,,2.12,252,4095,2
-3135,Kervel,Massa,Keukenkruiden,,,2.12,252,4095,2
-3140,Komkommerkruid ,,Keukenkruiden,0.09,,2.12,4092,0,2
-3150,Koriander,,Keukenkruiden,0.03,,2.12,24,0,2
-3160,Lavas,,Keukenkruiden,0.36,,2.12,60,0,2
-3170,Lavendel,,Keukenkruiden,0.25,,2.12,14,192,2
-3180,Lepelblad,,Keukenkruiden,0.0225,,2.12,384,3843,2
-3190,"Marjolein, wilde ",,Keukenkruiden,0.16,,2.12,16,0,2
-3195,Peterselie ,Gigante d’ Italia,Keukenkruiden,,,2.12,0,0,2
-3197,Peterselie ,Gewone snij,Keukenkruiden,,,2.12,0,0,2
-3200,Peterselie ,Moskrul 2,Keukenkruiden,,,2.12,0,0,2
-3220,"Pimpernel, kleine ",,Keukenkruiden,0.09,,2.12,56,0,2
-3245,Rozemarijn,,Keukenkruiden,,,2.12,4095,4095,2
-3250,Salie,,Keukenkruiden,0.16,,2.12,24,0,2
-3260,Snijselderij ,Gewone Snij,Keukenkruiden,,,2.12,0,0,2
-3270,Tijm,,Keukenkruiden,0.045,,2.12,136,0,2
-3280,Venkel,,Keukenkruiden,0.18,,2.12,60,0,2
-3290,Waterkers,,Keukenkruiden,0.015,,2.12,124,0,2
-3295,Winterkers,,Keukenkruiden,0.0625,,2.12,384,0,2
-3300,Wijnruit,,Keukenkruiden,0.1225,,2.12,12,0,2
-3310,Tuinzuring,,Keukenkruiden,0.09,,2.12,204,0,2
-3320,Spinaziezuring,,Keukenkruiden,0.1225,,2.12,136,0,2
-4070,Boekweit,,Groenbemesters,,12,2.39,4095,4095,2
-4010,Blauwe lupine,,Groenbemesters,,,2.39,4095,4095,2
-4040,Gele mosterd,,Groenbemesters,,,2.39,4095,4095,2
-4080,Incarnaatklaver,,Groenbemesters,,,3.45,4095,4095,2
-4100,Japanse haver,,Groenbemesters,,,2.39,4095,4095,2
-4050,Phacelia,,Groenbemesters,,,2.39,4095,4095,2
-4060,Serradella,,Groenbemesters,,,2.39,4095,4095,2
-4090,Winterrogge,,Groenbemesters,,,2.39,4095,4095,2
-9000,Kiemschaaltje (incl. 19% BTW),,Kiemgroenten,,,8.95,4095,4095,2
-9060,Alfalfa,,Kiemgroenten,,,3.18,4095,4095,2
-9030,Broccolikers,,Kiemgroenten,,,3.18,4095,4095,2
-9035,Chinese bieslook kiem,,Kiemgroenten,,,3.18,4095,4095,2
-9037,Fenegriek spruitgroente,,Kiemgroenten,,,3.18,4095,4095,2
-9050,Mosterdkers,,Kiemgroenten,,,2.12,4095,4095,2
-9040,Radijkskers,,Kiemgroenten,,,3.18,4095,4095,2
-9045,Rode kool kiem,,Kiemgroenten,,,3.18,4095,4095,2
-9020,Rucolakers,,Kiemgroenten,,,3.18,4095,4095,2
-9010,Tuinkers,,Kiemgroenten,,,2.39,4095,4095,2
-9015,"Tuinkers, grootbladig",,Kiemgroenten,,,2.39,4095,4095,2
-9070,Zonnebloem,,Kiemgroenten,,,3.18,4095,4095,2
+3010,Alsem,,Keukenkruiden,0.25,0,2.12,56,0,2
+3015,Anijs,,Keukenkruiden,0.03,0,2.12,12,0,2
+3020,Basilicum,Genovese,Keukenkruiden,0.09,0,2.12,16,0,2
+3030,Basilicum,Rood,Keukenkruiden,0.09,0,2.12,16,0,2
+3035,Basilicum,Kaneel,Keukenkruiden,0.09,0,2.12,16,0,2
+3040,Bieslook: fijne ,,Keukenkruiden,0.04,0,2.12,4092,0,2
+3050,Bonenkruid,,Keukenkruiden,0.06,0,2.12,56,0,2
+3060,Chinese bieslook,,Keukenkruiden,0.05,0,2.12,4064,0,2
+3080,Citroenmelisse,,Keukenkruiden,0.12,0,2.12,16,0,2
+3090,Dille,,Keukenkruiden,0.04,0,2.12,4095,0,2
+3110,Hyssop,,Keukenkruiden,0.09,0,2.12,56,0,2
+3120,Karwij,,Keukenkruiden,0.04875,0,2.12,24,0,2
+3130,Kervel,Fijne Krul,Keukenkruiden,0,0,2.12,252,4095,2
+3135,Kervel,Massa,Keukenkruiden,0,0,2.12,252,4095,2
+3140,Komkommerkruid ,,Keukenkruiden,0.09,0,2.12,4092,0,2
+3150,Koriander,,Keukenkruiden,0.03,0,2.12,24,0,2
+3160,Lavas,,Keukenkruiden,0.36,0,2.12,60,0,2
+3170,Lavendel,,Keukenkruiden,0.25,0,2.12,14,192,2
+3180,Lepelblad,,Keukenkruiden,0.0225,0,2.12,384,3843,2
+3190,Marjolein: wilde ,,Keukenkruiden,0.16,0,2.12,16,0,2
+3195,Peterselie ,Gigante d’ Italia,Keukenkruiden,0,0,2.12,0,0,2
+3197,Peterselie ,Gewone snij,Keukenkruiden,0,0,2.12,0,0,2
+3200,Peterselie ,Moskrul 2,Keukenkruiden,0,0,2.12,0,0,2
+3220,Pimpernel: kleine ,,Keukenkruiden,0.09,0,2.12,56,0,2
+3245,Rozemarijn,,Keukenkruiden,0,0,2.12,4095,4095,2
+3250,Salie,,Keukenkruiden,0.16,0,2.12,24,0,2
+3260,Snijselderij ,Gewone Snij,Keukenkruiden,0,0,2.12,0,0,2
+3270,Tijm,,Keukenkruiden,0.045,0,2.12,136,0,2
+3280,Venkel,,Keukenkruiden,0.18,0,2.12,60,0,2
+3290,Waterkers,,Keukenkruiden,0.015,0,2.12,124,0,2
+3295,Winterkers,,Keukenkruiden,0.0625,0,2.12,384,0,2
+3300,Wijnruit,,Keukenkruiden,0.1225,0,2.12,12,0,2
+3310,Tuinzuring,,Keukenkruiden,0.09,0,2.12,204,0,2
+3320,Spinaziezuring,,Keukenkruiden,0.1225,0,2.12,136,0,2
+4070,Boekweit,,Groenbemesters,0,12,2.39,4095,4095,2
+4010,Blauwe lupine,,Groenbemesters,0,0,2.39,4095,4095,2
+4040,Gele mosterd,,Groenbemesters,0,0,2.39,4095,4095,2
+4080,Incarnaatklaver,,Groenbemesters,0,0,3.45,4095,4095,2
+4100,Japanse haver,,Groenbemesters,0,0,2.39,4095,4095,2
+4050,Phacelia,,Groenbemesters,0,0,2.39,4095,4095,2
+4060,Serradella,,Groenbemesters,0,0,2.39,4095,4095,2
+4090,Winterrogge,,Groenbemesters,0,0,2.39,4095,4095,2
+9000,Kiemschaaltje (incl. 19% BTW),,Kiemgroenten,0,0,8.95,4095,4095,2
+9060,Alfalfa,,Kiemgroenten,0,0,3.18,4095,4095,2
+9030,Broccolikers,,Kiemgroenten,0,0,3.18,4095,4095,2
+9035,Chinese bieslook kiem,,Kiemgroenten,0,0,3.18,4095,4095,2
+9037,Fenegriek spruitgroente,,Kiemgroenten,0,0,3.18,4095,4095,2
+9050,Mosterdkers,,Kiemgroenten,0,0,2.12,4095,4095,2
+9040,Radijkskers,,Kiemgroenten,0,0,3.18,4095,4095,2
+9045,Rode kool kiem,,Kiemgroenten,0,0,3.18,4095,4095,2
+9020,Rucolakers,,Kiemgroenten,0,0,3.18,4095,4095,2
+9010,Tuinkers,,Kiemgroenten,0,0,2.39,4095,4095,2
+9015,Tuinkers: grootbladig,,Kiemgroenten,0,0,2.39,4095,4095,2
+9070,Zonnebloem,,Kiemgroenten,0,0,3.18,4095,4095,2
