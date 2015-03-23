@@ -10,16 +10,15 @@ ASP.NET MVC 4 harvesting planner app running on [Mono](http://www.mono-project.c
 
  4. Install a PostgreSQL database and create a user, test database and schema and grant the user access:  
 
-    
-    sudo apt-get install postgresql-9.3
-    sudo` su - postgres
-    psql
+    `sudo apt-get install postgresql-9.3`  
+    `sudo su - postgres`  
+    `psql`  
 
-    CREATE ROLE zktest LOGIN ENCRYPTED PASSWORD 'md5638a57daa56afced2a664def8fa3d93d' NOSUPERUSER INHERITNOCREATEDB NOCREATEROLE NOREPLICATION;
-    CREATE` DATABASE "ZkTestDatabase" OWNER zktest;
-    GRANT ALL PRIVILEGES ON DATABASE "ZkTestDatabase" TO zktest;
-    GRANT` ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO zktest;
-    GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA public TO zktest;
+    `CREATE ROLE zktest LOGIN ENCRYPTED PASSWORD 'md5638a57daa56afced2a664def8fa3d93d' NOSUPERUSER INHERITNOCREATEDB NOCREATEROLE NOREPLICATION;`  
+    `CREATE DATABASE "ZkTestDatabase" OWNER zktest;`  
+    `GRANT ALL PRIVILEGES ON DATABASE "ZkTestDatabase" TO zktest;`  
+    `GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO zktest;`  
+    `GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA public TO zktest;`  
 
 Then follow the database setup and run the migrations on the ZkTestDatabase and ZkTestUsersDatabase (for Membership table only) in [App_Data/Migrations](https://github.com/erooijak/zaaikalender/tree/master/Zk/App_Data/Migrations). (Note: This is a bit of a hassle now, in the future one script will be created.) 
 
