@@ -189,6 +189,7 @@
     <Compile Include="ViewModels\MonthCalendarViewModel.cs" />
     <Compile Include="Helpers\JsonStringResult.cs" />
     <Compile Include="Helpers\MonthEnumConverter.cs" />
+    <Compile Include="Helpers\FarmingActionHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Web.config" />

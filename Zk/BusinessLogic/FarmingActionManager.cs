@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 
+using Zk.Helpers;
 using Zk.Models;
 using Zk.Repositories;
-using Zk.ViewModels;
 
 namespace Zk.BusinessLogic
 {
@@ -16,31 +16,37 @@ namespace Zk.BusinessLogic
         {
             _repository = new Repository();
         }
-
+            
         public FarmingActionManager(Repository repository)
         {
             _repository = repository;
         }
-
+            
         public IEnumerable<FarmingAction> GetHarvestingActions(int userId, Month month)
         {
             return _repository.GetFarmingActions(fa => fa.Calendar.UserId == userId
                 && fa.Action == ActionType.Harvesting 
                 && fa.Month.HasFlag(month));
         }
-
+            
         public IEnumerable<FarmingAction> GetSowingActions(int userId, Month month)
         {
             return _repository.GetFarmingActions(fa => fa.Calendar.UserId == userId
                 && fa.Action == ActionType.Harvesting 
                 && fa.Month.HasFlag(month));
         }
-
-        public void AddFarmingAction(Calendar calendar, Crop crop, Month month, Action action, int count)
+            
+        public void AddFarmingAction(FarmingAction farmingAction)
         {
+            // Create the related farmingaction (the sowing or harvesting counter part)
+            var relatedFarmingAction = CreateRelatedFarmingAction(farmingAction);
 
+            _repository.AddFarmingAction(farmingAction);
+            _repository.AddFarmingAction(relatedFarmingAction);
+
+            _repository.SaveChanges();
         }
-
+            
         public void UpdateCropCounts(IList<int> ids, IList<int> counts)
         {
             if (ids.Count != counts.Count) throw new ArgumentException(
@@ -69,6 +75,30 @@ namespace Zk.BusinessLogic
             }
 
             _repository.SaveChanges();
+        }
+
+        private static FarmingAction CreateRelatedFarmingAction(FarmingAction action)
+        {
+            // Arrange values to be created
+            var crop = action.Crop;
+            var cropGrowingTime = action.Crop.GrowingTime;
+            var calendar = action.Calendar;
+            var count = action.CropCount;
+            ActionType actionType;
+            Month month;
+
+            FarmingActionHelper.SetRelatedTypeAndMonth(action, cropGrowingTime, out actionType, out month);
+
+            var relatedFarmingAction = new FarmingAction 
+            {
+                Action = actionType,
+                Calendar = calendar,
+                Crop = crop,
+                CropCount = count,
+                Month = month
+            };
+
+            return relatedFarmingAction;
         }
 
     }

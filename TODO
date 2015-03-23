@@ -15,7 +15,7 @@ CANCELLED Facebook (?) authenticatie (Neen. Wij zijn tegen.)
 TODO Gebruiker kan inloggen en agenda hoort bij hem.
 TODO Profiel maken gebruiker
 
-DONE Datamodel (Model)
+Datamodel (Model)
 DONE Datamodel relaties inbouwen (foreign keys)
 DONE Classes en relaties
 IN PROGRESS Bepalen groeitijd
@@ -60,6 +60,7 @@ DONE Maanden-code van de view verplaatsen naar models en controllers
 DONE Menubalk netjes met Bootstrap
 DONE De jaarkalender laten bestaan uit maand kalender view modellen.
 TODO Afkappen decimalen.
+TODO Standaard oogsten aangevinkt in het sleepvak
 TODO Niet groter dan 999 in veld
 TODO Inlogscherm kleiner
 IN PROGRESS User interface maand
@@ -72,6 +73,8 @@ TODO Web-tiki vragen tot doen van verbeteringen middels pull-request
 Extra info:
 11 november ging 90-dagen licentie in voor Xamarin.
 
+Documentatie:
+README beetje netje maken.
 
 BUGS:
 2x klikken op maand levert dubbele data op.

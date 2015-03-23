@@ -3,7 +3,7 @@
 using Zk.Helpers;
 using Zk.ViewModels;
 using Zk.Repositories;
-
+using Zk.Models;
 
 namespace Zk.BusinessLogic
 {
@@ -25,6 +25,11 @@ namespace Zk.BusinessLogic
             _repository = repository;
             _farmingActionManager = new FarmingActionManager(repository);
             _userManager = new UserManager(repository);
+        }
+
+        public Calendar GetCalendar(int userId)
+        {
+            return _repository.GetCalendarByUserId(userId);
         }
 
         public YearCalendarViewModel GetYearCalendar()

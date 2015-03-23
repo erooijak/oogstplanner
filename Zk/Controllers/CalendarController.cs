@@ -4,6 +4,7 @@ using System.Web.Mvc;
 
 using Zk.BusinessLogic;
 using Zk.Helpers;
+using Zk.Models;
 
 namespace Zk.Controllers
 {
@@ -86,10 +87,28 @@ namespace Zk.Controllers
 
             var crop = _cropManager.GetCrop(cropId);
             var currentUserId = _userManager.GetCurrentUserId();
+            var calendar = _calendarManager.GetCalendar(currentUserId);
 
-            // TODO: create farming action and update related.
+            var farmingAction = new FarmingAction 
+            {
+                Action = actionType,
+                Calendar = calendar,
+                Crop = crop,
+                CropCount = cropCount,
+                Month = month
+            };
 
-            return Json(new { success = true });
+            try
+            {
+                _farmingActionManager.AddFarmingAction(farmingAction);
+                return Json(new { success = true });
+            }
+            catch (Exception ex) 
+            { 
+                // TODO: Implement logging
+                return Json(new { success = false });
+            }
+
         }
             
 	}

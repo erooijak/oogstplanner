@@ -96,16 +96,7 @@ namespace Zk.Repositories
             ActionType type;
             Month month;
 
-            if (action.Action == ActionType.Harvesting)
-            {
-                type = ActionType.Sowing;
-                month = action.Month.Subtract(cropGrowingTime);
-            }
-            else
-            {
-                type = ActionType.Harvesting;
-                month = action.Month.Add(cropGrowingTime);
-            }
+            FarmingActionHelper.SetRelatedTypeAndMonth(action, cropGrowingTime, out type, out month);
 
             return _db.FarmingActions.Where(fa => fa.Calendar.CalendarId == calendar.CalendarId
                 && fa.Action == type
@@ -153,6 +144,11 @@ namespace Zk.Repositories
                 throw new ArgumentException("The user with the specified name does not exist.");
           
             return user.UserId; 
+        }
+
+        public Calendar GetCalendarByUserId(int id)
+        {
+            return _db.Calendars.Where(c => c.User.UserId == id).FirstOrDefault();
         }
 
         public MembershipUser GetMembershipUserByEmail(string email)
