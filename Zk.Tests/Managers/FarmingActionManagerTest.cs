@@ -13,8 +13,8 @@ namespace Zk.Tests
 	{
     
         FarmingActionManager _manager;
-        FakeZkContext _db;
-
+        IZkContext _db;
+    
         [TestFixtureSetUp]
         public void Setup()
         {
@@ -56,9 +56,7 @@ namespace Zk.Tests
                 }
             };
 
-            var repo = new Repository(_db);
-
-            _manager = new FarmingActionManager(repo);
+            _manager = new FarmingActionManager(_db);
         }
 
         [Test]

@@ -11,6 +11,6 @@ namespace Zk.Models
         IDbSet<PasswordResetToken> PasswordResetTokens { get; }
 
         void SetModified(object entity);
-	int SaveChanges();
+        int SaveChanges();
     }
 }

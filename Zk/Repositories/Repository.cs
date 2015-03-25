@@ -15,16 +15,8 @@ namespace Zk.Repositories
     /// </summary>
     public class Repository
     {
-        readonly IZkContext _db; // The interface to Entity Framework database context
 
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="Repositories.Repository"/>class which
-        ///     makes use of the real Entity Framework context that connects with the database.
-        /// </summary>
-        public Repository()
-        {
-            _db = new ZkContext();
-        }
+        readonly IZkContext _db; // Entity Framework database context
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="Repositories.Repository"/> class which

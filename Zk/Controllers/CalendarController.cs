@@ -17,21 +17,20 @@ namespace Zk.Controllers
 
         public CalendarController()
         {
-            _calendarManager = new CalendarManager();
-            _userManager = new UserManager();
-            _farmingActionManager = new FarmingActionManager();
-            _cropManager = new CropManager();
+            var db = new ZkContext(); 
+
+            _calendarManager = new CalendarManager(db);
+            _userManager = new UserManager(db);
+            _farmingActionManager = new FarmingActionManager(db);
+            _cropManager = new CropManager(db);
         }
 
-        public CalendarController(CalendarManager calendarManager, 
-            UserManager userManager, 
-            FarmingActionManager farmingActionManager,
-            CropManager cropManager)
+        public CalendarController(IZkContext db)
         {
-            _calendarManager = calendarManager;
-            _userManager = userManager;
-            _farmingActionManager = farmingActionManager;
-            _cropManager = cropManager;
+            _calendarManager = new CalendarManager(db);
+            _userManager = new UserManager(db);
+            _farmingActionManager = new FarmingActionManager(db);
+            _cropManager = new CropManager(db);
         }
 
         // 

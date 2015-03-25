@@ -4,6 +4,7 @@ using Newtonsoft.Json;
 
 using Zk.BusinessLogic;
 using Zk.Helpers;
+using Zk.Models;
 
 namespace Zk.Controllers
 {
@@ -13,12 +14,13 @@ namespace Zk.Controllers
 
         public CropController()
         {
-            _manager = new CropManager();
+            var db = new ZkContext();
+            _manager = new CropManager(db);
         }
-            
-        public CropController(CropManager manager)
+
+        public CropController(IZkContext db)
         {
-            _manager = manager;
+            _manager = new CropManager(db);
         }
         	
         //

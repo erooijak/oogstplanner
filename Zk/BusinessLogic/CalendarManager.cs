@@ -13,18 +13,11 @@ namespace Zk.BusinessLogic
         readonly FarmingActionManager _farmingActionManager;
         readonly UserManager _userManager;
 
-        public CalendarManager()
+        public CalendarManager(IZkContext db)
         {
-            _repository = new Repository();
-            _farmingActionManager = new FarmingActionManager();
-            _userManager = new UserManager();
-        }
-
-        public CalendarManager(Repository repository)
-        {
-            _repository = repository;
-            _farmingActionManager = new FarmingActionManager(repository);
-            _userManager = new UserManager(repository);
+            _repository = new Repository(db);
+            _farmingActionManager = new FarmingActionManager(db);
+            _userManager = new UserManager(db);
         }
 
         public Calendar GetCalendar(int userId)

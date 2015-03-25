@@ -33,9 +33,7 @@ namespace Zk.Tests.Controllers
             		}
             	}
             };
-            var repository = new Repository(db);
-            var manager = new CropManager(repository);
-            _controller = new CropController(manager);
+            _controller = new CropController(db);
         }
 
         [Test]

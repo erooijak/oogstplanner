@@ -12,14 +12,9 @@ namespace Zk.BusinessLogic
     {
         readonly Repository _repository;
 
-        public FarmingActionManager()
+        public FarmingActionManager(IZkContext db)
         {
-            _repository = new Repository();
-        }
-            
-        public FarmingActionManager(Repository repository)
-        {
-            _repository = repository;
+            _repository = new Repository(db);
         }
             
         public IEnumerable<FarmingAction> GetHarvestingActions(int userId, Month month)
