@@ -6,9 +6,10 @@ CREATE ROLE zktest LOGIN
 
 -- Create main database
 CREATE DATABASE "ZkTestDatabase" OWNER zktest;
-GRANT ALL PRIVILEGES ON DATABASE "ZkTestDatabase" TO zktest;
-GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO zktest;
-GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA public TO zktest;
+GRANT ALL ON DATABASE "ZkTestDatabase" TO zktest;
+GRANT ALL ON ALL TABLES IN SCHEMA public TO zktest;
+GRANT ALL ON ALL SEQUENCES IN SCHEMA public TO zktest;
+GRANT ALL ON ALL SEQUENCES IN SCHEMA public TO user;
 
 -- Create Membership database
 CREATE DATABASE "ZkTestUsersDatabase" OWNER zktest;
