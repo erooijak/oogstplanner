@@ -15,15 +15,7 @@ namespace Zk.Controllers
         readonly FarmingActionManager _farmingActionManager;
         readonly CropManager _cropManager;
 
-        public CalendarController()
-        {
-            var db = new ZkContext(); 
-
-            _calendarManager = new CalendarManager(db);
-            _userManager = new UserManager(db);
-            _farmingActionManager = new FarmingActionManager(db);
-            _cropManager = new CropManager(db);
-        }
+        public CalendarController() : this(new ZkContext()) { }
 
         public CalendarController(IZkContext db)
         {
