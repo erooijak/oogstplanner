@@ -27,7 +27,7 @@ namespace Zk.BusinessLogic
         public IEnumerable<FarmingAction> GetSowingActions(int userId, Month month)
         {
             return _repository.GetFarmingActions(fa => fa.Calendar.UserId == userId
-                && fa.Action == ActionType.Harvesting 
+                && fa.Action == ActionType.Sowing 
                 && fa.Month.HasFlag(month));
         }
             

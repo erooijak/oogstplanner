@@ -64,7 +64,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="farmingMonth form-text text-left" id="harvesting">
-                        @foreach (var action in Model.SowingActions)
+                        @foreach (var action in Model.HarvestingActions)
                         {
                             @Html.HiddenFor(model => action.Id)
                             <div class="form-inline">
