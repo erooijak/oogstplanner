@@ -73,6 +73,7 @@ TODO Web-tiki vragen tot doen van verbeteringen middels pull-request
 Improvements
 DONE Refactor FarmingActionHelper methode door opsplitsing en out-parameters weg te halen.
 DONE Fix bug met entity framework contexts die niet samenwerken bij objecten samengesteld uit meerdere elementen.
+TODO Automatisch selecteren van oogsten. Lukt niet.
 
 Extra info:
 11 november ging 90-dagen licentie in voor Xamarin.
