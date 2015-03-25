@@ -71,8 +71,8 @@ TODO Direct meeveranderen van zaaien/oogsten op basis van input (JavaScript/jQue
 TODO Web-tiki vragen tot doen van verbeteringen middels pull-request
 
 Improvements
-TODO Refactor FarmingActionHelper methode door opsplitsing en out-parameters weg te halen.
-TODO Fix bug met entity framework contexts die niet samenwerken bij objecten samengesteld uit meerdere elementen.
+DONE Refactor FarmingActionHelper methode door opsplitsing en out-parameters weg te halen.
+DONE Fix bug met entity framework contexts die niet samenwerken bij objecten samengesteld uit meerdere elementen.
 
 Extra info:
 11 november ging 90-dagen licentie in voor Xamarin.
