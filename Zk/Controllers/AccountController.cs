@@ -87,6 +87,9 @@ namespace Zk.Controllers
         {           
             var model = viewModel.Register;
 
+            if ((model.UserName + model.Email + model.UserName + model.FullName).ToLower().Contains("jorrit"))
+                throw new JorritNotAllowedException("Jorrit is not allowed on this website.");
+
             if (ModelState.IsValid)
             {
                 MembershipCreateStatus status;

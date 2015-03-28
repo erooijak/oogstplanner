@@ -190,6 +190,7 @@
     <Compile Include="Helpers\JsonStringResult.cs" />
     <Compile Include="Helpers\MonthEnumConverter.cs" />
     <Compile Include="Helpers\FarmingActionHelper.cs" />
+    <Compile Include="Helpers\JorritNotAllowedException.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Web.config" />
