@@ -16,20 +16,3 @@ public class JorritNotAllowedException : Exception
     }
 
 }
-
-public class GergelyNotAllowedException : Exception
-{
-    public GergelyNotAllowedException()
-    {
-    }
-    public GergelyNotAllowedException(string message) 
-        : base(message)
-    {
-    }
-
-    public GergelyNotAllowedException(string message, Exception inner)
-        : base(message, inner)
-    {
-    }
-
-}
