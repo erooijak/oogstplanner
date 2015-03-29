@@ -72,6 +72,25 @@ namespace Zk.Controllers
             return Json(new { success = true });
         }
 
+        //
+        // POST /Calendar/RemoveFarmingAction
+        [HttpPost]
+        public JsonResult RemoveFarmingAction(int id)
+        {
+            try 
+            {
+                // Remove this and related farming action from database
+                _farmingActionManager.RemoveFarmingAction(id);
+            } 
+            catch (Exception ex) 
+            {
+                // TODO: Implement logging
+                return Json(new { success = false });
+            }
+
+            return Json(new { success = true });
+        }
+
         [HttpPost]
         public JsonResult AddFarmingAction(int cropId, Month month, ActionType actionType, int cropCount)
         {

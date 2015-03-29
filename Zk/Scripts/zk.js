@@ -31,7 +31,7 @@
         
         var windowHeight = $(window).innerHeight();
         var topHeight = $('#top').innerHeight();
-        var padding = windowHeight * 0.025 + 20;
+        var padding = windowHeight * 0.025 + 20;	
 
         $('#login').css({ 
             height: windowHeight - topHeight - padding

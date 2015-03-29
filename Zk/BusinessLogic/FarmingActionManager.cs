@@ -42,6 +42,20 @@ namespace Zk.BusinessLogic
             _repository.SaveChanges();
         }
             
+        public void RemoveFarmingAction(int id)
+        {
+            // Get the farming action.
+            var farmingAction = _repository.FindFarmingAction(id);
+
+            // Find the related farmingaction (the sowing or harvesting counter part).
+            var relatedFarmingAction = _repository.FindRelatedFarmingAction(farmingAction);
+
+            _repository.RemoveFarmingAction(farmingAction);
+            _repository.RemoveFarmingAction(relatedFarmingAction);
+
+            _repository.SaveChanges();
+        }
+
         public void UpdateCropCounts(IList<int> ids, IList<int> counts)
         {
             if (ids.Count != counts.Count) throw new ArgumentException(
@@ -72,7 +86,7 @@ namespace Zk.BusinessLogic
             _repository.SaveChanges();
         }
 
-        private static FarmingAction CreateRelatedFarmingAction(FarmingAction action)
+        static FarmingAction CreateRelatedFarmingAction(FarmingAction action)
         {
             // Arrange values to be created
             var crop = action.Crop;
