@@ -21,7 +21,7 @@
         drop: function (event, ui) {
             var cropId = $('#selected-crop-hidden-id').val();
             var month = $(event.target).data().month;
-            var actionType = $('.drag-and-drop-sentence-action-type').first().text() === "oogsten" ? "sowing" : "harvesting";
+            var actionType = $('.drag-and-drop-sentence-action-type').first().text() === "oogsten" ? "harvesting" : "sowing";
             var cropCount = $('#selected-crop-count-number-field').val();
 
             zk.addFarmingAction(cropId, month, actionType, cropCount);

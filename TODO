@@ -63,7 +63,8 @@ TODO Afkappen decimalen.
 TODO Standaard oogsten aangevinkt in het sleepvak
 TODO Niet groter dan 999 in veld
 TODO Inlogscherm kleiner
-IN PROGRESS User interface maand
+DONE Initial User interface maand
+TODO Weergeven als er die maand niet is.
 TODO Zorgen dat het selecteer scherm (netjes) onder de maand overview komt op Mobile.
 TODO Fixed blokje boven menu? (web-tiki)
 TODO Indien register form groter is pagina langer maken plus wat pixels in zk.resizeLoginArea() (??)
@@ -73,7 +74,11 @@ TODO Web-tiki vragen tot doen van verbeteringen middels pull-request
 Improvements
 DONE Refactor FarmingActionHelper methode door opsplitsing en out-parameters weg te halen.
 DONE Fix bug met entity framework contexts die niet samenwerken bij objecten samengesteld uit meerdere elementen.
+TODO Zorg dat je weer plant of planten ziet.
 TODO Automatisch selecteren van oogsten. Lukt niet.
+
+Deployment
+TODO Fix mod-mono-server4, zo niet, fix XSP.
 
 Extra info:
 11 november ging 90-dagen licentie in voor Xamarin.

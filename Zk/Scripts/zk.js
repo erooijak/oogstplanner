@@ -1,4 +1,6 @@
 ﻿var zk = {
+	
+	month: null,
     
     toMonthCalendar: function() {
         $.fn.fullpage.moveSlideRight();
@@ -10,15 +12,30 @@
     toMain: function() {
         $.fn.fullpage.moveSlideLeft();
         $(window).scrollTop(0);
-        this.makeNumericTextBoxesNumeric();
     },
 
-    fillMonthCalendar: function(data) {
-        $('#_MonthCalendar').html(data);
+    fillMonthCalendar: function(month) {
+
+    	// Store the month in the object so we can use it and do not have to get it from the page.
+    	this.month = month;
+  	
+	    $.get('/Calendar/Month?month=' + month, function(data) {
+            $('#_MonthCalendar').html(data);
+        })
+		.done(function() { zk.toMonthCalendar(); zk.bindFarmingActionRemoveFunctionToDeleteButton(); })
+		.fail(function() { alert('TODO: Error handling'); });
     },
 
     addFarmingAction: function(cropId, month, actionType, cropCount) {
         $.post('/Calendar/AddFarmingAction', { cropId: cropId, month: month, actionType: actionType, cropCount: cropCount } );
+    },
+
+    removeFarmingAction: function(id) {
+    	var that = this;
+ 		$.post('/Calendar/RemoveFarmingAction', { id: id }, function (response) {
+        	if (response.success === true) { that.fillMonthCalendar(that.month); alert("Het gewas is succesvol verwijderd.") }
+        	else { alert("TODO: Error handling") }
+        });
     },
 
     resizeCropSelectionBox: function() {
@@ -86,13 +103,20 @@
 
     makeCropPluralWhenCropCountIsBiggerThan1: function() {
 
-        // Every crop count input field needs a span label with crop or crops depending on the count.
-        $('.crop-count-crop-word').prev('input').change(function() {
-            $(this).next('span').text( $(this).val() == 1 ? 'plant' : 'planten' );
-        });
+    	//TODO
+    },
 
-        // Ensure text is correct on load by triggering change event.
-        $('.crop-count-crop-word').prev('input').trigger('change');
+    bindFarmingActionRemoveFunctionToDeleteButton: function() {
+
+		var that = this;
+    	$('.remove-farming-action').bind('click', function (e) {
+			e.preventDefault();
+
+    	 	// farming action id is stored in the id of the remove-farming-action element.
+    	 	var farmingActionId = this.id;
+            that.removeFarmingAction(farmingActionId);
+
+        });
     },
 
     showSignupBox: function() {

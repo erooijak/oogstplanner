@@ -58,7 +58,7 @@
     position: relative;
     margin: 0.25%;
     width: 49.5%; /* This is ( 100 - (4 * 0.25) ) / 2, where 2 amount of squares and 0.25 margin between squares and sides */
-    padding-bottom : 35%; /* chosen height for now (not too long). */
+    padding-bottom : 25%; /* chosen height for now (not too long). */
     overflow: hidden;
 }
 .content {

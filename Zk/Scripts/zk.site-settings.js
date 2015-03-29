@@ -52,4 +52,5 @@
     /* Only allow numeric inputs in numeric fields */
     zk.makeNumericTextBoxesNumeric();
 
+
 });
