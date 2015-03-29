@@ -103,7 +103,19 @@
 
     makeCropPluralWhenCropCountIsBiggerThan1: function() {
 
-    	//TODO
+    	// Every crop count input field needs a span label with crop or crops depending on the count.
+    	$('.form-group').each(function() {
+		    var input = $(this).find('input:first');
+		    var span = $(this).find('.crop-count-crop-word:first');
+		    input.change(function() {
+		        span.text( $(this).val() == 1 ? 'plant' : 'planten' );
+		    });      
+
+		    // Ensure text is correct on load by triggering change event.
+	    	input.trigger('change');
+	      
+		});
+
     },
 
     bindFarmingActionRemoveFunctionToDeleteButton: function() {
