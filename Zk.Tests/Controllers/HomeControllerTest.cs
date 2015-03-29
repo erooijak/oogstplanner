@@ -12,23 +12,6 @@ namespace Zk.Tests
     public class HomeControllerTest
     {
         [Test]
-        public void Controllers_Home_Index()
-        {
-            // Arrange
-            var controller = new HomeController();
-
-            // Act
-            var result = (ViewResult)controller.Index();
-
-            const string expectedVersion = "4.0";
-            const string expectedRuntime = "Mono";
-
-            // Assert
-            Assert.AreEqual(expectedVersion, result.ViewData["Version"]);
-            Assert.IsTrue(result.ViewData["Runtime"].ToString().Contains(expectedRuntime));
-        }
-
-        [Test]
         public void Controllers_Home_Index_MonthOrdering()
         {
             // Arrange

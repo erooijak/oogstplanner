@@ -239,6 +239,16 @@ namespace Zk.Controllers
             return View(model);
         }
 
+        //
+        // GET: /Account/Info
+        [HttpGet]
+        public ActionResult Info()
+        {
+            var currentUser = _manager.GetUser(User);
+
+            return View(currentUser);
+        }
+
         #region Helpers
         private ActionResult RedirectToLocal(string returnUrl)
         {

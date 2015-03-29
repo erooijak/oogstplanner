@@ -46,6 +46,7 @@ p {
 .form-text {
     color: black;
     font-weight: normal;
+    font-size: 14px;
 }
 .input-xs {
     height: 22px;

@@ -3,18 +3,19 @@
 @{
     ViewBag.Title = "Gewassen";
 }
+<div id="top"></div>
 <div style="background-color: black">
-<h2>Dit zijn de gewassen in de database:</h2>
+<h2>Dit zijn de gewassen in onze database:</h2>
 
 <table style="font-size: 12px;">
     <tr>
-    	<th>Id</th><th>Naam</th><th>Ras</th><th>Categorie</th><th>Opp. per 1</th>
+    	<th>Naam</th><th>Ras</th><th>Categorie</th><th>Opp. per 1</th>
     		<th>Opp. per zak</th><th>Prijs per zakje</th><th>Zaaimaanden</th><th>Oogstmaanden</th>
     </tr>
 	<tbody>
 		@foreach (var crop in Model) {
 	    <tr>
-	    	<td>@crop.Id</td><td>@crop.Name</td><td>@crop.Race</td><td>@crop.Category</td><td>@crop.AreaPerCrop</td>
+	    	<td>@crop.Name</td><td>@crop.Race</td><td>@crop.Category</td><td>@crop.AreaPerCrop</td>
 	    		<td>@crop.AreaPerBag</td><td>@crop.PricePerBag</td>
 	    		<td>@crop.SowingMonths</td><td>@crop.HarvestingMonths</td>
 	    </tr>

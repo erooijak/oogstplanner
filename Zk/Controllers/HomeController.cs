@@ -11,15 +11,8 @@ namespace Zk.Controllers
     [Authorize]
 	public class HomeController : Controller
 	{
-		public ActionResult Index ()
+		public ActionResult Index()
 		{
-			var mvcName = typeof(Controller).Assembly.GetName ();
-			var isMono = Type.GetType("Mono.Runtime") != null;
-
-			ViewData["Version"] = mvcName.Version.Major + "." + mvcName.Version.Minor;
-            ViewData["Runtime"] = isMono ? 
-                "<a href=\"http://www.mono-project.com/\">Mono</a>" 
-                : "<a href=\"http://www.microsoft.com/net/\">.NET</a>";
 
             // Months are used for the CSS classes 
             // to add to the squares and for displayal within the square.
