@@ -73,7 +73,7 @@ p {
 .box-border {
     border-top: 1px solid#888; 
     padding-top: 15px; 
-    font-size: 85%; 
+    font-size: 95%; 
     color: black;
 }
 .jumbotron-box {
@@ -86,7 +86,7 @@ p {
 }
 .panel-side-link {
     float: right; 
-    font-size: 80%;
+    font-size: 95%;
     position: relative; 
     top: -10px;
 }

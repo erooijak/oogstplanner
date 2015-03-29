@@ -70,6 +70,7 @@
                             <div class="form-inline">
                                 <div class="form-group form-text">
                                     @Html.TextBoxFor(model => action.CropCount, new { @class = "form-control input-xs numeric-text-box crop-counter-textbox", type = "number", min = "1", max = "999" }) 
+                                    <button class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span></button>
                                     @Html.DisplayFor(model => action.Crop.Name)
                                     @action.Crop.Race
                                     <span class="crop-count-crop-word">plant(en)</span>

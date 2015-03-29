@@ -153,6 +153,7 @@
     <Folder Include="BusinessLogic\" />
     <Folder Include="Views\Account\" />
     <Folder Include="App_Start\" />
+    <Folder Include="Content\fonts\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\HomeController.cs" />
@@ -265,6 +266,8 @@
     <Content Include="Scripts\jquery-ui-1.11.3.min.js" />
     <Content Include="Views\Account\Info.cshtml" />
     <Content Include="Content\Stylesheets\bootstrap-profile.css" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.ttf" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
