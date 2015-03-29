@@ -8,28 +8,26 @@
 
 <!-- Top bar -->
 <div id="top">
-    <h1>Registreer je vandaag bij de Oogstplanner</h1>
 </div>
 
 <!-- Fixed main screen -->
 <div id="login" class="bg imglogin">
-   
-    <!-- Signup box inspired by http://bootsnipp.com/snippets/featured/login-amp-signup-forms-in-panel -->
-    <div id="signupbox" class="mainbox span12">
-        <div class="panel panel-info">
-            <div class="panel-heading">
-                <div class="panel-side-link">
-                    <a id="signin-link form-text" href="Login">Inloggen</a>
-                </div>
-            </div>  
-            <div class="panel-body">
+	<div class="row">
+ 		<div class="mainbox col-md-12 col-sm-12 col-xs-12">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <div class="panel-title">Registreer je vandaag bij de Oogstplanner</div>
+                    <div class="panel-side-link">
+                        <a id="signin-link" href="#">Inloggen</a>
+                    </div>
+                </div>  
+                <div class="panel-body">
+                    @{ Html.RenderPartial("_RegisterForm"); }
 
-                @{ Html.RenderPartial("_RegisterForm"); }
-
-             </div><!-- End panel body -->
-        </div><!-- End panel -->
-    </div><!-- End signup box -->
-
+                 </div><!-- End panel body -->
+            </div><!-- End panel -->
+        </div><!-- End signup box -->
+    </div><!-- End row -->
 </div><!-- End main login div -->
 
 <!-- END RESPONSIVE RECTANGLES LAYOUT -->
