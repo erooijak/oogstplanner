@@ -197,7 +197,6 @@
     <Content Include="Views\Web.config" />
     <Content Include="Global.asax" />
     <Content Include="packages.config" />
-    <Content Include="ConnectionStrings.config" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
@@ -268,6 +267,8 @@
     <Content Include="Content\Stylesheets\bootstrap-profile.css" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="_ConnectionStrings.config" />
+    <Content Include="ConnectionStrings.config" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
