@@ -69,7 +69,7 @@ publish
 # NuGet Packages Directory
 packages
 #Connectionstrings
-Zk/ConnectionStrings.config
+*/ConnectionStrings.config
 # Windows Azure Build Output
 csx
 *.build.csdef
