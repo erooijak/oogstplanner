@@ -34,12 +34,14 @@ Now the tables are created grant the user access and create test data:
 
 Finally, remove the _ prefix from the Zk/_ConnectionStrings.config file to include it in the project so that the application can access the database with the user zktest created earlier.
 
+To enable lost password e-mailing remove the _ prefix from the Zk/_Email.config file and add your own SMTP server (ensure you have [imported certificates](stackoverflow.com/questions/9801224/smtpclient-with-gmail#9803922) if using gmail).
+
 ## Tests
 
 Run with NUnit.
 
 On Ubuntu derivatives with MonoDevelop as IDE install package with `sudo apt-get install monodevelop-nunit`.
-Once you have it, in MonoDevelop click on "View -> Pads -> Unit Tests.
+Once you have it, in MonoDevelop click on "View -> Pads -> Unit Tests".
 
 ## Git
 

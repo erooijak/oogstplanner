@@ -70,6 +70,8 @@ publish
 packages
 #Connectionstrings
 */ConnectionStrings.config
+#Email settings (SMTP)
+*/Email.config
 # Windows Azure Build Output
 csx
 *.build.csdef

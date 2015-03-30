@@ -269,6 +269,8 @@
     <Content Include="Content\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="_ConnectionStrings.config" />
     <Content Include="ConnectionStrings.config" />
+    <Content Include="Email.config" />
+    <Content Include="_Email.config" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
