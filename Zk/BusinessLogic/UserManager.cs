@@ -18,8 +18,21 @@ namespace Zk.BusinessLogic
 
         public void AddUser(string userName, string fullName, string email)
         {
-            _repository.AddUser(userName, fullName, email);
+            var user = new User 
+            {
+                Name = userName,
+                FullName = fullName,
+                Email = email,
+                Enabled = true
+            };
+            _repository.AddUser(user);
             Roles.AddUserToRole(userName, "user");
+
+            // Get the actual user from the database, so we get the created UserId.
+            var newlyCreatedUser = _repository.GetUserByUserName(userName);
+
+            // Create calendar for the user
+            _repository.CreateCalendar(newlyCreatedUser);
         }
 
         public User GetUser(IPrincipal user)

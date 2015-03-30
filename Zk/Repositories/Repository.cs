@@ -105,17 +105,10 @@ namespace Zk.Repositories
             _db.FarmingActions.Remove(farmingAction);
         }
 
-        public void AddUser(string userName, string fullName, string email)
+        public void AddUser(User user)
         {
             // Note: it is not necessary to check if user profile already exists since membership provider
             //       does this for us.
-
-            var user = new User
-            {
-                Name = userName,
-                FullName = fullName,
-                Email = email
-            };
 
             _db.Users.Add(user);
             _db.SaveChanges();
@@ -132,6 +125,16 @@ namespace Zk.Repositories
             return _db.Users.Find(id);
         }
 
+        public User GetUserByUserName(string name)
+        {
+            var user = _db.Users.Where(u => u.Name == name).First();
+
+            if (user == null)
+                throw new ArgumentException("The user with the specified name does not exist.");
+
+            return user; 
+        }
+
         public int GetUserIdByUserName(string name)
         {
             var user = _db.Users.Where(u => u.Name == name).First();
@@ -145,6 +148,14 @@ namespace Zk.Repositories
         public Calendar GetCalendarByUserId(int id)
         {
             return _db.Calendars.Where(c => c.User.UserId == id).FirstOrDefault();
+        }
+
+        public void CreateCalendar(User user)
+        {
+            var calendar = new Calendar { User = user };
+
+            _db.Calendars.Add(calendar);
+            _db.SaveChanges();
         }
 
         public MembershipUser GetMembershipUserByEmail(string email)
