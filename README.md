@@ -14,6 +14,7 @@ ASP.NET MVC 4 harvesting planner app running on [Mono](http://www.mono-project.c
     `sudo su - postgres`  
     `psql`  
 
+     `-- Create a test user with password broccoli (encrypted) which is used in the connection string.`   
     `CREATE ROLE zktest LOGIN ENCRYPTED PASSWORD 'md5638a57daa56afced2a664def8fa3d93d' NOSUPERUSER INHERITNOCREATEDB NOCREATEROLE NOREPLICATION;`  
     `CREATE DATABASE "ZkTestDatabase" OWNER zktest;`    
 
@@ -31,6 +32,7 @@ Now the tables are created grant the user access and create test data:
     COPY "Calendars" FROM '/zaaikalender/CalendarData.csv' DELIMITER ',' CSV;
     COPY "FarmingActions" FROM '/zaaikalender/FarmingActionsTestData.csv' DELIMITER ',' CSV;
 
+Finally, remove the _ prefix from the _ConnectionStrings.config file to include it in the project so that the application can reach the database with the user zktest created earlier.
 
 ## Tests
 
