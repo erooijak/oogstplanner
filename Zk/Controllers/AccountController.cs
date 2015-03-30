@@ -147,13 +147,11 @@ namespace Zk.Controllers
                     var token = Convert.ToBase64String(Guid.NewGuid().ToByteArray());
 
                     // Generate the html link sent via email
-                    var resetLink = "<a href='"
-                        + Url.Action("ResetPassword", "Account", new { rt = token }, "http")
-                        + "'>klik hier om uw Oogstplanner wachtwoord te resetten.</a>";
+                    var resetLink = Url.Action("ResetPassword", "Account", new { rt = token }, "http");
 
                     // Email stuff
                     var subject = "Reset uw wachtwoord voor de Oogstplanner";
-                    var body = "Uw link: " + resetLink;
+                    var body = "Gebruik binnen 24 uur de volgende link om uw wachtwoord te resetten: " + resetLink;
                     var from = "donotreply@oogstplanner.nl";
 
                     var message = new MailMessage(from, model.Email) 
@@ -169,6 +167,7 @@ namespace Zk.Controllers
                         {
                             client.Send(message);
                             _manager.StoreResetToken(model.Email, token);
+                            ViewBag.Message = "Reset link is succesvol verzonden.";
                         }
                         catch (Exception e) 
                         {
@@ -180,11 +179,7 @@ namespace Zk.Controllers
                 }
 
             }
-
-            /* You may want to send the user to a "Success" page upon the successful
-            * sending of the reset email link. Right now, if we are 100% successful
-            * nothing happens on the page. :P
-            */
+                
             return View(model);
         }
 
@@ -193,7 +188,8 @@ namespace Zk.Controllers
         [AllowAnonymous]
         public ActionResult ResetPassword(string rt)
         {
-            var model = new ResetPasswordModel() {
+            var model = new ResetPasswordModel() 
+            {
                 ReturnToken = rt
             };
 
