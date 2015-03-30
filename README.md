@@ -32,7 +32,7 @@ Now the tables are created grant the user access and create test data:
     COPY "Calendars" FROM '/zaaikalender/CalendarData.csv' DELIMITER ',' CSV;
     COPY "FarmingActions" FROM '/zaaikalender/FarmingActionsTestData.csv' DELIMITER ',' CSV;
 
-Finally, remove the _ prefix from the _ConnectionStrings.config file to include it in the project so that the application can reach the database with the user zktest created earlier.
+Finally, remove the _ prefix from the Zk/_ConnectionStrings.config file to include it in the project so that the application can access the database with the user zktest created earlier.
 
 ## Tests
 
