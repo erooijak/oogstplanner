@@ -14,9 +14,9 @@ GRANT ALL ON ALL SEQUENCES IN SCHEMA public TO zktest;
 
 -- Create Membership database
 CREATE DATABASE "ZkTestUsersDatabase" OWNER zktest;
-GRANT ALL PRIVILEGES ON DATABASE "ZkTestUsersDatabase" TO zktest;
 
--- Run AddMemberShipSchema script
+-- Run AddMemberShipSchema script first
+GRANT ALL ON DATABASE "ZkTestUsersDatabase" TO zktest;
 
 -- Add data from CSV file (use own path after FROM) into ZkTestDatabase table with:
 \copy "Crops" FROM '/home/erooijak/zaaikalender/CropData.csv' DELIMITER ',' CSV;

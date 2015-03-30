@@ -6,13 +6,13 @@
  *
  * * * * * * * * * * * * * * * * * * * * * * */
 
-CREATE SCHEMA IF NOT EXISTS "public"
+CREATE SCHEMA IF NOT EXISTS "public";
 CREATE TABLE "public"."Calendars" (
     "CalendarId" serial NOT NULL,
     "UserId" integer NOT NULL,
-    CONSTRAINT "PK_public.Calendars" PRIMARY KEY ("CalendarId");
-)
-CREATE INDEX "IX_public.Calendars_UserId" ON "public"."Calendars"("UserId")
+    CONSTRAINT "PK_public.Calendars" PRIMARY KEY ("CalendarId")
+);
+CREATE INDEX "IX_public.Calendars_UserId" ON "public"."Calendars"("UserId");
 CREATE TABLE "public"."FarmingActions" (
     "Id" serial NOT NULL,
     "Month" integer NOT NULL,
