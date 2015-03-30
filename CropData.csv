@@ -1,29 +1,29 @@
 1010,Andijvie ,Nummer vijf2 ,Blad- en stengel gewassen,2,0.105,40,2.12,96,896
-1020,Andijvie (Krul) ,Wallone ,Blad- en stengel gewassen,2,0.105,40,2.12,96,896
+1020,Andijvie (Krul) ,Wallone ,Blad- en stengel gewassen,3,0.105,40,2.12,96,896
 1572,Asia salat,Tatsoi,Blad- en stengel gewassen,2,0.09,10,2.12,508,2032
 1575,Asia salat,Red giant,Blad- en stengel gewassen,2,0.0625,10,2.12,416,1984
-1840,Bataviasla ,Batavia Blonde de Paris ,Blad- en stengel gewassen,2,0.09,20,2.12,252,1016
+1840,Bataviasla ,Batavia Blonde de Paris ,Blad- en stengel gewassen,1,0.09,20,2.12,252,1016
 1780,Bindsla ,Little Leprechaun ,Blad- en stengel gewassen,2,0.09,20,2.12,252,1016
 1032,Bladmosterd,Golden Frills,Blad- en stengel gewassen,2,0,7,2.12,508,1016
 1035,Bladmosterd,Purple Frills,Blad- en stengel gewassen,2,0,7,2.12,508,1016
-1360,Groenlof ,Zuckerhut ,Blad- en stengel gewassen,2,0.045,5,2.12,96,1920
-1370,Groenselderij ,Tall Utah ,Blad- en stengel gewassen,2,0.1225,43,2.12,48,896
-1380,Kardoen ,,Blad- en stengel gewassen,2,0.48,4,2.12,16,768
+1360,Groenlof ,Zuckerhut ,Blad- en stengel gewassen,3,0.045,5,2.12,96,1920
+1370,Groenselderij ,Tall Utah ,Blad- en stengel gewassen,3,0.1225,43,2.12,48,896
+1380,Kardoen ,,Blad- en stengel gewassen,4,0.48,4,2.12,16,768
 1800,Kropsla ,Suzan ,Blad- en stengel gewassen,2,0.09,20,2.12,254,1016
 1790,Kropsla ,Twellose Gele ,Blad- en stengel gewassen,2,0.09,20,2.12,254,1016
 1820,Kropsla ,Wonder der Vier Jaargetijden ,Blad- en stengel gewassen,2,0.09,20,2.12,254,1016
 1810,Kropsla ,Zwart Duits ,Blad- en stengel gewassen,2,0.075,20,2.12,254,1016
 1836,Krulsla,Lollo Bionda,Blad- en stengel gewassen,2,0.09,20,2.12,254,1016
 1837,Krulsla,Lollo Rossa,Blad- en stengel gewassen,2,0.09,20,2.12,254,1016
-1825,Mesclun,Aziatisch,Blad- en stengel gewassen,2,0.0015,5,3.45,248,112
+1825,Mesclun,Aziatisch,Blad- en stengel gewassen,1,0.0015,5,3.45,248,112
 1827,Mesclun,Puur sla,Blad- en stengel gewassen,2,0.0015,5,3.45,248,496
 1570,Paksoi ,Taisai,Blad- en stengel gewassen,2,0.003,10,2.12,224,1920
 1830,Pluksla ,Black Seeded Simpson ,Blad- en stengel gewassen,2,0.09,20,2.12,60,248
 1832,Pluksla ,Catalogna,Blad- en stengel gewassen,2,0.09,20,2.12,60,248
-1690,Prei,Blauwgroene herfst,Blad- en stengel gewassen,2,0.06,15,2.39,28,1792
-1695,Prei,Herfstreuzen 2,Blad- en stengel gewassen,2,0.06,15,3.18,28,768
-1720,Raapsteel ,Namenia ,Blad- en stengel gewassen,2,0.025,5,2.39,399,796
-1725,Raapsteel ,Mizuna,Blad- en stengel gewassen,2,0.025,5,2.39,399,796
+1690,Prei,Blauwgroene herfst,Blad- en stengel gewassen,6,0.06,15,2.39,28,1792
+1695,Prei,Herfstreuzen 2,Blad- en stengel gewassen,6,0.06,15,3.18,28,768
+1720,Raapsteel ,Namenia ,Blad- en stengel gewassen,3,0.025,5,2.39,399,796
+1725,Raapsteel ,Mizuna,Blad- en stengel gewassen,3,0.025,5,2.39,399,796
 1760,Rucola ,Coltivata (Esmee) ,Blad- en stengel gewassen,2,0.01,5,2.39,1008,992
 1765,Rucola ,Selvatica (wilde rucola) ,Blad- en stengel gewassen,2,0.01,10,2.39,1008,992
 1833,Sla,Salad bowl,Blad- en stengel gewassen,2,0,20,2.12,252,1016
@@ -32,48 +32,48 @@
 1900,Snijbiet ,Donkergroene Gladde Witribbige 3,Blad- en stengel gewassen,2,0.12,4,2.12,252,1008
 1890,Snijbiet ,Groene Gewone ,Blad- en stengel gewassen,2,0.12,4,2.12,252,1008
 1910,Snijbiet ,Rhubarb Chard ,Blad- en stengel gewassen,2,0.12,4,2.12,240,960
-1930,Spinazie ,Nores: type Noorman ,Blad- en stengel gewassen,2,0.36,4,2.39,254,1020
-1610,Spinazie ,Nieuw-Zeelandse,Blad- en stengel gewassen,2,0.36,10,2.39,24,1008
-1920,Spinazie ,Vroeg Reuzenblad,Blad- en stengel gewassen,2,0.36,4,2.39,399,1854
-1935,Spinazie ,Winterreuzen,Blad- en stengel gewassen,2,0.36,4,2.39,899,3599
+1930,Spinazie ,Nores: type Noorman ,Blad- en stengel gewassen,3,0.36,4,2.39,254,1020
+1610,Spinazie ,Nieuw-Zeelandse,Blad- en stengel gewassen,3,0.36,10,2.39,24,1008
+1920,Spinazie ,Vroeg Reuzenblad,Blad- en stengel gewassen,3,0.36,4,2.39,399,1854
+1935,Spinazie ,Winterreuzen,Blad- en stengel gewassen,3,0.36,4,2.39,899,3599
 1980,Tuinkers ,Cressida ,Blad- en stengel gewassen,2,0,0,2.12,252,504
-1990,Tuinmelde ,Lichtgroene,Blad- en stengel gewassen,2,0.09,5,2.12,124,248
-2000,Tuinmelde ,Rode ,Blad- en stengel gewassen,2,0.09,5,2.12,124,248
+1990,Tuinmelde ,Lichtgroene,Blad- en stengel gewassen,1,0.09,5,2.12,124,248
+2000,Tuinmelde ,Rode ,Blad- en stengel gewassen,1,0.09,5,2.12,124,248
 1870,Veldsla ,Grote Noordhollandse ,Blad- en stengel gewassen,2,0.005,7,2.39,384,3584
 1880,Veldsla ,Vit,Blad- en stengel gewassen,2,0.005,7,2.39,384,3584
 2030,Winterpostelein ,,Blad- en stengel gewassen,2,0.025,6,2.39,192,896
-1850,IJsbergsla ,Saladin ,Blad- en stengel gewassen,2,0.025,20,2.12,124,992
-1845,IJsbergsla ,Grazer Krauthauptel,Blad- en stengel gewassen,2,0.025,10,2.12,124,992
+1850,IJsbergsla ,Saladin ,Blad- en stengel gewassen,3,0.025,20,2.12,124,992
+1845,IJsbergsla ,Grazer Krauthauptel,Blad- en stengel gewassen,3,0.025,10,2.12,124,992
 2040,Zomerpostelein ,,Blad- en stengel gewassen,2,0.005,2,2.39,48,224
-1440,Bloemkool,Alpha,Koolgewassen,2,0.3,30,2.12,771,96
-1445,Bloemkool,Flora Blanca,Koolgewassen,2,0.3,30,2.12,112,3840
-1450,Boerenkool,Westlandse Winter,Koolgewassen,2,0.325,30,2.12,48,3840
-1460,Broccoli ,Groene Calabrese ,Koolgewassen,2,0.2025,20,2.12,12,896
-1470,Chinese kool ,Granaat ,Koolgewassen,2,0.12,8,2.12,192,4095
-1480,Koolrabi ,Delikatess blauwe ,Koolgewassen,2,0.1,10,2.12,126,224
-1490,Koolrabi ,Delikatess witte ,Koolgewassen,2,0.1,10,2.12,126,224
-1500,Koolrabi ,Superschmelz ,Koolgewassen,2,0.1,10,2.12,126,992
-1505,Palmkool,Nero di Toscana,Koolgewassen,2,0.325,30,2.12,48,896
-1510,Rode Kool ,Langedijker Bewaar 2 ,Koolgewassen,2,0.42,30,2.12,12,768
-1530,Savooie kool ,Bloemendaalse Gele ,Koolgewassen,2,0.3,30,2.12,24,3840
-1520,Savooie kool ,Westlandse Putjes ,Koolgewassen,2,0.3,30,2.12,24,1792
-1580,Spruitkool ,Groninger ,Koolgewassen,2,0.3,30,2.12,24,3073
-1550,Witte kool ,Filderkraut ,Koolgewassen,2,0.42,30,2.12,12,768
-1560,Witte kool ,Langedijker Bewaar,Koolgewassen,2,0.42,30,2.12,12,768
-1540,Witte kool ,Roem van Enkhuizen 2 ,Koolgewassen,2,0.42,30,2.12,12,768
-1220,Capucijner ,Blauwschokkers,Peulvruchten,2,0.02,1.5,3.18,12,192
-1230,Capucijner ,Rozijnerwt ,Peulvruchten,2,0.02,1.5,3.18,12,192
-1240,Stamdoperwt,Kelvedon wonder,Peulvruchten,2,0.02,1.5,3.18,12,96
-1205,Pronkboon,Lady Di,Peulvruchten,2,0.32,14,3.45,48,384
-1200,Pronkboon,Emergo,Peulvruchten,2,0.32,14,3.45,48,384
-1270,Rijsdoperwt ,Eerste Vroege Mei ,Peulvruchten,2,0.02,1.5,3.18,12,96
-1290,Rijsdoperwt ,Senator ,Peulvruchten,2,0.02,1.5,3.18,12,192
-1300,Sugar Snap,Norli ,Peulvruchten,2,0.02,1.5,3.18,12,96
-1305,Rijspeul ,Sweet Horizon,Peulvruchten,2,0,0,3.18,0,0
-1330,Rijspeul ,Grijze Roodbloeiende,Peulvruchten,2,0.02,1.5,3.18,12,192
-1320,Rijspeul ,Hendriks ,Peulvruchten,2,0.02,1.5,3.18,12,192
-1310,Rijspeul ,Heraut ,Peulvruchten,2,0.02,1.5,3.18,28,96
-1140,Stamdroogboon ,Bruine kogelboon ,Peulvruchten,2,0.05,8,3.18,48,896
+1440,Bloemkool,Alpha,Koolgewassen,6,0.3,30,2.12,771,96
+1445,Bloemkool,Flora Blanca,Koolgewassen,6,0.3,30,2.12,112,3840
+1450,Boerenkool,Westlandse Winter,Koolgewassen,4,0.325,30,2.12,48,3840
+1460,Broccoli ,Groene Calabrese ,Koolgewassen,5,0.2025,20,2.12,12,896
+1470,Chinese kool ,Granaat ,Koolgewassen,5,0.12,8,2.12,192,4095
+1480,Koolrabi ,Delikatess blauwe ,Koolgewassen,4,0.1,10,2.12,126,224
+1490,Koolrabi ,Delikatess witte ,Koolgewassen,4,0.1,10,2.12,126,224
+1500,Koolrabi ,Superschmelz ,Koolgewassen,4,0.1,10,2.12,126,992
+1505,Palmkool,Nero di Toscana,Koolgewassen,3,0.325,30,2.12,48,896
+1510,Rode Kool ,Langedijker Bewaar 2 ,Koolgewassen,6,0.42,30,2.12,12,768
+1530,Savooie kool ,Bloemendaalse Gele ,Koolgewassen,5,0.3,30,2.12,24,3840
+1520,Savooie kool ,Westlandse Putjes ,Koolgewassen,5,0.3,30,2.12,24,1792
+1580,Spruitkool ,Groninger ,Koolgewassen,10,0.3,30,2.12,24,3073
+1550,Witte kool ,Filderkraut ,Koolgewassen,6,0.42,30,2.12,12,768
+1560,Witte kool ,Langedijker Bewaar,Koolgewassen,6,0.42,30,2.12,12,768
+1540,Witte kool ,Roem van Enkhuizen 2 ,Koolgewassen,6,0.42,30,2.12,12,768
+1220,Capucijner ,Blauwschokkers,Peulvruchten,4,0.02,1.5,3.18,12,192
+1230,Capucijner ,Rozijnerwt ,Peulvruchten,4,0.02,1.5,3.18,12,192
+1240,Stamdoperwt,Kelvedon wonder,Peulvruchten,3,0.02,1.5,3.18,12,96
+1205,Pronkboon,Lady Di,Peulvruchten,3,0.32,14,3.45,48,384
+1200,Pronkboon,Emergo,Peulvruchten,3,0.32,14,3.45,48,384
+1270,Rijsdoperwt ,Eerste Vroege Mei ,Peulvruchten,3,0.02,1.5,3.18,12,96
+1290,Rijsdoperwt ,Senator ,Peulvruchten,3,0.02,1.5,3.18,12,192
+1300,Sugar Snap,Norli ,Peulvruchten,3,0.02,1.5,3.18,12,96
+1305,Rijspeul ,Sweet Horizon,Peulvruchten,4,0,0,3.18,0,0
+1330,Rijspeul ,Grijze Roodbloeiende,Peulvruchten,4,0.02,1.5,3.18,12,192
+1320,Rijspeul ,Hendriks ,Peulvruchten,4,0.02,1.5,3.18,12,192
+1310,Rijspeul ,Heraut ,Peulvruchten,4,0.02,1.5,3.18,28,96
+1140,Stamdroogboon ,Bruine kogelboon ,Peulvruchten,3,0.05,8,3.18,48,896
 1081,Stamslaboon,Compass,Peulvruchten,2,0.050625,9,3.45,48,448
 1082,Stamslaboon,Domino,Peulvruchten,2,0.050625,9,3.45,48,448
 1083,Stamslaboon,Faraday,Peulvruchten,2,0.050625,9,3.45,48,448
@@ -81,7 +81,7 @@
 1075,Stamslaboon,Cantare ,Peulvruchten,2,0.050625,9,3.18,48,448
 1080,Stamslaboon,Dubbele witte zonder draad,Peulvruchten,2,0.050625,9,3.18,48,448
 1090,Stamslaboon,Saxa,Peulvruchten,2,0.050625,9,3.18,48,448
-1180,Stokdroogboon ,Stokkievitsboon,Peulvruchten,2,0.1111111111,14,3.45,48,768
+1180,Stokdroogboon ,Stokkievitsboon,Peulvruchten,4,0.1111111111,14,3.45,48,768
 1172,Stokslaboon,Cobra,Peulvruchten,2,0.1111111111,14,3.18,48,960
 1171,Stokslaboon,Neckargold,Peulvruchten,2,0.1111111111,14,3.18,48,960
 1160,Stokslaboon,Mechelse Tros ,Peulvruchten,2,0.1111111111,14,3.45,48,960
@@ -91,64 +91,64 @@
 1190,Stoksnijboon,Helda ,Peulvruchten,2,0.140625,14,3.45,48,960
 1215,Stamsnijboon,Capitano,Peulvruchten,2,0.140625,14,3.18,48,960
 1195,Stamsnijboon,Nassau,Peulvruchten,2,0.140625,14,3.18,48,960
-1210,Tuinboon ,Express type (Eleonora) ,Peulvruchten,2,0.12,9,2.39,14,96
-1212,Tuinboon ,Ratio (p),Peulvruchten,2,0.12,9,2.39,14,96
-1025,Aubergine ,Violetta lunga 3 ,Vruchtgewassen,2,0.375,10,2.39,30,224
+1210,Tuinboon ,Express type (Eleonora) ,Peulvruchten,4,0.12,9,2.39,14,96
+1212,Tuinboon ,Ratio (p),Peulvruchten,4,0.12,9,2.39,14,96
+1025,Aubergine ,Violetta lunga 3 ,Vruchtgewassen,4,0.375,10,2.39,30,224
 1030,Augurk ,Hokus ,Vruchtgewassen,2,0.6,6,2.12,24,448
-1352,Courgette ,Black Beauty,Vruchtgewassen,2,1,10,2.12,24,480
-1354,Courgette ,Yellow,Vruchtgewassen,2,1,10,2.12,24,480
-1350,Courgette ,Zucchini ,Vruchtgewassen,2,1,10,2.12,24,480
-1430,Komkommer ,Gele Tros ,Vruchtgewassen,2,0.6,6,2.39,56,384
-1437,Komkommer ,Improved Telegraph,Vruchtgewassen,2,0.6,6,2.39,56,384
-1435,Komkommer ,Marketmore,Vruchtgewassen,2,0.6,6,2.39,56,384
-1620,Paprika ,Jubilandska ,Vruchtgewassen,2,0.25,8,2.39,56,768
-1640,Peper,Westlandse Lange Rode ,Vruchtgewassen,2,0.25,8,2.39,56,768
-1685,Pompoen ,Butternut ,Vruchtgewassen,2,1,3,2.12,48,768
-1655,Pompoen ,Fictor ,Vruchtgewassen,2,1,3,2.39,48,768
-1670,Pompoen ,Gele Centenaar,Vruchtgewassen,2,1,3,2.12,48,768
-1660,Pompoen ,Groene Hokkaido ,Vruchtgewassen,2,1,3,2.12,48,768
-1675,Pompoen ,Muscat de Provence,Vruchtgewassen,2,2,6,2.12,48,768
-1650,Pompoen ,Red Kuri (Hokkaido Orange) ,Vruchtgewassen,2,1,3,2.12,48,768
-1665,Pompoen ,Solor ,Vruchtgewassen,2,1,20,2.39,48,768
-1687,Pompoen ,Sweet dumpling,Vruchtgewassen,2,0.6666666667,1.3333333333,2.39,48,768
-1680,Pompoen ,Zapallito,Vruchtgewassen,2,0.8,2.4,2.12,48,768
-1940,Suikermais ,Golden Bantam ,Vruchtgewassen,2,0.15,4,2.12,48,768
-1948,Tomaat,Bartelly,Vruchtgewassen,2,0,0,4.24,12,384
-1945,Tomaat,Bolstar Granda (p),Vruchtgewassen,2,0.45,10,2.39,12,384
-1971,Tomaat,Cerise (noire),Vruchtgewassen,2,0.45,10,2.39,12,384
-1972,Tomaat,Clementine,Vruchtgewassen,2,0.45,10,2.39,12,384
-1975,Tomaat,Green Zebra,Vruchtgewassen,2,0.45,10,2.39,12,384
-1950,Tomaat,Marmande ,Vruchtgewassen,2,0.45,10,2.39,12,384
-1960,Tomaat,Matina ,Vruchtgewassen,2,0.45,10,2.39,12,384
-1973,Tomaat,Mirabelle Blanche,Vruchtgewassen,2,0.45,10,2.39,12,384
-1974,Tomaat,Tigerella Biocolore,Vruchtgewassen,2,0.45,10,2.39,12,384
-1970,Tomaat,Zuckertraube ,Vruchtgewassen,2,0.45,10,2.39,12,384
-2027,Watermeloen,Sugar baby,Vruchtgewassen,2,1,5,2.39,24,96
-1390,Kliswortel ,Tonkinokawa Long ,Wortel- en knolgewassen,2,0.1575,4,2.12,24,896
-1410,Knolselderij ,Roem van Zwijndrecht ,Wortel- en knolgewassen,2,0.2,0,2.12,4,512
-1420,Knolvenkel ,Fino ,Wortel- en knolgewassen,2,6,6,2.39,112,896
+1352,Courgette ,Black Beauty,Vruchtgewassen,3,1,10,2.12,24,480
+1354,Courgette ,Yellow,Vruchtgewassen,3,1,10,2.12,24,480
+1350,Courgette ,Zucchini ,Vruchtgewassen,3,1,10,2.12,24,480
+1430,Komkommer ,Gele Tros ,Vruchtgewassen,4,0.6,6,2.39,56,384
+1437,Komkommer ,Improved Telegraph,Vruchtgewassen,4,0.6,6,2.39,56,384
+1435,Komkommer ,Marketmore,Vruchtgewassen,4,0.6,6,2.39,56,384
+1620,Paprika ,Jubilandska ,Vruchtgewassen,5,0.25,8,2.39,56,768
+1640,Peper,Westlandse Lange Rode ,Vruchtgewassen,5,0.25,8,2.39,56,768
+1685,Pompoen ,Butternut ,Vruchtgewassen,4,1,3,2.12,48,768
+1655,Pompoen ,Fictor ,Vruchtgewassen,4,1,3,2.39,48,768
+1670,Pompoen ,Gele Centenaar,Vruchtgewassen,4,1,3,2.12,48,768
+1660,Pompoen ,Groene Hokkaido ,Vruchtgewassen,4,1,3,2.12,48,768
+1675,Pompoen ,Muscat de Provence,Vruchtgewassen,4,2,6,2.12,48,768
+1650,Pompoen ,Red Kuri (Hokkaido Orange) ,Vruchtgewassen,4,1,3,2.12,48,768
+1665,Pompoen ,Solor ,Vruchtgewassen,4,1,20,2.39,48,768
+1687,Pompoen ,Sweet dumpling,Vruchtgewassen,4,0.6666666667,1.3333333333,2.39,48,768
+1680,Pompoen ,Zapallito,Vruchtgewassen,4,0.8,2.4,2.12,48,768
+1940,Suikermais ,Golden Bantam ,Vruchtgewassen,4,0.15,4,2.12,48,768
+1948,Tomaat,Bartelly,Vruchtgewassen,4,0,0,4.24,12,384
+1945,Tomaat,Bolstar Granda (p),Vruchtgewassen,4,0.45,10,2.39,12,384
+1971,Tomaat,Cerise (noire),Vruchtgewassen,4,0.45,10,2.39,12,384
+1972,Tomaat,Clementine,Vruchtgewassen,4,0.45,10,2.39,12,384
+1975,Tomaat,Green Zebra,Vruchtgewassen,4,0.45,10,2.39,12,384
+1950,Tomaat,Marmande ,Vruchtgewassen,4,0.45,10,2.39,12,384
+1960,Tomaat,Matina ,Vruchtgewassen,4,0.45,10,2.39,12,384
+1973,Tomaat,Mirabelle Blanche,Vruchtgewassen,4,0.45,10,2.39,12,384
+1974,Tomaat,Tigerella Biocolore,Vruchtgewassen,4,0.45,10,2.39,12,384
+1970,Tomaat,Zuckertraube ,Vruchtgewassen,4,0.45,10,2.39,12,384
+2027,Watermeloen,Sugar baby,Vruchtgewassen,3,1,5,2.39,24,96
+1390,Kliswortel ,Tonkinokawa Long ,Wortel- en knolgewassen,4,0.1575,4,2.12,24,896
+1410,Knolselderij ,Roem van Zwijndrecht ,Wortel- en knolgewassen,7,0.2,0,2.12,4,512
+1420,Knolvenkel ,Fino ,Wortel- en knolgewassen,5,6,6,2.39,112,896
 1590,Koolraap ,Friese Gele ,Wortel- en knolgewassen,2,0.2,25,2.12,48,768
-1710,Meiraap,Goldana type Ronde Gele ,Wortel- en knolgewassen,2,0.03,15,2.39,140,560
-1715,Meiraap,Milanese witte roodkop,Wortel- en knolgewassen,2,0.02,15,2.39,140,560
-1700,Meiraap,Platte Witte Mei ,Wortel- en knolgewassen,2,0.03,15,2.39,140,48
-1630,Pastinaak ,Tender and True ,Wortel- en knolgewassen,2,0.035,5,2.12,24,1792
+1710,Meiraap,Goldana type Ronde Gele ,Wortel- en knolgewassen,4,0.03,15,2.39,140,560
+1715,Meiraap,Milanese witte roodkop,Wortel- en knolgewassen,4,0.02,15,2.39,140,560
+1700,Meiraap,Platte Witte Mei ,Wortel- en knolgewassen,4,0.03,15,2.39,140,48
+1630,Pastinaak ,Tender and True ,Wortel- en knolgewassen,5,0.035,5,2.12,24,1792
 1730,Radijs ,Cherry Belle ,Wortel- en knolgewassen,2,0.0045,3,2.39,252,504
 1740,Radijs ,French Breakfast 2 ,Wortel- en knolgewassen,2,0.0045,3,2.39,252,504
 1750,Ramenas ,Ronde Zwarte ,Wortel- en knolgewassen,2,0.06,8,2.39,192,1792
 1065,Rode biet ,Chioggia,Wortel- en knolgewassen,2,0.024,5,2.12,56,992
 1060,Rode biet ,Cylindra type Halflange,Wortel- en knolgewassen,2,0.024,5,2.12,56,992
-1040,Rode biet ,Egyptische platronde,Wortel- en knolgewassen,2,0.024,5,2.12,62,240
+1040,Rode biet ,Egyptische platronde,Wortel- en knolgewassen,3,0.024,5,2.12,62,240
 1050,Rode biet ,Kogel 2 ,Wortel- en knolgewassen,2,0.024,5,2.12,56,992
-1770,Schorseneer ,Verbeterde Reuzen Nietschieters ,Wortel- en knolgewassen,2,0.025,4,2.12,24,1792
-2005,Stengelui,Ishikura Long White,Wortel- en knolgewassen,2,0.00625,2,2.39,78,992
-2020,Ui ,Noordhollandse Bloedrode,Wortel- en knolgewassen,2,0.01875,4,2.39,12,256
-2010,Ui ,Rijnsburger 4 ,Wortel- en knolgewassen,2,0.01875,4,2.39,12,256
-2025,Ui ,Red long of Florence,Wortel- en knolgewassen,2,0.01875,4,2.39,12,256
-2015,Ui ,Stuttgarter ,Wortel- en knolgewassen,2,0.01875,4,2.39,12,256
-2070,Winterwortel ,Flakkeese 2 ,Wortel- en knolgewassen,2,0.006,15,2.39,48,768
-2050,Witlof ,Hollandse Middelvroeg ,Wortel- en knolgewassen,2,0.042,8,2.39,16,1536
-3210,Wortelpeterselie,,Wortel- en knolgewassen,2,0.0375,8,2.12,252,1792
-2060,Zomerwortel ,Nantes 2 ,Wortel- en knolgewassen,2,0.00125,7,2.39,126,960
+1770,Schorseneer ,Verbeterde Reuzen Nietschieters ,Wortel- en knolgewassen,5,0.025,4,2.12,24,1792
+2005,Stengelui,Ishikura Long White,Wortel- en knolgewassen,4,0.00625,2,2.39,78,992
+2020,Ui ,Noordhollandse Bloedrode,Wortel- en knolgewassen,6,0.01875,4,2.39,12,256
+2010,Ui ,Rijnsburger 4 ,Wortel- en knolgewassen,6,0.01875,4,2.39,12,256
+2025,Ui ,Red long of Florence,Wortel- en knolgewassen,6,0.01875,4,2.39,12,256
+2015,Ui ,Stuttgarter ,Wortel- en knolgewassen,6,0.01875,4,2.39,12,256
+2070,Winterwortel ,Flakkeese 2 ,Wortel- en knolgewassen,4,0.006,15,2.39,48,768
+2050,Witlof ,Hollandse Middelvroeg ,Wortel- en knolgewassen,5,0.042,8,2.39,16,1536
+3210,Wortelpeterselie,,Wortel- en knolgewassen,6,0.0375,8,2.12,252,1792
+2060,Zomerwortel ,Nantes 2 ,Wortel- en knolgewassen,5,0.00125,7,2.39,126,960
 3010,Alsem,,Keukenkruiden,2,0.25,0,2.12,56,0
 3015,Anijs,,Keukenkruiden,2,0.03,0,2.12,12,0
 3020,Basilicum,Genovese,Keukenkruiden,2,0.09,0,2.12,16,0
