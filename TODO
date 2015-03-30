@@ -3,17 +3,21 @@ BACKLOG:
 DONE Opzetten omgeving
 DONE Stap 1: Overzetten van oude Zaaikalender naar nieuwe Zk!
 DONE Database connectie leggen.
-TODO Deployment omgeving regelen.
+IN PROGRESS Deployment omgeving regelen.
 
 Autorisatie:
 DONE Forms authenticatie
 DONE Return url verwijderen (moet weg met externe login)
 DONE Inlogscherm
 DONE Inloggen gebruikersnaam of e-mailadres
-IN PROGRESS Wachtwoord reset (e-mail moet nog netjes worden verzonden)
+DONE Wachtwoord reset
+DONE Implementeer succes pagina na versturen (werd link).
 CANCELLED Facebook (?) authenticatie (Neen. Wij zijn tegen.)
 TODO Gebruiker kan inloggen en agenda hoort bij hem.
-TODO Profiel maken gebruiker
+DONE Profiel maken gebruiker
+TODO Meer informatie gebruiker
+TODO Mogelijkheid tot maken vrienden
+TODO Kalendar linken op profiel
 
 Datamodel (Model)
 DONE Datamodel relaties inbouwen (foreign keys)
