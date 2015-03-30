@@ -9,10 +9,10 @@ using Zk.ViewModels;
 namespace Zk.Controllers
 {
     [Authorize]
-	public class HomeController : Controller
-	{
-		public ActionResult Index()
-		{
+    public class HomeController : Controller
+    {
+        public ActionResult Index()
+        {
 
             // Months are used for the CSS classes 
             // to add to the squares and for displayal within the square.
@@ -37,7 +37,7 @@ namespace Zk.Controllers
             };
 
             return View(viewModel);
-		}
+        }
            
-	}
+    }
 }
