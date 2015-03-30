@@ -6,6 +6,8 @@ CREATE ROLE zktest LOGIN
 
 -- Create main database
 CREATE DATABASE "ZkTestDatabase" OWNER zktest;
+
+--After running Initial.postgresql migration grant zktest access:
 GRANT ALL ON DATABASE "ZkTestDatabase" TO zktest;
 GRANT ALL ON ALL TABLES IN SCHEMA public TO zktest;
 GRANT ALL ON ALL SEQUENCES IN SCHEMA public TO zktest;
@@ -14,7 +16,9 @@ GRANT ALL ON ALL SEQUENCES IN SCHEMA public TO zktest;
 CREATE DATABASE "ZkTestUsersDatabase" OWNER zktest;
 GRANT ALL PRIVILEGES ON DATABASE "ZkTestUsersDatabase" TO zktest;
 
--- Run initial script and add data from CSV file (use own path after FROM) into table with:
+-- Run AddMemberShipSchema script
+
+-- Add data from CSV file (use own path after FROM) into ZkTestDatabase table with:
 \copy "Crops" FROM '/home/erooijak/zaaikalender/CropData.csv' DELIMITER ',' CSV;
 
 -- Add some test data

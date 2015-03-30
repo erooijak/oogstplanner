@@ -63,14 +63,6 @@
     <Compile Include="_MigrationsTool.cs" />
     <Compile Include="Initial.Designer.cs" />
     <Compile Include="Initial.cs" />
-    <Compile Include="UpdateUser.Designer.cs" />
-    <Compile Include="UpdateUser.cs" />
-    <Compile Include="AddPasswordResetTokens.Designer.cs" />
-    <Compile Include="AddPasswordResetTokens.cs" />
-    <Compile Include="AddGrowingTypeToCrop.Designer.cs" />
-    <Compile Include="AddGrowingTypeToCrop.cs" />
-    <Compile Include="UIntGrowingTime.Designer.cs" />
-    <Compile Include="UIntGrowingTime.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -91,9 +83,5 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Initial.resx" />
-    <EmbeddedResource Include="UpdateUser.resx" />
-    <EmbeddedResource Include="AddPasswordResetTokens.resx" />
-    <EmbeddedResource Include="AddGrowingTypeToCrop.resx" />
-    <EmbeddedResource Include="UIntGrowingTime.resx" />
   </ItemGroup>
 </Project>

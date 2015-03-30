@@ -43,6 +43,7 @@ namespace Zk.Migrations
                         Name = c.String(),
                         Race = c.String(),
                         Category = c.String(),
+                        GrowingTime = c.Int(nullable: false),
                         AreaPerCrop = c.Double(),
                         AreaPerBag = c.Double(),
                         PricePerBag = c.Decimal(precision: 18, scale: 2),
@@ -57,8 +58,22 @@ namespace Zk.Migrations
                     {
                         UserId = c.Int(nullable: false, identity: true),
                         Name = c.String(),
+                        FullName = c.String(),
+                        Email = c.String(),
+                        Enabled = c.Boolean(nullable: false),
                     })
                 .PrimaryKey(t => t.UserId);
+            
+            CreateTable(
+                "public.PasswordResetTokens",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Email = c.String(),
+                        Token = c.String(),
+                        TimeStamp = c.DateTime(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id);
             
         }
         
@@ -70,6 +85,7 @@ namespace Zk.Migrations
             DropIndex("public.FarmingActions", new[] { "Crop_Id" });
             DropIndex("public.FarmingActions", new[] { "Calendar_CalendarId" });
             DropIndex("public.Calendars", new[] { "UserId" });
+            DropTable("public.PasswordResetTokens");
             DropTable("public.Users");
             DropTable("public.Crops");
             DropTable("public.FarmingActions");
