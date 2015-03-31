@@ -41,6 +41,7 @@ TODO Error handling
 
 Security
 TODO Check of geupdate acties wel bij de ingelogde gebruiker horen
+TODO Op basis van debug of release build bepalen welke connectiestring
 
 Notifications (Controllers/View)
 TODO Wanneer implementeren?
