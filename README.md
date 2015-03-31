@@ -39,7 +39,7 @@ To enable lost password e-mailing remove the _ prefix from the Zk/_Email.config 
 ## Deployment to Microsoft Azure
 In [Azure Management Portal](https://manage.windowsazure.com) create a cloud service with an Ubuntu Server. At the overview page select the host and click "endpoints". Here specify a new stand-alone endpoint as follows:
 
-![Select a web endpoint.](https://github.com/erooijak/zaaikalender/blob/master/configure-azure1.jpg)
+![Select a web endpoint.](https://github.com/erooijak/zaaikalender/blob/master/configure-azure1.png)
 
 Then login via SSH with the specified username and password:
 
