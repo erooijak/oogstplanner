@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Web;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -11,10 +12,15 @@ namespace Zk.BusinessLogic
     public class FarmingActionManager
     {
         readonly Repository _repository;
+        readonly UserManager _userManager;
+        readonly int CurrentUserId;
 
         public FarmingActionManager(IZkContext db)
         {
             _repository = new Repository(db);
+            _userManager = new UserManager(db);
+
+            CurrentUserId = _userManager.GetCurrentUserId();
         }
             
         public IEnumerable<FarmingAction> GetHarvestingActions(int userId, Month month)
@@ -36,6 +42,9 @@ namespace Zk.BusinessLogic
             // Create the related farmingaction (the sowing or harvesting counter part)
             var relatedFarmingAction = CreateRelatedFarmingAction(farmingAction);
 
+            // Check if the calendar actually belongs to the current user.
+            CheckAuthorisation(CurrentUserId, relatedFarmingAction.Calendar.UserId);
+
             _repository.AddFarmingAction(farmingAction);
             _repository.AddFarmingAction(relatedFarmingAction);
 
@@ -46,6 +55,9 @@ namespace Zk.BusinessLogic
         {
             // Get the farming action.
             var farmingAction = _repository.FindFarmingAction(id);
+
+            // Check if the calendar actually belongs to the current user.
+            CheckAuthorisation(CurrentUserId, farmingAction.Calendar.UserId);
 
             // Find the related farmingaction (the sowing or harvesting counter part).
             var relatedFarmingAction = _repository.FindRelatedFarmingAction(farmingAction);
@@ -67,18 +79,20 @@ namespace Zk.BusinessLogic
             {
                 var action = _repository.FindFarmingAction(kvp.Key);
 
-                // Add if action is new
+                // Check if the calendar actually belongs to the current user.
+                CheckAuthorisation(CurrentUserId, action.Calendar.UserId);
 
+                // Add if action is new (till end):
                 var currentCropCount = action.CropCount;
                 var newCropCount = kvp.Value;
 
-                // Do nothing if value has not changed.
+                //   Do nothing if value has not changed.
                 if (currentCropCount == newCropCount) continue;
 
-                // Find the related farmingaction (the sowing or harvesting counter part)
+                //   Find the related farmingaction (the sowing or harvesting counter part)
                 var relatedFarmingAction = _repository.FindRelatedFarmingAction(action);
 
-                // Update the crop count of the farming action and related farming action in the database.
+                //   Update the crop count of the farming action and related farming action in the database.
                 action.CropCount = relatedFarmingAction.CropCount = newCropCount;
                 _repository.Update(action, relatedFarmingAction);
             }
@@ -88,7 +102,6 @@ namespace Zk.BusinessLogic
 
         static FarmingAction CreateRelatedFarmingAction(FarmingAction action)
         {
-            // Arrange values to be created
             var crop = action.Crop;
             var cropGrowingTime = action.Crop.GrowingTime;
             var calendar = action.Calendar;
@@ -109,5 +122,15 @@ namespace Zk.BusinessLogic
             return relatedFarmingAction;
         }
 
+        /// <summary>
+        /// This method throws an exception if the action does not belong to the logged in user.
+        /// </summary>
+        /// <param name="action">Action.</param>
+        void CheckAuthorisation(int currentUserId, int calendarUserId)
+        {
+            // Check if action belongs to user or someone is messing with us:
+            if (currentUserId != calendarUserId)
+                throw new SecurityException("The calendar attempted to be updated does not belong to the logged in user.");
+        }
     }
 }
