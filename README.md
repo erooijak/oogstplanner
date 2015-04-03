@@ -28,15 +28,18 @@ Now the tables are created grant the user access and create test data:
 
     COPY "Crops" FROM '/zaaikalender/CropData.csv' DELIMITER ',' CSV;
 
-    -- Note: if calendars throws an exception, first create a user via logging into the site
-    COPY "Calendars" FROM '/zaaikalender/CalendarData.csv' DELIMITER ',' CSV;
-    COPY "FarmingActions" FROM '/zaaikalender/FarmingActionsTestData.csv' DELIMITER ',' CSV;
-
 Finally, remove the _ prefix from the Zk/_ConnectionStrings.config file to include it in the project so that the application can access the database with the user zktest created earlier.
 
 To enable lost password e-mailing remove the _ prefix from the Zk/_Email.config file and add your own SMTP server (ensure you have [imported certificates](https:/www.stackoverflow.com/questions/9801224/smtpclient-with-gmail#9803922) if using gmail).
 
+## Deployment using XSP4
+
+XSP4 is not suitable for production. If you want to use it anyhow (for example, because you did not get other options to work). It can be used by copying the files to the server via `scp -r /path/to/zaaikalender/Zk/ username@host:/path/to/www/root/`, running `apt-get install mono-runtime mono-xsp4`, running ` run screen xsp4 --port 3001 --address 0.0.0.0`, then Ctrl+A,D and close terminal on the server and ask your hosting company if they can setup a proxy to this port for your website. This only runs for as long as the terminal is open and is therefore not suited for production. Use mod-mono-server or fastcgi-mono-sever for that.
+
 ## Deployment to Microsoft Azure
+
+**Important note:** this does **NOT WORK** yet. For some reason there occurs an error while running the application. It is being investigated. Details can be found at the stackoverflow question: http://stackoverflow.com/questions/29359484/upstream-prematurely-closed-connection-while-reading-response-header-from-upstr.
+
 In [Azure Management Portal](https://manage.windowsazure.com) create a cloud service with an Ubuntu Server. At the overview page select the host and click "endpoints". Here specify a new stand-alone endpoint as follows:
 
 ![Select a web endpoint.](https://github.com/erooijak/zaaikalender/blob/master/configure-azure1.png)
@@ -61,9 +64,9 @@ Chances are that when you visit the site you will get the error 'Access to the p
 
 Now install PostgreSQL, create a database, create a production user and specify the connection strings (both main database and for user management). All in the same way as described in the installation earlier.
 
-Note: on Ubuntu server there seems to be an issue with the locales which prevents PostgreSQL from creating a cluster when installing with `sudo apt-get install postgresql-9.3`. To fix the locale issue specify a locale in /etc/environment: `sudo vim /etc/environment` and add `LC_ALL=en_US.utf-8` to the end of the file ([source](http://stackoverflow.com/questions/17399622/postgresql-9-2-installation-on-ubuntu-12-04#20137471)). Then `sudo pg_createcluster 9.3 main --start` can be run and the psql console opened with `sudo su - postgres` and `psql`. Then proceed as above with the installation.
+Note: on Ubuntu server there seems to be an issue with the locales which prevents PostgreSQL from creating a cluster when installing with `sudo apt-get install postgresql-9.3`. To fix the locale issue specify a locale in /etc/environment: `sudo vim /etc/environment` and add `LC_ALL=en_US.utf-8` to the end of the file ([source](http://stackoverflow.com/questions/17399622/postgresql-9-2-installation-on-ubuntu-12-04#20137471)). After logging out and in again `sudo pg_createcluster 9.3 main --start` can be run and the psql console opened with `sudo su - postgres` and `psql`. Then proceed as above with the installation.
 
-Now the application should run in the Microsoft Azure cloud.
+Now the application *should* run in the Microsoft Azure cloud.
 
     
 
@@ -81,10 +84,10 @@ First time clone: `git clone https://www.github.com/erooijak/zaaikalender` or pu
 For collaborators:
 
  1. Get latest version: git pull origin master.
- 2. See changes: git status.
- 3. Add changes: git add -A (add all with -A flag, or specify specific file)
- 4. Commit changes: git commit -m "Descriptive message of what you did"
- 5. Push to GitHub: git push origin master (make sure solution builds).
+ 2. See changes: `git status`.
+ 3. Add changes: `git add -A` (add all with -A flag, or specify specific file)
+ 4. Commit changes: `git commit -m "Descriptive message of what you did"`
+ 5. Push to GitHub: `git push origin master` (make sure solution builds).
  6. Repeat.
 
 ## Contributors
