@@ -3,7 +3,8 @@ BACKLOG:
 DONE Opzetten omgeving
 DONE Stap 1: Overzetten van oude Zaaikalender naar nieuwe Zk!
 DONE Database connectie leggen.
-IN PROGRESS Deployment omgeving regelen.
+DONE Deployment omgeving regelen.
+IN PROGRESS Betere server dan XSP4 (e.g., fastcgi-mod-mono)
 
 Autorisatie:
 DONE Forms authenticatie
@@ -40,7 +41,7 @@ TODO Aangeven hoeveel stuks
 TODO Error handling
 
 Security
-TODO Check of geupdate acties wel bij de ingelogde gebruiker horen
+DONE Check of geupdate acties wel bij de ingelogde gebruiker horen
 TODO Op basis van debug of release build bepalen welke connectiestring
 
 Notifications (Controllers/View)
