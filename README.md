@@ -47,7 +47,7 @@ Then login via SSH with the specified username and password:
     
 Here we can install Mono and launch ASP.NET MVC 4 through nginx by running
 
-    wget https://github.com/erooijak/zaaikalender/blob/master/install-nginx-mono.sh && sudo chmod +x install-nginx-mono.sh && ./install-nginx-mono.sh  
+    wget https://raw.githubusercontent.com/erooijak/zaaikalender/master/install-nginx-mono.sh && sudo chmod +x install-nginx-mono.sh && ./install-nginx-mono.sh  
 
 and wait around 30 minutes. This script installs a default MVC 4 app on [yourappname].cloudapp.net. (Source: [sysmagazine](http://sysmagazine.com/posts/193156/))
 
