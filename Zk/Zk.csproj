@@ -193,6 +193,7 @@
     <Compile Include="Helpers\MonthEnumConverter.cs" />
     <Compile Include="Helpers\FarmingActionHelper.cs" />
     <Compile Include="Helpers\JorritNotAllowedException.cs" />
+    <Compile Include="Helpers\SecurityException.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Web.config" />

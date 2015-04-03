@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Web;
 using System.Web.Security;
 using System.Security.Principal;
 
@@ -42,9 +43,17 @@ namespace Zk.BusinessLogic
 
         public int GetCurrentUserId()
         {
-            var currentUserName = Membership.GetUser().UserName;
-            var currentUserId = _repository.GetUserIdByUserName(currentUserName);
+            // Note: HttpContext.Current.User.Identity.Name returns Username locally, and e-mail address on Debian.
+            //       Has to be investigated. For now the quick fix below. :/
 
+            var currentUserEmailOrName = HttpContext.Current.User.Identity.IsAuthenticated 
+                ? HttpContext.Current.User.Identity.Name
+                : "";
+
+            int currentUserId = currentUserEmailOrName.Contains("@")
+                ? _repository.GetUserIdByEmail(currentUserEmailOrName)
+                : _repository.GetUserIdByName(currentUserEmailOrName);
+          
             return currentUserId;
         }
 

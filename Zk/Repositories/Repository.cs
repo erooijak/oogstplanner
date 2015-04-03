@@ -127,7 +127,7 @@ namespace Zk.Repositories
 
         public User GetUserByUserName(string name)
         {
-            var user = _db.Users.Where(u => u.Name == name).First();
+            var user = _db.Users.Where(u => u.Name == name).FirstOrDefault();
 
             if (user == null)
                 throw new ArgumentException("The user with the specified name does not exist.");
@@ -135,13 +135,23 @@ namespace Zk.Repositories
             return user; 
         }
 
-        public int GetUserIdByUserName(string name)
+        public int GetUserIdByEmail(string email)
         {
-            var user = _db.Users.Where(u => u.Name == name).First();
+            var user = _db.Users.Where(u => u.Email == email).FirstOrDefault();
+
+            if (user == null)
+                throw new ArgumentException("The user with the specified email does not exist.");
+          
+            return user.UserId; 
+        }
+
+        public int GetUserIdByName(string name)
+        {
+            var user = _db.Users.Where(u => u.Name == name).FirstOrDefault();
 
             if (user == null)
                 throw new ArgumentException("The user with the specified name does not exist.");
-          
+
             return user.UserId; 
         }
 

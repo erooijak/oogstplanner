@@ -33,7 +33,8 @@
     </div>
 </div>
 
-@using (Ajax.BeginForm("UpdateMonth", new AjaxOptions { OnSuccess = "zk.toMain", OnFailure = "TODO" }))
+@*TODO Error handling onfailure, this is a temporary solution. It throws a JavaScript error, but the user can go on.*@
+@using (Ajax.BeginForm("UpdateMonth", new AjaxOptions { OnSuccess = "zk.toMain", OnFailure = "zk.toMain" }))
 {
     <!-- Main rectangles -->
     <div class="rectangle-vertical rectangle-sowing">
