@@ -32,11 +32,13 @@ Finally, remove the _ prefix from the Zk/_ConnectionStrings.config file to inclu
 
 To enable lost password e-mailing remove the _ prefix from the Zk/_Email.config file and add your own SMTP server (ensure you have [imported certificates](https:/www.stackoverflow.com/questions/9801224/smtpclient-with-gmail#9803922) if using gmail).
 
-## Deployment using XSP4
+## Setting up Mono and Nginx
 
-XSP4 is not suitable for production. If you want to use it anyhow (for example, because you did not get other options to work). It can be used by copying the files to the server via `scp -r /path/to/zaaikalender/Zk/ username@host:/path/to/www/root/`, running `apt-get install mono-runtime mono-xsp4`, running ` run screen xsp4 --port 3001 --address 0.0.0.0`, then Ctrl+A,D and close terminal on the server and ask your hosting company if they can setup a proxy to this port for your website. This only runs for as long as the terminal is open and is therefore not suited for production. Use mod-mono-server or fastcgi-mono-sever for that.
+See http://www.philliphaydon.com/2013/06/setting-up-mono-on-nginx/.
 
-## Deployment to Microsoft Azure
+    fastcgi-mono-server4 /applications=/:/path/to/applicationroot/ /socket=tcp:ip:9000 /logfile=/var/log/mono/fastcgi.log & 
+
+## Setting up Microsoft Azure
 
 **Important note:** this does **NOT WORK** yet. For some reason there occurs an error while running the application. It is being investigated. Details can be found at the stackoverflow question: http://stackoverflow.com/questions/29359484/upstream-prematurely-closed-connection-while-reading-response-header-from-upstr.
 
