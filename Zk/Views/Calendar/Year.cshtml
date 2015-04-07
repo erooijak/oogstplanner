@@ -6,28 +6,51 @@
 
 <div id="top"></div>
 
-<table class="table">
-    <tr>
-        <td>Maand</td><td>Gewassen</td>
-    </tr>
-        
+<div id="yearCalendar">
+
+<h1>Jaarkalender Oogstplanner</h1>
+
+<table class="table table-striped">
+
     @foreach (var month in Model)
     {
+        if (month.SowingActions.Any() || month.HarvestingActions.Any())
+        {
+            <tbody>
+                <tr>
+                    <td colspan="2">
+                        <h3>@month.DisplayMonth</h3>
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-6">
 
-        <tr>
-            <td>@month.DisplayMonth</td>
-            <td>
-                @foreach (var fa in month.SowingActions)
-                {
-                    @fa.CropCount @fa.Crop.Name <br/>
-                }
-                @foreach (var fa in month.HarvestingActions)
-                {
-                    @fa.CropCount @fa.Crop.Name <br/>
-                }
-            </td>
-        </tr>
+                            @if (month.SowingActions.Any())
+                            {
+                                <h4><i>Zaaien</i></h4>
+                                foreach (var fa in month.SowingActions)
+                                {
+                                    @fa.Crop.Name <span> (aantal: </span> @fa.CropCount<span>)</span><br/>
+                                }
+                            }
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+
+                            @if (month.HarvestingActions.Any())
+                            {
+                                <h4><i>Oogsten</i></h4>
+                                foreach (var fa in month.HarvestingActions)
+                                {
+                                    @fa.CropCount @fa.Crop.Name <br/>
+                                }
+                            }
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        }
     }
 </table>
 
-@Html.ActionLink("Terug naar thuis", "Index",  "Home",  null, null)
+</div> <!-- End yearcalendar -->
+
+@Html.ActionLink("Ga naar Zaaien en oogsten", "Index",  "Home",  null, null)

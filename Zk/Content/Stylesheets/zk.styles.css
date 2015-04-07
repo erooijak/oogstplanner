@@ -43,6 +43,9 @@ p {
     z-index: 1; 
     position: relative;
 }
+#yearCalendar {
+    color: black;
+}
 .form-text {
     color: black;
     font-weight: normal;
