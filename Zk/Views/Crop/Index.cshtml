@@ -4,10 +4,11 @@
     ViewBag.Title = "Gewassen";
 }
 <div id="top"></div>
-<div style="background-color: black">
-<h2>Dit zijn de gewassen in onze database:</h2>
 
-<table style="font-size: 12px;">
+<div id="yearCalendar">
+<h1>Dit zijn de gewassen in onze database:</h1>
+
+<table class="table table-striped">
     <tr>
     	<th>Naam</th><th>Ras</th><th>Categorie</th><th>Opp. per 1</th>
     		<th>Opp. per zak</th><th>Prijs per zakje</th><th>Zaaimaanden</th><th>Oogstmaanden</th>
@@ -22,7 +23,7 @@
 		}
 	</tbody>	
 </table>
+    
+</div>
 
-
-@Html.ActionLink("Terug naar de kalender", "Index",  "Home",  null, null)
-</div><!--TODO: Remove div black background div-->
+@Html.ActionLink("Terug naar Zaaien en oogsten", "Index",  "Home",  null, null)
