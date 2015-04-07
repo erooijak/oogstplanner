@@ -39,7 +39,7 @@
                                 <h4><i>Oogsten</i></h4>
                                 foreach (var fa in month.HarvestingActions)
                                 {
-                                    @fa.CropCount @fa.Crop.Name <br/>
+                                    @fa.Crop.Name <span> (aantal: </span> @fa.CropCount<span>)</span><br/>
                                 }
                             }
                             </div>
