@@ -273,6 +273,7 @@
     <Content Include="ConnectionStrings.config" />
     <Content Include="Email.config" />
     <Content Include="_Email.config" />
+    <Content Include="Scripts\jquery.ui.touch-punch.min.js" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
