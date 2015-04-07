@@ -85,6 +85,7 @@ Improvements
 DONE Refactor FarmingActionHelper methode door opsplitsing en out-parameters weg te halen.
 DONE Fix bug met entity framework contexts die niet samenwerken bij objecten samengesteld uit meerdere elementen.
 DONE Zorg dat je weer plant of planten ziet.
+TODO Zorgen dat toevoegen van een gewas het aantal ophoogt indien er al eenzelfde gewas is die maand.
 TODO Automatisch selecteren van oogsten. Lukt niet.
 
 
