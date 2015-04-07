@@ -99,3 +99,22 @@
 
         
 } @* End form *@
+
+
+@if (Model.SowingActions.Count() == 0 && Model.HarvestingActions.Count() == 0)
+{
+    <script>
+
+        alert("Deze maand heeft geen zaai- of oogstmomenten.");
+        
+        // Go back to main screen after showing alert. This needs some time because the page first has to switch to the calendar.
+        // (It has to switch to the month view first to know that there are no actions. This information cannot be obtained earlier
+        //  because the user is not yet available after logging in and the actions depend on the user).
+
+        // TODO: Fix this without switching screens.
+        setTimeout(function() {
+            zk.toMain();
+        }, 400);
+
+    </script>
+}
