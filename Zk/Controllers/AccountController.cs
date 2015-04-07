@@ -240,7 +240,8 @@ namespace Zk.Controllers
         [HttpGet]
         public ActionResult Info()
         {
-            var currentUser = _manager.GetUser(User);
+            var id = _manager.GetCurrentUserId();
+            var currentUser = _manager.GetUserById(id);
 
             return View(currentUser);
         }
@@ -257,27 +258,6 @@ namespace Zk.Controllers
                 return RedirectToAction("Index", "Home");
             }
         }
-
-        [ChildActionOnly]
-        public PartialViewResult _UserInfo()
-        {
-            var model = new UserInfoViewModel();
-
-            model.IsAuthenticated = User.Identity.IsAuthenticated;
-
-            if (model.IsAuthenticated)
-            {
-                // Retrieve the name
-                model.FullName = _manager.GetUser(User).FullName;
-
-                // Return populated ViewModel
-                return this.PartialView(model);
-            }
-
-            // Return the model with IsAuthenticated only
-            return this.PartialView(model);
-        }
-
 
         public static string ErrorCodeToString(MembershipCreateStatus createStatus)
         {

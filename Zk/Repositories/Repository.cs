@@ -115,11 +115,6 @@ namespace Zk.Repositories
 
         }
 
-        public User GetUser(IPrincipal user)
-        {
-            return _db.Users.Single(u => u.Name == user.Identity.Name);
-        }
-
         public User GetUserById(int id)
         {
             return _db.Users.Find(id);

@@ -36,11 +36,6 @@ namespace Zk.BusinessLogic
             _repository.CreateCalendar(newlyCreatedUser);
         }
 
-        public User GetUser(IPrincipal user)
-        {
-            return _repository.GetUser(user);
-        }
-
         public int GetCurrentUserId()
         {
             // Note: HttpContext.Current.User.Identity.Name returns Username locally, and e-mail address on Debian.
