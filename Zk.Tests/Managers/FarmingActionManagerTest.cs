@@ -61,6 +61,15 @@ namespace Zk.Tests
                         Action = ActionType.Harvesting,
                         CropCount = 3,
                         Month = Month.September
+                    },
+                    new FarmingAction
+                    {
+                        Id = 10,
+                        Calendar = new Calendar { UserId = 3, CalendarId = 2 }, // Belonging to other user.
+                        Crop = broccoli,
+                        Action = ActionType.Harvesting,
+                        CropCount = 5,
+                        Month = Month.September
                     }
                 }
             };
@@ -83,18 +92,31 @@ namespace Zk.Tests
         [Test]
         public void FarmingActionManager_UpdateCropCounts_CorrectCropsAreUpdated()
         {
-			// Arrange
-            var cropIds = new List<int> { 1 };
+            // Arrange
+            var farmingActionIds = new List<int> { 1 };
             var cropCounts = new List<int> { 1 };
 
-			// Act
-            _manager.UpdateCropCounts(cropIds, cropCounts);
+            // Act
+            _manager.UpdateCropCounts(farmingActionIds, cropCounts);
 
-			// Assert
+            // Assert
             Assert.AreEqual(1, _db.FarmingActions.Find(1).CropCount,
                 "CropCount should be updated to 1 since the crop id with one has a count of one.");
             Assert.AreEqual(1, _db.FarmingActions.Find(2).CropCount,
                 "CropCount of the related farming action should be updated to 1 too.");
+        }
+
+        [Test]
+        public void FarmingActionManager_UpdateCropCounts_UserCannotEditOthers()
+        {
+            // Arrange
+            var farmingActionIds = new List<int> { 1, 10 }; 
+            var cropCounts = new List<int> { 1, 10 };
+
+            // Act and Assert
+            Assert.Catch<SecurityException>( () =>  _manager.UpdateCropCounts(farmingActionIds, cropCounts), 
+                "A security exception should be thrown when a user tries to updates an action"
+                + "belonging to another user.");
         }
 
         [Test]
@@ -129,6 +151,29 @@ namespace Zk.Tests
             Assert.AreEqual(ActionType.Sowing, relatedAddedFarmingAction.Action, 
                 "The related added farming action should have action type sowing (opposite of added one).");
                 
+        }
+
+        [Test]
+        public void FarmingActionManager_AddFarmingAction_UserCannotEditOthers()
+        {
+            // Arrange
+            const int differentUserIdThanReturnedByHttpContext = 3;
+
+            var action = new FarmingAction 
+            {
+                Action = ActionType.Harvesting,
+                Calendar = new Calendar { CalendarId = 5, UserId = differentUserIdThanReturnedByHttpContext },
+                Crop = new Crop { Id = 3, GrowingTime = 3 },
+                Month = Month.April,
+                CropCount = 10,
+                Id = 3
+            };
+
+            // Act and Assert
+            Assert.Catch<SecurityException>( () => _manager.AddFarmingAction(action), 
+                "A security exception should be thrown when a user tries to edits an action"
+                + "belonging to another user.");
+
         }
 
     }
