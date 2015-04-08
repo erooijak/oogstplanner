@@ -45,8 +45,9 @@ namespace Zk.BusinessLogic
             // Check if the calendar actually belongs to the current user.
             CheckAuthorisation(CurrentUserId, relatedFarmingAction.Calendar.UserId);
 
-            _repository.AddFarmingAction(farmingAction);
-            _repository.AddFarmingAction(relatedFarmingAction);
+            // Try to see if there is a farming action of the same user, of the same type, of the same crop
+            AddOrUpdateFarmingAction(farmingAction);
+            AddOrUpdateFarmingAction(relatedFarmingAction);
 
             _repository.SaveChanges();
         }
@@ -98,6 +99,32 @@ namespace Zk.BusinessLogic
             }
 
             _repository.SaveChanges();
+        }
+
+        /// <summary>
+        ///     This method updates a farming action's crop count if a similar one already exists,
+        ///     or adds a new one if it does not.
+        /// </summary>
+        /// <param name="farmingAction">Farming action.</param>
+        void AddOrUpdateFarmingAction(FarmingAction farmingAction)
+        {
+            var existingFarmingAction = _repository.GetFarmingActions(
+                fa => fa.Action == farmingAction.Action 
+                    && fa.Calendar.UserId == farmingAction.Calendar.UserId 
+                    && fa.Crop.Id == farmingAction.Crop.Id
+                    && fa.Month == farmingAction.Month)
+                .FirstOrDefault();
+
+            if (existingFarmingAction == null) 
+            {
+                _repository.AddFarmingAction(farmingAction);
+            }
+            else 
+            {
+                existingFarmingAction.CropCount += farmingAction.CropCount;
+                _repository.Update(existingFarmingAction);
+            }
+
         }
 
         FarmingAction CreateRelatedFarmingAction(FarmingAction action)

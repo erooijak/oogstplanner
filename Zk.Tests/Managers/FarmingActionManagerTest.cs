@@ -79,6 +79,15 @@ namespace Zk.Tests
                         Action = ActionType.Harvesting,
                         CropCount = 5,
                         Month = Month.September
+                    },
+                    new FarmingAction  // Used for check if an existing one is updated
+                    {
+                        Action = ActionType.Harvesting,
+                        Calendar = new Calendar { CalendarId = 5, UserId = 1 },
+                        Crop = new Crop { Id = 5, GrowingTime = 3 },
+                        Month = Month.April,
+                        CropCount = 10,
+                        Id = 1234
                     }
                 }
             };
@@ -160,6 +169,32 @@ namespace Zk.Tests
             Assert.AreEqual(ActionType.Sowing, relatedAddedFarmingAction.Action, 
                 "The related added farming action should have action type sowing (opposite of added one).");
                 
+        }
+
+        [Test]
+        public void FarmingActionManager_AddFarmingAction_CropCountIsAddedToExisting()
+        {
+            // Arrange
+            const int id = 1234;
+           
+            // Add similar to already existing one.
+            var action = new FarmingAction 
+            {
+                Action = ActionType.Harvesting,
+                Calendar = new Calendar { CalendarId = 5, UserId = 1 },
+                Crop = new Crop { Id = 5, GrowingTime = 3 },
+                Month = Month.April,
+                CropCount = 10
+            };
+
+            // Act
+            _manager.AddFarmingAction(action);
+
+            // Assert
+            var addedFarmingAction = _db.FarmingActions.Find(id);
+            Assert.AreEqual(20, addedFarmingAction.CropCount, 
+                "An already existing farming action should be updated if it belongs to the" 
+                + "same calendar, has the same crop, type and month");
         }
 
         [Test]
