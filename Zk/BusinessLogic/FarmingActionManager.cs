@@ -100,7 +100,7 @@ namespace Zk.BusinessLogic
             _repository.SaveChanges();
         }
 
-        static FarmingAction CreateRelatedFarmingAction(FarmingAction action)
+        FarmingAction CreateRelatedFarmingAction(FarmingAction action)
         {
             var crop = action.Crop;
             var cropGrowingTime = action.Crop.GrowingTime;
