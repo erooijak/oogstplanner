@@ -5,7 +5,7 @@ namespace Zk.Helpers
     public static class FarmingActionHelper
     {
 
-        public static ActionType GetRelatedActionType(FarmingAction action, int cropGrowingTime)
+        public static ActionType GetRelatedActionType(FarmingAction action)
         {
             return action.Action == ActionType.Harvesting ? ActionType.Sowing : ActionType.Harvesting;
         }

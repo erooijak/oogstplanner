@@ -86,7 +86,7 @@ namespace Zk.Repositories
             var cropGrowingTime = action.Crop.GrowingTime;
             var calendar = action.Calendar;
 
-            var actionType = FarmingActionHelper.GetRelatedActionType(action, cropGrowingTime);
+            var actionType = FarmingActionHelper.GetRelatedActionType(action);
             var month = FarmingActionHelper.GetRelatedMonth(action, cropGrowingTime);
 
             return _db.FarmingActions.Where(fa => fa.Calendar.CalendarId == calendar.CalendarId

@@ -107,7 +107,7 @@ namespace Zk.BusinessLogic
             var calendar = action.Calendar;
             var count = action.CropCount;
 
-            var actionType = FarmingActionHelper.GetRelatedActionType(action, cropGrowingTime);
+            var actionType = FarmingActionHelper.GetRelatedActionType(action);
             var month = FarmingActionHelper.GetRelatedMonth(action, cropGrowingTime);
 
             var relatedFarmingAction = new FarmingAction 
