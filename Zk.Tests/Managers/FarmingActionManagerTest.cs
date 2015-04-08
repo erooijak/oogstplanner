@@ -152,7 +152,7 @@ namespace Zk.Tests
             };
 
             // Act
-            _manager.AddFarmingAction(action);
+            _manager.Add(action);
 
             // Assert
             var addedFarmingAction = _db.FarmingActions.Find(3); // 3 is ID specified above
@@ -188,7 +188,7 @@ namespace Zk.Tests
             };
 
             // Act
-            _manager.AddFarmingAction(action);
+            _manager.Add(action);
 
             // Assert
             var addedFarmingAction = _db.FarmingActions.Find(id);
@@ -214,7 +214,7 @@ namespace Zk.Tests
             };
 
             // Act and Assert
-            Assert.Catch<SecurityException>( () => _manager.AddFarmingAction(action), 
+            Assert.Catch<SecurityException>( () => _manager.Add(action), 
                 "A security exception should be thrown when a user tries to edits an action"
                 + "belonging to another user.");
 
@@ -228,7 +228,7 @@ namespace Zk.Tests
             var resultBeforeRemovingFarmingAction = _db.FarmingActions.Find(farmingActionIdToRemove);
 
             // Act
-            _manager.RemoveFarmingAction(farmingActionIdToRemove);
+            _manager.Remove(farmingActionIdToRemove);
 
             // Assert
             var resultAfterRemovingFarmingAction = _db.FarmingActions.Find(farmingActionIdToRemove);
@@ -246,7 +246,7 @@ namespace Zk.Tests
             const int idNotBelongingToUser = 10;
 
             // Act and Assert
-            Assert.Catch<SecurityException>( () => _manager.RemoveFarmingAction(idNotBelongingToUser), 
+            Assert.Catch<SecurityException>( () => _manager.Remove(idNotBelongingToUser), 
                 "A security exception should be thrown when a user tries to remove an action"
                 + "belonging to another user.");
 

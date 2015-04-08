@@ -99,7 +99,7 @@ namespace Zk.Controllers
 
                 if (status == MembershipCreateStatus.Success)
                 {
-                    _manager.AddUser(model.UserName, model.FullName, model.Email);
+                    _manager.Add(model.UserName, model.FullName, model.Email);
                     FormsAuthentication.SetAuthCookie(model.UserName, false);
 
                     return RedirectToAction("Index", "Home");

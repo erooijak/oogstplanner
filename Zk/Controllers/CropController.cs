@@ -25,7 +25,7 @@ namespace Zk.Controllers
         public ViewResult Index() 
         {
             // Get all crops and return to the view for display.
-            var crops = _manager.GetAllCrops();
+            var crops = _manager.GetAll();
 
             return View(crops);
         }
@@ -35,7 +35,7 @@ namespace Zk.Controllers
         [HttpGet]
         public ActionResult All() 
         {
-            var crops = _manager.GetAllCrops();
+            var crops = _manager.GetAll();
             var cropsJson = JsonConvert.SerializeObject(crops, new MonthEnumConverter());
 
             return new JsonStringResult(cropsJson);

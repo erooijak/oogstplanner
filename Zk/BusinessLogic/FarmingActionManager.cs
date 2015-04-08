@@ -37,7 +37,7 @@ namespace Zk.BusinessLogic
                 && fa.Month.HasFlag(month));
         }
             
-        public void AddFarmingAction(FarmingAction farmingAction)
+        public void Add(FarmingAction farmingAction)
         {
             // Create the related farmingaction (the sowing or harvesting counter part)
             var relatedFarmingAction = CreateRelatedFarmingAction(farmingAction);
@@ -46,13 +46,13 @@ namespace Zk.BusinessLogic
             CheckAuthorisation(CurrentUserId, relatedFarmingAction.Calendar.UserId);
 
             // Try to see if there is a farming action of the same user, of the same type, of the same crop
-            AddOrUpdateFarmingAction(farmingAction);
-            AddOrUpdateFarmingAction(relatedFarmingAction);
+            AddNewOrUpdateExisting(farmingAction);
+            AddNewOrUpdateExisting(relatedFarmingAction);
 
             _repository.SaveChanges();
         }
             
-        public void RemoveFarmingAction(int id)
+        public void Remove(int id)
         {
             // Get the farming action.
             var farmingAction = _repository.FindFarmingAction(id);
@@ -106,7 +106,7 @@ namespace Zk.BusinessLogic
         ///     or adds a new one if it does not.
         /// </summary>
         /// <param name="farmingAction">Farming action.</param>
-        void AddOrUpdateFarmingAction(FarmingAction farmingAction)
+        void AddNewOrUpdateExisting(FarmingAction farmingAction)
         {
             var existingFarmingAction = _repository.GetFarmingActions(
                 fa => fa.Action == farmingAction.Action 

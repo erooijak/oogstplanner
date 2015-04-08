@@ -17,7 +17,7 @@ namespace Zk.BusinessLogic
             _repository = new Repository(db);
         }
 
-        public void AddUser(string userName, string fullName, string email)
+        public void Add(string userName, string fullName, string email)
         {
             var user = new User 
             {

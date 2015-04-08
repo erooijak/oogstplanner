@@ -14,12 +14,12 @@ namespace Zk.BusinessLogic
             _repository = new Repository(db);
         }
 
-        public IEnumerable<Crop> GetAllCrops()
+        public IEnumerable<Crop> GetAll()
         {
             return _repository.GetAllCrops();
         }
 
-        public Crop GetCrop(int id)
+        public Crop Get(int id)
         {
             return _repository.GetCrop(id);
         }

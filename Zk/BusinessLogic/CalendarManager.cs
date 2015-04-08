@@ -20,7 +20,7 @@ namespace Zk.BusinessLogic
             _userManager = new UserManager(db);
         }
 
-        public Calendar GetCalendar(int userId)
+        public Calendar Get(int userId)
         {
             return _repository.GetCalendarByUserId(userId);
         }
