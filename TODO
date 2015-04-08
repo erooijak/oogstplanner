@@ -87,7 +87,7 @@ DONE Fix bug met entity framework contexts die niet samenwerken bij objecten sam
 DONE Zorg dat je weer plant of planten ziet.
 TODO Zorgen dat toevoegen van een gewas het aantal ophoogt indien er al eenzelfde gewas is die maand.
 TODO Automatisch selecteren van oogsten. Lukt niet.
-
+TODO Vindbaarheid verbeteren.
 
 Extra info:
 11 november ging 90-dagen licentie in voor Xamarin.
@@ -99,6 +99,7 @@ BUGS:
 2x klikken op maand levert dubbele data op.
 Op bevestigen kliken bij lege maand levert nullreferencexception op.
 0 invoeren in numeric text box is niet meer aan te passen met de pijltjes.
+Anti-forgery token fixen
 
 WENSEN:
 Een gebruiker moet de zaaikalender een naam kunnen geven.
