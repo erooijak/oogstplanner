@@ -14,11 +14,11 @@ DONE Inloggen gebruikersnaam of e-mailadres
 DONE Wachtwoord reset
 DONE Implementeer succes pagina na versturen (werd link).
 CANCELLED Facebook (?) authenticatie (Neen. Wij zijn tegen.)
-TODO Gebruiker kan inloggen en agenda hoort bij hem.
+DONE Gebruiker kan inloggen en agenda hoort bij hem.
 DONE Profiel maken gebruiker
 TODO Meer informatie gebruiker
 TODO Mogelijkheid tot maken vrienden
-TODO Kalendar linken op profiel
+TODO Kalender linken op profiel
 
 Datamodel (Model)
 DONE Datamodel relaties inbouwen (foreign keys)
@@ -35,9 +35,9 @@ DONE van zaai- en oogstmaand naar view en vice versa
 DONE 'echte' businesslogic laag toegevoegd met managers.
 DONE Pseudo code voor berekeningen
 DONE Pseudo code naar echte code
-IN PROGRESS Mogelijkheid farming months zelfs toe te voegen
-TODO Gerelateerde farming actions updaten
-TODO Aangeven hoeveel stuks
+DONE Mogelijkheid farming months zelfs toe te voegen
+DONE Gerelateerde farming actions updaten
+DONE Aangeven hoeveel stuks
 TODO Error handling
 
 Security
@@ -64,22 +64,21 @@ DONE Minder grote bovenkant
 DONE Kleurtjes bij foute invoer.
 DONE Maanden-code van de view verplaatsen naar models en controllers
 DONE Menubalk netjes met Bootstrap
-DONE De jaarkalender laten bestaan uit maand kalender view modellen.
+DONE De jaarkalender laten bestaan uit maand kalender view modellen
+DONE Initial User interface maand
+DONE Weergeven als er die maand geen zaai- of oogstmomenten zijn
+DONE Touch werkend op Mobile
 TODO Afkappen decimalen.
 TODO Standaard oogsten aangevinkt in het sleepvak
 TODO Niet groter dan 999 in veld
 TODO Inlogscherm kleiner
-DONE Initial User interface maand
-TODO Weergeven als er die maand niet is.
 TODO Zorgen dat het selecteer scherm (netjes) onder de maand overview komt op Mobile.
-TODO Touch werkend op Mobile
 TODO Weergave Mobile
 TODO Fixed blokje boven menu? (web-tiki)
 TODO Indien register form groter is pagina langer maken plus wat pixels in zk.resizeLoginArea() (??)
 TODO Direct meeveranderen van zaaien/oogsten op basis van input (JavaScript/jQuery)
 TODO Web-tiki vragen tot doen van verbeteringen middels pull-request
 TODO Jaarkalender naar PDF
-TODO Niet kunnen klikken indien geen elementen
 
 Improvements
 DONE Refactor FarmingActionHelper methode door opsplitsing en out-parameters weg te halen.
