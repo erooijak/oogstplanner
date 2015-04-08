@@ -151,7 +151,9 @@
 
         // Loop over the recommended harvesting or sowing months and toggle the highlighting.
         $.each(recommendedMonths, function(i, month){
-            $('div[data-month=' + month + ']').toggleClass('highlight');
+            if (month) { 
+                $('div[data-month=' + month + ']').toggleClass('highlight');
+            }
         });
 
     },
