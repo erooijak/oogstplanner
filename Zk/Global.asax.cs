@@ -1,13 +1,10 @@
-﻿using System;
-using System.Threading;
-using System.Web;
+﻿using System.Web;
+using System.Web.Helpers;
 using System.Web.Mvc;
 using System.Web.Optimization;
-using System.Web.Security;
 using System.Web.Routing;
-using WebMatrix.WebData;
 
-using Zk.Models;
+using WebMatrix.WebData;
 
 namespace Zk
 {
@@ -32,6 +29,10 @@ namespace Zk
             {
                 WebSecurity.InitializeDatabaseConnection("ZkTestDatabaseConnection", "Users", "UserId", "Name", autoCreateTables: true);
             }
+
+            // Insecure fix for anti forgery token exception.
+            // See stackoverflow.com/questions/2206595/how-do-i-solve-an-antiforgerytoken-exception-that-occurs-after-an-iisreset-in-my#20421618
+            AntiForgeryConfig.SuppressIdentityHeuristicChecks = true;
 
             AreaRegistration.RegisterAllAreas();
 
