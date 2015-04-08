@@ -125,7 +125,8 @@ namespace Zk.BusinessLogic
         /// <summary>
         /// This method throws an exception if the action does not belong to the logged in user.
         /// </summary>
-        /// <param name="action">Action.</param>
+        /// <param name="currentUserId">The current user.</param>
+        /// <param name="calendarUserId">The calendar belonging to the user.</param>
         void CheckAuthorisation(int currentUserId, int calendarUserId)
         {
             // Check if action belongs to user or someone is messing with us:
