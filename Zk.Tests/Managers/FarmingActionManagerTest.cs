@@ -70,6 +70,15 @@ namespace Zk.Tests
                         Action = ActionType.Harvesting,
                         CropCount = 5,
                         Month = Month.September
+                    },
+                    new FarmingAction // Used for removal check
+                    {
+                        Id = 99,
+                        Calendar = calendar,
+                        Crop = new Crop { Id = 9999, GrowingTime = 3 }, // No correlation with others
+                        Action = ActionType.Harvesting,
+                        CropCount = 5,
+                        Month = Month.September
                     }
                 }
             };
@@ -172,6 +181,38 @@ namespace Zk.Tests
             // Act and Assert
             Assert.Catch<SecurityException>( () => _manager.AddFarmingAction(action), 
                 "A security exception should be thrown when a user tries to edits an action"
+                + "belonging to another user.");
+
+        }
+
+        [Test]
+        public void FarmingActionManager_RemoveFarmingAction_CorrectActionRemoved()
+        {
+            // Arrange
+            const int farmingActionIdToRemove = 99;
+            var resultBeforeRemovingFarmingAction = _db.FarmingActions.Find(farmingActionIdToRemove);
+
+            // Act
+            _manager.RemoveFarmingAction(farmingActionIdToRemove);
+
+            // Assert
+            var resultAfterRemovingFarmingAction = _db.FarmingActions.Find(farmingActionIdToRemove);
+
+            Assert.IsInstanceOf<FarmingAction>(resultBeforeRemovingFarmingAction,
+                "Before removal action should be found.");
+            Assert.IsNull(resultAfterRemovingFarmingAction, 
+                "Farming action with ID 99 should no longer be available after removal.");
+        }
+
+        [Test]
+        public void FarmingActionManager_RemoveFarmingAction_UserCannotEditOthers()
+        {
+            // Arrange
+            const int idNotBelongingToUser = 10;
+
+            // Act and Assert
+            Assert.Catch<SecurityException>( () => _manager.RemoveFarmingAction(idNotBelongingToUser), 
+                "A security exception should be thrown when a user tries to remove an action"
                 + "belonging to another user.");
 
         }
