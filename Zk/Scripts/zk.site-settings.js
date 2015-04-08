@@ -49,8 +49,10 @@
         slideSelector: '.slide',
     });
 
+    /* Disable scrolling on touch. */
+    $.fn.fullpage.setAllowScrolling = false;
+
     /* Only allow numeric inputs in numeric fields */
     zk.makeNumericTextBoxesNumeric();
-
 
 });
