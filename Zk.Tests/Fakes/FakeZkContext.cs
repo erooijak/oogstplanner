@@ -1,17 +1,18 @@
 ﻿using System.Data.Entity;
 using Zk.Models;
 
-namespace Zk.Tests.Fakes
+namespace Zk.Tests
 {
     public class FakeZkContext : IZkContext
-	{
-		public FakeZkContext()
-		{
-			Crops = new FakeCropSet();
+    {
+        public FakeZkContext()
+        {
+            Crops = new FakeCropSet();
             FarmingActions = new FakeFarmingActionSet();
-		}
+            Users = new FakeUserSet();
+        }
 
-		public IDbSet<Crop> Crops { get; private set; }
+        public IDbSet<Crop> Crops { get; private set; }
 
         public IDbSet<FarmingAction> FarmingActions { get; private set; }
 
@@ -21,14 +22,14 @@ namespace Zk.Tests.Fakes
 
         public IDbSet<PasswordResetToken> PasswordResetTokens { get; private set; }
 
-		public int SaveChanges()
-		{
-			return 0;
-		}
+        public int SaveChanges()
+        {
+            return 0;
+        }
 
         public void SetModified(object entity)
         {
         }
 
-	}
+    }
 }

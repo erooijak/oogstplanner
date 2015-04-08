@@ -5,12 +5,9 @@ using System.Web.Mvc;
 using NUnit.Framework;
 
 using Zk.Controllers;
-using Zk.BusinessLogic;
 using Zk.Models;
-using Zk.Tests.Fakes;
-using Zk.Repositories;
 
-namespace Zk.Tests.Controllers
+namespace Zk.Tests
 {
     [TestFixture]
     public class CropControllerTest
@@ -23,15 +20,15 @@ namespace Zk.Tests.Controllers
             // Initialize a fake database with one crop.
             var db = new FakeZkContext
             {
-            	Crops =
-            	{
-            		new Crop
-            		{
-            			Id = 1,
-            			Name = "Broccoli", 
-            			SowingMonths = Month.Mei ^ Month.Juni ^ Month.Oktober ^ Month.November 
-            		}
-            	}
+                Crops =
+                {
+                    new Crop
+                    {
+                        Id = 1,
+                        Name = "Broccoli", 
+                        SowingMonths = Month.Mei ^ Month.Juni ^ Month.Oktober ^ Month.November 
+                    }
+                }
             };
             _controller = new CropController(db);
         }
@@ -48,8 +45,8 @@ namespace Zk.Tests.Controllers
 
             // Assert
             Assert.AreEqual(expectedResult, actualResult,
-            	"Since there is only a broccoli in the database the index method should return it.");
+                "Since there is only a broccoli in the database the index method should return it.");
         }
-		
+    	
     }
 }

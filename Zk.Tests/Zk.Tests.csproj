@@ -90,6 +90,7 @@
     <Compile Include="Helpers\UrlHelperExtensionTest.cs" />
     <Compile Include="Helpers\MonthExtensionTest.cs" />
     <Compile Include="Helpers\MonthHelperTest.cs" />
+    <Compile Include="Fakes\FakeUserSet.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

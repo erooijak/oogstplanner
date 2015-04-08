@@ -1,10 +1,11 @@
-﻿using NUnit.Framework;
+﻿using System.Collections.Generic;
+using System.IO;
+using System.Security.Principal;
+using System.Web;
+using NUnit.Framework;
 
 using Zk.BusinessLogic;
 using Zk.Models;
-using Zk.Repositories;
-using Zk.Tests.Fakes;
-using System.Collections.Generic;
 
 namespace Zk.Tests
 {
@@ -18,7 +19,10 @@ namespace Zk.Tests
         [TestFixtureSetUp]
         public void Setup()
         {
-            var calendar = new Calendar { CalendarId = 1 };
+            const string userName = "userName";
+
+            var calendar = new Calendar { CalendarId = 1, UserId = 1 };
+            var user = new User { UserId = 1, Name = userName, Email = "test@test.de", Enabled = true, FullName = "test" };
             var broccoli = new Crop 
             {
                 Id = 1,
@@ -26,9 +30,14 @@ namespace Zk.Tests
                 GrowingTime = 4,
                 SowingMonths = Month.Mei ^ Month.Juni ^ Month.Oktober ^ Month.November 
             };
+
             // Initialize a fake database with some crops and farming actions.
             _db = new FakeZkContext 
             {
+                Users = 
+                { 
+                    user
+                },
                 Crops = 
                 {
                     broccoli
@@ -55,6 +64,18 @@ namespace Zk.Tests
                     }
                 }
             };
+                    
+            // Fake the HttpContext which is used for the check if the user is allowed to update the action.
+            HttpContext.Current = new HttpContext(
+                new HttpRequest("", "http://tempuri.org", ""),
+                new HttpResponse(new StringWriter())
+            );
+
+            // User is logged in
+            HttpContext.Current.User = new GenericPrincipal(
+                new GenericIdentity(userName),
+                new string[0]
+            );
 
             _manager = new FarmingActionManager(_db);
         }
@@ -83,7 +104,7 @@ namespace Zk.Tests
             var action = new FarmingAction 
             {
                 Action = ActionType.Harvesting,
-                Calendar = new Calendar { CalendarId = 5 },
+                Calendar = new Calendar { CalendarId = 5, UserId = 1 },
                 Crop = new Crop { Id = 3, GrowingTime = 3 },
                 Month = Month.April,
                 CropCount = 10,
