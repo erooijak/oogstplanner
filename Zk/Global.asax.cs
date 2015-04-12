@@ -30,10 +30,6 @@ namespace Zk
                 WebSecurity.InitializeDatabaseConnection("ZkTestDatabaseConnection", "Users", "UserId", "Name", autoCreateTables: true);
             }
 
-            // Insecure fix for anti forgery token exception.
-            // See stackoverflow.com/questions/2206595/how-do-i-solve-an-antiforgerytoken-exception-that-occurs-after-an-iisreset-in-my#20421618
-            AntiForgeryConfig.SuppressIdentityHeuristicChecks = true;
-
             AreaRegistration.RegisterAllAreas();
 
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
