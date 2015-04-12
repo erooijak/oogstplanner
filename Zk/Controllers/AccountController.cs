@@ -39,7 +39,6 @@ namespace Zk.Controllers
         // POST: /Account/Login
         [HttpPost]
         [AllowAnonymous]
-        [ValidateAntiForgeryToken]
         public ActionResult Login(LoginOrRegisterViewModel viewModel, string returnUrl)
         {
             var model = viewModel.Login;
@@ -83,7 +82,6 @@ namespace Zk.Controllers
         // POST: /Account/Register/
         [HttpPost]
         [AllowAnonymous]
-        [ValidateAntiForgeryToken]
         public ActionResult Register(LoginOrRegisterViewModel viewModel)
         {           
             var model = viewModel.Register;
@@ -135,7 +133,6 @@ namespace Zk.Controllers
         // POST: Account/LostPassword
         [HttpPost]
         [AllowAnonymous]
-        [ValidateAntiForgeryToken]
         public ActionResult LostPassword(LostPasswordModel model)
         {
             if (ModelState.IsValid)
@@ -201,7 +198,6 @@ namespace Zk.Controllers
         // POST: /Account/ResetPassword
         [HttpPost]
         [AllowAnonymous]
-        [ValidateAntiForgeryToken]
         public ActionResult ResetPassword(ResetPasswordModel model)
         {
             if (ModelState.IsValid)
