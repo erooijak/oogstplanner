@@ -8,8 +8,8 @@ using Zk.Models;
 
 namespace Zk.Controllers
 {
-	public class CalendarController : Controller
-	{        
+    public class CalendarController : Controller
+    {        
         readonly CalendarManager _calendarManager;
         readonly UserManager _userManager;
         readonly FarmingActionManager _farmingActionManager;
@@ -121,5 +121,5 @@ namespace Zk.Controllers
 
         }
             
-	}
+    }
 }
