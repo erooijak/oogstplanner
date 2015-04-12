@@ -83,6 +83,7 @@ namespace Zk.Controllers
         // POST: /Account/Register/
         [HttpPost]
         [AllowAnonymous]
+        [ValidateAntiForgeryToken]
         public ActionResult Register(LoginOrRegisterViewModel viewModel)
         {           
             var model = viewModel.Register;
