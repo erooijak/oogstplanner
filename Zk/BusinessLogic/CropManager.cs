@@ -9,9 +9,9 @@ namespace Zk.BusinessLogic
     {
         readonly Repository _repository;
 
-        public CropManager(IZkContext db)
+        public CropManager(Repository repository)
         {
-            _repository = new Repository(db);
+            _repository = repository;
         }
 
         public IEnumerable<Crop> GetAll()

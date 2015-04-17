@@ -4,8 +4,10 @@ using System.Linq;
 using System.Web.Mvc;
 using NUnit.Framework;
 
+using Zk.BusinessLogic;
 using Zk.Controllers;
 using Zk.Models;
+using Zk.Repositories;
 
 namespace Zk.Tests
 {
@@ -30,7 +32,7 @@ namespace Zk.Tests
                     }
                 }
             };
-            _controller = new CropController(db);
+            _controller = new CropController(new CropManager(new Repository(db)));
         }
 
         [Test]

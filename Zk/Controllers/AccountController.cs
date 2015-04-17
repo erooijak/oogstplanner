@@ -19,11 +19,9 @@ namespace Zk.Controllers
     {
         private UserManager _manager;
 
-        public AccountController() : this(new ZkContext()) { }
-
-        public AccountController(IZkContext db)
+        public AccountController(UserManager userManager)
         {
-            _manager = new UserManager(db);
+            _manager = userManager;
         }
 
         //

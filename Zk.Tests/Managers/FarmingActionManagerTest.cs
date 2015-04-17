@@ -6,6 +6,7 @@ using NUnit.Framework;
 
 using Zk.BusinessLogic;
 using Zk.Models;
+using Zk.Repositories;
 
 namespace Zk.Tests
 {
@@ -103,8 +104,8 @@ namespace Zk.Tests
                 new GenericIdentity(userName),
                 new string[0]
             );
-
-            _manager = new FarmingActionManager(_db);
+            var repository = new Repository(_db);
+            _manager = new FarmingActionManager(repository, new UserManager(repository));
         }
 
         [Test]

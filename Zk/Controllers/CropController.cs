@@ -12,11 +12,9 @@ namespace Zk.Controllers
     {
         readonly CropManager _manager;
 
-        public CropController() : this(new ZkContext()) { }
-
-        public CropController(IZkContext db)
+        public CropController(CropManager cropManager)
         {
-            _manager = new CropManager(db);
+            _manager = cropManager;
         }
         	
         //

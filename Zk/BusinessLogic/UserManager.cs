@@ -12,9 +12,9 @@ namespace Zk.BusinessLogic
     {
         readonly Repository _repository;
 
-        public UserManager(IZkContext db)
+        public UserManager(Repository repository)
         {
-            _repository = new Repository(db);
+            _repository = repository;
         }
 
         public void Add(string userName, string fullName, string email)

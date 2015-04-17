@@ -15,10 +15,10 @@ namespace Zk.BusinessLogic
         readonly UserManager _userManager;
         readonly int CurrentUserId;
 
-        public FarmingActionManager(IZkContext db)
+        public FarmingActionManager(Repository repository, UserManager userManager)
         {
-            _repository = new Repository(db);
-            _userManager = new UserManager(db);
+            _repository = repository;
+            _userManager = userManager;
 
             CurrentUserId = _userManager.GetCurrentUserId();
         }

@@ -30,6 +30,8 @@ namespace Zk
                 WebSecurity.InitializeDatabaseConnection("ZkTestDatabaseConnection", "Users", "UserId", "Name", autoCreateTables: true);
             }
 
+            IocConfig.RegisterDependencies();
+
             AreaRegistration.RegisterAllAreas();
 
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
