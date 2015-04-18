@@ -148,21 +148,6 @@
         $('#signupbox').hide(); 
         $('#loginbox').show(); 
         this.resetValidation();
-    },
-
-    toggleHighlightOnRecommendedMonths: function() {
-
-        // Loop over the recommended harvesting or sowing months and toggle the highlighting.
-        $.each(dragged.recommendedMonths, function(i, month){
-            if (month) { 
-                $('div[data-month=' + month + ']').toggleClass('highlight');
-            }
-        });
-
-    },
-
-    toggleHighlightOnHover: function() {
-        $('[data-month]').toggleClass('hover-highlight');
     }
 
 };

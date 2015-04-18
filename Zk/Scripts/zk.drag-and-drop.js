@@ -1,4 +1,6 @@
-﻿var actionType = Object.freeze( { HARVESTING: 0, SOWING: 1 } );
+﻿
+var actionType = Object.freeze( { SOWING: 0, HARVESTING: 1 } );
+
 var dragged = { 
 
     selectedActionType: null,
@@ -15,6 +17,21 @@ var dragged = {
         dragged.cropId = $('#selected-crop-hidden-id').val();
         dragged.cropCount = $('#selected-crop-count-number-field').val();
 
+    },
+        
+    toggleHighlightOnRecommendedMonths: function() {
+
+        // Loop over the recommended harvesting or sowing months and toggle the highlighting.
+        $.each(this.recommendedMonths, function(i, month){
+            if (month) { 
+                $('div[data-month=' + month + ']').toggleClass('highlight');
+            }
+        });
+
+    },
+
+    toggleHighlightOnHover: function() {
+        $('[data-month]').toggleClass('hover-highlight');
     }
 
 };
@@ -41,15 +58,15 @@ $(function() {
             },
 
             start: function(e, ui) {     
-                zk.toggleHighlightOnHover();
-                zk.toggleHighlightOnRecommendedMonths();
+                dragged.toggleHighlightOnHover();
+                dragged.toggleHighlightOnRecommendedMonths();
             },
 
             stop: function(e, ui) {
                 var draggedDiv = ui.helper;
                 draggedDiv.remove();
-                zk.toggleHighlightOnHover();
-                zk.toggleHighlightOnRecommendedMonths();
+                dragged.toggleHighlightOnHover();
+                dragged.toggleHighlightOnRecommendedMonths();
             }
 
         });
@@ -63,6 +80,7 @@ $(function() {
             var cropId = dragged.cropId;
             var month = $(event.target).data().month;
             var actionType =  dragged.selectedActionType;
+            console.log(actionType);
             var cropCount = dragged.cropCount;
 
             zk.addFarmingAction(cropId, month, actionType, cropCount);
