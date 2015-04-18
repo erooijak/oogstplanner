@@ -161,6 +161,7 @@
     <Folder Include="App_Start\" />
     <Folder Include="Content\fonts\" />
     <Folder Include="App_Data\Migrations\Production\" />
+    <Folder Include="Content\Images\Draggable\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\HomeController.cs" />
@@ -281,6 +282,7 @@
     <Content Include="Email.config" />
     <Content Include="_Email.config" />
     <Content Include="Scripts\jquery.ui.touch-punch.min.js" />
+    <Content Include="Content\Images\Draggable\harvesting.png" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>

@@ -38,6 +38,7 @@ DONE Pseudo code naar echte code
 DONE Mogelijkheid farming months zelfs toe te voegen
 DONE Gerelateerde farming actions updaten
 DONE Aangeven hoeveel stuks
+TODO Vrienden kunnen aanmaken
 TODO Error handling
 
 Security
@@ -84,9 +85,15 @@ Improvements
 DONE Refactor FarmingActionHelper methode door opsplitsing en out-parameters weg te halen.
 DONE Fix bug met entity framework contexts die niet samenwerken bij objecten samengesteld uit meerdere elementen.
 DONE Zorg dat je weer plant of planten ziet.
-TODO Zorgen dat toevoegen van een gewas het aantal ophoogt indien er al eenzelfde gewas is die maand.
-TODO Automatisch selecteren van oogsten. Lukt niet.
+DONE Gewas aantal groter vak.
+DONE Tekst moet leesbaarder bij maandoverzicht.
+DONE Streep linksonder weg bij maandoverzicht.
+DONE E-mailadres klikbaar.
+DONE Zorgen dat toevoegen van een gewas het aantal ophoogt indien er al eenzelfde gewas is die maand.
+DONE Optillen wordt het een zaadje (bij zaaien) of een zeis (bij oogsten).(gekozen voor plant bij oogsten, misschien anders)
 TODO Vindbaarheid verbeteren.
+TODO Automatisch selecteren van oogsten. Lukt niet.
+TODO Schots en scheefheid rechtzetten. (?)
 
 Extra info:
 11 november ging 90-dagen licentie in voor Xamarin.
@@ -98,10 +105,10 @@ BUGS:
 FIXED Gewassen zonder oogstmaanden vertonen bug bij slepen.
 FIXED No scrolling while dragging on Mobile
 2x klikken op maand levert dubbele data op.
-Op bevestigen kliken bij lege maand levert nullreferencexception op.
+HACKY-FIX Op bevestigen kliken bij lege maand levert nullreferencexception op.
 0 invoeren in numeric text box is niet meer aan te passen met de pijltjes.
 Anti-forgery token fixen
-
+Oude invoer blijft hangen op sleep scherm
 
 WENSEN:
 Een gebruiker moet de zaaikalender een naam kunnen geven.

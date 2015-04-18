@@ -1,29 +1,34 @@
 ﻿var zk = {
 	
-	month: null,
-    
+    month: null,
+
     toMonthCalendar: function() {
         $.fn.fullpage.moveSlideRight();
         $(window).scrollTop(0);
         this.makeNumericTextBoxesNumeric();
         this.makeCropPluralWhenCropCountIsBiggerThan1();
+
+        // Remove the crop-selection-box since the side is visible on the month calendar...
+        $('#crop-selection-box').hide();
     },
     
     toMain: function() {
         $.fn.fullpage.moveSlideLeft();
         $(window).scrollTop(0);
+
+        $('#crop-selection-box').show();
     },
 
     fillMonthCalendar: function(month) {
 
-    	// Store the month in the object so we can use it and do not have to get it from the page.
-    	this.month = month;
-  	
-	    $.get('/Calendar/Month?month=' + month, function(data) {
+        // Store the month in the object so we can use it and do not have to get it from the page.
+        this.month = month;
+
+        $.get('/Calendar/Month?month=' + month, function(data) {
             $('#_MonthCalendar').html(data);
         })
-		.done(function() { zk.toMonthCalendar(); zk.bindFarmingActionRemoveFunctionToDeleteButton(); })
-		.fail(function() { alert('TODO: Error handling'); });
+        .done(function() { zk.toMonthCalendar(); zk.bindFarmingActionRemoveFunctionToDeleteButton(); })
+        .fail(function() { alert('TODO: Error handling'); });
     },
 
     addFarmingAction: function(cropId, month, actionType, cropCount) {
@@ -31,10 +36,10 @@
     },
 
     removeFarmingAction: function(id) {
-    	var that = this;
- 		$.post('/Calendar/RemoveFarmingAction', { id: id }, function (response) {
-        	if (response.success === true) { that.fillMonthCalendar(that.month); alert("Het gewas is succesvol verwijderd.") }
-        	else { alert("TODO: Error handling") }
+        var that = this;
+        $.post('/Calendar/RemoveFarmingAction', { id: id }, function (response) {
+            if (response.success === true) { that.fillMonthCalendar(that.month); alert("Het gewas is succesvol verwijderd.") }
+            else { alert("TODO: Error handling") }
         });
     },
 
@@ -103,32 +108,34 @@
 
     makeCropPluralWhenCropCountIsBiggerThan1: function() {
 
-    	// Every crop count input field needs a span label with crop or crops depending on the count.
-    	$('.form-group').each(function() {
-		    var input = $(this).find('input:first');
-		    var span = $(this).find('.crop-count-crop-word:first');
-		    input.change(function() {
-		        span.text( $(this).val() == 1 ? 'plant' : 'planten' );
-		    });      
+        // Every crop count input field needs a span label with crop or crops depending on the count.
+        $('.form-group').each(function() {
+            var input = $(this).find('input:first');
+            var span = $(this).find('.crop-count-crop-word:first');
+            input.change(function() {
+                span.text( $(this).val() == 1 ? 'plant' : 'planten' );
+            });      
 
-		    // Ensure text is correct on load by triggering change event.
-	    	input.trigger('change');
-	      
-		});
+            // Ensure text is correct on load by triggering change event.
+            input.trigger('change');
+          
+        });
 
     },
 
     bindFarmingActionRemoveFunctionToDeleteButton: function() {
 
-		var that = this;
-    	$('.remove-farming-action').bind('click', function (e) {
-			e.preventDefault();
+        var that = this;
 
-    	 	// farming action id is stored in the id of the remove-farming-action element.
-    	 	var farmingActionId = this.id;
+        $('.remove-farming-action').bind('click', function (e) {
+            e.preventDefault();
+
+            // farming action id is stored in the id of the remove-farming-action element.
+            var farmingActionId = this.id;
             that.removeFarmingAction(farmingActionId);
 
         });
+
     },
 
     showSignupBox: function() {
@@ -145,12 +152,8 @@
 
     toggleHighlightOnRecommendedMonths: function() {
 
-        // Get the css class sub string based on action type text and collected recommended harvesting or sowing months.
-        var cssClassActionTypeSubstring = $('.drag-and-drop-sentence-action-type:first').text() === 'oogsten' ? 'harvest' : 'sow';
-        var recommendedMonths = $('#selected-crop-hidden-' + cssClassActionTypeSubstring + 'ingMonths').val().split(',');
-
         // Loop over the recommended harvesting or sowing months and toggle the highlighting.
-        $.each(recommendedMonths, function(i, month){
+        $.each(dragged.recommendedMonths, function(i, month){
             if (month) { 
                 $('div[data-month=' + month + ']').toggleClass('highlight');
             }
@@ -160,18 +163,6 @@
 
     toggleHighlightOnHover: function() {
         $('[data-month]').toggleClass('hover-highlight');
-    },
-
-    // Helper functions:
-    capitaliseFirstLetter: function(string) {
-        return string.charAt(0).toUpperCase() + string.slice(1);
-    },
-
-    // Returns the elements from an array (arr) where the type (type) has the specified value (val).
-    getData: function(arr, type, val) {
-        return arr.filter(function (el) {
-            return el[type] === val;
-        });
     }
 
 };

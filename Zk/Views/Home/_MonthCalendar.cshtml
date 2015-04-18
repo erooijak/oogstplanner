@@ -46,7 +46,7 @@
                         {
                             @Html.HiddenFor(model => action.Id)
                             <div class="form-inline">
-                                <div class="form-group form-text">
+                                <div class="form-group form-text-large-white">
                                 	<div class="input-group">
 	                                	<span class="input-group-btn">
 	                                    	<div class="btn btn-danger input-xs remove-farming-action" id="@string.Format("{0}", action.Id)"><span class="glyphicon glyphicon-remove"></span></div>
@@ -74,7 +74,7 @@
                         {
                             @Html.HiddenFor(model => action.Id)
                             <div class="form-inline">
-                                <div class="form-group form-text">
+                                <div class="form-group form-text-large-white">
                                 	<div class="input-group">
 	                                	<span class="input-group-btn">
 	                                    	<div class="btn btn-danger input-xs remove-farming-action" id="@string.Format("{0}", action.Id)"><span class="glyphicon glyphicon-remove"></span></div>
@@ -94,7 +94,7 @@
         </div>
     </div>
 
-    <input type="button" class="btn btn-default" value="Terug!" onclick="zk.toMain()" />
+    <input type="button" class="btn btn-default" value="Annuleren!" onclick="zk.toMain()" />
     <input type="submit" class="btn btn-success" value="Bevestigen!" /><br/>
 
         

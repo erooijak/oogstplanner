@@ -51,18 +51,23 @@ p {
     font-weight: normal;
     font-size: 14px;
 }
+.form-text-large-white {
+    color: white;
+    font-weight: normal;
+    font-size: 18px;
+}
 .lower-right {
     position: absolute; 
     right: 25px; 
     bottom: 2px;
 }
 .input-xs {
-    height: 22px;
+    height: 35px;
     padding: 5px 5px;
-    font-size: 12px;
+    font-size: 14px;
     line-height: 1.5;
     border-radius: 3px;
-    width: 50px !important;
+    width: 60px !important;
 }
 .panel-body {
     padding-top: 30px;
@@ -122,7 +127,8 @@ p {
     cursor: all-scroll;
 }
 .droppable-hover {
-    background-image: url('../Images/sowing.jpg');
+    background-color: black !important;
+    opacity: 0.7 !important;
 }
 
 /* Validation styling */
