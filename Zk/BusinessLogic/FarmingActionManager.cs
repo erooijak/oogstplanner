@@ -46,8 +46,8 @@ namespace Zk.BusinessLogic
             CheckAuthorisation(CurrentUserId, relatedFarmingAction.Calendar.UserId);
 
             // Try to see if there is a farming action of the same user, of the same type, of the same crop
-            AddNewOrUpdateExisting(farmingAction);
-            AddNewOrUpdateExisting(relatedFarmingAction);
+            AddOrUpdate(farmingAction);
+            AddOrUpdate(relatedFarmingAction);
 
             _repository.SaveChanges();
         }
@@ -106,7 +106,7 @@ namespace Zk.BusinessLogic
         ///     or adds a new one if it does not.
         /// </summary>
         /// <param name="farmingAction">Farming action.</param>
-        void AddNewOrUpdateExisting(FarmingAction farmingAction)
+        void AddOrUpdate(FarmingAction farmingAction)
         {
             var existingFarmingAction = _repository.GetFarmingActions(
                 fa => fa.Action == farmingAction.Action 
