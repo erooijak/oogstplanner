@@ -14,13 +14,13 @@ namespace Zk.Controllers
     [Authorize]
     public partial class AccountController : Controller
     {
-        private IUserService _userService;
-        private IPasswordRecoveryService _passwordRecoveryService;
+        private IUserService userService;
+        private IPasswordRecoveryService passwordRecoveryService;
 
         public AccountController(IUserService userService, IPasswordRecoveryService passwordRecoveryService)
         {
-            _userService = userService;
-            _passwordRecoveryService = passwordRecoveryService;
+            this.userService = userService;
+            this.passwordRecoveryService = passwordRecoveryService;
         }
 
         //
@@ -95,7 +95,7 @@ namespace Zk.Controllers
 
                 if (status == MembershipCreateStatus.Success)
                 {
-                    _userService.Add(model.UserName, model.FullName, model.Email);
+                    userService.Add(model.UserName, model.FullName, model.Email);
                     FormsAuthentication.SetAuthCookie(model.UserName, false);
 
                     return RedirectToAction("Index", "Home");
@@ -135,7 +135,7 @@ namespace Zk.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = _passwordRecoveryService.GetMembershipUserByEmail(model.Email);
+                var user = passwordRecoveryService.GetMembershipUserByEmail(model.Email);
 
                 if (user != null)
                 {
@@ -162,7 +162,7 @@ namespace Zk.Controllers
                         try 
                         {
                             client.Send(message);
-                            _passwordRecoveryService.StoreResetToken(model.Email, token);
+                            passwordRecoveryService.StoreResetToken(model.Email, token);
                             ViewBag.Message = "Reset link is succesvol verzonden.";
                         }
                         catch (Exception e) 
@@ -200,9 +200,9 @@ namespace Zk.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = _passwordRecoveryService.GetMembershipUserFromToken(model.ReturnToken);
+                var user = passwordRecoveryService.GetMembershipUserFromToken(model.ReturnToken);
 
-                var timeStamp = _passwordRecoveryService.GetTokenTimeStamp(model.ReturnToken);
+                var timeStamp = passwordRecoveryService.GetTokenTimeStamp(model.ReturnToken);
                 var currentTime = DateTime.Now;
 
                 if (timeStamp == null) 
@@ -235,8 +235,8 @@ namespace Zk.Controllers
         [HttpGet]
         public ActionResult Info()
         {
-            var id = _userService.GetCurrentUserId();
-            var currentUser = _userService.GetUserById(id);
+            var id = userService.GetCurrentUserId();
+            var currentUser = userService.GetUserById(id);
 
             return View(currentUser);
         }

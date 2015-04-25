@@ -15,7 +15,7 @@ namespace Zk.Repositories
     public class Repository
     {
 
-        readonly IZkContext _db; // Entity Framework database context
+        readonly IZkContext db; // Entity Framework database context
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="Repositories.Repository"/> class which
@@ -24,43 +24,43 @@ namespace Zk.Repositories
         /// <param name="db">Database context.</param>
         public Repository(IZkContext db)
         {
-            _db = db;
+            this.db = db;
         }
 
         public void Update(params object[] entities)
         {
-            foreach (var entity in entities) _db.SetModified(entity);
+            foreach (var entity in entities) db.SetModified(entity);
         }
 
         // A "leaky abstraction", why not use context directly?
         public void SaveChanges()
         {
-            _db.SaveChanges();
+            db.SaveChanges();
         }
 
         public Crop GetCrop(int id)
         {
-            return _db.Crops.Single(c => c.Id == id);
+            return db.Crops.Single(c => c.Id == id);
         }
 
         public Crop GetCrop(string name)
         {
-            return _db.Crops.Single(c => c.Name == name);
+            return db.Crops.Single(c => c.Name == name);
         }
 
         public IEnumerable<Crop> GetAllCrops()
         {
-            return _db.Crops.OrderBy(c => c.Id);
+            return db.Crops.OrderBy(c => c.Id);
         }
 
         public IEnumerable<FarmingAction> GetFarmingActions(Expression<Func<FarmingAction, bool>> predicate)
         {
-            return _db.FarmingActions.Where(predicate).ToList<FarmingAction>();
+            return db.FarmingActions.Where(predicate).ToList<FarmingAction>();
         }
 
         public FarmingAction FindFarmingAction(int id)
         {
-            var action = _db.FarmingActions.Find(id);
+            var action = db.FarmingActions.Find(id);
             if (action == null)
                 throw new ArgumentException("Cannot find primary key in database.", "id");
 
@@ -88,7 +88,7 @@ namespace Zk.Repositories
             var actionType = FarmingActionHelper.GetRelatedActionType(action);
             var month = FarmingActionHelper.GetRelatedMonth(action, cropGrowingTime);
 
-            return _db.FarmingActions.Where(fa => fa.Calendar.CalendarId == calendar.CalendarId
+            return db.FarmingActions.Where(fa => fa.Calendar.CalendarId == calendar.CalendarId
                 && fa.Action == actionType
                 && fa.Crop.Id == crop.Id
                 && fa.Month == month).FirstOrDefault();
@@ -96,12 +96,12 @@ namespace Zk.Repositories
 
         public void AddFarmingAction(FarmingAction farmingAction)
         {
-            _db.FarmingActions.Add(farmingAction);
+            db.FarmingActions.Add(farmingAction);
         }
 
         public void RemoveFarmingAction(FarmingAction farmingAction)
         {
-            _db.FarmingActions.Remove(farmingAction);
+            db.FarmingActions.Remove(farmingAction);
         }
 
         public void AddUser(User user)
@@ -109,19 +109,19 @@ namespace Zk.Repositories
             // Note: it is not necessary to check if user profile already exists since membership provider
             //       does this for us.
 
-            _db.Users.Add(user);
-            _db.SaveChanges();
+            db.Users.Add(user);
+            db.SaveChanges();
 
         }
 
         public User GetUserById(int id)
         {
-            return _db.Users.Find(id);
+            return db.Users.Find(id);
         }
 
         public User GetUserByUserName(string name)
         {
-            var user = _db.Users.Where(u => u.Name == name).FirstOrDefault();
+            var user = db.Users.Where(u => u.Name == name).FirstOrDefault();
 
             if (user == null)
                 throw new ArgumentException("The user with the specified name does not exist.");
@@ -131,7 +131,7 @@ namespace Zk.Repositories
 
         public int GetUserIdByEmail(string email)
         {
-            var user = _db.Users.Where(u => u.Email == email).FirstOrDefault();
+            var user = db.Users.Where(u => u.Email == email).FirstOrDefault();
 
             if (user == null)
                 throw new ArgumentException("The user with the specified email does not exist.");
@@ -141,7 +141,7 @@ namespace Zk.Repositories
 
         public int GetUserIdByName(string name)
         {
-            var user = _db.Users.Where(u => u.Name == name).FirstOrDefault();
+            var user = db.Users.Where(u => u.Name == name).FirstOrDefault();
 
             if (user == null)
                 throw new ArgumentException("The user with the specified name does not exist.");
@@ -151,15 +151,15 @@ namespace Zk.Repositories
 
         public Calendar GetCalendarByUserId(int id)
         {
-            return _db.Calendars.Where(c => c.User.UserId == id).FirstOrDefault();
+            return db.Calendars.Where(c => c.User.UserId == id).FirstOrDefault();
         }
 
         public void CreateCalendar(User user)
         {
             var calendar = new Calendar { User = user };
 
-            _db.Calendars.Add(calendar);
-            _db.SaveChanges();
+            db.Calendars.Add(calendar);
+            db.SaveChanges();
         }
 
         public MembershipUser GetMembershipUserByEmail(string email)
@@ -167,7 +167,7 @@ namespace Zk.Repositories
             if (string.IsNullOrEmpty(email))
                 return null;
 
-            var foundUser = _db.Users.Where(u => u.Email == email).FirstOrDefault();
+            var foundUser = db.Users.Where(u => u.Email == email).FirstOrDefault();
 
             return foundUser != null
                 ? Membership.GetUser(foundUser.Name)
@@ -183,15 +183,15 @@ namespace Zk.Repositories
                 Token = token
             };
 
-            _db.PasswordResetTokens.Add(passwordReset);
-            _db.SaveChanges();
+            db.PasswordResetTokens.Add(passwordReset);
+            db.SaveChanges();
         }
 
         public MembershipUser GetMembershipUserFromToken(string token)
         {
             string email = null;
 
-            var passwordResetInstance = _db.PasswordResetTokens.Where(pr => pr.Token == token).FirstOrDefault();
+            var passwordResetInstance = db.PasswordResetTokens.Where(pr => pr.Token == token).FirstOrDefault();
             if (passwordResetInstance != null)
             {
                 email = passwordResetInstance.Email;
@@ -202,7 +202,7 @@ namespace Zk.Repositories
 
         public DateTime? GetTokenTimeStamp(string token)
         {
-            var tokenInfo = _db.PasswordResetTokens.Where(prt => prt.Token == token).FirstOrDefault();
+            var tokenInfo = db.PasswordResetTokens.Where(prt => prt.Token == token).FirstOrDefault();
 
             return tokenInfo != null ? tokenInfo.TimeStamp : (DateTime?)null;
         }

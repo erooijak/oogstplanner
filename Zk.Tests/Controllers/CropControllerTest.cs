@@ -14,7 +14,7 @@ namespace Zk.Tests
     [TestFixture]
     public class CropControllerTest
     {
-        private CropController _controller;
+        private CropController controller;
 
         [TestFixtureSetUp]
         public void Setup()
@@ -32,7 +32,7 @@ namespace Zk.Tests
                     }
                 }
             };
-            _controller = new CropController(new CropProvider(new Repository(db)));
+            this.controller = new CropController(new CropProvider(new Repository(db)));
         }
 
         [Test]
@@ -42,7 +42,7 @@ namespace Zk.Tests
             var expectedResult = "Broccoli";
 
             // Act
-            var viewResult = _controller.Index();
+            var viewResult = controller.Index();
             var actualResult = ((IEnumerable<Crop>)viewResult.ViewData.Model).Single().Name;
 
             // Assert

@@ -11,28 +11,28 @@ namespace Zk.Services
 {
     public class FarmingActionService
     {
-        readonly Repository _repository;
-        readonly IUserService _userService;
+        readonly Repository repository;
+        readonly IUserService userService;
         readonly int CurrentUserId;
 
         public FarmingActionService(Repository repository, IUserService userService)
         {
-            _repository = repository;
-            _userService = userService;
+            this.repository = repository;
+            this.userService = userService;
 
-            CurrentUserId = _userService.GetCurrentUserId();
+            CurrentUserId = userService.GetCurrentUserId();
         }
             
         public IEnumerable<FarmingAction> GetHarvestingActions(int userId, Month month)
         {
-            return _repository.GetFarmingActions(fa => fa.Calendar.UserId == userId
+            return repository.GetFarmingActions(fa => fa.Calendar.UserId == userId
                 && fa.Action == ActionType.Harvesting 
                 && fa.Month.HasFlag(month));
         }
             
         public IEnumerable<FarmingAction> GetSowingActions(int userId, Month month)
         {
-            return _repository.GetFarmingActions(fa => fa.Calendar.UserId == userId
+            return repository.GetFarmingActions(fa => fa.Calendar.UserId == userId
                 && fa.Action == ActionType.Sowing 
                 && fa.Month.HasFlag(month));
         }
@@ -49,24 +49,24 @@ namespace Zk.Services
             AddOrUpdate(farmingAction);
             AddOrUpdate(relatedFarmingAction);
 
-            _repository.SaveChanges();
+            repository.SaveChanges();
         }
             
         public void Remove(int id)
         {
             // Get the farming action.
-            var farmingAction = _repository.FindFarmingAction(id);
+            var farmingAction = repository.FindFarmingAction(id);
 
             // Check if the calendar actually belongs to the current user.
             CheckAuthorisation(CurrentUserId, farmingAction.Calendar.UserId);
 
             // Find the related farmingaction (the sowing or harvesting counter part).
-            var relatedFarmingAction = _repository.FindRelatedFarmingAction(farmingAction);
+            var relatedFarmingAction = repository.FindRelatedFarmingAction(farmingAction);
 
-            _repository.RemoveFarmingAction(farmingAction);
-            _repository.RemoveFarmingAction(relatedFarmingAction);
+            repository.RemoveFarmingAction(farmingAction);
+            repository.RemoveFarmingAction(relatedFarmingAction);
 
-            _repository.SaveChanges();
+            repository.SaveChanges();
         }
 
         public void UpdateCropCounts(IList<int> ids, IList<int> counts)
@@ -78,7 +78,7 @@ namespace Zk.Services
             // where the id is the key and the crop count the value.
             foreach (var kvp in ids.Zip(counts, (id, count) => new KeyValuePair<int, int>(id, count)))
             {
-                var action = _repository.FindFarmingAction(kvp.Key);
+                var action = repository.FindFarmingAction(kvp.Key);
 
                 // Check if the calendar actually belongs to the current user.
                 CheckAuthorisation(CurrentUserId, action.Calendar.UserId);
@@ -91,14 +91,14 @@ namespace Zk.Services
                 if (currentCropCount == newCropCount) continue;
 
                 //   Find the related farmingaction (the sowing or harvesting counter part)
-                var relatedFarmingAction = _repository.FindRelatedFarmingAction(action);
+                var relatedFarmingAction = repository.FindRelatedFarmingAction(action);
 
                 //   Update the crop count of the farming action and related farming action in the database.
                 action.CropCount = relatedFarmingAction.CropCount = newCropCount;
-                _repository.Update(action, relatedFarmingAction);
+                repository.Update(action, relatedFarmingAction);
             }
 
-            _repository.SaveChanges();
+            repository.SaveChanges();
         }
 
         /// <summary>
@@ -108,7 +108,7 @@ namespace Zk.Services
         /// <param name="farmingAction">Farming action.</param>
         void AddOrUpdate(FarmingAction farmingAction)
         {
-            var existingFarmingAction = _repository.GetFarmingActions(
+            var existingFarmingAction = repository.GetFarmingActions(
                 fa => fa.Action == farmingAction.Action 
                     && fa.Calendar.UserId == farmingAction.Calendar.UserId 
                     && fa.Crop.Id == farmingAction.Crop.Id
@@ -117,12 +117,12 @@ namespace Zk.Services
 
             if (existingFarmingAction == null) 
             {
-                _repository.AddFarmingAction(farmingAction);
+                repository.AddFarmingAction(farmingAction);
             }
             else 
             {
                 existingFarmingAction.CropCount += farmingAction.CropCount;
-                _repository.Update(existingFarmingAction);
+                repository.Update(existingFarmingAction);
             }
 
         }

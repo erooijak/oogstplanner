@@ -10,11 +10,11 @@ namespace Zk.Controllers
 {
     public class CropController : Controller
     {
-        readonly CropProvider _provider;
+        readonly CropProvider cropProvider;
 
         public CropController(CropProvider cropProvider)
         {
-            _provider = cropProvider;
+            this.cropProvider = cropProvider;
         }
         	
         //
@@ -23,7 +23,7 @@ namespace Zk.Controllers
         public ViewResult Index() 
         {
             // Get all crops and return to the view for display.
-            var crops = _provider.GetAll();
+            var crops = cropProvider.GetAll();
 
             return View(crops);
         }
@@ -33,7 +33,7 @@ namespace Zk.Controllers
         [HttpGet]
         public ActionResult All() 
         {
-            var crops = _provider.GetAll();
+            var crops = cropProvider.GetAll();
             var cropsJson = JsonConvert.SerializeObject(crops, new MonthEnumConverter());
 
             return new JsonStringResult(cropsJson);

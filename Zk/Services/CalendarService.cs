@@ -9,29 +9,29 @@ namespace Zk.Services
 {
     public class CalendarService
     {
-        readonly Repository _repository;
-        readonly FarmingActionService _farmingActionService;
-        readonly IUserService _userService;
+        readonly Repository repository;
+        readonly FarmingActionService farmingActionService;
+        readonly IUserService userService;
 
         public CalendarService(
             Repository repository,
             FarmingActionService farmingActionService,
             IUserService userService)
         {
-            _repository = repository;
-            _farmingActionService = farmingActionService;
-            _userService = userService;
+            this.repository = repository;
+            this.farmingActionService = farmingActionService;
+            this.userService = userService;
         }
 
         public Calendar Get(int userId)
         {
-            return _repository.GetCalendarByUserId(userId);
+            return repository.GetCalendarByUserId(userId);
         }
 
         public YearCalendarViewModel GetYearCalendar()
         {
             var yearCalendar = new YearCalendarViewModel();
-            var currentUserId = _userService.GetCurrentUserId();
+            var currentUserId = userService.GetCurrentUserId();
 
             foreach (var month in MonthHelper.GetAllMonths())
             {
@@ -47,8 +47,8 @@ namespace Zk.Services
             return new MonthCalendarViewModel 
             {
                 DisplayMonth = month.ToString(),
-                HarvestingActions = _farmingActionService.GetHarvestingActions(userId, month),
-                SowingActions = _farmingActionService.GetSowingActions(userId, month)
+                HarvestingActions = farmingActionService.GetHarvestingActions(userId, month),
+                SowingActions = farmingActionService.GetSowingActions(userId, month)
             };
         }
 

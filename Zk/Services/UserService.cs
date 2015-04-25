@@ -9,11 +9,11 @@ namespace Zk.Services
 {
     public class UserService : IUserService
     {
-        readonly Repository _repository;
+        readonly Repository repository;
 
         public UserService(Repository repository)
         {
-            _repository = repository;
+            this.repository = repository;
         }
 
         public void Add(string userName, string fullName, string email)
@@ -25,14 +25,14 @@ namespace Zk.Services
                 Email = email,
                 Enabled = true
             };
-            _repository.AddUser(user);
+            repository.AddUser(user);
             Roles.AddUserToRole(userName, "user");
 
             // Get the actual user from the database, so we get the created UserId.
-            var newlyCreatedUser = _repository.GetUserByUserName(userName);
+            var newlyCreatedUser = repository.GetUserByUserName(userName);
 
             // Create calendar for the user
-            _repository.CreateCalendar(newlyCreatedUser);
+            repository.CreateCalendar(newlyCreatedUser);
         }
 
         public int GetCurrentUserId()
@@ -45,15 +45,15 @@ namespace Zk.Services
                 : "";
 
             int currentUserId = currentUserEmailOrName.Contains("@")
-                ? _repository.GetUserIdByEmail(currentUserEmailOrName)
-                : _repository.GetUserIdByName(currentUserEmailOrName);
+                ? repository.GetUserIdByEmail(currentUserEmailOrName)
+                : repository.GetUserIdByName(currentUserEmailOrName);
           
             return currentUserId;
         }
 
         public User GetUserById(int id)
         {
-            return _repository.GetUserById(id);
+            return repository.GetUserById(id);
         }
             
     }

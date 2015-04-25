@@ -7,21 +7,21 @@ namespace Zk.Services
 {
     public class CropProvider
     {
-        readonly Repository _repository;
+        readonly Repository repository;
 
         public CropProvider(Repository repository)
         {
-            _repository = repository;
+            this.repository = repository;
         }
 
         public IEnumerable<Crop> GetAll()
         {
-            return _repository.GetAllCrops();
+            return repository.GetAllCrops();
         }
 
         public Crop Get(int id)
         {
-            return _repository.GetCrop(id);
+            return repository.GetCrop(id);
         }
 
     }
