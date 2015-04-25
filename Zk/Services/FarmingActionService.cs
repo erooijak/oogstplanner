@@ -13,14 +13,25 @@ namespace Zk.Services
     {
         readonly Repository repository;
         readonly IUserService userService;
-        readonly int CurrentUserId;
+        int? currentUserId;
 
         public FarmingActionService(Repository repository, IUserService userService)
         {
             this.repository = repository;
             this.userService = userService;
+        }
 
-            CurrentUserId = userService.GetCurrentUserId();
+        public int CurrentUserId 
+        { 
+            get 
+            {
+                if (currentUserId == null) 
+                {
+                    currentUserId = userService.GetCurrentUserId();
+                }
+                return (int)currentUserId;
+            }
+            private set;
         }
             
         public IEnumerable<FarmingAction> GetHarvestingActions(int userId, Month month)
