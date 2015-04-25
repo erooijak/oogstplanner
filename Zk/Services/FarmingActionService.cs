@@ -31,7 +31,6 @@ namespace Zk.Services
                 }
                 return (int)currentUserId;
             }
-            private set;
         }
             
         public IEnumerable<FarmingAction> GetHarvestingActions(int userId, Month month)
