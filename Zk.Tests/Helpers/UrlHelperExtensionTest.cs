@@ -6,6 +6,7 @@ using Zk.Helpers;
 
 namespace Zk.Tests
 {
+    [Ignore]
     [TestFixture]
     public class UrlHelperExtensionTest
     {
