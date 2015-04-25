@@ -56,11 +56,6 @@ namespace Zk.Services
         {
             return _repository.GetUserById(id);
         }
-
-        public MembershipUser GetMembershipUserByEmail(string email)
-        {
-            return _repository.GetMembershipUserByEmail(email);
-        }
-
+            
     }
 }

@@ -2,7 +2,7 @@
 using Zk.Repositories;
 using System.Web.Security;
 
-namespace Zk
+namespace Zk.Services
 {
     public class PasswordRecoveryService : IPasswordRecoveryService
     {
@@ -22,6 +22,11 @@ namespace Zk
         public MembershipUser GetMembershipUserFromToken(string token)
         {
             return _repository.GetMembershipUserFromToken(token);
+        }
+
+        public MembershipUser GetMembershipUserByEmail(string email)
+        {
+            return _repository.GetMembershipUserByEmail(email);
         }
 
         public DateTime? GetTokenTimeStamp(string token)

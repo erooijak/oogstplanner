@@ -12,8 +12,5 @@ namespace Zk.Services
         int GetCurrentUserId();
 
         User GetUserById(int id);
-
-        MembershipUser GetMembershipUserByEmail(string email);
-
     }
 }

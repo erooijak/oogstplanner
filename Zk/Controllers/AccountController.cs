@@ -138,7 +138,7 @@ namespace Zk.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = _userService.GetMembershipUserByEmail(model.Email);
+                var user = _passwordRecoveryService.GetMembershipUserByEmail(model.Email);
 
                 if (user != null)
                 {

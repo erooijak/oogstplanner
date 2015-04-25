@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Web.Security;
 
-namespace Zk
+namespace Zk.Services
 {
     public interface IPasswordRecoveryService
     {
@@ -10,5 +10,7 @@ namespace Zk
         MembershipUser GetMembershipUserFromToken(string returnToken);
 
         DateTime? GetTokenTimeStamp(string returnToken);
+
+        MembershipUser GetMembershipUserByEmail(string email);
     }
 }
