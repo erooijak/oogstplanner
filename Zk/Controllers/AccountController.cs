@@ -1,11 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net.Mail;
 using System.Web.Mvc;
 using System.Web.Security;
-using Microsoft.Web.WebPages.OAuth;
-using WebMatrix.WebData;
 
 using Zk.Services;
 using Zk.Models;
