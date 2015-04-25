@@ -8,6 +8,6 @@ namespace Zk.Services
 
         int GetCurrentUserId();
 
-        User GetUserById(int id);
+        User GetUser(int id);
     }
 }

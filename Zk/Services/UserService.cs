@@ -51,7 +51,7 @@ namespace Zk.Services
             return currentUserId;
         }
 
-        public User GetUserById(int id)
+        public User GetUser(int id)
         {
             return repository.GetUserById(id);
         }

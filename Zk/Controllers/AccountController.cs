@@ -12,7 +12,7 @@ using Zk.ViewModels;
 namespace Zk.Controllers
 {
     [Authorize]
-    public partial class AccountController : Controller
+    public class AccountController : Controller
     {
         private IUserService userService;
         private IPasswordRecoveryService passwordRecoveryService;
@@ -236,7 +236,7 @@ namespace Zk.Controllers
         public ActionResult Info()
         {
             var id = userService.GetCurrentUserId();
-            var currentUser = userService.GetUserById(id);
+            var currentUser = userService.GetUser(id);
 
             return View(currentUser);
         }
