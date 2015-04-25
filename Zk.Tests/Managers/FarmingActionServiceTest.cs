@@ -11,10 +11,10 @@ using Zk.Repositories;
 namespace Zk.Tests
 {
 	[TestFixture]
-	public class FarmingActionManagerTest
+	public class FarmingActionServiceTest
 	{
     
-        FarmingActionManager _manager;
+        FarmingActionService _service;
         IZkContext _db;
     
         [TestFixtureSetUp]
@@ -105,18 +105,18 @@ namespace Zk.Tests
                 new string[0]
             );
             var repository = new Repository(_db);
-            _manager = new FarmingActionManager(repository, new UserManager(repository));
+            _service = new FarmingActionService(repository, new UserService(repository));
         }
 
         [Test]
-        public void FarmingActionManager_UpdateCropCounts_CorrectCropsAreUpdated()
+        public void FarmingActionService_UpdateCropCounts_CorrectCropsAreUpdated()
         {
             // Arrange
             var farmingActionIds = new List<int> { 1 };
             var cropCounts = new List<int> { 1 };
 
             // Act
-            _manager.UpdateCropCounts(farmingActionIds, cropCounts);
+            _service.UpdateCropCounts(farmingActionIds, cropCounts);
 
             // Assert
             Assert.AreEqual(1, _db.FarmingActions.Find(1).CropCount,
@@ -126,20 +126,20 @@ namespace Zk.Tests
         }
 
         [Test]
-        public void FarmingActionManager_UpdateCropCounts_UserCannotEditOthers()
+        public void FarmingActionService_UpdateCropCounts_UserCannotEditOthers()
         {
             // Arrange
             var farmingActionIds = new List<int> { 1, 10 }; 
             var cropCounts = new List<int> { 1, 10 };
 
             // Act and Assert
-            Assert.Catch<SecurityException>( () =>  _manager.UpdateCropCounts(farmingActionIds, cropCounts), 
+            Assert.Catch<SecurityException>( () =>  _service.UpdateCropCounts(farmingActionIds, cropCounts), 
                 "A security exception should be thrown when a user tries to updates an action"
                 + "belonging to another user.");
         }
 
         [Test]
-        public void FarmingActionManager_AddFarmingAction_CorrectFarmingActionsAreCreated()
+        public void FarmingActionService_AddFarmingAction_CorrectFarmingActionsAreCreated()
         {
             // Arrange
             var action = new FarmingAction 
@@ -153,7 +153,7 @@ namespace Zk.Tests
             };
 
             // Act
-            _manager.Add(action);
+            _service.Add(action);
 
             // Assert
             var addedFarmingAction = _db.FarmingActions.Find(3); // 3 is ID specified above
@@ -173,7 +173,7 @@ namespace Zk.Tests
         }
 
         [Test]
-        public void FarmingActionManager_AddFarmingAction_CropCountIsAddedToExisting()
+        public void FarmingActionService_AddFarmingAction_CropCountIsAddedToExisting()
         {
             // Arrange
             const int id = 1234;
@@ -189,7 +189,7 @@ namespace Zk.Tests
             };
 
             // Act
-            _manager.Add(action);
+            _service.Add(action);
 
             // Assert
             var addedFarmingAction = _db.FarmingActions.Find(id);
@@ -199,7 +199,7 @@ namespace Zk.Tests
         }
 
         [Test]
-        public void FarmingActionManager_AddFarmingAction_UserCannotEditOthers()
+        public void FarmingActionService_AddFarmingAction_UserCannotEditOthers()
         {
             // Arrange
             const int differentUserIdThanReturnedByHttpContext = 3;
@@ -215,21 +215,21 @@ namespace Zk.Tests
             };
 
             // Act and Assert
-            Assert.Catch<SecurityException>( () => _manager.Add(action), 
+            Assert.Catch<SecurityException>( () => _service.Add(action), 
                 "A security exception should be thrown when a user tries to edits an action"
                 + "belonging to another user.");
 
         }
 
         [Test]
-        public void FarmingActionManager_RemoveFarmingAction_CorrectActionRemoved()
+        public void FarmingActionService_RemoveFarmingAction_CorrectActionRemoved()
         {
             // Arrange
             const int farmingActionIdToRemove = 99;
             var resultBeforeRemovingFarmingAction = _db.FarmingActions.Find(farmingActionIdToRemove);
 
             // Act
-            _manager.Remove(farmingActionIdToRemove);
+            _service.Remove(farmingActionIdToRemove);
 
             // Assert
             var resultAfterRemovingFarmingAction = _db.FarmingActions.Find(farmingActionIdToRemove);
@@ -241,13 +241,13 @@ namespace Zk.Tests
         }
 
         [Test]
-        public void FarmingActionManager_RemoveFarmingAction_UserCannotEditOthers()
+        public void FarmingActionService_RemoveFarmingAction_UserCannotEditOthers()
         {
             // Arrange
             const int idNotBelongingToUser = 10;
 
             // Act and Assert
-            Assert.Catch<SecurityException>( () => _manager.Remove(idNotBelongingToUser), 
+            Assert.Catch<SecurityException>( () => _service.Remove(idNotBelongingToUser), 
                 "A security exception should be thrown when a user tries to remove an action"
                 + "belonging to another user.");
 

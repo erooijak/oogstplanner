@@ -2,7 +2,7 @@
 using Autofac;
 using Autofac.Integration.Mvc;
 using Zk.Models;
-using Zk.BusinessLogic;
+using Zk.Services;
 using Zk.Repositories;
 
 namespace Zk
@@ -19,10 +19,10 @@ namespace Zk
                 .InstancePerRequest();
 
             builder.RegisterType<Repository>();
-            builder.RegisterType<UserManager>();
-            builder.RegisterType<CalendarManager>();
-            builder.RegisterType<FarmingActionManager>();
-            builder.RegisterType<CropManager>();
+            builder.RegisterType<UserService>();
+            builder.RegisterType<CalendarService>();
+            builder.RegisterType<FarmingActionService>();
+            builder.RegisterType<CropProvider>();
 
             var container = builder.Build();
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));

@@ -85,12 +85,12 @@
     <Compile Include="Fakes\FakeDbSet.cs" />
     <Compile Include="Fakes\FakeZkContext.cs" />
     <Compile Include="Fakes\FakeFarmingActionSet.cs" />
-    <Compile Include="Managers\FarmingActionManagerTest.cs" />
     <Compile Include="Lib\MvcMockHelpers.cs" />
     <Compile Include="Helpers\UrlHelperExtensionTest.cs" />
     <Compile Include="Helpers\MonthExtensionTest.cs" />
     <Compile Include="Helpers\MonthHelperTest.cs" />
     <Compile Include="Fakes\FakeUserSet.cs" />
+    <Compile Include="Managers\FarmingActionServiceTest.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

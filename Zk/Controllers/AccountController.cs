@@ -17,11 +17,11 @@ namespace Zk.Controllers
     [Authorize]
     public partial class AccountController : Controller
     {
-        private UserManager _manager;
+        private UserService _userService;
 
-        public AccountController(UserManager userManager)
+        public AccountController(UserService userService)
         {
-            _manager = userManager;
+            _userService = userService;
         }
 
         //
@@ -96,7 +96,7 @@ namespace Zk.Controllers
 
                 if (status == MembershipCreateStatus.Success)
                 {
-                    _manager.Add(model.UserName, model.FullName, model.Email);
+                    _userService.Add(model.UserName, model.FullName, model.Email);
                     FormsAuthentication.SetAuthCookie(model.UserName, false);
 
                     return RedirectToAction("Index", "Home");
@@ -136,7 +136,7 @@ namespace Zk.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = _manager.GetMembershipUserByEmail(model.Email);
+                var user = _userService.GetMembershipUserByEmail(model.Email);
 
                 if (user != null)
                 {
@@ -163,7 +163,7 @@ namespace Zk.Controllers
                         try 
                         {
                             client.Send(message);
-                            _manager.StoreResetToken(model.Email, token);
+                            _userService.StoreResetToken(model.Email, token);
                             ViewBag.Message = "Reset link is succesvol verzonden.";
                         }
                         catch (Exception e) 
@@ -201,9 +201,9 @@ namespace Zk.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = _manager.GetMembershipUserFromToken(model.ReturnToken);
+                var user = _userService.GetMembershipUserFromToken(model.ReturnToken);
 
-                var timeStamp = _manager.GetTokenTimeStamp(model.ReturnToken);
+                var timeStamp = _userService.GetTokenTimeStamp(model.ReturnToken);
                 var currentTime = DateTime.Now;
 
                 if (timeStamp == null) 
@@ -236,8 +236,8 @@ namespace Zk.Controllers
         [HttpGet]
         public ActionResult Info()
         {
-            var id = _manager.GetCurrentUserId();
-            var currentUser = _manager.GetUserById(id);
+            var id = _userService.GetCurrentUserId();
+            var currentUser = _userService.GetUserById(id);
 
             return View(currentUser);
         }

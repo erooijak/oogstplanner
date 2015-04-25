@@ -9,18 +9,18 @@ using Zk.Repositories;
 
 namespace Zk.BusinessLogic
 {
-    public class FarmingActionManager
+    public class FarmingActionService
     {
         readonly Repository _repository;
-        readonly UserManager _userManager;
+        readonly UserService _userService;
         readonly int CurrentUserId;
 
-        public FarmingActionManager(Repository repository, UserManager userManager)
+        public FarmingActionService(Repository repository, UserService userService)
         {
             _repository = repository;
-            _userManager = userManager;
+            _userService = userService;
 
-            CurrentUserId = _userManager.GetCurrentUserId();
+            CurrentUserId = _userService.GetCurrentUserId();
         }
             
         public IEnumerable<FarmingAction> GetHarvestingActions(int userId, Month month)

@@ -8,11 +8,11 @@ using Zk.Repositories;
 
 namespace Zk.BusinessLogic
 {
-    public class UserManager
+    public class UserService
     {
         readonly Repository _repository;
 
-        public UserManager(Repository repository)
+        public UserService(Repository repository)
         {
             _repository = repository;
         }

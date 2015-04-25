@@ -5,22 +5,22 @@ using Zk.ViewModels;
 using Zk.Repositories;
 using Zk.Models;
 
-namespace Zk.BusinessLogic
+namespace Zk.Services
 {
-    public class CalendarManager
+    public class CalendarService
     {
         readonly Repository _repository;
-        readonly FarmingActionManager _farmingActionManager;
-        readonly UserManager _userManager;
+        readonly FarmingActionService _farmingActionService;
+        readonly UserService _userService;
 
-        public CalendarManager(
+        public CalendarService(
             Repository repository,
-            FarmingActionManager farmingActionManager,
-            UserManager userManager)
+            FarmingActionService farmingActionService,
+            UserService userService)
         {
             _repository = repository;
-            _farmingActionManager = farmingActionManager;
-            _userManager = userManager;
+            _farmingActionService = farmingActionService;
+            _userService = userService;
         }
 
         public Calendar Get(int userId)
@@ -31,7 +31,7 @@ namespace Zk.BusinessLogic
         public YearCalendarViewModel GetYearCalendar()
         {
             var yearCalendar = new YearCalendarViewModel();
-            var currentUserId = _userManager.GetCurrentUserId();
+            var currentUserId = _userService.GetCurrentUserId();
 
             foreach (var month in MonthHelper.GetAllMonths())
             {
@@ -47,8 +47,8 @@ namespace Zk.BusinessLogic
             return new MonthCalendarViewModel 
             {
                 DisplayMonth = month.ToString(),
-                HarvestingActions = _farmingActionManager.GetHarvestingActions(userId, month),
-                SowingActions = _farmingActionManager.GetSowingActions(userId, month)
+                HarvestingActions = _farmingActionService.GetHarvestingActions(userId, month),
+                SowingActions = _farmingActionService.GetSowingActions(userId, month)
             };
         }
 

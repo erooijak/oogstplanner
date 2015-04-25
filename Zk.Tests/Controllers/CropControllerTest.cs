@@ -32,7 +32,7 @@ namespace Zk.Tests
                     }
                 }
             };
-            _controller = new CropController(new CropManager(new Repository(db)));
+            _controller = new CropController(new CropProvider(new Repository(db)));
         }
 
         [Test]

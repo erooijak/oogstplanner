@@ -5,11 +5,11 @@ using Zk.Repositories;
 
 namespace Zk.BusinessLogic
 {
-    public class CropManager
+    public class CropProvider
     {
         readonly Repository _repository;
 
-        public CropManager(Repository repository)
+        public CropProvider(Repository repository)
         {
             _repository = repository;
         }

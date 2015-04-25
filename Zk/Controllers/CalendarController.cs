@@ -10,21 +10,21 @@ namespace Zk.Controllers
 {
     public class CalendarController : Controller
     {        
-        readonly CalendarManager _calendarManager;
-        readonly UserManager _userManager;
-        readonly FarmingActionManager _farmingActionManager;
-        readonly CropManager _cropManager;
+        readonly CalendarService _calendarService;
+        readonly UserService _userService;
+        readonly FarmingActionService _farmingActionService;
+        readonly CropProvider _cropProvider;
 
         public CalendarController(
-            CalendarManager calendarManager,
-            UserManager userManager,
-            FarmingActionManager farmingActionManager,
-            CropManager cropManager)
+            CalendarService calendarService,
+            UserService userService,
+            FarmingActionService farmingActionService,
+            CropProvider cropProvider)
         {
-            _calendarManager = calendarManager;
-            _userManager = userManager;
-            _farmingActionManager = farmingActionManager;
-            _cropManager = cropManager;
+            _calendarService = calendarService;
+            _userService = userService;
+            _farmingActionService = farmingActionService;
+            _cropProvider = cropProvider;
         }
 
         // 
@@ -32,8 +32,8 @@ namespace Zk.Controllers
         // Returns the farming actions of the month.
         public ActionResult Month(Month month)
         {
-            var currentUserId = _userManager.GetCurrentUserId();
-            var monthCalendarViewModel = _calendarManager.GetMonthCalendar(currentUserId, month);
+            var currentUserId = _userService.GetCurrentUserId();
+            var monthCalendarViewModel = _calendarService.GetMonthCalendar(currentUserId, month);
 
             return PartialView(Url.View("_MonthCalendar", "Home"), monthCalendarViewModel);
         }
@@ -42,7 +42,7 @@ namespace Zk.Controllers
         // GET: /Calendar/Year
         public ActionResult Year()
         {
-            var calendarViewModel = _calendarManager.GetYearCalendar();
+            var calendarViewModel = _calendarService.GetYearCalendar();
 
             return View(calendarViewModel);
         }
@@ -63,7 +63,7 @@ namespace Zk.Controllers
             try 
             {
                 // Update crop counts in database
-                _farmingActionManager.UpdateCropCounts(farmingActionIds, cropCounts);
+                _farmingActionService.UpdateCropCounts(farmingActionIds, cropCounts);
             } 
             catch (Exception ex) 
             {
@@ -82,7 +82,7 @@ namespace Zk.Controllers
             try 
             {
                 // Remove this and related farming action from database
-                _farmingActionManager.Remove(id);
+                _farmingActionService.Remove(id);
             } 
             catch (Exception ex) 
             {
@@ -97,9 +97,9 @@ namespace Zk.Controllers
         public JsonResult AddFarmingAction(int cropId, Month month, ActionType actionType, int cropCount)
         {
 
-            var crop = _cropManager.Get(cropId);
-            var currentUserId = _userManager.GetCurrentUserId();
-            var calendar = _calendarManager.Get(currentUserId);
+            var crop = _cropProvider.Get(cropId);
+            var currentUserId = _userService.GetCurrentUserId();
+            var calendar = _calendarService.Get(currentUserId);
 
             var farmingAction = new FarmingAction 
             {
@@ -112,7 +112,7 @@ namespace Zk.Controllers
 
             try
             {
-                _farmingActionManager.Add(farmingAction);
+                _farmingActionService.Add(farmingAction);
                 return Json(new { success = true });
             }
             catch (Exception ex) 
