@@ -19,7 +19,10 @@ namespace Zk
                 .InstancePerRequest();
 
             builder.RegisterType<Repository>();
-            builder.RegisterType<UserService>();
+            builder.RegisterType<UserService>()
+                .As<IUserService>();
+            builder.RegisterType<PasswordRecoveryService>()
+                .As<IPasswordRecoveryService>();
             builder.RegisterType<CalendarService>();
             builder.RegisterType<FarmingActionService>();
             builder.RegisterType<CropProvider>();

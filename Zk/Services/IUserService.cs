@@ -15,10 +15,5 @@ namespace Zk.Services
 
         MembershipUser GetMembershipUserByEmail(string email);
 
-        void StoreResetToken(string email, string token);
-
-        MembershipUser GetMembershipUserFromToken(string returnToken);
-
-        DateTime? GetTokenTimeStamp(string returnToken);
     }
 }

@@ -203,6 +203,8 @@
     <Compile Include="Services\UserService.cs" />
     <Compile Include="Services\CalendarService.cs" />
     <Compile Include="Services\IUserService.cs" />
+    <Compile Include="Services\IPasswordRecoveryService.cs" />
+    <Compile Include="Services\PasswordRecoveryService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Web.config" />

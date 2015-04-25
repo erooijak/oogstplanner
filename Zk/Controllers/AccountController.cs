@@ -18,10 +18,12 @@ namespace Zk.Controllers
     public partial class AccountController : Controller
     {
         private IUserService _userService;
+        private IPasswordRecoveryService _passwordRecoveryService;
 
-        public AccountController(IUserService userService)
+        public AccountController(IUserService userService, IPasswordRecoveryService passwordRecoveryService)
         {
             _userService = userService;
+            _passwordRecoveryService = passwordRecoveryService;
         }
 
         //
@@ -163,7 +165,7 @@ namespace Zk.Controllers
                         try 
                         {
                             client.Send(message);
-                            _userService.StoreResetToken(model.Email, token);
+                            _passwordRecoveryService.StoreResetToken(model.Email, token);
                             ViewBag.Message = "Reset link is succesvol verzonden.";
                         }
                         catch (Exception e) 
@@ -201,9 +203,9 @@ namespace Zk.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = _userService.GetMembershipUserFromToken(model.ReturnToken);
+                var user = _passwordRecoveryService.GetMembershipUserFromToken(model.ReturnToken);
 
-                var timeStamp = _userService.GetTokenTimeStamp(model.ReturnToken);
+                var timeStamp = _passwordRecoveryService.GetTokenTimeStamp(model.ReturnToken);
                 var currentTime = DateTime.Now;
 
                 if (timeStamp == null) 
