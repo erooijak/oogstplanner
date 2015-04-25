@@ -11,12 +11,12 @@ namespace Zk.Services
     {
         readonly Repository _repository;
         readonly FarmingActionService _farmingActionService;
-        readonly UserService _userService;
+        readonly IUserService _userService;
 
         public CalendarService(
             Repository repository,
             FarmingActionService farmingActionService,
-            UserService userService)
+            IUserService userService)
         {
             _repository = repository;
             _farmingActionService = farmingActionService;

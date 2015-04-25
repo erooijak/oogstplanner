@@ -3,7 +3,7 @@
 using Zk.Models;
 using Zk.Repositories;
 
-namespace Zk.BusinessLogic
+namespace Zk.Services
 {
     public class CropProvider
     {

@@ -7,15 +7,15 @@ using Zk.Helpers;
 using Zk.Models;
 using Zk.Repositories;
 
-namespace Zk.BusinessLogic
+namespace Zk.Services
 {
     public class FarmingActionService
     {
         readonly Repository _repository;
-        readonly UserService _userService;
+        readonly IUserService _userService;
         readonly int CurrentUserId;
 
-        public FarmingActionService(Repository repository, UserService userService)
+        public FarmingActionService(Repository repository, IUserService userService)
         {
             _repository = repository;
             _userService = userService;

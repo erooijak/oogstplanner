@@ -7,7 +7,7 @@ using System.Web.Security;
 using Microsoft.Web.WebPages.OAuth;
 using WebMatrix.WebData;
 
-using Zk.BusinessLogic;
+using Zk.Services;
 using Zk.Models;
 using Zk.ViewModels;
 
@@ -17,9 +17,9 @@ namespace Zk.Controllers
     [Authorize]
     public partial class AccountController : Controller
     {
-        private UserService _userService;
+        private IUserService _userService;
 
-        public AccountController(UserService userService)
+        public AccountController(IUserService userService)
         {
             _userService = userService;
         }

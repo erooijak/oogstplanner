@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web.Mvc;
 using NUnit.Framework;
 
-using Zk.BusinessLogic;
+using Zk.Services;
 using Zk.Controllers;
 using Zk.Models;
 using Zk.Repositories;

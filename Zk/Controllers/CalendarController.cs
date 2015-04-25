@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Web.Mvc;
 
-using Zk.BusinessLogic;
+using Zk.Services;
 using Zk.Helpers;
 using Zk.Models;
 
@@ -11,13 +11,13 @@ namespace Zk.Controllers
     public class CalendarController : Controller
     {        
         readonly CalendarService _calendarService;
-        readonly UserService _userService;
+        readonly IUserService _userService;
         readonly FarmingActionService _farmingActionService;
         readonly CropProvider _cropProvider;
 
         public CalendarController(
             CalendarService calendarService,
-            UserService userService,
+            IUserService userService,
             FarmingActionService farmingActionService,
             CropProvider cropProvider)
         {

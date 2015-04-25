@@ -1,12 +1,24 @@
 ﻿using System;
+using System.Web.Security;
 
-namespace Zk
+using Zk.Models;
+
+namespace Zk.Services
 {
-    public class IUserService
+    public interface IUserService
     {
-        public IUserService()
-        {
-        }
+        void Add(string userName, string fullName, string email);
+
+        int GetCurrentUserId();
+
+        User GetUserById(int id);
+
+        MembershipUser GetMembershipUserByEmail(string email);
+
+        void StoreResetToken(string email, string token);
+
+        MembershipUser GetMembershipUserFromToken(string returnToken);
+
+        DateTime? GetTokenTimeStamp(string returnToken);
     }
 }
-

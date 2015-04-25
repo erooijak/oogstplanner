@@ -6,9 +6,9 @@ using System.Security.Principal;
 using Zk.Models;
 using Zk.Repositories;
 
-namespace Zk.BusinessLogic
+namespace Zk.Services
 {
-    public class UserService
+    public class UserService : IUserService
     {
         readonly Repository _repository;
 
