@@ -90,7 +90,8 @@ DONE Tekst moet leesbaarder bij maandoverzicht.
 DONE Streep linksonder weg bij maandoverzicht.  
 DONE E-mailadres klikbaar.  
 DONE Zorgen dat toevoegen van een gewas het aantal ophoogt indien er al eenzelfde gewas is die maand.  
-DONE Optillen wordt het een zaadje (bij zaaien) of een zeis (bij oogsten).(gekozen voor plant bij oogsten, misschien anders)  
+DONE Optillen wordt het een zaadje (bij zaaien) of een zeis (bij oogsten).(gekozen voor plant bij oogsten, misschien anders) 
+TODO Indien sessie verloopt uitloggen! 
 TODO Gebruiker hoeft niet te registreren: in memory kan je al oogstplanner maken, registreren kan later.  
 TODO Vindbaarheid verbeteren.  
 TODO Automatisch selecteren van oogsten. Lukt niet.  
@@ -102,8 +103,9 @@ README beetje netje maken.
 ### BUGS:
 FIXED Gewassen zonder oogstmaanden vertonen bug bij slepen.  
 FIXED No scrolling while dragging on Mobile
-2x klikken op maand levert dubbele data op.  
 HACKY-FIX Op bevestigen kliken bij lege maand levert nullreferencexception op.  
+2x klikken op maand levert dubbele data op.  
+Als user niet langer is ingelogd krijg je exception bij toevoegen gewas
 0 invoeren in numeric text box is niet meer aan te passen met de pijltjes.  
 Anti-forgery token fixen.  
 Oude invoer blijft hangen op sleep scherm.  
