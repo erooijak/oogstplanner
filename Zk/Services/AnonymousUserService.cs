@@ -10,9 +10,6 @@ namespace Zk.Services
         readonly Repository repository;
         readonly CookieProvider cookieProvider;
 
-        const string anonymousUserCookieKey = "anonymousUserKey"; 
-        const double anonymousUserCookieExpiration = 730;
-
         public AnonymousUserService(Repository repository, CookieProvider cookieProvider)
         {
             this.repository = repository;
@@ -68,6 +65,9 @@ namespace Zk.Services
         {
             return repository.GetUserById(id);
         }
+
+        const string anonymousUserCookieKey = "anonymousUserKey"; 
+        const double anonymousUserCookieExpiration = 730;
 
         private string GetGuidFromClient()
         {
