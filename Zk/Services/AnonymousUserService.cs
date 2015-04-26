@@ -23,19 +23,21 @@ namespace Zk.Services
         { 
             get 
             { 
-                string guid = null;
-                if (string.IsNullOrEmpty(cookieProvider.GetCookie(anonymousUserCookieKey)))
+                string guid;
+                var guidFromCookie = cookieProvider.GetCookie(anonymousUserCookieKey);
+
+                if (string.IsNullOrEmpty(guidFromCookie))
                 {
                     guid = Guid.NewGuid().ToString();
                     AddUser(guid, "Anonymous", null);
                     cookieProvider.SetCookie(anonymousUserCookieKey, guid, anonymousUserCookieExpiration);
                 }
+                else
+                {
+                    guid = guidFromCookie;
+                }
 
-                /* In case guid is assigned a new cookie still needs to be set 
-                 * and getcookie cannot yet retrieve it */
-                var userName = guid ?? cookieProvider.GetCookie(anonymousUserCookieKey);
-
-                return repository.GetUserByUserName(userName);
+                return repository.GetUserByUserName(guid);
             }
 
         }
