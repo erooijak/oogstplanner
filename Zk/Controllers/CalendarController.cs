@@ -8,6 +8,7 @@ using Zk.Models;
 
 namespace Zk.Controllers
 {
+    [AllowAnonymous]
     public class CalendarController : Controller
     {        
         readonly CalendarService calendarService;

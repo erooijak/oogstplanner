@@ -8,6 +8,7 @@ using Zk.ViewModels;
 
 namespace Zk.Controllers
 {
+    [AllowAnonymous]
     public class HomeController : Controller
     {
         public ActionResult Index()

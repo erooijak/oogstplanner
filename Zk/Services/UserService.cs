@@ -40,9 +40,7 @@ namespace Zk.Services
             // Note: HttpContext.Current.User.Identity.Name returns Username locally, and e-mail address on Debian.
             //       Has to be investigated. For now the quick fix below. :/
 
-            var currentUserEmailOrName = HttpContext.Current.User.Identity.IsAuthenticated 
-                ? HttpContext.Current.User.Identity.Name
-                : "";
+            var currentUserEmailOrName = HttpContext.Current.User.Identity.Name;
 
             int currentUserId = currentUserEmailOrName.Contains("@")
                 ? repository.GetUserIdByEmail(currentUserEmailOrName)

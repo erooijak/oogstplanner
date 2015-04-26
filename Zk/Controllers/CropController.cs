@@ -8,6 +8,7 @@ using Zk.Models;
 
 namespace Zk.Controllers
 {
+    [AllowAnonymous]
     public class CropController : Controller
     {
         readonly CropProvider cropProvider;
