@@ -201,7 +201,6 @@
     <Compile Include="Services\UserService.cs" />
     <Compile Include="Services\CalendarService.cs" />
     <Compile Include="Services\IUserService.cs" />
-    <Compile Include="Services\IPasswordRecoveryService.cs" />
     <Compile Include="Services\PasswordRecoveryService.cs" />
     <Compile Include="Models\Month.cs" />
     <Compile Include="Services\AnonymousUserService.cs" />

@@ -17,11 +17,11 @@ namespace Zk.Controllers
     public class AccountController : Controller
     {
         readonly IUserService userService;
-        readonly IPasswordRecoveryService passwordRecoveryService;
+        readonly PasswordRecoveryService passwordRecoveryService;
 
         public AccountController(AuthenticationService authService,
             IIndex<AuthenticatedStatus, IUserService> userServices, 
-            IPasswordRecoveryService passwordRecoveryService)
+            PasswordRecoveryService passwordRecoveryService)
         {
             this.userService = userServices[authService.GetAuthenticationStatus()];
             this.passwordRecoveryService = passwordRecoveryService;

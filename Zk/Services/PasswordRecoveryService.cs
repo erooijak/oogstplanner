@@ -4,7 +4,7 @@ using System.Web.Security;
 
 namespace Zk.Services
 {
-    public class PasswordRecoveryService : IPasswordRecoveryService
+    public class PasswordRecoveryService
     {
         readonly Repository repository;
 
