@@ -24,17 +24,17 @@ namespace Zk.Services
             get 
             { 
                 string guid;
-                var guidFromCookie = cookieProvider.GetCookie(anonymousUserCookieKey);
+                var guidFromClient = GetGuidFromClient();
 
-                if (string.IsNullOrEmpty(guidFromCookie))
+                if (string.IsNullOrEmpty(guidFromClient))
                 {
                     guid = Guid.NewGuid().ToString();
-                    AddUser(guid, "Anonymous", null);
-                    cookieProvider.SetCookie(anonymousUserCookieKey, guid, anonymousUserCookieExpiration);
+                    AddUser(guid, null, null);
+                    StoreGuidOnClient(guid);
                 }
                 else
                 {
-                    guid = guidFromCookie;
+                    guid = guidFromClient;
                 }
 
                 return repository.GetUserByUserName(guid);
@@ -67,6 +67,16 @@ namespace Zk.Services
         public User GetUser(int id)
         {
             return repository.GetUserById(id);
+        }
+
+        private string GetGuidFromClient()
+        {
+            return cookieProvider.GetCookie(anonymousUserCookieKey);
+        }
+
+        private void StoreGuidOnClient(string guid)
+        {
+            cookieProvider.SetCookie(anonymousUserCookieKey, guid, anonymousUserCookieExpiration);
         }
             
     }
