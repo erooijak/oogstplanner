@@ -43,7 +43,7 @@ namespace Zk.Migrations
             //       clicking on it.
             // Make sure that the Setup.postgresql script has run manually to create the database user.
 
-            const string MIGRATION_NAME = "Initial";
+            const string MIGRATION_NAME = "AddAuthenticationStatus";
 
             // END USER INPUT /////////////////////////////////////////////////////////////////////////////
 

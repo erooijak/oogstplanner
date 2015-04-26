@@ -24,7 +24,14 @@ namespace Zk.Tests
             const string userName = "userName";
 
             var calendar = new Calendar { CalendarId = 1, UserId = 1 };
-            var user = new User { UserId = 1, Name = userName, Email = "test@test.de", Enabled = true, FullName = "test" };
+            var user = new User 
+            { 
+                    UserId = 1, 
+                    Name = userName, 
+                    Email = "test@test.de", 
+                    AuthenticationStatus = AuthenticatedStatus.Authenticated, 
+                    FullName = "test" 
+            };
             var broccoli = new Crop 
             {
                 Id = 1,

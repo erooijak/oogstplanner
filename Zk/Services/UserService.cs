@@ -23,7 +23,8 @@ namespace Zk.Services
                 Name = userName,
                 FullName = fullName,
                 Email = email,
-                Enabled = true
+                AuthenticationStatus = AuthenticatedStatus.Authenticated, // by definition
+                CreationDate = DateTime.Now
             };
             repository.AddUser(user);
             Roles.AddUserToRole(userName, "user");

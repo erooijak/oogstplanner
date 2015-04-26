@@ -1,4 +1,8 @@
-﻿namespace Zk.Models
+﻿using System;
+
+using Zk.Services;
+
+namespace Zk.Models
 {
     public class User
     {
@@ -6,7 +10,7 @@
         public string Name { get; set; }	
         public string FullName { get; set; }
         public string Email { get; set; }
-        public bool Enabled { get; set; }
+        public AuthenticatedStatus AuthenticationStatus { get; set; }
+        public DateTime CreationDate { get; set; }
     }
-
 }
