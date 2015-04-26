@@ -22,8 +22,10 @@ namespace Zk
                 .InstancePerRequest();
             builder.RegisterType<AuthenticationService>()
                 .InstancePerRequest();
+            builder.RegisterType<CookieProvider>()
+                .InstancePerRequest();
 
-            builder.RegisterType<UserService>()
+            builder.RegisterType<AnonymousUserService>()
                 .Keyed<IUserService>(AuthenticatedStatus.Anonymous);
             builder.RegisterType<UserService>()
                 .Keyed<IUserService>(AuthenticatedStatus.Authenticated);

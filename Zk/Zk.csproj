@@ -204,6 +204,7 @@
     <Compile Include="Models\Month.cs" />
     <Compile Include="Services\AnonymousUserService.cs" />
     <Compile Include="Services\AuthenticationService.cs" />
+    <Compile Include="Services\CookieProvider.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Web.config" />

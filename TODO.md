@@ -80,6 +80,7 @@ TODO Indien register form groter is pagina langer maken plus wat pixels in zk.re
 TODO Direct meeveranderen van zaaien/oogsten op basis van input (JavaScript/jQuery).  
 TODO Web-tiki vragen tot doen van verbeteringen middels pull-request. 
 TODO Jaarkalender naar PDF.  
+TODO User vragen om cookies te accepteren.
 
 # Improvements
 DONE Refactor FarmingActionHelper methode door opsplitsing en out-parameters weg te halen.  

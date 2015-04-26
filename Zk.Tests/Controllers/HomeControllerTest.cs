@@ -5,6 +5,7 @@ using System.Web.Mvc;
 
 using Zk.Controllers;
 using Zk.ViewModels;
+using Zk.Services;
 
 namespace Zk.Tests
 {
