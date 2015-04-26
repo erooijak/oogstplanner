@@ -43,14 +43,9 @@ namespace Zk.Repositories
             return db.Crops.Single(c => c.Id == id);
         }
 
-        public Crop GetCrop(string name)
-        {
-            return db.Crops.Single(c => c.Name == name);
-        }
-
         public IEnumerable<Crop> GetAllCrops()
         {
-            return db.Crops.OrderBy(c => c.Id);
+            return db.Crops;
         }
 
         public IEnumerable<FarmingAction> GetFarmingActions(Expression<Func<FarmingAction, bool>> predicate)
@@ -88,10 +83,10 @@ namespace Zk.Repositories
             var actionType = FarmingActionHelper.GetRelatedActionType(action);
             var month = FarmingActionHelper.GetRelatedMonth(action, cropGrowingTime);
 
-            return db.FarmingActions.Where(fa => fa.Calendar.CalendarId == calendar.CalendarId
+            return db.FarmingActions.SingleOrDefault(fa => fa.Calendar.CalendarId == calendar.CalendarId
                 && fa.Action == actionType
                 && fa.Crop.Id == crop.Id
-                && fa.Month == month).FirstOrDefault();
+                && fa.Month == month);
         }
 
         public void AddFarmingAction(FarmingAction farmingAction)
@@ -121,7 +116,7 @@ namespace Zk.Repositories
 
         public User GetUserByUserName(string name)
         {
-            var user = db.Users.Where(u => u.Name == name).FirstOrDefault();
+            var user = db.Users.SingleOrDefault(u => u.Name == name);
 
             if (user == null)
                 throw new ArgumentException("The user with the specified name does not exist.");
@@ -131,7 +126,7 @@ namespace Zk.Repositories
 
         public int GetUserIdByEmail(string email)
         {
-            var user = db.Users.Where(u => u.Email == email).FirstOrDefault();
+            var user = db.Users.SingleOrDefault(u => u.Email == email);
 
             if (user == null)
                 throw new ArgumentException("The user with the specified email does not exist.");
@@ -141,7 +136,7 @@ namespace Zk.Repositories
 
         public int GetUserIdByName(string name)
         {
-            var user = db.Users.Where(u => u.Name == name).FirstOrDefault();
+            var user = db.Users.SingleOrDefault(u => u.Name == name);
 
             if (user == null)
                 throw new ArgumentException("The user with the specified name does not exist.");
@@ -151,7 +146,7 @@ namespace Zk.Repositories
 
         public Calendar GetCalendar(int userId)
         {
-            return db.Calendars.Where(c => c.User.UserId == userId).FirstOrDefault();
+            return db.Calendars.SingleOrDefault(c => c.User.UserId == userId);
         }
 
         public void CreateCalendar(User user)
@@ -167,11 +162,9 @@ namespace Zk.Repositories
             if (string.IsNullOrEmpty(email))
                 return null;
 
-            var foundUser = db.Users.Where(u => u.Email == email).FirstOrDefault();
+            var userName = Membership.GetUserNameByEmail(email);
 
-            return foundUser != null
-                ? Membership.GetUser(foundUser.Name)
-                : null;
+            return Membership.GetUser(userName);
         }
 
         public void StoreResetToken(string email, DateTime timeResetRequested, string token)
@@ -191,7 +184,7 @@ namespace Zk.Repositories
         {
             string email = null;
 
-            var passwordResetInstance = db.PasswordResetTokens.Where(pr => pr.Token == token).FirstOrDefault();
+            var passwordResetInstance = db.PasswordResetTokens.FirstOrDefault(pr => pr.Token == token);
             if (passwordResetInstance != null)
             {
                 email = passwordResetInstance.Email;
@@ -202,7 +195,7 @@ namespace Zk.Repositories
 
         public DateTime? GetTokenTimeStamp(string token)
         {
-            var tokenInfo = db.PasswordResetTokens.Where(prt => prt.Token == token).FirstOrDefault();
+            var tokenInfo = db.PasswordResetTokens.FirstOrDefault(prt => prt.Token == token);
 
             return tokenInfo != null ? tokenInfo.TimeStamp : (DateTime?)null;
         }
