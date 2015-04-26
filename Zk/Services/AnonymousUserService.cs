@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Web;
-using System.Web.Security;
 
 using Zk.Models;
 using Zk.Repositories;
@@ -20,26 +18,24 @@ namespace Zk.Services
             this.repository = repository;
             this.cookieProvider = cookieProvider;
         }
-
-        private User currentAnonymousUser;
+            
         public User CurrentAnonymousUser 
         { 
             get 
             { 
-                if (!string.IsNullOrEmpty(cookieProvider.GetCookieValue(anonymousUserCookieKey)))
+                string guid = null;
+                if (string.IsNullOrEmpty(cookieProvider.GetCookie(anonymousUserCookieKey)))
                 {
-                    var guid = new Guid().ToString();
+                    guid = Guid.NewGuid().ToString();
                     AddUser(guid, "Anonymous", null);
-                    cookieProvider.SetCookieValue(anonymousUserCookieKey, guid, anonymousUserCookieExpiration);
+                    cookieProvider.SetCookie(anonymousUserCookieKey, guid, anonymousUserCookieExpiration);
                 }
 
-                if (currentAnonymousUser == null)
-                {
-                    var userName = cookieProvider.GetCookieValue(anonymousUserCookieKey);
-                    currentAnonymousUser = repository.GetUserByUserName(userName);
-                }
+                /* In case guid is assigned a new cookie still needs to be set 
+                 * and getcookie cannot yet retrieve it */
+                var userName = guid ?? cookieProvider.GetCookie(anonymousUserCookieKey);
 
-                return currentAnonymousUser;
+                return repository.GetUserByUserName(userName);
             }
 
         }
@@ -53,7 +49,6 @@ namespace Zk.Services
                     CreationDate = DateTime.Now
                 };
             repository.AddUser(user);
-            Roles.AddUserToRole(userName, "anonymous");
 
             // Get the actual user from the database, so we get the created UserId.
             var newlyCreatedUser = repository.GetUserByUserName(userName);
