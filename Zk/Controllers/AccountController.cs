@@ -16,14 +16,14 @@ namespace Zk.Controllers
     [Authorize]
     public class AccountController : Controller
     {
-        readonly IUserService userService;
+        readonly UserService userService;
         readonly PasswordRecoveryService passwordRecoveryService;
 
-        public AccountController(AuthenticationService authService,
-            IIndex<AuthenticatedStatus, IUserService> userServices, 
+        public AccountController(
+            UserService userService, 
             PasswordRecoveryService passwordRecoveryService)
         {
-            this.userService = userServices[authService.GetAuthenticationStatus()];
+            this.userService = userService;
             this.passwordRecoveryService = passwordRecoveryService;
         }
 

@@ -24,6 +24,8 @@ namespace Zk
                 .InstancePerRequest();
             builder.RegisterType<CookieProvider>()
                 .InstancePerRequest();
+            builder.RegisterType<UserService>()
+                .InstancePerRequest();
 
             builder.RegisterType<AnonymousUserService>()
                 .Keyed<IUserService>(AuthenticatedStatus.Anonymous);

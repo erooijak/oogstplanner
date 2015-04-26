@@ -10,30 +10,59 @@ namespace Zk.Services
     public class UserService : IUserService
     {
         readonly Repository repository;
+        readonly CookieProvider cookieProvider;
 
-        public UserService(Repository repository)
+        public UserService(Repository repository, CookieProvider cookieProvider)
         {
             this.repository = repository;
+            this.cookieProvider = cookieProvider;
         }
 
         public void AddUser(string userName, string fullName, string email)
         {
-            var user = new User 
+            User user;
+
+            // Update if already exists:
+            var clientUserName = cookieProvider.GetCookie("anonymousUserKey");
+            if (!string.IsNullOrEmpty(clientUserName))
             {
-                Name = userName,
-                FullName = fullName,
-                Email = email,
-                AuthenticationStatus = AuthenticatedStatus.Authenticated, // by definition
-                CreationDate = DateTime.Now
-            };
-            repository.AddUser(user);
-            Roles.AddUserToRole(userName, "user");
+                try
+                {
+                    user = repository.GetUserByUserName(clientUserName);
+                    user.Name = userName;
+                    user.FullName = fullName;
+                    user.Email = email;
+                    user.AuthenticationStatus = AuthenticatedStatus.Authenticated;
 
-            // Get the actual user from the database, so we get the created UserId.
-            var newlyCreatedUser = repository.GetUserByUserName(userName);
+                    repository.Update(user);
+                }
+                catch (ArgumentException ex)
+                {
+                    // User does not exist. 
+                    // TODO: Implement logging.
+                }
+                   
+            }
+            else // create new user it completely new (TODO: should not happen with cookies enabled).
+            {
+                user = new User
+                    {
+                        Name = userName,
+                        FullName = fullName,
+                        Email = email,
+                        AuthenticationStatus = AuthenticatedStatus.Authenticated, // by definition
+                        CreationDate = DateTime.Now
+                    };
 
-            // Create calendar for the user
-            repository.CreateCalendar(newlyCreatedUser);
+                repository.AddUser(user);
+                Roles.AddUserToRole(userName, "user");
+
+                // Get the actual user from the database, so we get the created UserId.
+                var newlyCreatedUser = repository.GetUserByUserName(userName);
+
+                // Create calendar for the user
+                repository.CreateCalendar(newlyCreatedUser);
+            }
         }
 
         public int GetCurrentUserId()

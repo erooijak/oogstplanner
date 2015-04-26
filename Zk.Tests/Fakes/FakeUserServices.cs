@@ -17,7 +17,7 @@ namespace Zk.Tests
         public bool TryGetValue(AuthenticatedStatus key, out IUserService value)
         {
             value = key == AuthenticatedStatus.Authenticated 
-                ? new UserService(repository) as IUserService 
+                ? new UserService(repository, new CookieProvider()) as IUserService 
                 : new AnonymousUserService(repository, new CookieProvider());
             return true;
         }
@@ -27,7 +27,7 @@ namespace Zk.Tests
             get
             {
                 return index == AuthenticatedStatus.Authenticated 
-                    ? new UserService(repository) as IUserService
+                    ? new UserService(repository, new CookieProvider()) as IUserService
                     : new AnonymousUserService(repository, new CookieProvider());
             }
         }
