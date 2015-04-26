@@ -27,16 +27,6 @@ namespace Zk.Controllers
             this.passwordRecoveryService = passwordRecoveryService;
         }
 
-        public AuthenticatedStatus AuthenticatedStatus 
-        { 
-            get 
-            { 
-                return Thread.CurrentPrincipal.Identity.IsAuthenticated
-                    ? AuthenticatedStatus.Authenticated
-                    : AuthenticatedStatus.Anonymous; 
-            }
-        }
-
         //
         // GET: /Account/Login
         [AllowAnonymous]

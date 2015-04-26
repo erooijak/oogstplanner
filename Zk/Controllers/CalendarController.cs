@@ -96,7 +96,7 @@ namespace Zk.Controllers
         {
 
             var crop = cropProvider.GetCrop(cropId);
-            var calendar = calendarService.Get();
+            var calendar = calendarService.GetCalendar();
 
             var farmingAction = new FarmingAction 
             {

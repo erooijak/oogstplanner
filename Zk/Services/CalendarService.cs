@@ -39,7 +39,7 @@ namespace Zk.Services
             }
         }
 
-        public Calendar Get()
+        public Calendar GetCalendar()
         {
             return repository.GetCalendar(CurrentUserId);
         }
