@@ -2,7 +2,6 @@
 
 namespace Zk
 {
-
     /// <summary>
     ///     Enumeration for the months of the year. Multiple months can be selected.
     /// </summary>
@@ -23,14 +22,4 @@ namespace Zk
         November    = 1024,     /* 0b010000000000 */
         December    = 2048      /* 0b100000000000 */
     }
-
-    /// <summary>
-    ///     Enumeration for action to take.
-    /// </summary>
-    public enum ActionType
-    {
-        Sowing = 0,
-        Harvesting = 1
-    }
-
 }

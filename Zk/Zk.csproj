@@ -169,7 +169,6 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Crop.cs" />
-    <Compile Include="Models\Enums.cs" />
     <Compile Include="Models\IZkContext.cs" />
     <Compile Include="Models\ZkContext.cs" />
     <Compile Include="Repositories\Repository.cs" />
@@ -205,6 +204,7 @@
     <Compile Include="Services\IUserService.cs" />
     <Compile Include="Services\IPasswordRecoveryService.cs" />
     <Compile Include="Services\PasswordRecoveryService.cs" />
+    <Compile Include="Models\Month.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Web.config" />

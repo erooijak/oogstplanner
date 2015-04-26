@@ -12,6 +12,15 @@
 
         public virtual Crop Crop { get; set; }
         public virtual Calendar Calendar { get; set; }
-    }       
+    }   
+
+    /// <summary>
+    ///     Enumeration for action to take.
+    /// </summary>
+    public enum ActionType
+    {
+        Sowing = 0,
+        Harvesting = 1
+    }
 		
 }
