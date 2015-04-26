@@ -18,16 +18,24 @@ namespace Zk
                 .As<IZkContext>()
                 .InstancePerRequest();
 
-            builder.RegisterType<Repository>();
-            builder.RegisterType<AuthenticationService>();
+            builder.RegisterType<Repository>()
+                .InstancePerRequest();
+            builder.RegisterType<AuthenticationService>()
+                .InstancePerRequest();
+
             builder.RegisterType<UserService>()
                 .Keyed<IUserService>(AuthenticatedStatus.Anonymous);
             builder.RegisterType<UserService>()
                 .Keyed<IUserService>(AuthenticatedStatus.Authenticated);
-            builder.RegisterType<PasswordRecoveryService>();
-            builder.RegisterType<CalendarService>();
-            builder.RegisterType<FarmingActionService>();
-            builder.RegisterType<CropProvider>();
+
+            builder.RegisterType<PasswordRecoveryService>()
+                .InstancePerRequest();
+            builder.RegisterType<CalendarService>()
+                .InstancePerRequest();
+            builder.RegisterType<FarmingActionService>()
+                .InstancePerRequest();
+            builder.RegisterType<CropProvider>()
+                .InstancePerRequest();;
 
             var container = builder.Build();
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
