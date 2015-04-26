@@ -188,7 +188,6 @@
     <Compile Include="Helpers\MonthExtension.cs" />
     <Compile Include="Helpers\MonthHelper.cs" />
     <Compile Include="ViewModels\LoginOrRegisterViewModel.cs" />
-    <Compile Include="ViewModels\UserInfoViewModel.cs" />
     <Compile Include="ViewModels\MonthCalendarViewModel.cs" />
     <Compile Include="Helpers\JsonStringResult.cs" />
     <Compile Include="Helpers\MonthEnumConverter.cs" />
