@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using System.Linq;
 using System.Web.Mvc;
 
@@ -12,18 +13,15 @@ namespace Zk.Controllers
     public class CalendarController : Controller
     {        
         readonly CalendarService calendarService;
-        readonly IUserService userService;
         readonly FarmingActionService farmingActionService;
         readonly CropProvider cropProvider;
 
         public CalendarController(
             CalendarService calendarService,
-            IUserService userService,
             FarmingActionService farmingActionService,
             CropProvider cropProvider)
         {
             this.calendarService = calendarService;
-            this.userService = userService;
             this.farmingActionService = farmingActionService;
             this.cropProvider = cropProvider;
         }
@@ -33,8 +31,7 @@ namespace Zk.Controllers
         // Returns the farming actions of the month.
         public ActionResult Month(Month month)
         {
-            var currentUserId = userService.GetCurrentUserId();
-            var monthCalendarViewModel = calendarService.GetMonthCalendar(currentUserId, month);
+            var monthCalendarViewModel = calendarService.GetMonthCalendar(month);
 
             return PartialView(Url.View("_MonthCalendar", "Home"), monthCalendarViewModel);
         }
@@ -99,8 +96,7 @@ namespace Zk.Controllers
         {
 
             var crop = cropProvider.Get(cropId);
-            var currentUserId = userService.GetCurrentUserId();
-            var calendar = calendarService.Get(currentUserId);
+            var calendar = calendarService.Get();
 
             var farmingAction = new FarmingAction 
             {

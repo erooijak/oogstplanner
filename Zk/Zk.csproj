@@ -205,6 +205,8 @@
     <Compile Include="Services\IPasswordRecoveryService.cs" />
     <Compile Include="Services\PasswordRecoveryService.cs" />
     <Compile Include="Models\Month.cs" />
+    <Compile Include="Services\AnonymousUserService.cs" />
+    <Compile Include="Services\AuthenticationService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Web.config" />

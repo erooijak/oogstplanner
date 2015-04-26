@@ -71,6 +71,9 @@
     <Reference Include="Moq">
       <HintPath>..\packages\Moq.4.2.1409.1722\lib\net40\Moq.dll</HintPath>
     </Reference>
+    <Reference Include="Autofac">
+      <HintPath>..\packages\Autofac.3.5.2\lib\net40\Autofac.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Zk\Zk.csproj">
@@ -91,6 +94,7 @@
     <Compile Include="Helpers\MonthHelperTest.cs" />
     <Compile Include="Fakes\FakeUserSet.cs" />
     <Compile Include="Managers\FarmingActionServiceTest.cs" />
+    <Compile Include="Fakes\FakeUserServices.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

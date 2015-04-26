@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using System.Collections.Generic;
 using System.Net.Mail;
 using System.Web.Mvc;
@@ -8,19 +9,32 @@ using Zk.Services;
 using Zk.Models;
 using Zk.ViewModels;
 
+using Autofac.Features.Indexed;
 
 namespace Zk.Controllers
 {
     [Authorize]
     public class AccountController : Controller
     {
-        private IUserService userService;
-        private IPasswordRecoveryService passwordRecoveryService;
+        readonly IUserService userService;
+        readonly IPasswordRecoveryService passwordRecoveryService;
 
-        public AccountController(IUserService userService, IPasswordRecoveryService passwordRecoveryService)
+        public AccountController(AuthenticationService authService,
+            IIndex<AuthenticatedStatusEnum, IUserService> userServices, 
+            IPasswordRecoveryService passwordRecoveryService)
         {
-            this.userService = userService;
+            this.userService = userServices[authService.GetAuthenticationStatus()];
             this.passwordRecoveryService = passwordRecoveryService;
+        }
+
+        public AuthenticatedStatusEnum AuthenticatedStatus 
+        { 
+            get 
+            { 
+                return Thread.CurrentPrincipal.Identity.IsAuthenticated
+                    ? AuthenticatedStatusEnum.Authenticated
+                    : AuthenticatedStatusEnum.Anonymous; 
+            }
         }
 
         //

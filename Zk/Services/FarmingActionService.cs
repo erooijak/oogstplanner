@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using System.Web;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,20 +8,24 @@ using Zk.Helpers;
 using Zk.Models;
 using Zk.Repositories;
 
+using Autofac.Features.Indexed;
+
 namespace Zk.Services
 {
     public class FarmingActionService
     {
         readonly Repository repository;
         readonly IUserService userService;
-        int? currentUserId;
 
-        public FarmingActionService(Repository repository, IUserService userService)
+        public FarmingActionService(Repository repository, 
+            AuthenticationService authService,
+            IIndex<AuthenticatedStatusEnum, IUserService> userServices)
         {
             this.repository = repository;
-            this.userService = userService;
+            this.userService = userServices[authService.GetAuthenticationStatus()];
         }
 
+        int? currentUserId;
         public int CurrentUserId 
         { 
             get 

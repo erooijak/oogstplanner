@@ -8,4 +8,11 @@
         public string Email { get; set; }
         public bool Enabled { get; set; }
     }
+
+    public enum AuthenticatedStatusEnum
+    {
+        Anonymous,
+        Authenticated
+    }
+
 }

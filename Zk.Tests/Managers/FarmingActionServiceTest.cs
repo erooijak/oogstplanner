@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.IO;
+using System.Threading;
 using System.Security.Principal;
 using System.Web;
 using NUnit.Framework;
@@ -104,8 +105,16 @@ namespace Zk.Tests
                 new GenericIdentity(userName),
                 new string[0]
             );
+            Thread.CurrentPrincipal = new GenericPrincipal(
+                new GenericIdentity(userName),
+                new string[0]
+            );
+
             var repository = new Repository(db);
-            service = new FarmingActionService(repository, new UserService(repository));
+            service = new FarmingActionService(repository, 
+                new AuthenticationService(), 
+                new FakeUserServices(repository)
+            );
         }
 
         [Test]

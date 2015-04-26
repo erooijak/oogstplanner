@@ -19,8 +19,11 @@ namespace Zk
                 .InstancePerRequest();
 
             builder.RegisterType<Repository>();
+            builder.RegisterType<AuthenticationService>();
             builder.RegisterType<UserService>()
-                .As<IUserService>();
+                .Keyed<IUserService>(AuthenticatedStatusEnum.Anonymous);
+            builder.RegisterType<UserService>()
+                .Keyed<IUserService>(AuthenticatedStatusEnum.Authenticated);
             builder.RegisterType<PasswordRecoveryService>()
                 .As<IPasswordRecoveryService>();
             builder.RegisterType<CalendarService>();

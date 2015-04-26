@@ -1,9 +1,11 @@
-﻿using System;
+﻿using System.Threading;
 
 using Zk.Helpers;
 using Zk.ViewModels;
 using Zk.Repositories;
 using Zk.Models;
+
+using Autofac.Features.Indexed;
 
 namespace Zk.Services
 {
@@ -12,43 +14,57 @@ namespace Zk.Services
         readonly Repository repository;
         readonly FarmingActionService farmingActionService;
         readonly IUserService userService;
+        readonly AuthenticationService authService;
 
         public CalendarService(
             Repository repository,
             FarmingActionService farmingActionService,
-            IUserService userService)
+            IIndex<AuthenticatedStatusEnum, IUserService> userServices,
+            AuthenticationService authService)
         {
             this.repository = repository;
             this.farmingActionService = farmingActionService;
-            this.userService = userService;
+            this.userService = userServices[authService.GetAuthenticationStatus()];
         }
 
-        public Calendar Get(int userId)
+        int? currentUserId;
+        public int CurrentUserId 
+        { 
+            get 
+            {
+                if (currentUserId == null) 
+                {
+                    currentUserId = userService.GetCurrentUserId();
+                }
+                return (int)currentUserId;
+            }
+        }
+
+        public Calendar Get()
         {
-            return repository.GetCalendarByUserId(userId);
+            return repository.GetCalendarByUserId(CurrentUserId);
         }
 
         public YearCalendarViewModel GetYearCalendar()
         {
             var yearCalendar = new YearCalendarViewModel();
-            var currentUserId = userService.GetCurrentUserId();
-
+  
             foreach (var month in MonthHelper.GetAllMonths())
             {
-                var monthCalendar = GetMonthCalendar(currentUserId, month);
+                var monthCalendar = GetMonthCalendar(month);
                 yearCalendar.Add(monthCalendar);
             }
 
             return yearCalendar;
         }
 
-        public MonthCalendarViewModel GetMonthCalendar(int userId, Month month)
+        public MonthCalendarViewModel GetMonthCalendar(Month month)
         {
             return new MonthCalendarViewModel 
             {
                 DisplayMonth = month.ToString(),
-                HarvestingActions = farmingActionService.GetHarvestingActions(userId, month),
-                SowingActions = farmingActionService.GetSowingActions(userId, month)
+                HarvestingActions = farmingActionService.GetHarvestingActions(CurrentUserId, month),
+                SowingActions = farmingActionService.GetSowingActions(CurrentUserId, month)
             };
         }
 
