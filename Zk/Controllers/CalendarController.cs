@@ -80,7 +80,7 @@ namespace Zk.Controllers
             try 
             {
                 // Remove this and related farming action from database
-                farmingActionService.Remove(id);
+                farmingActionService.RemoveAction(id);
             } 
             catch (Exception ex) 
             {
@@ -95,7 +95,7 @@ namespace Zk.Controllers
         public JsonResult AddFarmingAction(int cropId, Month month, ActionType actionType, int cropCount)
         {
 
-            var crop = cropProvider.Get(cropId);
+            var crop = cropProvider.GetCrop(cropId);
             var calendar = calendarService.Get();
 
             var farmingAction = new FarmingAction 
@@ -109,7 +109,7 @@ namespace Zk.Controllers
 
             try
             {
-                farmingActionService.Add(farmingAction);
+                farmingActionService.AddAction(farmingAction);
                 return Json(new { success = true });
             }
             catch (Exception ex) 

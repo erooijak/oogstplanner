@@ -1,17 +1,22 @@
 ﻿using System.Threading;
 
-using Zk.Models;
-
 namespace Zk.Services
 {
     public class AuthenticationService
     {
-        public AuthenticatedStatusEnum GetAuthenticationStatus()
+        public AuthenticatedStatus GetAuthenticationStatus()
         {
             return Thread.CurrentPrincipal.Identity.IsAuthenticated 
-                ? AuthenticatedStatusEnum.Authenticated
-                : AuthenticatedStatusEnum.Anonymous; 
+                ? AuthenticatedStatus.Authenticated
+                : AuthenticatedStatus.Anonymous; 
         }
     }
+
+    public enum AuthenticatedStatus
+    {
+        Anonymous,
+        Authenticated
+    }
+
 }
     

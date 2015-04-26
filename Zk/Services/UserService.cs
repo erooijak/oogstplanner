@@ -16,7 +16,7 @@ namespace Zk.Services
             this.repository = repository;
         }
 
-        public void Add(string userName, string fullName, string email)
+        public void AddUser(string userName, string fullName, string email)
         {
             var user = new User 
             {

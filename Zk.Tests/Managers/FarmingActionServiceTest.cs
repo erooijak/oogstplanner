@@ -162,7 +162,7 @@ namespace Zk.Tests
             };
 
             // Act
-            service.Add(action);
+            service.AddAction(action);
 
             // Assert
             var addedFarmingAction = db.FarmingActions.Find(3); // 3 is ID specified above
@@ -198,7 +198,7 @@ namespace Zk.Tests
             };
 
             // Act
-            service.Add(action);
+            service.AddAction(action);
 
             // Assert
             var addedFarmingAction = db.FarmingActions.Find(id);
@@ -224,7 +224,7 @@ namespace Zk.Tests
             };
 
             // Act and Assert
-            Assert.Catch<SecurityException>( () => service.Add(action), 
+            Assert.Catch<SecurityException>( () => service.AddAction(action), 
                 "A security exception should be thrown when a user tries to edits an action"
                 + "belonging to another user.");
 
@@ -238,7 +238,7 @@ namespace Zk.Tests
             var resultBeforeRemovingFarmingAction = db.FarmingActions.Find(farmingActionIdToRemove);
 
             // Act
-            service.Remove(farmingActionIdToRemove);
+            service.RemoveAction(farmingActionIdToRemove);
 
             // Assert
             var resultAfterRemovingFarmingAction = db.FarmingActions.Find(farmingActionIdToRemove);
@@ -256,7 +256,7 @@ namespace Zk.Tests
             const int idNotBelongingToUser = 10;
 
             // Act and Assert
-            Assert.Catch<SecurityException>( () => service.Remove(idNotBelongingToUser), 
+            Assert.Catch<SecurityException>( () => service.RemoveAction(idNotBelongingToUser), 
                 "A security exception should be thrown when a user tries to remove an action"
                 + "belonging to another user.");
 

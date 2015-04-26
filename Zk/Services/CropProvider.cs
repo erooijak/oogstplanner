@@ -14,12 +14,12 @@ namespace Zk.Services
             this.repository = repository;
         }
 
-        public IEnumerable<Crop> GetAll()
+        public IEnumerable<Crop> GetAllCrops()
         {
             return repository.GetAllCrops();
         }
 
-        public Crop Get(int id)
+        public Crop GetCrop(int id)
         {
             return repository.GetCrop(id);
         }

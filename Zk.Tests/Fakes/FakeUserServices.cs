@@ -1,13 +1,11 @@
-﻿using System;
+﻿using Zk.Services;
+using Zk.Repositories;
 
 using Autofac.Features.Indexed;
-using Zk.Models;
-using Zk.Services;
-using Zk.Repositories;
 
 namespace Zk.Tests
 {
-    public class FakeUserServices : IIndex<AuthenticatedStatusEnum, IUserService>
+    public class FakeUserServices : IIndex<AuthenticatedStatus, IUserService>
     {
         readonly Repository repository;
 
@@ -16,9 +14,9 @@ namespace Zk.Tests
             this.repository = repository;
         }
 
-        public bool TryGetValue(AuthenticatedStatusEnum key, out IUserService value)
+        public bool TryGetValue(AuthenticatedStatus key, out IUserService value)
         {
-            if (key == AuthenticatedStatusEnum.Authenticated)
+            if (key == AuthenticatedStatus.Authenticated)
             {
                 value = new UserService(repository);
             }
@@ -29,11 +27,11 @@ namespace Zk.Tests
             return true;
         }
 
-        public IUserService this[AuthenticatedStatusEnum index]
+        public IUserService this[AuthenticatedStatus index]
         {
             get
             {
-                return index == AuthenticatedStatusEnum.Authenticated 
+                return index == AuthenticatedStatus.Authenticated 
                     ? new UserService(repository) as IUserService
                     : new AnonymousUserService(repository);
             }

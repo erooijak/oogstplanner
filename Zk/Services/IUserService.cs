@@ -4,7 +4,7 @@ namespace Zk.Services
 {
     public interface IUserService
     {
-        void Add(string userName, string fullName, string email);
+        void AddUser(string userName, string fullName, string email);
 
         int GetCurrentUserId();
 

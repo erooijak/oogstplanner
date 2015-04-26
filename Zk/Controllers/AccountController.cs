@@ -20,20 +20,20 @@ namespace Zk.Controllers
         readonly IPasswordRecoveryService passwordRecoveryService;
 
         public AccountController(AuthenticationService authService,
-            IIndex<AuthenticatedStatusEnum, IUserService> userServices, 
+            IIndex<AuthenticatedStatus, IUserService> userServices, 
             IPasswordRecoveryService passwordRecoveryService)
         {
             this.userService = userServices[authService.GetAuthenticationStatus()];
             this.passwordRecoveryService = passwordRecoveryService;
         }
 
-        public AuthenticatedStatusEnum AuthenticatedStatus 
+        public AuthenticatedStatus AuthenticatedStatus 
         { 
             get 
             { 
                 return Thread.CurrentPrincipal.Identity.IsAuthenticated
-                    ? AuthenticatedStatusEnum.Authenticated
-                    : AuthenticatedStatusEnum.Anonymous; 
+                    ? AuthenticatedStatus.Authenticated
+                    : AuthenticatedStatus.Anonymous; 
             }
         }
 
@@ -109,7 +109,7 @@ namespace Zk.Controllers
 
                 if (status == MembershipCreateStatus.Success)
                 {
-                    userService.Add(model.UserName, model.FullName, model.Email);
+                    userService.AddUser(model.UserName, model.FullName, model.Email);
                     FormsAuthentication.SetAuthCookie(model.UserName, false);
 
                     return RedirectToAction("Index", "Home");

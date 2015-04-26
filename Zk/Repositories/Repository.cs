@@ -149,9 +149,9 @@ namespace Zk.Repositories
             return user.UserId; 
         }
 
-        public Calendar GetCalendarByUserId(int id)
+        public Calendar GetCalendar(int userId)
         {
-            return db.Calendars.Where(c => c.User.UserId == id).FirstOrDefault();
+            return db.Calendars.Where(c => c.User.UserId == userId).FirstOrDefault();
         }
 
         public void CreateCalendar(User user)

@@ -14,12 +14,11 @@ namespace Zk.Services
         readonly Repository repository;
         readonly FarmingActionService farmingActionService;
         readonly IUserService userService;
-        readonly AuthenticationService authService;
 
         public CalendarService(
             Repository repository,
             FarmingActionService farmingActionService,
-            IIndex<AuthenticatedStatusEnum, IUserService> userServices,
+            IIndex<AuthenticatedStatus, IUserService> userServices,
             AuthenticationService authService)
         {
             this.repository = repository;
@@ -42,7 +41,7 @@ namespace Zk.Services
 
         public Calendar Get()
         {
-            return repository.GetCalendarByUserId(CurrentUserId);
+            return repository.GetCalendar(CurrentUserId);
         }
 
         public YearCalendarViewModel GetYearCalendar()

@@ -19,7 +19,7 @@ namespace Zk.Services
 
         public FarmingActionService(Repository repository, 
             AuthenticationService authService,
-            IIndex<AuthenticatedStatusEnum, IUserService> userServices)
+            IIndex<AuthenticatedStatus, IUserService> userServices)
         {
             this.repository = repository;
             this.userService = userServices[authService.GetAuthenticationStatus()];
@@ -52,22 +52,22 @@ namespace Zk.Services
                 && fa.Month.HasFlag(month));
         }
             
-        public void Add(FarmingAction farmingAction)
+        public void AddAction(FarmingAction farmingAction)
         {
             // Create the related farmingaction (the sowing or harvesting counter part)
-            var relatedFarmingAction = CreateRelatedFarmingAction(farmingAction);
+            var relatedFarmingAction = CreateRelatedAction(farmingAction);
 
             // Check if the calendar actually belongs to the current user.
             CheckAuthorisation(CurrentUserId, relatedFarmingAction.Calendar.UserId);
 
             // Try to see if there is a farming action of the same user, of the same type, of the same crop
-            AddOrUpdate(farmingAction);
-            AddOrUpdate(relatedFarmingAction);
+            AddOrUpdateAction(farmingAction);
+            AddOrUpdateAction(relatedFarmingAction);
 
             repository.SaveChanges();
         }
             
-        public void Remove(int id)
+        public void RemoveAction(int id)
         {
             // Get the farming action.
             var farmingAction = repository.FindFarmingAction(id);
@@ -121,7 +121,7 @@ namespace Zk.Services
         ///     or adds a new one if it does not.
         /// </summary>
         /// <param name="farmingAction">Farming action.</param>
-        void AddOrUpdate(FarmingAction farmingAction)
+        void AddOrUpdateAction(FarmingAction farmingAction)
         {
             var existingFarmingAction = repository.GetFarmingActions(
                 fa => fa.Action == farmingAction.Action 
@@ -142,7 +142,7 @@ namespace Zk.Services
 
         }
 
-        FarmingAction CreateRelatedFarmingAction(FarmingAction action)
+        FarmingAction CreateRelatedAction(FarmingAction action)
         {
             var crop = action.Crop;
             var cropGrowingTime = action.Crop.GrowingTime;
