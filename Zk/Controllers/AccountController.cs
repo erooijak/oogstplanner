@@ -221,7 +221,7 @@ namespace Zk.Controllers
                     return View(model); 
                 }
 
-                var isChangeSuccess = user.ChangePassword(
+                var isChangeSuccess = user != null && user.ChangePassword(
                     user.ResetPassword(),
                     model.Password
                 );
