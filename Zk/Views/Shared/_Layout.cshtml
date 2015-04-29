@@ -59,6 +59,7 @@
                 <li><a href="/Home/SowingAndHarvesting">Zaaien en oogsten</a></li>
                 <li><a href="/Calendar/Year">Jaarkalender</a></li>
             </ul>
+
 @if (Request.IsAuthenticated)
 {
             <ul class="nav navbar-nav navbar-right">
@@ -75,7 +76,14 @@
                 </li>
             </ul>
 }
-        </div><!--/.nav-collapse -->
+else
+{
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="/Account/Login">Registreren of inloggen</a></li>
+            </ul>
+}
+
+        </div><!--End collapsible navbar -->
     </nav>
 
     <div class="container">
