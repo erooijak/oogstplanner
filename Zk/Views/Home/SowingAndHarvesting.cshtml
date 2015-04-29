@@ -1,0 +1,119 @@
+﻿@model SowingAndHarvestingViewModel
+
+<div id="main">
+    <div class="slide flowtype-area">
+@{ 
+    ViewBag.Title = "Zaaien en oogsten";
+
+    <!-- START RESPONSIVE GRID LAYOUT -->
+
+    <div id="top"></div>
+    <div class="row">
+        <div class="col-lg-8 col-md-8 col-sm-8" id="month-overview-responsive-square-elements">
+
+            <!-- Row of rectangles for the seasons -->
+        @foreach (var seizoen in Model.SeizoenenForDisplay)
+        {
+            <div class="rectangle">
+                <div class="rectangle-content">
+                    <div class="table">
+                        <div class="table-cell bold">
+                            @seizoen.ToUpper()
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+     
+                <!-- Four rows which each consist of an autumn, winter, spring and summer image. -->
+        @for (var imageIndex = 1; imageIndex <= 3; imageIndex++)
+        {
+            foreach (var season in Model.SeasonsCssClasses)
+            {
+                var month = Model.MonthsOrdered.Pop();
+
+                /* To the outer square div the following CSS classes are added in the string.Format method:
+                 *    1.) A class for the image so a fitting image can be displayed. 
+                 *    2.) A class for the month, so we can identify which month is clicked on. */
+                <div class="square bg hover-highlight @string.Format("img{0}{1}", season, imageIndex)" data-month="@month">
+                   <div class="content">
+                        <div class="table">
+                            <div class="table-cell">
+                                @month.ToUpper()
+                            </div> 
+                        </div>
+                    </div>
+                </div>
+
+            }
+        }
+
+    <!-- END OF RESPONSIVE GRID LAY-OUT -->
+
+        </div><!-- End left column -->
+
+        <div class="col-lg-4 col-md-4 col-sm-4 well text-left" id="crop-selection-box">
+            <div id="select-crop">
+                <input class="typeahead form-control" type="text" placeholder="Zoek een gewas">
+            </div>
+
+            <div id="selected-crop-info" class="draggable well" draggable="true">
+                <div class="form-text"><strong>Gewas: </strong><span id="selected-crop-name"></span></div>
+                <div class="form-text"><strong>Ras: </strong><span id="selected-crop-race"></span></div>
+                <div class="form-text"><strong>Categorie: </strong><span id="selected-crop-category"></span></div>
+                <div class="form-text"><strong>Groeitijd: </strong><span id="selected-crop-growingTime"></span> maanden</div>
+                <div class="form-text"><strong>Oppervlakte per plant: </strong><span id="selected-crop-areaPerCrop"></span>m<sup>2</sup></div>
+                <div class="form-text"><strong>Prijs per zakje: </strong>&euro; <span id="selected-crop-pricePerBag"></span></div>
+                <input type="hidden" id="selected-crop-hidden-id">
+                <input type="hidden" id="selected-crop-hidden-harvestingMonths">
+                <input type="hidden" id="selected-crop-hidden-sowingMonths">
+                <br/>
+                <label for="action-type-radios" class="form-text">Ik wil dit gewas:</label>
+
+                <div class="radio-inline">
+                    <label class="form-text">
+                        <input type="radio" name="action-type-radios" id="sowing-radio-button" value="Zaaien">
+                        Zaaien
+                    </label>
+                </div>
+                <div class="radio-inline">
+                    <label class="form-text">
+                        <input type="radio" name="action-type-radios" id="harvesting-radio-button" value="Oogsten" checked>
+                        Oogsten
+                    </label>
+                </div>
+                <br/>
+                <br/>
+
+                <div class="form-inline">
+                    <div class="form-group form-text">
+                        <label for="selected-crop-count-number-field">Aantal planten: </label>
+                        <input type="number" name="selected-crop-count" id="selected-crop-count-number-field" class="numeric-text-box" min="1" max="999" value="1" />
+                    </div>
+                </div>
+                <br/>
+
+                <span id="drag-and-drop-sentence" class="form-text">
+                    <i>Sleep het gewas naar een maand om deze in die maand te 
+                        <span class="drag-and-drop-sentence-action-type">oogsten</span>.
+                        <br/>
+                        <span class="small">(De beste maanden om te 
+                            <span class="drag-and-drop-sentence-action-type">oogsten</span>
+                            zullen oplichten.)
+                        </span>
+                    </i>
+                </span>
+            </div><!-- End selected crop information field -->
+            <div class="form-text lower-right">@Html.ActionLink("Gewassen database", "Index", "Crop", null, null)</div>
+        </div><!-- End right column -->
+
+    </div><!-- End row -->
+        
+}
+    </div><!-- End of main slide -->
+    
+    <!-- Slide for editing and viewing a specific month
+         Partial view data with farming actions is loaded here. -->
+    <div class="slide flowtype-area" id="_MonthCalendar"></div>
+
+</div><!-- End of fullPage.js main page -->

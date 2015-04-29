@@ -183,7 +183,6 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\YearCalendarViewModel.cs" />
     <Compile Include="Helpers\MonthExtension.cs" />
     <Compile Include="Helpers\MonthHelper.cs" />
@@ -205,12 +204,12 @@
     <Compile Include="Services\AnonymousUserService.cs" />
     <Compile Include="Services\AuthenticationService.cs" />
     <Compile Include="Services\CookieProvider.cs" />
+    <Compile Include="ViewModels\SowingAndHarvestingViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Web.config" />
     <Content Include="Global.asax" />
     <Content Include="packages.config" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Web.config" />
@@ -286,6 +285,8 @@
     <Content Include="_Email.config" />
     <Content Include="Scripts\jquery.ui.touch-punch.min.js" />
     <Content Include="Content\Images\Draggable\harvesting.png" />
+    <Content Include="Views\Home\SowingAndHarvesting.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>

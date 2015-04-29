@@ -11,7 +11,7 @@ namespace Zk.ViewModels
     ///     View model used for the seasons and months displayed on view, 
     ///     the CSS classes and the JavaScript binding.
     /// </summary>
-    public class MainViewModel
+    public class SowingAndHarvestingViewModel
     {
         public IEnumerable<string> SeasonsCssClasses { get; set; }
         public IEnumerable<string> SeizoenenForDisplay { get; set; }

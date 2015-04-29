@@ -13,13 +13,13 @@ namespace Zk.Tests
     public class HomeControllerTest
     {
         [Test]
-        public void Controllers_Home_Index_MonthOrdering()
+        public void Controllers_Home_c_MonthOrdering()
         {
             // Arrange
             var controller = new HomeController();
 
             // Act
-            var passedViewModel = (MainViewModel)((ViewResult)controller.Index()).Model;
+            var passedViewModel = (SowingAndHarvestingViewModel)((ViewResult)controller.SowingAndHarvesting()).Model;
 
             // Assert
             var expectedMonthOrdering = new Stack<string>(new[] 

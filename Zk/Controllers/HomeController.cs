@@ -11,7 +11,17 @@ namespace Zk.Controllers
     [AllowAnonymous]
     public class HomeController : Controller
     {
+
+        //
+        // GET: /Index
         public ActionResult Index()
+        {
+            return View();
+        }
+
+        //
+        // GET: /Home/SowingAndHarvesting
+        public ActionResult SowingAndHarvesting()
         {
 
             // Months are used for the CSS classes 
@@ -20,7 +30,7 @@ namespace Zk.Controllers
                 .Select(m => m.ToString().ToLower())
                 .ToList();
                 
-            var viewModel = new MainViewModel 
+            var viewModel = new SowingAndHarvestingViewModel 
             {
                 // Seasons in Dutch (singular: "seizoen"; plural: "seizoenen") used for displayal in top row.
                 SeizoenenForDisplay = new[] { "herfst", "winter", "lente", "zomer" },
