@@ -10,19 +10,6 @@ namespace Zk
 {
     public class MvcApplication : HttpApplication
     {
-
-        public static void RegisterRoutes(RouteCollection routes)
-        {
-            routes.IgnoreRoute ("{resource}.axd/{*pathInfo}");
-
-            routes.MapRoute (
-                "Default",
-                "{controller}/{action}/{id}",
-                new { controller = "Home", action = "Index", id = "" }
-            );
-
-        }
-
         protected void Application_Start()
         {
             if (!WebSecurity.Initialized) 
@@ -37,9 +24,7 @@ namespace Zk
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-
         }
-
     }
         
 }
