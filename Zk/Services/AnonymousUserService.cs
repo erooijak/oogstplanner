@@ -10,6 +10,11 @@ namespace Zk.Services
         readonly Repository repository;
         readonly CookieProvider cookieProvider;
 
+        const string anonymousUserCookieKey = "anonymousUserKey"; 
+        const double anonymousUserCookieExpiration = 730;
+
+        private string guidOnClient;
+
         public AnonymousUserService(Repository repository, CookieProvider cookieProvider)
         {
             this.repository = repository;
@@ -20,25 +25,39 @@ namespace Zk.Services
         { 
             get 
             { 
-                string guid;
-                var guidFromClient = GetGuidFromClient();
-
-                if (string.IsNullOrEmpty(guidFromClient))
+                if (string.IsNullOrEmpty(GuidOnClient))
                 {
-                    guid = Guid.NewGuid().ToString();
+                    var guid = Guid.NewGuid().ToString();
                     AddUser(guid, null, null);
-                    StoreGuidOnClient(guid);
+                    GuidOnClient = guid;
+
+                    return repository.GetUserByUserName(guid);
                 }
                 else
                 {
-                    guid = guidFromClient;
+                    return repository.GetUserByUserName(GuidOnClient);
                 }
 
-                return repository.GetUserByUserName(guid);
             }
 
         }
-
+            
+        protected string GuidOnClient
+        {
+            get 
+            { 
+                if (guidOnClient == null)
+                {
+                    guidOnClient = cookieProvider.GetCookie(anonymousUserCookieKey);
+                }
+                return guidOnClient;
+            }
+            set 
+            { 
+                cookieProvider.SetCookie(anonymousUserCookieKey, value, anonymousUserCookieExpiration); 
+            }
+        }
+            
         public void AddUser(string userName, string fullName, string email)
         {
             var user = new User 
@@ -64,19 +83,6 @@ namespace Zk.Services
         public User GetUser(int id)
         {
             return repository.GetUserById(id);
-        }
-
-        const string anonymousUserCookieKey = "anonymousUserKey"; 
-        const double anonymousUserCookieExpiration = 730;
-
-        private string GetGuidFromClient()
-        {
-            return cookieProvider.GetCookie(anonymousUserCookieKey);
-        }
-
-        private void StoreGuidOnClient(string guid)
-        {
-            cookieProvider.SetCookie(anonymousUserCookieKey, guid, anonymousUserCookieExpiration);
         }
             
     }
