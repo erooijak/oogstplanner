@@ -10,9 +10,9 @@ namespace Zk.Services
     public class UserService : IUserService
     {
         readonly Repository repository;
-        readonly CookieProvider cookieProvider;
+        readonly ICookieProvider cookieProvider;
 
-        public UserService(Repository repository, CookieProvider cookieProvider)
+        public UserService(Repository repository, ICookieProvider cookieProvider)
         {
             this.repository = repository;
             this.cookieProvider = cookieProvider;

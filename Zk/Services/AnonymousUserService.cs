@@ -8,14 +8,14 @@ namespace Zk.Services
     public class AnonymousUserService : IUserService
     {
         readonly Repository repository;
-        readonly CookieProvider cookieProvider;
+        readonly ICookieProvider cookieProvider;
 
         const string anonymousUserCookieKey = "anonymousUserKey"; 
         const double anonymousUserCookieExpiration = 730;
 
         private string guidOnClient;
 
-        public AnonymousUserService(Repository repository, CookieProvider cookieProvider)
+        public AnonymousUserService(Repository repository, ICookieProvider cookieProvider)
         {
             this.repository = repository;
             this.cookieProvider = cookieProvider;

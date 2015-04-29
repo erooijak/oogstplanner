@@ -23,6 +23,7 @@ namespace Zk
             builder.RegisterType<AuthenticationService>()
                 .InstancePerRequest();
             builder.RegisterType<CookieProvider>()
+                .As<ICookieProvider>()
                 .InstancePerRequest();
             builder.RegisterType<UserService>()
                 .InstancePerRequest();

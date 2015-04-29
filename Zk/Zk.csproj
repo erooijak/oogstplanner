@@ -205,6 +205,7 @@
     <Compile Include="Services\AuthenticationService.cs" />
     <Compile Include="Services\CookieProvider.cs" />
     <Compile Include="ViewModels\SowingAndHarvestingViewModel.cs" />
+    <Compile Include="Services\ICookieProvider.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Web.config" />

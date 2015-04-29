@@ -3,7 +3,7 @@ using System.Web;
 
 namespace Zk.Services
 {
-    public class CookieProvider
+    public class CookieProvider : ICookieProvider
     {
         public void SetCookie(string key, string value, double expiration)
         {
