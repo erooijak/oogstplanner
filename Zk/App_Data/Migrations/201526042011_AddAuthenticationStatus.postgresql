@@ -6,7 +6,7 @@
  *
  * * * * * * * * * * * * * * * * * * * * * * */
 
-ALTER TABLE "public"."Users" ADD "AuthenticationStatus" integer NOT NULL DEFAULT 0;
+ALTER TABLE "public"."Users" ADD "AuthenticationStatus" integer NOT NULL DEFAULT 1;
 ALTER TABLE "public"."Users" ADD "CreationDate" timestamp NOT NULL DEFAULT '1900-01-01T00:00:00.000';
 ALTER TABLE "public"."Users" DROP COLUMN "Enabled";
 insert into "public"."__MigrationHistory" ("MigrationId", "ContextKey", "Model", "ProductVersion")

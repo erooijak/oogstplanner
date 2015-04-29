@@ -307,5 +307,6 @@
     <None Include="App_Data\Migrations\Production\readme.txt" />
     <None Include="App_Data\Migrations\201503301824_Initial.postgresql" />
     <None Include="App_Data\Migrations\201526042011_AddAuthenticationStatus.postgresql" />
+    <None Include="App_Data\Migrations\Production\201526042011_AddAuthenticationStatus.postgresql" />
   </ItemGroup>
 </Project>
