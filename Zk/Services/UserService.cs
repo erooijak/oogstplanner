@@ -20,7 +20,6 @@ namespace Zk.Services
 
         public void AddUser(string userName, string fullName, string email)
         {
-            User user;
 
             // Update if already exists:
             var clientUserName = cookieProvider.GetCookie("anonymousUserKey");
@@ -28,13 +27,13 @@ namespace Zk.Services
             {
                 try
                 {
-                    user = repository.GetUserByUserName(clientUserName);
-                    user.Name = userName;
-                    user.FullName = fullName;
-                    user.Email = email;
-                    user.AuthenticationStatus = AuthenticatedStatus.Authenticated;
+                    var existingAnonymousUser = repository.GetUserByUserName(clientUserName);
+                    existingAnonymousUser.Name = userName;
+                    existingAnonymousUser.FullName = fullName;
+                    existingAnonymousUser.Email = email;
+                    existingAnonymousUser.AuthenticationStatus = AuthenticatedStatus.Authenticated;
 
-                    repository.Update(user);
+                    repository.Update(existingAnonymousUser);
                     repository.SaveChanges();
                 }
                 catch (ArgumentException ex)
@@ -44,9 +43,9 @@ namespace Zk.Services
                 }
                    
             }
-            else // create new user it completely new (TODO: should not happen with cookies enabled).
+            else // create new user it completely new and no actions performed yet.
             {
-                user = new User
+                var newUser = new User
                     {
                         Name = userName,
                         FullName = fullName,
@@ -55,7 +54,7 @@ namespace Zk.Services
                         CreationDate = DateTime.Now
                     };
 
-                repository.AddUser(user);
+                repository.AddUser(newUser);
                 Roles.AddUserToRole(userName, "user");
 
                 // Get the actual user from the database, so we get the created UserId.
