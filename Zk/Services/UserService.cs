@@ -35,6 +35,7 @@ namespace Zk.Services
                     user.AuthenticationStatus = AuthenticatedStatus.Authenticated;
 
                     repository.Update(user);
+                    repository.SaveChanges();
                 }
                 catch (ArgumentException ex)
                 {
