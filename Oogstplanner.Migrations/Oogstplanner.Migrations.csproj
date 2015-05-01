@@ -5,8 +5,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{72DFF461-3E0B-4EFB-919B-4CA33C950B8C}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Zk.Migrations</RootNamespace>
-    <AssemblyName>Zk.Migrations</AssemblyName>
+    <RootNamespace>Oogstplanner.Migrations</RootNamespace>
+    <AssemblyName>Oogstplanner.Migrations</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
