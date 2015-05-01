@@ -13,7 +13,7 @@ namespace Oogstplanner
         {
             if (!WebSecurity.Initialized) 
             {
-                WebSecurity.InitializeDatabaseConnection("ZkTestDatabaseConnection", "Users", "UserId", "Name", autoCreateTables: true);
+                WebSecurity.InitializeDatabaseConnection("TestOogstplannerDatabaseConnection", "Users", "UserId", "Name", autoCreateTables: true);
             }
 
             IocConfig.RegisterDependencies();

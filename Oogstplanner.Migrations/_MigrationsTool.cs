@@ -37,7 +37,7 @@ namespace Oogstplanner.Migrations
             // Specify the name of the database migration in case of ADD-MIGRATION.
             // Note: Make sure to create a new name for each new migration.
             //       After creating migration include the files in the folder by right clicking on 
-            //       Zk.Migrations and selecting "Add files from folder". Then add the .cs, .resx and
+            //       Oogstplanner.Migrations and selecting "Add files from folder". Then add the .cs, .resx and
             //       .Designer.cs files with the name specified below.
             //       Last but not least set the .resx file's build action to EmbeddedResource by right
             //       clicking on it.
@@ -108,9 +108,9 @@ namespace Oogstplanner.Migrations
                     script);
 
                 // Write string to file in Migrations folder of main project
-                var updateScriptPath = Regex.Replace(executingPath, "Oogstplanner.Migrations/.*", "Zk/App_Data/Migrations/");
+                var updateScriptPath = Regex.Replace(executingPath, "Oogstplanner.Migrations/.*", "Oogstplanner.Web/App_Data/Migrations/");
                 File.WriteAllText(updateScriptPath + MIGRATION_NAME + ".postgresql", formattedScript);
-                Console.WriteLine("Update script {0}.postgresql written to Zk/App_Data/Migrations folder.\n" +
+                Console.WriteLine("Update script {0}.postgresql written to Oogstplanner.Web/App_Data/Migrations folder.\n" +
                     "Please include the script by right clicking on the folder and selecting " + 
                     "\"Add files to folder\"," +
                     "\nIt is recommended to prefix the filename with the current datetime.", 

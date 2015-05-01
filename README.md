@@ -18,7 +18,7 @@ ASP.NET MVC 4 harvesting planner app running on [Mono](http://www.mono-project.c
     `CREATE ROLE test_oogstplanner_database_user LOGIN ENCRYPTED PASSWORD 'md5638a57daa56afced2a664def8fa3d93d' NOSUPERUSER INHERITNOCREATEDB NOCREATEROLE NOREPLICATION;`  
     `CREATE DATABASE "test_oogstplanner_database" OWNER test_oogstplanner_database_user;`    
 
-Then follow the database setup and run the migration scripts on the test_oogstplanner_users_database (for Membership table) and test_oogstplanner_database in [App_Data/Migrations](https://github.com/erooijak/zaaikalender/tree/master/Oogstplanner.Web/App_Data/Migrations).
+Then follow the database setup and run the migration scripts on the test_oogstplanner_membership_database (for Membership table) and test_oogstplanner_database in [App_Data/Migrations](https://github.com/erooijak/zaaikalender/tree/master/Oogstplanner.Web/App_Data/Migrations).
 
 Now the tables are created grant the user access and create test data:
 

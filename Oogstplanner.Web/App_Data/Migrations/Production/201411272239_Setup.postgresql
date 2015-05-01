@@ -1,25 +1,25 @@
 ﻿-- Commands to create and open database in PostgreSQL on Linux (adjust creation of user to own system)
 -- Create user, database and schema
-CREATE USER zkprod WITH PASSWORD 'aubergine';
+CREATE USER production_oogstplanner_database_user WITH PASSWORD 'aubergine';
 
 -- Create main database
-CREATE DATABASE "ZkProductionDatabase" OWNER zkprod;
+CREATE DATABASE "production_oogstplanner_database" OWNER production_oogstplanner_database_user;
 
-psql "ZkProductionDatabase"
+psql "production_oogstplanner_database"
 
---After running Initial.postgresql migration grant zktest access:
-GRANT ALL ON DATABASE "ZkProductionDatabase" TO zkprod;
-GRANT ALL ON ALL TABLES IN SCHEMA public TO zkprod;
-GRANT ALL ON ALL SEQUENCES IN SCHEMA public TO zkprod;
+--After running Initial.postgresql migration grant production_oogstplanner_database_user access:
+GRANT ALL ON DATABASE "production_oogstplanner_database" TO production_oogstplanner_database_user;
+GRANT ALL ON ALL TABLES IN SCHEMA public TO production_oogstplanner_database_user;
+GRANT ALL ON ALL SEQUENCES IN SCHEMA public TO production_oogstplanner_database_user;
+
+-- Add data from CSV file (use own path after FROM) into production_oogstplanner_database table with:
+psql "production_oogstplanner_database"
+\copy "Crops" FROM '/home/erooijak/oogstplanner.nl/CropData.csv' DELIMITER ',' CSV;
 
 -- Create Membership database
-CREATE DATABASE "ZkProductionUsersDatabase" OWNER zkprod;
+CREATE DATABASE "production_oogstplanner_membership_database" OWNER production_oogstplanner_database_user;
 
-psql "ZkProductionUsersDatabase"
+psql "production_oogstplanner_membership_database"
 
 -- Run AddMemberShipSchema script first
-GRANT ALL ON DATABASE "ZkProductionUsersDatabase" TO zkprod;
-
--- Add data from CSV file (use own path after FROM) into ZkProductionDatabase table with:
-psql "ZkProductionDatabase"
-\copy "Crops" FROM '/home/erooijak/oogstplanner.nl/CropData.csv' DELIMITER ',' CSV;
+GRANT ALL ON DATABASE "production_oogstplanner_membership_database" TO production_oogstplanner_database_user;
