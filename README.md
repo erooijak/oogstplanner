@@ -15,22 +15,22 @@ ASP.NET MVC 4 harvesting planner app running on [Mono](http://www.mono-project.c
     `psql`  
 
      `-- Create a test user with password broccoli (encrypted below) which is used in the connection string.`   
-    `CREATE ROLE zktest LOGIN ENCRYPTED PASSWORD 'md5638a57daa56afced2a664def8fa3d93d' NOSUPERUSER INHERITNOCREATEDB NOCREATEROLE NOREPLICATION;`  
-    `CREATE DATABASE "ZkTestDatabase" OWNER zktest;`    
+    `CREATE ROLE test_oogstplanner_database_user LOGIN ENCRYPTED PASSWORD 'md5638a57daa56afced2a664def8fa3d93d' NOSUPERUSER INHERITNOCREATEDB NOCREATEROLE NOREPLICATION;`  
+    `CREATE DATABASE "test_oogstplanner_database" OWNER test_oogstplanner_database_user;`    
 
-Then follow the database setup and run the migrations on the ZkTestDatabase and ZkTestUsersDatabase (for Membership table only) in [App_Data/Migrations](https://github.com/erooijak/zaaikalender/tree/master/Zk/App_Data/Migrations).
+Then follow the database setup and run the migration scripts on the test_oogstplanner_users_database (for Membership table) and test_oogstplanner_database in [App_Data/Migrations](https://github.com/erooijak/zaaikalender/tree/master/Oogstplanner.Web/App_Data/Migrations).
 
 Now the tables are created grant the user access and create test data:
 
-    GRANT ALL ON DATABASE "ZkTestDatabase" TO zktest;  
-    GRANT ALL ON ALL TABLES IN SCHEMA public TO zktest;  
-    GRANT ALL ON ALL SEQUENCES IN SCHEMA public TO zktest;  
+    GRANT ALL ON DATABASE "test_oogstplanner_database" TO test_oogstplanner_database_user;  
+    GRANT ALL ON ALL TABLES IN SCHEMA public TO test_oogstplanner_database_user;  
+    GRANT ALL ON ALL SEQUENCES IN SCHEMA public TO test_oogstplanner_database_user;  
 
     COPY "Crops" FROM '/zaaikalender/CropData.csv' DELIMITER ',' CSV;
 
-Finally, remove the _ prefix from the Zk/_ConnectionStrings.config file to include it in the project so that the application can access the database with the user zktest created earlier.
+Finally, remove the _ prefix from the Oogstplanner.Web/_ConnectionStrings.config file to include it in the project so that the application can access the database with the user test_oogstplanner_database_user created earlier.
 
-To enable lost password e-mailing remove the _ prefix from the Zk/_Email.config file and add your own SMTP server (ensure you have [imported certificates](https:/www.stackoverflow.com/questions/9801224/smtpclient-with-gmail#9803922) if using gmail).
+To enable lost password e-mailing remove the _ prefix from the Oogstplanner.Web/_Email.config file and add your own SMTP server (ensure you have [imported certificates](https:/www.stackoverflow.com/questions/9801224/smtpclient-with-gmail#9803922) if using gmail).
 
 ## Setting up Mono and Nginx
 
@@ -56,7 +56,7 @@ Here we can install Mono and launch ASP.NET MVC 4 through nginx by running
 
 and wait around 30 minutes. This script installs a default MVC 4 app on [yourappname].cloudapp.net. (Source: [sysmagazine](http://sysmagazine.com/posts/193156/))
 
-Now, replace the default app by running `rm -rf /home/[username]/www/*;` on the server and copying the local app to the server by navigating to the root of the local web application folder (Zk/) and running `scp -r . [username]@[yourappname].cloudapp.net:/home/[username]/www/`
+Now, replace the default app by running `rm -rf /home/[username]/www/*;` on the server and copying the local app to the server by navigating to the root of the local web application folder (Oogstplanner.Web/) and running `scp -r . [username]@[yourappname].cloudapp.net:/home/[username]/www/`
 
 Chances are that when you visit the site you will get the error 'Access to the path "/var/www/.mono" is denied'. To fix this give the nginx www-data user access to this path:
 
@@ -100,7 +100,7 @@ Elisa, Jeroen and Erwin.
 
 The MIT License (MIT)
 
-Copyright (c) 2015 Zaaikalender DevOps team
+Copyright (c) 2015 Oogstplanner DevOps team
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
