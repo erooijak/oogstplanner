@@ -70,6 +70,7 @@ DONE De jaarkalender laten bestaan uit maand kalender view modellen.
 DONE Initial User interface maand.  
 DONE Weergeven als er die maand geen zaai- of oogstmomenten zijn.  
 DONE Touch werkend op Mobile.  
+TODO Al op de zaaien- en oogsten pagina na klikken laten zien dat er geen zaai- of oogstmomenten zijn.
 TODO Afkappen decimalen.  
 TODO Standaard oogsten aangevinkt in het sleepvak.  
 TODO Niet groter dan 999 in veld.  
