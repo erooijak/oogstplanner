@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 
-namespace Zk.Helpers
+namespace Zk.Utilities.ExtensionMethods
 {
     public static class MonthExtension
     {

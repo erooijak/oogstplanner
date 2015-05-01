@@ -4,7 +4,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Web.Security;
 
-using Zk.Helpers;
+using Zk.Utilities.Helpers;
 using Zk.Models;
 
 namespace Zk.Repositories

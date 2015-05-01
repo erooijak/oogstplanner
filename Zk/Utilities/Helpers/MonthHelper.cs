@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Zk.Helpers
+namespace Zk.Utilities.Helpers
 {
     public static class MonthHelper
     {

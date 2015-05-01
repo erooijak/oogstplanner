@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 
-namespace Zk.Helpers
+namespace Zk.Utilities.Helpers
 {
     /*
      * Helper class to return JSON string.

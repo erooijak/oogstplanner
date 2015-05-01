@@ -154,7 +154,6 @@
     <Folder Include="Content\Images\" />
     <Folder Include="Scripts\" />
     <Folder Include="App_Data\Migrations\" />
-    <Folder Include="Helpers\" />
     <Folder Include="ViewModels\" />
     <Folder Include="Views\Account\" />
     <Folder Include="App_Start\" />
@@ -162,6 +161,7 @@
     <Folder Include="App_Data\Migrations\Production\" />
     <Folder Include="Content\Images\Draggable\" />
     <Folder Include="Services\" />
+    <Folder Include="Utilities\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\HomeController.cs" />
@@ -177,22 +177,14 @@
     <Compile Include="Controllers\CropController.cs" />
     <Compile Include="Controllers\CalendarController.cs" />
     <Compile Include="Models\FarmingAction.cs" />
-    <Compile Include="Helpers\UrlHelperExtension.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="ViewModels\YearCalendarViewModel.cs" />
-    <Compile Include="Helpers\MonthExtension.cs" />
-    <Compile Include="Helpers\MonthHelper.cs" />
     <Compile Include="ViewModels\LoginOrRegisterViewModel.cs" />
     <Compile Include="ViewModels\MonthCalendarViewModel.cs" />
-    <Compile Include="Helpers\JsonStringResult.cs" />
-    <Compile Include="Helpers\MonthEnumConverter.cs" />
-    <Compile Include="Helpers\FarmingActionHelper.cs" />
-    <Compile Include="Helpers\JorritNotAllowedException.cs" />
-    <Compile Include="Helpers\SecurityException.cs" />
     <Compile Include="App_Start\IocConfig.cs" />
     <Compile Include="Services\FarmingActionService.cs" />
     <Compile Include="Services\CropProvider.cs" />
@@ -206,6 +198,14 @@
     <Compile Include="Services\CookieProvider.cs" />
     <Compile Include="ViewModels\SowingAndHarvestingViewModel.cs" />
     <Compile Include="Services\ICookieProvider.cs" />
+    <Compile Include="Utilities\CustomExceptions\JorritNotAllowedException.cs" />
+    <Compile Include="Utilities\CustomExceptions\SecurityException.cs" />
+    <Compile Include="Utilities\ExtensionMethods\MonthExtension.cs" />
+    <Compile Include="Utilities\ExtensionMethods\UrlHelperExtension.cs" />
+    <Compile Include="Utilities\Helpers\FarmingActionHelper.cs" />
+    <Compile Include="Utilities\Helpers\JsonStringResult.cs" />
+    <Compile Include="Utilities\Helpers\MonthEnumConverter.cs" />
+    <Compile Include="Utilities\Helpers\MonthHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Web.config" />

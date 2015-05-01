@@ -1,7 +1,7 @@
 ﻿using NUnit.Framework;
 using System;
-using System.Linq;
-using Zk.Helpers;
+
+using Zk.Utilities.ExtensionMethods;
 
 namespace Zk.Tests
 {

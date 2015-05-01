@@ -3,7 +3,7 @@ using System.Diagnostics;
 using System.Linq;
 using Newtonsoft.Json;
 
-namespace Zk.Helpers
+namespace Zk.Utilities.Helpers
 {
     public class MonthEnumConverter : Newtonsoft.Json.Converters.StringEnumConverter
     {

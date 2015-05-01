@@ -1,6 +1,7 @@
 ﻿using Zk.Models;
+using Zk.Utilities.ExtensionMethods;
 
-namespace Zk.Helpers
+namespace Zk.Utilities.Helpers
 {
     public static class FarmingActionHelper
     {

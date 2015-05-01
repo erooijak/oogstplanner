@@ -7,6 +7,7 @@ using NUnit.Framework;
 
 using Zk.Services;
 using Zk.Models;
+using Zk.Utilities.CustomExceptions;
 using Zk.Repositories;
 
 namespace Zk.Tests

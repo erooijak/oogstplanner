@@ -89,12 +89,12 @@
     <Compile Include="Fakes\FakeZkContext.cs" />
     <Compile Include="Fakes\FakeFarmingActionSet.cs" />
     <Compile Include="Lib\MvcMockHelpers.cs" />
-    <Compile Include="Helpers\UrlHelperExtensionTest.cs" />
-    <Compile Include="Helpers\MonthExtensionTest.cs" />
-    <Compile Include="Helpers\MonthHelperTest.cs" />
     <Compile Include="Fakes\FakeUserSet.cs" />
     <Compile Include="Fakes\FakeUserServices.cs" />
     <Compile Include="Services\FarmingActionServiceTest.cs" />
+    <Compile Include="Utilities\UrlHelperExtensionTest.cs" />
+    <Compile Include="Utilities\MonthExtensionTest.cs" />
+    <Compile Include="Utilities\MonthHelperTest.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -104,7 +104,7 @@
   <ItemGroup>
     <Folder Include="Fakes\" />
     <Folder Include="Lib\" />
-    <Folder Include="Helpers\" />
     <Folder Include="Services\" />
+    <Folder Include="Utilities\" />
   </ItemGroup>
 </Project>

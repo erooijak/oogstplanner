@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 
-namespace Zk.Helpers
+namespace Zk.Utilities.ExtensionMethods
 {
     public static class UrlHelperExtension
     {
