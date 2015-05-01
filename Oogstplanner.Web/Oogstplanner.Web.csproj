@@ -232,8 +232,6 @@
     <Content Include="Content\Images\Summer\4.jpg" />
     <Content Include="Content\Images\Spring\3.jpg" />
     <Content Include="Content\Images\Spring\4.jpg" />
-    <Content Include="Content\Stylesheets\zk.styles.css" />
-    <Content Include="Content\Stylesheets\zk.responsive-square-elements.css" />
     <Content Include="Content\Stylesheets\jquery.fullPage.css" />
     <Content Include="Scripts\jquery.fullPage.js" />
     <Content Include="Scripts\jquery.fullPage.min.js" />
@@ -288,6 +286,8 @@
     <Content Include="Scripts\oogstplanner.drag-and-drop.js" />
     <Content Include="Scripts\oogstplanner.month-click-listeners.js" />
     <Content Include="Scripts\oogstplanner.site-settings.js" />
+    <Content Include="Content\Stylesheets\oogstplanner.responsive-square-elements.css" />
+    <Content Include="Content\Stylesheets\oogstplanner.styles.css" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
