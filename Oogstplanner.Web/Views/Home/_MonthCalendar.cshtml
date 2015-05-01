@@ -34,7 +34,7 @@
 </div>
 
 @*TODO Error handling onfailure, this is a temporary solution. It throws a JavaScript error, but the user can go on.*@
-@using (Ajax.BeginForm("UpdateMonth", new AjaxOptions { OnSuccess = "zk.toMain", OnFailure = "zk.toMain" }))
+@using (Ajax.BeginForm("UpdateMonth", new AjaxOptions { OnSuccess = "oogstplanner.toMain", OnFailure = "oogstplanner.toMain" }))
 {
     <!-- Main rectangles -->
     <div class="rectangle-vertical rectangle-sowing">
@@ -113,7 +113,7 @@
 
         // TODO: Fix this without switching screens.
         setTimeout(function() {
-            zk.toMain();
+            oogstplanner.toMain();
         }, 400);
 
     </script>

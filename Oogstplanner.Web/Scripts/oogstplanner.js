@@ -1,4 +1,4 @@
-﻿var zk = {
+﻿var oogstplanner = {
 	
     month: null,
 
@@ -27,7 +27,7 @@
         $.get('/Calendar/Month?month=' + month, function(data) {
             $('#_MonthCalendar').html(data);
         })
-        .done(function() { zk.toMonthCalendar(); zk.bindFarmingActionRemoveFunctionToDeleteButton(); })
+        .done(function() { oogstplanner.toMonthCalendar(); oogstplanner.bindFarmingActionRemoveFunctionToDeleteButton(); })
         .fail(function() { alert('TODO: Error handling'); });
     },
 

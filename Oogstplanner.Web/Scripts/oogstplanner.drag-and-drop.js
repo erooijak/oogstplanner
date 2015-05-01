@@ -83,7 +83,7 @@ $(function() {
             console.log(actionType);
             var cropCount = dragged.cropCount;
 
-            zk.addFarmingAction(cropId, month, actionType, cropCount);
+            oogstplanner.addFarmingAction(cropId, month, actionType, cropCount);
         }
     });
 

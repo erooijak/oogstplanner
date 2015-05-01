@@ -5,7 +5,7 @@
         
         $(monthElement).bind('click', function() {
             var month = $(monthElement).data('month');
-            zk.fillMonthCalendar(month);
+            oogstplanner.fillMonthCalendar(month);
         });
 
     });

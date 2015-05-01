@@ -10,16 +10,16 @@
     });
 
     /* Keep login screen full width initially and on resize */
-    zk.resizeLoginArea();
-    $(window).resize(function() { zk.resizeLoginArea(); });
+    oogstplanner.resizeLoginArea();
+    $(window).resize(function() { oogstplanner.resizeLoginArea(); });
 
     /* And keep crop-selection-box as big as the responsive square elements initially and on resize */
-    zk.resizeCropSelectionBox();
-    $(window).resize(function() { zk.resizeCropSelectionBox(); });
+    oogstplanner.resizeCropSelectionBox();
+    $(window).resize(function() { oogstplanner.resizeCropSelectionBox(); });
 
     /* Bind event listeners to hide and show register or signin box when links are clicked. */
-    $('#register-link').click(function() { zk.showSignupBox(); });
-    $('#signin-link').click(function() { zk.showLoginBox(); });
+    $('#register-link').click(function() { oogstplanner.showSignupBox(); });
+    $('#signin-link').click(function() { oogstplanner.showLoginBox(); });
 
     /* Initialize fullPage.js sliders */
     $('.container').fullpage({
@@ -53,6 +53,6 @@
     $.fn.fullpage.setAllowScrolling(false);
 
     /* Only allow numeric inputs in numeric fields */
-    zk.makeNumericTextBoxesNumeric();
+    oogstplanner.makeNumericTextBoxesNumeric();
 
 });
