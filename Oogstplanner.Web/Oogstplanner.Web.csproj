@@ -206,6 +206,7 @@
     <Compile Include="Utilities\Helpers\MonthHelper.cs" />
     <Compile Include="Models\IOogstplannerContext.cs" />
     <Compile Include="Models\OogstplannerContext.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Web.config" />

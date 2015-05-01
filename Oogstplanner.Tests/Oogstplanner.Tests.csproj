@@ -95,6 +95,7 @@
     <Compile Include="Utilities\MonthExtensionTest.cs" />
     <Compile Include="Utilities\MonthHelperTest.cs" />
     <Compile Include="Fakes\FakeOogstplannerContext.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
