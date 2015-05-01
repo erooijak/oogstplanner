@@ -4,6 +4,7 @@ using System.Web.Security;
 
 using Zk.Models;
 using Zk.Repositories;
+using System.Configuration;
 
 namespace Zk.Services
 {
@@ -22,7 +23,8 @@ namespace Zk.Services
         {
 
             // Update if already exists:
-            var clientUserName = cookieProvider.GetCookie("anonymousUserKey");
+            var anonymousCookieKey = ConfigurationManager.AppSettings["AnonymousUserCookieKey"];
+            var clientUserName = cookieProvider.GetCookie(anonymousCookieKey);
             if (!string.IsNullOrEmpty(clientUserName))
             {
                 try

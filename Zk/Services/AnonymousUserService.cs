@@ -2,6 +2,7 @@
 
 using Zk.Models;
 using Zk.Repositories;
+using System.Configuration;
 
 namespace Zk.Services
 {
@@ -10,8 +11,8 @@ namespace Zk.Services
         readonly Repository repository;
         readonly ICookieProvider cookieProvider;
 
-        const string anonymousUserCookieKey = "anonymousUserKey"; 
-        const double anonymousUserCookieExpiration = 730;
+        readonly string anonymousUserCookieKey = ConfigurationManager.AppSettings["AnonymousUserCookieKey"]; 
+        readonly double anonymousUserCookieExpiration = Convert.ToDouble(ConfigurationManager.AppSettings["AnonymousUserCookieExpiration"]);
 
         private string guidOnClient;
 
