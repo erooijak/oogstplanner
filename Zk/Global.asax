@@ -1,2 +1,0 @@
-﻿<%@ Application Inherits="Zk.MvcApplication" %>
-
