@@ -233,13 +233,10 @@
     <Content Include="Content\Images\Spring\3.jpg" />
     <Content Include="Content\Images\Spring\4.jpg" />
     <Content Include="Content\Stylesheets\zk.styles.css" />
-    <Content Include="Scripts\zk.month-click-listeners.js" />
-    <Content Include="Scripts\zk.site-settings.js" />
     <Content Include="Content\Stylesheets\zk.responsive-square-elements.css" />
     <Content Include="Content\Stylesheets\jquery.fullPage.css" />
     <Content Include="Scripts\jquery.fullPage.js" />
     <Content Include="Scripts\jquery.fullPage.min.js" />
-    <Content Include="Scripts\zk.js" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Scripts\jquery.flowtype.js" />
     <Content Include="Scripts\jquery.easings.min.js" />
@@ -269,12 +266,9 @@
     <Content Include="Views\Home\_MonthCalendar.cshtml" />
     <Content Include="Scripts\typeahead.bundle.min.js" />
     <Content Include="Scripts\handlebars.min.js" />
-    <Content Include="Scripts\zk.crops-suggestion-engine.js" />
     <Content Include="Content\Stylesheets\typeaheadjs.css" />
-    <Content Include="Scripts\zk.drag-and-drop.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Content\Stylesheets\bootstrap.min.css" />
-    <Content Include="Scripts\zk.crop-selection-box.js" />
     <Content Include="Scripts\jquery-ui-1.11.3.min.js" />
     <Content Include="Views\Account\Info.cshtml" />
     <Content Include="Content\Stylesheets\bootstrap-profile.css" />
@@ -288,6 +282,12 @@
     <Content Include="Content\Images\Draggable\harvesting.png" />
     <Content Include="Views\Home\SowingAndHarvesting.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Scripts\oogstplanner.js" />
+    <Content Include="Scripts\oogstplanner.crop-selection-box.js" />
+    <Content Include="Scripts\oogstplanner.crops-suggestion-engine.js" />
+    <Content Include="Scripts\oogstplanner.drag-and-drop.js" />
+    <Content Include="Scripts\oogstplanner.month-click-listeners.js" />
+    <Content Include="Scripts\oogstplanner.site-settings.js" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
