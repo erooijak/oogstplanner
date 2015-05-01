@@ -38,7 +38,8 @@ DONE Pseudo code naar echte code.
 DONE Mogelijkheid farming months zelfs toe te voegen.  
 DONE Gerelateerde farming actions updaten.  
 DONE Aangeven hoeveel stuks.  
-TODO Fixen account controller registratie met de cookie.
+DONE Fixen account controller registratie met de cookie.
+TODO Filter attribute die checkt voor enabled cookies en javascript.
 TODO Vrienden kunnen aanmaken.  
 TODO Error handling.  
 
