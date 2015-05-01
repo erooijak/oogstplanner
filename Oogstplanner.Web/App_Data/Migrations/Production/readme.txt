@@ -1,17 +1,17 @@
 ﻿This folder is excluded by our .gitignore file.
 
-For production create a role zkprod:
-CREATE USER zkprod WITH PASSWORD 'aubergine';
+For production create a role production_oogstplanner_database_user:
+CREATE USER production_oogstplanner_database_user WITH PASSWORD 'aubergine';
 
-Change the regular Migrations by replacing "ZkTestDatabase" with "ZkProductionDatabase" (everywhere except ConnectionStrings)
-and replacing "zktest" with "zkprod" in the postgresql setup and migration scripts.
+Change the regular Migrations by replacing "test_oogstplanner_database" with "production_oogstplanner_database" (everywhere except ConnectionStrings)
+and replacing "test_oogstplanner_database_user" with "production_oogstplanner_database_user" in the postgresql setup and migration scripts.
 
-Finally, make sure the connection string specified in ZkContext.cs has name "ZkProductionDatabaseConnection".
+Finally, make sure the connection string specified in OogstplannerContext.cs has name "ProductionOogstplannerDatabaseConnection".
 
 
 COPY TO SERVER
 
-scp -r /home/erooijak/zaaikalender/Zk/* root@85.17.176.210:/home/erooijak/oogstplanner.nl/httpdocs/
+scp -r /home/erooijak/zaaikalender/Oogstplanner/* root@85.17.176.210:/home/erooijak/oogstplanner.nl/httpdocs/
 scp /home/erooijak/zaaikalender/CropData.csv root@85.17.176.210:/home/erooijak/oogstplanner.nl/
 
 cd /home/erooijak/oogstplanner.nl/httpdocs

@@ -8,8 +8,8 @@
 
 -- PostgreSQL 8 create user database for role provider
 
-CREATE DATABASE IF NOT EXISTS "ZkTestUsersDatabase" OWNER zktest;
-GRANT ALL PRIVILEGES ON DATABASE "ZkTestUsersDatabase" TO zktest;
+CREATE DATABASE IF NOT EXISTS "test_oogstplanner_users_database" OWNER test_oogstplanner_database_user;
+GRANT ALL PRIVILEGES ON DATABASE "test_oogstplanner_users_database" TO test_oogstplanner_database_user;
 
 -- PostgreSQL 8 Membership Provider Schema
 
@@ -102,13 +102,13 @@ CREATE TABLE "Sessions" (
 );
 
 -- Create user and admin role.
-INSERT INTO "Roles" ("Rolename", "ApplicationName") values ('user', 'Zk');
-INSERT INTO "Roles" ("Rolename", "ApplicationName") values ('admin', 'Zk');
+INSERT INTO "Roles" ("Rolename", "ApplicationName") values ('user', 'Oogstplanner');
+INSERT INTO "Roles" ("Rolename", "ApplicationName") values ('admin', 'Oogstplanner');
 
 -- Assure zktest has the rights:
-GRANT ALL PRIVILEGES ON TABLE "Users" TO zktest;
-GRANT ALL PRIVILEGES ON TABLE "Roles" TO zktest;
-GRANT ALL PRIVILEGES ON TABLE "UsersInRoles" TO zktest;
-GRANT ALL PRIVILEGES ON TABLE "Profiles" TO zktest;
-GRANT ALL PRIVILEGES ON TABLE "ProfileData" TO zktest;
-GRANT ALL PRIVILEGES ON TABLE "Sessions" TO zktest;
+GRANT ALL PRIVILEGES ON TABLE "Users" TO test_oogstplanner_database_user;
+GRANT ALL PRIVILEGES ON TABLE "Roles" TO test_oogstplanner_database_user;
+GRANT ALL PRIVILEGES ON TABLE "UsersInRoles" TO test_oogstplanner_database_user;
+GRANT ALL PRIVILEGES ON TABLE "Profiles" TO test_oogstplanner_database_user;
+GRANT ALL PRIVILEGES ON TABLE "ProfileData" TO test_oogstplanner_database_user;
+GRANT ALL PRIVILEGES ON TABLE "Sessions" TO test_oogstplanner_database_user;

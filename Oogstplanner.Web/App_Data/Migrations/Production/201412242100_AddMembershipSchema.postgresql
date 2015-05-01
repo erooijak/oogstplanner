@@ -8,8 +8,8 @@
 
 -- PostgreSQL 8 create user database for role provider
 
-CREATE DATABASE "ZkProductionUsersDatabase" OWNER zkprod;
-GRANT ALL PRIVILEGES ON DATABASE "ZkProductionUsersDatabase" TO zkprod;
+CREATE DATABASE "production_oogstplanner_users_database" OWNER production_oogstplanner_database_user;
+GRANT ALL PRIVILEGES ON DATABASE "production_oogstplanner_users_database" TO production_oogstplanner_database_user;
 
 -- PostgreSQL 8 Membership Provider Schema
 
@@ -102,13 +102,13 @@ CREATE TABLE "Sessions" (
 );
 
 -- Create user and admin role.
-INSERT INTO "Roles" ("Rolename", "ApplicationName") values ('user', 'Zk');
-INSERT INTO "Roles" ("Rolename", "ApplicationName") values ('admin', 'Zk');
+INSERT INTO "Roles" ("Rolename", "ApplicationName") values ('user', 'Oogstplanner');
+INSERT INTO "Roles" ("Rolename", "ApplicationName") values ('admin', 'Oogstplanner');
 
 -- Assure zkprod has the rights:
-GRANT ALL PRIVILEGES ON TABLE "Users" TO zkprod;
-GRANT ALL PRIVILEGES ON TABLE "Roles" TO zkprod;
-GRANT ALL PRIVILEGES ON TABLE "UsersInRoles" TO zkprod;
-GRANT ALL PRIVILEGES ON TABLE "Profiles" TO zkprod;
-GRANT ALL PRIVILEGES ON TABLE "ProfileData" TO zkprod;
-GRANT ALL PRIVILEGES ON TABLE "Sessions" TO zkprod;
+GRANT ALL PRIVILEGES ON TABLE "Users" TO production_oogstplanner_database_user;
+GRANT ALL PRIVILEGES ON TABLE "Roles" TO production_oogstplanner_database_user;
+GRANT ALL PRIVILEGES ON TABLE "UsersInRoles" TO production_oogstplanner_database_user;
+GRANT ALL PRIVILEGES ON TABLE "Profiles" TO production_oogstplanner_database_user;
+GRANT ALL PRIVILEGES ON TABLE "ProfileData" TO production_oogstplanner_database_user;
+GRANT ALL PRIVILEGES ON TABLE "Sessions" TO production_oogstplanner_database_user;
