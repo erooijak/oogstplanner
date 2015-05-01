@@ -76,7 +76,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Zk\Oogstplanner.Web.csproj">
+    <ProjectReference Include="..\Oogstplanner.Web\Oogstplanner.Web.csproj">
       <Project>{B0FB3234-7C0E-43D4-9EB3-693F67B05779}</Project>
       <Name>Oogstplanner.Web</Name>
     </ProjectReference>
@@ -86,7 +86,6 @@
     <Compile Include="Controllers\CropControllerTest.cs" />
     <Compile Include="Fakes\FakeCropSet.cs" />
     <Compile Include="Fakes\FakeDbSet.cs" />
-    <Compile Include="Fakes\FakeZkContext.cs" />
     <Compile Include="Fakes\FakeFarmingActionSet.cs" />
     <Compile Include="Lib\MvcMockHelpers.cs" />
     <Compile Include="Fakes\FakeUserSet.cs" />
@@ -95,6 +94,7 @@
     <Compile Include="Utilities\UrlHelperExtensionTest.cs" />
     <Compile Include="Utilities\MonthExtensionTest.cs" />
     <Compile Include="Utilities\MonthHelperTest.cs" />
+    <Compile Include="Fakes\FakeOogstplannerContext.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

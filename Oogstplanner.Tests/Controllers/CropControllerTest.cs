@@ -20,7 +20,7 @@ namespace Oogstplanner.Tests
         public void Setup()
         {
             // Initialize a fake database with one crop.
-            var db = new FakeZkContext
+            var db = new FakeOogstplannerContext
             {
                 Crops =
                 {

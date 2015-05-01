@@ -4,13 +4,13 @@ using Oogstplanner.Models;
 
 namespace Oogstplanner.Migrations
 {
-	public class Configuration : DbMigrationsConfiguration<ZkContext>
-	{
-		public Configuration ()
-		{
-			AutomaticMigrationsEnabled = false;
+    public class Configuration : DbMigrationsConfiguration<OogstplannerContext>
+    {
+        public Configuration ()
+        {
+            AutomaticMigrationsEnabled = false;
             SetSqlGenerator("Npgsql", new PostgreSqlMigrationSqlGenerator());
-		}
+        }
 
-	}
+    }
 }

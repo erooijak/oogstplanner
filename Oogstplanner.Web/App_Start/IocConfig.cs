@@ -14,8 +14,8 @@ namespace Oogstplanner
             var builder = new ContainerBuilder();
             builder.RegisterControllers(typeof(MvcApplication).Assembly);
 
-            builder.RegisterType<ZkContext>()
-                .As<IZkContext>()
+            builder.RegisterType<OogstplannerContext>()
+                .As<IOogstplannerContext>()
                 .InstancePerRequest();
 
             builder.RegisterType<Repository>()

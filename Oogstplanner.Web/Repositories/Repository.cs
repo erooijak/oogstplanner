@@ -15,14 +15,14 @@ namespace Oogstplanner.Repositories
     public class Repository
     {
 
-        readonly IZkContext db; // Entity Framework database context
+        readonly IOogstplannerContext db; // Entity Framework database context
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="Repositories.Repository"/> class which
         ///     can make use of a "Fake" Entity Framework context for unit testing purposes.
         /// </summary>
         /// <param name="db">Database context.</param>
-        public Repository(IZkContext db)
+        public Repository(IOogstplannerContext db)
         {
             this.db = db;
         }

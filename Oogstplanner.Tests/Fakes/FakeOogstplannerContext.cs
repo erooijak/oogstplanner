@@ -3,9 +3,9 @@ using Oogstplanner.Models;
 
 namespace Oogstplanner.Tests
 {
-    public class FakeZkContext : IZkContext
+    public class FakeOogstplannerContext : IOogstplannerContext
     {
-        public FakeZkContext()
+        public FakeOogstplannerContext()
         {
             Crops = new FakeCropSet();
             FarmingActions = new FakeFarmingActionSet();

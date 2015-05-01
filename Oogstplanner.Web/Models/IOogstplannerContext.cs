@@ -2,7 +2,7 @@
 
 namespace Oogstplanner.Models
 {
-    public interface IZkContext
+    public interface IOogstplannerContext
     {
         IDbSet<Crop> Crops { get; }
         IDbSet<FarmingAction> FarmingActions { get; }

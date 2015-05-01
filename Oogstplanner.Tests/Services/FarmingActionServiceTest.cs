@@ -17,7 +17,7 @@ namespace Oogstplanner.Tests
 	{
     
         FarmingActionService service;
-        IZkContext db;
+        IOogstplannerContext db;
     
         [TestFixtureSetUp]
         public void Setup()
@@ -42,7 +42,7 @@ namespace Oogstplanner.Tests
             };
 
             // Initialize a fake database with some crops and farming actions.
-            this.db = new FakeZkContext 
+            this.db = new FakeOogstplannerContext 
             {
                 Users = 
                 { 

@@ -169,8 +169,6 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Crop.cs" />
-    <Compile Include="Models\IZkContext.cs" />
-    <Compile Include="Models\ZkContext.cs" />
     <Compile Include="Repositories\Repository.cs" />
     <Compile Include="Models\Calendar.cs" />
     <Compile Include="Models\User.cs" />
@@ -206,6 +204,8 @@
     <Compile Include="Utilities\Helpers\JsonStringResult.cs" />
     <Compile Include="Utilities\Helpers\MonthEnumConverter.cs" />
     <Compile Include="Utilities\Helpers\MonthHelper.cs" />
+    <Compile Include="Models\IOogstplannerContext.cs" />
+    <Compile Include="Models\OogstplannerContext.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Web.config" />

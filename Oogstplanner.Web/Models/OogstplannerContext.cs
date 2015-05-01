@@ -2,13 +2,13 @@
 
 namespace Oogstplanner.Models
 {
-	public class ZkContext : DbContext, IZkContext
+	public class OogstplannerContext : DbContext, IOogstplannerContext
 	{
 	
         /// <summary>
         ///     Initializes a new instance of the <see cref="Zk.Models.ZkContext"/> class.
         /// </summary>
-        public ZkContext() : base("name=ZkTestDatabaseConnection")
+        public OogstplannerContext() : base("name=ZkTestDatabaseConnection")
         {
         }
 
