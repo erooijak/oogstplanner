@@ -30,12 +30,17 @@
         {
             foreach (var season in Model.SeasonsCssClasses)
             {
-                var month = Model.MonthsOrdered.Pop();
+                var vm = Model.OrderedMonthViewModels.Pop();
+                var month = vm.MonthForDisplay;
+                var hasActions = vm.HasActions;
 
                 /* To the outer square div the following CSS classes are added in the string.Format method:
                  *    1.) A class for the image so a fitting image can be displayed. 
-                 *    2.) A class for the month, so we can identify which month is clicked on. */
-                <div class="square bg hover-highlight @string.Format("img{0}{1}", season, imageIndex)" data-month="@month">
+                 *    2.) An attribute for the month, so we can identify which month is clicked on.
+                 *    3.) An attribute for if the class has any actions associated */
+                <div class="square bg hover-highlight @string.Format("img{0}{1}", season, imageIndex)" 
+                     data-month="@month" 
+                     data-has-actions="@hasActions">
                    <div class="content">
                         <div class="table">
                             <div class="table-cell">

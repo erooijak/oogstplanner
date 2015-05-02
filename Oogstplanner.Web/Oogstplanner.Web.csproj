@@ -6,7 +6,7 @@
     <ProjectTypeGuids>{349C5851-65DF-11DA-9384-00065B846F21};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <ProjectGuid>{B0FB3234-7C0E-43D4-9EB3-693F67B05779}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>Zk</RootNamespace>
+    <RootNamespace>Oogstplanner</RootNamespace>
     <AssemblyName>Zk</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
   </PropertyGroup>
@@ -207,6 +207,8 @@
     <Compile Include="Models\IOogstplannerContext.cs" />
     <Compile Include="Models\OogstplannerContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\DisplayMonth.cs" />
+    <Compile Include="Services\ICalendarService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Web.config" />

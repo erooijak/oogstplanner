@@ -1,6 +1,4 @@
-﻿using System.Threading;
-
-using Oogstplanner.Utilities.Helpers;
+﻿using Oogstplanner.Utilities.Helpers;
 using Oogstplanner.ViewModels;
 using Oogstplanner.Repositories;
 using Oogstplanner.Models;
@@ -9,7 +7,7 @@ using Autofac.Features.Indexed;
 
 namespace Oogstplanner.Services
 {
-    public class CalendarService
+    public class CalendarService : ICalendarService
     {
         readonly Repository repository;
         readonly FarmingActionService farmingActionService;
@@ -65,6 +63,11 @@ namespace Oogstplanner.Services
                 HarvestingActions = farmingActionService.GetHarvestingActions(CurrentUserId, month),
                 SowingActions = farmingActionService.GetSowingActions(CurrentUserId, month)
             };
+        }
+
+        public Month GetMonthsWithActions()
+        {
+            return repository.GetMonthsWithActions(CurrentUserId);
         }
 
     }

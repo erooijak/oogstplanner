@@ -5,12 +5,22 @@ using System.Web.Mvc;
 
 using Oogstplanner.Utilities.Helpers;
 using Oogstplanner.ViewModels;
+using Oogstplanner.Services;
+
+using Autofac.Features.Indexed;
 
 namespace Oogstplanner.Controllers
 {
     [AllowAnonymous]
     public class HomeController : Controller
     {
+
+        readonly ICalendarService calendarService;
+
+        public HomeController(ICalendarService calendarService)
+        {
+            this.calendarService = calendarService;
+        }
 
         //
         // GET: /Index
@@ -23,13 +33,28 @@ namespace Oogstplanner.Controllers
         // GET: /Home/SowingAndHarvesting
         public ActionResult SowingAndHarvesting()
         {
-
             // Months are used for the CSS classes 
             // to add to the squares and for displayal within the square.
-            var months = MonthHelper.GetAllMonths()
-                .Select(m => m.ToString().ToLower())
-                .ToList();
+            var months = MonthHelper.GetAllMonths().ToList();
+
+            // Months where the current user is harvesting or sowing.
+            var actionMonths = calendarService.GetMonthsWithActions();
                 
+            // Ordering for the squared boxes view (4 columns for the seasons)
+            var monthIndexOrdering = new[] { 7, 4, 1, 10, 
+                                             6, 3, 0,  9, 
+                                             5, 2, 11, 8 };
+            var displayMonthsOrdered = new Stack<MonthViewModel>();
+            foreach (var monthIndex in monthIndexOrdering)
+            {
+                var month = months[monthIndex];
+                var name = month.ToString().ToLower();
+                var hasActions = actionMonths.HasFlag(month);
+                var monthViewModel = new MonthViewModel(name, hasActions);
+
+                displayMonthsOrdered.Push(monthViewModel);
+            }
+
             var viewModel = new SowingAndHarvestingViewModel 
             {
                 // Seasons in Dutch (singular: "seizoen"; plural: "seizoenen") used for displayal in top row.
@@ -38,12 +63,8 @@ namespace Oogstplanner.Controllers
                 // Seasons used for the CSS classes which refer to the different images.
                 SeasonsCssClasses = new[] { "autumn", "winter", "spring", "summer" },
 
-                MonthsOrdered = new Stack<string>(new[] 
-                    {   
-                        months[7], months[4], months[1],  months[10], 
-                        months[6], months[3], months[0],  months[9], 
-                        months[5], months[2], months[11], months[8] 
-                    }) 
+                // Months in the squared and information belonging to the month
+                OrderedMonthViewModels = displayMonthsOrdered
             };
 
             return View(viewModel);

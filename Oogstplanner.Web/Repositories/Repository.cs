@@ -149,6 +149,15 @@ namespace Oogstplanner.Repositories
             return db.Calendars.SingleOrDefault(c => c.User.UserId == userId);
         }
 
+        public Month GetMonthsWithActions(int userId)
+        {
+            return db.FarmingActions.Where(fa => fa.Calendar.UserId == userId)
+                .Select(fa => fa.Month)
+                .Distinct()
+                .ToList()
+                .Aggregate((Month)0, (acc, month) => acc |= month);
+        }
+
         public void CreateCalendar(User user)
         {
             var calendar = new Calendar { User = user };

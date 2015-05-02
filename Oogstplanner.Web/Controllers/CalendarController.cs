@@ -11,12 +11,12 @@ namespace Oogstplanner.Controllers
     [AllowAnonymous]
     public class CalendarController : Controller
     {        
-        readonly CalendarService calendarService;
+        readonly ICalendarService calendarService;
         readonly FarmingActionService farmingActionService;
         readonly CropProvider cropProvider;
 
         public CalendarController(
-            CalendarService calendarService,
+            ICalendarService calendarService,
             FarmingActionService farmingActionService,
             CropProvider cropProvider)
         {

@@ -36,6 +36,7 @@ namespace Oogstplanner
             builder.RegisterType<PasswordRecoveryService>()
                 .InstancePerRequest();
             builder.RegisterType<CalendarService>()
+                .As<ICalendarService>()
                 .InstancePerRequest();
             builder.RegisterType<FarmingActionService>()
                 .InstancePerRequest();
