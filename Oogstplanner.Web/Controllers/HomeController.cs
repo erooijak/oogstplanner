@@ -3,18 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 
+using Oogstplanner.Services;
+using Oogstplanner.Utilities.ExtensionMethods;
 using Oogstplanner.Utilities.Helpers;
 using Oogstplanner.ViewModels;
-using Oogstplanner.Services;
-
-using Autofac.Features.Indexed;
 
 namespace Oogstplanner.Controllers
 {
     [AllowAnonymous]
     public class HomeController : Controller
     {
-
         readonly ICalendarService calendarService;
 
         public HomeController(ICalendarService calendarService)
@@ -48,9 +46,10 @@ namespace Oogstplanner.Controllers
             foreach (var monthIndex in monthIndexOrdering)
             {
                 var month = months[monthIndex];
-                var name = month.ToString().ToLower();
+                var name = month.ToString();
+                var displayName = month.GetDescription();
                 var hasAction = actionMonths.HasFlag(month);
-                var monthViewModel = new MonthViewModel(name, hasAction);
+                var monthViewModel = new MonthViewModel(name, displayName, hasAction);
 
                 displayMonthsOrdered.Push(monthViewModel);
             }
@@ -58,7 +57,7 @@ namespace Oogstplanner.Controllers
             var viewModel = new SowingAndHarvestingViewModel 
             {
                 // Seasons in Dutch (singular: "seizoen"; plural: "seizoenen") used for displayal in top row.
-                SeizoenenForDisplay = new[] { "herfst", "winter", "lente", "zomer" },
+                SeasonsForDisplay = new[] { "herfst", "winter", "lente", "zomer" },
 
                 // Seasons used for the CSS classes which refer to the different images.
                 SeasonsCssClasses = new[] { "autumn", "winter", "spring", "summer" },

@@ -1,9 +1,10 @@
-﻿using Oogstplanner.Utilities.Helpers;
-using Oogstplanner.ViewModels;
-using Oogstplanner.Repositories;
-using Oogstplanner.Models;
+﻿using Autofac.Features.Indexed;
 
-using Autofac.Features.Indexed;
+using Oogstplanner.Models;
+using Oogstplanner.Repositories;
+using Oogstplanner.Utilities.ExtensionMethods;
+using Oogstplanner.Utilities.Helpers;
+using Oogstplanner.ViewModels;
 
 namespace Oogstplanner.Services
 {
@@ -59,7 +60,7 @@ namespace Oogstplanner.Services
         {
             return new MonthCalendarViewModel 
             {
-                DisplayMonth = month.ToString(),
+                DisplayMonth = month.GetDescription(),
                 HarvestingActions = farmingActionService.GetHarvestingActions(CurrentUserId, month),
                 SowingActions = farmingActionService.GetSowingActions(CurrentUserId, month)
             };

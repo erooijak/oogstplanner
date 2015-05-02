@@ -38,7 +38,7 @@ namespace Oogstplanner.Tests
                 Id = 1,
                 Name = "Broccoli", 
                 GrowingTime = 4,
-                SowingMonths = Month.Mei ^ Month.Juni ^ Month.Oktober ^ Month.November 
+                SowingMonths = Month.May ^ Month.June ^ Month.October ^ Month.November 
             };
 
             // Initialize a fake database with some crops and farming actions.
@@ -61,7 +61,7 @@ namespace Oogstplanner.Tests
                         Crop = broccoli,
                         Action = ActionType.Sowing,
                         CropCount = 3,
-                        Month = Month.Mei
+                        Month = Month.May
                     },
                     new FarmingAction 
                     {
@@ -178,7 +178,7 @@ namespace Oogstplanner.Tests
 
             Assert.AreEqual(Month.April, addedFarmingAction.Month, 
                 "One farming action with month january should be created");
-            Assert.AreEqual(Month.Januari, relatedAddedFarmingAction.Month, 
+            Assert.AreEqual(Month.January, relatedAddedFarmingAction.Month, 
                 "A next related farming action with month April should be created");
             Assert.AreEqual(addedFarmingAction.CropCount, relatedAddedFarmingAction.CropCount,
                 "The farming actions should have the same crop count.");

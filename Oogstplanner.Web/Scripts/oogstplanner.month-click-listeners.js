@@ -5,7 +5,14 @@
         
         $(monthElement).bind('click', function() {
             var month = $(monthElement).data('month');
-            oogstplanner.fillMonthCalendar(month);
+
+            if (oogstplanner.getHasActionAttributeValue(month) === true) {
+                oogstplanner.fillMonthCalendar(month);
+            }
+            else { 
+                alert("Deze maand heeft geen zaai- of oogstmomenten.");
+            }
+
         });
 
     });

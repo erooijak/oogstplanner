@@ -1,13 +1,13 @@
-﻿using System;
+﻿using Autofac.Features.Indexed;
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
-using Oogstplanner.Utilities.CustomExceptions;
-using Oogstplanner.Utilities.Helpers;
 using Oogstplanner.Models;
 using Oogstplanner.Repositories;
-
-using Autofac.Features.Indexed;
+using Oogstplanner.Utilities.CustomExceptions;
+using Oogstplanner.Utilities.Helpers;
 
 namespace Oogstplanner.Services
 {

@@ -80,7 +80,6 @@ $(function() {
             var cropId = dragged.cropId;
             var month = $(event.target).data().month;
             var actionType =  dragged.selectedActionType;
-            console.log(actionType);
             var cropCount = dragged.cropCount;
 
             oogstplanner.addFarmingAction(cropId, month, actionType, cropCount);

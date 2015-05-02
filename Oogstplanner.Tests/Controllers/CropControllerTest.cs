@@ -28,7 +28,7 @@ namespace Oogstplanner.Tests
                     {
                         Id = 1,
                         Name = "Broccoli", 
-                        SowingMonths = Month.Mei ^ Month.Juni ^ Month.Oktober ^ Month.November 
+                        SowingMonths = Month.May ^ Month.June ^ Month.October ^ Month.November 
                     }
                 }
             };

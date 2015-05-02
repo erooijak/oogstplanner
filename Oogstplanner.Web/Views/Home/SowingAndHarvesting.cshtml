@@ -12,13 +12,13 @@
         <div class="col-lg-8 col-md-8 col-sm-8" id="month-overview-responsive-square-elements">
 
             <!-- Row of rectangles for the seasons -->
-        @foreach (var seizoen in Model.SeizoenenForDisplay)
+        @foreach (var season in Model.SeasonsForDisplay)
         {
             <div class="rectangle">
                 <div class="rectangle-content">
                     <div class="table">
                         <div class="table-cell bold">
-                            @seizoen.ToUpper()
+                            @season.ToUpper()
                         </div>
                     </div>
                 </div>
@@ -31,7 +31,8 @@
             foreach (var season in Model.SeasonsCssClasses)
             {
                 var vm = Model.OrderedMonthViewModels.Pop();
-                var month = vm.MonthForDisplay;
+                var month = vm.MonthForDataAttribute;
+                var displayMonth = vm.MonthForDisplay;
                 var hasAction = vm.HasAction.ToString().ToLower();
 
                 /* To the outer square div the following CSS classes are added in the string.Format method:
@@ -44,7 +45,7 @@
                    <div class="content">
                         <div class="table">
                             <div class="table-cell">
-                                @month.ToUpper()
+                                @displayMonth
                             </div> 
                         </div>
                     </div>

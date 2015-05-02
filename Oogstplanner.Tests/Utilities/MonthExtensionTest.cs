@@ -13,7 +13,7 @@ namespace Oogstplanner.Tests
         public void Month_Subtract()
         {
             // ACT
-            var expected = Month.Juli;
+            var expected = Month.July;
             var actual = Month.December.Subtract(5);
 
             // ASSERT
@@ -24,8 +24,8 @@ namespace Oogstplanner.Tests
         public void Month_Add()
         {
             // ACT
-            var expected = Month.Juni;
-            var actual = Month.Januari.Add(5);
+            var expected = Month.June;
+            var actual = Month.January.Add(5);
 
             // ASSERT
             Assert.AreEqual(expected, actual, "January plus five months should equal June.");
@@ -35,8 +35,8 @@ namespace Oogstplanner.Tests
         public void Month_Add_2()
         {
             // ACT
-            var expected = Month.Juni;
-            var actual = Month.Mei.Add(1);
+            var expected = Month.June;
+            var actual = Month.May.Add(1);
 
             // ASSERT
             Assert.AreEqual(expected, actual, "May plus one month should equal June.");
@@ -46,8 +46,8 @@ namespace Oogstplanner.Tests
         public void Month_Subtract_OverTheEdge()
         {
             // ACT
-            var expected = Month.Juli;
-            var actual = Month.Januari.Subtract(6);
+            var expected = Month.July;
+            var actual = Month.January.Subtract(6);
 
             // ASSERT
             Assert.AreEqual(expected, actual, "January minus six months should equal July.");
@@ -57,7 +57,7 @@ namespace Oogstplanner.Tests
         public void Month_Add_OverTheEdge()
         {
             // ACT
-            var expected = Month.Maart;
+            var expected = Month.March;
             var actual = Month.November.Add(4);
 
             // ASSERT
@@ -68,8 +68,8 @@ namespace Oogstplanner.Tests
         public void Month_Add_MoreThan12()
         {
             // ACT
-            var expected = Month.Oktober;
-            var actual = Month.Oktober.Add(24);
+            var expected = Month.October;
+            var actual = Month.October.Add(24);
 
             // ASSERT
             Assert.AreEqual(expected, actual, "October plus two years (24 months) should equal October.");
@@ -79,8 +79,8 @@ namespace Oogstplanner.Tests
         public void Month_Subtract_MoreThan12()
         {
             // ACT
-            var expected = Month.Maart;
-            var actual = Month.Februari.Subtract(23);
+            var expected = Month.March;
+            var actual = Month.February.Subtract(23);
 
             // ASSERT
             Assert.AreEqual(expected, actual, "February minus 23 months should equal March.");
@@ -89,14 +89,14 @@ namespace Oogstplanner.Tests
         [Test]
         public void Month_Add_Negative()
         {   
-            Assert.Throws<ArgumentOutOfRangeException>(() => Month.Februari.Add(-23),
+            Assert.Throws<ArgumentOutOfRangeException>(() => Month.February.Add(-23),
                 "Negative input should throw an ArgumentOutOfRangeException.");
         }
 
         [Test]
         public void Month_Subtract_Negative()
         {   
-            Assert.Throws<ArgumentOutOfRangeException>(() => Month.Februari.Subtract(-23),
+            Assert.Throws<ArgumentOutOfRangeException>(() => Month.February.Subtract(-23),
                 "Negative input should throw an ArgumentOutOfRangeException.");
         }
 

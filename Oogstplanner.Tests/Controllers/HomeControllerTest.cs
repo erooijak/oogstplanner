@@ -18,25 +18,25 @@ namespace Oogstplanner.Tests
         private Stack<MonthViewModel> GetExpectedMonthOrdering()
         {
             return new Stack<MonthViewModel>(new[] 
-            {   
-                new MonthViewModel("augustus", true), 
-                new MonthViewModel("mei", false),
-                new MonthViewModel("februari", false),
-                new MonthViewModel("november", false),
-                new MonthViewModel("juli", false),
-                new MonthViewModel("april", true),
-                new MonthViewModel("januari", false),
-                new MonthViewModel("oktober", false),     
-                new MonthViewModel("juni", false),
-                new MonthViewModel("maart", false),
-                new MonthViewModel("december", false),
-                new MonthViewModel("september", false)       
-            });  
+                {   
+                    new MonthViewModel("august", "AUGUSTUS", true), 
+                    new MonthViewModel("may", "MEI", false),
+                    new MonthViewModel("february", "FEBRUARI", false),
+                    new MonthViewModel("november", "NOVEMBER", false),
+                    new MonthViewModel("july", "JULI", false),
+                    new MonthViewModel("april", "APRIL", true),
+                    new MonthViewModel("january","JANUARI", false),
+                    new MonthViewModel("october", "OKTOBER", false),     
+                    new MonthViewModel("june", "JUNI", false),
+                    new MonthViewModel("march", "MAART", false),
+                    new MonthViewModel("december", "DECEMBER", false),
+                    new MonthViewModel("september", "SEPTEMBER", false)       
+                });  
 
         }
 
         [Test]
-        public void Controllers_SowingAndHarvesting_MonthOrdering()
+        public void Controllers_SowingAndHarvesting_DisplayMonthOrdering()
         {
             // Arrange
             var expectedMonthOrdering = GetExpectedMonthOrdering();
@@ -60,6 +60,31 @@ namespace Oogstplanner.Tests
                     "ordered in the above way to have proper display.");
             }
         }
+
+        [Test]
+        public void Controllers_SowingAndHarvesting_DataMonthOrdering()
+        {
+            // Arrange
+            var expectedMonthOrdering = GetExpectedMonthOrdering();
+
+            var mock = new Mock<ICalendarService>();
+            mock.Setup(c => c.GetMonthsWithAction())
+                .Returns(It.IsAny<Month>);
+            var controller = new HomeController(mock.Object);
+
+            // Act
+            var result = (SowingAndHarvestingViewModel)((ViewResult)controller.SowingAndHarvesting()).Model;
+
+            // Assert
+            while (expectedMonthOrdering.Count != 0)
+            {
+                var expected = expectedMonthOrdering.Pop().MonthForDataAttribute;
+                var actual = result.OrderedMonthViewModels.Pop().MonthForDataAttribute;
+
+                Assert.AreEqual(expected, actual,
+                    "The months in the data attributes should be in the correct order and format.");
+            }
+        }
             
         [Test]
         public void Controllers_SowingAndHarvesting_HasActions()
@@ -69,7 +94,7 @@ namespace Oogstplanner.Tests
 
             var mock = new Mock<ICalendarService>();
             mock.Setup(c => c.GetMonthsWithAction())
-                .Returns(Month.April | Month.Augustus);
+                .Returns(Month.April | Month.August);
             var controller = new HomeController(mock.Object);
 
             // Act

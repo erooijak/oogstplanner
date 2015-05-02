@@ -4,7 +4,8 @@ DONE Opzetten omgeving
 DONE Stap 1: Overzetten van oude Zaaikalender naar nieuwe Zk!  
 DONE Database connectie leggen.  
 DONE Deployment omgeving regelen.  
-DONE Betere server dan XSP4 (e.g., fastcgi-mod-mono)  
+DONE Betere server dan XSP4 (e.g., fastcgi-mod-mono).  
+DONE Database script.
 
 ### Autorisatie:
 DONE Forms authenticatie  
@@ -53,9 +54,9 @@ TODO Implementatie herinneringen
 TODO Implementatie grappen  
 
 ### Initiële invulproces
-DONE Bouwen selecteren gewas typeahead implementeren  
+DONE Bouwen selecteren gewas typeahead implementeren.   
 DONE Over nadenken  
-DONE Drag-and-drop  
+DONE Drag-and-drop.   
 TODO Plaatjes ophalen vanaf server  
 
 ### Extra's
@@ -70,7 +71,8 @@ DONE Menubalk netjes met Bootstrap.
 DONE De jaarkalender laten bestaan uit maand kalender view modellen.  
 DONE Initial User interface maand.  
 DONE Weergeven als er die maand geen zaai- of oogstmomenten zijn.  
-DONE Touch werkend op Mobile.  
+DONE Touch werkend op Mobile.
+TODO Betere weergave van zaken (notificaties).    
 TODO Al op de zaaien- en oogsten pagina na klikken laten zien dat er geen zaai- of oogstmomenten zijn.
 TODO Afkappen decimalen.  
 TODO Standaard oogsten aangevinkt in het sleepvak.  
@@ -84,6 +86,7 @@ TODO Direct meeveranderen van zaaien/oogsten op basis van input (JavaScript/jQue
 TODO Web-tiki vragen tot doen van verbeteringen middels pull-request. 
 TODO Jaarkalender naar PDF.  
 TODO User vragen om cookies te accepteren.
+TODO Inloggen en registreren netter.
 
 # Improvements
 DONE Refactor FarmingActionHelper methode door opsplitsing en out-parameters weg te halen.  
@@ -99,10 +102,13 @@ TODO Indien sessie verloopt uitloggen!
 TODO Gebruiker hoeft niet te registreren: in memory kan je al oogstplanner maken, registreren kan later.  
 TODO Vindbaarheid verbeteren.  
 TODO Automatisch selecteren van oogsten. Lukt niet.  
-TODO Schots en scheefheid rechtzetten. (?)  
+TODO Schots en scheefheid rechtzetten. (?) 
+TODO JavaScript extension methods.
+TODO Fatsoenlijke notificaties i.p.v. JavaScript alerts.  
+TODO Kalendar naam kunnen geven.  
 
 ### Documentatie:
-README beetje netje maken.  
+IN PROGRESS README beetje netjes maken.  
 
 ### BUGS:
 FIXED Gewassen zonder oogstmaanden vertonen bug bij slepen.  

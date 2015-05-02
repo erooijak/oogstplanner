@@ -33,18 +33,29 @@
 
     addFarmingAction: function(cropId, month, actionType, cropCount) {
         $.post('/Calendar/AddFarmingAction', { cropId: cropId, month: month, actionType: actionType, cropCount: cropCount } );
-        this.setHasActionAttribute(month, true);
+        this.setHasActionAttributeValue(month, true);
     },
 
-    setHasActionAttribute: function(month, value) {
+    setHasActionAttributeValue: function(month, value) {
         $('[data-month=' + month + ']').data( "hasAction", value);
+    },
+
+    getHasActionAttributeValue: function(month) {
+        return $('[data-month=' + month + ']').data('hasAction');
     },
 
     removeFarmingAction: function(id) {
         var that = this;
         $.post('/Calendar/RemoveFarmingAction', { id: id }, function (response) {
-            if (response.success === true) { that.fillMonthCalendar(that.month); alert("Het gewas is succesvol verwijderd.") }
-            else { alert("TODO: Error handling") }
+            if (response.success === true) { 
+                that.fillMonthCalendar(that.month);
+                that.setHasActionAttributeValue(that.month, false);
+                alert("Het gewas is succesvol verwijderd.");
+                that.toMain();
+            }
+            else { 
+                alert("TODO: Error handling");
+            }
         });
     },
 

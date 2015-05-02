@@ -1,7 +1,7 @@
-﻿using Oogstplanner.Services;
-using Oogstplanner.Repositories;
+﻿using Autofac.Features.Indexed;
 
-using Autofac.Features.Indexed;
+using Oogstplanner.Repositories;
+using Oogstplanner.Services;
 
 namespace Oogstplanner.Tests
 {
