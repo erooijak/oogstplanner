@@ -5,13 +5,13 @@ ASP.NET MVC 4 harvesting planner app running on [Mono](http://www.mono-project.c
 ## Installation
 
  1. Install an IDE as [*Xamarin Studio*, *MonoDevelop*](http://www.monodevelop.com/download/) and if necessary the [*Mono runtime*](http://www.mono-project.com/download/). For Windows user install [*Mono Tools*](http://www.mono-project.com/archived/gettingstartedwithmonotools/) for Visual Studio.
- 2. Clone the repository with `git clone https://www.github.com/erooijak/zaaikalender`.
+ 2. Clone the repository with `git clone https://www.github.com/erooijak/oogstplanner`.
  3. Open the solution and get the packages with NuGet. *Note: Do not update to a later version of MVC since the app depends on MVC4.*
  4. Install the PostgreSQL database
 
     `sudo apt-get install postgresql-9.3`  
 
- 5. Run [setup_database.sh](https://raw.githubusercontent.com/erooijak/zaaikalender/master/setup_database.sh).
+ 5. Run [setup_database.sh](https://raw.githubusercontent.com/erooijak/oogstplanner/master/setup_database.sh).
  6. Remove the _ prefix from the Oogstplanner.Web/_ConnectionStrings.config file to include it in the project so that the application can access the database with the user test_oogstplanner_database_user created earlier.
 
 To enable lost password e-mailing remove the _ prefix from the Oogstplanner.Web/_Email.config file and add your own SMTP server (ensure you have [imported certificates](https:/www.stackoverflow.com/questions/9801224/smtpclient-with-gmail#9803922) if using gmail).
@@ -28,7 +28,7 @@ See http://www.philliphaydon.com/2013/06/setting-up-mono-on-nginx/.
 
 In [Azure Management Portal](https://manage.windowsazure.com) create a cloud service with an Ubuntu Server. At the overview page select the host and click "endpoints". Here specify a new stand-alone endpoint as follows:
 
-![Select a web endpoint.](https://github.com/erooijak/zaaikalender/blob/master/configure-azure1.png)
+![Select a web endpoint.](https://github.com/erooijak/oogstplanner/blob/master/configure-azure1.png)
 
 Then login via SSH with the specified username and password:
 
@@ -36,7 +36,7 @@ Then login via SSH with the specified username and password:
     
 Here we can install Mono and launch ASP.NET MVC 4 through nginx by running
 
-    wget https://raw.githubusercontent.com/erooijak/zaaikalender/master/install-nginx-mono.sh && sudo chmod +x install-nginx-mono.sh && ./install-nginx-mono.sh  
+    wget https://raw.githubusercontent.com/erooijak/oogstplanner/master/install-nginx-mono.sh && sudo chmod +x install-nginx-mono.sh && ./install-nginx-mono.sh  
 
 and wait around 30 minutes. This script installs a default MVC 4 app on [yourappname].cloudapp.net. (Source: [sysmagazine](http://sysmagazine.com/posts/193156/))
 
@@ -48,7 +48,7 @@ Chances are that when you visit the site you will get the error 'Access to the p
     chown -R www-data:www-data ~www-data/.mono  
     chmod u+rw ~www-data/.mono  
 
-Now install PostgreSQL and run [setup_database.sh](https://raw.githubusercontent.com/erooijak/zaaikalender/master/setup_database.sh).
+Now install PostgreSQL and run [setup_database.sh](https://raw.githubusercontent.com/erooijak/oogstplanner/master/setup_database.sh).
 
 Note: on Ubuntu server there seems to be an issue with the locales which prevents PostgreSQL from creating a cluster when installing with `sudo apt-get install postgresql-9.3`. To fix the locale issue specify a locale in /etc/environment: `sudo vim /etc/environment` and add `LC_ALL=en_US.utf-8` to the end of the file ([source](http://stackoverflow.com/questions/17399622/postgresql-9-2-installation-on-ubuntu-12-04#20137471)). After logging out and in again `sudo pg_createcluster 9.3 main --start` can be run and the psql console opened with `sudo su - postgres` and `psql`. Then proceed as above with the installation.
 
@@ -63,7 +63,7 @@ Once you have it, in MonoDevelop click on "View -> Pads -> Unit Tests".
 
 ## Git
 
-First time clone: `git clone https://www.github.com/erooijak/zaaikalender` or pull request.
+First time clone: `git clone https://www.github.com/erooijak/oogstplanner` or pull request.
 
 For collaborators:
 
