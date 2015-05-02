@@ -98,7 +98,7 @@ namespace Oogstplanner.Controllers
                 if (status == MembershipCreateStatus.Success)
                 {
                     userService.AddUser(model.UserName, model.FullName, model.Email);
-                    FormsAuthentication.SetAuthCookie(model.UserName, false);
+                    FormsAuthentication.SetAuthCookie(model.UserName, true);
 
                     return RedirectToAction("Index", "Home");
                 }
