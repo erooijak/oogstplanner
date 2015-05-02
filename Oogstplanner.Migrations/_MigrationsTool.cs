@@ -9,23 +9,23 @@ using System.Text.RegularExpressions;
 
 namespace Oogstplanner.Migrations
 {
-	/// <summary>
-	/// 	Class used to generate the code migrations and SQL script based on the Models and update the database.
-    ///     (I.e., runs PowerShell's Add-Migration and Update-Database, and creates a PostgreSQL script.)
-	///     See: http://stackoverflow.com/questions/20374783/enable-entity-framework-migrations-in-mono#20382226
-	/// 
-    ///     Usage: run by setting Zk.Migrations as Startup project and pressing play.
+    /// <summary>
+    ///    Class used to generate the code migrations and SQL script based on the Models and update the database.
+    ///    (I.e., runs PowerShell's Add-Migration and Update-Database, and creates a PostgreSQL script.)
+    ///    See: http://stackoverflow.com/questions/20374783/enable-entity-framework-migrations-in-mono#20382226
     /// 
-	/// 	Classes of namespace EntityFramework.PostgreSql obtained from:
-	///     https://github.com/darionato/PostgreSqlMigrationSqlGenerator. License is included.
-	/// </summary>
-	class MigrationsTool
-	{
+    ///    Usage: run by setting Zk.Migrations as Startup project and pressing play.
+    /// 
+    ///    Classes of namespace EntityFramework.PostgreSql obtained from:
+    ///    https://github.com/darionato/PostgreSqlMigrationSqlGenerator. License is included.
+    /// </summary>
+    class MigrationsTool
+    {
         /// <summary>
-        ///     The entry point of the program, where the program control starts and ends.
+        ///    The entry point of the program, where the program control starts and ends.
         /// </summary>
-		public static void Main()
-		{
+        public static void Main()
+        {
             // USER INPUT /////////////////////////////////////////////////////////////////////////////////
 
             // Always first create a new database migration with DatabaseStep.ADD_MIGRATION,
@@ -58,10 +58,10 @@ namespace Oogstplanner.Migrations
                 var config = new Configuration();
                 var scaffolder = new MigrationScaffolder(config); 
                 var migration = scaffolder.Scaffold(MIGRATION_NAME);
-        
+
                 // Place migration code in main project "Migrations" folder and migration scripts in "App_Data"
                 var migrationsPath = Regex.Replace(executingPath, "bin/.*", "");
-            
+
                 // Write migrations
                 File.WriteAllText(migrationsPath + MIGRATION_NAME + ".cs", migration.UserCode);
                 File.WriteAllText(migrationsPath + MIGRATION_NAME + ".Designer.cs", migration.DesignerCode);
@@ -130,7 +130,7 @@ namespace Oogstplanner.Migrations
                 var migrationNames = string.Join(", ", migrator.GetDatabaseMigrations().ToArray());
                 Console.WriteLine("Applied migration {0} to database.", migrationNames);
             }
-		}
+        }
 
         /// <summary>
         ///     Enumeration for specifying the step in the migration.
@@ -142,6 +142,6 @@ namespace Oogstplanner.Migrations
             UPDATE_DATABASE
         }
 
-	}
+    }
 
 }
