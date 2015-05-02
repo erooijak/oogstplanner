@@ -146,30 +146,30 @@ fi
 
 # Execute PostgreSQL statements and scripts:
 printf "Creating user $user...\n"
-psql -U postgres -c\
-     "CREATE USER $user \
-      WITH PASSWORD '""$database_user_password""'"
+psql -U postgres -c \
+  "CREATE USER $user \
+   WITH PASSWORD '""$database_user_password""'"
 
 printf "\nCreate database $membership_database...\n"
-psql -U postgres -c\
-    "CREATE DATABASE $membership_database \
-     OWNER $user;"
+psql -U postgres -c \
+  "CREATE DATABASE $membership_database \
+    OWNER $user;"
 
 printf "\nInserting Membership tables and roles in $membership_database...\n"
-psql -U postgres -d $membership_database -f\
- "$appdata_path/Membership/AddMembershipSchema.sql"
+psql -U postgres -d $membership_database -f \
+  "$appdata_path/Membership/AddMembershipSchema.sql"
 
 printf "\nGrant $user needed privileges on $membership_database..."
-psql -U postgres -c\
-    "GRANT ALL ON DATABASE $membership_database TO $user;"
-psql -U postgres -d $membership_database -c\
-    "GRANT ALL ON ALL SEQUENCES IN SCHEMA public TO $user;\
-     GRANT ALL ON ALL TABLES IN SCHEMA public TO $user;"
+psql -U postgres -c \
+  "GRANT ALL ON DATABASE $membership_database TO $user;"
+psql -U postgres -d $membership_database -c \
+  "GRANT ALL ON ALL SEQUENCES IN SCHEMA public TO $user; \
+   GRANT ALL ON ALL TABLES IN SCHEMA public TO $user;"
 
 printf "\nCreate database $database...\n"
-psql -U postgres -c\
-    "CREATE DATABASE $database \
-     OWNER $user;"
+psql -U postgres -c \
+  "CREATE DATABASE $database \
+   OWNER $user;"
 
 printf "\nAdd all migrations to database $database...\n" # note: correct order due prefix
 for file in $appdata_path/Migrations/*; do
@@ -177,12 +177,12 @@ for file in $appdata_path/Migrations/*; do
 done
 
 printf "\nProvide user $user with access...\n"
-psql -U postgres -d $database -c\
-    "GRANT ALL ON DATABASE $database TO $user; \
-     GRANT ALL ON ALL TABLES IN SCHEMA public TO $user; \
-     GRANT ALL ON ALL SEQUENCES IN SCHEMA public TO $user;"
+psql -U postgres -d $database -c \
+  "GRANT ALL ON DATABASE $database TO $user; \
+   GRANT ALL ON ALL TABLES IN SCHEMA public TO $user; \
+   GRANT ALL ON ALL SEQUENCES IN SCHEMA public TO $user;"
 
 printf "\nAdd data from CSV file into $database table \"Crops\"...\n"
-psql -U postgres -d $database -c\
- "\copy \"Crops\" from $cropdata_path delimiter ',' csv;" && printf "SUCCESS\n"
+psql -U postgres -d $database -c \
+  "\copy \"Crops\" from $cropdata_path delimiter ',' csv;" && printf "SUCCESS\n"
 
