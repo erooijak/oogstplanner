@@ -149,7 +149,7 @@ namespace Oogstplanner.Repositories
             return db.Calendars.SingleOrDefault(c => c.User.UserId == userId);
         }
 
-        public Month GetMonthsWithActions(int userId)
+        public Month GetMonthsWithAction(int userId)
         {
             return db.FarmingActions.Where(fa => fa.Calendar.UserId == userId)
                 .Select(fa => fa.Month)

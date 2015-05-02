@@ -4,14 +4,14 @@ namespace Oogstplanner.ViewModels
 {
     public class MonthViewModel
     {
-        public MonthViewModel(string name, bool hasActions)
+        public MonthViewModel(string name, bool hasAction)
         {
             MonthForDisplay = name;
-            HasActions = hasActions;
+            HasAction = hasAction;
         }
 
         public string MonthForDisplay { get; set; }
-        public bool HasActions { get; set; }
+        public bool HasAction { get; set; }
     }
 }
     

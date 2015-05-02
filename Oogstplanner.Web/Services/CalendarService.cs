@@ -65,9 +65,9 @@ namespace Oogstplanner.Services
             };
         }
 
-        public Month GetMonthsWithActions()
+        public Month GetMonthsWithAction()
         {
-            return repository.GetMonthsWithActions(CurrentUserId);
+            return repository.GetMonthsWithAction(CurrentUserId);
         }
 
     }

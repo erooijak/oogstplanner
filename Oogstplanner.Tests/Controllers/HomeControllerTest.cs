@@ -42,7 +42,7 @@ namespace Oogstplanner.Tests
             var expectedMonthOrdering = GetExpectedMonthOrdering();
 
             var mock = new Mock<ICalendarService>();
-            mock.Setup(c => c.GetMonthsWithActions())
+            mock.Setup(c => c.GetMonthsWithAction())
                 .Returns(It.IsAny<Month>);
             var controller = new HomeController(mock.Object);
 
@@ -68,7 +68,7 @@ namespace Oogstplanner.Tests
             var expectedMonthOrdering = GetExpectedMonthOrdering();
 
             var mock = new Mock<ICalendarService>();
-            mock.Setup(c => c.GetMonthsWithActions())
+            mock.Setup(c => c.GetMonthsWithAction())
                 .Returns(Month.April | Month.Augustus);
             var controller = new HomeController(mock.Object);
 
@@ -78,12 +78,12 @@ namespace Oogstplanner.Tests
             // Assert
             while (expectedMonthOrdering.Count != 0)
             {
-                var expected = expectedMonthOrdering.Pop().HasActions;
-                var actual = result.OrderedMonthViewModels.Pop().HasActions;
+                var expected = expectedMonthOrdering.Pop().HasAction;
+                var actual = result.OrderedMonthViewModels.Pop().HasAction;
 
                 Assert.AreEqual(expected, actual,
-                    "The has actios attribute should be equal since the " +
-                    "mock returns .");
+                    "The has action attribute should be equal to April and August " +
+                    "since that is returned by the mock.");
             }
         }
  

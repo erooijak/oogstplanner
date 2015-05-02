@@ -38,7 +38,7 @@ namespace Oogstplanner.Controllers
             var months = MonthHelper.GetAllMonths().ToList();
 
             // Months where the current user is harvesting or sowing.
-            var actionMonths = calendarService.GetMonthsWithActions();
+            var actionMonths = calendarService.GetMonthsWithAction();
                 
             // Ordering for the squared boxes view (4 columns for the seasons)
             var monthIndexOrdering = new[] { 7, 4, 1, 10, 
@@ -49,8 +49,8 @@ namespace Oogstplanner.Controllers
             {
                 var month = months[monthIndex];
                 var name = month.ToString().ToLower();
-                var hasActions = actionMonths.HasFlag(month);
-                var monthViewModel = new MonthViewModel(name, hasActions);
+                var hasAction = actionMonths.HasFlag(month);
+                var monthViewModel = new MonthViewModel(name, hasAction);
 
                 displayMonthsOrdered.Push(monthViewModel);
             }

@@ -13,7 +13,7 @@ namespace Oogstplanner.Services
 
         MonthCalendarViewModel GetMonthCalendar(Month month);
 
-        Month GetMonthsWithActions();
+        Month GetMonthsWithAction();
 
     }
 }

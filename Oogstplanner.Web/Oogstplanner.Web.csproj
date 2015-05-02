@@ -207,8 +207,8 @@
     <Compile Include="Models\IOogstplannerContext.cs" />
     <Compile Include="Models\OogstplannerContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ViewModels\DisplayMonth.cs" />
     <Compile Include="Services\ICalendarService.cs" />
+    <Compile Include="ViewModels\MonthViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Web.config" />

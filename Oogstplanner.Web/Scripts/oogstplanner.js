@@ -33,6 +33,11 @@
 
     addFarmingAction: function(cropId, month, actionType, cropCount) {
         $.post('/Calendar/AddFarmingAction', { cropId: cropId, month: month, actionType: actionType, cropCount: cropCount } );
+        this.setHasActionAttribute(month, true);
+    },
+
+    setHasActionAttribute: function(month, value) {
+        $('[data-month=' + month + ']').data( "hasAction", value);
     },
 
     removeFarmingAction: function(id) {
