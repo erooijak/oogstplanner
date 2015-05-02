@@ -86,7 +86,7 @@ TestResults
 *.Cache
 ClientBin
 [Ss]tyle[Cc]op.*
-Zk/App_Data/Migrations/Production/
+Oogstplanner.Web/App_Data/Production/
 App_Data.*
 ~$*
 *.dbmdl

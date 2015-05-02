@@ -6,11 +6,6 @@
  *
  * * * * * * * * * * * * * * * * * * * * * * */
 
--- PostgreSQL 8 create user database for role provider
-
-CREATE DATABASE IF NOT EXISTS "test_oogstplanner_membership_database" OWNER test_oogstplanner_database_user;
-GRANT ALL PRIVILEGES ON DATABASE "test_oogstplanner_membership_database" TO test_oogstplanner_database_user;
-
 -- PostgreSQL 8 Membership Provider Schema
 
 CREATE TABLE "Users" (
@@ -105,10 +100,11 @@ CREATE TABLE "Sessions" (
 INSERT INTO "Roles" ("Rolename", "ApplicationName") values ('user', 'Oogstplanner');
 INSERT INTO "Roles" ("Rolename", "ApplicationName") values ('admin', 'Oogstplanner');
 
--- Assure test_oogstplanner_database_user has the rights:
-GRANT ALL PRIVILEGES ON TABLE "Users" TO test_oogstplanner_database_user;
-GRANT ALL PRIVILEGES ON TABLE "Roles" TO test_oogstplanner_database_user;
-GRANT ALL PRIVILEGES ON TABLE "UsersInRoles" TO test_oogstplanner_database_user;
-GRANT ALL PRIVILEGES ON TABLE "Profiles" TO test_oogstplanner_database_user;
-GRANT ALL PRIVILEGES ON TABLE "ProfileData" TO test_oogstplanner_database_user;
-GRANT ALL PRIVILEGES ON TABLE "Sessions" TO test_oogstplanner_database_user;
+-- Ensure production_oogstplanner_database_user has rights:
+GRANT ALL PRIVILEGES ON DATABASE "production_oogstplanner_membership_database" TO production_oogstplanner_database_user;
+GRANT ALL PRIVILEGES ON TABLE "Users" TO production_oogstplanner_database_user;
+GRANT ALL PRIVILEGES ON TABLE "Roles" TO production_oogstplanner_database_user;
+GRANT ALL PRIVILEGES ON TABLE "UsersInRoles" TO production_oogstplanner_database_user;
+GRANT ALL PRIVILEGES ON TABLE "Profiles" TO production_oogstplanner_database_user;
+GRANT ALL PRIVILEGES ON TABLE "ProfileData" TO production_oogstplanner_database_user;
+GRANT ALL PRIVILEGES ON TABLE "Sessions" TO production_oogstplanner_database_user;

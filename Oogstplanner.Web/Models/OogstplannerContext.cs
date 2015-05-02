@@ -6,7 +6,7 @@ namespace Oogstplanner.Models
 	{
 	
         /// <summary>
-        ///     Initializes a new instance of the <see cref="Oogstplanner.Models.ZkContext"/> class.
+        ///     Initializes a new instance of the <see cref="Oogstplanner.Models.OogstplannerContext"/> class.
         /// </summary>
         public OogstplannerContext() : base("name=TestOogstplannerDatabaseConnection")
         {

@@ -75,7 +75,7 @@
     <None Include="Oogstplanner.Migrations.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Zk\Oogstplanner.Web.csproj">
+    <ProjectReference Include="..\Oogstplanner.Web\Oogstplanner.Web.csproj">
       <Project>{B0FB3234-7C0E-43D4-9EB3-693F67B05779}</Project>
       <Name>Oogstplanner.Web</Name>
     </ProjectReference>

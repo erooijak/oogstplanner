@@ -7,28 +7,12 @@ ASP.NET MVC 4 harvesting planner app running on [Mono](http://www.mono-project.c
  1. Install an IDE as [*Xamarin Studio*, *MonoDevelop*](http://www.monodevelop.com/download/) and if necessary the [*Mono runtime*](http://www.mono-project.com/download/). For Windows user install [*Mono Tools*](http://www.mono-project.com/archived/gettingstartedwithmonotools/) for Visual Studio.
  2. Clone the repository with `git clone https://www.github.com/erooijak/zaaikalender`.
  3. Open the solution and get the packages with NuGet. *Note: Do not update to a later version of MVC since the app depends on MVC4.*
-
- 4. Install a PostgreSQL database and create a user, test database and schema and grant the user access:  
+ 4. Install the PostgreSQL database
 
     `sudo apt-get install postgresql-9.3`  
-    `sudo su - postgres`  
-    `psql`  
 
-     `-- Create a test user with password broccoli (encrypted below) which is used in the connection string.`   
-    `CREATE ROLE test_oogstplanner_database_user LOGIN ENCRYPTED PASSWORD 'md5638a57daa56afced2a664def8fa3d93d' NOSUPERUSER INHERITNOCREATEDB NOCREATEROLE NOREPLICATION;`  
-    `CREATE DATABASE "test_oogstplanner_database" OWNER test_oogstplanner_database_user;`    
-
-Then follow the database setup and run the migration scripts on the test_oogstplanner_membership_database (for Membership table) and test_oogstplanner_database in [App_Data/Migrations](https://github.com/erooijak/zaaikalender/tree/master/Oogstplanner.Web/App_Data/Migrations).
-
-Now the tables are created grant the user access and create test data:
-
-    GRANT ALL ON DATABASE "test_oogstplanner_database" TO test_oogstplanner_database_user;  
-    GRANT ALL ON ALL TABLES IN SCHEMA public TO test_oogstplanner_database_user;  
-    GRANT ALL ON ALL SEQUENCES IN SCHEMA public TO test_oogstplanner_database_user;  
-
-    COPY "Crops" FROM '/zaaikalender/CropData.csv' DELIMITER ',' CSV;
-
-Finally, remove the _ prefix from the Oogstplanner.Web/_ConnectionStrings.config file to include it in the project so that the application can access the database with the user test_oogstplanner_database_user created earlier.
+ 5. Run [setup_database.sh](https://raw.githubusercontent.com/erooijak/zaaikalender/master/setup_database.sh).
+ 6. Remove the _ prefix from the Oogstplanner.Web/_ConnectionStrings.config file to include it in the project so that the application can access the database with the user test_oogstplanner_database_user created earlier.
 
 To enable lost password e-mailing remove the _ prefix from the Oogstplanner.Web/_Email.config file and add your own SMTP server (ensure you have [imported certificates](https:/www.stackoverflow.com/questions/9801224/smtpclient-with-gmail#9803922) if using gmail).
 
@@ -64,14 +48,12 @@ Chances are that when you visit the site you will get the error 'Access to the p
     chown -R www-data:www-data ~www-data/.mono  
     chmod u+rw ~www-data/.mono  
 
-Now install PostgreSQL, create a database, create a production user and specify the connection strings (both main database and for user management). All in the same way as described in the installation earlier.
+Now install PostgreSQL and run [setup_database.sh](https://raw.githubusercontent.com/erooijak/zaaikalender/master/setup_database.sh).
 
 Note: on Ubuntu server there seems to be an issue with the locales which prevents PostgreSQL from creating a cluster when installing with `sudo apt-get install postgresql-9.3`. To fix the locale issue specify a locale in /etc/environment: `sudo vim /etc/environment` and add `LC_ALL=en_US.utf-8` to the end of the file ([source](http://stackoverflow.com/questions/17399622/postgresql-9-2-installation-on-ubuntu-12-04#20137471)). After logging out and in again `sudo pg_createcluster 9.3 main --start` can be run and the psql console opened with `sudo su - postgres` and `psql`. Then proceed as above with the installation.
 
 Now the application *should* run in the Microsoft Azure cloud.
-
     
-
 ## Tests
 
 Run with NUnit.

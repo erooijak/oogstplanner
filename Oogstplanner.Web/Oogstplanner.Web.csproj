@@ -158,10 +158,10 @@
     <Folder Include="Views\Account\" />
     <Folder Include="App_Start\" />
     <Folder Include="Content\fonts\" />
-    <Folder Include="App_Data\Migrations\Production\" />
     <Folder Include="Content\Images\Draggable\" />
     <Folder Include="Services\" />
     <Folder Include="Utilities\" />
+    <Folder Include="App_Data\Membership\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\HomeController.cs" />
@@ -300,15 +300,13 @@
   </ProjectExtensions>
   <ItemGroup>
     <None Include="Content\Images\convert-images.sh" />
-    <None Include="App_Data\Migrations\201411272239_Setup.postgresql" />
     <None Include="Scripts\jquery-2.1.3.min.map" />
-    <None Include="App_Data\Migrations\201412242100_AddMembershipSchema.postgresql" />
-    <None Include="App_Data\Migrations\Production\201403301824_Initial.postgresql" />
-    <None Include="App_Data\Migrations\Production\201411272239_Setup.postgresql" />
-    <None Include="App_Data\Migrations\Production\201412242100_AddMembershipSchema.postgresql" />
-    <None Include="App_Data\Migrations\Production\readme.txt" />
-    <None Include="App_Data\Migrations\201503301824_Initial.postgresql" />
-    <None Include="App_Data\Migrations\201526042011_AddAuthenticationStatus.postgresql" />
-    <None Include="App_Data\Migrations\Production\201526042011_AddAuthenticationStatus.postgresql" />
+    <None Include="App_Data\Migrations\201503301824_Initial.sql" />
+    <None Include="App_Data\Migrations\201526042011_AddAuthenticationStatus.sql" />
+    <None Include="App_Data\Membership\AddMembershipSchema.sql" />
+    <None Include="App_Data\Production\Membership\AddMembershipSchema.sql" />
+    <None Include="App_Data\Production\Migrations\201403301824_Initial.sql" />
+    <None Include="App_Data\Production\Migrations\201526042011_AddAuthenticationStatus.sql" />
+    <None Include="App_Data\Production\readme.txt" />
   </ItemGroup>
 </Project>
