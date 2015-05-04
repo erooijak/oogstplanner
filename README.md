@@ -8,10 +8,8 @@ ASP.NET MVC 4 harvesting planner app running on [Mono](http://www.mono-project.c
  2. Clone the repository with `git clone https://www.github.com/erooijak/oogstplanner`.
  3. Open the solution and get the packages with NuGet. *Note: Do not update to a later version of MVC since the app depends on MVC4.*
  4. Install the PostgreSQL database
-
     `sudo apt-get install postgresql-9.3`  
-
- 5. Run [setup_database.sh](https://raw.githubusercontent.com/erooijak/oogstplanner/master/setup_database.sh).
+ 5. Run [setup-database.sh](https://raw.githubusercontent.com/erooijak/oogstplanner/master/setup-database.sh).
  6. Remove the _ prefix from the Oogstplanner.Web/_ConnectionStrings.config file to include it in the project so that the application can access the database with the user test_oogstplanner_database_user created earlier.
 
 To enable lost password e-mailing remove the _ prefix from the Oogstplanner.Web/_Email.config file and add your own SMTP server (ensure you have [imported certificates](https:/www.stackoverflow.com/questions/9801224/smtpclient-with-gmail#9803922) if using gmail).
