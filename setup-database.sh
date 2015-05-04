@@ -30,7 +30,7 @@
 #                 default password: broccoli
 #
 # Usage:
-#   Run with ./setup_database.sh [-a /path/app_data] [-c /path/cropdata] [-e env] [-p].
+#   Run with ./setup-database.sh [-a /path/app_data] [-c /path/cropdata] [-e env] [-p].
 
 # Get command line options.
 aflag=
