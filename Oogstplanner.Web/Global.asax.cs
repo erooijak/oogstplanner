@@ -2,8 +2,9 @@
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
-
 using WebMatrix.WebData;
+
+using Oogstplanner.Utilities.Helpers;
 
 namespace Oogstplanner
 {
@@ -13,7 +14,12 @@ namespace Oogstplanner
         {
             if (!WebSecurity.Initialized) 
             {
-                WebSecurity.InitializeDatabaseConnection("TestOogstplannerDatabaseConnection", "Users", "UserId", "Name", autoCreateTables: true);
+                WebSecurity.InitializeDatabaseConnection(
+                    ConfigurationHelper.ConnectionStringName, 
+                    userTableName: "Users", 
+                    userIdColumn: "UserId", 
+                    userNameColumn: "Name", 
+                    autoCreateTables: false);
             }
 
             IocConfig.RegisterDependencies();

@@ -1,5 +1,7 @@
 ﻿using System.Data.Entity;
 
+using Oogstplanner.Utilities.Helpers;
+
 namespace Oogstplanner.Models
 {
 	public class OogstplannerContext : DbContext, IOogstplannerContext
@@ -8,7 +10,8 @@ namespace Oogstplanner.Models
         /// <summary>
         ///     Initializes a new instance of the <see cref="Oogstplanner.Models.OogstplannerContext"/> class.
         /// </summary>
-        public OogstplannerContext() : base("name=TestOogstplannerDatabaseConnection")
+        public OogstplannerContext() 
+            : base(string.Format("name={0}", ConfigurationHelper.ConnectionStringName))
         {
         }
 
