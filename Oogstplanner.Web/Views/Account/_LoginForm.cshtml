@@ -22,23 +22,13 @@
             Onthoud mij.
       </label>
       @Html.ActionLink("Wachtwoord vergeten?", "LostPassword", null, new { @class = "pull-right" })
+    <br/>
     </div>
-
     <button class="btn btn-lg btn-primary btn-block" type="submit">Inloggen</button>
 
     if(ViewData.ModelState.ContainsKey("registration"))
     { 
         @ViewData.ModelState["registration"].Errors.First().ErrorMessage; 
     }
-
-    <div class="form-group">
-        <div class="col-md-12 control">
-            <div class="box-border dark">
-                Ik heb nog geen account! 
-                <a href="#" id="register-link">
-                    Registreren.
-                </a>
-            </div>
-        </div>
-    </div>  
+       
 }    

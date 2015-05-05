@@ -291,6 +291,10 @@
     <Content Include="Content\Stylesheets\oogstplanner.responsive-square-elements.css" />
     <Content Include="Content\Stylesheets\oogstplanner.styles.css" />
     <Content Include="Content\Stylesheets\bootstrap-signin.css" />
+    <Content Include="Content\Stylesheets\bootstrap-dialog.min.css" />
+    <Content Include="Scripts\bootstrap-dialog.min.js" />
+    <Content Include="Scripts\oogstplanner.event-listeners.js" />
+    <Content Include="Views\Account\_LoginModal.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
@@ -315,7 +319,6 @@
     <None Include="Scripts\oogstplanner.drag-and-drop.ts" />
     <None Include="Scripts\typings\jquery.d.ts" />
     <None Include="Scripts\typings\jquery.plugins.d.ts" />
-    <None Include="Scripts\oogstplanner.month-click-listeners.ts" />
     <None Include="Scripts\oogstplanner.crops-suggestion-engine.ts" />
     <None Include="Scripts\oogstplanner.crop-selection-box.ts" />
     <None Include="Scripts\typings\jqueryui.d.ts" />

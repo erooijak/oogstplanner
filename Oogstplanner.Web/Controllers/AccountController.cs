@@ -5,6 +5,7 @@ using System.Web.Mvc;
 using System.Web.Security;
 
 using Oogstplanner.Utilities.CustomExceptions;
+using Oogstplanner.Utilities.ExtensionMethods;
 using Oogstplanner.Services;
 using Oogstplanner.Models;
 using Oogstplanner.ViewModels;
@@ -23,6 +24,14 @@ namespace Oogstplanner.Controllers
         {
             this.userService = userService;
             this.passwordRecoveryService = passwordRecoveryService;
+        }
+
+        //
+        // GET: /Account/LoginOrRegisterModal
+        [AllowAnonymous]
+        public ActionResult LoginOrRegisterModal()
+        {
+            return PartialView(Url.View("_LoginModal", "Account"));
         }
 
         //

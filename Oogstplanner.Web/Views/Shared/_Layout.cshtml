@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="/Content/Stylesheets/bootstrap.min.css" />
     <link rel="stylesheet" href="/Content/Stylesheets/bootstrap-navbar.css" />
     <link rel="stylesheet" href="/Content/Stylesheets/bootstrap-signin.css" />
+    <link rel="stylesheet" href="/Content/Stylesheets/bootstrap-dialog.min.css" />
 
     <link rel="stylesheet" href="/Content/Stylesheets/oogstplanner.styles.css" />
     <link rel="stylesheet" href="/Content/Stylesheets/oogstplanner.responsive-square-elements.css" />
@@ -22,6 +23,7 @@
         
     <script src="/Scripts/jquery-2.1.3.min.js"></script>
     <script src="/Scripts/bootstrap.min.js"></script>
+    <script src="/Scripts/bootstrap-dialog.min.js"></script>
     <script src="/Scripts/jquery-ui-1.11.3.min.js"></script>
     <script src="/Scripts/jquery.ui.touch-punch.min.js"></script>
     <script src="/Scripts/jquery.unobtrusive-ajax.min.js"></script>
@@ -35,7 +37,7 @@
     <script src="/Scripts/oogstplanner.js"></script>
     <script src="/Scripts/oogstplanner.site-settings.js"></script>
     <script src="/Scripts/oogstplanner.drag-and-drop.js"></script>
-    <script src="/Scripts/oogstplanner.month-click-listeners.js"></script>
+    <script src="/Scripts/oogstplanner.event-listeners.js"></script>
     <script src="/Scripts/oogstplanner.crops-suggestion-engine.js"></script>
     <script src="/Scripts/oogstplanner.crop-selection-box.js"></script>
 
@@ -80,7 +82,7 @@
 else
 {
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="/Account/Login">Registreren of inloggen</a></li>
+                <li id="registerOrLogin"><a href="#">Inloggen of registreren</a></li>
             </ul>
 }
 

@@ -1,0 +1,64 @@
+﻿<div id="loginbox" class="form-signin">         
+    
+    @{ Html.RenderPartial("_LoginForm"); }
+
+    <div class="form-group">
+        <div class="col-md-12 control">
+            <div class="box-border dark">
+                Ik heb nog geen account! 
+                <a id="register-link" href="#">
+                    Registreren.
+                </a>
+            </div>
+        </div>
+    </div>  
+
+</div>
+
+<div id="signupbox" class="form-signin">
+
+    @{ Html.RenderPartial("_RegisterForm"); } 
+
+    <div class="form-group">
+        <div class="col-md-12 control">
+            <div class="box-border dark">
+                Ik heb al een account! 
+                <a id="signin-link" href="#">
+                    Inloggen.
+                </a>
+            </div>
+        </div>
+    </div>  
+        
+</div>
+
+<script>
+    function resetValidation() {
+  
+        // Removes validation from input-fields
+        $('.input-validation-error').empty();
+
+        // Removes validation message after input-fields
+        $('.field-validation-error').empty();
+
+        // Removes validation summary 
+        $('.validation-summary-errors').empty();
+
+    };
+
+    $(function() {
+
+        $("#signin-link").on("click",function(e){
+            $('#signupbox').hide(); 
+            $('#loginbox').show(); 
+            resetValidation();
+        });
+
+        $("#register-link").on("click",function(e){
+            $('#loginbox').hide(); 
+            $('#signupbox').show(); 
+            resetValidation();
+        });
+            
+    });
+</script>
