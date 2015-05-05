@@ -102,6 +102,7 @@ DONE E-mailadres klikbaar.
 DONE Zorgen dat toevoegen van een gewas het aantal ophoogt indien er al eenzelfde gewas is die maand.  
 DONE Optillen wordt het een zaadje (bij zaaien) of een zeis (bij oogsten).(gekozen voor plant bij oogsten, misschien anders) 
 DONE Gebruiker hoeft niet te registreren: in memory kan je al oogstplanner maken, registreren kan later. 
+TODO Script voor schonen database.  
 TODO Indien sessie verloopt uitloggen!  
 TODO Vindbaarheid verbeteren.  
 TODO Automatisch selecteren van oogsten. Lukt niet.  
