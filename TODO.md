@@ -17,19 +17,18 @@ DONE Implementeer succes pagina na versturen (werd link).
 CANCELLED Facebook (?) authenticatie (Neen. Wij zijn tegen.)  
 DONE Gebruiker kan inloggen en agenda hoort bij hem.  
 DONE Profiel maken gebruiker.  
-TODO Meer informatie gebruiker.  
-TODO Mogelijkheid tot maken vrienden.  
-TODO Kalender linken op profiel  
 
 ### Datamodel (Model)  
-DONE Datamodel relaties inbouwen (foreign keys)  
-DONE Classes en relaties  
-IN PROGRESS Bepalen groeitijd  
-IN PROGRESS Bepalen groeitijd keukenkruiden, groenbemesters en kiemgroenten  
-TODO Plaatjes erbij zoeken  
+DONE Datamodel relaties inbouwen (foreign keys).  
+DONE Classes en relaties.  
+IN PROGRESS Bepalen groeitijd.  
+IN PROGRESS Bepalen groeitijd keukenkruiden, groenbemesters en kiemgroenten.  
+TODO Kalendar naam kunnen geven.  
+TODO Plaatjes erbij zoeken.  
 TODO Weghalen spaties achter data?  
-TODO Uitzoeken kilogrammen en grondtypes (FutDev)  
-TODO Splitsen repositories  
+TODO Uitzoeken kilogrammen en grondtypes (FutDev).  
+TODO Splitsen repositories.  
+TODO Maand moet over jaar kunnen tillen.  
 
 ### Business logic (Controllers)
 DONE van zaai- en oogstmaand naar view en vice versa.  
@@ -43,15 +42,18 @@ DONE Fixen account controller registratie met de cookie.
 TODO Filter attribute die checkt voor enabled cookies en javascript.
 TODO Vrienden kunnen aanmaken.  
 TODO Error handling.  
+TODO Meer informatie gebruiker.  
+TODO Kalender linken op profiel.  
 
 ### Security
 DONE Check of geupdate acties wel bij de ingelogde gebruiker horen.  
-TODO Op basis van debug of release build bepalen welke connectiestring.  
+DONE Op basis van debug of release build bepalen welke connectiestring.  
 
 ### Notifications (Controllers/View)
 TODO Wanneer implementeren?  
 TODO Implementatie herinneringen  
 TODO Implementatie grappen  
+TODO Fatsoenlijke notificaties i.p.v. JavaScript alerts.  
 
 ### Initiële invulproces
 DONE Bouwen selecteren gewas typeahead implementeren.   
@@ -72,8 +74,7 @@ DONE De jaarkalender laten bestaan uit maand kalender view modellen.
 DONE Initial User interface maand.  
 DONE Weergeven als er die maand geen zaai- of oogstmomenten zijn.  
 DONE Touch werkend op Mobile.
-TODO Betere weergave van zaken (notificaties).    
-TODO Al op de zaaien- en oogsten pagina na klikken laten zien dat er geen zaai- of oogstmomenten zijn.
+DONE Al op de zaaien- en oogsten pagina na klikken laten zien dat er geen zaai- of oogstmomenten zijn.  
 TODO Afkappen decimalen.  
 TODO Standaard oogsten aangevinkt in het sleepvak.  
 TODO Niet groter dan 999 in veld.  
@@ -86,7 +87,9 @@ TODO Direct meeveranderen van zaaien/oogsten op basis van input (JavaScript/jQue
 TODO Web-tiki vragen tot doen van verbeteringen middels pull-request. 
 TODO Jaarkalender naar PDF.  
 TODO User vragen om cookies te accepteren.
-TODO Inloggen en registreren netter.
+TODO Inloggen en registreren netter.  
+TODO Ruimtes vullen.  
+TODO Zoeken vanaf maand en categorie.  
 
 # Improvements
 DONE Refactor FarmingActionHelper methode door opsplitsing en out-parameters weg te halen.  
@@ -98,23 +101,21 @@ DONE Streep linksonder weg bij maandoverzicht.
 DONE E-mailadres klikbaar.  
 DONE Zorgen dat toevoegen van een gewas het aantal ophoogt indien er al eenzelfde gewas is die maand.  
 DONE Optillen wordt het een zaadje (bij zaaien) of een zeis (bij oogsten).(gekozen voor plant bij oogsten, misschien anders) 
-TODO Indien sessie verloopt uitloggen! 
-TODO Gebruiker hoeft niet te registreren: in memory kan je al oogstplanner maken, registreren kan later.  
+DONE Gebruiker hoeft niet te registreren: in memory kan je al oogstplanner maken, registreren kan later. 
+TODO Indien sessie verloopt uitloggen!  
 TODO Vindbaarheid verbeteren.  
 TODO Automatisch selecteren van oogsten. Lukt niet.  
 TODO Schots en scheefheid rechtzetten. (?) 
-TODO JavaScript extension methods.
-TODO Fatsoenlijke notificaties i.p.v. JavaScript alerts.  
-TODO Kalendar naam kunnen geven.  
+TODO JavaScript extension methods.  
 
 ### Documentatie:
 IN PROGRESS README beetje netjes maken.  
 
 ### BUGS:
+IN PROGRESS Indien meer dan een gewas levert het bij het verwijderen op dat je toch niet meer terug kan.
 FIXED Gewassen zonder oogstmaanden vertonen bug bij slepen.  
 FIXED No scrolling while dragging on Mobile
 HACKY-FIX Op bevestigen kliken bij lege maand levert nullreferencexception op.  
-Indien meer dan een gewas levert het bij het verwijderen op dat je toch niet meer terug kan.
 2x klikken op maand levert dubbele data op.  
 Als user niet langer is ingelogd krijg je exception bij toevoegen gewas
 0 invoeren in numeric text box is niet meer aan te passen met de pijltjes.  
