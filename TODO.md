@@ -74,7 +74,8 @@ DONE De jaarkalender laten bestaan uit maand kalender view modellen.
 DONE Initial User interface maand.  
 DONE Weergeven als er die maand geen zaai- of oogstmomenten zijn.  
 DONE Touch werkend op Mobile.
-DONE Al op de zaaien- en oogsten pagina na klikken laten zien dat er geen zaai- of oogstmomenten zijn.  
+DONE Al op de zaaien- en oogsten pagina na klikken laten zien dat er geen zaai- of oogstmomenten zijn. 
+DONE Inloggen en registreren netter.   
 TODO Afkappen decimalen.  
 TODO Standaard oogsten aangevinkt in het sleepvak.  
 TODO Niet groter dan 999 in veld.  
@@ -87,7 +88,6 @@ TODO Direct meeveranderen van zaaien/oogsten op basis van input (JavaScript/jQue
 TODO Web-tiki vragen tot doen van verbeteringen middels pull-request. 
 TODO Jaarkalender naar PDF.  
 TODO User vragen om cookies te accepteren.
-TODO Inloggen en registreren netter.  
 TODO Ruimtes vullen.  
 TODO Zoeken vanaf maand en categorie.  
 
@@ -117,6 +117,7 @@ FIXED Indien meer dan een gewas levert het bij het verwijderen op dat je toch ni
 FIXED Gewassen zonder oogstmaanden vertonen bug bij slepen.  
 FIXED No scrolling while dragging on Mobile
 HACKY-FIX Op bevestigen kliken bij lege maand levert nullreferencexception op.  
+Als user is ingelogt en daarna uitlogt, werkt het cookie niet meer
 2x klikken op maand levert dubbele data op.  
 Als user niet langer is ingelogd krijg je exception bij toevoegen gewas
 0 invoeren in numeric text box is niet meer aan te passen met de pijltjes.  
