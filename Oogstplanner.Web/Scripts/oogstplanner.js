@@ -47,10 +47,9 @@ var Scripts;
             $.post('/Calendar/RemoveFarmingAction', { id: id }, function (response) {
                 if (response.success === true) {
                     that.fillMonthCalendar(that.month);
-                    console.log($('.farmingMonth').children);
-                    console.log($('.farmingMonth').children.length);
                     alert("Het gewas is succesvol verwijderd.");
-                    if ($('.farmingMonth').children().length === 0) {
+                    var monthHasNoActions = $('.farmingMonth').children().length === 0;
+                    if (monthHasNoActions) {
                         that.setHasActionAttributeValue(that.month, false);
                         that.toMain();
                     }

@@ -315,5 +315,7 @@
     <None Include="Scripts\oogstplanner.crops-suggestion-engine.ts" />
     <None Include="Scripts\oogstplanner.crop-selection-box.ts" />
     <None Include="Scripts\typings\jqueryui.d.ts" />
+    <None Include="Scripts\typings\handlebars.d.ts" />
+    <None Include="Scripts\typings\typeahead.d.ts" />
   </ItemGroup>
 </Project>
