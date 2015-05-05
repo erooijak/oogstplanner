@@ -1,7 +1,7 @@
 var cropsSuggestionEngine = new Bloodhound({
     datumTokenizer: function (datum) {
-        nameDatums = Bloodhound.tokenizers.whitespace(datum.name);
-        raceDatums = Bloodhound.tokenizers.whitespace(datum.race);
+        var nameDatums = Bloodhound.tokenizers.whitespace(datum.name);
+        var raceDatums = Bloodhound.tokenizers.whitespace(datum.race);
         return nameDatums.concat(raceDatums);
     },
     queryTokenizer: Bloodhound.tokenizers.whitespace,
