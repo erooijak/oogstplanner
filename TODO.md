@@ -112,7 +112,7 @@ TODO JavaScript extension methods.
 IN PROGRESS README beetje netjes maken.  
 
 ### BUGS:
-IN PROGRESS Indien meer dan een gewas levert het bij het verwijderen op dat je toch niet meer terug kan.
+FIXED Indien meer dan een gewas levert het bij het verwijderen op dat je toch niet meer terug kan.
 FIXED Gewassen zonder oogstmaanden vertonen bug bij slepen.  
 FIXED No scrolling while dragging on Mobile
 HACKY-FIX Op bevestigen kliken bij lege maand levert nullreferencexception op.  

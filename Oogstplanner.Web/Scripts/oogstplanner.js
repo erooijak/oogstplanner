@@ -47,9 +47,14 @@ var Scripts;
             $.post('/Calendar/RemoveFarmingAction', { id: id }, function (response) {
                 if (response.success === true) {
                     that.fillMonthCalendar(that.month);
-                    that.setHasActionAttributeValue(that.month, false);
+                    console.log($('.farmingMonth').children);
+                    console.log($('.farmingMonth').children.length);
                     alert("Het gewas is succesvol verwijderd.");
-                    that.toMain();
+                    if ($('.farmingMonth').children().length === 0) {
+                        that.setHasActionAttributeValue(that.month, false);
+                        that.toMain();
+                    }
+                    ;
                 }
                 else {
                     alert("TODO: Error handling");
