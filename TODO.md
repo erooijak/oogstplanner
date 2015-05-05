@@ -118,11 +118,11 @@ FIXED Indien meer dan een gewas levert het bij het verwijderen op dat je toch ni
 FIXED Gewassen zonder oogstmaanden vertonen bug bij slepen.  
 FIXED No scrolling while dragging on Mobile
 FIXED user is ingelogt en daarna uitlogt, werkt het cookie niet meer
+FIXED Anti-forgery token fixen.  [REMOVED TOKEN]  
 HACKY-FIX Op bevestigen kliken bij lege maand levert nullreferencexception op.  
 2x klikken op maand levert dubbele data op.  
 Als user niet langer is ingelogd krijg je exception bij toevoegen gewas
 0 invoeren in numeric text box is niet meer aan te passen met de pijltjes.  
-Anti-forgery token fixen.  
 Oude invoer blijft hangen op sleep scherm.  
 
 ### WENSEN:
