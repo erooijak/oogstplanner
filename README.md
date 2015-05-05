@@ -19,13 +19,17 @@ To enable lost password e-mailing remove the _ prefix from the Oogstplanner.Web/
 See http://www.philliphaydon.com/2013/06/setting-up-mono-on-nginx/.
 
     fastcgi-mono-server4 /applications=/:/path/to/applicationroot/ /socket=tcp:ip:9000 /logfile=/var/log/mono/fastcgi.log & 
+
+## TypeScript
+
+The project uses TypeScript. When using MonoDevelop add this [TypeScript add-in](http://addins.monodevelop.com/Project/Index/128).  
     
 ## Tests
 
 Run with NUnit.
 
 On Ubuntu derivatives with MonoDevelop as IDE install package with `sudo apt-get install monodevelop-nunit`.
-Once you have it, in MonoDevelop click on "View -> Pads -> Unit Tests".
+Once installed, in MonoDevelop click on "View -> Pads -> Unit Tests".
 
 ## Git
 
