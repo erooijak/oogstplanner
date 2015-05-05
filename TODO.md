@@ -114,6 +114,7 @@ IN PROGRESS README beetje netjes maken.
 FIXED Gewassen zonder oogstmaanden vertonen bug bij slepen.  
 FIXED No scrolling while dragging on Mobile
 HACKY-FIX Op bevestigen kliken bij lege maand levert nullreferencexception op.  
+Indien meer dan een gewas levert het bij het verwijderen op dat je toch niet meer terug kan.
 2x klikken op maand levert dubbele data op.  
 Als user niet langer is ingelogd krijg je exception bij toevoegen gewas
 0 invoeren in numeric text box is niet meer aan te passen met de pijltjes.  
