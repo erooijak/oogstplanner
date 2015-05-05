@@ -254,9 +254,7 @@
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Views\Account\Login.cshtml" />
-    <Content Include="Views\Account\Manage.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
-    <Content Include="Views\Account\_ChangePasswordPartial.cshtml" />
     <Content Include="Views\Account\_SetPasswordPartial.cshtml" />
     <Content Include="Content\Images\upstate-ny-permaculture-logo.jpg" />
     <Content Include="Content\Images\suvajack-design.jpg" />
@@ -292,6 +290,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Content\Stylesheets\oogstplanner.responsive-square-elements.css" />
     <Content Include="Content\Stylesheets\oogstplanner.styles.css" />
+    <Content Include="Content\Stylesheets\bootstrap-signin.css" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>

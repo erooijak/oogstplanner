@@ -13,20 +13,9 @@
 <div id="login" class="bg imglogin">
     <div class="row">
 
-        <!-- Login box adjusted from http://bootsnipp.com/snippets/featured/login-amp-signup-forms-in-panel by calvinko-->
         <div id="loginbox" class="mainbox col-lg-12 col-md-12 col-sm-12 col-xs-12">                    
-           
             <div class="panel panel-info">
-
-                <div class="panel-heading">
-                    <div class="panel-title">Inloggen</div>
-                    <div class="panel-side-link form-text">
-                        @Html.ActionLink("Wachtwoord vergeten?", "LostPassword")
-                    </div>
-                </div>     
-
                 <div class="panel-body">
-
                     <div id="login-alert" class="alert alert-danger col-sm-12"></div>
 
                     @{ Html.RenderPartial("_LoginForm"); }
@@ -37,17 +26,22 @@
 
         <div id="signupbox" class="mainbox col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="panel panel-info">
-                <div class="panel-heading">
-                    <div class="panel-title">Registreer je vandaag bij de Oogstplanner</div>
-                    <div class="panel-side-link">
-                        <a id="signin-link" href="#">Inloggen</a>
-                    </div>
-                </div>  
                 <div class="panel-body">
 
                     @{ Html.RenderPartial("_RegisterForm"); }
 
-                 </div><!-- End panel body -->
+                    <div class="form-group">
+                        <div class="col-md-12 control">
+                            <div class="box-border dark">
+                                Ik heb al een account! 
+                                <a id="signin-link" href="#">
+                                    Inloggen.
+                                </a>
+                            </div>
+                        </div>
+                    </div>  
+
+                </div><!-- End panel body -->
             </div><!-- End panel -->
         </div><!-- End signup box -->
 
