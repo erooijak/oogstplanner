@@ -19,6 +19,12 @@ namespace Oogstplanner.Services
                 : "";
         }
 
+        public void RemoveCookie(string key)
+        {
+            /* Removing a cookie is not possible, so overwrite cookie to expire yesterday. */
+            var value = HttpContext.Current.Request.Cookies[key].Value;
+            SetCookie(key, value, -1);
+        }
     }
 }
     

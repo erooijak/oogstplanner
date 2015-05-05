@@ -40,6 +40,8 @@ namespace Oogstplanner.Services
                     existingAnonymousUser.Email = email;
                     existingAnonymousUser.AuthenticationStatus = AuthenticatedStatus.Authenticated;
 
+                    cookieProvider.RemoveCookie(anonymousCookieKey);
+
                     userRepository.Update(existingAnonymousUser);
                     userRepository.SaveChanges();
                 }
