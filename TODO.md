@@ -107,6 +107,7 @@ TODO Vindbaarheid verbeteren.
 TODO Automatisch selecteren van oogsten. Lukt niet.  
 TODO Schots en scheefheid rechtzetten. (?) 
 TODO JavaScript extension methods.  
+TODO JavaScript herfactoreren naar viewmodellen.  
 
 ### Documentatie:
 IN PROGRESS README beetje netjes maken.  
