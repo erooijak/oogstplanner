@@ -39,7 +39,7 @@ namespace Oogstplanner.Tests
         public void Controllers_Crop_Index_AllCrops()
         {
             // Arrange
-            var expectedResult = "Broccoli";
+            const string expectedResult = "Broccoli";
 
             // Act
             var viewResult = controller.Index();
@@ -48,6 +48,22 @@ namespace Oogstplanner.Tests
             // Assert
             Assert.AreEqual(expectedResult, actualResult,
                 "Since there is only a broccoli in the database the index method should return it.");
+        }
+
+        [Test]
+        public void Controllers_Crop_All()
+        {
+            // Arrange
+            const string expectedResult = "Broccoli";
+
+            // Act
+            var viewResult = controller.All();
+            var actualResult = ((ContentResult)viewResult).Content;
+
+            // Assert
+            Assert.IsTrue(actualResult.Contains(expectedResult),
+                "Since there is a broccoli in the database the JSON string returned by the all " +
+                "method should contain it.");
         }
     	
     }
