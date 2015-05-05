@@ -10,12 +10,12 @@ namespace Oogstplanner.Services
 {
     public class CalendarService : ICalendarService
     {
-        readonly Repository repository;
+        readonly CalendarRepository repository;
         readonly FarmingActionService farmingActionService;
         readonly IUserService userService;
 
         public CalendarService(
-            Repository repository,
+            CalendarRepository repository,
             FarmingActionService farmingActionService,
             IIndex<AuthenticatedStatus, IUserService> userServices,
             AuthenticationService authService)

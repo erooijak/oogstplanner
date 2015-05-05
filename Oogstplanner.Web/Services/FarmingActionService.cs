@@ -13,10 +13,10 @@ namespace Oogstplanner.Services
 {
     public class FarmingActionService
     {
-        readonly Repository repository;
+        readonly FarmingActionRepository repository;
         readonly IUserService userService;
 
-        public FarmingActionService(Repository repository, 
+        public FarmingActionService(FarmingActionRepository repository, 
             AuthenticationService authService,
             IIndex<AuthenticatedStatus, IUserService> userServices)
         {

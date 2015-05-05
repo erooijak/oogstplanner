@@ -32,7 +32,7 @@ namespace Oogstplanner.Tests
                     }
                 }
             };
-            this.controller = new CropController(new CropProvider(new Repository(db)));
+            this.controller = new CropController(new CropProvider(new CropRepository(db)));
         }
 
         [Test]

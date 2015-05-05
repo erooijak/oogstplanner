@@ -8,7 +8,8 @@ namespace Oogstplanner.Services
 {
     public class AnonymousUserService : IUserService
     {
-        readonly Repository repository;
+        readonly UserRepository userRepository;
+        readonly CalendarRepository calendarRepository;
         readonly ICookieProvider cookieProvider;
 
         readonly string anonymousUserCookieKey = ConfigurationManager.AppSettings["AnonymousUserCookieKey"]; 
@@ -16,9 +17,13 @@ namespace Oogstplanner.Services
 
         private string guidOnClient;
 
-        public AnonymousUserService(Repository repository, ICookieProvider cookieProvider)
+        public AnonymousUserService(
+            UserRepository userRepository, 
+            CalendarRepository calendarRepository,
+            ICookieProvider cookieProvider)
         {
-            this.repository = repository;
+            this.userRepository = userRepository;
+            this.calendarRepository = calendarRepository;
             this.cookieProvider = cookieProvider;
         }
             
@@ -32,11 +37,11 @@ namespace Oogstplanner.Services
                     AddUser(guid, null, null);
                     GuidOnClient = guid;
 
-                    return repository.GetUserByUserName(guid);
+                    return userRepository.GetUserByUserName(guid);
                 }
                 else
                 {
-                    return repository.GetUserByUserName(GuidOnClient);
+                    return userRepository.GetUserByUserName(GuidOnClient);
                 }
 
             }
@@ -67,13 +72,13 @@ namespace Oogstplanner.Services
                     AuthenticationStatus = AuthenticatedStatus.Anonymous, // by definition
                     CreationDate = DateTime.Now
                 };
-            repository.AddUser(user);
+            userRepository.AddUser(user);
 
             // Get the actual user from the database, so we get the created UserId.
-            var newlyCreatedUser = repository.GetUserByUserName(userName);
+            var newlyCreatedUser = userRepository.GetUserByUserName(userName);
 
             // Create calendar for the anonymous user
-            repository.CreateCalendar(newlyCreatedUser);
+            calendarRepository.CreateCalendar(newlyCreatedUser);
         }
 
         public int GetCurrentUserId()
@@ -83,7 +88,7 @@ namespace Oogstplanner.Services
 
         public User GetUser(int id)
         {
-            return repository.GetUserById(id);
+            return userRepository.GetUserById(id);
         }
             
     }

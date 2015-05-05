@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Web.Mvc;
 using Autofac;
 using Autofac.Integration.Mvc;
 using Oogstplanner.Models;
@@ -18,7 +19,8 @@ namespace Oogstplanner
                 .As<IOogstplannerContext>()
                 .InstancePerRequest();
 
-            builder.RegisterType<Repository>()
+            builder.RegisterAssemblyTypes(AppDomain.CurrentDomain.GetAssemblies())
+                .Where(t => t.Name.EndsWith("Repository"))
                 .InstancePerRequest();
             builder.RegisterType<AuthenticationService>()
                 .InstancePerRequest();

@@ -10,12 +10,17 @@ namespace Oogstplanner.Services
 {
     public class UserService : IUserService
     {
-        readonly Repository repository;
+        readonly UserRepository userRepository;
+        readonly CalendarRepository calendarRepository;
         readonly ICookieProvider cookieProvider;
 
-        public UserService(Repository repository, ICookieProvider cookieProvider)
+        public UserService(
+            UserRepository userRepository, 
+            CalendarRepository calendarRepository,
+            ICookieProvider cookieProvider)
         {
-            this.repository = repository;
+            this.userRepository = userRepository;
+            this.calendarRepository = calendarRepository;
             this.cookieProvider = cookieProvider;
         }
 
@@ -29,14 +34,14 @@ namespace Oogstplanner.Services
             {
                 try
                 {
-                    var existingAnonymousUser = repository.GetUserByUserName(clientUserName);
+                    var existingAnonymousUser = userRepository.GetUserByUserName(clientUserName);
                     existingAnonymousUser.Name = userName;
                     existingAnonymousUser.FullName = fullName;
                     existingAnonymousUser.Email = email;
                     existingAnonymousUser.AuthenticationStatus = AuthenticatedStatus.Authenticated;
 
-                    repository.Update(existingAnonymousUser);
-                    repository.SaveChanges();
+                    userRepository.Update(existingAnonymousUser);
+                    userRepository.SaveChanges();
                 }
                 catch (ArgumentException ex)
                 {
@@ -56,14 +61,14 @@ namespace Oogstplanner.Services
                         CreationDate = DateTime.Now
                     };
 
-                repository.AddUser(newUser);
+                userRepository.AddUser(newUser);
                 Roles.AddUserToRole(userName, "user");
 
                 // Get the actual user from the database, so we get the created UserId.
-                var newlyCreatedUser = repository.GetUserByUserName(userName);
+                var newlyCreatedUser = userRepository.GetUserByUserName(userName);
 
                 // Create calendar for the user
-                repository.CreateCalendar(newlyCreatedUser);
+                calendarRepository.CreateCalendar(newlyCreatedUser);
             }
         }
 
@@ -75,15 +80,15 @@ namespace Oogstplanner.Services
             var currentUserEmailOrName = HttpContext.Current.User.Identity.Name;
 
             int currentUserId = currentUserEmailOrName.Contains("@")
-                ? repository.GetUserIdByEmail(currentUserEmailOrName)
-                : repository.GetUserIdByName(currentUserEmailOrName);
+                ? userRepository.GetUserIdByEmail(currentUserEmailOrName)
+                : userRepository.GetUserIdByName(currentUserEmailOrName);
           
             return currentUserId;
         }
 
         public User GetUser(int id)
         {
-            return repository.GetUserById(id);
+            return userRepository.GetUserById(id);
         }
             
     }

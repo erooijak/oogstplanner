@@ -7,9 +7,9 @@ namespace Oogstplanner.Services
 {
     public class CropProvider
     {
-        readonly Repository repository;
+        readonly CropRepository repository;
 
-        public CropProvider(Repository repository)
+        public CropProvider(CropRepository repository)
         {
             this.repository = repository;
         }

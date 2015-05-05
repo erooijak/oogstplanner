@@ -118,10 +118,13 @@ namespace Oogstplanner.Tests
                 new string[0]
             );
 
-            var repository = new Repository(db);
-            service = new FarmingActionService(repository, 
+            var farmingActionRepository = new FarmingActionRepository(db);
+            var userRepository = new UserRepository(db);
+            var calendarRepository = new CalendarRepository(db);
+            service = new FarmingActionService(
+                farmingActionRepository, 
                 new AuthenticationService(), 
-                new FakeUserServices(repository)
+                new FakeUserServices(userRepository, calendarRepository)
             );
         }
 
