@@ -88,6 +88,9 @@ else
 
         </div><!--End collapsible navbar -->
     </nav>
+        
+    @* Validation of JavaScript and cookies *@
+    @{ Html.RenderPartial("_BrowserValidation"); }
 
     <div class="container">
     	@RenderBody()

@@ -1,0 +1,19 @@
+﻿<div id="cookies-disabled" class="browser-validation">
+    <h3>OogstPlanner.nl maakt gebruik van browser cookies</h3>
+    <p>Activeert u alstublieft cookies in uw browser instellingen om goed gebruik te kunnen maken van de oogstplanner.</p>
+</div>
+
+<script>
+    if (navigator.cookieEnabled === false) {
+        $('#cookies-disabled').show();
+    } else { 
+        $('#cookies-disabled').hide();
+    }
+</script>
+
+<noscript>
+    <div id="javascript-disabled" class="browser-validation">
+        <h3>OogstPlanner.nl maakt gebruik van JavaScript</h3>
+        <p>Activeert u alstublieft JavaScript in uw browser instellingen om goed gebruik te kunnen maken van de oogstplanner.</p>
+    </div>
+</noscript>    

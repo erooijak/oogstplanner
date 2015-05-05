@@ -295,6 +295,7 @@
     <Content Include="Scripts\bootstrap-dialog.min.js" />
     <Content Include="Scripts\oogstplanner.event-listeners.js" />
     <Content Include="Views\Account\_LoginModal.cshtml" />
+    <Content Include="Views\Shared\_BrowserValidation.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
