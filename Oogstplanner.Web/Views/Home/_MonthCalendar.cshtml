@@ -34,7 +34,7 @@
 </div>
 
 @*TODO Error handling onfailure, this is a temporary solution. It throws a JavaScript error, but the user can go on.*@
-@using (Ajax.BeginForm("UpdateMonth", new AjaxOptions { OnSuccess = "oogstplanner.toMain", OnFailure = "oogstplanner.toMain" }))
+@using (Ajax.BeginForm("UpdateMonth", new AjaxOptions { OnSuccess = "Scripts.toMain()", OnFailure = "Scripts.toMain()" }))
 {
     <!-- Main rectangles -->
     <div class="rectangle-vertical rectangle-sowing">
@@ -94,7 +94,7 @@
         </div>
     </div>
 
-    <input type="button" class="btn btn-default" value="Terug zonder opslaan!" onclick="oogstplanner.toMain()" />
+    <input type="button" class="btn btn-default" value="Terug zonder opslaan!" onclick="Scripts.toMain()" />
     <input type="submit" class="btn btn-success" value="Wijzigingen opslaan!" /><br/>
 
         

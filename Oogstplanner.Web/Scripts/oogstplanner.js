@@ -1,169 +1,122 @@
-﻿var oogstplanner = {
-	
-    month: null,
-
-    toMonthCalendar: function() {
-        $.fn.fullpage.moveSlideRight();
-        $(window).scrollTop(0);
-        this.makeNumericTextBoxesNumeric();
-        this.makeCropPluralWhenCropCountIsBiggerThan1();
-
-        // Remove the crop-selection-box since the side is visible on the month calendar...
-        $('#crop-selection-box').hide();
-    },
-    
-    toMain: function() {
-        $.fn.fullpage.moveSlideLeft();
-        $(window).scrollTop(0);
-
-        $('#crop-selection-box').show();
-    },
-
-    fillMonthCalendar: function(month) {
-
-        // Store the month in the object so we can use it and do not have to get it from the page.
-        this.month = month;
-
-        $.get('/Calendar/Month?month=' + month, function(data) {
-            $('#_MonthCalendar').html(data);
-        })
-        .done(function() { oogstplanner.toMonthCalendar(); oogstplanner.bindFarmingActionRemoveFunctionToDeleteButton(); })
-        .fail(function() { alert('TODO: Error handling'); });
-    },
-
-    addFarmingAction: function(cropId, month, actionType, cropCount) {
-        $.post('/Calendar/AddFarmingAction', { cropId: cropId, month: month, actionType: actionType, cropCount: cropCount } );
-        this.setHasActionAttributeValue(month, true);
-    },
-
-    setHasActionAttributeValue: function(month, value) {
-        $('[data-month=' + month + ']').data( "hasAction", value);
-    },
-
-    getHasActionAttributeValue: function(month) {
-        return $('[data-month=' + month + ']').data('hasAction');
-    },
-
-    removeFarmingAction: function(id) {
-        var that = this;
-        $.post('/Calendar/RemoveFarmingAction', { id: id }, function (response) {
-            if (response.success === true) { 
-                that.fillMonthCalendar(that.month);
-                that.setHasActionAttributeValue(that.month, false);
-                alert("Het gewas is succesvol verwijderd.");
-                that.toMain();
-            }
-            else { 
-                alert("TODO: Error handling");
-            }
-        });
-    },
-
-    resizeCropSelectionBox: function() {
-        $('#crop-selection-box').css({
-            height: $('#month-overview-responsive-square-elements').innerHeight()
-        });
-    },
-
-    resizeLoginArea: function() {
-        
-        var windowHeight = $(window).innerHeight();
-        var topHeight = $('#top').innerHeight();
-        var padding = windowHeight * 0.025 + 20;	
-
-        $('#login').css({ 
-            height: windowHeight - topHeight - padding
-        });
-
-    },
-
-    resetValidation: function() {
-
-        // Removes validation from input-fields
-        $('.input-validation-error').empty();
-
-        // Removes validation message after input-fields
-        $('.field-validation-error').empty();
-
-        // Removes validation summary 
-        $('.validation-summary-errors').empty();
-
-    },
-
-    makeNumericTextBoxesNumeric: function() {
-        $(".numeric-text-box").keydown(function (e) {
-            
-            // Allow: backspace, delete, tab, escape, enter and .
-            if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110, 190]) !== -1 ||
-
-                // Allow: Ctrl+A.
-                (e.keyCode === 65 && e.ctrlKey === true) || 
-
-                // Allow: home, end, left, right, down, up.
-                (e.keyCode >= 35 && e.keyCode <= 40)) {
-
-                    // If field would become empty by backspace or delete disable the move.
-                    if ( (e.keyCode === 46 || e.keyCode === 8) && $(this).val().length === 1) {
-                        
-                        // TODO: If field would become larger than 999 disable the move.
-
+var Scripts;
+(function (Scripts) {
+    function toMain() {
+        var oogstplanner = new Oogstplanner();
+        oogstplanner.toMain();
+    }
+    Scripts.toMain = toMain;
+    var Oogstplanner = (function () {
+        function Oogstplanner() {
+        }
+        Oogstplanner.prototype.toMonthCalendar = function () {
+            $.fn.fullpage.moveSlideRight();
+            $(window).scrollTop(0);
+            this.makeNumericTextBoxesNumeric();
+            this.makeCropPluralWhenCropCountIsBiggerThan1();
+            $('#crop-selection-box').hide();
+        };
+        Oogstplanner.prototype.toMain = function () {
+            $.fn.fullpage.moveSlideLeft();
+            $(window).scrollTop(0);
+            $('#crop-selection-box').show();
+        };
+        Oogstplanner.prototype.fillMonthCalendar = function (month) {
+            this.month = month;
+            var that = this;
+            $.get('/Calendar/Month?month=' + month, function (data) {
+                $('#_MonthCalendar').html(data);
+            }).done(function () {
+                that.toMonthCalendar();
+                that.bindFarmingActionRemoveFunctionToDeleteButton();
+            }).fail(function () {
+                alert('TODO: Error handling');
+            });
+        };
+        Oogstplanner.prototype.addFarmingAction = function (cropId, month, actionType, cropCount) {
+            $.post('/Calendar/AddFarmingAction', { cropId: cropId, month: month, actionType: actionType, cropCount: cropCount });
+            this.setHasActionAttributeValue(month, true);
+        };
+        Oogstplanner.prototype.setHasActionAttributeValue = function (month, value) {
+            $('[data-month=' + month + ']').data("hasAction", value);
+        };
+        Oogstplanner.prototype.getHasActionAttributeValue = function (month) {
+            return $('[data-month=' + month + ']').data('hasAction');
+        };
+        Oogstplanner.prototype.removeFarmingAction = function (id) {
+            var that = this;
+            $.post('/Calendar/RemoveFarmingAction', { id: id }, function (response) {
+                if (response.success === true) {
+                    that.fillMonthCalendar(that.month);
+                    that.setHasActionAttributeValue(that.month, false);
+                    alert("Het gewas is succesvol verwijderd.");
+                    that.toMain();
+                }
+                else {
+                    alert("TODO: Error handling");
+                }
+            });
+        };
+        Oogstplanner.prototype.resizeCropSelectionBox = function () {
+            $('#crop-selection-box').css({
+                height: $('#month-overview-responsive-square-elements').innerHeight()
+            });
+        };
+        Oogstplanner.prototype.resizeLoginArea = function () {
+            var windowHeight = $(window).innerHeight();
+            var topHeight = $('#top').innerHeight();
+            var padding = windowHeight * 0.025 + 20;
+            $('#login').css({
+                height: windowHeight - topHeight - padding
+            });
+        };
+        Oogstplanner.prototype.resetValidation = function () {
+            $('.input-validation-error').empty();
+            $('.field-validation-error').empty();
+            $('.validation-summary-errors').empty();
+        };
+        Oogstplanner.prototype.makeNumericTextBoxesNumeric = function () {
+            $(".numeric-text-box").keydown(function (e) {
+                if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110, 190]) !== -1 || (e.keyCode === 65 && e.ctrlKey === true) || (e.keyCode >= 35 && e.keyCode <= 40)) {
+                    if ((e.keyCode === 46 || e.keyCode === 8) && $(this).val().length === 1) {
                         e.preventDefault();
                     }
-
-                    // Otherwise let it happen, don't do anything.
                     return;
-            }
-
-            // Ensure that it is a number and stop the keypress.
-            if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
+                }
+                if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
+                    e.preventDefault();
+                }
+            });
+        };
+        Oogstplanner.prototype.makeCropPluralWhenCropCountIsBiggerThan1 = function () {
+            $('.form-group').each(function () {
+                var input = $(this).find('input:first');
+                var span = $(this).find('.crop-count-crop-word:first');
+                input.change(function () {
+                    span.text($(this).val() == 1 ? 'plant' : 'planten');
+                });
+                input.trigger('change');
+            });
+        };
+        Oogstplanner.prototype.bindFarmingActionRemoveFunctionToDeleteButton = function () {
+            var that = this;
+            $('.remove-farming-action').bind('click', function (e) {
                 e.preventDefault();
-            }
-
-        });
-    },
-
-    makeCropPluralWhenCropCountIsBiggerThan1: function() {
-
-        // Every crop count input field needs a span label with crop or crops depending on the count.
-        $('.form-group').each(function() {
-            var input = $(this).find('input:first');
-            var span = $(this).find('.crop-count-crop-word:first');
-            input.change(function() {
-                span.text( $(this).val() == 1 ? 'plant' : 'planten' );
-            });      
-
-            // Ensure text is correct on load by triggering change event.
-            input.trigger('change');
-          
-        });
-
-    },
-
-    bindFarmingActionRemoveFunctionToDeleteButton: function() {
-
-        var that = this;
-
-        $('.remove-farming-action').bind('click', function (e) {
-            e.preventDefault();
-
-            // farming action id is stored in the id of the remove-farming-action element.
-            var farmingActionId = this.id;
-            that.removeFarmingAction(farmingActionId);
-
-        });
-
-    },
-
-    showSignupBox: function() {
-        $('#loginbox').hide(); 
-        $('#signupbox').show(); 
-        this.resetValidation();
-    },
-
-    showLoginBox: function() {
-        $('#signupbox').hide(); 
-        $('#loginbox').show(); 
-        this.resetValidation();
-    }
-
-};
+                var farmingActionId = this.id;
+                that.removeFarmingAction(farmingActionId);
+            });
+        };
+        Oogstplanner.prototype.showSignupBox = function () {
+            $('#loginbox').hide();
+            $('#signupbox').show();
+            this.resetValidation();
+        };
+        Oogstplanner.prototype.showLoginBox = function () {
+            $('#signupbox').hide();
+            $('#loginbox').show();
+            this.resetValidation();
+        };
+        return Oogstplanner;
+    })();
+    Scripts.Oogstplanner = Oogstplanner;
+})(Scripts || (Scripts = {}));
+//# sourceMappingURL=oogstplanner.js.map

@@ -285,12 +285,6 @@
     <Content Include="Content\Images\Draggable\harvesting.png" />
     <Content Include="Views\Home\SowingAndHarvesting.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Scripts\oogstplanner.js" />
-    <Content Include="Scripts\oogstplanner.crop-selection-box.js" />
-    <Content Include="Scripts\oogstplanner.crops-suggestion-engine.js" />
-    <Content Include="Scripts\oogstplanner.drag-and-drop.js" />
-    <Content Include="Scripts\oogstplanner.month-click-listeners.js" />
-    <Content Include="Scripts\oogstplanner.site-settings.js" />
     <Content Include="Content\Stylesheets\oogstplanner.responsive-square-elements.css" />
     <Content Include="Content\Stylesheets\oogstplanner.styles.css" />
   </ItemGroup>
@@ -312,5 +306,14 @@
     <None Include="App_Data\Production\Migrations\201403301824_Initial.sql" />
     <None Include="App_Data\Production\Migrations\201526042011_AddAuthenticationStatus.sql" />
     <None Include="App_Data\Production\readme.txt" />
+    <None Include="Scripts\oogstplanner.ts" />
+    <None Include="Scripts\oogstplanner.site-settings.ts" />
+    <None Include="Scripts\oogstplanner.drag-and-drop.ts" />
+    <None Include="Scripts\typings\jquery.d.ts" />
+    <None Include="Scripts\typings\jquery.plugins.d.ts" />
+    <None Include="Scripts\oogstplanner.month-click-listeners.ts" />
+    <None Include="Scripts\oogstplanner.crops-suggestion-engine.ts" />
+    <None Include="Scripts\oogstplanner.crop-selection-box.ts" />
+    <None Include="Scripts\typings\jqueryui.d.ts" />
   </ItemGroup>
 </Project>
