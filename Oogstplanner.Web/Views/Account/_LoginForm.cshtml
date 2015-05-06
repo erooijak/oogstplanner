@@ -11,7 +11,7 @@
 
     @Html.LabelFor(vm => vm.Login.UserName, new { @class="sr-only" })
     @Html.TextBoxFor(vm => vm.Login.UserName, 
-        new { @class = "form-control", @type="email", @placeholder = "Gebruikersnaam of e-mailadres" })
+        new { @class = "form-control", @placeholder = "Gebruikersnaam of e-mailadres" })
     @Html.LabelFor(vm => vm.Login.Password, new { @class="sr-only" })
     @Html.PasswordFor(vm => vm.Login.Password, 
         new { @class = "form-control", @placeholder = "Wachtwoord" })
