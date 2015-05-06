@@ -196,7 +196,6 @@
     <Compile Include="Services\CookieProvider.cs" />
     <Compile Include="ViewModels\SowingAndHarvestingViewModel.cs" />
     <Compile Include="Services\ICookieProvider.cs" />
-    <Compile Include="Utilities\CustomExceptions\JorritNotAllowedException.cs" />
     <Compile Include="Utilities\CustomExceptions\SecurityException.cs" />
     <Compile Include="Utilities\ExtensionMethods\MonthExtension.cs" />
     <Compile Include="Utilities\ExtensionMethods\UrlHelperExtension.cs" />
