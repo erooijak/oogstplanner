@@ -162,6 +162,7 @@
     <Folder Include="Services\" />
     <Folder Include="Utilities\" />
     <Folder Include="App_Data\Membership\" />
+    <Folder Include="Utilities\Filters\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\HomeController.cs" />
@@ -216,6 +217,9 @@
     <Compile Include="Repositories\RepositoryBase.cs" />
     <Compile Include="Repositories\CalendarRepository.cs" />
     <Compile Include="Repositories\PasswordRecoveryRepository.cs" />
+    <Compile Include="Utilities\Filters\ValidateAjaxFilterAttribute.cs" />
+    <Compile Include="Utilities\Helpers\JsonHelper.cs" />
+    <Compile Include="Utilities\Helpers\MembershipHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Web.config" />
@@ -251,16 +255,10 @@
     <Content Include="Scripts\jquery.slimscroll.min.js" />
     <Content Include="Content\Images\harvesting.jpg" />
     <Content Include="Content\Images\sowing.jpg" />
-    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
-    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
-    <Content Include="Views\Account\Login.cshtml" />
-    <Content Include="Views\Account\Register.cshtml" />
-    <Content Include="Views\Account\_SetPasswordPartial.cshtml" />
     <Content Include="Content\Images\upstate-ny-permaculture-logo.jpg" />
     <Content Include="Content\Images\suvajack-design.jpg" />
     <Content Include="Views\Account\_RegisterForm.cshtml" />
     <Content Include="Views\Account\_LoginForm.cshtml" />
-    <Content Include="Views\Account\LostPassword.cshtml" />
     <Content Include="Views\Account\_LostPasswordForm.cshtml" />
     <Content Include="Views\Account\ResetPassword.cshtml" />
     <Content Include="Views\Account\_ResetPasswordForm.cshtml" />
@@ -296,6 +294,7 @@
     <Content Include="Scripts\oogstplanner.event-listeners.js" />
     <Content Include="Views\Account\_LoginModal.cshtml" />
     <Content Include="Views\Shared\_BrowserValidation.cshtml" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>

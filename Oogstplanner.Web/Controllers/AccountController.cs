@@ -6,6 +6,7 @@ using System.Web.Security;
 
 using Oogstplanner.Utilities.CustomExceptions;
 using Oogstplanner.Utilities.ExtensionMethods;
+using Oogstplanner.Utitilies.Filters;
 using Oogstplanner.Services;
 using Oogstplanner.Models;
 using Oogstplanner.ViewModels;
@@ -35,18 +36,10 @@ namespace Oogstplanner.Controllers
         }
 
         //
-        // GET: /Account/Login
-        [AllowAnonymous]
-        public ActionResult Login(string returnUrl)
-        {
-            ViewBag.ReturnUrl = returnUrl;
-            return View();
-        }
-
-        //
         // POST: /Account/Login
         [HttpPost]
         [AllowAnonymous]
+        [ValidateAjax]
         public ActionResult Login(LoginOrRegisterViewModel viewModel, string returnUrl)
         {
             var model = viewModel.Login;
@@ -75,21 +68,14 @@ namespace Oogstplanner.Controllers
                 }
             }
                 
-            return View(viewModel);
-        }
-
-        //
-        // GET: /Account/Register
-        [AllowAnonymous]
-        public ActionResult Register()
-        {
-            return View();
+            return new EmptyResult();
         }
 
         //
         // POST: /Account/Register/
         [HttpPost]
         [AllowAnonymous]
+        [ValidateAjax]
         public ActionResult Register(LoginOrRegisterViewModel viewModel)
         {           
             var model = viewModel.Register;
@@ -113,11 +99,11 @@ namespace Oogstplanner.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError("registration", ErrorCodeToString(status));
+                    ModelState.AddModelError("registration", MembershipHelper.ErrorCodeToString(status));
                 }
             }
-
-            return View("Register", viewModel);
+             
+            return new EmptyResult();
         }
        
         //
@@ -131,17 +117,10 @@ namespace Oogstplanner.Controllers
         }
 
         //
-        // GET: /Account/LostPassword
-        [AllowAnonymous]
-        public ActionResult LostPassword()
-        {
-            return View();
-        }
-
-        //
         // POST: Account/LostPassword
         [HttpPost]
         [AllowAnonymous]
+        [ValidateAjax]
         public ActionResult LostPassword(LostPasswordModel model)
         {
             if (ModelState.IsValid)
@@ -157,9 +136,9 @@ namespace Oogstplanner.Controllers
                     var resetLink = Url.Action("ResetPassword", "Account", new { rt = token }, "http");
 
                     // Email stuff
-                    var subject = "Reset uw wachtwoord voor de Oogstplanner";
-                    var body = "Gebruik binnen 24 uur de volgende link om uw wachtwoord te resetten: " + resetLink;
-                    var from = "donotreply@oogstplanner.nl";
+                    const string subject = "Reset uw wachtwoord voor de Oogstplanner";
+                    string body = "Gebruik binnen 24 uur de volgende link om uw wachtwoord te resetten: " + resetLink;
+                    const string from = "donotreply@oogstplanner.nl";
 
                     var message = new MailMessage(from, model.Email) 
                     {
@@ -187,7 +166,7 @@ namespace Oogstplanner.Controllers
 
             }
                 
-            return View(model);
+            return new EmptyResult();
         }
 
         //
@@ -251,57 +230,6 @@ namespace Oogstplanner.Controllers
 
             return View(currentUser);
         }
-
-        #region Helpers
-        private ActionResult RedirectToLocal(string returnUrl)
-        {
-            if (Url.IsLocalUrl(returnUrl))
-            {
-                return Redirect(returnUrl);
-            }
-            else
-            {
-                return RedirectToAction("Index", "Home");
-            }
-        }
-
-        public static string ErrorCodeToString(MembershipCreateStatus createStatus)
-        {
-            // See http://go.microsoft.com/fwlink/?LinkID=177550 for
-            // a full list of status codes.
-
-            var errorcodes = new Dictionary<MembershipCreateStatus, String>()
-            {
-                { MembershipCreateStatus.DuplicateUserName, 
-                    "Gebruikersnaam bestaat al. Vult u alstublieft een andere gebruikersnaam in." },
-                { MembershipCreateStatus.DuplicateEmail, 
-                    "Er bestaat al een gebruiker met dit e-mailadres. Vult u alstublieft een ander e-mailadres in." },
-                { MembershipCreateStatus.InvalidPassword, 
-                    "Het wachtwoord is niet geldig. Vult u alstublieft een geldig wachtwoord in." },
-                { MembershipCreateStatus.InvalidEmail, 
-                    "Het verstrekte e-mailadres is ongeldig. Controleert u alstublieft het adres en vul een correcte in." },
-                { MembershipCreateStatus.InvalidAnswer, 
-                    "Het antwoord op de geheime vraag is ongeldig. Controleert u alstublieft de waarde en probeer het opnieuw." },
-                { MembershipCreateStatus.InvalidQuestion, 
-                    "De geheime vraag is ongeldig. Controleert u alstublieft de waarde en probeer het opnieuw." },
-                { MembershipCreateStatus.InvalidUserName, 
-                    "De verstrekte gebruikersnaam is ongeldig. Controleert u alstublieft de waarde en probeer het opnieuw." },
-                { MembershipCreateStatus.ProviderError, 
-                    "De verstrekte authenticatie leidde tot een fout. Controleert u alstublieft de waarde en probeer het opnieuw. Als het probleem aanhoudt contacteer dan uw systeembeheerder." },
-                { MembershipCreateStatus.UserRejected, 
-                    "Het creëeren van een nieuwe gebruiker is mislukt. Controleert u alstublieft de waarde en probeer het opnieuw. Als het probleem aanhoudt contacteer dan uw systeembeheerder." }
-            };
-
-            if (errorcodes.ContainsKey(createStatus))
-            {
-                return errorcodes[createStatus];
-            }
-            else
-            {
-                return "Een onbekende fout heeft plaatsgevonden. Controleert u alstublieft de waarde en probeer het opnieuw. Als het probleem aanhoudt contacteer dan uw systeembeheerder.";
-            }
-        }
-        #endregion
 
     }
 }

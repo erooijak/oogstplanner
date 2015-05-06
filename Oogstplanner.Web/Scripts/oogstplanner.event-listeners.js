@@ -22,7 +22,7 @@
     /* Add click listener to login or register button which shows modal popup. */
     $('#registerOrLogin').on('click', function() {
         BootstrapDialog.show({
-            title: 'Registreren of inloggen bij de Oogstplanner',
+            title: 'De oogstplanner gemeenschap',
             message: $('<div></div>').load('/Account/LoginOrRegisterModal')
         });
     });

@@ -36,11 +36,11 @@ namespace Oogstplanner.Models
 
     public class LoginModel
     {
-        [Required(ErrorMessage = "*")]
+        [Required(ErrorMessage = "Gebruikersnaam niet ingevuld.")]
         [Display(Name = "Gebruikersnaam")]
         public string UserName { get; set; }
 
-        [Required(ErrorMessage = "*")]
+        [Required(ErrorMessage = "Wachtwoord niet ingevuld.")]
         [DataType(DataType.Password)]
         [Display(Name = "Wachtwoord")]
         public string Password { get; set; }
@@ -51,20 +51,20 @@ namespace Oogstplanner.Models
 
     public class RegisterModel
     {
-        [Required(ErrorMessage = "Naam is verplicht.")]
+        [Required(ErrorMessage = "Naam is niet ingevuld.")]
         [Display(Name = "Naam")]
         public string FullName { get; set; }
 
-        [Required(ErrorMessage = "Gebruikersnaam is verplicht.")]
+        [Required(ErrorMessage = "Gebruikersnaam is niet ingevuld.")]
         [Display(Name = "Gebruikersnaam")]
         public string UserName { get; set; }
 
-        [Required(ErrorMessage = "E-mailadres is verplicht.")]
+        [Required(ErrorMessage = "E-mailadres is niet ingevuld.")]
         [Display(Name = "E-mailadres")]
         [EmailAddress(ErrorMessage = "Ongeldig e-mailadres.")]
         public string Email { get; set; }
 
-        [Required(ErrorMessage = "Wachtwoord is verplicht.")]
+        [Required(ErrorMessage = "Wachtwoord is niet ingevuld.")]
         [StringLength(100, ErrorMessage = "Het wachtwoord moet op zijn minst {2} tekens lang zijn.", MinimumLength = 6)]
         [DataType(DataType.Password)]
         [Display(Name = "Wachtwoord")]
@@ -93,15 +93,15 @@ namespace Oogstplanner.Models
     /* For display on the view */
     public class ResetPasswordModel
     {
-        [Required]
+        [Required(ErrorMessage = "Nieuw wachtwoord niet ingevuld.")]
         [Display(Name = "Nieuw wachtwoord")]
         [DataType(DataType.Password)]
         public string Password { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Bevestig wachtwoord niet ingevuld.")]
         [Display(Name = "Bevestig wachtwoord")]
         [DataType(DataType.Password)]
-        [Compare("Password", ErrorMessage = "Wachtwoorden zijn niet hetzelfde.")]
+        [Compare("Password", ErrorMessage = "Wachtwoorden komen niet overeen.")]
         public string ConfirmPassword { get; set; }
 
         [Required]

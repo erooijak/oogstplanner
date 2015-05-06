@@ -5,6 +5,24 @@ var Scripts;
         oogstplanner.toMain();
     }
     Scripts.toMain = toMain;
+    function refreshPage() {
+        window.location.reload();
+    }
+    Scripts.refreshPage = refreshPage;
+    function resetValidation() {
+        var oogstplanner = new Oogstplanner();
+        oogstplanner.resetValidation();
+    }
+    Scripts.resetValidation = resetValidation;
+    function handleError(modelState) {
+        for (var key in modelState) {
+            if (modelState.hasOwnProperty(key)) {
+                $("[name='" + modelState[key].key + "']").addClass('input-validation-error');
+                $(".validation-summary-errors > ul").addClass('alert alert-danger').append('<li>' + modelState[key].errors + '</li>');
+            }
+        }
+    }
+    Scripts.handleError = handleError;
     var Oogstplanner = (function () {
         function Oogstplanner() {
         }
@@ -74,9 +92,10 @@ var Scripts;
             });
         };
         Oogstplanner.prototype.resetValidation = function () {
-            $('.input-validation-error').empty();
-            $('.field-validation-error').empty();
-            $('.validation-summary-errors').empty();
+            $('.input-validation-error').removeClass('input-validation-error');
+            $('.field-validation-error').removeClass('field-validation-error');
+            $('.validation-summary-errors > ul').empty();
+            $('.validation-summary-errors > ul').removeClass('alert alert-danger');
         };
         Oogstplanner.prototype.makeNumericTextBoxesNumeric = function () {
             $(".numeric-text-box").keydown(function (e) {

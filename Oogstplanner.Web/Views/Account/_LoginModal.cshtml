@@ -6,13 +6,28 @@
         <div class="col-md-12 control">
             <div class="box-border dark">
                 Ik heb nog geen account! 
-                <a id="register-link" href="#">
+                <a class="register-link" href="#">
                     Registreren.
                 </a>
             </div>
         </div>
     </div>  
 
+</div>
+
+<div id="lostpasswordbox" class="form-signin">
+
+    @{ Html.RenderPartial("_LostPasswordForm"); } 
+
+    <div class="form-group">
+        <div class="col-md-12 control">
+            <div class="box-border dark">
+                Terug naar <a class="signin-link" href="#">inloggen</a> of <a class="register-link" href="#">registreren</a>.
+            </div>
+        </div>
+        <br/>
+    </div>  
+        
 </div>
 
 <div id="signupbox" class="form-signin">
@@ -23,7 +38,7 @@
         <div class="col-md-12 control">
             <div class="box-border dark">
                 Ik heb al een account! 
-                <a id="signin-link" href="#">
+                <a class="signin-link" href="#">
                     Inloggen.
                 </a>
             </div>
@@ -33,30 +48,45 @@
 </div>
 
 <script>
+
+    @* Code is copied from oogstplanner.ts file, this was done because for an unknown reason
+       I could not find a way to bind the events or call the functions from a separate script. 
+    *@
+
     function resetValidation() {
-  
+
         // Removes validation from input-fields
-        $('.input-validation-error').empty();
+        $('.input-validation-error').removeClass('input-validation-error');
 
         // Removes validation message after input-fields
-        $('.field-validation-error').empty();
+        $('.field-validation-error').removeClass('field-validation-error');
 
         // Removes validation summary 
-        $('.validation-summary-errors').empty();
+        $('.validation-summary-errors > ul').empty();
+        $('.validation-summary-errors > ul').removeClass('alert alert-danger');
 
     };
 
     $(function() {
 
-        $("#signin-link").on("click",function(e){
-            $('#signupbox').hide(); 
+        $(".signin-link").on("click",function(e){
+            $('#signupbox').hide();
+            $('#lostpasswordbox').hide(); 
             $('#loginbox').show(); 
             resetValidation();
         });
 
-        $("#register-link").on("click",function(e){
-            $('#loginbox').hide(); 
+        $(".register-link").on("click",function(e){
+            $('#loginbox').hide();
+            $('#lostpasswordbox').hide(); 
             $('#signupbox').show(); 
+            resetValidation();
+        });
+
+        $("#lost-password-link").on("click",function(e){
+            $('#loginbox').hide();
+            $('#signupbox').hide(); 
+            $('#lostpasswordbox').show(); 
             resetValidation();
         });
             

@@ -99,7 +99,7 @@ p {
 #login-alert {
     display: none;
 }
-#signupbox {
+#signupbox, #lostpasswordbox {
     display: none;
 }
 #selected-crop-info {

@@ -7,6 +7,26 @@ module Scripts {
         oogstplanner.toMain();
     }
 
+    export function refreshPage() {
+        window.location.reload();
+    }
+
+    export function resetValidation() {
+        var oogstplanner = new Oogstplanner();
+        oogstplanner.resetValidation();
+    }
+
+    export function handleError(modelState : any) {
+        for (var key in modelState) {
+            if (modelState.hasOwnProperty(key)) {
+                $("[name='" + modelState[key].key + "']").addClass('input-validation-error');
+                $(".validation-summary-errors > ul")
+                    .addClass('alert alert-danger')
+                    .append('<li>' + modelState[key].errors + '</li>');
+            }   
+        }
+    }
+
     export class Oogstplanner {
     	
         month : string;
@@ -95,13 +115,14 @@ module Scripts {
         resetValidation() {
 
             // Removes validation from input-fields
-            $('.input-validation-error').empty();
+            $('.input-validation-error').removeClass('input-validation-error');
 
             // Removes validation message after input-fields
-            $('.field-validation-error').empty();
+            $('.field-validation-error').removeClass('field-validation-error');
 
             // Removes validation summary 
-            $('.validation-summary-errors').empty();
+            $('.validation-summary-errors > ul').empty();
+            $('.validation-summary-errors > ul').removeClass('alert alert-danger');
 
         }
 
