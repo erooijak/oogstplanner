@@ -38,7 +38,7 @@ namespace Oogstplanner.Tests
         [Test]
         public void Controllers_Home_SowingAndHarvesting_DisplayMonthOrdering()
         {
-            // Arrange
+            // ARRANGE
             var expectedMonthOrdering = GetExpectedMonthOrdering();
 
             var mock = new Mock<ICalendarService>();
@@ -46,10 +46,10 @@ namespace Oogstplanner.Tests
                 .Returns(It.IsAny<Month>);
             var controller = new HomeController(mock.Object);
 
-            // Act
+            // ACT
             var result = (SowingAndHarvestingViewModel)((ViewResult)controller.SowingAndHarvesting()).Model;
 
-            // Assert
+            // ASSERT
             while (expectedMonthOrdering.Count != 0)
             {
                 var expected = expectedMonthOrdering.Pop().MonthForDisplay;
@@ -64,7 +64,7 @@ namespace Oogstplanner.Tests
         [Test]
         public void Controllers_Home_SowingAndHarvesting_DataMonthOrdering()
         {
-            // Arrange
+            // ARRANGE
             var expectedMonthOrdering = GetExpectedMonthOrdering();
 
             var mock = new Mock<ICalendarService>();
@@ -72,10 +72,10 @@ namespace Oogstplanner.Tests
                 .Returns(It.IsAny<Month>);
             var controller = new HomeController(mock.Object);
 
-            // Act
+            // ACT
             var result = (SowingAndHarvestingViewModel)((ViewResult)controller.SowingAndHarvesting()).Model;
 
-            // Assert
+            // ASSERT
             while (expectedMonthOrdering.Count != 0)
             {
                 var expected = expectedMonthOrdering.Pop().MonthForDataAttribute;
@@ -89,7 +89,7 @@ namespace Oogstplanner.Tests
         [Test]
         public void Controllers_Home_SowingAndHarvesting_HasActions()
         {
-            // Arrange
+            // ARRANGE
             var expectedMonthOrdering = GetExpectedMonthOrdering();
 
             var mock = new Mock<ICalendarService>();
@@ -97,10 +97,10 @@ namespace Oogstplanner.Tests
                 .Returns(Month.April | Month.August);
             var controller = new HomeController(mock.Object);
 
-            // Act
+            // ACT
             var result = (SowingAndHarvestingViewModel)((ViewResult)controller.SowingAndHarvesting()).Model;
 
-            // Assert
+            // ASSERT
             while (expectedMonthOrdering.Count != 0)
             {
                 var expected = expectedMonthOrdering.Pop().HasAction;

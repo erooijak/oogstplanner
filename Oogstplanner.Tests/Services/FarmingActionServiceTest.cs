@@ -131,14 +131,14 @@ namespace Oogstplanner.Tests
         [Test]
         public void Services_FarmingAction_UpdateCropCounts_CorrectCropsAreUpdated()
         {
-            // Arrange
+            // ARRANGE
             var farmingActionIds = new List<int> { 1 };
             var cropCounts = new List<int> { 1 };
 
-            // Act
+            // ACT
             service.UpdateCropCounts(farmingActionIds, cropCounts);
 
-            // Assert
+            // ASSERT
             Assert.AreEqual(1, db.FarmingActions.Find(1).CropCount,
                 "CropCount should be updated to 1 since the crop id with one has a count of one.");
             Assert.AreEqual(1, db.FarmingActions.Find(2).CropCount,
@@ -148,11 +148,11 @@ namespace Oogstplanner.Tests
         [Test]
         public void Services_FarmingAction_UpdateCropCounts_UserCannotEditOthers()
         {
-            // Arrange
+            // ARRANGE
             var farmingActionIds = new List<int> { 1, 10 }; 
             var cropCounts = new List<int> { 1, 10 };
 
-            // Act and Assert
+            // ACT AND ASSERT
             Assert.Catch<SecurityException>( () =>  service.UpdateCropCounts(farmingActionIds, cropCounts), 
                 "A security exception should be thrown when a user tries to updates an action"
                 + "belonging to another user.");
@@ -161,7 +161,7 @@ namespace Oogstplanner.Tests
         [Test]
         public void Services_FarmingActionAddFarmingAction_CorrectFarmingActionsAreCreated()
         {
-            // Arrange
+            // ARRANGE
             var action = new FarmingAction 
             {
                 Action = ActionType.Harvesting,
@@ -172,10 +172,10 @@ namespace Oogstplanner.Tests
                 Id = 3
             };
 
-            // Act
+            // ACT
             service.AddAction(action);
 
-            // Assert
+            // ASSERT
             var addedFarmingAction = db.FarmingActions.Find(3); // 3 is ID specified above
             var relatedAddedFarmingAction = db.FarmingActions.Find(0); //0 is default ID
 
@@ -195,7 +195,7 @@ namespace Oogstplanner.Tests
         [Test]
         public void Services_FarmingActionAddFarmingAction_CropCountIsAddedToExisting()
         {
-            // Arrange
+            // ARRANGE
             const int id = 1234;
            
             // Add similar to already existing one.
@@ -208,10 +208,10 @@ namespace Oogstplanner.Tests
                 CropCount = 10
             };
 
-            // Act
+            // ACT
             service.AddAction(action);
 
-            // Assert
+            // ASSERT
             var addedFarmingAction = db.FarmingActions.Find(id);
             Assert.AreEqual(20, addedFarmingAction.CropCount, 
                 "An already existing farming action should be updated if it belongs to the" 
@@ -221,7 +221,7 @@ namespace Oogstplanner.Tests
         [Test]
         public void Services_FarmingActionAddFarmingAction_UserCannotEditOthers()
         {
-            // Arrange
+            // ARRANGE
             const int differentUserIdThanReturnedByHttpContext = 3;
 
             var action = new FarmingAction 
@@ -234,7 +234,7 @@ namespace Oogstplanner.Tests
                 Id = 3
             };
 
-            // Act and Assert
+            // ACT AND ASSERT
             Assert.Catch<SecurityException>( () => service.AddAction(action), 
                 "A security exception should be thrown when a user tries to edits an action"
                 + "belonging to another user.");
@@ -244,14 +244,14 @@ namespace Oogstplanner.Tests
         [Test]
         public void Services_FarmingActionRemoveFarmingAction_CorrectActionRemoved()
         {
-            // Arrange
+            // ARRANGE
             const int farmingActionIdToRemove = 99;
             var resultBeforeRemovingFarmingAction = db.FarmingActions.Find(farmingActionIdToRemove);
 
-            // Act
+            // ACT
             service.RemoveAction(farmingActionIdToRemove);
 
-            // Assert
+            // ASSERT
             var resultAfterRemovingFarmingAction = db.FarmingActions.Find(farmingActionIdToRemove);
 
             Assert.IsInstanceOf<FarmingAction>(resultBeforeRemovingFarmingAction,
@@ -263,10 +263,10 @@ namespace Oogstplanner.Tests
         [Test]
         public void Services_FarmingActionRemoveFarmingAction_UserCannotEditOthers()
         {
-            // Arrange
+            // ARRANGE
             const int idNotBelongingToUser = 10;
 
-            // Act and Assert
+            // ACT AND ASSERT
             Assert.Catch<SecurityException>( () => service.RemoveAction(idNotBelongingToUser), 
                 "A security exception should be thrown when a user tries to remove an action"
                 + "belonging to another user.");

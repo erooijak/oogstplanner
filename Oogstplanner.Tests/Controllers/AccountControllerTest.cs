@@ -30,6 +30,15 @@ namespace Oogstplanner.Tests
                 membershipServiceMock.Object, 
                 passwordRecoveryServiceMock.Object);
         }
-            
+         
+        [Test]
+        public void Controllers_Account_LoginOrRegisterModal()
+        {
+            // ARRANGE
+
+            // ACT
+
+            // ASSERT
+        }
     }
 }
