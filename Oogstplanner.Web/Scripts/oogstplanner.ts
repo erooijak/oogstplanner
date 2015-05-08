@@ -85,7 +85,7 @@ module Scripts {
                     {
                         that.setHasActionAttributeValue(that.month, false);
                         that.toMain();
-                    };
+                    }
 
                 }
                 else { 
