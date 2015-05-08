@@ -14,14 +14,14 @@ namespace Oogstplanner.Controllers
     [Authorize]
     public class AccountController : Controller
     {
-        readonly UserService userService;
+        readonly IUserService userService;
         readonly IMembershipService membershipService;
-        readonly PasswordRecoveryService passwordRecoveryService;
+        readonly IPasswordRecoveryService passwordRecoveryService;
 
         public AccountController(
-            UserService userService,
+            IUserService userService,
             IMembershipService membershipService,
-            PasswordRecoveryService passwordRecoveryService)
+            IPasswordRecoveryService passwordRecoveryService)
         {
             this.userService = userService;
             this.membershipService = membershipService;

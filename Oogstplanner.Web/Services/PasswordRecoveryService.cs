@@ -4,7 +4,7 @@ using System.Web.Security;
 
 namespace Oogstplanner.Services
 {
-    public class PasswordRecoveryService
+    public class PasswordRecoveryService : IPasswordRecoveryService
     {
         readonly PasswordRecoveryRepository repository;
 

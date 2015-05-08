@@ -31,6 +31,7 @@ namespace Oogstplanner
                 .As<IMembershipService>()
                 .InstancePerRequest();
             builder.RegisterType<UserService>()
+                .As<IUserService>()
                 .InstancePerRequest();
 
             builder.RegisterType<AnonymousUserService>()
@@ -39,6 +40,7 @@ namespace Oogstplanner
                 .Keyed<IUserService>(AuthenticatedStatus.Authenticated);
 
             builder.RegisterType<PasswordRecoveryService>()
+                .As<IPasswordRecoveryService>()
                 .InstancePerRequest();
             builder.RegisterType<CalendarService>()
                 .As<ICalendarService>()

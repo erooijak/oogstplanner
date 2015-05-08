@@ -220,6 +220,7 @@
     <Compile Include="Utilities\Helpers\MembershipHelper.cs" />
     <Compile Include="Services\IMembershipService.cs" />
     <Compile Include="Services\MembershipService.cs" />
+    <Compile Include="Services\IPasswordRecoveryService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Web.config" />
