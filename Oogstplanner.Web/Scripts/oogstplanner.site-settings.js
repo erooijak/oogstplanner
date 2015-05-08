@@ -1,5 +1,5 @@
 $(function () {
-    var oogstplanner = new Scripts.Oogstplanner();
+    var oogstplanner = new Oogstplanner();
     $('.flowtype-area').flowtype({
         minimum: 100,
         maximum: 800,

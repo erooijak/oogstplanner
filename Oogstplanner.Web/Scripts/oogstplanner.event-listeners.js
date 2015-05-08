@@ -3,7 +3,7 @@
 	/* Add click event listeners to the squares of the month for entering the month calendar detail view. */
     $('[data-month]').each(function(i, monthElement) {
         
-        var oogstplanner = new Scripts.Oogstplanner();
+        var oogstplanner = new Oogstplanner();
 
         $(monthElement).bind('click', function() {
             var month = $(monthElement).data('month');

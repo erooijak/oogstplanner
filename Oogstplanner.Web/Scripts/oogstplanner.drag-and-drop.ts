@@ -79,7 +79,7 @@ $(function() {
         });
     });
 
-    var oogstplanner = new Scripts.Oogstplanner();
+    var oogstplanner = new Oogstplanner();
 
     /* Make month squares droppable */
     $('*[data-month]').droppable({

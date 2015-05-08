@@ -322,5 +322,6 @@
     <None Include="Scripts\typings\jqueryui.d.ts" />
     <None Include="Scripts\typings\handlebars.d.ts" />
     <None Include="Scripts\typings\typeahead.d.ts" />
+    <None Include="Scripts\oogstplanner.utilities.ts" />
   </ItemGroup>
 </Project>

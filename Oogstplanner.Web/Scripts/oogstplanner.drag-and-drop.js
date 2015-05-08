@@ -51,7 +51,7 @@ $(function () {
             }
         });
     });
-    var oogstplanner = new Scripts.Oogstplanner();
+    var oogstplanner = new Oogstplanner();
     $('*[data-month]').droppable({
         hoverClass: 'droppable-hover',
         drop: function (event, ui) {

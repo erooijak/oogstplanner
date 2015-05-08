@@ -3,9 +3,9 @@
 @using (Ajax.BeginForm("Login", "Account", new { @class="form-signin", @role="form"}, 
     new AjaxOptions 
     { 
-        OnBegin = "Scripts.resetValidation()",
-        OnSuccess = "Scripts.refreshPage()", 
-        OnFailure = "Scripts.handleError(xhr.responseJSON)" 
+        OnBegin = "Util.resetValidation()",
+        OnSuccess = "Util.refreshPage()", 
+        OnFailure = "Util.handleError(xhr.responseJSON)" 
     }))
 {
 

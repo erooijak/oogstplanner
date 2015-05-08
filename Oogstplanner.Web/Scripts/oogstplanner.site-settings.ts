@@ -3,7 +3,7 @@
 
 $(function() {
 
-    var oogstplanner = new Scripts.Oogstplanner();
+    var oogstplanner = new Oogstplanner();
 
 	/* Using flowtype.js to adjust the size of the fonts */
     $('.flowtype-area').flowtype({
