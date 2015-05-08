@@ -17,8 +17,8 @@
 
     <h2 class="form-signin-heading dark">Meld u alstublieft aan</h2>
 
-    @Html.LabelFor(m => m.UserName, new { @class="sr-only" })
-    @Html.TextBoxFor(m => m.UserName, 
+    @Html.LabelFor(m => m.UserNameOrEmail, new { @class="sr-only" })
+    @Html.TextBoxFor(m => m.UserNameOrEmail, 
         new { @class = "form-control", @placeholder = "Gebruikersnaam of e-mailadres" })
 
     @Html.LabelFor(m => m.Password, new { @class="sr-only" })

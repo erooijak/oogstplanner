@@ -36,9 +36,9 @@ namespace Oogstplanner.Models
 
     public class LoginModel
     {
-        [Required(ErrorMessage = "Gebruikersnaam niet ingevuld.")]
-        [Display(Name = "Gebruikersnaam")]
-        public string UserName { get; set; }
+        [Required(ErrorMessage = "Gebruikersnaam of e-mailadres niet ingevuld.")]
+        [Display(Name = "Gebruikersnaam of e-mailadres")]
+        public string UserNameOrEmail { get; set; }
 
         [Required(ErrorMessage = "Wachtwoord niet ingevuld.")]
         [DataType(DataType.Password)]

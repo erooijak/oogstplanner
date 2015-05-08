@@ -18,7 +18,7 @@ namespace Oogstplanner.Controllers
         readonly PasswordRecoveryService passwordRecoveryService;
 
         public AccountController(
-            UserService userService, 
+            UserService userService,
             PasswordRecoveryService passwordRecoveryService)
         {
             this.userService = userService;
@@ -40,15 +40,15 @@ namespace Oogstplanner.Controllers
         [ValidateAjax]
         public ActionResult Login(LoginModel model, string returnUrl)
         {
-            var userName = model.UserName; // or email
+            var userNameOrEmail = model.UserNameOrEmail;
             var password = model.Password;
 
             if (ModelState.IsValid)
             {
-                if (Membership.ValidateUser(userName, password)
-                    || Membership.ValidateUser(Membership.GetUserNameByEmail(userName), password))
+                if (Membership.ValidateUser(userNameOrEmail, password)
+                    || Membership.ValidateUser(Membership.GetUserNameByEmail(userNameOrEmail), password))
                 {
-                    FormsAuthentication.SetAuthCookie(model.UserName, model.RememberMe);
+                    FormsAuthentication.SetAuthCookie(model.UserNameOrEmail, model.RememberMe);
                     if (Url.IsLocalUrl(returnUrl))
                     {
                         return Redirect(returnUrl);
@@ -61,7 +61,7 @@ namespace Oogstplanner.Controllers
                 else
                 {
                     // If we got this far, something failed, redisplay form
-                    ModelState.AddModelError("", "De gebruikersnaam of het wachtwoord is incorrect.");
+                    ModelState.AddModelError("", "De gebruikersnaam/e-mailadres of het wachtwoord is incorrect.");
                 }
             }
                 
