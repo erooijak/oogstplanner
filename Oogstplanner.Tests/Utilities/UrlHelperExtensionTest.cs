@@ -12,7 +12,7 @@ namespace Oogstplanner.Tests
     {
 
         [Test]
-        public void UrlHelper_CreatePartialViewName()
+        public void Utilities_UrlHelper_CreatePartialViewName()
         {
             // ARRANGE
             var httpContext = MvcMockHelpers.MockHttpContext(); 

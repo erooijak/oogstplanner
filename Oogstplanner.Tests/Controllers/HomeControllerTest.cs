@@ -36,7 +36,7 @@ namespace Oogstplanner.Tests
         }
 
         [Test]
-        public void Controllers_SowingAndHarvesting_DisplayMonthOrdering()
+        public void Controllers_Home_SowingAndHarvesting_DisplayMonthOrdering()
         {
             // Arrange
             var expectedMonthOrdering = GetExpectedMonthOrdering();
@@ -62,7 +62,7 @@ namespace Oogstplanner.Tests
         }
 
         [Test]
-        public void Controllers_SowingAndHarvesting_DataMonthOrdering()
+        public void Controllers_Home_SowingAndHarvesting_DataMonthOrdering()
         {
             // Arrange
             var expectedMonthOrdering = GetExpectedMonthOrdering();
@@ -87,7 +87,7 @@ namespace Oogstplanner.Tests
         }
             
         [Test]
-        public void Controllers_SowingAndHarvesting_HasActions()
+        public void Controllers_Home_SowingAndHarvesting_HasActions()
         {
             // Arrange
             var expectedMonthOrdering = GetExpectedMonthOrdering();

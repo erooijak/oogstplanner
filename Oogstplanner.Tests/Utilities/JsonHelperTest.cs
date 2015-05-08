@@ -12,7 +12,7 @@ namespace Oogstplanner.Tests
     public class JsonHelperTest
     {
         [Test]
-        public void JsonHelper_CreateErrorModel()
+        public void Utilities_JsonHelper_CreateErrorModel()
         {
             // ARRANGE
             const string EXPECTED_KEY1 = "test1";

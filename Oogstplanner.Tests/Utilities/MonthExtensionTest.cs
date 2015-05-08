@@ -10,7 +10,7 @@ namespace Oogstplanner.Tests
     {
 
         [Test]
-        public void Month_Subtract()
+        public void Utilities_MonthExtension_Subtract()
         {
             // ACT
             var expected = Month.July;
@@ -21,7 +21,7 @@ namespace Oogstplanner.Tests
         }
 
         [Test]
-        public void Month_Add()
+        public void Utilities_MonthExtension_Add()
         {
             // ACT
             var expected = Month.June;
@@ -32,7 +32,7 @@ namespace Oogstplanner.Tests
         }
 
         [Test]
-        public void Month_Add_2()
+        public void Utilities_MonthExtension_Add_2()
         {
             // ACT
             var expected = Month.June;
@@ -43,7 +43,7 @@ namespace Oogstplanner.Tests
         }
 
         [Test]
-        public void Month_Subtract_OverTheEdge()
+        public void Utilities_MonthExtension_Subtract_OverTheEdge()
         {
             // ACT
             var expected = Month.July;
@@ -54,7 +54,7 @@ namespace Oogstplanner.Tests
         }
 
         [Test]
-        public void Month_Add_OverTheEdge()
+        public void Utilities_MonthExtension_Add_OverTheEdge()
         {
             // ACT
             var expected = Month.March;
@@ -65,7 +65,7 @@ namespace Oogstplanner.Tests
         }
 
         [Test]
-        public void Month_Add_MoreThan12()
+        public void Utilities_MonthExtension_Add_MoreThan12()
         {
             // ACT
             var expected = Month.October;
@@ -76,7 +76,7 @@ namespace Oogstplanner.Tests
         }
 
         [Test]
-        public void Month_Subtract_MoreThan12()
+        public void Utilities_MonthExtension_Subtract_MoreThan12()
         {
             // ACT
             var expected = Month.March;
@@ -87,14 +87,14 @@ namespace Oogstplanner.Tests
         }
 
         [Test]
-        public void Month_Add_Negative()
+        public void Utilities_MonthExtension_Add_Negative()
         {   
             Assert.Throws<ArgumentOutOfRangeException>(() => Month.February.Add(-23),
                 "Negative input should throw an ArgumentOutOfRangeException.");
         }
 
         [Test]
-        public void Month_Subtract_Negative()
+        public void Utilities_MonthExtension_Subtract_Negative()
         {   
             Assert.Throws<ArgumentOutOfRangeException>(() => Month.February.Subtract(-23),
                 "Negative input should throw an ArgumentOutOfRangeException.");

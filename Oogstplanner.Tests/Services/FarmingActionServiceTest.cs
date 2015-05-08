@@ -129,7 +129,7 @@ namespace Oogstplanner.Tests
         }
 
         [Test]
-        public void FarmingActionService_UpdateCropCounts_CorrectCropsAreUpdated()
+        public void Services_FarmingAction_UpdateCropCounts_CorrectCropsAreUpdated()
         {
             // Arrange
             var farmingActionIds = new List<int> { 1 };
@@ -146,7 +146,7 @@ namespace Oogstplanner.Tests
         }
 
         [Test]
-        public void FarmingActionService_UpdateCropCounts_UserCannotEditOthers()
+        public void Services_FarmingAction_UpdateCropCounts_UserCannotEditOthers()
         {
             // Arrange
             var farmingActionIds = new List<int> { 1, 10 }; 
@@ -159,7 +159,7 @@ namespace Oogstplanner.Tests
         }
 
         [Test]
-        public void FarmingActionService_AddFarmingAction_CorrectFarmingActionsAreCreated()
+        public void Services_FarmingActionAddFarmingAction_CorrectFarmingActionsAreCreated()
         {
             // Arrange
             var action = new FarmingAction 
@@ -193,7 +193,7 @@ namespace Oogstplanner.Tests
         }
 
         [Test]
-        public void FarmingActionService_AddFarmingAction_CropCountIsAddedToExisting()
+        public void Services_FarmingActionAddFarmingAction_CropCountIsAddedToExisting()
         {
             // Arrange
             const int id = 1234;
@@ -219,7 +219,7 @@ namespace Oogstplanner.Tests
         }
 
         [Test]
-        public void FarmingActionService_AddFarmingAction_UserCannotEditOthers()
+        public void Services_FarmingActionAddFarmingAction_UserCannotEditOthers()
         {
             // Arrange
             const int differentUserIdThanReturnedByHttpContext = 3;
@@ -242,7 +242,7 @@ namespace Oogstplanner.Tests
         }
 
         [Test]
-        public void FarmingActionService_RemoveFarmingAction_CorrectActionRemoved()
+        public void Services_FarmingActionRemoveFarmingAction_CorrectActionRemoved()
         {
             // Arrange
             const int farmingActionIdToRemove = 99;
@@ -261,7 +261,7 @@ namespace Oogstplanner.Tests
         }
 
         [Test]
-        public void FarmingActionService_RemoveFarmingAction_UserCannotEditOthers()
+        public void Services_FarmingActionRemoveFarmingAction_UserCannotEditOthers()
         {
             // Arrange
             const int idNotBelongingToUser = 10;

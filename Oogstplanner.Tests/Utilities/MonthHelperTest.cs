@@ -10,7 +10,7 @@ namespace Oogstplanner.Tests
     {
 
         [Test]
-        public void Month_GetAllMonths()
+        public void Utilities_MonthHelper_GetAllMonths()
         {
             // ACT
             var months = MonthHelper.GetAllMonths();
