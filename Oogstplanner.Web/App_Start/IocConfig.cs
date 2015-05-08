@@ -46,8 +46,10 @@ namespace Oogstplanner
                 .As<ICalendarService>()
                 .InstancePerRequest();
             builder.RegisterType<FarmingActionService>()
+                .As<IFarmingActionService>()
                 .InstancePerRequest();
             builder.RegisterType<CropProvider>()
+                .As<ICropProvider>()
                 .InstancePerRequest();;
 
             var container = builder.Build();

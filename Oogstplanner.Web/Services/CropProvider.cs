@@ -5,7 +5,7 @@ using Oogstplanner.Repositories;
 
 namespace Oogstplanner.Services
 {
-    public class CropProvider
+    public class CropProvider : ICropProvider
     {
         readonly CropRepository repository;
 
