@@ -1,16 +1,20 @@
-﻿using System.Web.Security;
+﻿using System;
+using System.Linq;
+using System.Web.Security;
 using System.Collections.Generic;
 
-namespace Oogstplanner
+using Oogstplanner.Models;
+
+namespace Oogstplanner.Utilities.Helpers
 {
     public static class MembershipHelper
     {
+        // See http://go.microsoft.com/fwlink/?LinkID=177550 for
+        // a full list of status codes.
+
         public static string ErrorCodeToString(MembershipCreateStatus createStatus)
         {
-            // See http://go.microsoft.com/fwlink/?LinkID=177550 for
-            // a full list of status codes.
-
-            var errorcodes = new Dictionary<MembershipCreateStatus, string>()
+            var errorCodes = new Dictionary<MembershipCreateStatus, string>()
             {
                 { MembershipCreateStatus.DuplicateUserName, 
                     "Gebruikersnaam bestaat al. Vult u alstublieft een andere gebruikersnaam in." },
@@ -34,10 +38,38 @@ namespace Oogstplanner
                     "opnieuw. Als het probleem aanhoudt contacteer dan oogstplanner@gmail.com." }
             };
 
-            return errorcodes.ContainsKey(createStatus) 
-                ? errorcodes[createStatus] 
+            return errorCodes.ContainsKey(createStatus) 
+                ? errorCodes[createStatus] 
                 : "Een onbekende fout heeft plaatsgevonden. Controleert u alstublieft de waarde en probeer het opnieuw. " +
                   "Als het probleem aanhoudt contacteer dan oogstplanner@gmail.com.";
+        }
+
+        /// <summary>
+        /// Creates the key to which the error message is attached.
+        /// </summary>
+        /// <remarks>
+        /// Used on the view to highlight the failing fields.
+        /// IMPORTANT: If registermodel property names change this should be changed too.
+        /// </remarks>
+        /// <returns>The the name of the property which caused the error or empty string if not found</returns>
+        /// <param name="createStatus">Create status.</param>
+        public static string ErrorCodeToKey(MembershipCreateStatus createStatus)
+        {
+            var errorCodeKeys = new Dictionary<MembershipCreateStatus, string>()
+            {
+                { MembershipCreateStatus.DuplicateUserName, 
+                    "UserName" },
+                { MembershipCreateStatus.InvalidUserName, 
+                    "UserName" },
+                { MembershipCreateStatus.DuplicateEmail, 
+                    "Email" },                
+                { MembershipCreateStatus.InvalidEmail, 
+                    "Email" },
+                { MembershipCreateStatus.InvalidPassword, 
+                    "Password" },
+            };
+
+            return errorCodeKeys.ContainsKey(createStatus) ? errorCodeKeys[createStatus] : "";
         }
     }
 }    

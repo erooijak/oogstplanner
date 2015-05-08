@@ -1,15 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Net.Mail;
 using System.Web.Mvc;
 using System.Web.Security;
 
-using Oogstplanner.Utilities.CustomExceptions;
 using Oogstplanner.Utilities.ExtensionMethods;
+using Oogstplanner.Utilities.Helpers;
 using Oogstplanner.Utitilies.Filters;
 using Oogstplanner.Services;
 using Oogstplanner.Models;
-using Oogstplanner.ViewModels;
 
 namespace Oogstplanner.Controllers
 {
@@ -93,7 +91,8 @@ namespace Oogstplanner.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError("registration", MembershipHelper.ErrorCodeToString(status));
+                    ModelState.AddModelError(MembershipHelper.ErrorCodeToKey(status), 
+                        MembershipHelper.ErrorCodeToString(status));
                 }
             }
              

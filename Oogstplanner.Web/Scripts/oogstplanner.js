@@ -17,6 +17,7 @@ var Scripts;
     function handleError(modelState) {
         for (var key in modelState) {
             if (modelState.hasOwnProperty(key)) {
+                alert(modelState[key].key);
                 $("[name='" + modelState[key].key + "']").addClass('input-validation-error');
                 $(".validation-summary-errors > ul").addClass('alert alert-danger').append('<li>' + modelState[key].errors + '</li>');
             }
