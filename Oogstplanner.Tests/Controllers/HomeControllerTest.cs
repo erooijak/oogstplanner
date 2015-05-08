@@ -15,7 +15,7 @@ namespace Oogstplanner.Tests
     [TestFixture]
     public class HomeControllerTest
     {
-        private Stack<MonthViewModel> GetExpectedMonthOrdering()
+        static Stack<MonthViewModel> GetExpectedMonthOrdering()
         {
             return new Stack<MonthViewModel>(new[] 
                 {   

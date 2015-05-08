@@ -21,7 +21,7 @@ namespace Oogstplanner.Tests
             var urlHelper = new UrlHelper(requestContext);
 
             // ACT
-            var expected = "~/Views/Controller/_PartialView.cshtml";
+            const string expected = "~/Views/Controller/_PartialView.cshtml";
             var actual = urlHelper.View("_PartialView", "Controller");
 
             // ASSERT
