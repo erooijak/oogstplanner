@@ -1,5 +1,8 @@
 ﻿using System.Web.Security;
 
+using Oogstplanner.Utilities.Helpers;
+using Oogstplanner.Utilities.CustomClasses;
+
 namespace Oogstplanner.Services
 {
     public class MembershipService : IMembershipService
@@ -15,12 +18,24 @@ namespace Oogstplanner.Services
             FormsAuthentication.SetAuthCookie(userNameOrEmail, createPersistentCookie);
         }
 
-        public bool TryCreateUser(string userName, string password, string email, out MembershipCreateStatus status)
+        public bool TryCreateUser(string userName, string password, string email, out ModelError modelError)
         {
+            modelError = new ModelError();
+            MembershipCreateStatus membershipCreateStatus;
             (Membership.Provider).CreateUser(
-                userName, password, email, null, null, true, null, out status);
+                userName, password, email, null, null, true, null, out membershipCreateStatus);
 
-            return status == MembershipCreateStatus.Success;
+            if (membershipCreateStatus == MembershipCreateStatus.Success)
+            {
+                return true;
+            }
+            else
+            {
+                modelError.Field = MembershipHelper.ErrorCodeToField(membershipCreateStatus);
+                modelError.Message = MembershipHelper.ErrorCodeToString(membershipCreateStatus);
+
+                return false;
+            }
         }
 
         public void SignOut()

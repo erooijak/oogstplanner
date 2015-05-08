@@ -45,7 +45,7 @@ namespace Oogstplanner.Utilities.Helpers
         }
 
         /// <summary>
-        /// Creates the key to which the error message is attached.
+        /// Creates the field to which the error message is attached.
         /// </summary>
         /// <remarks>
         /// Used on the view to highlight the failing fields.
@@ -53,7 +53,7 @@ namespace Oogstplanner.Utilities.Helpers
         /// </remarks>
         /// <returns>The the name of the property which caused the error or empty string if not found</returns>
         /// <param name="createStatus">Create status.</param>
-        public static string ErrorCodeToKey(MembershipCreateStatus createStatus)
+        public static string ErrorCodeToField(MembershipCreateStatus createStatus)
         {
             var errorCodeKeys = new Dictionary<MembershipCreateStatus, string>()
             {

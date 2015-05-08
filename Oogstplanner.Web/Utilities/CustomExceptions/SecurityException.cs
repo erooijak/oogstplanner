@@ -1,7 +1,7 @@
 ﻿using System;
 
 namespace Oogstplanner.Utilities.CustomExceptions
-    {
+{
     public class SecurityException : Exception
     {
         /// <summary>

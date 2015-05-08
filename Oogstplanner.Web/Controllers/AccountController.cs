@@ -4,7 +4,6 @@ using System.Web.Mvc;
 using System.Web.Security;
 
 using Oogstplanner.Utilities.ExtensionMethods;
-using Oogstplanner.Utilities.Helpers;
 using Oogstplanner.Utitilies.Filters;
 using Oogstplanner.Services;
 using Oogstplanner.Models;
@@ -41,7 +40,7 @@ namespace Oogstplanner.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAjax]
-        public ActionResult Login(LoginModel model, string returnUrl)
+        public ActionResult Login(LoginModel model)
         {
             var userNameOrEmail = model.UserNameOrEmail;
             var password = model.Password;
@@ -51,19 +50,13 @@ namespace Oogstplanner.Controllers
                 if (membershipService.ValidateUser(userNameOrEmail, password))
                 {
                     membershipService.SetAuthCookie(userNameOrEmail, model.RememberMe);
-                    if (Url.IsLocalUrl(returnUrl))
-                    {
-                        return Redirect(returnUrl);
-                    }
-                    else
-                    {
-                        return RedirectToAction("Index", "Home");
-                    }
+
+                    return RedirectToAction("Index", "Home");
                 }
                 else
                 {
                     // If we got this far, something failed, redisplay form
-                    ModelState.AddModelError("", "De gebruikersnaam/e-mailadres of het wachtwoord is incorrect.");
+                    ModelState.AddModelError("login", "De gebruikersnaam/e-mailadres of het wachtwoord is incorrect.");
                 }
             }
                 
@@ -79,18 +72,17 @@ namespace Oogstplanner.Controllers
         {           
             if (ModelState.IsValid)
             {
-                MembershipCreateStatus status;
-                if (membershipService.TryCreateUser(model.UserName, model.Password, model.Email, out status))
+                Oogstplanner.Utilities.CustomClasses.ModelError modelError;
+                if (membershipService.TryCreateUser(model.UserName, model.Password, model.Email, out modelError))
                 {
                     userService.AddUser(model.UserName, model.FullName, model.Email);
-                    FormsAuthentication.SetAuthCookie(model.UserName, true);
+                    membershipService.SetAuthCookie(model.UserName, false);
 
                     return RedirectToAction("Index", "Home");
                 }
                 else
                 {
-                    ModelState.AddModelError(MembershipHelper.ErrorCodeToKey(status), 
-                        MembershipHelper.ErrorCodeToString(status));
+                    ModelState.AddModelError(modelError.Field, modelError.Message);
                 }
             }
              
@@ -149,7 +141,6 @@ namespace Oogstplanner.Controllers
                         catch (Exception e) 
                         {
                             ModelState.AddModelError("", "Er is een probleem opgetreden bij het verzenden van de e-mail: " + e.Message);
-                            return View(model);
                         }
                     }
 
@@ -205,7 +196,7 @@ namespace Oogstplanner.Controllers
 
                 ViewBag.Message = isChangeSuccess 
                     ? "Wachtwoord succesvol veranderd." 
-                    : "Er is iets hopeloos fout gegaan!";
+                    : "Er is iets fout gegaan!";
             }
 
             return View(model);

@@ -163,6 +163,7 @@
     <Folder Include="Utilities\" />
     <Folder Include="App_Data\Membership\" />
     <Folder Include="Utilities\Filters\" />
+    <Folder Include="Utilities\CustomClasses\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\HomeController.cs" />
@@ -221,6 +222,7 @@
     <Compile Include="Services\IMembershipService.cs" />
     <Compile Include="Services\MembershipService.cs" />
     <Compile Include="Services\IPasswordRecoveryService.cs" />
+    <Compile Include="Utilities\CustomClasses\ModelError.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Web.config" />

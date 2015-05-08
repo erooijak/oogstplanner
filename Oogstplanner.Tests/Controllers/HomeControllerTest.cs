@@ -10,8 +10,6 @@ using Oogstplanner.Services;
 
 namespace Oogstplanner.Tests
 {
-    [Ignore] // Because of exception that is thrown by the type initializer for Moq.Proxy.CastleProxyFactory
-             // which only occurs when running tests in a batch.
     [TestFixture]
     public class HomeControllerTest
     {

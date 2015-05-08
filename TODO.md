@@ -109,6 +109,7 @@ TODO Automatisch selecteren van oogsten. Lukt niet.
 TODO Schots en scheefheid rechtzetten. (?) 
 TODO JavaScript extension methods.  
 TODO JavaScript herfactoreren naar viewmodellen.  
+TODO Refactor mailing in account controller.  
 
 ### Documentatie:
 IN PROGRESS README beetje netjes maken.  

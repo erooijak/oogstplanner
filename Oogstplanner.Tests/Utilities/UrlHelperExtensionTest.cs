@@ -6,7 +6,7 @@ using Oogstplanner.Utilities.ExtensionMethods;
 
 namespace Oogstplanner.Tests
 {
-    [Ignore]
+
     [TestFixture]
     public class UrlHelperExtensionTest
     {
