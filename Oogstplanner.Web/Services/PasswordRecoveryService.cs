@@ -34,9 +34,9 @@ namespace Oogstplanner.Services
             return repository.GetTokenTimeStamp(token);
         }
 
-        public void GenerateToken()
+        public string GenerateToken()
         {
-            return Convert.ToBase64String(Guid.NewGuid().ToByteArray();
+            return Convert.ToBase64String(Guid.NewGuid().ToByteArray());
         }
     }
 }

@@ -2,7 +2,7 @@
 
 namespace Oogstplanner.Services
 {
-    public class OogstplannerMembershipService : IMembershipService
+    public class MembershipService : IMembershipService
     {
         public bool ValidateUser(string userNameOrEmail, string password)
         {
