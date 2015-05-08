@@ -121,7 +121,7 @@ namespace Oogstplanner.Controllers
                 if (user != null)
                 {
                     // Generate token that will be used in the email link to authenticate user
-                    var token = Convert.ToBase64String(Guid.NewGuid().ToByteArray());
+                    var token = passwordRecoveryService.GenerateToken();
 
                     // Generate the html link sent via email
                     var resetLink = Url.Action("ResetPassword", "Account", new { rt = token }, "http");
