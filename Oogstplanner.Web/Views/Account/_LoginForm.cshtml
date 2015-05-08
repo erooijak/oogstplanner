@@ -1,4 +1,4 @@
-﻿@model LoginOrRegisterViewModel
+﻿@model LoginModel
 
 @using (Ajax.BeginForm("Login", "Account", new { @class="form-signin", @role="form"}, 
     new AjaxOptions 
@@ -17,17 +17,17 @@
 
     <h2 class="form-signin-heading dark">Meld u alstublieft aan</h2>
 
-    @Html.LabelFor(vm => vm.Login.UserName, new { @class="sr-only" })
-    @Html.TextBoxFor(vm => vm.Login.UserName, 
+    @Html.LabelFor(m => m.UserName, new { @class="sr-only" })
+    @Html.TextBoxFor(m => m.UserName, 
         new { @class = "form-control", @placeholder = "Gebruikersnaam of e-mailadres" })
 
-    @Html.LabelFor(vm => vm.Login.Password, new { @class="sr-only" })
-    @Html.PasswordFor(vm => vm.Login.Password, 
+    @Html.LabelFor(m => m.Password, new { @class="sr-only" })
+    @Html.PasswordFor(m => m.Password, 
         new { @class = "form-control", @placeholder = "Wachtwoord" })
 
     <div class="checkbox dark">
         <label class="pull-left">
-            @Html.CheckBoxFor(vm => vm.Login.RememberMe)
+            @Html.CheckBoxFor(m => m.RememberMe)
             Onthoud mij.
         </label>
 

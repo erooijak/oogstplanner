@@ -181,7 +181,6 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="ViewModels\YearCalendarViewModel.cs" />
-    <Compile Include="ViewModels\LoginOrRegisterViewModel.cs" />
     <Compile Include="ViewModels\MonthCalendarViewModel.cs" />
     <Compile Include="App_Start\IocConfig.cs" />
     <Compile Include="Services\FarmingActionService.cs" />

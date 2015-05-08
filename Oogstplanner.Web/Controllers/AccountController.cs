@@ -40,16 +40,15 @@ namespace Oogstplanner.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAjax]
-        public ActionResult Login(LoginOrRegisterViewModel viewModel, string returnUrl)
+        public ActionResult Login(LoginModel model, string returnUrl)
         {
-            var model = viewModel.Login;
-            var user = model.UserName;
+            var userName = model.UserName; // or email
             var password = model.Password;
 
             if (ModelState.IsValid)
             {
-                if (Membership.ValidateUser(user, password)
-                    || Membership.ValidateUser(Membership.GetUserNameByEmail(user), password))
+                if (Membership.ValidateUser(userName, password)
+                    || Membership.ValidateUser(Membership.GetUserNameByEmail(userName), password))
                 {
                     FormsAuthentication.SetAuthCookie(model.UserName, model.RememberMe);
                     if (Url.IsLocalUrl(returnUrl))
@@ -76,10 +75,8 @@ namespace Oogstplanner.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAjax]
-        public ActionResult Register(LoginOrRegisterViewModel viewModel)
+        public ActionResult Register(RegisterModel model)
         {           
-            var model = viewModel.Register;
-
             if (ModelState.IsValid)
             {
                 MembershipCreateStatus status;

@@ -1,4 +1,4 @@
-﻿@model LoginOrRegisterViewModel
+﻿@model RegisterModel
 
 @using (Ajax.BeginForm("Register", "Account", new { @class="form-signin", @role="form"}, 
     new AjaxOptions 
@@ -17,20 +17,20 @@
 
     <h2 class="form-signin-heading dark">Registreer u vandaag bij de Oogstplanner</h2>
 
-    @Html.LabelFor(vm => vm.Register.FullName, new { @class="sr-only" })
-    @Html.TextBoxFor(vm => vm.Register.FullName, 
+    @Html.LabelFor(m => m.FullName, new { @class="sr-only" })
+    @Html.TextBoxFor(m => m.FullName, 
         new { @class = "form-control", @placeholder = "Volledige naam" })
 
-    @Html.LabelFor(vm => vm.Register.UserName, new { @class="sr-only" })
-    @Html.TextBoxFor(vm => vm.Register.UserName, 
+    @Html.LabelFor(m => m.UserName, new { @class="sr-only" })
+    @Html.TextBoxFor(m => m.UserName, 
         new { @class = "form-control", @placeholder = "Gebruikersnaam" })
 
-    @Html.LabelFor(vm => vm.Register.Email, new { @class="sr-only" })
-    @Html.TextBoxFor(vm => vm.Register.Email, 
+    @Html.LabelFor(m => m.Email, new { @class="sr-only" })
+    @Html.TextBoxFor(m => m.Email, 
         new { @class = "form-control", @type="email", @placeholder = "E-mailadres" })
 
-    @Html.LabelFor(vm => vm.Register.Password, new { @class="sr-only" })
-    @Html.PasswordFor(vm => vm.Register.Password, 
+    @Html.LabelFor(m => m.Password, new { @class="sr-only" })
+    @Html.PasswordFor(m => m.Password, 
         new { @class = "form-control", @placeholder = "Wachtwoord" })
     
     <button class="btn btn-lg btn-primary btn-block" type="submit">Registreren</button>        
