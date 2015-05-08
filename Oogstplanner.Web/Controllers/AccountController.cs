@@ -15,13 +15,16 @@ namespace Oogstplanner.Controllers
     public class AccountController : Controller
     {
         readonly UserService userService;
+        readonly IMembershipProvider membershipProvider;
         readonly PasswordRecoveryService passwordRecoveryService;
 
         public AccountController(
             UserService userService,
+            IMembershipProvider membershipProvider,
             PasswordRecoveryService passwordRecoveryService)
         {
             this.userService = userService;
+            this.membershipProvider = membershipProvider;
             this.passwordRecoveryService = passwordRecoveryService;
         }
 
@@ -45,10 +48,9 @@ namespace Oogstplanner.Controllers
 
             if (ModelState.IsValid)
             {
-                if (Membership.ValidateUser(userNameOrEmail, password)
-                    || Membership.ValidateUser(Membership.GetUserNameByEmail(userNameOrEmail), password))
+                if (membershipProvider.ValidateUser(userNameOrEmail, password))
                 {
-                    FormsAuthentication.SetAuthCookie(model.UserNameOrEmail, model.RememberMe);
+                    membershipProvider.SetAuthCookie(userNameOrEmail, model.RememberMe);
                     if (Url.IsLocalUrl(returnUrl))
                     {
                         return Redirect(returnUrl);
@@ -78,11 +80,7 @@ namespace Oogstplanner.Controllers
             if (ModelState.IsValid)
             {
                 MembershipCreateStatus status;
-
-                (Membership.Provider).CreateUser(
-                    model.UserName, model.Password, model.Email, null, null, true, null, out status);
-
-                if (status == MembershipCreateStatus.Success)
+                if (membershipProvider.TryCreateUser(model.UserName, model.Password, model.Email, out status))
                 {
                     userService.AddUser(model.UserName, model.FullName, model.Email);
                     FormsAuthentication.SetAuthCookie(model.UserName, true);
@@ -103,7 +101,7 @@ namespace Oogstplanner.Controllers
         // GET: /Account/LogOff
         public ActionResult LogOff()
         {
-            FormsAuthentication.SignOut();
+            membershipProvider.SignOut();
             Session.Abandon();
 
             return RedirectToAction("Index", "Home");

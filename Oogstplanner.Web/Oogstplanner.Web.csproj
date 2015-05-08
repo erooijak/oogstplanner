@@ -218,6 +218,8 @@
     <Compile Include="Utilities\Filters\ValidateAjaxFilterAttribute.cs" />
     <Compile Include="Utilities\Helpers\JsonHelper.cs" />
     <Compile Include="Utilities\Helpers\MembershipHelper.cs" />
+    <Compile Include="Services\IMembershipProvider.cs" />
+    <Compile Include="Services\OogstplannerMembershipProvider.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Web.config" />

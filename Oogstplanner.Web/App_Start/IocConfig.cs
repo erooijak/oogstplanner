@@ -27,6 +27,9 @@ namespace Oogstplanner
             builder.RegisterType<CookieProvider>()
                 .As<ICookieProvider>()
                 .InstancePerRequest();
+            builder.RegisterType<OogstplannerMembershipProvider>()
+                .As<IMembershipProvider>()
+                .InstancePerRequest();
             builder.RegisterType<UserService>()
                 .InstancePerRequest();
 
