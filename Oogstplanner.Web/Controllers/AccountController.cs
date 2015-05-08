@@ -15,16 +15,16 @@ namespace Oogstplanner.Controllers
     public class AccountController : Controller
     {
         readonly UserService userService;
-        readonly IMembershipProvider membershipProvider;
+        readonly IMembershipService membershipService;
         readonly PasswordRecoveryService passwordRecoveryService;
 
         public AccountController(
             UserService userService,
-            IMembershipProvider membershipProvider,
+            IMembershipService membershipService,
             PasswordRecoveryService passwordRecoveryService)
         {
             this.userService = userService;
-            this.membershipProvider = membershipProvider;
+            this.membershipService = membershipService;
             this.passwordRecoveryService = passwordRecoveryService;
         }
 
@@ -48,9 +48,9 @@ namespace Oogstplanner.Controllers
 
             if (ModelState.IsValid)
             {
-                if (membershipProvider.ValidateUser(userNameOrEmail, password))
+                if (membershipService.ValidateUser(userNameOrEmail, password))
                 {
-                    membershipProvider.SetAuthCookie(userNameOrEmail, model.RememberMe);
+                    membershipService.SetAuthCookie(userNameOrEmail, model.RememberMe);
                     if (Url.IsLocalUrl(returnUrl))
                     {
                         return Redirect(returnUrl);
@@ -80,7 +80,7 @@ namespace Oogstplanner.Controllers
             if (ModelState.IsValid)
             {
                 MembershipCreateStatus status;
-                if (membershipProvider.TryCreateUser(model.UserName, model.Password, model.Email, out status))
+                if (membershipService.TryCreateUser(model.UserName, model.Password, model.Email, out status))
                 {
                     userService.AddUser(model.UserName, model.FullName, model.Email);
                     FormsAuthentication.SetAuthCookie(model.UserName, true);
@@ -101,7 +101,7 @@ namespace Oogstplanner.Controllers
         // GET: /Account/LogOff
         public ActionResult LogOff()
         {
-            membershipProvider.SignOut();
+            membershipService.SignOut();
             Session.Abandon();
 
             return RedirectToAction("Index", "Home");

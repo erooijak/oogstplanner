@@ -2,7 +2,7 @@
 
 namespace Oogstplanner.Services
 {
-    public interface IMembershipProvider
+    public interface IMembershipService
     {
         bool ValidateUser(string userNameOrEmail, string password);
         void SetAuthCookie(string userNameOrEmail, bool createPersistentCookie);
