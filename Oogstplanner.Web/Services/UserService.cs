@@ -1,10 +1,10 @@
 ﻿using System;
+using System.Configuration;
 using System.Web;
 using System.Web.Security;
 
 using Oogstplanner.Models;
 using Oogstplanner.Repositories;
-using System.Configuration;
 
 namespace Oogstplanner.Services
 {

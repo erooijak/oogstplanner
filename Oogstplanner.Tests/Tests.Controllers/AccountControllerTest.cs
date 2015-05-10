@@ -1,15 +1,15 @@
-﻿using Moq;
+﻿using System;
+using System.Web.Mvc;
+using System.Web.Security;
+
+using Moq;
 using NUnit.Framework;
 
-using System;
-using System.Web.Security;
-using System.Web.Mvc;
-
-using Oogstplanner.Tests.Lib;
-using Oogstplanner.Utilities.CustomClasses;
+using Oogstplanner.Controllers;
 using Oogstplanner.Models;
 using Oogstplanner.Services;
-using Oogstplanner.Controllers;
+using Oogstplanner.Tests.Lib;
+using Oogstplanner.Utilities.CustomClasses;
 
 namespace Oogstplanner.Tests.Controllers
 {
@@ -33,7 +33,7 @@ namespace Oogstplanner.Tests.Controllers
 
             // ASSERT
             Assert.AreEqual("~/Views/Account/_LoginModal.cshtml", actionResult.ViewName,
-            "LoginOrRegisterModal should return the _LoginModal.cshtml partial view.");
+                "LoginOrRegisterModal should return the _LoginModal.cshtml partial view.");
         }
 
         [Test]
