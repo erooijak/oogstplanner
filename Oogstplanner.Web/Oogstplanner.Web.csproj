@@ -233,6 +233,7 @@
     <Compile Include="Repositories\Interfaces\IPasswordRecoveryRepository.cs" />
     <Compile Include="Repositories\Interfaces\IUserRepository.cs" />
     <Compile Include="Repositories\Interfaces\IRepositoryBase.cs" />
+    <Compile Include="Services\Interfaces\IAuthenticationService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Web.config" />

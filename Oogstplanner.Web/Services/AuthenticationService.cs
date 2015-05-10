@@ -2,7 +2,7 @@
 
 namespace Oogstplanner.Services
 {
-    public class AuthenticationService
+    public class AuthenticationService : IAuthenticationService
     {
         public AuthenticatedStatus GetAuthenticationStatus()
         {

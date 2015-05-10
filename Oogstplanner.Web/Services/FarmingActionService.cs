@@ -18,7 +18,7 @@ namespace Oogstplanner.Services
 
         public FarmingActionService(
             IFarmingActionRepository repository, 
-            AuthenticationService authService,
+            IAuthenticationService authService,
             IIndex<AuthenticatedStatus, IUserService> userServices)
         {
             this.repository = repository;

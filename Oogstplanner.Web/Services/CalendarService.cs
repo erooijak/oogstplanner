@@ -18,7 +18,7 @@ namespace Oogstplanner.Services
             ICalendarRepository repository,
             IFarmingActionService farmingActionService,
             IIndex<AuthenticatedStatus, IUserService> userServices,
-            AuthenticationService authService)
+            IAuthenticationService authService)
         {
             this.repository = repository;
             this.farmingActionService = farmingActionService;

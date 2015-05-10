@@ -27,6 +27,7 @@ namespace Oogstplanner
                 .InstancePerRequest();
 
             builder.RegisterType<AuthenticationService>()
+                .As<IAuthenticationService>()
                 .InstancePerRequest();
             builder.RegisterType<CookieProvider>()
                 .As<ICookieProvider>()
