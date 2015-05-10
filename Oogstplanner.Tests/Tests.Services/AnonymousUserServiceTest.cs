@@ -130,7 +130,7 @@ namespace Oogstplanner.Tests.Services
                 "A new cookie should be set.");
             calendarRepositoryMock
                 .Verify(mock => 
-                    mock.CreateCalendar(It.IsAny<User>()), 
+                    mock.CreateCalendar(expectedUser), 
                     Times.Once(),
                     "A new user with calendar should be created.");
         }
