@@ -1,13 +1,10 @@
 ﻿using Moq;
 using NUnit.Framework;
 
-using System;
-
-using Oogstplanner.Repositories;
-using Oogstplanner.Services;
-using Oogstplanner.Models;
 using System.Security.Principal;
 using System.Threading;
+
+using Oogstplanner.Services;
 
 namespace Oogstplanner.Tests.Services
 {
