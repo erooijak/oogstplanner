@@ -81,6 +81,7 @@
       <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.Configuration" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Oogstplanner.Web\Oogstplanner.Web.csproj">
@@ -111,6 +112,7 @@
     <Compile Include="Tests.Services\CalendarServiceTest.cs" />
     <Compile Include="Tests.Services\CookieProviderTest.cs" />
     <Compile Include="Tests.Services\CropProviderTest.cs" />
+    <Compile Include="Tests.Services\PasswordRecoveryServiceTest.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
