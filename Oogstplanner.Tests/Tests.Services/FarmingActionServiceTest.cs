@@ -122,10 +122,16 @@ namespace Oogstplanner.Tests.Services
             var farmingActionRepository = new FarmingActionRepository(db);
             var userRepository = new UserRepository(db);
             var calendarRepository = new CalendarRepository(db);
+            var fakeUserServices = new FakeUserServices(userRepository, calendarRepository);
+            fakeUserServices.ReturnedUserService = new UserService(
+                userRepository, 
+                calendarRepository, 
+                new CookieProvider());
+
             service = new FarmingActionService(
                 farmingActionRepository, 
                 new AuthenticationService(), 
-                new FakeUserServices(userRepository, calendarRepository)
+                fakeUserServices
             );
         }
 

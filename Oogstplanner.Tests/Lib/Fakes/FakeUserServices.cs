@@ -7,20 +7,16 @@ namespace Oogstplanner.Tests.Lib.Fakes
 {
     public class FakeUserServices : IIndex<AuthenticatedStatus, IUserService>
     {
-        readonly UserRepository userRepository;
-        readonly CalendarRepository calendarRepository;
+        public IUserService ReturnedUserService { get ; set; }
 
-        public FakeUserServices(UserRepository userRepository, CalendarRepository calendarRepository)
+        public FakeUserServices(IUserRepository userRepository, ICalendarRepository calendarRepository)
         {
-            this.userRepository = userRepository;
-            this.calendarRepository = calendarRepository;
         }
 
         public bool TryGetValue(AuthenticatedStatus key, out IUserService value)
         {
-            value = key == AuthenticatedStatus.Authenticated 
-                ? new UserService(userRepository, calendarRepository, new CookieProvider()) as IUserService 
-                : new AnonymousUserService(userRepository, calendarRepository, new CookieProvider());
+            value = ReturnedUserService;
+
             return true;
         }
 
@@ -28,9 +24,7 @@ namespace Oogstplanner.Tests.Lib.Fakes
         {
             get
             {
-                return index == AuthenticatedStatus.Authenticated 
-                    ? new UserService(userRepository, calendarRepository, new CookieProvider()) as IUserService
-                        : new AnonymousUserService(userRepository, calendarRepository, new CookieProvider());
+                return ReturnedUserService;
             }
         }
 
