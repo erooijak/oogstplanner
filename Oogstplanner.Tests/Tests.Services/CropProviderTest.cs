@@ -2,13 +2,9 @@
 using NUnit.Framework;
 
 using System;
-using System.Collections.Generic;
 
-using Oogstplanner.Models;
-using Oogstplanner.ViewModels;
 using Oogstplanner.Repositories;
 using Oogstplanner.Services;
-using Oogstplanner.Tests.Lib.Fakes;
 
 namespace Oogstplanner.Tests.Services
 {
