@@ -110,6 +110,7 @@
     <Compile Include="Tests.Services\AuthenticationServiceTest.cs" />
     <Compile Include="Tests.Services\CalendarServiceTest.cs" />
     <Compile Include="Tests.Services\CookieProviderTest.cs" />
+    <Compile Include="Tests.Services\CropProviderTest.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
