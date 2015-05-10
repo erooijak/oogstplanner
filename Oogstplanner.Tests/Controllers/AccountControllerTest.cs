@@ -353,7 +353,7 @@ namespace Oogstplanner.Tests
             // ASSERT
             Assert.IsInstanceOf(typeof(EmptyResult), actionResult,
                 "When the membership user could not be retrieved an empty result" +
-                "should be retrieved (so it cannot be checked who is member and whose not without" +
+                "should be returned (so it cannot be checked who is member and whose not without" +
                 "logging in).");
         }
 

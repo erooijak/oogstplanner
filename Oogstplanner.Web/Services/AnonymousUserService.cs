@@ -27,7 +27,7 @@ namespace Oogstplanner.Services
             this.cookieProvider = cookieProvider;
         }
             
-        public User CurrentAnonymousUser 
+        protected User CurrentAnonymousUser 
         { 
             get 
             { 

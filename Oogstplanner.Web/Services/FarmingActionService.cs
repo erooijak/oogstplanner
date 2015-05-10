@@ -168,7 +168,7 @@ namespace Oogstplanner.Services
         /// </summary>
         /// <param name="currentUserId">The current user.</param>
         /// <param name="calendarUserId">The calendar belonging to the user.</param>
-        void CheckAuthorisation(int currentUserId, int calendarUserId)
+        static void CheckAuthorisation(int currentUserId, int calendarUserId)
         {
             // Check if action belongs to user or someone is messing with us:
             if (currentUserId != calendarUserId)

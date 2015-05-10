@@ -26,7 +26,7 @@ namespace Oogstplanner.Services
         }
 
         int? currentUserId;
-        public int CurrentUserId 
+        protected int CurrentUserId 
         { 
             get 
             {
