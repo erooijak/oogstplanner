@@ -106,6 +106,7 @@
     <Compile Include="Utilities\JsonHelperTest.cs" />
     <Compile Include="Controllers\AccountControllerTest.cs" />
     <Compile Include="Controllers\CalendarControllerTest.cs" />
+    <Compile Include="Services\AnonymousUserServiceTest.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
