@@ -24,16 +24,16 @@ namespace Oogstplanner.Services
             this.cookieProvider = cookieProvider;
         }
 
-        string anonymousUserCookieKey;
+        string anonymousUserKey;
         protected string AnonymousUserCookieKey
         {
             get
             {
-                if (anonymousUserCookieKey == null)
+                if (anonymousUserKey == null)
                 {
-                    anonymousUserCookieKey = ConfigurationManager.AppSettings["AnonymousUserCookieKey"];
+                    anonymousUserKey = ConfigurationManager.AppSettings["AnonymousUserCookieKey"];
                 }
-                return anonymousUserCookieKey;
+                return anonymousUserKey;
             }
         }
 
@@ -76,7 +76,6 @@ namespace Oogstplanner.Services
                     };
 
                 userRepository.AddUser(newUser);
-                Roles.AddUserToRole(userName, "user");
 
                 // Get the actual user from the database, so we get the created UserId.
                 var newlyCreatedUser = userRepository.GetUserByUserName(userName);

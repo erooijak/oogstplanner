@@ -38,6 +38,11 @@ namespace Oogstplanner.Services
             }
         }
 
+        public void AddUserToRole(string userName, string role)
+        {
+            Roles.AddUserToRole(userName, "user");
+        }
+           
         public void SignOut()
         {
             FormsAuthentication.SignOut();

@@ -218,6 +218,11 @@ namespace Oogstplanner.Tests.Controllers
                     mock.SetAuthCookie(expectedUserName, false), 
                     Times.Once(),
                 "A non persistent auth cookie should be set");
+            membershipServiceMock
+                .Verify(mock => 
+                    mock.AddUserToRole(expectedUserName, "user"), 
+                    Times.Once(),
+                    "New user should be added to the role user.");
             Assert.AreEqual("Home/Index", 
                 string.Format("{0}/{1}", actionResult.RouteValues["controller"], actionResult.RouteValues["action"]),
                 "When model and user are valid a redirect to Home/Index should take place.");

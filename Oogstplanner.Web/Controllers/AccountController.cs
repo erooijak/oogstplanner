@@ -77,7 +77,7 @@ namespace Oogstplanner.Controllers
                 {
                     userService.AddUser(model.UserName, model.FullName, model.Email);
                     membershipService.SetAuthCookie(model.UserName, false);
-
+                    membershipService.AddUserToRole(model.UserName, "user");
                     return RedirectToAction("Index", "Home");
                 }
                 else

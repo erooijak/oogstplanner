@@ -10,6 +10,8 @@ namespace Oogstplanner.Services
 
         bool TryCreateUser(string username, string password, string email, out ModelError modelError);
 
+        void AddUserToRole(string userName, string role);
+
         void SignOut();
     }
 }

@@ -28,7 +28,7 @@ namespace Oogstplanner.Tests.Services
             // ASSERT
             passwordRecoveryRepositoryMock.Verify(mock =>
                 mock.StoreResetToken(expectedEmail, 
-                    It.Is<DateTime>(dt => dt.Date == DateTime.Now.Date),
+                    It.Is<DateTime>(dt => dt.Date == DateTime.Today),
                     expectedToken), 
                     Times.Once,
                 "The token and e-mail should be set and time of reset should be this day.");
