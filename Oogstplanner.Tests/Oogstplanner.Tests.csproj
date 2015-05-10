@@ -114,6 +114,7 @@
     <Compile Include="Tests.Services\CropProviderTest.cs" />
     <Compile Include="Tests.Services\PasswordRecoveryServiceTest.cs" />
     <Compile Include="Tests.Services\UserServiceTest.cs" />
+    <Compile Include="Tests.Utilities\EnumExtensionTest.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
