@@ -5,7 +5,7 @@ using Oogstplanner.Models;
 
 namespace Oogstplanner.Repositories
 {
-    public class UserRepository : RepositoryBase
+    public class UserRepository : RepositoryBase, IUserRepository
     {
         public UserRepository(IOogstplannerContext db) 
             : base(db)

@@ -4,7 +4,7 @@ using Oogstplanner.Models;
 
 namespace Oogstplanner.Repositories
 {
-    public class CalendarRepository : RepositoryBase
+    public class CalendarRepository : RepositoryBase, ICalendarRepository
     {
         public CalendarRepository(IOogstplannerContext db) 
             : base(db)

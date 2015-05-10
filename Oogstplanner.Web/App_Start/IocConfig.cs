@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Web.Mvc;
+
 using Autofac;
 using Autofac.Integration.Mvc;
+
 using Oogstplanner.Models;
 using Oogstplanner.Services;
 using Oogstplanner.Repositories;
@@ -18,10 +20,12 @@ namespace Oogstplanner
             builder.RegisterType<OogstplannerContext>()
                 .As<IOogstplannerContext>()
                 .InstancePerRequest();
-
+                
             builder.RegisterAssemblyTypes(AppDomain.CurrentDomain.GetAssemblies())
                 .Where(t => t.Name.EndsWith("Repository"))
+                .AsImplementedInterfaces()
                 .InstancePerRequest();
+
             builder.RegisterType<AuthenticationService>()
                 .InstancePerRequest();
             builder.RegisterType<CookieProvider>()

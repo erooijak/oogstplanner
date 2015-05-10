@@ -10,9 +10,9 @@ namespace Oogstplanner.Controllers
     [AllowAnonymous]
     public class CropController : Controller
     {
-        readonly CropProvider cropProvider;
+        readonly ICropProvider cropProvider;
 
-        public CropController(CropProvider cropProvider)
+        public CropController(ICropProvider cropProvider)
         {
             this.cropProvider = cropProvider;
         }

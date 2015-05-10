@@ -8,7 +8,7 @@ using Oogstplanner.Utilities.Helpers;
 
 namespace Oogstplanner.Repositories
 {
-    public class FarmingActionRepository : RepositoryBase
+    public class FarmingActionRepository : RepositoryBase, IFarmingActionRepository
     {
         public FarmingActionRepository(IOogstplannerContext db) 
             : base(db)

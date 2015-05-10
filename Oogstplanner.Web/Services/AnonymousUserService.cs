@@ -8,8 +8,8 @@ namespace Oogstplanner.Services
 {
     public class AnonymousUserService : IUserService
     {
-        readonly UserRepository userRepository;
-        readonly CalendarRepository calendarRepository;
+        readonly IUserRepository userRepository;
+        readonly ICalendarRepository calendarRepository;
         readonly ICookieProvider cookieProvider;
 
         readonly string anonymousUserCookieKey = ConfigurationManager.AppSettings["AnonymousUserCookieKey"]; 
@@ -18,8 +18,8 @@ namespace Oogstplanner.Services
         private string guidOnClient;
 
         public AnonymousUserService(
-            UserRepository userRepository, 
-            CalendarRepository calendarRepository,
+            IUserRepository userRepository, 
+            ICalendarRepository calendarRepository,
             ICookieProvider cookieProvider)
         {
             this.userRepository = userRepository;

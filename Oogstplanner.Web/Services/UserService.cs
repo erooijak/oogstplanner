@@ -10,13 +10,13 @@ namespace Oogstplanner.Services
 {
     public class UserService : IUserService
     {
-        readonly UserRepository userRepository;
-        readonly CalendarRepository calendarRepository;
+        readonly IUserRepository userRepository;
+        readonly ICalendarRepository calendarRepository;
         readonly ICookieProvider cookieProvider;
 
         public UserService(
-            UserRepository userRepository, 
-            CalendarRepository calendarRepository,
+            IUserRepository userRepository, 
+            ICalendarRepository calendarRepository,
             ICookieProvider cookieProvider)
         {
             this.userRepository = userRepository;

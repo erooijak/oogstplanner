@@ -22,7 +22,5 @@ namespace Oogstplanner.Services
         void RemoveAction(int id);
 
         void UpdateCropCounts(IList<int> ids, IList<int> counts);
-
-        void AddOrUpdateAction(FarmingAction farmingAction);
     }
 }

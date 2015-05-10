@@ -6,9 +6,9 @@ namespace Oogstplanner.Services
 {
     public class PasswordRecoveryService : IPasswordRecoveryService
     {
-        readonly PasswordRecoveryRepository repository;
+        readonly IPasswordRecoveryRepository repository;
 
-        public PasswordRecoveryService(PasswordRecoveryRepository repository)
+        public PasswordRecoveryService(IPasswordRecoveryRepository repository)
         {
             this.repository = repository;
         }

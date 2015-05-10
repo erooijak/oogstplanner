@@ -5,7 +5,7 @@ using Oogstplanner.Models;
 
 namespace Oogstplanner.Repositories
 {
-    public class CropRepository : RepositoryBase
+    public class CropRepository : RepositoryBase, ICropRepository
     {
         public CropRepository(IOogstplannerContext db) 
             : base(db)

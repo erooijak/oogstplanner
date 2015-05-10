@@ -6,7 +6,7 @@ using Oogstplanner.Models;
 
 namespace Oogstplanner.Repositories
 {
-    public class PasswordRecoveryRepository : RepositoryBase
+    public class PasswordRecoveryRepository : RepositoryBase, IPasswordRecoveryRepository
     {
         public PasswordRecoveryRepository(IOogstplannerContext db) 
             : base(db)

@@ -11,12 +11,13 @@ using Oogstplanner.Utilities.Helpers;
 
 namespace Oogstplanner.Services
 {
-    public class FarmingActionService
+    public class FarmingActionService : IFarmingActionService
     {
-        readonly FarmingActionRepository repository;
+        readonly IFarmingActionRepository repository;
         readonly IUserService userService;
 
-        public FarmingActionService(FarmingActionRepository repository, 
+        public FarmingActionService(
+            IFarmingActionRepository repository, 
             AuthenticationService authService,
             IIndex<AuthenticatedStatus, IUserService> userServices)
         {
