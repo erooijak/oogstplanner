@@ -3,37 +3,6 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Oogstplanner.Models
 {
-    public class RegisterExternalLoginModel
-    {
-        [Display(Name = "Naam")]
-        public string UserName { get; set; }
-        [Required]
-        public string FullName { get; set; }
-        [Required]
-        public string Email { get; set; }
-
-        public string ExternalLoginData { get; set; }
-    }
-
-    public class LocalPasswordModel
-    {
-        [Required(ErrorMessage = "*")]
-        [DataType(DataType.Password)]
-        [Display(Name = "Huidig wachtwoord")]
-        public string OldPassword { get; set; }
-
-        [Required]
-        [StringLength(100, ErrorMessage = "Het wachtwoord moet op zijn minst {2} tekens lang zijn.", MinimumLength = 6)]
-        [DataType(DataType.Password)]
-        [Display(Name = "Nieuw wachtwoord")]
-        public string NewPassword { get; set; }
-
-        [DataType(DataType.Password)]
-        [Display(Name = "Bevestig nieuwe wachtwoord")]
-        [Compare("NewPassword", ErrorMessage = "De twee wachtwoorden komen niet overeen.")]
-        public string ConfirmPassword { get; set; }
-    }
-
     public class LoginModel
     {
         [Required(ErrorMessage = "Gebruikersnaam of e-mailadres niet ingevuld.")]
@@ -106,13 +75,6 @@ namespace Oogstplanner.Models
 
         [Required]
         public string ReturnToken { get; set; }
-    }
-
-    public class ExternalLogin
-    {
-        public string Provider { get; set; }
-        public string ProviderDisplayName { get; set; }
-        public string ProviderUserId { get; set; }
     }
         
 }
