@@ -4,12 +4,13 @@ using System.Linq;
 using System.Web.Mvc;
 using NUnit.Framework;
 
+using Oogstplanner.Tests.Lib.Fakes;
 using Oogstplanner.Services;
 using Oogstplanner.Controllers;
 using Oogstplanner.Models;
 using Oogstplanner.Repositories;
 
-namespace Oogstplanner.Tests
+namespace Oogstplanner.Tests.Controllers
 {
     [TestFixture]
     public class CropControllerTest

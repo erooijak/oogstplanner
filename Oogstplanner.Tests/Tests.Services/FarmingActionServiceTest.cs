@@ -5,12 +5,13 @@ using System.Security.Principal;
 using System.Web;
 using NUnit.Framework;
 
+using Oogstplanner.Tests.Lib.Fakes;
 using Oogstplanner.Services;
 using Oogstplanner.Models;
 using Oogstplanner.Utilities.CustomExceptions;
 using Oogstplanner.Repositories;
 
-namespace Oogstplanner.Tests
+namespace Oogstplanner.Tests.Services
 {
 	[TestFixture]
 	public class FarmingActionServiceTest

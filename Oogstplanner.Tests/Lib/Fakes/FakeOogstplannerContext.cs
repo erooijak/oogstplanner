@@ -1,7 +1,7 @@
 ﻿using System.Data.Entity;
 using Oogstplanner.Models;
 
-namespace Oogstplanner.Tests
+namespace Oogstplanner.Tests.Lib.Fakes
 {
     public class FakeOogstplannerContext : IOogstplannerContext
     {

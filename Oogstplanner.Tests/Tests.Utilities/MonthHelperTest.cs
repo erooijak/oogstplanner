@@ -3,7 +3,7 @@ using System;
 using System.Linq;
 using Oogstplanner.Utilities.Helpers;
 
-namespace Oogstplanner.Tests
+namespace Oogstplanner.Tests.Utilities
 {
     [TestFixture]
     public class MonthHelperTest

@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 using Oogstplanner.Utitilies.Helpers;
 
-namespace Oogstplanner.Tests
+namespace Oogstplanner.Tests.Utilities
 {
     [TestFixture]
     public class JsonHelperTest

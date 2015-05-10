@@ -1,5 +1,4 @@
-﻿
-using Moq;
+﻿using Moq;
 using NUnit.Framework;
 
 using System;
@@ -8,7 +7,7 @@ using Oogstplanner.Repositories;
 using Oogstplanner.Services;
 using Oogstplanner.Models;
 
-namespace Oogstplanner.Tests
+namespace Oogstplanner.Tests.Services
 {
     [TestFixture]
     public class AnonymousUserServiceTest

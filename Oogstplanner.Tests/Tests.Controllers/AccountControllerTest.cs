@@ -6,12 +6,13 @@ using System;
 using System.Web.Security;
 using System.Web.Mvc;
 
+using Oogstplanner.Tests.Lib;
 using Oogstplanner.Utilities.CustomClasses;
 using Oogstplanner.Models;
 using Oogstplanner.Services;
 using Oogstplanner.Controllers;
 
-namespace Oogstplanner.Tests
+namespace Oogstplanner.Tests.Controllers
 {
     [TestFixture]
     public class AccountControllerTest

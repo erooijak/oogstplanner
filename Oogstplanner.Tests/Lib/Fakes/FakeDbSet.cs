@@ -6,7 +6,7 @@ using System;
 using System.Linq.Expressions;
 using System.Collections;
 
-namespace Oogstplanner.Tests
+namespace Oogstplanner.Tests.Lib.Fakes
 {
     /// <summary>
     ///     A fake database set so methods in DbSet can be tested without calling the database.

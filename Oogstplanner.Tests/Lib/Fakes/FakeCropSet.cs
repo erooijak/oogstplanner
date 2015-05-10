@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using Oogstplanner.Models;
 
-namespace Oogstplanner.Tests
+namespace Oogstplanner.Tests.Lib.Fakes
 {
     public class FakeFarmingActionSet : FakeDbSet<FarmingAction>
     {	

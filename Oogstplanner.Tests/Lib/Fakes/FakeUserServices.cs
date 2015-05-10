@@ -3,7 +3,7 @@
 using Oogstplanner.Repositories;
 using Oogstplanner.Services;
 
-namespace Oogstplanner.Tests
+namespace Oogstplanner.Tests.Lib.Fakes
 {
     public class FakeUserServices : IIndex<AuthenticatedStatus, IUserService>
     {

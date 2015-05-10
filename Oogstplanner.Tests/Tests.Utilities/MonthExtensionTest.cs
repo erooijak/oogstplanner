@@ -3,7 +3,7 @@ using System;
 
 using Oogstplanner.Utilities.ExtensionMethods;
 
-namespace Oogstplanner.Tests
+namespace Oogstplanner.Tests.Utilities
 {
     [TestFixture]
     public class MonthExtensionTest

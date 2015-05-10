@@ -11,7 +11,7 @@ using Oogstplanner.ViewModels;
 using Oogstplanner.Services;
 using Oogstplanner.Models;
 
-namespace Oogstplanner.Tests
+namespace Oogstplanner.Tests.Controllers
 {
     [TestFixture]
     public class CalendarControllerTest

@@ -8,7 +8,7 @@ using Oogstplanner.Controllers;
 using Oogstplanner.ViewModels;
 using Oogstplanner.Services;
 
-namespace Oogstplanner.Tests
+namespace Oogstplanner.Tests.Controllers
 {
     [TestFixture]
     public class HomeControllerTest

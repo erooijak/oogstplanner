@@ -2,9 +2,10 @@
 using System.Web.Mvc;
 using System.Web.Routing;
 
+using Oogstplanner.Tests.Lib;
 using Oogstplanner.Utilities.ExtensionMethods;
 
-namespace Oogstplanner.Tests
+namespace Oogstplanner.Tests.Utilities
 {
 
     [TestFixture]
