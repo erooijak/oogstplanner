@@ -24,12 +24,24 @@ namespace Oogstplanner.Services
             this.cookieProvider = cookieProvider;
         }
 
+        string anonymousUserCookieKey;
+        protected string AnonymousUserCookieKey
+        {
+            get
+            {
+                if (anonymousUserCookieKey == null)
+                {
+                    anonymousUserCookieKey = ConfigurationManager.AppSettings["AnonymousUserCookieKey"];
+                }
+                return anonymousUserCookieKey;
+            }
+        }
+
         public void AddUser(string userName, string fullName, string email)
         {
 
             // Update if already exists:
-            var anonymousCookieKey = ConfigurationManager.AppSettings["AnonymousUserCookieKey"];
-            var clientUserName = cookieProvider.GetCookie(anonymousCookieKey);
+            var clientUserName = cookieProvider.GetCookie(AnonymousUserCookieKey);
             if (!string.IsNullOrEmpty(clientUserName))
             {
                 try
@@ -40,7 +52,7 @@ namespace Oogstplanner.Services
                     existingAnonymousUser.Email = email;
                     existingAnonymousUser.AuthenticationStatus = AuthenticatedStatus.Authenticated;
 
-                    cookieProvider.RemoveCookie(anonymousCookieKey);
+                    cookieProvider.RemoveCookie(AnonymousUserCookieKey);
 
                     userRepository.Update(existingAnonymousUser);
                     userRepository.SaveChanges();

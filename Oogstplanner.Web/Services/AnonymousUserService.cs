@@ -12,11 +12,6 @@ namespace Oogstplanner.Services
         readonly ICalendarRepository calendarRepository;
         readonly ICookieProvider cookieProvider;
 
-        readonly string anonymousUserCookieKey = ConfigurationManager.AppSettings["AnonymousUserCookieKey"]; 
-        readonly double anonymousUserCookieExpiration = Convert.ToDouble(ConfigurationManager.AppSettings["AnonymousUserCookieExpiration"]);
-
-        private string guidOnClient;
-
         public AnonymousUserService(
             IUserRepository userRepository, 
             ICalendarRepository calendarRepository,
@@ -25,6 +20,32 @@ namespace Oogstplanner.Services
             this.userRepository = userRepository;
             this.calendarRepository = calendarRepository;
             this.cookieProvider = cookieProvider;
+        }
+
+        string anonymousUserKey;
+        protected string AnonymousUserCookieKey
+        {
+            get
+            {
+                if (anonymousUserKey == null)
+                {
+                    anonymousUserKey = ConfigurationManager.AppSettings["AnonymousUserCookieKey"];
+                }
+                return anonymousUserKey;
+            }
+        }
+
+        double? anonymousUserCookieExpiration;
+        protected double AnonymousUserCookieExpiration
+        {
+            get
+            {
+                if (anonymousUserCookieExpiration == null)
+                {
+                    anonymousUserCookieExpiration = Convert.ToDouble(ConfigurationManager.AppSettings["AnonymousUserCookieExpiration"]);
+                }
+                return (double)anonymousUserCookieExpiration;
+            }
         }
             
         protected User CurrentAnonymousUser 
@@ -47,20 +68,21 @@ namespace Oogstplanner.Services
             }
 
         }
-            
+
+        string guidOnClient;
         protected string GuidOnClient
         {
             get 
             { 
                 if (guidOnClient == null)
                 {
-                    guidOnClient = cookieProvider.GetCookie(anonymousUserCookieKey);
+                    guidOnClient = cookieProvider.GetCookie(AnonymousUserCookieKey);
                 }
                 return guidOnClient;
             }
             set 
             { 
-                cookieProvider.SetCookie(anonymousUserCookieKey, value, anonymousUserCookieExpiration); 
+                cookieProvider.SetCookie(AnonymousUserCookieKey, value, AnonymousUserCookieExpiration); 
             }
         }
             
