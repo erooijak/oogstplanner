@@ -15,10 +15,13 @@ class Oogstplanner {
     }
 
     toMain() {
-            $.fn.fullpage.moveSlideLeft();
-            $(window).scrollTop(0);
+        $.fn.fullpage.moveSlideLeft();
+        $(window).scrollTop(0);
 
-            $('#crop-selection-box').show();
+        $('#crop-selection-box').show();
+
+        // Recalculate which months have actions because things might have changed.
+        this.setHasActionAttributes();
     }
 
     fillMonthCalendar(month : string) {
@@ -43,6 +46,25 @@ class Oogstplanner {
 
     getHasActionAttributeValue(monthName : string) {
         return $('[data-month=' + monthName + ']').data('hasAction');
+    }
+
+    resetHasActionAttributes() {
+        var that = this
+        $('[data-month]').each(function(i, monthSquare) {
+            var monthName = $(monthSquare).data('month');
+            that.setHasActionAttributeValue(monthName, false);
+        });
+    }
+
+    setHasActionAttributes() {
+        this.resetHasActionAttributes();
+        var that = this
+        $.get('/Calendar/GetMonthsWithAction', function(monthNames) {
+            for (var i = 0; i < monthNames.length; i++) {
+                var monthName = monthNames[i];
+                that.setHasActionAttributeValue(monthName, true);
+            }
+        })
     }
 
     removeFarmingAction(id : number) {

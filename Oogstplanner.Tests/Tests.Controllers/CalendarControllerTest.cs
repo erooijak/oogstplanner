@@ -282,5 +282,31 @@ namespace Oogstplanner.Tests.Controllers
                 "When the controller fails succes should be set to false.");
         }
 
+        [Test]
+        public void Controllers_Calendar_GetMonthsWithAction()
+        {
+            // ARRANGE
+            var calendarServiceMock = new Mock<ICalendarService>();
+            var farmingActionServiceMock = new Mock<IFarmingActionService>();
+            var cropProviderMock = new Mock<ICropProvider>();
+
+            calendarServiceMock.Setup(mock =>
+                mock.GetMonthsWithAction())
+                .Returns(Month.June | Month.July);
+
+            var controller = new CalendarController(
+                calendarServiceMock.Object,
+                farmingActionServiceMock.Object,
+                cropProviderMock.Object
+            );;
+
+            // ACT
+            var result = controller.GetMonthsWithAction() as ContentResult;
+
+            // ASSERT
+            Assert.AreEqual("[\"june\",\"july\"]", result.Content,
+                "The method should return the two months which are returned by the service.");
+        }
+            
     }
 }

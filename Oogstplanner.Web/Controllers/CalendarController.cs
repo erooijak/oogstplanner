@@ -127,7 +127,7 @@ namespace Oogstplanner.Controllers
         [HttpGet]
         public ActionResult GetMonthsWithAction()
         {
-            var monthsWithActionJson = JsonConvert
+            string monthsWithActionJson = JsonConvert
                 .SerializeObject(calendarService.GetMonthsWithAction(), new MonthEnumConverter());
 
             return new JsonStringResult(monthsWithActionJson);

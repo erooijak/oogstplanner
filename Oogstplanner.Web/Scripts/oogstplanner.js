@@ -12,6 +12,7 @@ var Oogstplanner = (function () {
         $.fn.fullpage.moveSlideLeft();
         $(window).scrollTop(0);
         $('#crop-selection-box').show();
+        this.setHasActionAttributes();
     };
     Oogstplanner.prototype.fillMonthCalendar = function (month) {
         this.month = month;
@@ -33,6 +34,25 @@ var Oogstplanner = (function () {
     };
     Oogstplanner.prototype.getHasActionAttributeValue = function (monthName) {
         return $('[data-month=' + monthName + ']').data('hasAction');
+    };
+    Oogstplanner.prototype.resetHasActionAttributes = function () {
+        var that = this;
+        $('[data-month]').each(function (i, monthSquare) {
+            var monthName = $(monthSquare).data('month');
+            that.setHasActionAttributeValue(monthName, false);
+        });
+    };
+    Oogstplanner.prototype.setHasActionAttributes = function () {
+        this.resetHasActionAttributes();
+        var that = this;
+        $.get('/Calendar/GetMonthsWithAction', function (monthNames) {
+            for (var i = 0; i < monthNames.length; i++) {
+                var monthName = monthNames[i];
+                console.log(monthName);
+                console.log(that);
+                that.setHasActionAttributeValue(monthName, true);
+            }
+        });
     };
     Oogstplanner.prototype.removeFarmingAction = function (id) {
         var that = this;
