@@ -120,7 +120,9 @@ FIXED Gewassen zonder oogstmaanden vertonen bug bij slepen.
 FIXED No scrolling while dragging on Mobile
 FIXED user is ingelogt en daarna uitlogt, werkt het cookie niet meer
 FIXED Anti-forgery token fixen.  [REMOVED TOKEN]  
-HACKY-FIX Op bevestigen kliken bij lege maand levert nullreferencexception op.  
+HACKY-FIX Op bevestigen kliken bij lege maand levert nullreferencexception op. 
+Als je alle acties bij een maand verwijderd, moet ook de tegenhangende maand niet meer klikbaar zijn, als deze leeg is.  
+Oplossing: in toMain() ophalen van de gegevens via controller.  
 2x klikken op maand levert dubbele data op.  
 Als user niet langer is ingelogd krijg je exception bij toevoegen gewas
 0 invoeren in numeric text box is niet meer aan te passen met de pijltjes.  

@@ -35,15 +35,14 @@ class Oogstplanner {
 
     addFarmingAction(cropId : number, month : string, actionType : ActionType, cropCount : number) {
         $.post('/Calendar/AddFarmingAction', { cropId: cropId, month: month, actionType: actionType, cropCount: cropCount } );
-        this.setHasActionAttributeValue(month, true);
     }
 
-    setHasActionAttributeValue(month : string, value : boolean) {
-        $('[data-month=' + month + ']').data( "hasAction", value);
+    setHasActionAttributeValue(monthName : string, value : boolean) {
+        $('[data-month=' + monthName + ']').data("hasAction", value);
     }
 
-    getHasActionAttributeValue(month : string) {
-        return $('[data-month=' + month + ']').data('hasAction');
+    getHasActionAttributeValue(monthName : string) {
+        return $('[data-month=' + monthName + ']').data('hasAction');
     }
 
     removeFarmingAction(id : number) {
@@ -56,7 +55,6 @@ class Oogstplanner {
                 var monthHasNoActions = $('.farmingMonth').children().length === 0;
                 if (monthHasNoActions)
                 {
-                    that.setHasActionAttributeValue(that.month, false);
                     that.toMain();
                 }
 

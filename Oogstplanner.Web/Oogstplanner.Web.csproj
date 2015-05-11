@@ -199,7 +199,6 @@
     <Compile Include="Utilities\CustomExceptions\SecurityException.cs" />
     <Compile Include="Utilities\ExtensionMethods\MonthExtension.cs" />
     <Compile Include="Utilities\ExtensionMethods\UrlHelperExtension.cs" />
-    <Compile Include="Utilities\Helpers\FarmingActionHelper.cs" />
     <Compile Include="Utilities\Helpers\JsonStringResult.cs" />
     <Compile Include="Utilities\Helpers\MonthEnumConverter.cs" />
     <Compile Include="Utilities\Helpers\MonthHelper.cs" />

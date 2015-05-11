@@ -27,13 +27,12 @@ var Oogstplanner = (function () {
     };
     Oogstplanner.prototype.addFarmingAction = function (cropId, month, actionType, cropCount) {
         $.post('/Calendar/AddFarmingAction', { cropId: cropId, month: month, actionType: actionType, cropCount: cropCount });
-        this.setHasActionAttributeValue(month, true);
     };
-    Oogstplanner.prototype.setHasActionAttributeValue = function (month, value) {
-        $('[data-month=' + month + ']').data("hasAction", value);
+    Oogstplanner.prototype.setHasActionAttributeValue = function (monthName, value) {
+        $('[data-month=' + monthName + ']').data("hasAction", value);
     };
-    Oogstplanner.prototype.getHasActionAttributeValue = function (month) {
-        return $('[data-month=' + month + ']').data('hasAction');
+    Oogstplanner.prototype.getHasActionAttributeValue = function (monthName) {
+        return $('[data-month=' + monthName + ']').data('hasAction');
     };
     Oogstplanner.prototype.removeFarmingAction = function (id) {
         var that = this;
@@ -43,8 +42,8 @@ var Oogstplanner = (function () {
                 alert("Het gewas is succesvol verwijderd.");
                 var monthHasNoActions = $('.farmingMonth').children().length === 0;
                 if (monthHasNoActions) {
-                    that.setHasActionAttributeValue(that.month, false);
                     that.toMain();
+                    Util.refreshPage();
                 }
             }
             else {

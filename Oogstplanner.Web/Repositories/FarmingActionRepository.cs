@@ -4,7 +4,6 @@ using System.Linq;
 using System.Linq.Expressions;
 
 using Oogstplanner.Models;
-using Oogstplanner.Utilities.Helpers;
 
 namespace Oogstplanner.Repositories
 {
@@ -43,17 +42,13 @@ namespace Oogstplanner.Repositories
         public FarmingAction FindRelatedFarmingAction(FarmingAction action)
         {
             // Arrange values to be found
-            var crop = action.Crop;
-            var cropGrowingTime = action.Crop.GrowingTime;
-            var calendar = action.Calendar;
+            var relatedFarmingAction = action.CreateRelated();
 
-            var actionType = FarmingActionHelper.GetRelatedActionType(action);
-            var month = FarmingActionHelper.GetRelatedMonth(action, cropGrowingTime);
-
-            return db.FarmingActions.SingleOrDefault(fa => fa.Calendar.CalendarId == calendar.CalendarId
-                && fa.Action == actionType
-                && fa.Crop.Id == crop.Id
-                && fa.Month == month);
+            return db.FarmingActions.SingleOrDefault(fa => 
+                fa.Calendar.CalendarId == relatedFarmingAction.Calendar.CalendarId
+                && fa.Action == relatedFarmingAction.Action
+                && fa.Crop.Id == relatedFarmingAction.Crop.Id
+                && fa.Month == relatedFarmingAction.Month);
         }
 
         public void AddFarmingAction(FarmingAction farmingAction)

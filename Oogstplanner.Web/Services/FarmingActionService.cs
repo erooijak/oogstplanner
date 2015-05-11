@@ -7,7 +7,6 @@ using System.Linq;
 using Oogstplanner.Models;
 using Oogstplanner.Repositories;
 using Oogstplanner.Utilities.CustomExceptions;
-using Oogstplanner.Utilities.Helpers;
 
 namespace Oogstplanner.Services
 {
@@ -55,10 +54,10 @@ namespace Oogstplanner.Services
         public void AddAction(FarmingAction farmingAction)
         {
             // Create the related farmingaction (the sowing or harvesting counter part)
-            var relatedFarmingAction = CreateRelatedAction(farmingAction);
+            var relatedFarmingAction = farmingAction.CreateRelated();
 
             // Check if the calendar actually belongs to the current user.
-            CheckAuthorisation(CurrentUserId, relatedFarmingAction.Calendar.UserId);
+            CheckAuthorisation(CurrentUserId, farmingAction.Calendar.UserId);
 
             // Try to see if there is a farming action of the same user, of the same type, of the same crop
             AddOrUpdateAction(farmingAction);
@@ -140,28 +139,6 @@ namespace Oogstplanner.Services
                 repository.Update(existingFarmingAction);
             }
 
-        }
-
-        FarmingAction CreateRelatedAction(FarmingAction action)
-        {
-            var crop = action.Crop;
-            var cropGrowingTime = action.Crop.GrowingTime;
-            var calendar = action.Calendar;
-            var count = action.CropCount;
-
-            var actionType = FarmingActionHelper.GetRelatedActionType(action);
-            var month = FarmingActionHelper.GetRelatedMonth(action, cropGrowingTime);
-
-            var relatedFarmingAction = new FarmingAction 
-            {
-                Action = actionType,
-                Calendar = calendar,
-                Crop = crop,
-                CropCount = count,
-                Month = month
-            };
-
-            return relatedFarmingAction;
         }
 
         /// <summary>

@@ -12,6 +12,7 @@ class DragAndDrop {
     recommendedMonths : string[];
     cropId : number;
     cropCount : number;
+    growingTime : number;
 
     collectValues() {
 
@@ -21,7 +22,7 @@ class DragAndDrop {
         this.recommendedMonths = $('#selected-crop-hidden-' + cssClassActionTypeSubstring + 'ingMonths').val().split(',');
         this.cropId = $('#selected-crop-hidden-id').val();
         this.cropCount = $('#selected-crop-count-number-field').val();
-
+        this.growingTime = +$('#selected-crop-growingTime').text();
     }
         
     toggleHighlightOnRecommendedMonths() {
@@ -92,6 +93,29 @@ $(function() {
             var cropCount = dragged.cropCount;
 
             oogstplanner.addFarmingAction(cropId, month, actionType, cropCount);
+
+            oogstplanner.setHasActionAttributeValue(month, true);
+
+            /* Set clickability of related month
+               Note: looked for a beter way to do this, but the structure of the months is not linear. */
+            var monthNames = ["january", 
+                              "february", 
+                              "march", 
+                              "april", 
+                              "may", 
+                              "june",
+                              "july", 
+                              "august", 
+                              "september", 
+                              "october", 
+                              "november", 
+                              "december"];
+            var indexCurrentMonth : number = monthNames.indexOf(month);
+            var oppositeMonth = actionType === ActionType.HARVESTING 
+                ? monthNames[12 - indexCurrentMonth - (dragged.growingTime % 12)]
+                : monthNames[(indexCurrentMonth + dragged.growingTime) % 12]
+
+            oogstplanner.setHasActionAttributeValue(oppositeMonth, true);
         }
     });
 

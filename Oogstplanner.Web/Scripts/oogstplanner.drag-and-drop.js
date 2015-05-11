@@ -12,6 +12,7 @@ var DragAndDrop = (function () {
         this.recommendedMonths = $('#selected-crop-hidden-' + cssClassActionTypeSubstring + 'ingMonths').val().split(',');
         this.cropId = $('#selected-crop-hidden-id').val();
         this.cropCount = $('#selected-crop-count-number-field').val();
+        this.growingTime = +$('#selected-crop-growingTime').text();
     };
     DragAndDrop.prototype.toggleHighlightOnRecommendedMonths = function () {
         $.each(this.recommendedMonths, function (i, month) {
@@ -60,6 +61,11 @@ $(function () {
             var actionType = dragged.selectedActionType;
             var cropCount = dragged.cropCount;
             oogstplanner.addFarmingAction(cropId, month, actionType, cropCount);
+            oogstplanner.setHasActionAttributeValue(month, true);
+            var monthNames = ["january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december"];
+            var indexCurrentMonth = monthNames.indexOf(month);
+            var oppositeMonth = actionType === 1 /* HARVESTING */ ? monthNames[12 - indexCurrentMonth - (dragged.growingTime % 12)] : monthNames[(indexCurrentMonth + dragged.growingTime) % 12];
+            oogstplanner.setHasActionAttributeValue(oppositeMonth, true);
         }
     });
 });

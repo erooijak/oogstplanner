@@ -115,8 +115,8 @@
     <Compile Include="Tests.Services\PasswordRecoveryServiceTest.cs" />
     <Compile Include="Tests.Services\UserServiceTest.cs" />
     <Compile Include="Tests.Utilities\EnumExtensionTest.cs" />
-    <Compile Include="Tests.Utilities\FarmingActionHelperTest.cs" />
     <Compile Include="Tests.Utilities\MembershipHelperTest.cs" />
+    <Compile Include="Tests.Models\FarmingActionTest.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -127,5 +127,6 @@
     <Folder Include="Lib\" />
     <Folder Include="Tests.Utilities\" />
     <Folder Include="Tests.Services\" />
+    <Folder Include="Tests.Models\" />
   </ItemGroup>
 </Project>
