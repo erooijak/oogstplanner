@@ -44,6 +44,7 @@ TODO Vrienden kunnen aanmaken.
 TODO Error handling.  
 TODO Meer informatie gebruiker.  
 TODO Kalender linken op profiel.  
+TODO Maanden over jaren heen tillen.  
 
 ### Security
 DONE Check of geupdate acties wel bij de ingelogde gebruiker horen.  
