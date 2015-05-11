@@ -2,9 +2,12 @@
 using System.Linq;
 using System.Web.Mvc;
 
+using Newtonsoft.Json;
+
 using Oogstplanner.Utilities.ExtensionMethods;
 using Oogstplanner.Models;
 using Oogstplanner.Services;
+using Oogstplanner.Utilities.Helpers;
 
 namespace Oogstplanner.Controllers
 {
@@ -117,6 +120,17 @@ namespace Oogstplanner.Controllers
                 return Json(new { success = false });
             }
 
+        }
+
+        //
+        // GET /Calendar/GetMonthsWithAction
+        [HttpGet]
+        public ActionResult GetMonthsWithAction()
+        {
+            var monthsWithActionJson = JsonConvert
+                .SerializeObject(calendarService.GetMonthsWithAction(), new MonthEnumConverter());
+
+            return new JsonStringResult(monthsWithActionJson);
         }
             
     }

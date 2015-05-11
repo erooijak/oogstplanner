@@ -43,7 +43,6 @@ var Oogstplanner = (function () {
                 var monthHasNoActions = $('.farmingMonth').children().length === 0;
                 if (monthHasNoActions) {
                     that.toMain();
-                    Util.refreshPage();
                 }
             }
             else {
