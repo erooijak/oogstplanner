@@ -48,8 +48,6 @@ var Oogstplanner = (function () {
         $.get('/Calendar/GetMonthsWithAction', function (monthNames) {
             for (var i = 0; i < monthNames.length; i++) {
                 var monthName = monthNames[i];
-                console.log(monthName);
-                console.log(that);
                 that.setHasActionAttributeValue(monthName, true);
             }
         });
