@@ -164,8 +164,8 @@
     <Folder Include="App_Data\Membership\" />
     <Folder Include="Utilities\Filters\" />
     <Folder Include="Utilities\CustomClasses\" />
-    <Folder Include="Services\Interfaces\" />
-    <Folder Include="Repositories\Interfaces\" />
+    <Folder Include="Repositories\Contracts\" />
+    <Folder Include="Services\Contracts\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\HomeController.cs" />
@@ -219,20 +219,20 @@
     <Compile Include="Utilities\Helpers\MembershipHelper.cs" />
     <Compile Include="Services\MembershipService.cs" />
     <Compile Include="Utilities\CustomClasses\ModelError.cs" />
-    <Compile Include="Services\Interfaces\ICalendarService.cs" />
-    <Compile Include="Services\Interfaces\ICookieProvider.cs" />
-    <Compile Include="Services\Interfaces\ICropProvider.cs" />
-    <Compile Include="Services\Interfaces\IFarmingActionService.cs" />
-    <Compile Include="Services\Interfaces\IMembershipService.cs" />
-    <Compile Include="Services\Interfaces\IPasswordRecoveryService.cs" />
-    <Compile Include="Services\Interfaces\IUserService.cs" />
-    <Compile Include="Repositories\Interfaces\ICalendarRepository.cs" />
-    <Compile Include="Repositories\Interfaces\ICropRepository.cs" />
-    <Compile Include="Repositories\Interfaces\IFarmingActionRepository.cs" />
-    <Compile Include="Repositories\Interfaces\IPasswordRecoveryRepository.cs" />
-    <Compile Include="Repositories\Interfaces\IUserRepository.cs" />
-    <Compile Include="Repositories\Interfaces\IRepositoryBase.cs" />
-    <Compile Include="Services\Interfaces\IAuthenticationService.cs" />
+    <Compile Include="Repositories\Contracts\ICalendarRepository.cs" />
+    <Compile Include="Repositories\Contracts\ICropRepository.cs" />
+    <Compile Include="Repositories\Contracts\IFarmingActionRepository.cs" />
+    <Compile Include="Repositories\Contracts\IPasswordRecoveryRepository.cs" />
+    <Compile Include="Repositories\Contracts\IUserRepository.cs" />
+    <Compile Include="Repositories\Contracts\IRepositoryBase.cs" />
+    <Compile Include="Services\Contracts\ICalendarService.cs" />
+    <Compile Include="Services\Contracts\ICookieProvider.cs" />
+    <Compile Include="Services\Contracts\ICropProvider.cs" />
+    <Compile Include="Services\Contracts\IFarmingActionService.cs" />
+    <Compile Include="Services\Contracts\IMembershipService.cs" />
+    <Compile Include="Services\Contracts\IPasswordRecoveryService.cs" />
+    <Compile Include="Services\Contracts\IUserService.cs" />
+    <Compile Include="Services\Contracts\IAuthenticationService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Web.config" />
