@@ -1,9 +1,11 @@
-﻿using System;
-using System.Diagnostics;
-using System.Linq;
+﻿using System.Diagnostics;
+
 using Newtonsoft.Json;
 
-namespace Oogstplanner.Utilities.Helpers
+using Oogstplanner.Common;
+using Oogstplanner.Models;
+
+namespace Oogstplanner.Web.Utilities.Helpers
 {
     public class MonthEnumConverter : Newtonsoft.Json.Converters.StringEnumConverter
     {

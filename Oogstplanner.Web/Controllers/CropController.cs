@@ -3,9 +3,9 @@ using System.Web.Mvc;
 using Newtonsoft.Json;
 
 using Oogstplanner.Services;
-using Oogstplanner.Utilities.Helpers;
+using Oogstplanner.Web.Utilities.Helpers;
 
-namespace Oogstplanner.Controllers
+namespace Oogstplanner.Web.Controllers
 {
     [AllowAnonymous]
     public class CropController : Controller
@@ -14,6 +14,11 @@ namespace Oogstplanner.Controllers
 
         public CropController(ICropProvider cropProvider)
         {
+            if (cropProvider == null)
+            {
+                throw new ArgumentNullException("cropProvider");
+            }
+
             this.cropProvider = cropProvider;
         }
         	

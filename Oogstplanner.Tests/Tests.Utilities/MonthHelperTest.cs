@@ -1,7 +1,8 @@
-﻿using NUnit.Framework;
-using System;
-using System.Linq;
-using Oogstplanner.Utilities.Helpers;
+﻿using System.Linq;
+
+using NUnit.Framework;
+
+using Oogstplanner.Common;
 
 namespace Oogstplanner.Tests.Utilities
 {
@@ -19,6 +20,5 @@ namespace Oogstplanner.Tests.Utilities
             Assert.AreEqual(12, months.ToList().Count,
                 "Twelve months should be returned, skipping the first NotSet element.");
         }
-
     }
 }

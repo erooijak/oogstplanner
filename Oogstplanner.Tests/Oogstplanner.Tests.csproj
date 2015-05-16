@@ -88,16 +88,27 @@
       <Project>{B0FB3234-7C0E-43D4-9EB3-693F67B05779}</Project>
       <Name>Oogstplanner.Web</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Oogstplanner.Models\Oogstplanner.Models.csproj">
+      <Project>{DA75E084-733A-41B7-A5A3-AA59858EEEF4}</Project>
+      <Name>Oogstplanner.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Oogstplanner.Services\Oogstplanner.Services.csproj">
+      <Project>{F9B1652F-7A6E-4EDA-B4E2-7F6DD1975379}</Project>
+      <Name>Oogstplanner.Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Oogstplanner.Data\Oogstplanner.Data.csproj">
+      <Project>{E5773F8C-23B4-459D-965B-9E57EA340E32}</Project>
+      <Name>Oogstplanner.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Oogstplanner.Common\Oogstplanner.Common.csproj">
+      <Project>{FA63355D-2606-4153-B17F-D364986C7829}</Project>
+      <Name>Oogstplanner.Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Lib\MvcMockHelpers.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Lib\Fakes\FakeCropSet.cs" />
-    <Compile Include="Lib\Fakes\FakeDbSet.cs" />
-    <Compile Include="Lib\Fakes\FakeFarmingActionSet.cs" />
-    <Compile Include="Lib\Fakes\FakeOogstplannerContext.cs" />
     <Compile Include="Lib\Fakes\FakeUserServices.cs" />
-    <Compile Include="Lib\Fakes\FakeUserSet.cs" />
     <Compile Include="Tests.Controllers\HomeControllerTest.cs" />
     <Compile Include="Tests.Controllers\CropControllerTest.cs" />
     <Compile Include="Tests.Controllers\AccountControllerTest.cs" />

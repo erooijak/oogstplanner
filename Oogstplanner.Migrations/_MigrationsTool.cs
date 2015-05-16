@@ -10,19 +10,19 @@ using System.Text.RegularExpressions;
 namespace Oogstplanner.Migrations
 {
     /// <summary>
-    ///    Class used to generate the code migrations and SQL script based on the Models and update the database.
-    ///    (I.e., runs PowerShell's Add-Migration and Update-Database, and creates a PostgreSQL script.)
-    ///    See: http://stackoverflow.com/questions/20374783/enable-entity-framework-migrations-in-mono#20382226
+    /// Class used to generate the code migrations and SQL script based on the Models and update the database.
+    /// (I.e., runs PowerShell's Add-Migration and Update-Database, and creates a PostgreSQL script.)
+    /// See: http://stackoverflow.com/questions/20374783/enable-entity-framework-migrations-in-mono#20382226
     /// 
-    ///    Usage: run by setting Zk.Migrations as Startup project and pressing play.
+    /// Usage: run by setting Zk.Migrations as Startup project and pressing play.
     /// 
-    ///    Classes of namespace EntityFramework.PostgreSql obtained from:
-    ///    https://github.com/darionato/PostgreSqlMigrationSqlGenerator. License is included.
+    /// Classes of namespace EntityFramework.PostgreSql obtained from:
+    /// https://github.com/darionato/PostgreSqlMigrationSqlGenerator. License is included.
     /// </summary>
     class MigrationsTool
     {
         /// <summary>
-        ///    The entry point of the program, where the program control starts and ends.
+        /// The entry point of the program, where the program control starts and ends.
         /// </summary>
         public static void Main()
         {
@@ -133,9 +133,9 @@ namespace Oogstplanner.Migrations
         }
 
         /// <summary>
-        ///     Enumeration for specifying the step in the migration.
+        /// Enumeration for specifying the step in the migration.
         /// </summary>
-        private enum DatabaseStep 
+        enum DatabaseStep 
         {
             ADD_MIGRATION,
             CREATE_SCRIPT,

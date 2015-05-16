@@ -3,12 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 
+using Oogstplanner.Common;
+using Oogstplanner.Models;
 using Oogstplanner.Services;
-using Oogstplanner.Utilities.ExtensionMethods;
-using Oogstplanner.Utilities.Helpers;
-using Oogstplanner.ViewModels;
 
-namespace Oogstplanner.Controllers
+namespace Oogstplanner.Web.Controllers
 {
     [AllowAnonymous]
     public class HomeController : Controller
@@ -17,6 +16,11 @@ namespace Oogstplanner.Controllers
 
         public HomeController(ICalendarService calendarService)
         {
+            if (calendarService == null)
+            {
+                throw new ArgumentNullException("calendarService");
+            }
+
             this.calendarService = calendarService;
         }
 

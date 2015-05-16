@@ -1,10 +1,11 @@
-﻿using NUnit.Framework;
-using System.Linq;
+﻿using System.Linq;
 using System.Web.Mvc;
 
 using Newtonsoft.Json;
 
-using Oogstplanner.Utitilies.Helpers;
+using NUnit.Framework;
+
+using Oogstplanner.Web.Utitilies.Helpers;
 
 namespace Oogstplanner.Tests.Utilities
 {

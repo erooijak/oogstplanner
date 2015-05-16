@@ -1,12 +1,12 @@
-﻿using NUnit.Framework;
-using Moq;
-
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Web.Mvc;
 
-using Oogstplanner.Controllers;
-using Oogstplanner.ViewModels;
+using Moq;
+using NUnit.Framework;
+
+using Oogstplanner.Models;
 using Oogstplanner.Services;
+using Oogstplanner.Web.Controllers;
 
 namespace Oogstplanner.Tests.Controllers
 {
@@ -108,7 +108,6 @@ namespace Oogstplanner.Tests.Controllers
                     "The has action attribute should be equal to April and August " +
                     "since that is returned by the mock.");
             }
-        }
- 
+        } 
     }
 }

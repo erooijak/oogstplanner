@@ -1,9 +1,9 @@
-﻿using Moq;
+﻿using System;
+
+using Moq;
 using NUnit.Framework;
 
-using System;
-
-using Oogstplanner.Repositories;
+using Oogstplanner.Data;
 using Oogstplanner.Services;
 
 namespace Oogstplanner.Tests.Services
@@ -16,15 +16,18 @@ namespace Oogstplanner.Tests.Services
         {
             // ARRANGE
             var cropRepositoryMock = new Mock<ICropRepository>();
+            var unitOfWorkMock = new Mock<IOogstplannerUnitOfWork>();
+            unitOfWorkMock.SetupGet(mock => mock.Crops)
+                .Returns(cropRepositoryMock.Object);
 
-            var service = new CropProvider(cropRepositoryMock.Object);
+            var service = new CropProvider(unitOfWorkMock.Object);
 
             // ACT
             service.GetAllCrops();
 
             // ASSERT
             cropRepositoryMock.Verify(mock =>
-                mock.GetAllCrops(), Times.Once,
+                mock.GetAll(), Times.Once,
                 "All crops should be retrieved from the repository.");
         }
 
@@ -33,8 +36,11 @@ namespace Oogstplanner.Tests.Services
         {
             // ARRANGE
             var cropRepositoryMock = new Mock<ICropRepository>();
+            var unitOfWorkMock = new Mock<IOogstplannerUnitOfWork>();
+            unitOfWorkMock.SetupGet(mock => mock.Crops)
+                .Returns(cropRepositoryMock.Object);
 
-            var service = new CropProvider(cropRepositoryMock.Object);
+            var service = new CropProvider(unitOfWorkMock.Object);
 
             var expectedCropId = new Random().Next();
 
@@ -43,9 +49,29 @@ namespace Oogstplanner.Tests.Services
 
             // ASSERT
             cropRepositoryMock.Verify(mock =>
-                mock.GetCrop(expectedCropId), Times.Once,
+                mock.GetById(expectedCropId), Times.Once,
                 "The crop with the expected id should be obtained from " +
                 "the repository.");
+        }
+
+        [Test]
+        public void Services_Crop_NoCommit()
+        {
+            // ARRANGE
+            var cropRepositoryMock = new Mock<ICropRepository>();
+            var unitOfWorkMock = new Mock<IOogstplannerUnitOfWork>();
+            unitOfWorkMock.SetupGet(mock => mock.Crops)
+                .Returns(cropRepositoryMock.Object);
+
+            var service = new CropProvider(unitOfWorkMock.Object);
+
+            // ACT
+            service.GetAllCrops();
+            service.GetCrop(1);
+
+            // ASSERT
+            unitOfWorkMock.Verify(mock => mock.Commit(), Times.Never,
+                "No changes to commit to database.");
         }
     }
 }

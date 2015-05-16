@@ -6,7 +6,7 @@
     <ProjectTypeGuids>{349C5851-65DF-11DA-9384-00065B846F21};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <ProjectGuid>{B0FB3234-7C0E-43D4-9EB3-693F67B05779}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>Oogstplanner</RootNamespace>
+    <RootNamespace>Oogstplanner.Web</RootNamespace>
     <AssemblyName>Oogstplanner.Web</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
   </PropertyGroup>
@@ -144,8 +144,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\" />
-    <Folder Include="Models\" />
-    <Folder Include="Repositories\" />
     <Folder Include="Views\Home\" />
     <Folder Include="Views\Shared\" />
     <Folder Include="App_Data\" />
@@ -154,85 +152,32 @@
     <Folder Include="Content\Images\" />
     <Folder Include="Scripts\" />
     <Folder Include="App_Data\Migrations\" />
-    <Folder Include="ViewModels\" />
     <Folder Include="Views\Account\" />
     <Folder Include="App_Start\" />
     <Folder Include="Content\fonts\" />
     <Folder Include="Content\Images\Draggable\" />
-    <Folder Include="Services\" />
     <Folder Include="Utilities\" />
     <Folder Include="App_Data\Membership\" />
     <Folder Include="Utilities\Filters\" />
-    <Folder Include="Utilities\CustomClasses\" />
-    <Folder Include="Repositories\Contracts\" />
-    <Folder Include="Services\Contracts\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Crop.cs" />
-    <Compile Include="Models\Calendar.cs" />
-    <Compile Include="Models\User.cs" />
     <Compile Include="Controllers\CropController.cs" />
     <Compile Include="Controllers\CalendarController.cs" />
-    <Compile Include="Models\FarmingAction.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Models\AccountModels.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="ViewModels\YearCalendarViewModel.cs" />
-    <Compile Include="ViewModels\MonthCalendarViewModel.cs" />
     <Compile Include="App_Start\IocConfig.cs" />
-    <Compile Include="Services\FarmingActionService.cs" />
-    <Compile Include="Services\CropProvider.cs" />
-    <Compile Include="Services\UserService.cs" />
-    <Compile Include="Services\CalendarService.cs" />
-    <Compile Include="Services\PasswordRecoveryService.cs" />
-    <Compile Include="Models\Month.cs" />
-    <Compile Include="Services\AnonymousUserService.cs" />
-    <Compile Include="Services\AuthenticationService.cs" />
-    <Compile Include="Services\CookieProvider.cs" />
-    <Compile Include="ViewModels\SowingAndHarvestingViewModel.cs" />
-    <Compile Include="Utilities\CustomExceptions\SecurityException.cs" />
-    <Compile Include="Utilities\ExtensionMethods\MonthExtension.cs" />
     <Compile Include="Utilities\ExtensionMethods\UrlHelperExtension.cs" />
     <Compile Include="Utilities\Helpers\JsonStringResult.cs" />
     <Compile Include="Utilities\Helpers\MonthEnumConverter.cs" />
-    <Compile Include="Utilities\Helpers\MonthHelper.cs" />
-    <Compile Include="Models\IOogstplannerContext.cs" />
-    <Compile Include="Models\OogstplannerContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ViewModels\MonthViewModel.cs" />
-    <Compile Include="Utilities\ExtensionMethods\EnumExtension.cs" />
-    <Compile Include="Utilities\Helpers\ConfigurationHelper.cs" />
-    <Compile Include="Repositories\CropRepository.cs" />
-    <Compile Include="Repositories\FarmingActionRepository.cs" />
-    <Compile Include="Repositories\UserRepository.cs" />
-    <Compile Include="Repositories\RepositoryBase.cs" />
-    <Compile Include="Repositories\CalendarRepository.cs" />
-    <Compile Include="Repositories\PasswordRecoveryRepository.cs" />
     <Compile Include="Utilities\Filters\ValidateAjaxFilterAttribute.cs" />
     <Compile Include="Utilities\Helpers\JsonHelper.cs" />
-    <Compile Include="Utilities\Helpers\MembershipHelper.cs" />
-    <Compile Include="Services\MembershipService.cs" />
-    <Compile Include="Utilities\CustomClasses\ModelError.cs" />
-    <Compile Include="Repositories\Contracts\ICalendarRepository.cs" />
-    <Compile Include="Repositories\Contracts\ICropRepository.cs" />
-    <Compile Include="Repositories\Contracts\IFarmingActionRepository.cs" />
-    <Compile Include="Repositories\Contracts\IPasswordRecoveryRepository.cs" />
-    <Compile Include="Repositories\Contracts\IUserRepository.cs" />
-    <Compile Include="Repositories\Contracts\IRepositoryBase.cs" />
-    <Compile Include="Services\Contracts\ICalendarService.cs" />
-    <Compile Include="Services\Contracts\ICookieProvider.cs" />
-    <Compile Include="Services\Contracts\ICropProvider.cs" />
-    <Compile Include="Services\Contracts\IFarmingActionService.cs" />
-    <Compile Include="Services\Contracts\IMembershipService.cs" />
-    <Compile Include="Services\Contracts\IPasswordRecoveryService.cs" />
-    <Compile Include="Services\Contracts\IUserService.cs" />
-    <Compile Include="Services\Contracts\IAuthenticationService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Web.config" />
@@ -338,5 +283,23 @@
     <None Include="Scripts\typings\handlebars.d.ts" />
     <None Include="Scripts\typings\typeahead.d.ts" />
     <None Include="Scripts\oogstplanner.utilities.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Oogstplanner.Data\Oogstplanner.Data.csproj">
+      <Project>{E5773F8C-23B4-459D-965B-9E57EA340E32}</Project>
+      <Name>Oogstplanner.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Oogstplanner.Models\Oogstplanner.Models.csproj">
+      <Project>{DA75E084-733A-41B7-A5A3-AA59858EEEF4}</Project>
+      <Name>Oogstplanner.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Oogstplanner.Services\Oogstplanner.Services.csproj">
+      <Project>{F9B1652F-7A6E-4EDA-B4E2-7F6DD1975379}</Project>
+      <Name>Oogstplanner.Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Oogstplanner.Common\Oogstplanner.Common.csproj">
+      <Project>{FA63355D-2606-4153-B17F-D364986C7829}</Project>
+      <Name>Oogstplanner.Common</Name>
+    </ProjectReference>
   </ItemGroup>
 </Project>

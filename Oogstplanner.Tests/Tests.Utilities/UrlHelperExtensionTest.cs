@@ -1,9 +1,10 @@
-﻿using NUnit.Framework;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using System.Web.Routing;
 
+using NUnit.Framework;
+
 using Oogstplanner.Tests.Lib;
-using Oogstplanner.Utilities.ExtensionMethods;
+using Oogstplanner.Web.Utilities.ExtensionMethods;
 
 namespace Oogstplanner.Tests.Utilities
 {
@@ -28,7 +29,6 @@ namespace Oogstplanner.Tests.Utilities
             // ASSERT
             Assert.AreEqual(expected, actual, 
                 "The UrlpHelper View extension should return the path to the partial view.");
-        }
-         
+        }         
     }
 }

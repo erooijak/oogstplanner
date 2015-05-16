@@ -3,12 +3,12 @@ using System.Net.Mail;
 using System.Web.Mvc;
 using System.Web.Security;
 
-using Oogstplanner.Utilities.ExtensionMethods;
-using Oogstplanner.Utitilies.Filters;
-using Oogstplanner.Services;
 using Oogstplanner.Models;
+using Oogstplanner.Services;
+using Oogstplanner.Web.Utilities.ExtensionMethods;
+using Oogstplanner.Web.Utitilies.Filters;
 
-namespace Oogstplanner.Controllers
+namespace Oogstplanner.Web.Controllers
 {
     [Authorize]
     public class AccountController : Controller
@@ -22,6 +22,19 @@ namespace Oogstplanner.Controllers
             IMembershipService membershipService,
             IPasswordRecoveryService passwordRecoveryService)
         {
+            if (userService == null)
+            {
+                throw new ArgumentNullException("userService");
+            }
+            if (membershipService == null)
+            {
+                throw new ArgumentNullException("membershipService");
+            }
+            if (passwordRecoveryService == null)
+            {
+                throw new ArgumentNullException("passwordRecoveryService");
+            }
+
             this.userService = userService;
             this.membershipService = membershipService;
             this.passwordRecoveryService = passwordRecoveryService;
@@ -72,7 +85,7 @@ namespace Oogstplanner.Controllers
         {           
             if (ModelState.IsValid)
             {
-                Oogstplanner.Utilities.CustomClasses.ModelError modelError;
+                Oogstplanner.Models.ModelError modelError;
                 if (membershipService.TryCreateUser(model.UserName, model.Password, model.Email, out modelError))
                 {
                     userService.AddUser(model.UserName, model.FullName, model.Email);

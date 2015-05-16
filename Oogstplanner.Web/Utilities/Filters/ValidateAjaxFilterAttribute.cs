@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
-using System.Web.Mvc;
 using System.Net;
+using System.Web.Mvc;
 
-using Oogstplanner.Utitilies.Helpers;
+using Oogstplanner.Web.Utitilies.Helpers;
 
-namespace Oogstplanner.Utitilies.Filters
+namespace Oogstplanner.Web.Utitilies.Filters
 {
     /// <summary>
     ///     Returns a JSON object specifying all of the model errors.

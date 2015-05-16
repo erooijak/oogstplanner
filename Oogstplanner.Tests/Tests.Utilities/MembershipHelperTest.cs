@@ -1,11 +1,11 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Web.Security;
 
 using NUnit.Framework;
 
+using Oogstplanner.Common;
 using Oogstplanner.Models;
-using Oogstplanner.Utilities.Helpers;
-using System;
 
 namespace Oogstplanner.Tests.Utilities
 {

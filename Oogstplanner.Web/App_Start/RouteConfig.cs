@@ -1,8 +1,7 @@
 ﻿using System.Web.Mvc;
 using System.Web.Routing;
-using WebMatrix.WebData;
 
-namespace Oogstplanner
+namespace Oogstplanner.Web
 {
     static class RouteConfig
     {

@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 
-namespace Oogstplanner.Utilities.ExtensionMethods
+namespace Oogstplanner.Web.Utilities.ExtensionMethods
 {
     public static class UrlHelperExtension
     {

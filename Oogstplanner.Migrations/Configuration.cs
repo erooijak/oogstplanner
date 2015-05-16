@@ -1,6 +1,7 @@
 ﻿using System.Data.Entity.Migrations;
 using System.Data.Entity.Migrations.Sql;
-using Oogstplanner.Models;
+
+using Oogstplanner.Data;
 
 namespace Oogstplanner.Migrations
 {

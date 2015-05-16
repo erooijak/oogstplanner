@@ -79,6 +79,10 @@
       <Project>{B0FB3234-7C0E-43D4-9EB3-693F67B05779}</Project>
       <Name>Oogstplanner.Web</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Oogstplanner.Data\Oogstplanner.Data.csproj">
+      <Project>{E5773F8C-23B4-459D-965B-9E57EA340E32}</Project>
+      <Name>Oogstplanner.Data</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="PostgreSqlMigrationSqlGenerator\" />

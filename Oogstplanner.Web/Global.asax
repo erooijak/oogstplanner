@@ -1,2 +1,1 @@
-﻿<%@ Application Inherits="Oogstplanner.MvcApplication" %>
-
+﻿<%@ Application Inherits="Oogstplanner.Web.MvcApplication" %>

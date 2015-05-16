@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 
-namespace Oogstplanner.Utilities.Helpers
+namespace Oogstplanner.Web.Utilities.Helpers
 {
     /*
      * Helper class to return JSON string.
@@ -14,5 +14,4 @@ namespace Oogstplanner.Utilities.Helpers
             ContentType = "application/json";
         }
     }
-
 }

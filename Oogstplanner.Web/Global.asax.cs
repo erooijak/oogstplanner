@@ -2,11 +2,12 @@
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+
+using Oogstplanner.Common;
+
 using WebMatrix.WebData;
 
-using Oogstplanner.Utilities.Helpers;
-
-namespace Oogstplanner
+namespace Oogstplanner.Web
 {
     public class MvcApplication : HttpApplication
     {
@@ -30,6 +31,5 @@ namespace Oogstplanner
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
-    }
-        
+    }        
 }

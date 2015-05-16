@@ -1,15 +1,10 @@
-﻿using NUnit.Framework;
-
-using System;
+﻿using System;
+using System.IO;
 using System.Web;
 
-using Oogstplanner.Services;
-using Oogstplanner.Tests.Lib;
-using System.Web.SessionState;
-using System.IO;
-using System.Reflection;
-using System.Net;
+using NUnit.Framework;
 
+using Oogstplanner.Services;
 
 namespace Oogstplanner.Tests.Services
 {

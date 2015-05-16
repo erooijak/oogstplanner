@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 
-namespace Oogstplanner
+namespace Oogstplanner.Web
 {
     static class FilterConfig
     {

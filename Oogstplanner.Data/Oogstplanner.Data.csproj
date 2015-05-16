@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E5773F8C-23B4-459D-965B-9E57EA340E32}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Oogstplanner.Data</RootNamespace>
+    <AssemblyName>Oogstplanner.Data</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="CalendarRepository.cs" />
+    <Compile Include="EntityFrameworkRepository.cs" />
+    <Compile Include="FarmingActionRepository.cs" />
+    <Compile Include="OogstplannerContext.cs" />
+    <Compile Include="PasswordRecoveryRepository.cs" />
+    <Compile Include="UserRepository.cs" />
+    <Compile Include="Contracts\ICalendarRepository.cs" />
+    <Compile Include="Contracts\IFarmingActionRepository.cs" />
+    <Compile Include="Contracts\IOogstplannerContext.cs" />
+    <Compile Include="Contracts\IOogstplannerUnitOfWork.cs" />
+    <Compile Include="Contracts\IPasswordRecoveryRepository.cs" />
+    <Compile Include="Contracts\IRepository.cs" />
+    <Compile Include="Contracts\IUserRepository.cs" />
+    <Compile Include="Contracts\ICropRepository.cs" />
+    <Compile Include="OogstplannerUnitOfWork.cs" />
+    <Compile Include="Contracts\IRepositoryProvider.cs" />
+    <Compile Include="RepositoryProvider.cs" />
+    <Compile Include="RepositoryFactories.cs" />
+    <Compile Include="CropRepository.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <None Include="packages.config" />
+    <None Include="App.config" />
+    <None Include="codecamper-MIT-LICENSE.txt" />
+    <None Include="NOTICE.MD" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Contracts\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Oogstplanner.Models\Oogstplanner.Models.csproj">
+      <Project>{DA75E084-733A-41B7-A5A3-AA59858EEEF4}</Project>
+      <Name>Oogstplanner.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Oogstplanner.Common\Oogstplanner.Common.csproj">
+      <Project>{FA63355D-2606-4153-B17F-D364986C7829}</Project>
+      <Name>Oogstplanner.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+</Project>

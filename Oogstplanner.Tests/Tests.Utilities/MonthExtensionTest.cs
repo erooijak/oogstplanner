@@ -1,7 +1,8 @@
-﻿using NUnit.Framework;
-using System;
+﻿using System;
 
-using Oogstplanner.Utilities.ExtensionMethods;
+using NUnit.Framework;
+
+using Oogstplanner.Models;
 
 namespace Oogstplanner.Tests.Utilities
 {
@@ -99,6 +100,5 @@ namespace Oogstplanner.Tests.Utilities
             Assert.Throws<ArgumentOutOfRangeException>(() => Month.February.Subtract(-23),
                 "Negative input should throw an ArgumentOutOfRangeException.");
         }
-
     }
 }

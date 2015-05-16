@@ -194,5 +194,4 @@ class Oogstplanner {
         $('#loginbox').show(); 
         this.resetValidation();
     }
-
 }  

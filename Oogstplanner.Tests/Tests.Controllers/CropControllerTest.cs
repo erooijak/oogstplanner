@@ -2,38 +2,38 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
+
+using Moq;
 using NUnit.Framework;
 
-using Oogstplanner.Tests.Lib.Fakes;
-using Oogstplanner.Services;
-using Oogstplanner.Controllers;
+using Oogstplanner.Data;
 using Oogstplanner.Models;
-using Oogstplanner.Repositories;
+using Oogstplanner.Services;
+using Oogstplanner.Web.Controllers;
 
 namespace Oogstplanner.Tests.Controllers
 {
     [TestFixture]
     public class CropControllerTest
     {
-        private CropController controller;
+        CropController controller;
 
         [TestFixtureSetUp]
         public void Setup()
         {
-            // Initialize a fake database with one crop.
-            var db = new FakeOogstplannerContext
+            var expectedCrop = new Crop
             {
-                Crops =
-                {
-                    new Crop
-                    {
-                        Id = 1,
-                        Name = "Broccoli", 
-                        SowingMonths = Month.May ^ Month.June ^ Month.October ^ Month.November 
-                    }
-                }
+                Id = 1,
+                Name = "Broccoli", 
+                SowingMonths = Month.May ^ Month.June ^ Month.October ^ Month.November 
             };
-            this.controller = new CropController(new CropProvider(new CropRepository(db)));
+
+            var unitOfWorkMock = new Mock<IOogstplannerUnitOfWork>();
+            unitOfWorkMock.Setup(mock => 
+                mock.Crops.GetAll())
+                .Returns(new[] { expectedCrop });
+
+            this.controller = new CropController(new CropProvider(unitOfWorkMock.Object));
         }
 
         [Test]
@@ -65,7 +65,6 @@ namespace Oogstplanner.Tests.Controllers
             Assert.IsTrue(actualResult.Contains(expectedResult),
                 "Since there is a broccoli in the database the JSON string returned by the all " +
                 "method should contain it.");
-        }
-    	
+        }    	
     }
 }

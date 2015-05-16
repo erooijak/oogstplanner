@@ -1,7 +1,8 @@
-﻿using NUnit.Framework;
-using System;
+﻿using System;
 
-using Oogstplanner.Utilities.ExtensionMethods;
+using NUnit.Framework;
+
+using Oogstplanner.Common;
 
 namespace Oogstplanner.Tests.Utilities
 {
@@ -29,6 +30,12 @@ namespace Oogstplanner.Tests.Utilities
             Two = 2
         }
 
+        enum Test3
+        { 
+            One = 1, 
+            Two = 2
+        }
+
         [Test]
         public void Utilities_EnumExtension_Description()
         {
@@ -51,5 +58,15 @@ namespace Oogstplanner.Tests.Utilities
                 "Description should be obtained from flags enumeration.");
         }
 
+        [Test]
+        public void Utilities_EnumExtension_DescriptionNoAttribute()
+        {
+            // ACT
+            var result = Test3.One.GetDescription();
+
+            // ASSERT
+            Assert.AreEqual(Test3.One.ToString(), result, 
+                "When no description attribute the method should return string value.");
+        }
     }
 }

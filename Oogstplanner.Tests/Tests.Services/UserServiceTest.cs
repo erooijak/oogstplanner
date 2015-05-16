@@ -6,8 +6,8 @@ using System.Web;
 using Moq;
 using NUnit.Framework;
 
+using Oogstplanner.Data;
 using Oogstplanner.Models;
-using Oogstplanner.Repositories;
 using Oogstplanner.Services;
 
 namespace Oogstplanner.Tests.Services
@@ -20,26 +20,27 @@ namespace Oogstplanner.Tests.Services
         public void Services_User_AddUser()
         {
             // ARRANGE
-            var userRepositoryMock = new Mock<IUserRepository>();
-            var calendarRepositoryMock = new Mock<ICalendarRepository>();
             var cookieProviderMock = new Mock<ICookieProvider>();
+            var userRepositoryMock = new Mock<IUserRepository>();
+            var unitOfWorkMock = new Mock<IOogstplannerUnitOfWork>();
 
             var expectedClientUserName = Guid.NewGuid().ToString();
             const int expectedUserId = 3;
             var existingUser = new User { UserId = expectedUserId };
 
-            cookieProviderMock.Setup(mock =>
-                mock.GetCookie(It.IsAny<string>()))
-                .Returns(expectedClientUserName);
-
             userRepositoryMock.Setup(mock =>
                 mock.GetUserByUserName(expectedClientUserName))
                 .Returns(existingUser);
 
+            unitOfWorkMock.SetupGet(mock => mock.Users)
+                .Returns(userRepositoryMock.Object);
+
+            cookieProviderMock.Setup(mock =>
+                mock.GetCookie(It.IsAny<string>()))
+                .Returns(expectedClientUserName);
+
             var service = new UserService(
-                userRepositoryMock.Object, 
-                calendarRepositoryMock.Object, 
-                cookieProviderMock.Object);
+                unitOfWorkMock.Object, cookieProviderMock.Object);
 
             const string expectedUserName = "Test";
             const string expectedFullName = "Test Test";
@@ -53,13 +54,15 @@ namespace Oogstplanner.Tests.Services
 
             // ASSERT
             userRepositoryMock.Verify(mock =>
-                mock.Update(It.Is<Object[]>(u => 
-                    ((User)u[0]).AuthenticationStatus == AuthenticatedStatus.Authenticated
-                    && ((User)u[0]).Email == expectedEmail
-                    && ((User)u[0]).FullName == expectedFullName
-                    && ((User)u[0]).Name == expectedUserName)),
+                mock.Update(It.Is<User>(u => 
+                    u.AuthenticationStatus == AuthenticatedStatus.Authenticated
+                    && u.Email == expectedEmail
+                    && u.FullName == expectedFullName
+                    && u.Name == expectedUserName)),
                 Times.Once,
                 "The existing user should be updated with the correct information.");
+            unitOfWorkMock.Verify(mock => mock.Commit(), Times.Once,
+                "Changes should be committed only once since an existing user is updated.");
         }
 
         [Ignore] // Test cannot run in isolation because of configuration manager bug.
@@ -67,22 +70,27 @@ namespace Oogstplanner.Tests.Services
         public void Services_User_AddUser_CookieRemoved()
         {
             // ARRANGE
-            var userRepositoryMock = new Mock<IUserRepository>();
-            var calendarRepositoryMock = new Mock<ICalendarRepository>();
             var cookieProviderMock = new Mock<ICookieProvider>();
+            var userRepositoryMock = new Mock<IUserRepository>();
+            var unitOfWorkMock = new Mock<IOogstplannerUnitOfWork>();
+
+            var expectedClientUserName = Guid.NewGuid().ToString();
+            const int expectedUserId = 3;
+            var existingUser = new User { UserId = expectedUserId };
+
+            userRepositoryMock.Setup(mock =>
+                mock.GetUserByUserName(expectedClientUserName))
+                .Returns(existingUser);
+
+            unitOfWorkMock.SetupGet(mock => mock.Users)
+                .Returns(userRepositoryMock.Object);
 
             cookieProviderMock.Setup(mock =>
                 mock.GetCookie(It.IsAny<string>()))
-                .Returns("Username");
-
-            userRepositoryMock.Setup(mock =>
-                mock.GetUserByUserName(It.IsAny<string>()))
-                .Returns(new User());
-
+                .Returns(expectedClientUserName);
+         
             var service = new UserService(
-                userRepositoryMock.Object, 
-                calendarRepositoryMock.Object, 
-                cookieProviderMock.Object);
+                unitOfWorkMock.Object, cookieProviderMock.Object);
 
             // ACT
             service.AddUser("", "", "");
@@ -100,26 +108,22 @@ namespace Oogstplanner.Tests.Services
         public void Services_User_AddUser_New()
         {
             // ARRANGE
+            var cookieProviderMock = new Mock<ICookieProvider>();
             var userRepositoryMock = new Mock<IUserRepository>();
             var calendarRepositoryMock = new Mock<ICalendarRepository>();
-            var cookieProviderMock = new Mock<ICookieProvider>();
+            var unitOfWorkMock = new Mock<IOogstplannerUnitOfWork>();
 
-            var expectedClientUserName = Guid.NewGuid().ToString();
-            const int expectedUserId = 3;
-            var existingUser = new User { UserId = expectedUserId };
+            unitOfWorkMock.SetupGet(mock => mock.Users)
+                .Returns(userRepositoryMock.Object);
+            unitOfWorkMock.SetupGet(mock => mock.Calendars)
+                .Returns(calendarRepositoryMock.Object);
 
             cookieProviderMock.Setup(mock =>
                 mock.GetCookie(It.IsAny<string>()))
                 .Returns("");
 
-            userRepositoryMock.Setup(mock =>
-                mock.GetUserByUserName(expectedClientUserName))
-                .Returns(existingUser);
-
             var service = new UserService(
-                userRepositoryMock.Object, 
-                calendarRepositoryMock.Object, 
-                cookieProviderMock.Object);
+                unitOfWorkMock.Object, cookieProviderMock.Object);
 
             const string expectedUserName = "Test";
             const string expectedFullName = "Test Test";
@@ -133,19 +137,21 @@ namespace Oogstplanner.Tests.Services
 
             // ASSERT
             userRepositoryMock.Verify(mock =>
-                mock.AddUser(It.Is<User>(u => 
+                mock.Add(It.Is<User>(u => 
                     u.AuthenticationStatus == AuthenticatedStatus.Authenticated
                     && u.CreationDate.Date == DateTime.Today
                     && u.Email == expectedEmail
                     && u.FullName == expectedFullName
                     && u.Name == expectedUserName)),
                 Times.Once,
-                "A new user should be created with the correct information.");
-           
+                "A new user should be created with the correct information.");           
             calendarRepositoryMock.Verify(mock =>
-                mock.CreateCalendar(It.IsAny<User>()),
+                mock.Add(It.IsAny<Calendar>()),
                 Times.Once,
-                "A new user should get a calendar.");
+                "The new user should get a calendar.");
+            unitOfWorkMock.Verify(mock => mock.Commit(), Times.Exactly(2),
+                "Changes should be committed, retrieved for the generated primary key, " +
+                "and committed again to database.");
         }
 
         [Test]
@@ -164,14 +170,14 @@ namespace Oogstplanner.Tests.Services
                 new string[0]
             );
 
-            var userRepositoryMock = new Mock<IUserRepository>();
-            var calendarRepositoryMock = new Mock<ICalendarRepository>();
             var cookieProviderMock = new Mock<ICookieProvider>();
+            var userRepositoryMock = new Mock<IUserRepository>();
+            var unitOfWorkMock = new Mock<IOogstplannerUnitOfWork>();
+            unitOfWorkMock.SetupGet(mock => mock.Users)
+                .Returns(userRepositoryMock.Object);
 
             var service = new UserService(
-                userRepositoryMock.Object, 
-                calendarRepositoryMock.Object, 
-                cookieProviderMock.Object);
+                unitOfWorkMock.Object, cookieProviderMock.Object);
 
             // ACT
             service.GetCurrentUserId();
@@ -187,14 +193,14 @@ namespace Oogstplanner.Tests.Services
         public void Services_User_GetUser()
         {
             // ARRANGE
-            var userRepositoryMock = new Mock<IUserRepository>();
-            var calendarRepositoryMock = new Mock<ICalendarRepository>();
             var cookieProviderMock = new Mock<ICookieProvider>();
-
+            var userRepositoryMock = new Mock<IUserRepository>();
+            var unitOfWorkMock = new Mock<IOogstplannerUnitOfWork>();
+            unitOfWorkMock.SetupGet(mock => mock.Users)
+                .Returns(userRepositoryMock.Object);
+           
             var service = new UserService(
-                userRepositoryMock.Object, 
-                calendarRepositoryMock.Object, 
-                cookieProviderMock.Object);
+                unitOfWorkMock.Object, cookieProviderMock.Object);
 
             var expectedId = new Random().Next();
 
@@ -203,9 +209,31 @@ namespace Oogstplanner.Tests.Services
 
             // ASSERT
             userRepositoryMock.Verify(mock =>
-                mock.GetUserById(expectedId),
+                mock.GetById(expectedId),
                 Times.Once,
                 "The repository should be called with the correct id.");
+        }
+
+        [Test]
+        public void Services_User_NoCommitsOnQueries()
+        {
+            // ARRANGE
+            var cookieProviderMock = new Mock<ICookieProvider>();
+            var userRepositoryMock = new Mock<IUserRepository>();
+            var unitOfWorkMock = new Mock<IOogstplannerUnitOfWork>();
+            unitOfWorkMock.SetupGet(mock => mock.Users)
+                .Returns(userRepositoryMock.Object);
+
+            var service = new UserService(
+                unitOfWorkMock.Object, cookieProviderMock.Object);
+
+            // ACT
+            service.GetUser(It.IsAny<int>());
+            service.GetCurrentUserId();
+
+            // ASSERT
+            unitOfWorkMock.Verify(mock => mock.Commit(), Times.Never,
+                "No changes to commit to database on queries.");
         }
     }
 }

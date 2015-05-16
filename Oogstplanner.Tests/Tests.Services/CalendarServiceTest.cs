@@ -1,12 +1,11 @@
-﻿using Moq;
-using NUnit.Framework;
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 
+using Moq;
+using NUnit.Framework;
+
+using Oogstplanner.Data;
 using Oogstplanner.Models;
-using Oogstplanner.ViewModels;
-using Oogstplanner.Repositories;
 using Oogstplanner.Services;
 using Oogstplanner.Tests.Lib.Fakes;
 
@@ -19,12 +18,18 @@ namespace Oogstplanner.Tests.Services
         public void Services_Calendar_GetCalendar()
         {
             // ARRANGE
-            var calendarRepositoryMock = new Mock<ICalendarRepository>();
             var farmingActionServiceMock = new Mock<IFarmingActionService>();
-            var userRepositoryMock = new Mock<IUserRepository>();
-            var fakeUserServices = new FakeUserServices(
-                userRepositoryMock.Object, 
-                calendarRepositoryMock.Object);
+            var calendarRepositoryMock = new Mock<ICalendarRepository>();
+            var unitOfWorkMock = new Mock<IOogstplannerUnitOfWork>();
+
+            unitOfWorkMock.SetupGet(mock =>
+                mock.Calendars).Returns(calendarRepositoryMock.Object);
+
+            var fakeUserServices = new FakeUserServices();
+            fakeUserServices.ReturnedUserService = 
+                new UserService(unitOfWorkMock.Object, 
+                    new Mock<ICookieProvider>().Object);
+
             var userServiceMock = new Mock<IUserService>();
             var authenticationServiceMock = new Mock<IAuthenticationService>();
 
@@ -35,7 +40,7 @@ namespace Oogstplanner.Tests.Services
             fakeUserServices.ReturnedUserService = userServiceMock.Object;
 
             var service = new CalendarService(
-                calendarRepositoryMock.Object, 
+                unitOfWorkMock.Object, 
                 farmingActionServiceMock.Object,
                 fakeUserServices,
                 authenticationServiceMock.Object);
@@ -45,7 +50,8 @@ namespace Oogstplanner.Tests.Services
 
             // ASSERT
             calendarRepositoryMock.Verify(mock =>
-                mock.GetCalendar(expectedUserId), Times.Once,
+                mock.GetByUserId(expectedUserId), 
+                    Times.Once,
                 "The calendar for the user id should be retrieved");
         }
 
@@ -53,16 +59,18 @@ namespace Oogstplanner.Tests.Services
         public void Services_Calendar_GetYearCalendar()
         {
             // ARRANGE
-            var calendarRepositoryMock = new Mock<ICalendarRepository>();
             var farmingActionServiceMock = new Mock<IFarmingActionService>();
-            var userRepositoryMock = new Mock<IUserRepository>();
-            var fakeUserServices = new FakeUserServices(
-                userRepositoryMock.Object, 
-                calendarRepositoryMock.Object);
+            var unitOfWorkMock = new Mock<IOogstplannerUnitOfWork>();
+
+            var fakeUserServices = new FakeUserServices();
             var userServiceMock = new Mock<IUserService>();
             var authenticationServiceMock = new Mock<IAuthenticationService>();
 
             var expectedUserId = new Random().Next();
+            userServiceMock.Setup(mock => mock.GetCurrentUserId())
+                .Returns(expectedUserId);
+
+            fakeUserServices.ReturnedUserService = userServiceMock.Object;
 
             userServiceMock.Setup(mock => mock.GetCurrentUserId())
                 .Returns(expectedUserId);
@@ -70,7 +78,7 @@ namespace Oogstplanner.Tests.Services
             fakeUserServices.ReturnedUserService = userServiceMock.Object;
 
             var service = new CalendarService(
-                calendarRepositoryMock.Object, 
+                unitOfWorkMock.Object, 
                 farmingActionServiceMock.Object,
                 fakeUserServices,
                 authenticationServiceMock.Object);
@@ -97,12 +105,13 @@ namespace Oogstplanner.Tests.Services
         public void Services_Calendar_GetMonthCalendar()
         {
             // ARRANGE
-            var calendarRepositoryMock = new Mock<ICalendarRepository>();
             var farmingActionServiceMock = new Mock<IFarmingActionService>();
-            var userRepositoryMock = new Mock<IUserRepository>();
-            var fakeUserServices = new FakeUserServices(
-                userRepositoryMock.Object, 
-                calendarRepositoryMock.Object);
+            var unitOfWorkMock = new Mock<IOogstplannerUnitOfWork>();
+
+            var fakeUserServices = new FakeUserServices();
+            fakeUserServices.ReturnedUserService = 
+                new UserService(unitOfWorkMock.Object, 
+                    new Mock<ICookieProvider>().Object);
             var userServiceMock = new Mock<IUserService>();
             var authenticationServiceMock = new Mock<IAuthenticationService>();
 
@@ -129,7 +138,7 @@ namespace Oogstplanner.Tests.Services
                 .Returns(expectedSowingActions);
 
             var service = new CalendarService(
-                calendarRepositoryMock.Object, 
+                unitOfWorkMock.Object, 
                 farmingActionServiceMock.Object,
                 fakeUserServices,
                 authenticationServiceMock.Object);
@@ -152,15 +161,20 @@ namespace Oogstplanner.Tests.Services
         public void Services_Calendar_GetMonthWithAction()
         {
             // ARRANGE
-            var calendarRepositoryMock = new Mock<ICalendarRepository>();
             var farmingActionServiceMock = new Mock<IFarmingActionService>();
-            var userRepositoryMock = new Mock<IUserRepository>();
-            var fakeUserServices = new FakeUserServices(
-                userRepositoryMock.Object, 
-                calendarRepositoryMock.Object);
+            var farmingActionRepositoryMock = new Mock<IFarmingActionRepository>();
+            var unitOfWorkMock = new Mock<IOogstplannerUnitOfWork>();
+
+            unitOfWorkMock.SetupGet(mock =>
+                mock.FarmingActions).Returns(farmingActionRepositoryMock.Object);
+
+            var fakeUserServices = new FakeUserServices();
+            fakeUserServices.ReturnedUserService = 
+                new UserService(unitOfWorkMock.Object, 
+                    new Mock<ICookieProvider>().Object);
             var userServiceMock = new Mock<IUserService>();
             var authenticationServiceMock = new Mock<IAuthenticationService>();
-
+           
             var expectedUserId = new Random().Next();
 
             userServiceMock.Setup(mock => mock.GetCurrentUserId())
@@ -169,7 +183,7 @@ namespace Oogstplanner.Tests.Services
             fakeUserServices.ReturnedUserService = userServiceMock.Object;
 
             var service = new CalendarService(
-                calendarRepositoryMock.Object, 
+                unitOfWorkMock.Object, 
                 farmingActionServiceMock.Object,
                 fakeUserServices,
                 authenticationServiceMock.Object);
@@ -178,10 +192,49 @@ namespace Oogstplanner.Tests.Services
             service.GetMonthsWithAction();
 
             // ASSERT
-            calendarRepositoryMock.Verify(mock =>
+            farmingActionRepositoryMock.Verify(mock =>
                 mock.GetMonthsWithAction(expectedUserId), Times.Once,
                 "The get months with action method should be called with the user id.");
         }
 
+        [Test]
+        public void Services_Calendar_NoCommitsOnQueries()
+        {
+            // ARRANGE
+            var farmingActionServiceMock = new Mock<IFarmingActionService>();
+            var farmingActionRepositoryMock = new Mock<IFarmingActionRepository>();
+            var unitOfWorkMock = new Mock<IOogstplannerUnitOfWork>();
+
+            unitOfWorkMock.SetupGet(mock =>
+                mock.FarmingActions).Returns(farmingActionRepositoryMock.Object);
+
+            var fakeUserServices = new FakeUserServices();
+            fakeUserServices.ReturnedUserService = 
+                new UserService(unitOfWorkMock.Object, 
+                    new Mock<ICookieProvider>().Object);
+            var userServiceMock = new Mock<IUserService>();
+            var authenticationServiceMock = new Mock<IAuthenticationService>();
+
+            userServiceMock.Setup(mock => mock.GetCurrentUserId())
+                .Returns(It.IsAny<int>());
+
+            fakeUserServices.ReturnedUserService = userServiceMock.Object;
+
+            var service = new CalendarService(
+                unitOfWorkMock.Object, 
+                farmingActionServiceMock.Object,
+                fakeUserServices,
+                authenticationServiceMock.Object);
+
+            // ACT
+            service.GetMonthsWithAction();
+            service.GetMonthCalendar(It.IsAny<Month>());
+            service.GetMonthCalendar(It.IsAny<Month>());
+            service.GetYearCalendar();
+
+            // ASSERT
+            unitOfWorkMock.Verify(mock => mock.Commit(), Times.Never,
+                "No changes to commit to database on queries.");
+        }
     }
 }

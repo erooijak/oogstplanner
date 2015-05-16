@@ -4,12 +4,12 @@ using System.Web.Mvc;
 
 using Newtonsoft.Json;
 
-using Oogstplanner.Utilities.ExtensionMethods;
 using Oogstplanner.Models;
 using Oogstplanner.Services;
-using Oogstplanner.Utilities.Helpers;
+using Oogstplanner.Web.Utilities.ExtensionMethods;
+using Oogstplanner.Web.Utilities.Helpers;
 
-namespace Oogstplanner.Controllers
+namespace Oogstplanner.Web.Controllers
 {
     [AllowAnonymous]
     public class CalendarController : Controller
@@ -23,6 +23,19 @@ namespace Oogstplanner.Controllers
             IFarmingActionService farmingActionService,
             ICropProvider cropProvider)
         {
+            if (calendarService == null)
+            {
+                throw new ArgumentNullException("calendarService");
+            }
+            if (farmingActionService == null)
+            {
+                throw new ArgumentNullException("farmingActionService");
+            }
+            if (cropProvider == null)
+            {
+                throw new ArgumentNullException("cropProvider");
+            }
+
             this.calendarService = calendarService;
             this.farmingActionService = farmingActionService;
             this.cropProvider = cropProvider;

@@ -1,9 +1,10 @@
-﻿using Moq;
-using NUnit.Framework;
-
-using System.Security.Principal;
+﻿using System.Security.Principal;
 using System.Threading;
 
+using Moq;
+using NUnit.Framework;
+
+using Oogstplanner.Models;
 using Oogstplanner.Services;
 
 namespace Oogstplanner.Tests.Services
@@ -49,6 +50,5 @@ namespace Oogstplanner.Tests.Services
                 "When the user is not authenticated the status enum should be set to " +
                 "anonymous.");
         }
-
     }
 }

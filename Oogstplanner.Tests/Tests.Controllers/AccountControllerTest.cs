@@ -5,11 +5,10 @@ using System.Web.Security;
 using Moq;
 using NUnit.Framework;
 
-using Oogstplanner.Controllers;
 using Oogstplanner.Models;
 using Oogstplanner.Services;
 using Oogstplanner.Tests.Lib;
-using Oogstplanner.Utilities.CustomClasses;
+using Oogstplanner.Web.Controllers;
 
 namespace Oogstplanner.Tests.Controllers
 {
@@ -179,7 +178,7 @@ namespace Oogstplanner.Tests.Controllers
             var passwordRecoveryServiceMock = new Mock<IPasswordRecoveryService>();
 
             var expectedModelError = 
-                new Oogstplanner.Utilities.CustomClasses.ModelError();
+                new Oogstplanner.Models.ModelError();
             
             membershipServiceMock.Setup(mock => 
                 mock.TryCreateUser(
@@ -264,7 +263,7 @@ namespace Oogstplanner.Tests.Controllers
             const string expectedModelErrorField = "Password";
             const string expectedModelErrorMessage = "Wrong password";
             var expectedModelError = 
-                new Oogstplanner.Utilities.CustomClasses.ModelError
+                new Oogstplanner.Models.ModelError
                 {
                     Field = expectedModelErrorField,
                     Message = expectedModelErrorMessage
@@ -643,7 +642,6 @@ namespace Oogstplanner.Tests.Controllers
 
             // ASSERT
             Assert.AreEqual(expectedUser, (User)viewResult.Model);
-        }
-            
+        }            
     }
 }

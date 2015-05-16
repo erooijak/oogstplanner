@@ -1,284 +1,544 @@
-﻿using System.Collections.Generic;
-using System.IO;
-using System.Threading;
-using System.Security.Principal;
-using System.Web;
+﻿using System;
+using System.Linq.Expressions;
+
+using Moq;
 using NUnit.Framework;
 
-using Oogstplanner.Tests.Lib.Fakes;
-using Oogstplanner.Services;
+using Oogstplanner.Common;
+using Oogstplanner.Data;
 using Oogstplanner.Models;
-using Oogstplanner.Utilities.CustomExceptions;
-using Oogstplanner.Repositories;
+using Oogstplanner.Services;
+using Oogstplanner.Tests.Lib.Fakes;
 
 namespace Oogstplanner.Tests.Services
 {
 	[TestFixture]
 	public class FarmingActionServiceTest
-	{
-    
-        FarmingActionService service;
-        IOogstplannerContext db;
-    
-        [TestFixtureSetUp]
-        public void Setup()
-        {
-            const string userName = "userName";
-
-            var calendar = new Calendar { CalendarId = 1, UserId = 1 };
-            var user = new User 
-            { 
-                    UserId = 1, 
-                    Name = userName, 
-                    Email = "test@test.de", 
-                    AuthenticationStatus = AuthenticatedStatus.Authenticated, 
-                    FullName = "test" 
-            };
-            var broccoli = new Crop 
-            {
-                Id = 1,
-                Name = "Broccoli", 
-                GrowingTime = 4,
-                SowingMonths = Month.May ^ Month.June ^ Month.October ^ Month.November 
-            };
-
-            // Initialize a fake database with some crops and farming actions.
-            this.db = new FakeOogstplannerContext 
-            {
-                Users = 
-                { 
-                    user
-                },
-                Crops = 
-                {
-                    broccoli
-                },
-                FarmingActions = 
-                {
-                    new FarmingAction 
-                    {
-                        Id = 1,
-                        Calendar = calendar,
-                        Crop = broccoli,
-                        Action = ActionType.Sowing,
-                        CropCount = 3,
-                        Month = Month.May
-                    },
-                    new FarmingAction 
-                    {
-                        Id = 2,
-                        Calendar = calendar,
-                        Crop = broccoli,
-                        Action = ActionType.Harvesting,
-                        CropCount = 3,
-                        Month = Month.September
-                    },
-                    new FarmingAction
-                    {
-                        Id = 10,
-                        Calendar = new Calendar { UserId = 3, CalendarId = 2 }, // Belonging to other user.
-                        Crop = broccoli,
-                        Action = ActionType.Harvesting,
-                        CropCount = 5,
-                        Month = Month.September
-                    },
-                    new FarmingAction // Used for removal check
-                    {
-                        Id = 99,
-                        Calendar = calendar,
-                        Crop = new Crop { Id = 9999, GrowingTime = 3 }, // No correlation with others
-                        Action = ActionType.Harvesting,
-                        CropCount = 5,
-                        Month = Month.September
-                    },
-                    new FarmingAction  // Used for check if an existing one is updated
-                    {
-                        Action = ActionType.Harvesting,
-                        Calendar = new Calendar { CalendarId = 5, UserId = 1 },
-                        Crop = new Crop { Id = 5, GrowingTime = 3 },
-                        Month = Month.April,
-                        CropCount = 10,
-                        Id = 1234
-                    }
-                }
-            };
-                    
-            // Fake the HttpContext which is used for the check if the user is allowed to update the action.
-            HttpContext.Current = new HttpContext(
-                new HttpRequest("", "http://tempuri.org", ""),
-                new HttpResponse(new StringWriter())
-            );
-
-            // User is logged in
-            HttpContext.Current.User = new GenericPrincipal(
-                new GenericIdentity(userName),
-                new string[0]
-            );
-            Thread.CurrentPrincipal = new GenericPrincipal(
-                new GenericIdentity(userName),
-                new string[0]
-            );
-
-            var farmingActionRepository = new FarmingActionRepository(db);
-            var userRepository = new UserRepository(db);
-            var calendarRepository = new CalendarRepository(db);
-            var fakeUserServices = new FakeUserServices(userRepository, calendarRepository);
-            fakeUserServices.ReturnedUserService = new UserService(
-                userRepository, 
-                calendarRepository, 
-                new CookieProvider());
-
-            service = new FarmingActionService(
-                farmingActionRepository, 
-                new AuthenticationService(), 
-                fakeUserServices
-            );
-        }
-
+	{       
         [Test]
-        public void Services_FarmingAction_UpdateCropCounts_CorrectCropsAreUpdated()
+        public void Services_FarmingAction_GetFarmingActions()
         {
             // ARRANGE
-            var farmingActionIds = new List<int> { 1 };
-            var cropCounts = new List<int> { 1 };
+            var farmingActionRepositoryMock = new Mock<IFarmingActionRepository>();
+            var unitOfWorkMock = new Mock<IOogstplannerUnitOfWork>();
+
+            unitOfWorkMock.SetupGet(mock =>
+                mock.FarmingActions).Returns(farmingActionRepositoryMock.Object);
+
+            var fakeUserServices = new FakeUserServices();
+            var authenticationServiceMock = new Mock<IAuthenticationService>();
+
+            var expectedUserId = new Random().Next();
+            var expectedMonth = Month.June;
+
+            var service = new FarmingActionService(
+                unitOfWorkMock.Object, 
+                fakeUserServices,
+                authenticationServiceMock.Object);
 
             // ACT
-            service.UpdateCropCounts(farmingActionIds, cropCounts);
+            service.GetHarvestingActions(expectedUserId, expectedMonth);
+            service.GetSowingActions(expectedUserId, expectedMonth);
 
             // ASSERT
-            Assert.AreEqual(1, db.FarmingActions.Find(1).CropCount,
-                "CropCount should be updated to 1 since the crop id with one has a count of one.");
-            Assert.AreEqual(1, db.FarmingActions.Find(2).CropCount,
-                "CropCount of the related farming action should be updated to 1 too.");
+            farmingActionRepositoryMock.Verify(mock => mock.GetFarmingActions
+                (It.IsAny<Expression<Func<FarmingAction, bool>>>()), 
+                Times.Exactly(2),
+                "Calls should be delegated to repository.");
         }
 
         [Test]
-        public void Services_FarmingAction_UpdateCropCounts_UserCannotEditOthers()
+        public void Services_FarmingAction_AddActionExisting()
         {
             // ARRANGE
-            var farmingActionIds = new List<int> { 1, 10 }; 
-            var cropCounts = new List<int> { 1, 10 };
+            var farmingActionRepositoryMock = new Mock<IFarmingActionRepository>();
+            var unitOfWorkMock = new Mock<IOogstplannerUnitOfWork>();
 
-            // ACT AND ASSERT
-            Assert.Catch<SecurityException>( () =>  service.UpdateCropCounts(farmingActionIds, cropCounts), 
-                "A security exception should be thrown when a user tries to updates an action"
-                + "belonging to another user.");
-        }
-
-        [Test]
-        public void Services_FarmingActionAddFarmingAction_CorrectFarmingActionsAreCreated()
-        {
-            // ARRANGE
-            var action = new FarmingAction 
-            {
-                Action = ActionType.Harvesting,
-                Calendar = new Calendar { CalendarId = 5, UserId = 1 },
-                Crop = new Crop { Id = 3, GrowingTime = 3 },
-                Month = Month.April,
-                CropCount = 10,
-                Id = 3
-            };
-
-            // ACT
-            service.AddAction(action);
-
-            // ASSERT
-            var addedFarmingAction = db.FarmingActions.Find(3); // 3 is ID specified above
-            var relatedAddedFarmingAction = db.FarmingActions.Find(0); //0 is default ID
-
-            Assert.AreEqual(Month.April, addedFarmingAction.Month, 
-                "One farming action with month january should be created");
-            Assert.AreEqual(Month.January, relatedAddedFarmingAction.Month, 
-                "A next related farming action with month April should be created");
-            Assert.AreEqual(addedFarmingAction.CropCount, relatedAddedFarmingAction.CropCount,
-                "The farming actions should have the same crop count.");
-            Assert.AreEqual(addedFarmingAction.Calendar.CalendarId, relatedAddedFarmingAction.Calendar.CalendarId, 
-                "The farming actions should have the same calendar id.");
-            Assert.AreEqual(ActionType.Sowing, relatedAddedFarmingAction.Action, 
-                "The related added farming action should have action type sowing (opposite of added one).");
+            var fakeUserServices = new FakeUserServices();
+            fakeUserServices.ReturnedUserService = 
+                new UserService(unitOfWorkMock.Object, 
+                    new Mock<ICookieProvider>().Object);
                 
+            var expectedUserId = new Random().Next();
+
+            var addedFarmingAction = new FarmingAction
+            {
+                Calendar = new Calendar { UserId = expectedUserId },
+                Month = Month.June,
+                Action = ActionType.Harvesting,
+                Crop = new Crop { GrowingTime = 2 },
+                CropCount = 10
+            };
+            var returnedFarmingActions = new[] { 
+                new FarmingAction{
+                    Calendar = new Calendar { UserId = expectedUserId },
+                    CropCount = 10
+                } 
+            };
+
+            var userServiceMock = new Mock<IUserService>();
+            var authenticationServiceMock = new Mock<IAuthenticationService>();
+
+            farmingActionRepositoryMock.Setup(mock =>
+                mock.GetFarmingActions(It.IsAny<Expression<Func<FarmingAction, bool>>>()))
+                .Returns(returnedFarmingActions);
+            userServiceMock.Setup(mock => mock.GetCurrentUserId())
+                .Returns(expectedUserId);
+
+            fakeUserServices.ReturnedUserService = userServiceMock.Object;
+
+            unitOfWorkMock.SetupGet(mock =>
+                mock.FarmingActions).Returns(farmingActionRepositoryMock.Object);
+
+            var service = new FarmingActionService(
+                unitOfWorkMock.Object, 
+                fakeUserServices,
+                authenticationServiceMock.Object);
+
+            // ACT
+            service.AddAction(addedFarmingAction);;
+
+            // ASSERT
+            farmingActionRepositoryMock.Verify(mock => mock.Update(
+                It.IsAny<FarmingAction>()),
+                Times.Exactly(2),
+                "When an existing action is returned the crop count should" +
+                "be increased once for the initial and once for the related action.");
+            unitOfWorkMock.Verify(mock => mock.Commit(), Times.Once,
+                "Changes should be committed to database.");
         }
 
         [Test]
-        public void Services_FarmingActionAddFarmingAction_CropCountIsAddedToExisting()
+        public void Services_FarmingAction_AddActionNotYetExisting()
         {
             // ARRANGE
-            const int id = 1234;
-           
-            // Add similar to already existing one.
-            var action = new FarmingAction 
+            var farmingActionRepositoryMock = new Mock<IFarmingActionRepository>();
+            var unitOfWorkMock = new Mock<IOogstplannerUnitOfWork>();
+
+            var fakeUserServices = new FakeUserServices();
+            fakeUserServices.ReturnedUserService = 
+                new UserService(unitOfWorkMock.Object, 
+                    new Mock<ICookieProvider>().Object);
+
+            var expectedUserId = new Random().Next();
+
+            var addedFarmingAction = new FarmingAction
+                {
+                    Calendar = new Calendar { UserId = expectedUserId },
+                    Month = Month.June,
+                    Action = ActionType.Harvesting,
+                    Crop = new Crop { GrowingTime = 2 },
+                    CropCount = 10
+                };
+
+            var returnedFarmingActions = new[] { default(FarmingAction) };
+
+            var userServiceMock = new Mock<IUserService>();
+            var authenticationServiceMock = new Mock<IAuthenticationService>();
+
+            farmingActionRepositoryMock.Setup(mock =>
+                mock.GetFarmingActions(It.IsAny<Expression<Func<FarmingAction, bool>>>()))
+                .Returns(returnedFarmingActions);
+            userServiceMock.Setup(mock => mock.GetCurrentUserId())
+                .Returns(expectedUserId);
+
+            fakeUserServices.ReturnedUserService = userServiceMock.Object;
+
+            unitOfWorkMock.SetupGet(mock =>
+                mock.FarmingActions).Returns(farmingActionRepositoryMock.Object);
+
+            var service = new FarmingActionService(
+                unitOfWorkMock.Object, 
+                fakeUserServices,
+                authenticationServiceMock.Object);
+
+            // ACT
+            service.AddAction(addedFarmingAction);;
+
+            // ASSERT
+            farmingActionRepositoryMock.Verify(mock => mock.Add(
+                It.IsAny<FarmingAction>()),
+                Times.Exactly(2),
+                "A new action should be added twice: " +
+                "once for the initial and once for the related action.");
+            unitOfWorkMock.Verify(mock => mock.Commit(), Times.Once,
+                "Changes should be committed to database.");
+        }
+
+        [Test]
+        public void Services_FarmingAction_AddAction_UsersCannotUpdateOthers()
+        {
+            // ARRANGE
+            var farmingActionRepositoryMock = new Mock<IFarmingActionRepository>();
+            var unitOfWorkMock = new Mock<IOogstplannerUnitOfWork>();
+
+            var fakeUserServices = new FakeUserServices();
+            fakeUserServices.ReturnedUserService = 
+                new UserService(unitOfWorkMock.Object,
+                    new Mock<ICookieProvider>().Object);
+
+            const int expectedUserId = 1;
+            const int anotherUserId = 2;
+
+            var addedFarmingAction = new FarmingAction
+                {
+                    Calendar = new Calendar { UserId = expectedUserId },
+                    Month = Month.June,
+                    Action = ActionType.Harvesting,
+                    Crop = new Crop { GrowingTime = 2 },
+                    CropCount = 10
+                };
+            var returnedFarmingActions = new[] { 
+                new FarmingAction{
+                    Calendar = new Calendar { UserId = expectedUserId },
+                    CropCount = 10
+                } 
+            };
+
+            var userServiceMock = new Mock<IUserService>();
+            var authenticationServiceMock = new Mock<IAuthenticationService>();
+
+            farmingActionRepositoryMock.Setup(mock =>
+                mock.GetFarmingActions(It.IsAny<Expression<Func<FarmingAction, bool>>>()))
+                .Returns(returnedFarmingActions);
+            userServiceMock.Setup(mock => mock.GetCurrentUserId())
+                .Returns(anotherUserId);
+
+            fakeUserServices.ReturnedUserService = userServiceMock.Object;
+
+            unitOfWorkMock.SetupGet(mock =>
+                mock.FarmingActions).Returns(farmingActionRepositoryMock.Object);
+
+            var service = new FarmingActionService(
+                unitOfWorkMock.Object, 
+                fakeUserServices,
+                authenticationServiceMock.Object);
+
+            // ACT
+            // ASSERT
+            Assert.Throws<SecurityException>(() => service.AddAction(addedFarmingAction),
+                "When a user tries to update another user's action a security exception" +
+                "should be thrown.");
+            unitOfWorkMock.Verify(mock => mock.Commit(), Times.Never,
+                "Changes should not be committed to database.");
+        }
+
+        [Test]
+        public void Services_FarmingAction_RemoveAction()
+        {
+            // ARRANGE
+            var farmingActionRepositoryMock = new Mock<IFarmingActionRepository>();
+            var unitOfWorkMock = new Mock<IOogstplannerUnitOfWork>();
+
+            var fakeUserServices = new FakeUserServices();
+            fakeUserServices.ReturnedUserService = 
+                new UserService(unitOfWorkMock.Object, 
+                    new Mock<ICookieProvider>().Object);
+
+            var expectedUserId = new Random().Next();
+
+            var returnedAction = new FarmingAction
             {
-                Action = ActionType.Harvesting,
-                Calendar = new Calendar { CalendarId = 5, UserId = 1 },
-                Crop = new Crop { Id = 5, GrowingTime = 3 },
-                Month = Month.April,
+                Calendar = new Calendar { UserId = expectedUserId },
+                CropCount = 10
+            };
+            var returnedRelatedAction = new FarmingAction
+            {
+                Calendar = new Calendar { UserId = expectedUserId },
                 CropCount = 10
             };
 
-            // ACT
-            service.AddAction(action);
+            var userServiceMock = new Mock<IUserService>();
+            var authenticationServiceMock = new Mock<IAuthenticationService>();
+            const int expectedFarmingActionId = 1;
 
-            // ASSERT
-            var addedFarmingAction = db.FarmingActions.Find(id);
-            Assert.AreEqual(20, addedFarmingAction.CropCount, 
-                "An already existing farming action should be updated if it belongs to the" 
-                + "same calendar, has the same crop, type and month");
-        }
+            farmingActionRepositoryMock.Setup(mock =>
+                mock.GetById(expectedFarmingActionId))
+                .Returns(returnedAction);
+            farmingActionRepositoryMock.Setup(mock =>
+                mock.FindRelated(returnedAction))
+                .Returns(returnedRelatedAction);
+            userServiceMock.Setup(mock => mock.GetCurrentUserId())
+                .Returns(expectedUserId);
 
-        [Test]
-        public void Services_FarmingActionAddFarmingAction_UserCannotEditOthers()
-        {
-            // ARRANGE
-            const int differentUserIdThanReturnedByHttpContext = 3;
+            fakeUserServices.ReturnedUserService = userServiceMock.Object;
 
-            var action = new FarmingAction 
-            {
-                Action = ActionType.Harvesting,
-                Calendar = new Calendar { CalendarId = 5, UserId = differentUserIdThanReturnedByHttpContext },
-                Crop = new Crop { Id = 3, GrowingTime = 3 },
-                Month = Month.April,
-                CropCount = 10,
-                Id = 3
-            };
+            unitOfWorkMock.SetupGet(mock =>
+                mock.FarmingActions).Returns(farmingActionRepositoryMock.Object);
 
-            // ACT AND ASSERT
-            Assert.Catch<SecurityException>( () => service.AddAction(action), 
-                "A security exception should be thrown when a user tries to edits an action"
-                + "belonging to another user.");
-
-        }
-
-        [Test]
-        public void Services_FarmingActionRemoveFarmingAction_CorrectActionRemoved()
-        {
-            // ARRANGE
-            const int farmingActionIdToRemove = 99;
-            var resultBeforeRemovingFarmingAction = db.FarmingActions.Find(farmingActionIdToRemove);
+            var service = new FarmingActionService(
+                unitOfWorkMock.Object, 
+                fakeUserServices,
+                authenticationServiceMock.Object);
 
             // ACT
-            service.RemoveAction(farmingActionIdToRemove);
+            service.RemoveAction(expectedFarmingActionId);;
 
             // ASSERT
-            var resultAfterRemovingFarmingAction = db.FarmingActions.Find(farmingActionIdToRemove);
-
-            Assert.IsInstanceOf<FarmingAction>(resultBeforeRemovingFarmingAction,
-                "Before removal action should be found.");
-            Assert.IsNull(resultAfterRemovingFarmingAction, 
-                "Farming action with ID 99 should no longer be available after removal.");
+            farmingActionRepositoryMock.Verify(mock => mock.Delete(returnedAction),
+                Times.Once,
+                "The action with the specific id should be deleted.");
+            farmingActionRepositoryMock.Verify(mock => mock.Delete(returnedAction),
+                Times.Once,
+                "The related action should be deleted.");
+            unitOfWorkMock.Verify(mock => mock.Commit(), Times.Once,
+                "Changes should be committed to database.");
         }
 
         [Test]
-        public void Services_FarmingActionRemoveFarmingAction_UserCannotEditOthers()
+        public void Services_FarmingAction_RemoveActionUsersCannotRemoveOthers()
         {
             // ARRANGE
-            const int idNotBelongingToUser = 10;
+            var farmingActionRepositoryMock = new Mock<IFarmingActionRepository>();
+            var unitOfWorkMock = new Mock<IOogstplannerUnitOfWork>();
 
-            // ACT AND ASSERT
-            Assert.Catch<SecurityException>( () => service.RemoveAction(idNotBelongingToUser), 
-                "A security exception should be thrown when a user tries to remove an action"
-                + "belonging to another user.");
+            var fakeUserServices = new FakeUserServices();
+            fakeUserServices.ReturnedUserService = 
+                new UserService(unitOfWorkMock.Object, 
+                    new Mock<ICookieProvider>().Object);
 
+            const int expectedUserId = 1;
+            const int anotherUserId = 2;
+
+            var returnedAction = new FarmingAction
+                {
+                    Calendar = new Calendar { UserId = expectedUserId },
+                    CropCount = 10
+                };
+            var returnedRelatedAction = new FarmingAction
+                {
+                    Calendar = new Calendar { UserId = expectedUserId },
+                    CropCount = 10
+                };
+
+            var userServiceMock = new Mock<IUserService>();
+            var authenticationServiceMock = new Mock<IAuthenticationService>();
+            const int expectedFarmingActionId = 1;
+
+            farmingActionRepositoryMock.Setup(mock =>
+                mock.GetById(expectedFarmingActionId))
+                .Returns(returnedAction);
+            farmingActionRepositoryMock.Setup(mock =>
+                mock.FindRelated(returnedAction))
+                .Returns(returnedRelatedAction);
+            userServiceMock.Setup(mock => mock.GetCurrentUserId())
+                .Returns(anotherUserId);
+
+            fakeUserServices.ReturnedUserService = userServiceMock.Object;
+
+            unitOfWorkMock.SetupGet(mock =>
+                mock.FarmingActions).Returns(farmingActionRepositoryMock.Object);
+
+            var service = new FarmingActionService(
+                unitOfWorkMock.Object, 
+                fakeUserServices,
+                authenticationServiceMock.Object);
+                
+            // ACT
+            // ASSERT
+            Assert.Throws<SecurityException>(() => service.RemoveAction(expectedFarmingActionId),
+                "When a user tries to delete another user's action a security exception" +
+                "should be thrown.");
+            unitOfWorkMock.Verify(mock => mock.Commit(), Times.Never,
+                "Changes should not be committed to database.");
         }
 
+        [Test]
+        public void Services_FarmingAction_UpdateCropCounts()
+        {
+            // ARRANGE
+            var farmingActionRepositoryMock = new Mock<IFarmingActionRepository>();
+            var unitOfWorkMock = new Mock<IOogstplannerUnitOfWork>();
+
+            var fakeUserServices = new FakeUserServices();
+            fakeUserServices.ReturnedUserService = 
+                new UserService(unitOfWorkMock.Object, 
+                    new Mock<ICookieProvider>().Object);
+
+            var expectedUserId = new Random().Next();
+
+            var returnedAction = new FarmingAction
+                {
+                    Calendar = new Calendar { UserId = expectedUserId },
+                    CropCount = 10
+                };
+            var returnedRelatedAction = new FarmingAction
+                {
+                    Calendar = new Calendar { UserId = expectedUserId },
+                    CropCount = 10
+                };
+
+            var userServiceMock = new Mock<IUserService>();
+            var authenticationServiceMock = new Mock<IAuthenticationService>();
+
+            const int expectedCount = 2;
+            const int expectedFarmingActionId = 1;
+
+            farmingActionRepositoryMock.Setup(mock =>
+                mock.GetById(expectedFarmingActionId))
+                .Returns(returnedAction);
+            farmingActionRepositoryMock.Setup(mock =>
+                mock.FindRelated(returnedAction))
+                .Returns(returnedRelatedAction);
+            userServiceMock.Setup(mock => mock.GetCurrentUserId())
+                .Returns(expectedUserId);
+
+            fakeUserServices.ReturnedUserService = userServiceMock.Object;
+
+            unitOfWorkMock.SetupGet(mock =>
+                mock.FarmingActions).Returns(farmingActionRepositoryMock.Object);
+
+            var service = new FarmingActionService(
+                unitOfWorkMock.Object, 
+                fakeUserServices,
+                authenticationServiceMock.Object);
+
+            var expectedIds = new[] { expectedFarmingActionId };
+            var expectedCounts = new[] { expectedCount };
+
+            // ACT
+            service.UpdateCropCounts(expectedIds, expectedCounts);
+
+            // ASSERT
+            farmingActionRepositoryMock.Verify(mock => mock.Update(
+                It.Is<FarmingAction>(
+                    fa => fa.CropCount == expectedCount)),
+                Times.Exactly(2),
+                "The returned actions crop count should be updated once for original" +
+                "and once for related action.");
+            unitOfWorkMock.Verify(mock => mock.Commit(), Times.Once,
+                "Changes should be committed to database.");
+        }
+
+        [Test]
+        public void Services_FarmingAction_UpdateCropCountsNoChange()
+        {
+            // ARRANGE
+            var farmingActionRepositoryMock = new Mock<IFarmingActionRepository>();
+            var unitOfWorkMock = new Mock<IOogstplannerUnitOfWork>();
+
+            var fakeUserServices = new FakeUserServices();
+            fakeUserServices.ReturnedUserService = 
+                new UserService(unitOfWorkMock.Object, 
+                    new Mock<ICookieProvider>().Object);
+
+            var expectedUserId = new Random().Next();
+
+            const int currentCount = 2;
+            const int expectedCount = currentCount;
+            const int expectedFarmingActionId = 1;
+
+            var returnedAction = new FarmingAction
+                {
+                    Calendar = new Calendar { UserId = expectedUserId },
+                    CropCount = currentCount
+                };
+            var returnedRelatedAction = new FarmingAction
+                {
+                    Calendar = new Calendar { UserId = expectedUserId },
+                    CropCount = currentCount
+                };
+
+            var userServiceMock = new Mock<IUserService>();
+            var authenticationServiceMock = new Mock<IAuthenticationService>();
+
+            farmingActionRepositoryMock.Setup(mock =>
+                mock.GetById(expectedFarmingActionId))
+                .Returns(returnedAction);
+            farmingActionRepositoryMock.Setup(mock =>
+                mock.FindRelated(returnedAction))
+                .Returns(returnedRelatedAction);
+            userServiceMock.Setup(mock => mock.GetCurrentUserId())
+                .Returns(expectedUserId);
+
+            fakeUserServices.ReturnedUserService = userServiceMock.Object;
+
+            unitOfWorkMock.SetupGet(mock =>
+                mock.FarmingActions).Returns(farmingActionRepositoryMock.Object);
+
+            var service = new FarmingActionService(
+                unitOfWorkMock.Object, 
+                fakeUserServices,
+                authenticationServiceMock.Object);
+
+            var expectedIds = new[] { expectedFarmingActionId };
+            var expectedCounts = new[] { expectedCount };
+
+            // ACT
+            service.UpdateCropCounts(expectedIds, expectedCounts);
+
+            // ASSERT
+            farmingActionRepositoryMock.Verify(mock => mock.Update(It.IsAny<FarmingAction>()),
+                Times.Never,
+                "The repository should not be called since crop counts is same as it was.");
+            unitOfWorkMock.Verify(mock => mock.Commit(), Times.Once,
+                "No changes should be committed to database.");
+        }
+
+        [Test]
+        public void Services_FarmingAction_UpdateCropCountsUserCannotUpdateOthers()
+        {
+            // ARRANGE
+            var farmingActionRepositoryMock = new Mock<IFarmingActionRepository>();
+            var unitOfWorkMock = new Mock<IOogstplannerUnitOfWork>();
+
+            var fakeUserServices = new FakeUserServices();
+            fakeUserServices.ReturnedUserService = 
+                new UserService(unitOfWorkMock.Object, 
+                    new Mock<ICookieProvider>().Object);
+
+            const int expectedUserId = 1;
+            const int anotherUserId = 2;
+
+            var returnedAction = new FarmingAction
+                {
+                    Calendar = new Calendar { UserId = expectedUserId },
+                    CropCount = 10
+                };
+            var returnedRelatedAction = new FarmingAction
+                {
+                    Calendar = new Calendar { UserId = expectedUserId },
+                    CropCount = 10
+                };
+
+            var userServiceMock = new Mock<IUserService>();
+            var authenticationServiceMock = new Mock<IAuthenticationService>();
+
+            const int expectedCount = 2;
+            const int expectedFarmingActionId = 1;
+
+            farmingActionRepositoryMock.Setup(mock =>
+                mock.GetById(expectedFarmingActionId))
+                .Returns(returnedAction);
+            farmingActionRepositoryMock.Setup(mock =>
+                mock.FindRelated(returnedAction))
+                .Returns(returnedRelatedAction);
+
+            userServiceMock.Setup(mock => mock.GetCurrentUserId())
+                .Returns(anotherUserId);
+
+            fakeUserServices.ReturnedUserService = userServiceMock.Object;
+
+            unitOfWorkMock.SetupGet(mock =>
+                mock.FarmingActions).Returns(farmingActionRepositoryMock.Object);
+
+            var service = new FarmingActionService(
+                unitOfWorkMock.Object, 
+                fakeUserServices,
+                authenticationServiceMock.Object);
+
+            var expectedIds = new[] { expectedFarmingActionId };
+            var expectedCounts = new[] { expectedCount };
+
+            // ACT
+            // ASSERT
+            Assert.Throws<SecurityException>(() => 
+                service.UpdateCropCounts(expectedIds, expectedCounts),
+                "When a user tries to update another user's action a security exception" +
+                "should be thrown.");
+            unitOfWorkMock.Verify(mock => mock.Commit(), Times.Never,
+                "No changes should be committed to database.");
+        }
     }
 }
+    

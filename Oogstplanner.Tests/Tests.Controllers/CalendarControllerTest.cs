@@ -1,15 +1,14 @@
-﻿using NUnit.Framework;
-using Moq;
-
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Web.Mvc;
 
-using Oogstplanner.Controllers;
-using Oogstplanner.ViewModels;
-using Oogstplanner.Services;
+using Moq;
+using NUnit.Framework;
+
 using Oogstplanner.Models;
+using Oogstplanner.Services;
+using Oogstplanner.Web.Controllers;
 
 namespace Oogstplanner.Tests.Controllers
 {
@@ -306,7 +305,6 @@ namespace Oogstplanner.Tests.Controllers
             // ASSERT
             Assert.AreEqual("[\"june\",\"july\"]", result.Content,
                 "The method should return the two months which are returned by the service.");
-        }
-            
+        }            
     }
 }
