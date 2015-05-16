@@ -6,7 +6,7 @@ using Oogstplanner.Models;
 namespace Oogstplanner.Data
 {
     public class OogstplannerContext : DbContext, IOogstplannerContext
-	{
+    {
         public IDbSet<Crop> Crops { get; set; }
         public IDbSet<User> Users { get; set; }
         public IDbSet<PasswordResetToken> PasswordResetTokens { get; set; }

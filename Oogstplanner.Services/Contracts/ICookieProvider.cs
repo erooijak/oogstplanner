@@ -7,4 +7,3 @@
         void RemoveCookie(string key);
     }
 }
-    

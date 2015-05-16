@@ -26,4 +26,3 @@ namespace Oogstplanner.Common
 
     }
 }
-    

@@ -7,4 +7,3 @@ namespace Oogstplanner.Services
         AuthenticatedStatus GetAuthenticationStatus();
     }
 }
-    

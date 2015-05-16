@@ -12,4 +12,3 @@ namespace Oogstplanner.Services
         string GenerateToken();
     }
 }
-    

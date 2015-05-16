@@ -75,6 +75,5 @@ namespace Oogstplanner.Models
 
         [Required]
         public string ReturnToken { get; set; }
-    }
-        
+    }        
 }

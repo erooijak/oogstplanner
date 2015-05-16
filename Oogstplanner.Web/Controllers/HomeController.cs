@@ -71,7 +71,6 @@ namespace Oogstplanner.Web.Controllers
             };
 
             return View(viewModel);
-        }
-           
+        }           
     }
 }

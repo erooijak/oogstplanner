@@ -13,4 +13,3 @@ namespace Oogstplanner.Data
         Month GetMonthsWithAction(int userId);
     }
 }
-    

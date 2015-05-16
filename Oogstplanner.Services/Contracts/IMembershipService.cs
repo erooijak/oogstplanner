@@ -11,4 +11,3 @@ namespace Oogstplanner.Services
         void SignOut();
     }
 }
-    

@@ -115,4 +115,3 @@ namespace Oogstplanner.Services
         }            
     }
 }
-    

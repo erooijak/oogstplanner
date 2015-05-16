@@ -42,7 +42,6 @@ namespace Oogstplanner.Web.Controllers
             var cropsJson = JsonConvert.SerializeObject(crops, new MonthEnumConverter());
 
             return new JsonStringResult(cropsJson);
-        }
-            	
+        }            	
     }
 }

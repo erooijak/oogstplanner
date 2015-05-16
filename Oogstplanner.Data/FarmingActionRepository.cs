@@ -52,4 +52,3 @@ namespace Oogstplanner.Data
             
     }
 }
-    
