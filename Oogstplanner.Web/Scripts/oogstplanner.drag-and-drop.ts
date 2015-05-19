@@ -28,7 +28,7 @@ class DragAndDrop {
     toggleHighlightOnRecommendedMonths() {
 
         // Loop over the recommended harvesting or sowing months and toggle the highlighting.
-        $.each(this.recommendedMonths, function(i, month){
+        $.each(this.recommendedMonths, function (i, month){
             if (month) { 
                 $('div[data-month=' + month + ']').toggleClass('highlight');
             }
@@ -59,18 +59,18 @@ $(function() {
 
         $(this).draggable({
             
-            helper: function() {
+            helper: function () {
                 var type = dragged.selectedActionType;
                 var img = type == ActionType.HARVESTING ? imageHarvesting : imageSowing;
                 return img;
             },
 
-            start: function(e, ui) {     
+            start: function (e, ui) {     
                 dragged.toggleHighlightOnHover();
                 dragged.toggleHighlightOnRecommendedMonths();
             },
 
-            stop: function(e, ui) {
+            stop: function (e, ui) {
                 var draggedDiv = ui.helper;
                 draggedDiv.remove();
                 dragged.toggleHighlightOnHover();

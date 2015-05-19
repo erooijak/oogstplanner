@@ -6,12 +6,10 @@ var Oogstplanner = (function () {
         $(window).scrollTop(0);
         this.makeNumericTextBoxesNumeric();
         this.makeCropPluralWhenCropCountIsBiggerThan1();
-        $('#crop-selection-box').hide();
     };
     Oogstplanner.prototype.toMain = function () {
         $.fn.fullpage.moveSlideLeft();
         $(window).scrollTop(0);
-        $('#crop-selection-box').show();
         this.setHasActionAttributes();
     };
     Oogstplanner.prototype.fillMonthCalendar = function (month) {
@@ -23,7 +21,7 @@ var Oogstplanner = (function () {
             that.toMonthCalendar();
             that.bindFarmingActionRemoveFunctionToDeleteButton();
         }).fail(function () {
-            alert('TODO: Error handling');
+            Notification.error();
         });
     };
     Oogstplanner.prototype.addFarmingAction = function (cropId, month, actionType, cropCount) {
@@ -57,14 +55,13 @@ var Oogstplanner = (function () {
         $.post('/Calendar/RemoveFarmingAction', { id: id }, function (response) {
             if (response.success === true) {
                 that.fillMonthCalendar(that.month);
-                alert("Het gewas is succesvol verwijderd.");
-                var monthHasNoActions = $('.farmingMonth').children().length === 0;
+                var monthHasNoActions = $('.farmingMonth').children().length === 2;
                 if (monthHasNoActions) {
                     that.toMain();
                 }
             }
             else {
-                alert("TODO: Error handling");
+                Notification.error();
             }
         });
     };
@@ -115,7 +112,7 @@ var Oogstplanner = (function () {
         $('.remove-farming-action').bind('click', function (e) {
             e.preventDefault();
             var farmingActionId = this.id;
-            that.removeFarmingAction(farmingActionId);
+            Notification.confirmation('Weet u zeker dat u dit gewas volledig wilt verwijderen?', function () { return that.removeFarmingAction(farmingActionId); });
         });
     };
     Oogstplanner.prototype.showSignupBox = function () {

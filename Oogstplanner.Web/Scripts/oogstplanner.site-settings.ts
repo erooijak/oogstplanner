@@ -1,5 +1,6 @@
 ﻿/// <reference path="typings/jquery.d.ts" />
 /// <reference path="typings/jquery.plugins.d.ts" />
+/// <reference path="typings/jquery.noty.d.ts" />
 
 $(function() {
 
@@ -16,15 +17,15 @@ $(function() {
 
     /* Keep login screen full width initially and on resize */
     oogstplanner.resizeLoginArea();
-    $(window).resize(function() { oogstplanner.resizeLoginArea(); });
+    $(window).resize(function () { oogstplanner.resizeLoginArea(); });
 
     /* And keep crop-selection-box as big as the responsive square elements initially and on resize */
     oogstplanner.resizeCropSelectionBox();
-    $(window).resize(function() { oogstplanner.resizeCropSelectionBox(); });
+    $(window).resize(function () { oogstplanner.resizeCropSelectionBox(); });
 
     /* Bind event listeners to hide and show register or signin box when links are clicked. */
-    $('#register-link').click(function() { oogstplanner.showSignupBox(); });
-    $('#signin-link').click(function() { oogstplanner.showLoginBox(); });
+    $('#register-link').click(function () { oogstplanner.showSignupBox(); });
+    $('#signin-link').click(function () { oogstplanner.showLoginBox(); });
 
     /* Initialize fullPage.js sliders */
     $('.container').fullpage({
@@ -59,5 +60,4 @@ $(function() {
 
     /* Only allow numeric inputs in numeric fields */
     oogstplanner.makeNumericTextBoxesNumeric();
-
 });

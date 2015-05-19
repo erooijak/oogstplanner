@@ -4,7 +4,7 @@
     $('#selected-crop-info').hide();
 
     /* Set information in the selected-crop box */
-    $('#crop-selection-box').on('typeahead:selected', function(e, datum) { 
+    $('#crop-selection-box').on('typeahead:selected', function (e, datum) { 
         $('#selected-crop-info').show();
         $('#selected-crop-name').text(datum.name);
         $('#selected-crop-race').text(datum.race);
@@ -20,7 +20,7 @@
     })
         
     /* Display action type in the drag and drop explanation sentence. */
-    $('input[name=action-type-radios]').on('change', function() {
+    $('input[name=action-type-radios]').on('change', function () {
         var actionType = this.value;
         $('.drag-and-drop-sentence-action-type').text(actionType.toLowerCase());
     });

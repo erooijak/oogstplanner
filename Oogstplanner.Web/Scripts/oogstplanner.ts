@@ -11,14 +11,13 @@ class Oogstplanner {
         this.makeCropPluralWhenCropCountIsBiggerThan1();
 
         // Remove the crop-selection-box since the side is visible on the month calendar...
-        $('#crop-selection-box').hide();
+        //$('#crop-selection-box').hide();
     }
 
     toMain() {
         $.fn.fullpage.moveSlideLeft();
         $(window).scrollTop(0);
-
-        $('#crop-selection-box').show();
+        //$('#crop-selection-box').show(); TODO: Determine why this is no longer working.
 
         // Recalculate which months have actions because things might have changed.
         this.setHasActionAttributes();
@@ -29,11 +28,11 @@ class Oogstplanner {
         // Store the month in the object so we can use it and do not have to get it from the page.
         this.month = month;
         var that = this;
-        $.get('/Calendar/Month?month=' + month, function(data) {
+        $.get('/Calendar/Month?month=' + month, function (data) {
             $('#_MonthCalendar').html(data);
         })
         .done(function() { that.toMonthCalendar(); that.bindFarmingActionRemoveFunctionToDeleteButton(); })
-        .fail(function() { alert('TODO: Error handling'); });
+        .fail(function() { Notification.error(); });
     }
 
     addFarmingAction(cropId : number, month : string, actionType : ActionType, cropCount : number) {
@@ -50,7 +49,7 @@ class Oogstplanner {
 
     resetHasActionAttributes() {
         var that = this
-        $('[data-month]').each(function(i, monthSquare) {
+        $('[data-month]').each(function (i, monthSquare) {
             var monthName = $(monthSquare).data('month');
             that.setHasActionAttributeValue(monthName, false);
         });
@@ -59,7 +58,7 @@ class Oogstplanner {
     setHasActionAttributes() {
         this.resetHasActionAttributes();
         var that = this
-        $.get('/Calendar/GetMonthsWithAction', function(monthNames) {
+        $.get('/Calendar/GetMonthsWithAction', function (monthNames) {
             for (var i = 0; i < monthNames.length; i++) {
                 var monthName = monthNames[i];
                 that.setHasActionAttributeValue(monthName, true);
@@ -72,9 +71,8 @@ class Oogstplanner {
         $.post('/Calendar/RemoveFarmingAction', { id: id }, function (response) {
             if (response.success === true) { 
                 that.fillMonthCalendar(that.month);
-                alert("Het gewas is succesvol verwijderd.");
 
-                var monthHasNoActions = $('.farmingMonth').children().length === 0;
+                var monthHasNoActions = $('.farmingMonth').children().length === 2; // TODO: Determine why this is 2 instead of 0.
                 if (monthHasNoActions)
                 {
                     that.toMain();
@@ -82,7 +80,7 @@ class Oogstplanner {
 
             }
             else { 
-                alert("TODO: Error handling");
+                Notification.error();
             }
         });
     }
@@ -177,7 +175,8 @@ class Oogstplanner {
 
             // farming action id is stored in the id of the remove-farming-action element.
             var farmingActionId = this.id;
-            that.removeFarmingAction(farmingActionId);
+
+            Notification.confirmation('Weet u zeker dat u dit gewas volledig wilt verwijderen uit uw kalender?', () => that.removeFarmingAction(farmingActionId));
 
         });
 

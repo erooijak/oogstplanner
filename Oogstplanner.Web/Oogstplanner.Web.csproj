@@ -253,6 +253,8 @@
     <Content Include="Views\Account\_LoginModal.cshtml" />
     <Content Include="Views\Shared\_BrowserValidation.cshtml" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="Scripts\jquery.noty.packaged.min.js" />
+    <Content Include="Content\Stylesheets\animate.min.css" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
@@ -283,6 +285,8 @@
     <None Include="Scripts\typings\handlebars.d.ts" />
     <None Include="Scripts\typings\typeahead.d.ts" />
     <None Include="Scripts\oogstplanner.utilities.ts" />
+    <None Include="Scripts\typings\jquery.noty.d.ts" />
+    <None Include="Scripts\oogstplanner.notifications.ts" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Oogstplanner.Data\Oogstplanner.Data.csproj">
