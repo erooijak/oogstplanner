@@ -10,6 +10,8 @@ namespace Oogstplanner.Models
     {
         public IEnumerable<string> SeasonsCssClasses { get; set; }
         public IEnumerable<string> SeasonsForDisplay { get; set; }
+        public IEnumerable<string> MonthNames { get; set; }
+        public IEnumerable<string> DisplayMonthNames { get; set; }
         public Stack<MonthViewModel> OrderedMonthViewModels { get; set; }
     }
 }

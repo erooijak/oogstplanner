@@ -193,5 +193,5 @@ class Oogstplanner {
         $('#signupbox').hide(); 
         $('#loginbox').show(); 
         this.resetValidation();
-    }
+    }        
 }  

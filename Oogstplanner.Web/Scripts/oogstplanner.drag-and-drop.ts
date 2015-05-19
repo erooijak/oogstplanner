@@ -96,24 +96,10 @@ $(function() {
 
             oogstplanner.setHasActionAttributeValue(month, true);
 
-            /* Set clickability of related month
-               Note: looked for a beter way to do this, but the structure of the months is not linear. */
-            var monthNames = ["january", 
-                              "february", 
-                              "march", 
-                              "april", 
-                              "may", 
-                              "june",
-                              "july", 
-                              "august", 
-                              "september", 
-                              "october", 
-                              "november", 
-                              "december"];
+            var monthNames : string[] = Util.getMonthNames();
+
             var indexCurrentMonth : number = monthNames.indexOf(month);
-            var oppositeMonth = actionType === ActionType.HARVESTING 
-                ? monthNames[12 - indexCurrentMonth - (dragged.growingTime % 12)]
-                : monthNames[(indexCurrentMonth + dragged.growingTime) % 12]
+            var oppositeMonth = Util.getOppositeMonth(actionType, indexCurrentMonth, dragged.growingTime);
 
             oogstplanner.setHasActionAttributeValue(oppositeMonth, true);
         }

@@ -23,7 +23,7 @@
                     </div>
                 </div>
             </div>
-        }
+        }     
      
                 <!-- Four rows which each consist of an autumn, winter, spring and summer image. -->
         @for (var imageIndex = 1; imageIndex <= 3; imageIndex++)
@@ -114,12 +114,19 @@
         </div><!-- End right column -->
 
     </div><!-- End row -->
-        
+
+    <input type="hidden" 
+           id="month-names" 
+           value="@string.Join(",", Model.MonthNames)"/>
+
+    <input type="hidden" 
+           id="display-month-names" 
+           value="@string.Join(",", Model.DisplayMonthNames)"/>
 }
     </div><!-- End of main slide -->
     
     <!-- Slide for editing and viewing a specific month
          Partial view data with farming actions is loaded here. -->
     <div class="slide flowtype-area" id="_MonthCalendar"></div>
-
+         
 </div><!-- End of fullPage.js main page -->

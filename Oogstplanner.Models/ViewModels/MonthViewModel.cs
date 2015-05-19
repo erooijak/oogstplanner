@@ -8,8 +8,8 @@
 
         public MonthViewModel(string monthName, string monthDisplayName, bool hasAction)
         {
-            MonthForDataAttribute = monthName.ToLower();
-            MonthForDisplay = monthDisplayName.ToUpper();
+            MonthForDataAttribute = monthName;
+            MonthForDisplay = monthDisplayName;
             HasAction = hasAction;
         }
     }

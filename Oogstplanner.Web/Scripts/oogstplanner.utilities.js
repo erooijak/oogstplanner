@@ -23,5 +23,32 @@ var Util;
         }
     }
     Util.handleError = handleError;
+    function convertToDisplayMonth(monthName) {
+        var monthNames = this.getMonthNames();
+        var displayMonthNames = this.getDisplayMonthNames();
+        var monthDictionary = {};
+        for (var i = 0; i < monthNames.length; i += 1) {
+            var key = monthNames[i];
+            var val = displayMonthNames[i];
+            monthDictionary[key] = val;
+        }
+        var displayMonthName = monthDictionary[monthName];
+        return displayMonthName;
+    }
+    Util.convertToDisplayMonth = convertToDisplayMonth;
+    function getMonthNames() {
+        return $('#month-names').val().split(',');
+    }
+    Util.getMonthNames = getMonthNames;
+    function getDisplayMonthNames() {
+        return $('#display-month-names').val().split(',');
+    }
+    Util.getDisplayMonthNames = getDisplayMonthNames;
+    function getOppositeMonth(actionType, indexCurrentMonth, growingTime) {
+        var monthNames = this.getMonthNames();
+        var monthCount = monthNames.length;
+        return actionType === ActionType.HARVESTING ? monthNames[monthCount - indexCurrentMonth - (growingTime % monthCount)] : monthNames[(indexCurrentMonth + growingTime) % monthCount];
+    }
+    Util.getOppositeMonth = getOppositeMonth;
 })(Util || (Util = {}));
 //# sourceMappingURL=oogstplanner.utilities.js.map
