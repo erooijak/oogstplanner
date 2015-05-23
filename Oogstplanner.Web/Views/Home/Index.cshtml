@@ -18,10 +18,10 @@
                 <div class="jumbotron">
                     <h1>Welkom bij de Oogstplanner.</h1>
                     <p>
-                      Een bijzonder praktisch gereedschap voor een ieder die vruchtbare grond ter beschikking heeft.<br/>
+                      Een dynamisch gereedschap voor een ieder die vruchtbare grond ter beschikking heeft.<br/>
                       <span id="jumbo-extra-text">
                         <br/>Oogstplanner helpt je bepalen wanneer te zaaien en te oogsten. 
-                        Of het nu gaat om een akker of een bloempot.
+                        Of het nu gaat om een moestuin of een bloempot.
                       </span>
                     </p>
                 </div>
@@ -29,7 +29,21 @@
         </div> <!-- End first column -->
 
         <div class="col-md-6 col-sm-6 col-xs-0 pull-left hidden-xs">
-            TODO
+            <div class="well" style="margin: 26px;">
+            <p class="panel dark">
+                OogstPlanner.nl verzorgt wat ook wel een zaaikalender heet.<br/>
+                Een dynamische kalender om te bepalen wanneer groenten, kruiden of andere planten
+                kunnen worden gezaaid of geoogst. Zeer geschikt voor biologisch, ecologisch of dynamisch boeren.
+                Op de @Html.ActionLink("zaaikalender", "SowingAndHarvesting",  "Home",  null, null)
+                kunt u eerst zoeken naar een gewas (bijvoorbeeld aubergine of courgette) en
+                deze vervolgens naar de maand slepen waarop u deze wilt zaaien of oogsten.
+                Deze kunt u verder bijstellen door in het vierkantje van de maand te navigeren.<br/>
+                Op de @Html.ActionLink("jaarkalender", "Year",  "Calendar",  null, null) kunt u
+                vervolgens het resultaat van uw zaai- en oogstacties bekijken en deze (straks) netjes 
+                exporteren naar pdf of Excel.<br/>
+                Wij willen u veel plezier wensen met de zaai- en oogstkalender.
+            </p>
+            </div>
         </div> <!-- End second column -->
 
     </div><!-- End row -->

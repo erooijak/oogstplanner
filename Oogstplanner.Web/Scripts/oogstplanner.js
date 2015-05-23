@@ -112,7 +112,7 @@ var Oogstplanner = (function () {
         $('.remove-farming-action').bind('click', function (e) {
             e.preventDefault();
             var farmingActionId = this.id;
-            Notification.confirmation('Weet u zeker dat u dit gewas volledig wilt verwijderen?', function () { return that.removeFarmingAction(farmingActionId); });
+            Notification.confirmation('Weet u zeker dat u dit gewas volledig wilt verwijderen uit uw kalender?', function () { return that.removeFarmingAction(farmingActionId); });
         });
     };
     Oogstplanner.prototype.showSignupBox = function () {
