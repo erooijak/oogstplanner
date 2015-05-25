@@ -5,10 +5,10 @@ namespace Oogstplanner.Services
 {
     public class CookieProvider : ICookieProvider
     {
-        public void SetCookie(string key, string value, double expiration)
+        public void SetCookie(string key, string value, double expirationInDays)
         {
             var cookie = new HttpCookie(key, value);
-            cookie.Expires = DateTime.Now.AddDays(expiration);
+            cookie.Expires = DateTime.Now.AddDays(expirationInDays);
             HttpContext.Current.Response.SetCookie(cookie);
         }
 
