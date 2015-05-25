@@ -26,7 +26,7 @@ namespace Oogstplanner.Tests.Services
 
             var expectedClientUserName = Guid.NewGuid().ToString();
             const int expectedUserId = 3;
-            var existingUser = new User { UserId = expectedUserId };
+            var existingUser = new User { Id = expectedUserId };
 
             userRepositoryMock.Setup(mock =>
                 mock.GetUserByUserName(expectedClientUserName))
@@ -76,7 +76,7 @@ namespace Oogstplanner.Tests.Services
 
             var expectedClientUserName = Guid.NewGuid().ToString();
             const int expectedUserId = 3;
-            var existingUser = new User { UserId = expectedUserId };
+            var existingUser = new User { Id = expectedUserId };
 
             userRepositoryMock.Setup(mock =>
                 mock.GetUserByUserName(expectedClientUserName))

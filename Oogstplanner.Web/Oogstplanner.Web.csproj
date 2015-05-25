@@ -267,12 +267,7 @@
   <ItemGroup>
     <None Include="Content\Images\convert-images.sh" />
     <None Include="Scripts\jquery-2.1.3.min.map" />
-    <None Include="App_Data\Migrations\201503301824_Initial.sql" />
-    <None Include="App_Data\Migrations\201526042011_AddAuthenticationStatus.sql" />
     <None Include="App_Data\Membership\AddMembershipSchema.sql" />
-    <None Include="App_Data\Production\Membership\AddMembershipSchema.sql" />
-    <None Include="App_Data\Production\Migrations\201403301824_Initial.sql" />
-    <None Include="App_Data\Production\Migrations\201526042011_AddAuthenticationStatus.sql" />
     <None Include="App_Data\Production\readme.txt" />
     <None Include="Scripts\oogstplanner.ts" />
     <None Include="Scripts\oogstplanner.site-settings.ts" />
@@ -287,6 +282,7 @@
     <None Include="Scripts\oogstplanner.utilities.ts" />
     <None Include="Scripts\typings\jquery.noty.d.ts" />
     <None Include="Scripts\oogstplanner.notifications.ts" />
+    <None Include="App_Data\Migrations\201505251515_Initial.postgresql" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Oogstplanner.Data\Oogstplanner.Data.csproj">

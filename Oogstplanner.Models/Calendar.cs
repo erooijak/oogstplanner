@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 
 namespace Oogstplanner.Models
 {
@@ -9,12 +9,11 @@ namespace Oogstplanner.Models
     /// </summary>
     public class Calendar
     {
-        public int CalendarId { get; set; }
+        public int Id { get; set; }
+        public string Name { get; set; }
 
-        [ForeignKey("User")]
-        public int UserId { get; set; } // One-to-one relationship (each calendar belongs to one user)
-
+        [Required]
         public virtual User User { get; set; }
         public virtual ICollection<FarmingAction> FarmingActions { get; set; } // One-to-many (each calendar has many
-    }                                                                            // farming months)
+    }                                                                          // farming months)
 }

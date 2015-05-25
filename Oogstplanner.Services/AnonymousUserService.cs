@@ -93,20 +93,14 @@ namespace Oogstplanner.Services
                     AuthenticationStatus = AuthenticatedStatus.Anonymous, // by definition
                     CreationDate = DateTime.Now
                 };
+            user.Calendars.Add(new Calendar { Name = "Mijn kalender" } );
             UnitOfWork.Users.Add(user);
-            UnitOfWork.Commit();
-
-            // Get the actual user from the database, so we get the created UserId.
-            var newlyCreatedUser = UnitOfWork.Users.GetUserByUserName(userName);
-
-            var calendar = new Calendar { User = newlyCreatedUser };
-            UnitOfWork.Calendars.Add(calendar);
             UnitOfWork.Commit();
         }
 
         public int GetCurrentUserId()
         {
-            return CurrentAnonymousUser.UserId;
+            return CurrentAnonymousUser.Id;
         }
 
         public User GetUser(int id)

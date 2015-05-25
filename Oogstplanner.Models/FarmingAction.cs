@@ -1,4 +1,6 @@
-﻿namespace Oogstplanner.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Oogstplanner.Models
 {
     /// <summary>
     /// A farming action is the harvesting or sowing of a particular crop in a particular month.
@@ -11,6 +13,8 @@
         public int CropCount { get ; set ; }
 
         public virtual Crop Crop { get; set; }
+
+        [Required]
         public virtual Calendar Calendar { get; set; }
 
         /// <summary>

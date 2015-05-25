@@ -32,7 +32,7 @@ namespace Oogstplanner.Data
                 throw new ArgumentException("The user with the specified email does not exist.");
             }
 
-            return user.UserId; 
+            return user.Id; 
         }
 
         public int GetUserIdByName(string name)
@@ -44,7 +44,7 @@ namespace Oogstplanner.Data
                 throw new ArgumentException("The user with the specified name does not exist.");
             }
 
-            return user.UserId; 
+            return user.Id; 
         }
     }
 }

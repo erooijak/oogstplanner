@@ -35,7 +35,7 @@ namespace Oogstplanner.Data
             var relatedFarmingAction = action.CreateRelated();
 
             return DbSet.SingleOrDefault(fa => 
-                fa.Calendar.CalendarId == relatedFarmingAction.Calendar.CalendarId
+                fa.Calendar.Id == relatedFarmingAction.Calendar.Id
                 && fa.Action == relatedFarmingAction.Action
                 && fa.Crop.Id == relatedFarmingAction.Crop.Id
                 && fa.Month == relatedFarmingAction.Month);
@@ -43,7 +43,7 @@ namespace Oogstplanner.Data
 
         public Month GetMonthsWithAction(int userId)
         {
-            return DbSet.Where(fa => fa.Calendar.UserId == userId)
+            return DbSet.Where(fa => fa.Calendar.User.Id == userId)
                 .Select(fa => fa.Month)
                 .Distinct()
                 .ToList()

@@ -48,14 +48,14 @@ namespace Oogstplanner.Services
             
         public IEnumerable<FarmingAction> GetHarvestingActions(int userId, Month month)
         {
-            return UnitOfWork.FarmingActions.GetFarmingActions(fa => fa.Calendar.UserId == userId
+            return UnitOfWork.FarmingActions.GetFarmingActions(fa => fa.Calendar.User.Id == userId
                 && fa.Action == ActionType.Harvesting 
                 && fa.Month.HasFlag(month));
         }
             
         public IEnumerable<FarmingAction> GetSowingActions(int userId, Month month)
         {
-            return UnitOfWork.FarmingActions.GetFarmingActions(fa => fa.Calendar.UserId == userId
+            return UnitOfWork.FarmingActions.GetFarmingActions(fa => fa.Calendar.User.Id == userId
                 && fa.Action == ActionType.Sowing 
                 && fa.Month.HasFlag(month));
         }
@@ -66,7 +66,7 @@ namespace Oogstplanner.Services
             var relatedFarmingAction = farmingAction.CreateRelated();
 
             // Check if the calendar actually belongs to the current user.
-            CheckAuthorisation(CurrentUserId, farmingAction.Calendar.UserId);
+            CheckAuthorisation(CurrentUserId, farmingAction.Calendar.User.Id);
 
             // Try to see if there is a farming action of the same user, of the same type, of the same crop
             AddOrUpdateAction(farmingAction);
@@ -81,7 +81,7 @@ namespace Oogstplanner.Services
             var farmingAction = UnitOfWork.FarmingActions.GetById(id);
 
             // Check if the calendar actually belongs to the current user.
-            CheckAuthorisation(CurrentUserId, farmingAction.Calendar.UserId);
+            CheckAuthorisation(CurrentUserId, farmingAction.Calendar.User.Id);
 
             // Find the related farmingaction (the sowing or harvesting counter part).
             var relatedFarmingAction = UnitOfWork.FarmingActions.FindRelated(farmingAction);
@@ -106,7 +106,7 @@ namespace Oogstplanner.Services
                 var action = UnitOfWork.FarmingActions.GetById(kvp.Key);
 
                 // Check if the calendar actually belongs to the current user.
-                CheckAuthorisation(CurrentUserId, action.Calendar.UserId);
+                CheckAuthorisation(CurrentUserId, action.Calendar.User.Id);
 
                 // Add if action is new (till end):
                 var currentCropCount = action.CropCount;
@@ -140,7 +140,7 @@ namespace Oogstplanner.Services
         {
             var existingFarmingAction = UnitOfWork.FarmingActions.GetFarmingActions(
                 fa => fa.Action == farmingAction.Action 
-                    && fa.Calendar.UserId == farmingAction.Calendar.UserId 
+                    && fa.Calendar.User.Id == farmingAction.Calendar.User.Id 
                     && fa.Crop.Id == farmingAction.Crop.Id
                     && fa.Month == farmingAction.Month)
                 .FirstOrDefault();

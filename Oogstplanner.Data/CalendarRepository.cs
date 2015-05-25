@@ -12,7 +12,7 @@ namespace Oogstplanner.Data
 
         public Calendar GetByUserId(int userId)
         {
-            return DbSet.SingleOrDefault(c => c.User.UserId == userId);
+            return DbSet.SingleOrDefault(c => c.User.Id == userId);
         }
     }
 }

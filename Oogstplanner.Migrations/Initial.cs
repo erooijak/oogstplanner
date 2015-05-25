@@ -11,12 +11,13 @@ namespace Oogstplanner.Migrations
                 "public.Calendars",
                 c => new
                     {
-                        CalendarId = c.Int(nullable: false, identity: true),
-                        UserId = c.Int(nullable: false),
+                        Id = c.Int(nullable: false, identity: true),
+                        Name = c.String(),
+                        User_Id = c.Int(nullable: false),
                     })
-                .PrimaryKey(t => t.CalendarId)
-                .ForeignKey("public.Users", t => t.UserId, cascadeDelete: true)
-                .Index(t => t.UserId);
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("public.Users", t => t.User_Id, cascadeDelete: true)
+                .Index(t => t.User_Id);
             
             CreateTable(
                 "public.FarmingActions",
@@ -26,13 +27,13 @@ namespace Oogstplanner.Migrations
                         Month = c.Int(nullable: false),
                         Action = c.Int(nullable: false),
                         CropCount = c.Int(nullable: false),
-                        Calendar_CalendarId = c.Int(),
+                        Calendar_Id = c.Int(nullable: false),
                         Crop_Id = c.Int(),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("public.Calendars", t => t.Calendar_CalendarId)
+                .ForeignKey("public.Calendars", t => t.Calendar_Id, cascadeDelete: true)
                 .ForeignKey("public.Crops", t => t.Crop_Id)
-                .Index(t => t.Calendar_CalendarId)
+                .Index(t => t.Calendar_Id)
                 .Index(t => t.Crop_Id);
             
             CreateTable(
@@ -56,13 +57,14 @@ namespace Oogstplanner.Migrations
                 "public.Users",
                 c => new
                     {
-                        UserId = c.Int(nullable: false, identity: true),
+                        Id = c.Int(nullable: false, identity: true),
                         Name = c.String(),
                         FullName = c.String(),
                         Email = c.String(),
-                        Enabled = c.Boolean(nullable: false),
+                        AuthenticationStatus = c.Int(nullable: false),
+                        CreationDate = c.DateTime(nullable: false),
                     })
-                .PrimaryKey(t => t.UserId);
+                .PrimaryKey(t => t.Id);
             
             CreateTable(
                 "public.PasswordResetTokens",
@@ -79,12 +81,12 @@ namespace Oogstplanner.Migrations
         
         public override void Down()
         {
-            DropForeignKey("public.Calendars", "UserId", "public.Users");
+            DropForeignKey("public.Calendars", "User_Id", "public.Users");
             DropForeignKey("public.FarmingActions", "Crop_Id", "public.Crops");
-            DropForeignKey("public.FarmingActions", "Calendar_CalendarId", "public.Calendars");
+            DropForeignKey("public.FarmingActions", "Calendar_Id", "public.Calendars");
             DropIndex("public.FarmingActions", new[] { "Crop_Id" });
-            DropIndex("public.FarmingActions", new[] { "Calendar_CalendarId" });
-            DropIndex("public.Calendars", new[] { "UserId" });
+            DropIndex("public.FarmingActions", new[] { "Calendar_Id" });
+            DropIndex("public.Calendars", new[] { "User_Id" });
             DropTable("public.PasswordResetTokens");
             DropTable("public.Users");
             DropTable("public.Crops");

@@ -43,7 +43,7 @@ namespace Oogstplanner.Migrations
             //       clicking on it.
             // Make sure that the Setup.postgresql script has run manually to create the database user.
 
-            const string MIGRATION_NAME = "AddAuthenticationStatus";
+            const string MIGRATION_NAME = "Initial";
 
             // END USER INPUT /////////////////////////////////////////////////////////////////////////////
 

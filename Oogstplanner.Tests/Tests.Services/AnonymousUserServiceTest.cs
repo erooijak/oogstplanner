@@ -41,16 +41,11 @@ namespace Oogstplanner.Tests.Services
 
             // ASSERT
             userRepositoryMock.Verify(mock => 
-                mock.GetUserByUserName(expectedUserName), 
+                mock.Add(It.Is<User>(u => u.Name == expectedUserName)), 
                 Times.Once(),
                 "The repository should be called.");
-            calendarRepositoryMock.Verify(mock => 
-                mock.Add(It.IsAny<Calendar>()), 
-                Times.Once(),
-                "A calendar should be created.");
-            unitOfWorkMock.Verify(mock => mock.Commit(), Times.Exactly(2),
-                "Changes should be committed, retrieved for the generated primary key, " +
-                "and committed again to database.");
+            unitOfWorkMock.Verify(mock => mock.Commit(), Times.Once,
+                "Changes should be committed.");
         }
 
         [Test]
@@ -63,7 +58,7 @@ namespace Oogstplanner.Tests.Services
 
             var expectedCookieValue = Guid.NewGuid().ToString();
             var expectedUserId = new Random().Next();
-            var expectedUser = new User { UserId = expectedUserId };
+            var expectedUser = new User { Id = expectedUserId };
 
             cookieProviderMock.Setup(mock =>
                 mock.GetCookie(It.IsAny<string>()))
@@ -116,7 +111,7 @@ namespace Oogstplanner.Tests.Services
                 .Returns(calendarRepositoryMock.Object);
 
             var expectedUserId = new Random().Next();
-            var expectedUser = new User { UserId = expectedUserId };
+            var expectedUser = new User { Id = expectedUserId };
 
             cookieProviderMock.Setup(mock =>
                 mock.GetCookie(It.IsAny<string>()))
@@ -139,14 +134,8 @@ namespace Oogstplanner.Tests.Services
                     It.IsAny<double>()),
                 Times.Once(),
                 "A new cookie should be set.");
-            calendarRepositoryMock.Verify(mock => 
-                mock.Add(
-                    It.Is<Calendar>(c => c.User.Name == expectedUser.Name)), 
-                Times.Once(),
-                "A new user with calendar should be created.");
-            unitOfWorkMock.Verify(mock => mock.Commit(), Times.Exactly(2),
-                "Changes should be committed, retrieved for the generated primary key, " +
-                "and committed again to database.");
+            unitOfWorkMock.Verify(mock => mock.Commit(), Times.Once,
+                "Changes should be committed.");
         }
 
         [Test]
@@ -161,7 +150,7 @@ namespace Oogstplanner.Tests.Services
                 .Returns(userRepositoryMock.Object);
 
             var expectedUserId = new Random().Next();
-            var expectedUser = new User { UserId = expectedUserId };
+            var expectedUser = new User { Id = expectedUserId };
 
             userRepositoryMock.Setup(mock =>
                 mock.GetById(expectedUserId))
@@ -189,7 +178,7 @@ namespace Oogstplanner.Tests.Services
 
             var expectedCookieValue = Guid.NewGuid().ToString();
             var expectedUserId = new Random().Next();
-            var expectedUser = new User { UserId = expectedUserId };
+            var expectedUser = new User { Id = expectedUserId };
 
             cookieProviderMock.Setup(mock =>
                 mock.GetCookie(It.IsAny<string>()))

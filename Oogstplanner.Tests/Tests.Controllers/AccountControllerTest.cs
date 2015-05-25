@@ -625,7 +625,7 @@ namespace Oogstplanner.Tests.Controllers
             var passwordRecoveryServiceMock = new Mock<IPasswordRecoveryService>();
 
             const int expectedUserId = 1;
-            var expectedUser = new User { UserId = expectedUserId };
+            var expectedUser = new User { Id = expectedUserId };
 
             userServiceMock.Setup(mock => mock.GetCurrentUserId())
                 .Returns(expectedUserId);

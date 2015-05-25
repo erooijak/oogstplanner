@@ -88,6 +88,8 @@ ClientBin
 [Ss]tyle[Cc]op.*
 Oogstplanner.Web/App_Data/Production/
 App_Data.*
+start-nginx.sh
+clean-database-job.sh
 ~$*
 *.dbmdl
 Generated_Code #added for RIA/Silverlight projects

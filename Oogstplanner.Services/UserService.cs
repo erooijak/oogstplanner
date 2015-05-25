@@ -71,17 +71,9 @@ namespace Oogstplanner.Services
                         AuthenticationStatus = AuthenticatedStatus.Authenticated, // by definition
                         CreationDate = DateTime.Now
                     };
-
+                var calendar = new Calendar { Name = "Mijn kalender" };
+                newUser.Calendars.Add(calendar);
                 UnitOfWork.Users.Add(newUser);
-                UnitOfWork.Commit();
-
-                // Get the actual user from the database, so we get the created UserId.
-                var newlyCreatedUser = UnitOfWork.Users.GetUserByUserName(userName);
-
-                // Create calendar for the user
-                var calendar = new Calendar { User = newlyCreatedUser };
-
-                UnitOfWork.Calendars.Add(calendar);
                 UnitOfWork.Commit();
             }
         }

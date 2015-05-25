@@ -63,7 +63,7 @@ namespace Oogstplanner.Tests.Services
 
             var addedFarmingAction = new FarmingAction
             {
-                Calendar = new Calendar { UserId = expectedUserId },
+                Calendar = new Calendar { User = new User { Id = expectedUserId } },
                 Month = Month.June,
                 Action = ActionType.Harvesting,
                 Crop = new Crop { GrowingTime = 2 },
@@ -71,7 +71,7 @@ namespace Oogstplanner.Tests.Services
             };
             var returnedFarmingActions = new[] { 
                 new FarmingAction{
-                    Calendar = new Calendar { UserId = expectedUserId },
+                    Calendar = new Calendar { User = new User { Id = expectedUserId } },
                     CropCount = 10
                 } 
             };
@@ -124,7 +124,7 @@ namespace Oogstplanner.Tests.Services
 
             var addedFarmingAction = new FarmingAction
                 {
-                    Calendar = new Calendar { UserId = expectedUserId },
+                    Calendar = new Calendar { User = new User { Id = expectedUserId } },
                     Month = Month.June,
                     Action = ActionType.Harvesting,
                     Crop = new Crop { GrowingTime = 2 },
@@ -182,7 +182,7 @@ namespace Oogstplanner.Tests.Services
 
             var addedFarmingAction = new FarmingAction
                 {
-                    Calendar = new Calendar { UserId = expectedUserId },
+                    Calendar = new Calendar { User = new User { Id = expectedUserId } },
                     Month = Month.June,
                     Action = ActionType.Harvesting,
                     Crop = new Crop { GrowingTime = 2 },
@@ -190,7 +190,7 @@ namespace Oogstplanner.Tests.Services
                 };
             var returnedFarmingActions = new[] { 
                 new FarmingAction{
-                    Calendar = new Calendar { UserId = expectedUserId },
+                    Calendar = new Calendar { User = new User { Id = expectedUserId } },
                     CropCount = 10
                 } 
             };
@@ -239,12 +239,12 @@ namespace Oogstplanner.Tests.Services
 
             var returnedAction = new FarmingAction
             {
-                Calendar = new Calendar { UserId = expectedUserId },
+                Calendar = new Calendar { User = new User { Id = expectedUserId } },
                 CropCount = 10
             };
             var returnedRelatedAction = new FarmingAction
             {
-                Calendar = new Calendar { UserId = expectedUserId },
+                Calendar = new Calendar { User = new User { Id = expectedUserId } },
                 CropCount = 10
             };
 
@@ -302,12 +302,12 @@ namespace Oogstplanner.Tests.Services
 
             var returnedAction = new FarmingAction
                 {
-                    Calendar = new Calendar { UserId = expectedUserId },
+                    Calendar = new Calendar { User = new User { Id = expectedUserId } },
                     CropCount = 10
                 };
             var returnedRelatedAction = new FarmingAction
                 {
-                    Calendar = new Calendar { UserId = expectedUserId },
+                    Calendar = new Calendar { User = new User { Id = expectedUserId } },
                     CropCount = 10
                 };
 
@@ -359,12 +359,12 @@ namespace Oogstplanner.Tests.Services
 
             var returnedAction = new FarmingAction
                 {
-                    Calendar = new Calendar { UserId = expectedUserId },
+                    Calendar = new Calendar { User = new User { Id = expectedUserId } },
                     CropCount = 10
                 };
             var returnedRelatedAction = new FarmingAction
                 {
-                    Calendar = new Calendar { UserId = expectedUserId },
+                    Calendar = new Calendar { User = new User { Id = expectedUserId } },
                     CropCount = 10
                 };
 
@@ -430,12 +430,12 @@ namespace Oogstplanner.Tests.Services
 
             var returnedAction = new FarmingAction
                 {
-                    Calendar = new Calendar { UserId = expectedUserId },
+                    Calendar = new Calendar { User = new User { Id = expectedUserId } },
                     CropCount = currentCount
                 };
             var returnedRelatedAction = new FarmingAction
                 {
-                    Calendar = new Calendar { UserId = expectedUserId },
+                    Calendar = new Calendar { User = new User { Id = expectedUserId } },
                     CropCount = currentCount
                 };
 
@@ -492,12 +492,12 @@ namespace Oogstplanner.Tests.Services
 
             var returnedAction = new FarmingAction
                 {
-                    Calendar = new Calendar { UserId = expectedUserId },
+                    Calendar = new Calendar { User = new User { Id = expectedUserId } },
                     CropCount = 10
                 };
             var returnedRelatedAction = new FarmingAction
                 {
-                    Calendar = new Calendar { UserId = expectedUserId },
+                    Calendar = new Calendar { User = new User { Id = expectedUserId } },
                     CropCount = 10
                 };
 
