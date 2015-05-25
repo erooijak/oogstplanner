@@ -37,5 +37,5 @@ fi
 psql -U postgres -d $database -c \
   "DELETE FROM \"Users\"  \
    WHERE \"AuthenticationStatus\" = 0 AND \
-         \"CreationDate\" < now()::date - 7;"
+         \"CreationDate\" < now()::date - 8;"
 
