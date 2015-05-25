@@ -109,8 +109,8 @@ namespace Oogstplanner.Migrations
 
                 // Write string to file in Migrations folder of main project
                 var updateScriptPath = Regex.Replace(executingPath, "Oogstplanner.Migrations/.*", "Oogstplanner.Web/App_Data/Migrations/");
-                File.WriteAllText(updateScriptPath + MIGRATION_NAME + ".postgresql", formattedScript);
-                Console.WriteLine("Update script {0}.postgresql written to Oogstplanner.Web/App_Data/Migrations folder.\n" +
+                File.WriteAllText(updateScriptPath + MIGRATION_NAME + ".sql", formattedScript);
+                Console.WriteLine("Update script {0}.sql written to Oogstplanner.Web/App_Data/Migrations folder.\n" +
                     "Please include the script by right clicking on the folder and selecting " + 
                     "\"Add files to folder\"," +
                     "\nIt is recommended to prefix the filename with the current datetime.", 
