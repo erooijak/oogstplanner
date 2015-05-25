@@ -45,6 +45,7 @@
     <Compile Include="ViewModels\SowingAndHarvestingViewModel.cs" />
     <Compile Include="ViewModels\YearCalendarViewModel.cs" />
     <Compile Include="ExtensionMethods\MonthExtension.cs" />
+    <Compile Include="Follower.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

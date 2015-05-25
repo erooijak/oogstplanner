@@ -9,6 +9,7 @@ namespace Oogstplanner.Data
     {
         IDbSet<Crop> Crops { get; }
         IDbSet<User> Users { get; }
+        IDbSet<Follower> Followers { get; }
         IDbSet<PasswordResetToken> PasswordResetTokens { get; }
         IDbSet<Calendar> Calendars { get; }
         IDbSet<FarmingAction> FarmingActions { get; }

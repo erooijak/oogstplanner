@@ -283,6 +283,8 @@
     <None Include="Scripts\typings\jquery.noty.d.ts" />
     <None Include="Scripts\oogstplanner.notifications.ts" />
     <None Include="App_Data\Migrations\201505251515_Initial.sql" />
+    <None Include="App_Data\Migrations\201505252018_AddFollowers.sql" />
+    <None Include="App_Data\Migrations\201505252030_ChangeFollowersPrimaryKeyName.sql" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Oogstplanner.Data\Oogstplanner.Data.csproj">

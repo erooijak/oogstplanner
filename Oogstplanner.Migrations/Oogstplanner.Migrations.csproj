@@ -63,6 +63,10 @@
     <Compile Include="_MigrationsTool.cs" />
     <Compile Include="Initial.Designer.cs" />
     <Compile Include="Initial.cs" />
+    <Compile Include="AddFollowers.Designer.cs" />
+    <Compile Include="AddFollowers.cs" />
+    <Compile Include="ChangeFollowersPrimaryKeyName.Designer.cs" />
+    <Compile Include="ChangeFollowersPrimaryKeyName.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -87,5 +91,7 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Initial.resx" />
+    <EmbeddedResource Include="AddFollowers.resx" />
+    <EmbeddedResource Include="ChangeFollowersPrimaryKeyName.resx" />
   </ItemGroup>
 </Project>

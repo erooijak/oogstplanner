@@ -7,6 +7,7 @@ namespace Oogstplanner.Models
     {
         public User()
         {
+            Followees = new List<User>();
             Calendars = new List<Calendar>();
         }
 
@@ -17,6 +18,7 @@ namespace Oogstplanner.Models
         public AuthenticatedStatus AuthenticationStatus { get; set; }
         public DateTime CreationDate { get; set; }
 
+        public virtual ICollection<User> Followees { get; set; }
         public virtual ICollection<Calendar> Calendars { get; set; }
     }
 
