@@ -14,7 +14,7 @@ namespace Oogstplanner.Migrations
     /// (I.e., runs PowerShell's Add-Migration and Update-Database, and creates a PostgreSQL script.)
     /// See: http://stackoverflow.com/questions/20374783/enable-entity-framework-migrations-in-mono#20382226
     /// 
-    /// Usage: run by setting Zk.Migrations as Startup project and pressing play.
+    /// Usage: run after setting Oogstplanner.Migrations as Startup project.
     /// 
     /// Classes of namespace EntityFramework.PostgreSql obtained from:
     /// https://github.com/darionato/PostgreSqlMigrationSqlGenerator. License is included.
@@ -41,7 +41,7 @@ namespace Oogstplanner.Migrations
             //       .Designer.cs files with the name specified below.
             //       Last but not least set the .resx file's build action to EmbeddedResource by right
             //       clicking on it.
-            // Make sure that the Setup.postgresql script has run manually to create the database user.
+            // Make sure that the setup-database.sh script has run to create the database and user.
 
             const string MIGRATION_NAME = "Initial";
 
