@@ -32,31 +32,11 @@ namespace Oogstplanner.Web
             builder.RegisterType<RepositoryProvider>()
                 .As<IRepositoryProvider>()
                 .InstancePerRequest();
-                
-            builder.RegisterType<AuthenticationService>()
-                .As<IAuthenticationService>()
-                .InstancePerRequest();
-            builder.RegisterType<CookieProvider>()
-                .As<ICookieProvider>()
-                .InstancePerRequest();
-            builder.RegisterType<MembershipService>()
-                .As<IMembershipService>()
-                .InstancePerRequest();
-            builder.RegisterType<UserService>()
-                .As<IUserService>()
-                .InstancePerRequest();
-            builder.RegisterType<PasswordRecoveryService>()
-                .As<IPasswordRecoveryService>()
-                .InstancePerRequest();
-            builder.RegisterType<CalendarService>()
-                .As<ICalendarService>()
-                .InstancePerRequest();
-            builder.RegisterType<FarmingActionService>()
-                .As<IFarmingActionService>()
-                .InstancePerRequest();
-            builder.RegisterType<CropProvider>()
-                .As<ICropProvider>()
-                .InstancePerRequest();
+
+            builder.RegisterAssemblyTypes(typeof(ServiceBase).Assembly)
+                .AsImplementedInterfaces()
+                .Except<UserService>()
+                .Except<AnonymousUserService>();
 
             builder.RegisterType<AnonymousUserService>()
                 .Keyed<IUserService>(AuthenticatedStatus.Anonymous);
