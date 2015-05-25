@@ -24,8 +24,8 @@ namespace Oogstplanner.Web
                 .As<IOogstplannerContext>()
                 .InstancePerRequest();
 
-            var repositoryInstances = new RepositoryFactories();
-            builder.RegisterInstance(repositoryInstances)
+            var repositoryFactories = new RepositoryFactories();
+            builder.RegisterInstance(repositoryFactories)
                 .As<RepositoryFactories>()
                 .SingleInstance();
                 
@@ -36,12 +36,15 @@ namespace Oogstplanner.Web
             builder.RegisterAssemblyTypes(typeof(ServiceBase).Assembly)
                 .AsImplementedInterfaces()
                 .Except<UserService>()
-                .Except<AnonymousUserService>();
+                .Except<AnonymousUserService>()
+                .InstancePerRequest();
 
             builder.RegisterType<AnonymousUserService>()
-                .Keyed<IUserService>(AuthenticatedStatus.Anonymous);
+                .Keyed<IUserService>(AuthenticatedStatus.Anonymous)
+                .InstancePerRequest();
             builder.RegisterType<UserService>()
-                .Keyed<IUserService>(AuthenticatedStatus.Authenticated);
+                .Keyed<IUserService>(AuthenticatedStatus.Authenticated)
+                .InstancePerRequest();
 
             var container = builder.Build();
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
