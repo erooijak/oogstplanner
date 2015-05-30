@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Net.Mail;
+using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 
@@ -226,5 +227,28 @@ namespace Oogstplanner.Web.Controllers
             return View(currentUser);
         }
 
+        //
+        // GET: /Account/UserInfo/{userName}
+        [HttpGet]
+        [AllowAnonymous]
+        public ActionResult UserInfo() // string userInfo (Mono bug workaround)
+        {
+            // Work around to get userName parameter (Mono bug)
+            string requestedPath = Request.AppRelativeCurrentExecutionFilePath;
+            int positionLastSlash = requestedPath.LastIndexOf("/") + 1;
+            string userName = requestedPath.Substring(positionLastSlash, requestedPath.Length - positionLastSlash);
+
+            User user;
+            try 
+            {
+                user = userService.GetUserByName(userName);
+            }
+            catch (ArgumentException)
+            {
+                throw new HttpException(404, "Er bestaat geen gebruiker met deze gebruikersnaam.");
+            }
+
+            return View("Info", user);
+        }
     }
 }

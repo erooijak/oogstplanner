@@ -106,6 +106,11 @@ namespace Oogstplanner.Services
         public User GetUser(int id)
         {
             return UnitOfWork.Users.GetById(id);
-        }            
+        }
+
+        public User GetUserByName(string name)
+        {
+            return UnitOfWork.Users.GetUserByUserName(name);
+        }
     }
 }

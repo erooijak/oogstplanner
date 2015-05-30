@@ -159,6 +159,7 @@
     <Folder Include="Utilities\" />
     <Folder Include="App_Data\Membership\" />
     <Folder Include="Utilities\Filters\" />
+    <Folder Include="Views\Error\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\HomeController.cs" />
@@ -178,13 +179,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utilities\Filters\ValidateAjaxFilterAttribute.cs" />
     <Compile Include="Utilities\Helpers\JsonHelper.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Web.config" />
     <Content Include="Global.asax" />
     <Content Include="packages.config" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Views\Crop\Index.cshtml" />
     <Content Include="Content\Images\Autumn\2.jpg" />
@@ -255,6 +256,8 @@
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.noty.packaged.min.js" />
     <Content Include="Content\Stylesheets\animate.min.css" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Error\NotFound.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
