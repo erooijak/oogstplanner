@@ -238,14 +238,20 @@ namespace Oogstplanner.Web.Controllers
             int positionLastSlash = requestedPath.LastIndexOf("/") + 1;
             string userName = requestedPath.Substring(positionLastSlash, requestedPath.Length - positionLastSlash);
 
-            User user;
+            User user = null;
             try 
             {
                 user = userService.GetUserByName(userName);
             }
             catch (ArgumentException)
             {
-                throw new HttpException(404, "Er bestaat geen gebruiker met deze gebruikersnaam.");
+                ViewBag.Message = "404 Gebruiker niet gevonden";
+                Response.StatusCode = 404;
+            }
+            catch
+            {
+                // TODO implement logging of inner exception.
+                throw new HttpException(500, "Er is iets fout gegaan.");
             }
 
             return View("Info", user);
