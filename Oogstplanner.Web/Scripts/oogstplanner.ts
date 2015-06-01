@@ -28,7 +28,7 @@ class Oogstplanner {
         // Store the month in the object so we can use it and do not have to get it from the page.
         this.month = month;
         var that = this;
-        $.get('/Calendar/Month?month=' + month, function (data) {
+        $.get('/zaaikalender?month=' + month, function (data) {
             $('#_MonthCalendar').html(data);
         })
         .done(function() { that.toMonthCalendar(); that.bindFarmingActionRemoveFunctionToDeleteButton(); })
@@ -36,7 +36,7 @@ class Oogstplanner {
     }
 
     addFarmingAction(cropId : number, month : string, actionType : ActionType, cropCount : number) {
-        $.post('/Calendar/AddFarmingAction', { cropId: cropId, month: month, actionType: actionType, cropCount: cropCount } );
+        $.post('/zaaikalender/toevoegen', { cropId: cropId, month: month, actionType: actionType, cropCount: cropCount } );
     }
 
     setHasActionAttributeValue(monthName : string, value : boolean) {
@@ -58,7 +58,7 @@ class Oogstplanner {
     setHasActionAttributes() {
         this.resetHasActionAttributes();
         var that = this
-        $.get('/Calendar/GetMonthsWithAction', function (monthNames) {
+        $.get('/zaaikalender/actievemaanden', function (monthNames) {
             for (var i = 0; i < monthNames.length; i++) {
                 var monthName = monthNames[i];
                 that.setHasActionAttributeValue(monthName, true);
@@ -68,7 +68,7 @@ class Oogstplanner {
 
     removeFarmingAction(id : number) {
         var that = this;
-        $.post('/Calendar/RemoveFarmingAction', { id: id }, function (response) {
+        $.post('/zaaikalender/verwijder', { id: id }, function (response) {
             if (response.success === true) { 
                 that.fillMonthCalendar(that.month);
 

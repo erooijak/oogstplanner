@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
+using System.Web.Routing;
 
 using Oogstplanner.Common;
 using Oogstplanner.Models;
@@ -25,14 +26,14 @@ namespace Oogstplanner.Web.Controllers
         }
 
         //
-        // GET: /Index
+        // GET: /welkom
         public ActionResult Index()
         {
             return View();
         }
 
         //
-        // GET: /Home/SowingAndHarvesting
+        // GET: /zaaienenoogsten
         public ActionResult SowingAndHarvesting()
         {
             // Months are used for the CSS classes,

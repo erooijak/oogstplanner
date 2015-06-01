@@ -6,7 +6,7 @@ var cropsSuggestionEngine = new Bloodhound({
     },
     queryTokenizer: Bloodhound.tokenizers.whitespace,
     prefetch: {
-        url: "/Crop/All",
+        url: "/gewassen/json",
         filter: function (data) {
             return $.map(data, function (crop) {
                 return {

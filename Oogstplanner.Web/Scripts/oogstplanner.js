@@ -15,7 +15,7 @@ var Oogstplanner = (function () {
     Oogstplanner.prototype.fillMonthCalendar = function (month) {
         this.month = month;
         var that = this;
-        $.get('/Calendar/Month?month=' + month, function (data) {
+        $.get('/zaaikalender?month=' + month, function (data) {
             $('#_MonthCalendar').html(data);
         }).done(function () {
             that.toMonthCalendar();
@@ -25,7 +25,7 @@ var Oogstplanner = (function () {
         });
     };
     Oogstplanner.prototype.addFarmingAction = function (cropId, month, actionType, cropCount) {
-        $.post('/Calendar/AddFarmingAction', { cropId: cropId, month: month, actionType: actionType, cropCount: cropCount });
+        $.post('/zaaikalender/toevoegen', { cropId: cropId, month: month, actionType: actionType, cropCount: cropCount });
     };
     Oogstplanner.prototype.setHasActionAttributeValue = function (monthName, value) {
         $('[data-month=' + monthName + ']').data("hasAction", value);
@@ -43,7 +43,7 @@ var Oogstplanner = (function () {
     Oogstplanner.prototype.setHasActionAttributes = function () {
         this.resetHasActionAttributes();
         var that = this;
-        $.get('/Calendar/GetMonthsWithAction', function (monthNames) {
+        $.get('/zaaikalender/actievemaanden', function (monthNames) {
             for (var i = 0; i < monthNames.length; i++) {
                 var monthName = monthNames[i];
                 that.setHasActionAttributeValue(monthName, true);
@@ -52,7 +52,7 @@ var Oogstplanner = (function () {
     };
     Oogstplanner.prototype.removeFarmingAction = function (id) {
         var that = this;
-        $.post('/Calendar/RemoveFarmingAction', { id: id }, function (response) {
+        $.post('/zaaikalender/verwijder', { id: id }, function (response) {
             if (response.success === true) {
                 that.fillMonthCalendar(that.month);
                 var monthHasNoActions = $('.farmingMonth').children().length === 2;

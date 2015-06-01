@@ -6,7 +6,7 @@ namespace Oogstplanner.Web.Controllers
     public class ErrorController : Controller
     {
         //
-        // GET: Error/NotFound
+        // GET: /404
         [HttpGet]
         public ActionResult NotFound()
         {

@@ -42,7 +42,7 @@ namespace Oogstplanner.Web.Controllers
         }
 
         //
-        // GET: /Account/LoginOrRegisterModal
+        // GET: /account/inloggenofregistreren
         [AllowAnonymous]
         public ActionResult LoginOrRegisterModal()
         {
@@ -50,7 +50,7 @@ namespace Oogstplanner.Web.Controllers
         }
 
         //
-        // POST: /Account/Login
+        // POST: /account/inloggen
         [HttpPost]
         [AllowAnonymous]
         [ValidateAjax]
@@ -78,7 +78,7 @@ namespace Oogstplanner.Web.Controllers
         }
 
         //
-        // POST: /Account/Register/
+        // POST: /account/registreren/
         [HttpPost]
         [AllowAnonymous]
         [ValidateAjax]
@@ -104,7 +104,7 @@ namespace Oogstplanner.Web.Controllers
         }
        
         //
-        // GET: /Account/LogOff
+        // GET: /account/uitloggen
         public ActionResult LogOff()
         {
             membershipService.SignOut();
@@ -114,7 +114,7 @@ namespace Oogstplanner.Web.Controllers
         }
 
         //
-        // POST: Account/LostPassword
+        // POST: account/wachtwoordvergeten
         [HttpPost]
         [AllowAnonymous]
         [ValidateAjax]
@@ -166,20 +166,20 @@ namespace Oogstplanner.Web.Controllers
         }
 
         //
-        // GET: /Account/ResetPassword
+        // GET: /account/wachtwoordreset/{token}
         [AllowAnonymous]
-        public ActionResult ResetPassword(string rt)
+        public ActionResult ResetPassword(string token)
         {
             var model = new ResetPasswordModel() 
             {
-                ReturnToken = rt
+                ReturnToken = token
             };
 
             return View(model);
         }
 
         //
-        // POST: /Account/ResetPassword
+        // POST: /account/wachtwoordreset
         [HttpPost]
         [AllowAnonymous]
         public ActionResult ResetPassword(ResetPasswordModel model)
@@ -217,7 +217,7 @@ namespace Oogstplanner.Web.Controllers
         }
 
         //
-        // GET: /Account/Info
+        // GET: /account
         [HttpGet]
         public ActionResult Info()
         {
@@ -228,7 +228,7 @@ namespace Oogstplanner.Web.Controllers
         }
 
         //
-        // GET: /Account/UserInfo/{userName}
+        // GET: /account/{userName}
         [HttpGet]
         [AllowAnonymous]
         public ActionResult UserInfo() // string userInfo (Mono bug workaround)

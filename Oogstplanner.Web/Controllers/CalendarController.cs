@@ -42,7 +42,7 @@ namespace Oogstplanner.Web.Controllers
         }
 
         // 
-        // GET: /Month/{month}
+        // GET: /zaaikalender/{month}
         // Returns the farming actions of the month.
         public ActionResult Month(Month month)
         {
@@ -52,7 +52,7 @@ namespace Oogstplanner.Web.Controllers
         }
 
         //
-        // GET: /Calendar/Year
+        // GET: /zaaikalender
         public ActionResult Year()
         {
             var calendarViewModel = calendarService.GetYearCalendar();
@@ -61,7 +61,7 @@ namespace Oogstplanner.Web.Controllers
         }
 
         /// <summary>
-        ///     POST: /UpdateMonth/{formCollection} 
+        ///     POST: /zaaikalender/update
         ///     Update the relevant farming actions with the new data from the month.
         /// </summary>
         /// <returns>JSONResult indicating success or failure.</returns>
@@ -88,7 +88,7 @@ namespace Oogstplanner.Web.Controllers
         }
 
         //
-        // POST /Calendar/RemoveFarmingAction
+        // POST /zaaikalender/verwijder
         [HttpPost]
         public JsonResult RemoveFarmingAction(int id)
         {
@@ -106,10 +106,11 @@ namespace Oogstplanner.Web.Controllers
             return Json(new { success = true });
         }
 
+        //
+        // POST /zaaikalender/toevoegen
         [HttpPost]
         public JsonResult AddFarmingAction(int cropId, Month month, ActionType actionType, int cropCount)
         {
-
             var crop = cropProvider.GetCrop(cropId);
             var calendar = calendarService.GetCalendar();
 
@@ -136,7 +137,7 @@ namespace Oogstplanner.Web.Controllers
         }
 
         //
-        // GET /Calendar/GetMonthsWithAction
+        // GET /zaaikalender/actievemaanden
         [HttpGet]
         public ActionResult GetMonthsWithAction()
         {

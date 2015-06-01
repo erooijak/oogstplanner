@@ -23,7 +23,7 @@ namespace Oogstplanner.Web.Controllers
         }
         	
         //
-        // GET: Crop/Index
+        // GET: /gewassen
         [HttpGet]
         public ViewResult Index() 
         {
@@ -34,7 +34,7 @@ namespace Oogstplanner.Web.Controllers
         }
 
         //
-        // GET: Crop/All
+        // GET: /gewassen/json
         [HttpGet]
         public ActionResult All() 
         {

@@ -25,7 +25,7 @@
     $('#registerOrLogin').on('click', function () {
         BootstrapDialog.show({
             title: 'De oogstplanner gemeenschap',
-            message: $('<div></div>').load('/Account/LoginOrRegisterModal')
+            message: $('<div></div>').load('/account/inloggenofregistreren')
         });
     });
 
