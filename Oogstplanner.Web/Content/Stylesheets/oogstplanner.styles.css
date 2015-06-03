@@ -35,9 +35,6 @@ p {
     background-color: #013220; /* Dark green */
 }
 
-.farmingMonth {
-    font-size = 8px;
-}
 #sowing, #harvesting {
     /* Bring input fields to front */
     z-index: 1; 
