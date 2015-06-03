@@ -72,7 +72,7 @@ namespace Oogstplanner.Web
             routes.MapRoute(
                 name: "Month",
                 url: "zaaikalender/{month}",
-                defaults: new { controller = "Calendar", action = "Month", month = UrlParameter.Optional }
+                defaults: new { controller = "Calendar", action = "Month" }
             );
 
             routes.MapRoute(
@@ -114,7 +114,7 @@ namespace Oogstplanner.Web
             routes.MapRoute(
                 name: "ResetPasswordToken",
                 url: "account/wachtwoordreset/{token}",
-                defaults: new { controller = "Account", action = "ResetPassword", token = UrlParameter.Optional }
+                defaults: new { controller = "Account", action = "ResetPassword" }
             );
 
             routes.MapRoute(
@@ -126,7 +126,7 @@ namespace Oogstplanner.Web
             routes.MapRoute(
                 name: "AccountInfoUser",
                 url: "account/{userName}",
-                defaults: new { controller = "Account", action = "UserInfo", userName = UrlParameter.Optional }
+                defaults: new { controller = "Account", action = "UserInfo" }
             );
 
             routes.MapRoute (

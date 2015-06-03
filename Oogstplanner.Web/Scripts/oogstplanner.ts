@@ -28,7 +28,7 @@ class Oogstplanner {
         // Store the month in the object so we can use it and do not have to get it from the page.
         this.month = month;
         var that = this;
-        $.get('/zaaikalender?month=' + month, function (data) {
+        $.get('/zaaikalender/' + month, function (data) {
             $('#_MonthCalendar').html(data);
         })
         .done(function() { that.toMonthCalendar(); that.bindFarmingActionRemoveFunctionToDeleteButton(); })

@@ -15,7 +15,7 @@ var Oogstplanner = (function () {
     Oogstplanner.prototype.fillMonthCalendar = function (month) {
         this.month = month;
         var that = this;
-        $.get('/zaaikalender?month=' + month, function (data) {
+        $.get('/zaaikalender/' + month, function (data) {
             $('#_MonthCalendar').html(data);
         }).done(function () {
             that.toMonthCalendar();
