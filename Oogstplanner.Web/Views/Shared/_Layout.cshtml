@@ -5,16 +5,10 @@
 
     <title>@ViewBag.Title | Oogstplanner</title>
 
-    <link rel="stylesheet" href="/Content/Stylesheets/bootstrap.min.css" />
-    <link rel="stylesheet" href="/Content/Stylesheets/bootstrap-navbar.css" />
-    <link rel="stylesheet" href="/Content/Stylesheets/bootstrap-signin.css" />
-    <link rel="stylesheet" href="/Content/Stylesheets/bootstrap-dialog.min.css" />
-    <link rel="stylesheet" href="/Content/Stylesheets/animate.min.css" />
-
-    <link rel="stylesheet" href="/Content/Stylesheets/oogstplanner.styles.css" />
-    <link rel="stylesheet" href="/Content/Stylesheets/oogstplanner.responsive-square-elements.css" />
-    <link rel="stylesheet" href="/Content/Stylesheets/jquery.fullPage.css" />
-    <link rel="stylesheet" href="/Content/Stylesheets/typeaheadjs.css" />
+    @Styles.Render("~/Content/Stylesheets/bootstrap.min.css")
+    @Styles.Render("~/Content/Stylesheets/bootstrap-dialog.min.css")
+    @Styles.Render("~/Content/Stylesheets/bootstrap")
+    @Styles.Render("~/Content/Stylesheets/oogstplanner.responsive-squares")
 
     <!--[if lte IE 8]>
         <script src="//cdnjs.cloudflare.com/ajax/libs/es5-shim/4.0.3/es5-shim.min.js"></script>

@@ -258,6 +258,9 @@
     <Content Include="Content\Stylesheets\animate.min.css" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Error\NotFound.cshtml" />
+    <Content Include="Content\Stylesheets\bootstrap.css" />
+    <Content Include="Content\Stylesheets\animate.css" />
+    <Content Include="Content\Stylesheets\bootstrap-dialog.css" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
