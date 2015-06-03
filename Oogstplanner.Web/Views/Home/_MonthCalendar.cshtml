@@ -2,7 +2,7 @@
 
 <div id="top"></div>
 
-<!-- Top bar -->
+@* Top bar *@
 <div class="top-bar-tiny">
     <div class="rectangle-content-tiny">
         <div class="table">
@@ -13,7 +13,7 @@
     </div>
 </div>
 
-<!--- Sowing and harvesting -->
+@*- Sowing and harvesting *@
 <div class="rectangle-double">
     <div class="rectangle-content">
         <div class="table">
@@ -36,7 +36,7 @@
 @*TODO Error handling onfailure, this is a temporary solution. It throws a JavaScript error, but the user can go on.*@
 @using (Ajax.BeginForm("UpdateMonth", new AjaxOptions { OnSuccess = "Util.toMain()", OnFailure = "Util.toMain()" }))
 {
-    <!-- Main rectangles -->
+    @* Main rectangles *@
     <div class="rectangle-vertical rectangle-sowing">
         <div class="rectangle-content bg-no-opacity imgsowing">
             <div class="row">

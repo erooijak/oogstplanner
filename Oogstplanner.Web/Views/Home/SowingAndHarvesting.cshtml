@@ -10,13 +10,13 @@
 @{ 
     ViewBag.Title = "Zaaien en oogsten";
 
-    <!-- START RESPONSIVE GRID LAYOUT -->
+    @* START RESPONSIVE GRID LAYOUT *@
 
     <div id="top"></div>
     <div class="row">
         <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8" id="month-overview-responsive-square-elements">
 
-            <!-- Row of rectangles for the seasons -->
+        @* Row of rectangles for the seasons *@
         @foreach (var season in Model.SeasonsForDisplay)
         {
             <div class="rectangle">
@@ -30,7 +30,7 @@
             </div>
         }     
      
-                <!-- Four rows which each consist of an autumn, winter, spring and summer image. -->
+        @* Four rows which each consist of an autumn, winter, spring and summer image. *@
         @for (var imageIndex = 1; imageIndex <= 3; imageIndex++)
         {
             foreach (var season in Model.SeasonsCssClasses)
@@ -59,9 +59,9 @@
             }
         }
 
-    <!-- END OF RESPONSIVE GRID LAY-OUT -->
+        @* END OF RESPONSIVE GRID LAY-OUT *@
 
-        </div><!-- End left column -->
+        </div>@* End left column *@
 
         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 well text-left" id="crop-selection-box">
             <div id="select-crop">
@@ -114,11 +114,11 @@
                         </span>
                     </i>
                 </span>
-            </div><!-- End selected crop information field -->
+            </div>@* End selected crop information field *@
             <div class="form-text lower-right">@Html.ActionLink("Gewassen database", "Index", "Crop", null, null)</div>
-        </div><!-- End right column -->
+        </div>@* End right column *@
 
-    </div><!-- End row -->
+    </div>@* End row *@
 
     <input type="hidden" 
            id="month-names" 
@@ -128,10 +128,10 @@
            id="display-month-names" 
            value="@string.Join(",", Model.DisplayMonthNames)"/>
 }
-    </div><!-- End of main slide -->
+    </div>@* End of main slide *@
     
-    <!-- Slide for editing and viewing a specific month
-         Partial view data with farming actions is loaded here. -->
+    @* Slide for editing and viewing a specific month
+         Partial view data with farming actions is loaded here. *@
     <div class="slide" id="_MonthCalendar"></div>
          
-</div><!-- End of fullPage.js main page -->
+</div>@* End of fullPage.js main page *@
