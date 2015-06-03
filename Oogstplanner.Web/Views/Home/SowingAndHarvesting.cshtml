@@ -2,8 +2,11 @@
 
 @Styles.Render("~/Content/Stylesheets/oogstplanner.sowing-and-harvesting")
 
+@Scripts.Render("~/Scripts/fullPage")
+@Scripts.Render("~/Scripts/oogstplanner.sowing-and-harvesting")
+
 <div id="main">
-    <div class="slide flowtype-area">
+    <div class="slide">
 @{ 
     ViewBag.Title = "Zaaien en oogsten";
 
@@ -129,6 +132,6 @@
     
     <!-- Slide for editing and viewing a specific month
          Partial view data with farming actions is loaded here. -->
-    <div class="slide flowtype-area" id="_MonthCalendar"></div>
+    <div class="slide" id="_MonthCalendar"></div>
          
 </div><!-- End of fullPage.js main page -->

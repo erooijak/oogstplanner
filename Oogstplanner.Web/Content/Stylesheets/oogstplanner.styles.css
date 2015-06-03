@@ -20,7 +20,6 @@ p {
     text-align: left;
 }
 .bold {
-    /* font-size is made responsive with the flowtype.js script */
     font-weight: 900;
 }
 .footer {

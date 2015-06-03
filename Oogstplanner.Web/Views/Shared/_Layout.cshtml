@@ -11,32 +11,14 @@
     @Styles.Render("~/Content/Stylesheets/oogstplanner.responsive-squares")
 
     <!--[if lte IE 8]>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/es5-shim/4.0.3/es5-shim.min.js"></script>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv-printshiv.min.js"></script>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
+        <script type="text/javascript" language="javascript" src="//cdnjs.cloudflare.com/ajax/libs/es5-shim/4.0.3/es5-shim.min.js"></script>
+        <script type="text/javascript" language="javascript" src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv-printshiv.min.js"></script>
+        <script type="text/javascript" language="javascript" src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-        
-    <script src="/Scripts/jquery-2.1.3.min.js"></script>
-    <script src="/Scripts/bootstrap.min.js"></script>
-    <script src="/Scripts/bootstrap-dialog.min.js"></script>
-    <script src="/Scripts/jquery-ui-1.11.3.min.js"></script>
-    <script src="/Scripts/jquery.ui.touch-punch.min.js"></script>
-    <script src="/Scripts/jquery.unobtrusive-ajax.min.js"></script>
-    <script src="/Scripts/jquery.easings.min.js"></script>
-    <script src="/Scripts/jquery.slimscroll.min.js"></script>
-    <script src="/Scripts/jquery.flowtype.js"></script>
-    <script src="/Scripts/jquery.fullPage.js"></script>
-    <script src="/Scripts/jquery.noty.packaged.min.js"></script>
-    <script src="/Scripts/handlebars.min.js"></script>
-    <script src="/Scripts/typeahead.bundle.min.js"></script>
-    <script src="/Scripts/oogstplanner.js"></script>
-    <script src="/Scripts/oogstplanner.utilities.js"></script>
-    <script src="/Scripts/oogstplanner.site-settings.js"></script>
-    <script src="/Scripts/oogstplanner.drag-and-drop.js"></script>
-    <script src="/Scripts/oogstplanner.event-listeners.js"></script>
-    <script src="/Scripts/oogstplanner.crops-suggestion-engine.js"></script>
-    <script src="/Scripts/oogstplanner.crop-selection-box.js"></script>
-    <script src="/Scripts/oogstplanner.notifications.js"></script>
+
+    @Scripts.Render("~/Scripts/jquery")
+    @Scripts.Render("~/Scripts/bootstrap")
+    @Scripts.Render("~/Scripts/oogstplanner")
 
 </head>
 <body>

@@ -88,6 +88,9 @@
     display: table-cell;
     vertical-align: middle;
 }
+.bold {
+    font-size: 24px;
+}
 .table-cell-top {
     display: table-cell;
 }

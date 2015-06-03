@@ -207,7 +207,6 @@
     <Content Include="Content\Images\Spring\4.jpg" />
     <Content Include="Content\Stylesheets\jquery.fullPage.css" />
     <Content Include="Scripts\jquery.fullPage.js" />
-    <Content Include="Scripts\jquery.fullPage.min.js" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Scripts\jquery.flowtype.js" />
     <Content Include="Scripts\jquery.easings.min.js" />
@@ -261,6 +260,8 @@
     <Content Include="Content\Stylesheets\bootstrap.css" />
     <Content Include="Content\Stylesheets\animate.css" />
     <Content Include="Content\Stylesheets\bootstrap-dialog.css" />
+    <Content Include="Scripts\oogstplanner.site-settings.js" />
+    <Content Include="Scripts\oogstplanner.fullPage.js" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
@@ -276,7 +277,6 @@
     <None Include="App_Data\Membership\AddMembershipSchema.sql" />
     <None Include="App_Data\Production\readme.txt" />
     <None Include="Scripts\oogstplanner.ts" />
-    <None Include="Scripts\oogstplanner.site-settings.ts" />
     <None Include="Scripts\oogstplanner.drag-and-drop.ts" />
     <None Include="Scripts\typings\jquery.d.ts" />
     <None Include="Scripts\typings\jquery.plugins.d.ts" />

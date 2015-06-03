@@ -350,19 +350,6 @@
 
 				$(this).find('.fp-slidesContainer').css('width', sliderWidth + '%');
 
-                /* No control arrows on the slides for us since we switch programmatically */
-                //$(this).find('.fp-slides').after('<div class="fp-controlArrow fp-prev"></div><div class="fp-controlArrow fp-next"></div>');
-                //
-				//if(options.controlArrowColor!='#fff'){
-				//	$(this).find('.fp-controlArrow.fp-next').css('border-color', 'transparent transparent transparent '+options.controlArrowColor);
-				//	$(this).find('.fp-controlArrow.fp-prev').css('border-color', 'transparent '+ options.controlArrowColor + ' transparent transparent');
-				//}
-
-				//if(!options.loopHorizontal){
-				//	$(this).find('.fp-controlArrow.fp-prev').hide();
-				//}
-
-
 				if(options.slidesNavigation){
 					addSlidesNavigation($(this), numSlides);
 				}
@@ -1102,18 +1089,6 @@
 				$.fn.fullpage.setMouseWheelScrolling(true);
 			});
 		}
-
-		/**
-		 * Scrolling horizontally when clicking on the slider controls.
-         * DISABLED!!! (No programmatic scrolling for us).
-		 */
-		//$('.fp-section').on('click touchstart', '.fp-controlArrow', function() {
-		//	if ($(this).hasClass('fp-prev')) {
-		//		$.fn.fullpage.moveSlideLeft();
-		//	} else {
-		//		$.fn.fullpage.moveSlideRight();
-		//	}
-		//});
 
 		/**
 		* Scrolls horizontal sliders.
