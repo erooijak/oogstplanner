@@ -10,37 +10,42 @@
 @* Fixed main screen *@
 <div id="login" class="bg imglogin">
 
-    <div class="row">
-        <div class="col-md-6 col-sm-6 col-xs-0 pull-left hidden-xs">
+    <div class="row" id="main-row">
+        <div class="col-lg-6 col-xs-12">
             <div class="jumbotron-box">
                 <div class="jumbotron">
-                    <h1>Welkom bij de Oogstplanner.</h1>
+                    <h1>Welkom op de Oogstplanner</h1>
                     <p>
-                      Een dynamisch gereedschap voor een ieder die vruchtbare grond ter beschikking heeft.<br/>
-                      <span id="jumbo-extra-text">
-                        <br/>Oogstplanner helpt je bepalen wanneer te zaaien en te oogsten. 
-                        Of het nu gaat om een moestuin of een bloempot.
-                      </span>
+                        Een dynamisch gereedschap voor een ieder met vruchtbare grond.<br/>
+                        <span class="hidden-xs hidden-md">
+                            <br/>Oogstplanner helpt je bepalen wanneer te zaaien en te oogsten. 
+                            Of het nu gaat om een moestuin of een bloempot.
+                        </span>
+                    </p>
+                </div>
+                <div class="panel panel-default dark visible-xs">
+                    <p>
+                        @Html.ActionLink("Oogst of zaai een gewas", "SowingAndHarvesting",  "Home",  null, null)<br/>
+                        <!-- @Html.ActionLink("Vind een andere gebruiker", "TODO",  "TODO",  null, null)<br/> -->
+                        @Html.ActionLink("Bekijk je zaaikalender", "Year",  "Calendar",  null, null)<br/>
+                        <!--@Html.ActionLink("Veelgestelde vragen lijst (FAQ)", "TODO",  "TODO",  null, null)<br/> -->
                     </p>
                 </div>
             </div>
         </div> @* End first column *@
 
-        <div class="col-md-6 col-sm-6 col-xs-0 pull-left hidden-xs">
-            <div class="well" style="margin: 26px;">
-            <p class="panel dark">
-                OogstPlanner.nl verzorgt wat ook wel een zaaikalender heet.<br/>
-                Een dynamische kalender om te bepalen wanneer groenten, kruiden of andere planten
-                kunnen worden gezaaid of geoogst. Zeer geschikt voor biologisch, ecologisch of dynamisch boeren.
-                Bij @Html.ActionLink("zaaien en oogsten", "SowingAndHarvesting",  "Home",  null, null)
-                kunt u eerst zoeken naar een gewas (bijvoorbeeld aubergine of courgette) en
-                deze vervolgens naar de maand slepen waarop u deze wilt zaaien of oogsten.
-                Deze kunt u verder bijstellen door in het vierkantje van de maand te navigeren.<br/>
-                Op de @Html.ActionLink("zaaikalender", "Year",  "Calendar",  null, null) kunt u
-                vervolgens het resultaat van uw zaai- en oogstacties bekijken en deze (straks) netjes 
-                exporteren naar pdf of Excel.<br/>
-                Wij willen u veel plezier wensen met de zaai- en oogstkalender.
-            </p>
+        <div class="col-lg-6 hidden-xs">
+            <div class="row">
+                <div class="col-lg-12 col-md-6 col-sm-6">
+                    <img src="/Content/Images/Draggable/harvesting.png" alt="oogsten" /><br/>            
+                    @Html.ActionLink("Oogst of zaai een gewas", "SowingAndHarvesting",  "Home", null, new { @class = "btn-lg btn-default" } )<br/><br/>
+                    <!-- @Html.ActionLink("Vind een andere gebruiker", "TODO",  "TODO",  null, null)<br/> -->
+                </div>
+                <div class="col-lg-12 col-md-6 col-sm-6">
+                    <img src="/Content/Images/Draggable/sowing.png" alt="zaaien" /><br/>
+                    @Html.ActionLink("Bekijk je zaaikalender", "Year",  "Calendar", null, new { @class = "btn-lg btn-info" } )
+                    <!--@Html.ActionLink("Veelgestelde vragen lijst (FAQ)", "TODO",  "TODO",  null, null)<br/> -->
+                </div>
             </div>
         </div> @* End second column *@
 

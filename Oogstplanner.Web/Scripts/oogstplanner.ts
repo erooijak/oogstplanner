@@ -93,12 +93,10 @@ class Oogstplanner {
 
     resizeLoginArea() {
         
-        var windowHeight = $(window).innerHeight();
-        var topHeight = $('#top').innerHeight();
-        var padding = windowHeight * 0.025 + 20;	
+        var rowHeight = $('#main-row').innerHeight();
 
         $('#login').css({ 
-            height: windowHeight - topHeight - padding
+            height: rowHeight
         });
 
     }
