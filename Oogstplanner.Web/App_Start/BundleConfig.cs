@@ -28,6 +28,10 @@ namespace Oogstplanner.Web
                 "~/Content/Stylesheets/typeaheadjs.css"
             ));
 
+            bundles.Add(new ScriptBundle("~/Scripts/loadCSS").Include(
+                "~/Scripts/loadCSS.js"
+            ));
+
             bundles.Add(new ScriptBundle("~/Scripts/jquery").Include(
                 "~/Scripts/jquery-{version}.min.js",
                 "~/Scripts/jquery-ui-{version}.min.js",

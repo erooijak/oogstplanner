@@ -1,5 +1,14 @@
 ﻿@model SowingAndHarvestingViewModel
 
+@Scripts.Render("~/Scripts/loadCSS")
+
+<script>
+    loadCSS(@Styles.RenderFormat("\"{0}\");", "~/Content/Stylesheets/oogstplanner.sowing-and-harvesting")
+</script>
+
+@Scripts.Render("~/Scripts/fullPage")
+@Scripts.Render("~/Scripts/oogstplanner.sowing-and-harvesting")
+
 <div id="main">
     <div class="slide">
 @{ 
@@ -131,8 +140,3 @@
     <div class="slide" id="_MonthCalendar"></div>
          
 </div>@* End of fullPage.js main page *@
-
-@Styles.Render("~/Content/Stylesheets/oogstplanner.sowing-and-harvesting")
-
-@Scripts.Render("~/Scripts/fullPage")
-@Scripts.Render("~/Scripts/oogstplanner.sowing-and-harvesting")
