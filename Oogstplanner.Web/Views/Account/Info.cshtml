@@ -1,11 +1,5 @@
 ﻿@model User
 
-@Scripts.Render("~/Scripts/loadCSS")
-
-<script>
-    loadCSS(@Styles.RenderFormat("\"{0}\");", "~/Content/Stylesheets/bootstrap-profile")
-</script>
-
 @{
     ViewBag.Title = "Gebruikerspagina";
 }
@@ -85,3 +79,5 @@ else
         </div>
     </div>
 }
+
+@Styles.Render("~/Content/Stylesheets/bootstrap-profile")

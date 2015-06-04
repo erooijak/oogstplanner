@@ -262,7 +262,6 @@
     <Content Include="Content\Stylesheets\bootstrap-dialog.css" />
     <Content Include="Scripts\oogstplanner.site-settings.js" />
     <Content Include="Scripts\oogstplanner.fullPage.js" />
-    <Content Include="Scripts\loadCSS.js" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
