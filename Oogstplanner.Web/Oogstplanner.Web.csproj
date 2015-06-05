@@ -263,6 +263,7 @@
     <Content Include="Scripts\oogstplanner.site-settings.js" />
     <Content Include="Scripts\oogstplanner.fullPage.js" />
     <Content Include="Content\Images\Draggable\sowing.png" />
+    <Content Include="Content\Stylesheets\oogstplanner.fontify.css" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>

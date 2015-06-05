@@ -15,7 +15,7 @@
     <div id="top"></div>
     <h1 class="sr-only">Zaaikalender zaaien en oogsten</h1>
     <div class="row">
-        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8" id="month-overview-responsive-square-elements">
+        <div class="col-lg-8 col-md-6 col-sm-6 col-xs-6" id="month-overview-responsive-square-elements">
 
         @* Row of rectangles for the seasons *@
         @foreach (var season in Model.SeasonsForDisplay)
@@ -23,7 +23,7 @@
             <div class="rectangle">
                 <div class="rectangle-content">
                     <div class="table">
-                        <div class="table-cell bold">
+                        <div class="table-cell bold resizable-header2">
                             @season.ToUpper()
                         </div>
                     </div>
@@ -51,7 +51,7 @@
                    <div class="content">
                         <div class="table">
                             <div class="table-cell">
-                                <h3>@displayMonth</h3>
+                                <h3 class="resizable-header3">@displayMonth</h3>
                             </div> 
                         </div>
                     </div>
@@ -64,7 +64,7 @@
 
         </div>@* End left column *@
 
-        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 well text-left" id="crop-selection-box">
+        <div class="col-lg-4 col-md-6 col-sm-6 col-xs-6 well text-left" id="crop-selection-box">
             <div id="select-crop">
                 <input class="typeahead form-control" type="text" placeholder="Zoek een gewas">
             </div>
