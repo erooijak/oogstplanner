@@ -31,8 +31,8 @@ $(function () {
     $('#selected-crop-info').on('mouseover', function () {
         dragged.collectValues();
         var squareWidth = $('.square').first().innerWidth();
-        var imageHarvesting = $('<img>').attr('src', '../Content/Images/Draggable/harvesting.png').attr('width', squareWidth);
-        var imageSowing = $('<img>').attr('src', '../Content/Images/Draggable/sowing.png').attr('width', squareWidth);
+        var imageHarvesting = $('<img>').attr('src', '../Content/Images/Draggable/harvesting.png').attr('width', squareWidth).addClass('flopped');
+        var imageSowing = $('<img>').attr('src', '../Content/Images/Draggable/sowing.png').attr('width', squareWidth).addClass('flopped');
         $(this).draggable({
             helper: function () {
                 var type = dragged.selectedActionType;

@@ -54,8 +54,14 @@ $(function() {
     
         // Preload the images with same width as the responsive square elements.
         var squareWidth = $('.square').first().innerWidth();
-        var imageHarvesting = $('<img>').attr('src', '../Content/Images/Draggable/harvesting.png').attr('width', squareWidth);
-        var imageSowing = $('<img>').attr('src', '../Content/Images/Draggable/sowing.png').attr('width', squareWidth);
+        var imageHarvesting = $('<img>')
+            .attr('src', '../Content/Images/Draggable/harvesting.png')
+            .attr('width', squareWidth)
+            .addClass('flopped');
+        var imageSowing = $('<img>')
+            .attr('src', '../Content/Images/Draggable/sowing.png')
+            .attr('width', squareWidth)
+            .addClass('flopped');
 
         $(this).draggable({
             
