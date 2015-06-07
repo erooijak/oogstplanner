@@ -85,10 +85,46 @@ class Oogstplanner {
         });
     }
 
+    // TODO: refactor code below
     resizeCropSelectionBox() {
-        $('#crop-selection-box').css({
-            height: $('#month-overview-responsive-square-elements').innerHeight()
-        });
+
+        // media query event handler
+        if (matchMedia) {
+            var mq = window.matchMedia("(max-width: 991px)");
+            mq.addListener(WidthChange);
+            WidthChange(mq);
+        }
+
+        // media query change
+        function WidthChange(mq) {
+            
+            if (mq.matches && Util.isMobile()) {
+                // window width is less than 991px, and user is on mobile, then check if landscape
+                if (window.matchMedia("(orientation: landscape)").matches) {
+                    $('#crop-selection-box').css({
+                        height: $('#month-overview-responsive-square-elements').innerHeight() / 2
+                    });
+                }
+                else
+                {
+                    $('#crop-selection-box').css({
+                        height: $('#month-overview-responsive-square-elements').innerHeight()
+                    })
+                }
+            }
+            else if (mq.matches) {
+                $('#crop-selection-box').css({
+                    height: $('#month-overview-responsive-square-elements').innerHeight() / 2
+                });
+            }
+            else {
+                // window width is more than 991px
+                $('#crop-selection-box').css({
+                    height: $('#month-overview-responsive-square-elements').innerHeight()
+                });
+            }
+
+        }
     }
 
     resizeLoginArea() {

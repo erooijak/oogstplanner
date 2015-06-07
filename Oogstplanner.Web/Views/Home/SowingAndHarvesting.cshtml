@@ -15,7 +15,12 @@
     <div id="top"></div>
     <h1 class="sr-only">Zaaikalender zaaien en oogsten</h1>
     <div class="row">
-        <div class="col-lg-8 col-md-6 col-sm-6 col-xs-6" id="month-overview-responsive-square-elements">
+
+        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 well text-left" id="crop-selection-box">
+            @{ Html.RenderPartial("_CropSearch"); }
+        </div>@* End left column *@
+
+        <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12" id="month-overview-responsive-square-elements">
 
         @* Row of rectangles for the seasons *@
         @foreach (var season in Model.SeasonsForDisplay)
@@ -62,61 +67,6 @@
 
         @* END OF RESPONSIVE GRID LAY-OUT *@
 
-        </div>@* End left column *@
-
-        <div class="col-lg-4 col-md-6 col-sm-6 col-xs-6 well text-left" id="crop-selection-box">
-            <div id="select-crop">
-                <input class="typeahead form-control" type="text" placeholder="Zoek een gewas">
-            </div>
-
-            <div id="selected-crop-info" class="draggable well" draggable="true">
-                <div class="form-text"><strong>Gewas: </strong><span id="selected-crop-name"></span></div>
-                <div class="form-text"><strong>Ras: </strong><span id="selected-crop-race"></span></div>
-                <div class="form-text"><strong>Categorie: </strong><span id="selected-crop-category"></span></div>
-                <div class="form-text"><strong>Groeitijd: </strong><span id="selected-crop-growingTime"></span> maanden</div>
-                <div class="form-text"><strong>Oppervlakte per plant: </strong><span id="selected-crop-areaPerCrop"></span>m<sup>2</sup></div>
-                <div class="form-text"><strong>Prijs per zakje: </strong>&euro; <span id="selected-crop-pricePerBag"></span></div>
-                <input type="hidden" id="selected-crop-hidden-id">
-                <input type="hidden" id="selected-crop-hidden-harvestingMonths">
-                <input type="hidden" id="selected-crop-hidden-sowingMonths">
-                <br/>
-                <label for="action-type-radios" class="form-text">Ik wil dit gewas:</label>
-
-                <div class="radio-inline">
-                    <label class="form-text">
-                        <input type="radio" name="action-type-radios" id="sowing-radio-button" value="Zaaien">
-                        Zaaien
-                    </label>
-                </div>
-                <div class="radio-inline">
-                    <label class="form-text">
-                        <input type="radio" name="action-type-radios" id="harvesting-radio-button" value="Oogsten" checked>
-                        Oogsten
-                    </label>
-                </div>
-                <br/>
-                <br/>
-
-                <div class="form-inline">
-                    <div class="form-group form-text">
-                        <label for="selected-crop-count-number-field">Aantal planten: </label>
-                        <input type="number" name="selected-crop-count" id="selected-crop-count-number-field" class="numeric-text-box" min="1" max="999" value="1" />
-                    </div>
-                </div>
-                <br/>
-
-                <span id="drag-and-drop-sentence" class="form-text">
-                    <i>Sleep het gewas naar een maand om deze in die maand te 
-                        <span class="drag-and-drop-sentence-action-type">oogsten</span>.
-                        <br/>
-                        <span class="small">(De beste maanden om te 
-                            <span class="drag-and-drop-sentence-action-type">oogsten</span>
-                            zullen oplichten.)
-                        </span>
-                    </i>
-                </span>
-            </div>@* End selected crop information field *@
-            <div class="form-text lower-right">@Html.ActionLink("Gewassen database", "Index", "Crop", null, null)</div>
         </div>@* End right column *@
 
     </div>@* End row *@

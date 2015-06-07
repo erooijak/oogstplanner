@@ -1,5 +1,6 @@
 ﻿/* Some styling that we like */
 
+/* For Bootstrap's md, lg */
 .resizable-header2 {
     font-size: 18px;
     font-size: 2vw;
@@ -7,4 +8,15 @@
 .resizable-header3 {
     font-size: 16px;
     font-size: 1.8vw;
+}
+/* Bootstrap's xs and sm */
+@media(max-width: 991px) {
+    .resizable-header2 {
+        font-size: 16px;
+        font-size: 3vw;
+    }
+    .resizable-header3 {
+        font-size: 13px;
+        font-size: 2.7vw;
+    }
 }

@@ -66,9 +66,35 @@ var Oogstplanner = (function () {
         });
     };
     Oogstplanner.prototype.resizeCropSelectionBox = function () {
-        $('#crop-selection-box').css({
-            height: $('#month-overview-responsive-square-elements').innerHeight()
-        });
+        if (matchMedia) {
+            var mq = window.matchMedia("(max-width: 991px)");
+            mq.addListener(WidthChange);
+            WidthChange(mq);
+        }
+        function WidthChange(mq) {
+            if (mq.matches && Util.isMobile()) {
+                if (window.matchMedia("(orientation: landscape)").matches) {
+                    $('#crop-selection-box').css({
+                        height: $('#month-overview-responsive-square-elements').innerHeight() / 2
+                    });
+                }
+                else {
+                    $('#crop-selection-box').css({
+                        height: $('#month-overview-responsive-square-elements').innerHeight()
+                    });
+                }
+            }
+            else if (mq.matches) {
+                $('#crop-selection-box').css({
+                    height: $('#month-overview-responsive-square-elements').innerHeight() / 2
+                });
+            }
+            else {
+                $('#crop-selection-box').css({
+                    height: $('#month-overview-responsive-square-elements').innerHeight()
+                });
+            }
+        }
     };
     Oogstplanner.prototype.resizeLoginArea = function () {
         var rowHeight = $('#main-row').innerHeight();

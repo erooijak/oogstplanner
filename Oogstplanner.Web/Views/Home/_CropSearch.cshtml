@@ -1,0 +1,52 @@
+﻿<div id="select-crop">
+    <input class="typeahead form-control" type="text" placeholder="Zoek een gewas">
+</div>
+
+<div id="selected-crop-info" class="draggable well" draggable="true">
+    <div class="form-text"><strong>Gewas: </strong><span id="selected-crop-name"></span></div>
+    <div class="form-text"><strong>Ras: </strong><span id="selected-crop-race"></span></div>
+    <div class="form-text hidden-sm hidden-xs"><strong>Categorie: </strong><span id="selected-crop-category"></span></div>
+    <div class="form-text hidden-sm hidden-xs"><strong>Groeitijd: </strong><span id="selected-crop-growingTime"></span> maanden</div>
+    <div class="form-text hidden-sm hidden-xs"><strong>Oppervlakte per plant: </strong><span id="selected-crop-areaPerCrop"></span>m<sup>2</sup></div>
+    <div class="form-text hidden-sm hidden-xs"><strong>Prijs per zakje: </strong>&euro; <span id="selected-crop-pricePerBag"></span></div>
+    <input type="hidden" id="selected-crop-hidden-id">
+    <input type="hidden" id="selected-crop-hidden-harvestingMonths">
+    <input type="hidden" id="selected-crop-hidden-sowingMonths">
+    <br/>
+    <label for="action-type-radios" class="form-text">Ik wil dit gewas:</label>
+
+    <div class="radio-inline">
+        <label class="form-text">
+            <input type="radio" name="action-type-radios" id="sowing-radio-button" value="Zaaien">
+            Zaaien
+        </label>
+    </div>
+    <div class="radio-inline">
+        <label class="form-text">
+            <input type="radio" name="action-type-radios" id="harvesting-radio-button" value="Oogsten" checked>
+            Oogsten
+        </label>
+    </div>
+    <br/>
+    <br class="hidden-sm hidden-xs" />
+
+    <div class="form-inline hidden-sm hidden-xs">
+        <div class="form-group form-text">
+            <label for="selected-crop-count-number-field">Aantal planten: </label>
+            <input type="number" name="selected-crop-count" id="selected-crop-count-number-field" class="numeric-text-box" min="1" max="999" value="1" />
+        </div>
+    </div>
+    <br class="hidden-sm hidden-xs" />
+
+    <span id="drag-and-drop-sentence" class="form-text">
+        <i>Sleep het gewas naar een maand om deze in die maand te 
+            <span class="drag-and-drop-sentence-action-type">oogsten</span>.
+            <br/>
+            <span class="small hidden-xs">(De beste maanden om te 
+                <span class="drag-and-drop-sentence-action-type">oogsten</span>
+                zullen oplichten.)
+            </span>
+        </i>
+    </span>
+</div>@* End selected crop information field *@
+<div class="form-text lower-right">@Html.ActionLink("Gewassen database", "Index", "Crop", null, null)</div>
