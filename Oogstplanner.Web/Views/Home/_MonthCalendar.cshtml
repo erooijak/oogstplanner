@@ -6,7 +6,7 @@
 <div class="top-bar-tiny">
     <div class="rectangle-content-tiny">
         <div class="table">
-            <div class="table-cell bold resizable-header2">
+            <div class="table-cell bold responsive-header2">
                 <div>@Model.DisplayMonth</div>
             </div>
         </div>
@@ -17,7 +17,7 @@
 <div class="rectangle-double">
     <div class="rectangle-content">
         <div class="table">
-            <div class="table-cell bold resizable-header3">
+            <div class="table-cell bold responsive-header3">
                 ZAAIEN
             </div>
         </div>
@@ -26,7 +26,7 @@
 <div class="rectangle-double">
     <div class="rectangle-content">
         <div class="table">
-            <div class="table-cell bold resizable-header3">
+            <div class="table-cell bold responsive-header3">
                 OOGSTEN
             </div>
         </div>
@@ -46,7 +46,7 @@
                         {
                             @Html.HiddenFor(model => action.Id)
                             <div class="form-inline">
-                                <div class="form-group form-text-large-white">
+                                <div class="form-group responsive-form-text-large-white">
                                 	<div class="input-group">
 	                                	<span class="input-group-btn">
 	                                    	<div class="btn btn-danger input-xs remove-farming-action" id="@string.Format("{0}", action.Id)"><span class="glyphicon glyphicon-remove"></span></div>
@@ -74,7 +74,7 @@
                         {
                             @Html.HiddenFor(model => action.Id)
                             <div class="form-inline">
-                                <div class="form-group form-text-large-white">
+                                <div class="form-group responsive-form-text-large-white">
                                 	<div class="input-group">
 	                                	<span class="input-group-btn">
 	                                    	<div class="btn btn-danger input-xs remove-farming-action" id="@string.Format("{0}", action.Id)"><span class="glyphicon glyphicon-remove"></span></div>

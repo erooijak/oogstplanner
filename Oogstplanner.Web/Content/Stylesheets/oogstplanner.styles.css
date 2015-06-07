@@ -48,11 +48,6 @@ p {
     font-weight: normal;
     font-size: 14px;
 }
-.form-text-large-white {
-    color: white;
-    font-weight: normal;
-    font-size: 18px;
-}
 .lower-right {
     position: absolute; 
     right: 25px; 
