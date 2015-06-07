@@ -33,7 +33,6 @@ $(function () {
         var squareWidth = $('.square').first().innerWidth();
         var imageHarvesting = $('<img>').attr('src', '../Content/Images/Draggable/harvesting.png').attr('width', squareWidth);
         var imageSowing = $('<img>').attr('src', '../Content/Images/Draggable/sowing.png').attr('width', squareWidth);
-        ;
         $(this).draggable({
             helper: function () {
                 var type = dragged.selectedActionType;
@@ -49,7 +48,8 @@ $(function () {
                 draggedDiv.remove();
                 dragged.toggleHighlightOnHover();
                 dragged.toggleHighlightOnRecommendedMonths();
-            }
+            },
+            zIndex: 999
         });
     });
     var oogstplanner = new Oogstplanner();
