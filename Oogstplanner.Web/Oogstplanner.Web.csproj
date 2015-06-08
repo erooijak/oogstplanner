@@ -180,6 +180,7 @@
     <Compile Include="Utilities\Filters\ValidateAjaxFilterAttribute.cs" />
     <Compile Include="Utilities\Helpers\JsonHelper.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
+    <Compile Include="Controllers\FriendsController.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Web.config" />
@@ -294,6 +295,7 @@
     <None Include="App_Data\Migrations\201505251515_Initial.sql" />
     <None Include="App_Data\Migrations\201505252018_AddFollowers.sql" />
     <None Include="App_Data\Migrations\201505252030_ChangeFollowersPrimaryKeyName.sql" />
+    <None Include="App_Data\Migrations\201506082202_AddLikes.sql" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Oogstplanner.Data\Oogstplanner.Data.csproj">

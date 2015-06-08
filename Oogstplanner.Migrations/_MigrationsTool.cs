@@ -43,7 +43,7 @@ namespace Oogstplanner.Migrations
             //       clicking on it.
             // Make sure that the setup-database.sh script has run to create the database and user.
 
-            const string MIGRATION_NAME = "ChangeFollowersPrimaryKeyName";
+            const string MIGRATION_NAME = "AddLikes";
 
             // END USER INPUT /////////////////////////////////////////////////////////////////////////////
 

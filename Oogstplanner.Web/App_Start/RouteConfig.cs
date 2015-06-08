@@ -69,6 +69,18 @@ namespace Oogstplanner.Web
             );
 
             routes.MapRoute(
+                name: "LikeCalendar",
+                url: "zaaikalender/like",
+                defaults: new { controller = "Friends", action = "Like" }
+            );
+
+            routes.MapRoute(
+                name: "UnLikeCalendar",
+                url: "zaaikalender/unlike",
+                defaults: new { controller = "Friends", action = "UnLike" }
+            );
+
+            routes.MapRoute(
                 name: "Month",
                 url: "zaaikalender/{month}",
                 defaults: new { controller = "Calendar", action = "Month" }
