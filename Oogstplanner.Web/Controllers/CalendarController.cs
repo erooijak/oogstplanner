@@ -12,7 +12,7 @@ using Oogstplanner.Web.Utilities.Helpers;
 namespace Oogstplanner.Web.Controllers
 {
     [AllowAnonymous]
-    public class CalendarController : Controller
+    public sealed class CalendarController : Controller
     {        
         readonly ICalendarService calendarService;
         readonly IFarmingActionService farmingActionService;

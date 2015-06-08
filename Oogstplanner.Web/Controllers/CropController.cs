@@ -8,7 +8,7 @@ using Oogstplanner.Web.Utilities.Helpers;
 namespace Oogstplanner.Web.Controllers
 {
     [AllowAnonymous]
-    public class CropController : Controller
+    public sealed class CropController : Controller
     {
         readonly ICropProvider cropProvider;
 

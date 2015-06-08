@@ -1,22 +1,16 @@
 ﻿using System;
-using System.Linq;
 using System.Web.Mvc;
 
-using Newtonsoft.Json;
-
-using Oogstplanner.Models;
 using Oogstplanner.Services;
-using Oogstplanner.Web.Utilities.ExtensionMethods;
-using Oogstplanner.Web.Utilities.Helpers;
 
 namespace Oogstplanner.Web.Controllers
 {
     [Authorize]
-    public class FriendsController : Controller
+    public sealed class FriendsController : Controller
     {        
         readonly ICalendarLikingService calendarLikingService;
 
-        public CalendarController(ICalendarLikingService calendarLikingService)
+        public FriendsController(ICalendarLikingService calendarLikingService)
         {
             if (calendarLikingService == null)
             {

@@ -3,7 +3,7 @@
 namespace Oogstplanner.Web.Controllers
 {
     [AllowAnonymous]
-    public class ErrorController : Controller
+    public sealed class ErrorController : Controller
     {
         //
         // GET: /404

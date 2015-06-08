@@ -12,7 +12,7 @@ using Oogstplanner.Web.Utitilies.Filters;
 namespace Oogstplanner.Web.Controllers
 {
     [Authorize]
-    public class AccountController : Controller
+    public sealed class AccountController : Controller
     {
         readonly IUserService userService;
         readonly IMembershipService membershipService;
