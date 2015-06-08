@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 using Oogstplanner.Data;
 using Oogstplanner.Models;
@@ -36,13 +37,22 @@ namespace Oogstplanner.Services
 
         public void Like(int calendarId)
         {
-            UnitOfWork.Calendars.GetById(calendarId).Likes.Add(CurrentUser);
+            var like = new Like { User = CurrentUser };
+            UnitOfWork.Calendars.GetById(calendarId).Likes.Add(like);
             UnitOfWork.Commit();
         }
 
         public void UnLike(int calendarId)
         {
-            UnitOfWork.Calendars.GetById(calendarId).Likes.Remove(CurrentUser);
+            var likeToDelete = UnitOfWork.Likes.Find(l => l.User.Id == CurrentUser.Id)
+                .ToList().FirstOrDefault();
+
+            if (likeToDelete == null)
+            {
+                return;
+            }
+
+            UnitOfWork.Likes.Delete(likeToDelete);
             UnitOfWork.Commit();
         }
     }

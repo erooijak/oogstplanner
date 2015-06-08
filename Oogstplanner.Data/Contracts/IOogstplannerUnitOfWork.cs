@@ -7,6 +7,7 @@
         IPasswordRecoveryRepository PasswordRecovery { get; }
         IFarmingActionRepository FarmingActions { get; }
         IUserRepository Users { get; }
+        ILikesRepository Likes { get; }
 
         void Commit();
     }

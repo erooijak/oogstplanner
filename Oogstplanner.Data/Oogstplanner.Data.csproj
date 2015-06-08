@@ -58,6 +58,8 @@
     <Compile Include="RepositoryProvider.cs" />
     <Compile Include="RepositoryFactories.cs" />
     <Compile Include="CropRepository.cs" />
+    <Compile Include="LikesRepository.cs" />
+    <Compile Include="Contracts\ILikesRepository.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

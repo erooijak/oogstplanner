@@ -13,7 +13,8 @@ namespace Oogstplanner.Data
                 { typeof(FarmingActionRepository), db => new FarmingActionRepository(db) },
                 { typeof(PasswordRecoveryRepository), db => new PasswordRecoveryRepository(db) },
                 { typeof(UserRepository), db => new UserRepository(db) },
-                { typeof(CropRepository), db => new CropRepository(db) }
+                { typeof(CropRepository), db => new CropRepository(db) },
+                { typeof(LikesRepository), db => new LikesRepository(db) }
             };
         }
     }

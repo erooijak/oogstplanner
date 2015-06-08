@@ -13,7 +13,7 @@ namespace Oogstplanner.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201505251315210_Initial"; }
+            get { return "201506082220521_Initial"; }
         }
         
         string IMigrationMetadata.Source

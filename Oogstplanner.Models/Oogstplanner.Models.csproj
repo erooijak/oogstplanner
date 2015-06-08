@@ -46,6 +46,7 @@
     <Compile Include="ViewModels\YearCalendarViewModel.cs" />
     <Compile Include="ExtensionMethods\MonthExtension.cs" />
     <Compile Include="Follower.cs" />
+    <Compile Include="Like.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

@@ -46,6 +46,14 @@ namespace Oogstplanner.Data
             } 
         }
 
+        public ILikesRepository Likes 
+        { 
+            get 
+            { 
+                return repositoryProvider.GetRepository<LikesRepository>(); 
+            } 
+        }
+
         public OogstplannerUnitOfWork(IRepositoryProvider repositoryProvider)
         {
             if (repositoryProvider == null)    
