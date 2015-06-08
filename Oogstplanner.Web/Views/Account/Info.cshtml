@@ -33,49 +33,49 @@ else
 {
     <!-- User profile adjusted from http://bootsnipp.com/snippets/featured/simple-user-profile by lynx-->
     <div class="container">
-    	<div class="row">
-    		<div class="col-md-5 toppad pull-right col-md-offset-3">
-        		<br>		
-        		<p class=" text-info"></p>
-        	</div>
+        <div class="row">
+            <div class="col-md-5 toppad pull-right col-md-offset-3">
+                <br>		
+                <p class=" text-info"></p>
+            </div>
         	<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
-        		<div class="panel panel-info">
-                	<div class="panel-heading">
-                  		<h3 class="panel-title">@Model.Name</h3>
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">@Model.Name</h3>
                     </div>
                     <div class="panel-body">
-        				<div class="row">
-                        	<div class="col-md-3 col-lg-3" align="center">
-                          		<img alt="User Pic" 
-                          			 src="/Content/Images/social.jpg" 
-                          			 class="img-circle">
-                  		 	</div>
-        					<div class="col-md-9 col-lg-9"> 
-                      			<table class="table table-user-information form-text">
-        		                    <tbody>
-        		                        <tr>
-        			                        <td>Naam:</td>
-        			                        <td>@Model.FullName</td>
-        		                  		</tr>
-        		      					<tr>
-        			                        <td>Afdeling:</td>
-        			                        <td>Zaaien en oogsten</td>
-        		                  		</tr>
-                  						<tr>
-        			                        <td>Volgers:</td>
-        			                        <td>@Model.Followers.Count()</td>
-        		                  		</tr>
+                        <div class="row">
+                            <div class="col-md-3 col-lg-3" align="center">
+                                <img alt="User Pic" 
+                                     src="/Content/Images/social.jpg" 
+                                     class="img-circle">
+                            </div>
+                            <div class="col-md-9 col-lg-9"> 
+                                <table class="table table-user-information form-text">
+                                    <tbody>
                                         <tr>
-                                            <td>Volgend:</td>
-                                            <td>@Model.Followers.Count()</td>
-                                        </tr>                         
-        		            		</tbody>
-                  				</table>
-        			        </div>
-        				</div>
-        			</div>
-        		</div>
-        	</div>
+                                            <td>Naam:</td>
+                                            <td>@Model.FullName</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Aanmaakdatum:</td>
+                                            <td>@Model.CreationDate.ToShortDateString()</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Kalenders:</td>
+                                            @foreach (var c in Model.Calendars)
+                                            {
+                                                <td>@c.Name<br/>
+                                                <i>Aantal likes: <strong>@c.Likes.Count()</strong></i></td>
+                                            }
+                                        </tr> 
+                                	</tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 }
