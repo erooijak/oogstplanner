@@ -59,6 +59,9 @@ namespace Oogstplanner.Web
                 "~/Scripts/oogstplanner.drag-and-drop.js",
                 "~/Scripts/oogstplanner.crops-suggestion-engine.js",
                 "~/Scripts/oogstplanner.crop-selection-box.js"));
+
+            bundles.Add(new ScriptBundle("~/Scripts/oogstplanner.likes").Include(
+                "~/Scripts/oogstplanner.likes.js"));
                 
             BundleTable.EnableOptimizations = true;
         }

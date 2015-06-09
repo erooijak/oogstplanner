@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Linq;
 using System.Web.Mvc;
 
 using Oogstplanner.Services;
+using Oogstplanner.Web.Utilities.Helpers;
 
 namespace Oogstplanner.Web.Controllers
 {
@@ -52,6 +54,16 @@ namespace Oogstplanner.Web.Controllers
                 // TODO: Implement logging
                 return Json(new { success = false });
             }
+        }
+
+        //
+        // GET /zaaikalender/aantallikes/{calendarId}
+        [HttpGet]
+        public ActionResult GetLikesCount(int calendarId)
+        {
+            int amountOfLikes = calendarLikingService.GetLikes(calendarId).Count();
+
+            return new JsonStringResult(amountOfLikes.ToString());
         }
             
     }

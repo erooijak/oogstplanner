@@ -81,8 +81,14 @@ namespace Oogstplanner.Services
         public YearCalendarViewModel GetYearCalendar(string userName)
         {
             int userId = userService.GetUserByName(userName).Id;
+            Calendar userCalendar = UnitOfWork.Calendars.GetByUserId(userId);
 
-            var yearCalendar = new YearCalendarViewModel { UserName = userName };
+            var yearCalendar = new YearCalendarViewModel 
+                { 
+                    UserName = userName,
+                    CalendarId = userCalendar.Id,
+                    LikesCount = userCalendar.Likes.Count
+                };
 
             foreach (var month in MonthHelper.GetAllMonths())
             {

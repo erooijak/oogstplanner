@@ -8,5 +8,7 @@ namespace Oogstplanner.Models
     public class YearCalendarViewModel : Collection<MonthCalendarViewModel>
     {
         public string UserName { get; set; }
+        public int CalendarId { get; set; }
+        public int LikesCount { get; set; }
     }
 }

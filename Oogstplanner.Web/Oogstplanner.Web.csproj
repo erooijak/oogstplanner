@@ -267,6 +267,15 @@
     <Content Include="Content\Stylesheets\oogstplanner.fontify.css" />
     <Content Include="Views\Home\_CropSearch.cshtml" />
     <Content Include="Views\Calendar\YearForUser.cshtml" />
+    <Content Include="Views\Calendar\_YearLike.cshtml" />
+    <Content Include="Views\Calendar\_YearLikes.cshtml" />
+    <Content Include="Content\Images\chickens-019.jpg" />
+    <Content Include="Content\Images\grass-texture.jpg" />
+    <Content Include="Content\Images\like.png" />
+    <Content Include="Content\Images\social.jpg" />
+    <Content Include="Content\Images\unlike.png" />
+    <Content Include="Content\Images\Spring\6.jpg" />
+    <Content Include="Content\Images\Spring\7.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
@@ -294,6 +303,7 @@
     <None Include="Scripts\typings\jquery.noty.d.ts" />
     <None Include="Scripts\oogstplanner.notifications.ts" />
     <None Include="App_Data\Migrations\201506090021_Initial.sql" />
+    <None Include="Scripts\oogstplanner.likes.ts" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Oogstplanner.Data\Oogstplanner.Data.csproj">

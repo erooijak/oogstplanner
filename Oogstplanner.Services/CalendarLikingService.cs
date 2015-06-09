@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 using Oogstplanner.Data;
@@ -38,7 +39,14 @@ namespace Oogstplanner.Services
         public void Like(int calendarId)
         {
             var like = new Like { User = CurrentUser };
-            UnitOfWork.Calendars.GetById(calendarId).Likes.Add(like);
+            var calendarLikes = UnitOfWork.Calendars.GetById(calendarId).Likes;
+
+            if (calendarLikes.Any(l => l.User.Id == CurrentUser.Id))
+            {
+                return;
+            }
+                
+            calendarLikes.Add(like);
             UnitOfWork.Commit();
         }
 
@@ -54,5 +62,11 @@ namespace Oogstplanner.Services
             UnitOfWork.Likes.Delete(likeToDelete);
             UnitOfWork.Commit();
         }
+
+        public IEnumerable<Like> GetLikes(int calendarId)
+        {
+            return UnitOfWork.Likes.GetByCalendarId(calendarId);
+        }
+            
     }
 }
