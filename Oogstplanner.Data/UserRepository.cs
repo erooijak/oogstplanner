@@ -1,6 +1,6 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 
+using Oogstplanner.Common;
 using Oogstplanner.Models;
 
 namespace Oogstplanner.Data
@@ -17,7 +17,7 @@ namespace Oogstplanner.Data
 
             if (user == null)
             {
-                throw new ArgumentException("The user with the specified name does not exist.");
+                throw new UserNotFoundException("The user with the specified name does not exist.");
             }
 
             return user; 
@@ -29,7 +29,7 @@ namespace Oogstplanner.Data
 
             if (user == null)
             {
-                throw new ArgumentException("The user with the specified email does not exist.");
+                throw new UserNotFoundException("The user with the specified email does not exist.");
             }
 
             return user.Id; 
@@ -41,7 +41,7 @@ namespace Oogstplanner.Data
 
             if (user == null)
             {
-                throw new ArgumentException("The user with the specified name does not exist.");
+                throw new UserNotFoundException("The user with the specified name does not exist.");
             }
 
             return user.Id; 

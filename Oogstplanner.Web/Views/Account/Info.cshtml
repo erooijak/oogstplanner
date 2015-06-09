@@ -65,7 +65,7 @@ else
                                             <td>Kalenders:</td>
                                             @foreach (var c in Model.Calendars)
                                             {
-                                                <td>@c.Name<br/>
+                                                <td>@Html.ActionLink(c.Name, "YearForUser", "Calendar", new { userName = Model.Name }, null)<br/>
                                                 <i>Aantal likes: <strong>@c.Likes.Count()</strong></i></td>
                                             }
                                         </tr> 

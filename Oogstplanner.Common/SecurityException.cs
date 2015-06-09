@@ -2,22 +2,21 @@
 
 namespace Oogstplanner.Common
 {
-    public class SecurityException : Exception
+    public class UserNotFoundException : Exception
     {
         /// <summary>
-        /// A SecurityException exception is thrown when a caller does not have the 
-        /// permissions required to access a resource.
+        /// A <see cref="UserNotFoundException" /> exception is thrown when a user is not found
         /// </summary>
-        public SecurityException()
+        public UserNotFoundException()
         {
         }
 
-        public SecurityException(string message) 
+        public UserNotFoundException(string message) 
             : base(message)
         {
         }
 
-        public SecurityException(string message, Exception inner)
+        public UserNotFoundException(string message, Exception inner)
             : base(message, inner)
         {
         }

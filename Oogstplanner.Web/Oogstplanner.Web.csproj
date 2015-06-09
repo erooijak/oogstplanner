@@ -266,6 +266,7 @@
     <Content Include="Content\Images\Draggable\sowing.png" />
     <Content Include="Content\Stylesheets\oogstplanner.fontify.css" />
     <Content Include="Views\Home\_CropSearch.cshtml" />
+    <Content Include="Views\Calendar\YearForUser.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>

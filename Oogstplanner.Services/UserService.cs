@@ -2,8 +2,9 @@
 using System.Configuration;
 using System.Web;
 
-using Oogstplanner.Models;
+using Oogstplanner.Common;
 using Oogstplanner.Data;
+using Oogstplanner.Models;
 
 namespace Oogstplanner.Services
 {
@@ -55,7 +56,7 @@ namespace Oogstplanner.Services
 
                     UnitOfWork.Commit();
                 }
-                catch (ArgumentException ex)
+                catch (UserNotFoundException ex)
                 {
                     // User does not exist. 
                     // TODO: Implement logging.

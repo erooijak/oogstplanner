@@ -80,6 +80,13 @@ namespace Oogstplanner.Web
                 defaults: new { controller = "Friends", action = "UnLike" }
             );
 
+            // Maps to same controller and action as /zaaikalender url
+            routes.MapRoute(
+                name: "CalendarOfUser",
+                url: "zaaikalender/gebruiker",
+                defaults: new { controller = "Calendar", action = "Year" }
+            );
+
             routes.MapRoute(
                 name: "Month",
                 url: "zaaikalender/{month}",
@@ -88,55 +95,61 @@ namespace Oogstplanner.Web
 
             routes.MapRoute(
                 name: "LoginOrRegisterModal",
-                url: "account/inloggenofregistreren",
+                url: "gebruiker/inloggenofregistreren",
                 defaults: new { controller = "Account", action = "LoginOrRegisterModal" }
             );
 
             routes.MapRoute(
                 name: "Login",
-                url: "account/inloggen",
+                url: "gebruiker/inloggen",
                 defaults: new {  controller = "Account", action = "Login" }
             );
 
             routes.MapRoute(
                 name: "Register",
-                url: "account/registreren",
+                url: "gebruiker/registreren",
                 defaults: new { controller = "Account", action = "Register" }
             );
 
             routes.MapRoute(
                 name: "LogOff",
-                url: "account/uitloggen",
+                url: "gebruiker/uitloggen",
                 defaults: new { controller = "Account", action = "LogOff" }
             );
 
             routes.MapRoute(
                 name: "LostPassword",
-                url: "account/wachtwoordvergeten",
+                url: "gebruiker/wachtwoordvergeten",
                 defaults: new { controller = "Account", action = "LostPassword" }
             );
 
             routes.MapRoute(
                 name: "ResetPassword",
-                url: "account/wachtwoordreset",
+                url: "gebruiker/wachtwoordreset",
                 defaults: new { controller = "Account", action = "ResetPassword" }
             );
 
             routes.MapRoute(
                 name: "ResetPasswordToken",
-                url: "account/wachtwoordreset/{token}",
+                url: "gebruiker/wachtwoordreset/{token}",
                 defaults: new { controller = "Account", action = "ResetPassword" }
             );
 
             routes.MapRoute(
                 name: "AccountInfo",
-                url: "account",
+                url: "gebruiker",
                 defaults: new {  controller = "Account", action = "Info" }
             );
 
             routes.MapRoute(
+                name: "CalendarOfOtherUser",
+                url: "gebruiker/{userName}/zaaikalender",
+                defaults: new { controller = "Calendar", action = "YearForUser" }
+            );
+
+            routes.MapRoute(
                 name: "AccountInfoUser",
-                url: "account/{userName}",
+                url: "gebruiker/{userName}",
                 defaults: new { controller = "Account", action = "UserInfo" }
             );
 

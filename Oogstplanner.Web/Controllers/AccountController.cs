@@ -4,6 +4,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 
+using Oogstplanner.Common;
 using Oogstplanner.Models;
 using Oogstplanner.Services;
 using Oogstplanner.Web.Utilities.ExtensionMethods;
@@ -42,7 +43,7 @@ namespace Oogstplanner.Web.Controllers
         }
 
         //
-        // GET: /account/inloggenofregistreren
+        // GET: /gebruiker/inloggenofregistreren
         [AllowAnonymous]
         public ActionResult LoginOrRegisterModal()
         {
@@ -50,7 +51,7 @@ namespace Oogstplanner.Web.Controllers
         }
 
         //
-        // POST: /account/inloggen
+        // POST: /gebruiker/inloggen
         [HttpPost]
         [AllowAnonymous]
         [ValidateAjax]
@@ -78,7 +79,7 @@ namespace Oogstplanner.Web.Controllers
         }
 
         //
-        // POST: /account/registreren/
+        // POST: /gebruiker/registreren/
         [HttpPost]
         [AllowAnonymous]
         [ValidateAjax]
@@ -104,7 +105,7 @@ namespace Oogstplanner.Web.Controllers
         }
        
         //
-        // GET: /account/uitloggen
+        // GET: /gebruiker/uitloggen
         public ActionResult LogOff()
         {
             membershipService.SignOut();
@@ -114,7 +115,7 @@ namespace Oogstplanner.Web.Controllers
         }
 
         //
-        // POST: account/wachtwoordvergeten
+        // POST: /gebruiker/wachtwoordvergeten
         [HttpPost]
         [AllowAnonymous]
         [ValidateAjax]
@@ -166,7 +167,7 @@ namespace Oogstplanner.Web.Controllers
         }
 
         //
-        // GET: /account/wachtwoordreset/{token}
+        // GET: /gebruiker/wachtwoordreset/{token}
         [AllowAnonymous]
         public ActionResult ResetPassword(string token)
         {
@@ -179,7 +180,7 @@ namespace Oogstplanner.Web.Controllers
         }
 
         //
-        // POST: /account/wachtwoordreset
+        // POST: /gebruiker/wachtwoordreset
         [HttpPost]
         [AllowAnonymous]
         public ActionResult ResetPassword(ResetPasswordModel model)
@@ -217,7 +218,7 @@ namespace Oogstplanner.Web.Controllers
         }
 
         //
-        // GET: /account
+        // GET: /gebruiker
         [HttpGet]
         public ActionResult Info()
         {
@@ -228,7 +229,7 @@ namespace Oogstplanner.Web.Controllers
         }
 
         //
-        // GET: /account/{userName}
+        // GET: /gebruiker/{userName}
         [HttpGet]
         [AllowAnonymous]
         public ActionResult UserInfo() // string userInfo (Mono bug workaround)
@@ -243,7 +244,7 @@ namespace Oogstplanner.Web.Controllers
             {
                 user = userService.GetUserByName(userName);
             }
-            catch (ArgumentException)
+            catch (UserNotFoundException)
             {
                 ViewBag.Message = "404 Gebruiker niet gevonden";
                 Response.StatusCode = 404;

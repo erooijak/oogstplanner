@@ -58,7 +58,7 @@ namespace Oogstplanner.Services
         public YearCalendarViewModel GetYearCalendar()
         {
             var yearCalendar = new YearCalendarViewModel();
-  
+
             foreach (var month in MonthHelper.GetAllMonths())
             {
                 var monthCalendar = GetMonthCalendar(month);
@@ -75,6 +75,31 @@ namespace Oogstplanner.Services
                 DisplayMonth = month.GetDescription(),
                 HarvestingActions = farmingActionService.GetHarvestingActions(CurrentUserId, month),
                 SowingActions = farmingActionService.GetSowingActions(CurrentUserId, month)
+            };
+        }
+
+        public YearCalendarViewModel GetYearCalendar(string userName)
+        {
+            int userId = userService.GetUserByName(userName).Id;
+
+            var yearCalendar = new YearCalendarViewModel { UserName = userName };
+
+            foreach (var month in MonthHelper.GetAllMonths())
+            {
+                var monthCalendar = GetMonthCalendar(userId, month);
+                yearCalendar.Add(monthCalendar);
+            }
+
+            return yearCalendar;
+        }
+
+        MonthCalendarViewModel GetMonthCalendar(int userId, Month month)
+        {
+            return new MonthCalendarViewModel 
+            {
+                DisplayMonth = month.GetDescription(),
+                HarvestingActions = farmingActionService.GetHarvestingActions(userId, month),
+                SowingActions = farmingActionService.GetSowingActions(userId, month)
             };
         }
 

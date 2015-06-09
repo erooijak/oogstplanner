@@ -1,0 +1,97 @@
+﻿@model YearCalendarViewModel
+
+@{
+    ViewBag.Title = "Zaaikalender";
+}
+
+<div id="top"></div>
+
+<div id="yearCalendar">
+
+<h1>Zaaikalender</h1>
+
+    @if (Model == null)
+    {
+         <div class="row">
+            <div class="col-lg-4 col-md-3 col-sm-2 col-xs-2"></div>
+            <div class="col-lg-4 col-md-6 col-sm-8 col-xs-8">
+                <div class="panel panel-default dark">
+                    <div class="panel-heading">
+                        <h1 class="panel-title"><strong>404 Deze gebruiker bestaat niet.</strong></h1>
+                    </div>
+                    <p>
+                        <span class="glyphicon glyphicon-heart-empty"></span>&nbsp;Oeps, sorry, deze gebruiker kon niet worden gevonden.<br/><br/>
+                        <!--@Html.ActionLink("Doe inspiratie op bij een andere gebruiker", "TODO",  "TODO",  null, null)<br/>
+                        @Html.ActionLink("Zie de veelgestelde vragen lijst (FAQ)", "TODO",  "TODO",  null, null)<br/>-->
+                        ...of ga terug naar de <strong>@Html.ActionLink("OogstPlanner.nl Welkomstpagina", "Index",  "Home",  null, null)</strong>
+                    </p>
+                </div>
+            </div>
+        </div>
+    }
+    else if (Model.Any(m => m.SowingActions.Any() || m.HarvestingActions.Any()))
+    {
+        <table class="table table-striped">
+        @foreach (var month in Model)
+        {
+            if (month.SowingActions.Any() || month.HarvestingActions.Any())
+            {
+                <tbody>
+                    <tr>
+                        <td colspan="2">
+                            <h3>@month.DisplayMonth</h3>
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6 col-sm-6">
+
+                                @if (month.SowingActions.Any())
+                                {
+                                    <h4><i>Zaaien</i></h4>
+                                    foreach (var fa in month.SowingActions)
+                                    {
+                                        @fa.Crop.Name <span> (aantal: </span> @fa.CropCount<span>)</span><br/>
+                                    }
+                                }
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6">
+
+                                @if (month.HarvestingActions.Any())
+                                {
+                                    <h4><i>Oogsten</i></h4>
+                                    foreach (var fa in month.HarvestingActions)
+                                    {
+                                        @fa.Crop.Name <span> (aantal: </span> @fa.CropCount<span>)</span><br/>
+                                    }
+                                }
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            }
+        }
+        </table>
+
+        @Html.ActionLink("Terug naar profiel van " + Model.UserName, "UserInfo",  "Account",  new { userName = Model.UserName }, null)
+        <span>Of ga naar @Html.ActionLink("Zaaien en oogsten", "SowingAndHarvesting",  "Home",  null, null) om zelf een kalender te maken.</span>
+        
+    }
+    else
+    {
+        <div class="row">
+            <div class="col-lg-4 col-md-3 col-sm-2 col-xs-2"></div>
+            <div class="col-lg-4 col-md-6 col-sm-8 col-xs-8">
+                <div class="panel panel-default dark">
+                    <p>
+                        <span class="glyphicon glyphicon-heart-empty"></span>@Model.UserName heeft geen gewassen in zijn of haar zaaikalender.<br/><br/>
+                        <!--@Html.ActionLink("Doe inspiratie op bij een andere gebruiker", "TODO",  "TODO",  null, null)<br/>
+                        @Html.ActionLink("Zie de veelgestelde vragen lijst (FAQ)", "TODO",  "TODO",  null, null)<br/>-->
+                        @Html.ActionLink("Terug naar profiel van " + Model.UserName, "UserInfo",  "Account",  new { userName = Model.UserName }, null)
+                        ...of ga terug naar de <strong>@Html.ActionLink("OogstPlanner.nl Welkomstpagina", "Index",  "Home",  null, null)</strong>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    }
+
+</div> @* End yearcalendar *@

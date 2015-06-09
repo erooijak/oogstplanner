@@ -7,5 +7,6 @@ namespace Oogstplanner.Models
     /// </summary>
     public class YearCalendarViewModel : Collection<MonthCalendarViewModel>
     {
+        public string UserName { get; set; }
     }
 }

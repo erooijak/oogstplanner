@@ -39,6 +39,7 @@
     <Compile Include="SecurityException.cs" />
     <Compile Include="MembershipHelper.cs" />
     <Compile Include="ConfigurationHelper.cs" />
+    <Compile Include="UserNotFoundException.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

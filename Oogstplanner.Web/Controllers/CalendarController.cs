@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Linq;
+using System.Web;
 using System.Web.Mvc;
 
 using Newtonsoft.Json;
 
+using Oogstplanner.Common;
 using Oogstplanner.Models;
 using Oogstplanner.Services;
 using Oogstplanner.Web.Utilities.ExtensionMethods;
@@ -57,6 +59,30 @@ namespace Oogstplanner.Web.Controllers
         {
             var calendarViewModel = calendarService.GetYearCalendar();
 
+            return View(calendarViewModel);
+        }
+
+        //
+        // GET: /account/{userName}/zaaikalender
+        public ActionResult YearForUser(string userName)
+        {
+            YearCalendarViewModel calendarViewModel = null;
+
+            try 
+            {
+                calendarViewModel = calendarService.GetYearCalendar(userName);
+            }
+            catch (UserNotFoundException)
+            {
+                ViewBag.Message = "404 Gebruiker niet gevonden";
+                Response.StatusCode = 404;
+            }
+            catch
+            {
+                // TODO implement logging of inner exception.
+                throw new HttpException(500, "Er is iets fout gegaan.");
+            }
+                
             return View(calendarViewModel);
         }
 
