@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using Oogstplanner.Models;
@@ -12,9 +11,9 @@ namespace Oogstplanner.Data
         {
         }
 
-        public IEnumerable<Like> Find(Expression<Func<Like, bool>> predicate)
+        public Like SingleOrDefault(Expression<Func<Like, bool>> predicate)
         {
-            return DbSet.Where(predicate).ToList<Like>();
+            return DbSet.SingleOrDefault(predicate);
         }
     }
 }

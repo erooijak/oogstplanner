@@ -44,8 +44,7 @@ namespace Oogstplanner.Services
 
         public void UnLike(int calendarId)
         {
-            var likeToDelete = UnitOfWork.Likes.Find(l => l.User.Id == CurrentUser.Id)
-                .ToList().FirstOrDefault();
+            var likeToDelete = UnitOfWork.Likes.SingleOrDefault(l => l.User.Id == CurrentUser.Id);
 
             if (likeToDelete == null)
             {
