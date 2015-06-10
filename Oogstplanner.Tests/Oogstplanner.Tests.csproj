@@ -128,6 +128,7 @@
     <Compile Include="Tests.Utilities\EnumExtensionTest.cs" />
     <Compile Include="Tests.Utilities\MembershipHelperTest.cs" />
     <Compile Include="Tests.Models\FarmingActionTest.cs" />
+    <Compile Include="Tests.Models\YearCalendarViewModelTest.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

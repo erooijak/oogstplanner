@@ -225,7 +225,6 @@
     <Content Include="Scripts\jquery-2.1.3-vsdoc.js" />
     <Content Include="Scripts\jquery-2.1.3.js" />
     <Content Include="Scripts\jquery-2.1.3.min.js" />
-    <Content Include="Views\Calendar\Year.cshtml" />
     <Content Include="Views\Home\_MonthCalendar.cshtml" />
     <Content Include="Scripts\typeahead.bundle.min.js" />
     <Content Include="Scripts\handlebars.min.js" />
@@ -266,8 +265,6 @@
     <Content Include="Content\Images\Draggable\sowing.png" />
     <Content Include="Content\Stylesheets\oogstplanner.fontify.css" />
     <Content Include="Views\Home\_CropSearch.cshtml" />
-    <Content Include="Views\Calendar\_YearLike.cshtml" />
-    <Content Include="Views\Calendar\_YearLikes.cshtml" />
     <Content Include="Content\Images\chickens-019.jpg" />
     <Content Include="Content\Images\grass-texture.jpg" />
     <Content Include="Content\Images\like.png" />
@@ -275,10 +272,13 @@
     <Content Include="Content\Images\unlike.png" />
     <Content Include="Content\Images\Spring\6.jpg" />
     <Content Include="Content\Images\Spring\7.jpg" />
-    <Content Include="Views\Calendar\_YearUserDoesNotExist.cshtml" />
-    <Content Include="Views\Calendar\_YearCalendar.cshtml" />
-    <Content Include="Views\Calendar\_YearNoCrops.cshtml" />
-    <Content Include="Views\Calendar\_YearNoCropsOtherUser.cshtml" />
+    <Content Include="Views\Calendar\_Layout.cshtml" />
+    <Content Include="Views\Calendar\UserDoesNotExist.cshtml" />
+    <Content Include="Views\Calendar\NoCropsOtherUser.cshtml" />
+    <Content Include="Views\Calendar\NoCrops.cshtml" />
+    <Content Include="Views\Calendar\_Likes.cshtml" />
+    <Content Include="Views\Calendar\_Like.cshtml" />
+    <Content Include="Views\Calendar\Year.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>

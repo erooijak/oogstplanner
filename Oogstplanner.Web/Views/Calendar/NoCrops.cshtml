@@ -1,4 +1,16 @@
-﻿<div class="row">
+﻿@{
+    ViewBag.Title = "Zaaikalender";
+}
+
+@Scripts.Render("~/Scripts/oogstplanner.likes")
+
+<div id="top"></div>
+
+<div id="yearCalendar">
+
+<h1>Zaaikalender</h1>
+
+<div class="row">
     <div class="col-lg-4 col-md-3 col-sm-2 col-xs-2"></div>
     <div class="col-lg-4 col-md-6 col-sm-8 col-xs-8">
         <div class="panel panel-default dark">
@@ -12,4 +24,6 @@
         </div>
     </div>
     <div class="col-lg-4 col-md-3 col-sm-2 col-xs-2"></div>
-</div>    
+</div>
+
+</div> @* End yearcalendar *@

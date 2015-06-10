@@ -59,8 +59,10 @@ namespace Oogstplanner.Tests.Controllers
             var expectedYearCalendarViewModel = new YearCalendarViewModel();
             expectedYearCalendarViewModel.Add(new MonthCalendarViewModel 
                 { 
-                    DisplayMonth = Month.May.ToString() }
-                );
+                    DisplayMonth = Month.May.ToString(),
+                    HarvestingActions = new[] { new FarmingAction() },
+                    SowingActions = new List<FarmingAction>()
+                });
             calendarServiceMock.Setup(mock => 
                 mock.GetYearCalendar())
                 .Returns(expectedYearCalendarViewModel);
@@ -77,6 +79,110 @@ namespace Oogstplanner.Tests.Controllers
             // ASSERT
             Assert.AreEqual(expectedYearCalendarViewModel, (YearCalendarViewModel)viewResult.Model,
                 "Model should be the viewmodel returned by the service.");
+        }
+
+        [Test]
+        public void Controllers_Calendar_YearForUser()
+        {
+            // ARRANGE
+            var calendarServiceMock = new Mock<ICalendarService>();
+            var farmingActionServiceMock = new Mock<IFarmingActionService>();
+            var cropProviderMock = new Mock<ICropProvider>();
+
+            var expectedYearCalendarViewModel = new YearCalendarViewModel();
+
+            expectedYearCalendarViewModel.Add(new MonthCalendarViewModel 
+                { 
+                    DisplayMonth = Month.May.ToString(),
+                    HarvestingActions = new[] { new FarmingAction() },
+                    SowingActions = new List<FarmingAction>()
+                });
+            calendarServiceMock.Setup(mock => 
+                mock.GetYearCalendar(It.IsAny<string>()))
+                .Returns(expectedYearCalendarViewModel);
+
+            var controller = new CalendarController(
+                calendarServiceMock.Object,
+                farmingActionServiceMock.Object,
+                cropProviderMock.Object
+            );
+
+            // ACT
+            var viewResult = controller.YearForUser("test") as ViewResult;
+
+            // ASSERT
+            Assert.AreEqual(expectedYearCalendarViewModel, (YearCalendarViewModel)viewResult.Model,
+                "Model should be the viewmodel returned by the service.");
+        }
+
+        [Test]
+        public void Controllers_Calendar_YearForUserNoActions()
+        {
+            // ARRANGE
+            var calendarServiceMock = new Mock<ICalendarService>();
+            var farmingActionServiceMock = new Mock<IFarmingActionService>();
+            var cropProviderMock = new Mock<ICropProvider>();
+
+            var expectedYearCalendarViewModel = new YearCalendarViewModel();
+
+            expectedYearCalendarViewModel.Add(new MonthCalendarViewModel 
+                { 
+                    DisplayMonth = Month.May.ToString(),
+                    HarvestingActions = new List<FarmingAction>(),
+                    SowingActions = new List<FarmingAction>()
+                });
+            calendarServiceMock.Setup(mock => 
+                mock.GetYearCalendar(It.IsAny<string>()))
+                .Returns(expectedYearCalendarViewModel);
+
+            var controller = new CalendarController(
+                calendarServiceMock.Object,
+                farmingActionServiceMock.Object,
+                cropProviderMock.Object
+            );
+
+            // ACT
+            var viewResult = controller.YearForUser("test") as ViewResult;
+
+            // ASSERT
+            Assert.AreEqual("NoCropsOtherUser", viewResult.ViewName,
+                "The no crops for other user view should should be returned by the controller when the" +
+                "view model contains no crops, since the calendar for another user is" +
+                "requested.");
+        }
+
+        [Test]
+        public void Controllers_Calendar_YearNoActions()
+        {
+            // ARRANGE
+            var calendarServiceMock = new Mock<ICalendarService>();
+            var farmingActionServiceMock = new Mock<IFarmingActionService>();
+            var cropProviderMock = new Mock<ICropProvider>();
+
+            var expectedYearCalendarViewModel = new YearCalendarViewModel();
+            expectedYearCalendarViewModel.Add(new MonthCalendarViewModel 
+                { 
+                    DisplayMonth = Month.May.ToString(),
+                    HarvestingActions = new List<FarmingAction>(),
+                    SowingActions = new List<FarmingAction>()
+                });
+            calendarServiceMock.Setup(mock => 
+                mock.GetYearCalendar())
+                .Returns(expectedYearCalendarViewModel);
+
+            var controller = new CalendarController(
+                calendarServiceMock.Object,
+                farmingActionServiceMock.Object,
+                cropProviderMock.Object
+            );
+
+            // ACT
+            var viewResult = controller.Year() as ViewResult;
+
+            // ASSERT
+            Assert.AreEqual("NoCrops", viewResult.ViewName,
+                "The no crops should should be returned by the controller when the" +
+                "view model contains no crops.");
         }
 
         [Test]
@@ -305,6 +411,7 @@ namespace Oogstplanner.Tests.Controllers
             // ASSERT
             Assert.AreEqual("[\"june\",\"july\"]", result.Content,
                 "The method should return the two months which are returned by the service.");
-        }            
+        }          
+
     }
 }

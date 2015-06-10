@@ -1,4 +1,5 @@
 ﻿using System.Collections.ObjectModel;
+using System.Linq;
 
 namespace Oogstplanner.Models
 {
@@ -11,5 +12,10 @@ namespace Oogstplanner.Models
         public int CalendarId { get; set; }
         public int LikesCount { get; set; }
         public bool IsOwnCalendar { get; set; }
+
+        public bool HasAnyActions()
+        {
+            return this.Any(m => m.SowingActions.Any() || m.HarvestingActions.Any());
+        }
     }
 }

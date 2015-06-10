@@ -12,21 +12,81 @@
 
 <h1>Zaaikalender</h1>
 
-    @if (Model == null)
-    {
-        Html.RenderPartial("_UserDoesNotExist");
-    }
-    else if (Model.Any(m => m.SowingActions.Any() || m.HarvestingActions.Any()))
-    {
-        Html.RenderPartial("_YearCalendar");
-    }
-    else if (Model.IsOwnCalendar)
-    {
-        Html.RenderPartial("_YearNoCrops");
-    }
-    else
-    {
-        Html.RenderPartial("_YearNoCropsOtherUser");
-    }
+<div class="row">
+    <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
+        <table class="table table-striped">
+        @foreach (var month in Model)
+        {
+            if (month.SowingActions.Any() || month.HarvestingActions.Any())
+            {
+                <tbody>
+                    <tr>
+                        <td colspan="2">
+                            <h3>@month.DisplayMonth</h3>
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6 col-sm-6">
+
+                                @if (month.SowingActions.Any())
+                                {
+                                    <h4><i>Zaaien</i></h4>
+                                    foreach (var fa in month.SowingActions)
+                                    {
+                                        @fa.Crop.Name <span> (aantal: </span> @fa.CropCount<span>)</span><br/>
+                                    }
+                                }
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6">
+
+                                @if (month.HarvestingActions.Any())
+                                {
+                                    <h4><i>Oogsten</i></h4>
+                                    foreach (var fa in month.HarvestingActions)
+                                    {
+                                        @fa.Crop.Name <span> (aantal: </span> @fa.CropCount<span>)</span><br/>
+                                    }
+                                }
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            }
+        }
+        </table>
+    </div>
+    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+
+        @{ Html.RenderPartial("_Likes"); }
+        
+        @if (Request.IsAuthenticated)
+        {
+            Html.RenderPartial("_Like"); 
+        }
+        else
+        {
+            <span class="registerOrLogin">Meld u aan bij de <a href="#">de oogstplanner gemeenschap</a> om 
+
+            @if (Model.IsOwnCalendar)
+            {
+                <span>je eigen kalender een like te geven.</span> 
+            }
+            else
+            {
+                <span>de kalendar te kunnen liken.</span>
+            }
+            </span>
+        }
+    </div>
+</div>
+
+@if (Model.IsOwnCalendar)
+{
+    <span>@Html.ActionLink("Ga naar Zaaien en oogsten", "SowingAndHarvesting",  "Home",  null, null)</span>
+}
+else
+{
+    <span>Naar @Html.ActionLink("profiel van " + Model.UserName, "UserInfo",  "Account",  new { userName = Model.UserName }, null)<br/></span>
+    <span>...Of ga naar @Html.ActionLink("Zaaien en oogsten", "SowingAndHarvesting",  "Home",  null, null) om uw eigen kalender samen te stellen</span>
+}
 
 </div> @* End yearcalendar *@

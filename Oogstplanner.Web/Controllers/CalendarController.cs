@@ -59,7 +59,12 @@ namespace Oogstplanner.Web.Controllers
         {
             var calendarViewModel = calendarService.GetYearCalendar();
 
-            return View(calendarViewModel);
+            if (calendarViewModel.HasAnyActions())
+            {
+                return View("Year", calendarViewModel);
+            }
+
+            return View("NoCrops");
         }
 
         //
@@ -68,23 +73,28 @@ namespace Oogstplanner.Web.Controllers
         {
             YearCalendarViewModel calendarViewModel = null;
 
-            try 
+            try
             {
                 calendarViewModel = calendarService.GetYearCalendar(userName);
             }
             catch (UserNotFoundException)
             {
-                ViewBag.Message = "404 Gebruiker niet gevonden";
                 Response.StatusCode = 404;
+                return View("UserDoesNotExist");
             }
             catch
             {
                 // TODO implement logging of inner exception.
                 throw new HttpException(500, "Er is iets fout gegaan.");
             }
-                
-            return View("Year", calendarViewModel);
-        }
+
+            if (calendarViewModel.HasAnyActions())
+            {
+                return View("Year", calendarViewModel);
+            }
+
+            return View("NoCropsOtherUser");
+        }   
 
         /// <summary>
         ///     POST: /zaaikalender/update

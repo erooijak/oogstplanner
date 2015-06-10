@@ -90,7 +90,7 @@ namespace Oogstplanner.Services
         public YearCalendarViewModel GetYearCalendar(string userName)
         {
             int userId = userService.GetUserByName(userName).Id;
-            Calendar userCalendar = UnitOfWork.Calendars.GetByUserId(userId);
+            var userCalendar = UnitOfWork.Calendars.GetByUserId(userId);
 
             var yearCalendar = new YearCalendarViewModel 
                 { 
