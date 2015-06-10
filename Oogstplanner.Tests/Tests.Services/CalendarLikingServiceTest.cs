@@ -173,5 +173,31 @@ namespace Oogstplanner.Tests.Services
             unitOfWorkMock.Verify(mock => mock.Commit(), Times.Never,
                 "Changes should not be committed.");
         }
+
+        [Test]
+        public void Services_CalendarLiking_GetLikes()
+        {
+            // ARRANGE
+            var likesRepositoryMock = new Mock<ILikesRepository>();
+            var userServiceMock = new Mock<IUserService>();
+            var unitOfWorkMock = new Mock<IOogstplannerUnitOfWork>();
+
+            unitOfWorkMock.SetupGet(mock =>
+                mock.Likes).Returns(likesRepositoryMock.Object);
+
+            var service = new CalendarLikingService(
+                unitOfWorkMock.Object, 
+                userServiceMock.Object);
+
+            // ACT
+            service.GetLikes(It.IsAny<int>());
+
+            // ASSERT
+            likesRepositoryMock.Verify(mock => mock.GetByCalendarId(It.IsAny<int>()), 
+                Times.Once,
+                "Repository should be called to collect the likes.");
+            unitOfWorkMock.Verify(mock => mock.Commit(), Times.Never,
+                "No changes should not be committed.");
+        }
     }
 }
