@@ -272,8 +272,8 @@ namespace Oogstplanner.Tests.Controllers
 
             farmingActionServiceMock.Setup(mock => 
                 mock.UpdateCropCounts(
-                    (IList<int>)actualIntInCollection, 
-                    (IList<int>)actualIntInCollection))
+                    actualIntInCollection, 
+                    actualIntInCollection))
                 .Throws(new IndexOutOfRangeException());
 
             var controller = new CalendarController(
@@ -283,7 +283,7 @@ namespace Oogstplanner.Tests.Controllers
             );
 
             // ACT
-            var viewResult = controller.UpdateMonth(formCollection) as JsonResult;
+            var viewResult = controller.UpdateMonth(formCollection);
 
             IList expectedCropIds = new List<int>();
             expectedCropIds.Add(1);
