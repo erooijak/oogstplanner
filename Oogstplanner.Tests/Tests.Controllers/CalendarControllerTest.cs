@@ -6,8 +6,10 @@ using System.Web.Mvc;
 using Moq;
 using NUnit.Framework;
 
+using Oogstplanner.Common;
 using Oogstplanner.Models;
 using Oogstplanner.Services;
+using Oogstplanner.Tests.Lib;
 using Oogstplanner.Web.Controllers;
 
 namespace Oogstplanner.Tests.Controllers
@@ -113,6 +115,36 @@ namespace Oogstplanner.Tests.Controllers
             // ASSERT
             Assert.AreEqual(expectedYearCalendarViewModel, (YearCalendarViewModel)viewResult.Model,
                 "Model should be the viewmodel returned by the service.");
+        }
+
+        [Test]
+        public void Controllers_Calendar_YearForUserNotFound()
+        {
+            // ARRANGE
+            var calendarServiceMock = new Mock<ICalendarService>();
+            var farmingActionServiceMock = new Mock<IFarmingActionService>();
+            var cropProviderMock = new Mock<ICropProvider>();
+
+            calendarServiceMock.Setup(mock => 
+                mock.GetYearCalendar(It.IsAny<string>()))
+                .Throws<UserNotFoundException>();
+
+            var controller = new CalendarController(
+                calendarServiceMock.Object,
+                farmingActionServiceMock.Object,
+                cropProviderMock.Object
+            );
+
+            controller.SetMockControllerContext();
+
+            // ACT
+            var viewResult = controller.YearForUser("test") as ViewResult;
+
+            // ASSERT
+            Assert.AreEqual("UserDoesNotExist", viewResult.ViewName,
+                "If user cannot be found user does not exist view should be returned.");
+            Assert.AreEqual(404, controller.Response.StatusCode,
+                "With a 404 status code.");
         }
 
         [Test]
