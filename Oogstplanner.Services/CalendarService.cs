@@ -12,6 +12,7 @@ namespace Oogstplanner.Services
     {
         readonly IFarmingActionService farmingActionService;
         readonly IUserService userService;
+        readonly IAuthenticationService authService;
 
         public CalendarService(
             IOogstplannerUnitOfWork unitOfWork, 
@@ -35,6 +36,7 @@ namespace Oogstplanner.Services
 
             this.farmingActionService = farmingActionService;
             this.userService = userServices[authService.GetAuthenticationStatus()];
+            this.authService = authService;
         }
 
         int? currentUserId;
@@ -57,7 +59,14 @@ namespace Oogstplanner.Services
 
         public YearCalendarViewModel GetYearCalendar()
         {
-            var yearCalendar = new YearCalendarViewModel();
+            var calendar = GetCalendar();
+
+            var yearCalendar = new YearCalendarViewModel
+                {
+                    CalendarId = calendar.Id,
+                    LikesCount = calendar.Likes.Count,
+                    IsOwnCalendar = true
+                };
 
             foreach (var month in MonthHelper.GetAllMonths())
             {
@@ -87,7 +96,8 @@ namespace Oogstplanner.Services
                 { 
                     UserName = userName,
                     CalendarId = userCalendar.Id,
-                    LikesCount = userCalendar.Likes.Count
+                    LikesCount = userCalendar.Likes.Count,
+                    IsOwnCalendar = IsCalendarOfCurrentUser(userCalendar)
                 };
 
             foreach (var month in MonthHelper.GetAllMonths())
@@ -114,5 +124,9 @@ namespace Oogstplanner.Services
             return UnitOfWork.FarmingActions.GetMonthsWithAction(CurrentUserId);
         }
 
+        bool IsCalendarOfCurrentUser(Calendar calendar)
+        {
+            return calendar.User.Id == CurrentUserId;
+        }
     }
 }

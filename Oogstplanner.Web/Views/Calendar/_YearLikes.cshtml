@@ -2,8 +2,17 @@
 
 <div class="row">
     <h4>
-        De zaaikalender van @Model.UserName heeft 
         <strong><span id="amount-of-likes">@Model.LikesCount</span></strong>
-        <span id="likes-verb">likes.</span>
+        <span> </span><span id="people">mensen vinden</span> 
+        je
+            @if (Model.IsOwnCalendar)
+            {
+                <span>uw kalender leuk.</span> 
+            }
+            else
+            {
+                <span>de kalendar van @Html.ActionLink(Model.UserName, "UserInfo",  "Account",  new { userName = Model.UserName }, null) leuk.</span>
+            }
+
     </h4>
 </div>

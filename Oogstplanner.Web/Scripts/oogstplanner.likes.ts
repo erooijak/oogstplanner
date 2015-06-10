@@ -9,7 +9,7 @@ module Liker {
             Notification.informational("Liken succesvol.", "U vindt de zaaikalender leuk.");
             Liker.updateAmountOfLikes(calendarId);
         })
-        .then(Liker.makeLikesTextPluralWhenNot1())
+        .then(function () { Liker.makeTextPluralWhenLikesNot1() })
         .fail(function() { Notification.error(); });
     }
 
@@ -19,9 +19,9 @@ module Liker {
         .done(function () { 
             Notification.informational("Unliken succesvol.", "U vindt de zaaikalender niet leuk.");
             Liker.updateAmountOfLikes(calendarId);
-            Liker.makeLikesTextPluralWhenNot1();
+            Liker.makeTextPluralWhenLikesNot1();
         })
-        .then(function () { Liker.makeLikesTextPluralWhenNot1() })
+        .then(function () { Liker.makeTextPluralWhenLikesNot1() })
         .fail(function() { Notification.error(); });
     }
 
@@ -29,19 +29,19 @@ module Liker {
         $.get('/zaaikalender/' + calendarId + '/aantallikes', function (count) {
             $('#amount-of-likes').text(count);
         })
-        .then(function () { Liker.makeLikesTextPluralWhenNot1() })
+        .then(function () { Liker.makeTextPluralWhenLikesNot1() })
         .fail(function() { Notification.error(); });
     }
 
-    export function makeLikesTextPluralWhenNot1() {
-        var text = parseInt( $('#amount-of-likes').text() ) == 1 ? 'like' : 'likes';
-        $('#likes-verb').text( text );  
+    export function makeTextPluralWhenLikesNot1() {
+        var text = parseInt( $('#amount-of-likes').text() ) == 1 ? 'iemand vindt' : 'mensen vinden';
+        $('#people').text( text );  
     }
 }
 
 $(function() {
 
-    Liker.makeLikesTextPluralWhenNot1();
+    Liker.makeTextPluralWhenLikesNot1();
 
     $(".like").on("click",function (e) {
         var calendarId : number = $(this).data('calendar-id');

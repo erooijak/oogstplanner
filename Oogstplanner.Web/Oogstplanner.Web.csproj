@@ -266,7 +266,6 @@
     <Content Include="Content\Images\Draggable\sowing.png" />
     <Content Include="Content\Stylesheets\oogstplanner.fontify.css" />
     <Content Include="Views\Home\_CropSearch.cshtml" />
-    <Content Include="Views\Calendar\YearForUser.cshtml" />
     <Content Include="Views\Calendar\_YearLike.cshtml" />
     <Content Include="Views\Calendar\_YearLikes.cshtml" />
     <Content Include="Content\Images\chickens-019.jpg" />
@@ -276,6 +275,10 @@
     <Content Include="Content\Images\unlike.png" />
     <Content Include="Content\Images\Spring\6.jpg" />
     <Content Include="Content\Images\Spring\7.jpg" />
+    <Content Include="Views\Calendar\_YearUserDoesNotExist.cshtml" />
+    <Content Include="Views\Calendar\_YearCalendar.cshtml" />
+    <Content Include="Views\Calendar\_YearNoCrops.cshtml" />
+    <Content Include="Views\Calendar\_YearNoCropsOtherUser.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>

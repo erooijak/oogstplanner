@@ -1,17 +1,18 @@
 ﻿@model YearCalendarViewModel
 
 <div class="row">
+    Ik vind deze kalender:
+</div>
+<div class="row">
     <br/>
-    <div class="col-lg-6 col-md-6">
-        <a href="#" class="like" data-calendar-id="@Model.CalendarId">
-            <img src="/Content/Images/like.png" alt="Klik hier om deze zaaikalender te liken" /> 
-            <br/>
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+        <a href="#" class="like img-responsive" data-calendar-id="@Model.CalendarId">
+            <img src="/Content/Images/like.png" class="like-img-responsive" alt="Klik hier om deze zaaikalender te liken" /> 
         </a>
     </div>
-    <div class="col-lg-6 col-md-6">
-        <a href="#" class="unlike" data-calendar-id="@Model.CalendarId">
-            <img src="/Content/Images/unlike.png" alt="Klik hier om deze zaaikalender te liken" /> 
-            <br/>
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+        <a href="#" class="unlike img-responsive" data-calendar-id="@Model.CalendarId">
+            <img src="/Content/Images/unlike.png" class="like-img-responsive" alt="Klik hier om deze zaaikalender te unliken" />
         </a>
     </div>
 </div>

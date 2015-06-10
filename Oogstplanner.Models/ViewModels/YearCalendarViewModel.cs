@@ -10,5 +10,6 @@ namespace Oogstplanner.Models
         public string UserName { get; set; }
         public int CalendarId { get; set; }
         public int LikesCount { get; set; }
+        public bool IsOwnCalendar { get; set; }
     }
 }

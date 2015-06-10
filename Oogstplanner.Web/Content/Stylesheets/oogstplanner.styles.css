@@ -128,6 +128,9 @@ p {
     filter: FlipH;
     -ms-filter: "FlipH";
 }
+like-img-responsive {
+    width: 5vw;
+}
 
 /* Field validation styling */
 .field-validation-error

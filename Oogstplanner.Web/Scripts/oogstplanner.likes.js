@@ -5,7 +5,9 @@ var Liker;
         $.post('/zaaikalender/like', { calendarId: calendarId }).done(function () {
             Notification.informational("Liken succesvol.", "U vindt de zaaikalender leuk.");
             Liker.updateAmountOfLikes(calendarId);
-        }).then(Liker.makeLikesTextPluralWhenNot1()).fail(function () {
+        }).then(function () {
+            Liker.makeTextPluralWhenLikesNot1();
+        }).fail(function () {
             Notification.error();
         });
     }
@@ -15,9 +17,9 @@ var Liker;
         $.post('/zaaikalender/unlike', { calendarId: calendarId }).done(function () {
             Notification.informational("Unliken succesvol.", "U vindt de zaaikalender niet leuk.");
             Liker.updateAmountOfLikes(calendarId);
-            Liker.makeLikesTextPluralWhenNot1();
+            Liker.makeTextPluralWhenLikesNot1();
         }).then(function () {
-            Liker.makeLikesTextPluralWhenNot1();
+            Liker.makeTextPluralWhenLikesNot1();
         }).fail(function () {
             Notification.error();
         });
@@ -27,20 +29,20 @@ var Liker;
         $.get('/zaaikalender/' + calendarId + '/aantallikes', function (count) {
             $('#amount-of-likes').text(count);
         }).then(function () {
-            Liker.makeLikesTextPluralWhenNot1();
+            Liker.makeTextPluralWhenLikesNot1();
         }).fail(function () {
             Notification.error();
         });
     }
     Liker.updateAmountOfLikes = updateAmountOfLikes;
-    function makeLikesTextPluralWhenNot1() {
-        var text = parseInt($('#amount-of-likes').text()) == 1 ? 'like' : 'likes';
-        $('#likes-verb').text(text);
+    function makeTextPluralWhenLikesNot1() {
+        var text = parseInt($('#amount-of-likes').text()) == 1 ? 'iemand vindt' : 'mensen vinden';
+        $('#people').text(text);
     }
-    Liker.makeLikesTextPluralWhenNot1 = makeLikesTextPluralWhenNot1;
+    Liker.makeTextPluralWhenLikesNot1 = makeTextPluralWhenLikesNot1;
 })(Liker || (Liker = {}));
 $(function () {
-    Liker.makeLikesTextPluralWhenNot1();
+    Liker.makeTextPluralWhenLikesNot1();
     $(".like").on("click", function (e) {
         var calendarId = $(this).data('calendar-id');
         Liker.like(calendarId);

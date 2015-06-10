@@ -83,7 +83,7 @@ namespace Oogstplanner.Web.Controllers
                 throw new HttpException(500, "Er is iets fout gegaan.");
             }
                 
-            return View(calendarViewModel);
+            return View("Year", calendarViewModel);
         }
 
         /// <summary>

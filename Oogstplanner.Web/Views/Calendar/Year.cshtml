@@ -12,67 +12,21 @@
 
 <h1>Zaaikalender</h1>
 
-    @if (Model.Any(m => m.SowingActions.Any() || m.HarvestingActions.Any()))
+    @if (Model == null)
     {
-        <table class="table table-striped">
-        @foreach (var month in Model)
-        {
-            if (month.SowingActions.Any() || month.HarvestingActions.Any())
-            {
-                <tbody>
-                    <tr>
-                        <td colspan="2">
-                            <h3>@month.DisplayMonth</h3>
-                            <div class="row">
-                                <div class="col-lg-6 col-md-6 col-sm-6">
-
-                                @if (month.SowingActions.Any())
-                                {
-                                    <h4><i>Zaaien</i></h4>
-                                    foreach (var fa in month.SowingActions)
-                                    {
-                                        @fa.Crop.Name <span> (aantal: </span> @fa.CropCount<span>)</span><br/>
-                                    }
-                                }
-                                </div>
-                                <div class="col-lg-6 col-md-6 col-sm-6">
-
-                                @if (month.HarvestingActions.Any())
-                                {
-                                    <h4><i>Oogsten</i></h4>
-                                    foreach (var fa in month.HarvestingActions)
-                                    {
-                                        @fa.Crop.Name <span> (aantal: </span> @fa.CropCount<span>)</span><br/>
-                                    }
-                                }
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                </tbody>
-            }
-        }
-        </table>
+        Html.RenderPartial("_UserDoesNotExist");
+    }
+    else if (Model.Any(m => m.SowingActions.Any() || m.HarvestingActions.Any()))
+    {
+        Html.RenderPartial("_YearCalendar");
+    }
+    else if (Model.IsOwnCalendar)
+    {
+        Html.RenderPartial("_YearNoCrops");
     }
     else
     {
-        <div class="row">
-            <div class="col-lg-4 col-md-3 col-sm-2 col-xs-2"></div>
-            <div class="col-lg-4 col-md-6 col-sm-8 col-xs-8">
-                <div class="panel panel-default dark">
-                    <p>
-                        <span class="glyphicon glyphicon-heart-empty"></span>Je hebt nog geen gewassen in je zaaikalender.<br/><br/>
-                        @Html.ActionLink("Oogst of zaai eerst een gewas", "SowingAndHarvesting",  "Home",  null, null)<br/>
-                        <!--@Html.ActionLink("Doe inspiratie op bij andere gebruikers", "TODO",  "TODO",  null, null)<br/>
-                        @Html.ActionLink("Zie de veelgestelde vragen lijst (FAQ)", "TODO",  "TODO",  null, null)<br/>-->
-                        ...of ga terug naar de <strong>@Html.ActionLink("OogstPlanner.nl Welkomstpagina", "Index",  "Home",  null, null)</strong>
-                    </p>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-3 col-sm-2 col-xs-2"></div>
-        </div>
+        Html.RenderPartial("_YearNoCropsOtherUser");
     }
 
 </div> @* End yearcalendar *@
-
-@Html.ActionLink("Ga naar Zaaien en oogsten", "SowingAndHarvesting",  "Home",  null, null)
