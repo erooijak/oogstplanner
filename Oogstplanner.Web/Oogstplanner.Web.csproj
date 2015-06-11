@@ -272,13 +272,12 @@
     <Content Include="Content\Images\unlike.png" />
     <Content Include="Content\Images\Spring\6.jpg" />
     <Content Include="Content\Images\Spring\7.jpg" />
-    <Content Include="Views\Calendar\_Layout.cshtml" />
-    <Content Include="Views\Calendar\UserDoesNotExist.cshtml" />
     <Content Include="Views\Calendar\NoCropsOtherUser.cshtml" />
     <Content Include="Views\Calendar\NoCrops.cshtml" />
     <Content Include="Views\Calendar\_Likes.cshtml" />
     <Content Include="Views\Calendar\_Like.cshtml" />
     <Content Include="Views\Calendar\Year.cshtml" />
+    <Content Include="Views\Account\UserDoesNotExist.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>

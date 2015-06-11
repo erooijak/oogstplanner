@@ -5,6 +5,7 @@ using System.Web.Security;
 using Moq;
 using NUnit.Framework;
 
+using Oogstplanner.Common;
 using Oogstplanner.Models;
 using Oogstplanner.Services;
 using Oogstplanner.Tests.Lib;
@@ -642,6 +643,64 @@ namespace Oogstplanner.Tests.Controllers
 
             // ASSERT
             Assert.AreEqual(expectedUser, (User)viewResult.Model);
-        }            
+        }
+
+        [Test]
+        public void Controllers_Account_UserInfo()
+        {
+            // ARRANGE
+            var userServiceMock = new Mock<IUserService>();
+            var membershipServiceMock = new Mock<IMembershipService>();
+            var passwordRecoveryServiceMock = new Mock<IPasswordRecoveryService>();
+
+            var expectedUser = new User();
+
+            userServiceMock.Setup(mock => mock.GetUserByName(It.IsAny<string>()))
+                .Returns(expectedUser);
+
+            var controller = new AccountController(
+                userServiceMock.Object, 
+                membershipServiceMock.Object, 
+                passwordRecoveryServiceMock.Object);
+
+            controller.SetMockControllerContext();
+
+            // ACT
+            var viewResult = controller.UserInfo() as ViewResult;
+
+            // ASSERT
+            Assert.AreEqual("Info", viewResult.ViewName,
+                "The info view should be returned when al goes well");
+            Assert.AreEqual(expectedUser, (User)viewResult.Model,
+                "... and the user should be passed to it.");
+        }
+
+        [Test]
+        public void Controllers_Account_UserInfoNotFound()
+        {
+            // ARRANGE
+            var userServiceMock = new Mock<IUserService>();
+            var membershipServiceMock = new Mock<IMembershipService>();
+            var passwordRecoveryServiceMock = new Mock<IPasswordRecoveryService>();
+
+            userServiceMock.Setup(mock => mock.GetUserByName(It.IsAny<string>()))
+                .Throws<UserNotFoundException>();
+
+            var controller = new AccountController(
+                userServiceMock.Object, 
+                membershipServiceMock.Object, 
+                passwordRecoveryServiceMock.Object);
+
+            controller.SetMockControllerContext();
+
+            // ACT
+            var viewResult = controller.UserInfo() as ViewResult;
+
+            // ASSERT
+            Assert.AreEqual("UserDoesNotExist", viewResult.ViewName,
+                "The user does not exist view should be returned when the user cannot be found.");
+            Assert.AreEqual(404, controller.Response.StatusCode,
+                "... with a 404 status code.");
+        }
     }
 }

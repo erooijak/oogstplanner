@@ -80,7 +80,7 @@ namespace Oogstplanner.Web.Controllers
             catch (UserNotFoundException)
             {
                 Response.StatusCode = 404;
-                return View("UserDoesNotExist");
+                return View("~/Views/Account/UserDoesNotExist.cshtml");
             }
             catch
             {

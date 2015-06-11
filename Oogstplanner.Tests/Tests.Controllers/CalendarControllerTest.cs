@@ -141,7 +141,7 @@ namespace Oogstplanner.Tests.Controllers
             var viewResult = controller.YearForUser("test") as ViewResult;
 
             // ASSERT
-            Assert.AreEqual("UserDoesNotExist", viewResult.ViewName,
+            Assert.IsTrue(viewResult.ViewName.Contains("UserDoesNotExist"),
                 "If user cannot be found user does not exist view should be returned.");
             Assert.AreEqual(404, controller.Response.StatusCode,
                 "With a 404 status code.");

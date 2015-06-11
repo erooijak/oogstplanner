@@ -235,9 +235,9 @@ namespace Oogstplanner.Web.Controllers
         public ActionResult UserInfo() // string userInfo (Mono bug workaround)
         {
             // Work around to get userName parameter (Mono bug)
-            string requestedPath = Request.AppRelativeCurrentExecutionFilePath;
-            int positionLastSlash = requestedPath.LastIndexOf("/") + 1;
-            string userName = requestedPath.Substring(positionLastSlash, requestedPath.Length - positionLastSlash);
+            string requestedPath = Request.AppRelativeCurrentExecutionFilePath.TrimEnd('/');
+            int positionLastSlash = requestedPath.LastIndexOf('/') + 1;
+            string userName = requestedPath.Substring(positionLastSlash, requestedPath.Length - positionLastSlash).TrimEnd('/');
 
             User user = null;
             try 
@@ -248,6 +248,8 @@ namespace Oogstplanner.Web.Controllers
             {
                 ViewBag.Message = "404 Gebruiker niet gevonden";
                 Response.StatusCode = 404;
+
+                return View("UserDoesNotExist");
             }
             catch
             {

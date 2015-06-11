@@ -1,0 +1,28 @@
+﻿@model User
+
+@{
+    ViewBag.Title = "Gebruikerspagina";
+}
+
+<div id="top"></div>
+
+<div class="row">
+    <div class="col-lg-4 col-md-3 col-sm-2 col-xs-2"></div>
+    <div class="col-lg-4 col-md-6 col-sm-8 col-xs-8">
+        <div class="panel panel-default dark">
+            <div class="panel-heading">
+                <h1 class="panel-title"><strong>404 Deze gebruiker bestaat niet.</strong></h1>
+            </div>
+            <p>
+                <span class="glyphicon glyphicon-heart-empty"></span>&nbsp;Deze gebruiker bestaat niet.<br/><br/>
+                Hier zijn andere zinvolle pagina's:<br/>
+                @Html.ActionLink("Oogst of zaai een gewas", "SowingAndHarvesting",  "Home",  null, null)<br/>
+                <!--@Html.ActionLink("Vind een andere gebruiker", "TODO",  "TODO",  null, null)<br/>-->
+                @Html.ActionLink("Bekijk je kalender", "Year",  "Calendar",  null, null)<br/>
+                <!--@Html.ActionLink("Veelgestelde vragen lijst (FAQ)", "TODO",  "TODO",  null, null)<br/>-->
+                ...of ga terug naar de <strong>@Html.ActionLink("OogstPlanner.nl Welkomstpagina", "Index",  "Home",  null, null)</strong>
+            </p>
+        </div>
+    </div>
+    <div class="col-lg-4 col-md-3 col-sm-2 col-xs-2"></div>
+</div>
