@@ -146,7 +146,7 @@ namespace Oogstplanner.Tests.Controllers
             Assert.AreEqual(404, controller.Response.StatusCode,
                 "With a 404 status code.");
         }
-
+            
         [Test]
         public void Controllers_Calendar_YearForUserNoActions()
         {
@@ -181,6 +181,45 @@ namespace Oogstplanner.Tests.Controllers
                 "The no crops for other user view should should be returned by the controller when the" +
                 "view model contains no crops, since the calendar for another user is" +
                 "requested.");
+        }
+
+        [Test]
+        public void Controllers_Calendar_YearForUserNoActionsOwnCalendar()
+        {
+            // ARRANGE
+            var calendarServiceMock = new Mock<ICalendarService>();
+            var farmingActionServiceMock = new Mock<IFarmingActionService>();
+            var cropProviderMock = new Mock<ICropProvider>();
+
+            var expectedYearCalendarViewModel = new YearCalendarViewModel 
+                {
+                    IsOwnCalendar = true
+                };
+
+            expectedYearCalendarViewModel.Add(new MonthCalendarViewModel 
+                { 
+                    DisplayMonth = Month.May.ToString(),
+                    HarvestingActions = new List<FarmingAction>(),
+                    SowingActions = new List<FarmingAction>(),
+                });
+            calendarServiceMock.Setup(mock => 
+                mock.GetYearCalendar(It.IsAny<string>()))
+                .Returns(expectedYearCalendarViewModel);
+
+            var controller = new CalendarController(
+                calendarServiceMock.Object,
+                farmingActionServiceMock.Object,
+                cropProviderMock.Object
+            );
+
+            // ACT
+            var viewResult = controller.YearForUser("test") as ViewResult;
+
+            // ASSERT
+            Assert.AreEqual("NoCrops", viewResult.ViewName,
+                "The no crops view should should be returned by the controller when the" +
+                "view model contains no crops, since the user's own calendar is requested" +
+                "via the calendar for another user route");
         }
 
         [Test]

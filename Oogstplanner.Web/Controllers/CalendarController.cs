@@ -93,7 +93,8 @@ namespace Oogstplanner.Web.Controllers
                 return View("Year", calendarViewModel);
             }
 
-            return View("NoCropsOtherUser");
+            return calendarViewModel.IsOwnCalendar ? View("NoCrops") : View("NoCropsOtherUser");
+
         }   
 
         /// <summary>
