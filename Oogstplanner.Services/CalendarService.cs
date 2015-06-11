@@ -64,7 +64,7 @@ namespace Oogstplanner.Services
             var yearCalendar = new YearCalendarViewModel
                 {
                     CalendarId = calendar.Id,
-                    LikesCount = calendar.Likes.Count,
+                    LikesCount = calendar.Likes == null ? 0 : calendar.Likes.Count,
                     IsOwnCalendar = true
                 };
 
@@ -96,7 +96,7 @@ namespace Oogstplanner.Services
                 { 
                     UserName = userName,
                     CalendarId = userCalendar.Id,
-                    LikesCount = userCalendar.Likes.Count,
+                    LikesCount = userCalendar.Likes == null ? 0 : userCalendar.Likes.Count,
                     IsOwnCalendar = IsCalendarOfCurrentUser(userCalendar)
                 };
 
