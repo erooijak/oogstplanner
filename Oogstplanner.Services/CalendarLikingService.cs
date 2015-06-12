@@ -39,22 +39,22 @@ namespace Oogstplanner.Services
         public void Like(int calendarId, out bool wasUnlike)
         {
             var like = new Like { User = CurrentUser };
-            var calendars = UnitOfWork.Calendars.GetById(calendarId);
+            var calendar = UnitOfWork.Calendars.GetById(calendarId);
 
-            if (calendars == null)
+            if (calendar == null)
             {
                 wasUnlike = false;
                 return;
             }
                 
-            if (calendars.Likes.Any(l => l.User.Id == CurrentUser.Id))
+            if (calendar.Likes.Any(l => l.User.Id == CurrentUser.Id))
             {
                 UnLike(calendarId);
                 wasUnlike = true;
             }
             else
             {
-                calendars.Likes.Add(like);
+                calendar.Likes.Add(like);
                 UnitOfWork.Commit();
                 wasUnlike = false;
             }
