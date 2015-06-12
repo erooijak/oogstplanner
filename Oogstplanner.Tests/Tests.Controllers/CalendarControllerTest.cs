@@ -173,14 +173,18 @@ namespace Oogstplanner.Tests.Controllers
                 cropProviderMock.Object
             );
 
+            const string expectedUserName = "test";
+
             // ACT
-            var viewResult = controller.YearForUser("test") as ViewResult;
+            var viewResult = controller.YearForUser(expectedUserName) as ViewResult;
 
             // ASSERT
             Assert.AreEqual("NoCropsOtherUser", viewResult.ViewName,
                 "The no crops for other user view should should be returned by the controller when the" +
                 "view model contains no crops, since the calendar for another user is" +
                 "requested.");
+            Assert.AreEqual(expectedYearCalendarViewModel, ((YearCalendarViewModel)viewResult.Model),
+                "The returned year calendar view model should be returned.");
         }
 
         [Test]

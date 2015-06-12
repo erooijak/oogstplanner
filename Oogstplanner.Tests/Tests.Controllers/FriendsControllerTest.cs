@@ -52,7 +52,7 @@ namespace Oogstplanner.Tests.Controllers
 
             var controller = new FriendsController(calendarLikingServiceMock.Object);
 
-            // ACT
+            // AC6
             var contentResult = controller.GetLikesUserNames(It.IsAny<int>());
 
             // ASSERT
