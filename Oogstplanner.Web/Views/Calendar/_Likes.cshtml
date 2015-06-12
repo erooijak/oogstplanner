@@ -2,17 +2,20 @@
 
 <div class="row">
     <h4>
-        <strong><span id="amount-of-likes">@Model.LikesCount</span></strong>
-        <span> </span><span id="people">mensen vinden</span> 
+        <a href="#" class="user-likes" data-calendar-id="@Model.CalendarId">
+            <strong><span id="amount-of-likes">@Model.LikesCount</span></strong>
+            <span> </span><strong><span id="people-single-or-plural"></span></strong>
+        </a>
+        <span id="people-single-or-plural-verb"></span>
 
-            @if (Model.IsOwnCalendar)
-            {
-                <span>uw kalender leuk.</span> 
-            }
-            else
-            {
-                <span>de kalendar van @Html.ActionLink(Model.UserName, "UserInfo",  "Account",  new { userName = Model.UserName }, null) leuk.</span>
-            }
+        @if (Model.IsOwnCalendar)
+        {
+            <span>uw kalender leuk.</span> 
+        }
+        else
+        {
+            <span>de kalendar van @Html.ActionLink(Model.UserName, "UserInfo",  "Account",  new { userName = Model.UserName }, null) leuk.</span>
+        }
 
     </h4>
 </div>

@@ -18,7 +18,7 @@ var Liker;
     }
     Liker.like = like;
     function updateAmountOfLikes(calendarId) {
-        $.get('/zaaikalender/' + calendarId + '/aantallikes', function (count) {
+        $.get('/zaaikalender/' + calendarId + '/aantal-likes', function (count) {
             $('#amount-of-likes').text(count);
         }).then(function () {
             Liker.makeTextPluralWhenLikesNot1();
@@ -27,9 +27,30 @@ var Liker;
         });
     }
     Liker.updateAmountOfLikes = updateAmountOfLikes;
+    function showUserList(calendarId) {
+        $.get('/zaaikalender/' + calendarId + '/gebruikers-die-liken', function (users) {
+            for (var i = 0; i < users.length; i++) {
+                alert(users[i]);
+            }
+            ;
+        }).fail(function () {
+            Notification.error();
+        });
+    }
+    Liker.showUserList = showUserList;
     function makeTextPluralWhenLikesNot1() {
-        var text = parseInt($('#amount-of-likes').text()) == 1 ? 'iemand vindt' : 'mensen vinden';
-        $('#people').text(text);
+        var peopleSingleOrPlural;
+        var verbSingleOrPlural;
+        if (parseInt($('#amount-of-likes').text()) == 1) {
+            peopleSingleOrPlural = 'iemand';
+            verbSingleOrPlural = 'vindt';
+        }
+        else {
+            peopleSingleOrPlural = 'mensen';
+            verbSingleOrPlural = 'vinden';
+        }
+        $('#people-single-or-plural').text(peopleSingleOrPlural);
+        $('#people-single-or-plural-verb').text(verbSingleOrPlural);
     }
     Liker.makeTextPluralWhenLikesNot1 = makeTextPluralWhenLikesNot1;
 })(Liker || (Liker = {}));
@@ -38,6 +59,10 @@ $(function () {
     $(".like").on("click", function (e) {
         var calendarId = $(this).data('calendar-id');
         Liker.like(calendarId);
+    });
+    $(".user-likes").on("click", function (e) {
+        var calendarId = $(this).data('calendar-id');
+        Liker.showUserList(calendarId);
     });
 });
 //# sourceMappingURL=oogstplanner.likes.js.map
