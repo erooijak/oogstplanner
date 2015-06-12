@@ -40,12 +40,12 @@ module Notification {
                 close: 'animated flipOutX'
             },
             buttons: [
-                { addClass: 'btn btn-danger', text: 'Annuleren', onClick: function ($noty) {
+                { addClass: 'btn btn-primary', text: 'Ok', onClick: function ($noty) {
+                        successCallback();
                         $noty.close();
                     }
                 },
-                { addClass: 'btn btn-primary', text: 'Ok', onClick: function ($noty) {
-                        successCallback();
+                { addClass: 'btn btn-danger', text: 'Annuleren', onClick: function ($noty) {
                         $noty.close();
                     }
                 }
