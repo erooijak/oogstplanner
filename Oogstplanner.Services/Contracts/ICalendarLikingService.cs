@@ -6,8 +6,7 @@ namespace Oogstplanner.Services
 {
     public interface ICalendarLikingService
     {
-        void Like(int calendarId);
-        void UnLike(int calendarId);
+        void Like(int calendarId, out bool wasUnlike);
         IEnumerable<Like> GetLikes(int calendarId);
     }
 }

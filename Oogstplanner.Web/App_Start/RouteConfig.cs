@@ -74,12 +74,6 @@ namespace Oogstplanner.Web
                 defaults: new { controller = "Friends", action = "Like" }
             );
 
-            routes.MapRoute(
-                name: "UnLikeCalendar",
-                url: "zaaikalender/unlike",
-                defaults: new { controller = "Friends", action = "UnLike" }
-            );
-
             // Maps to same controller and action as /zaaikalender url
             routes.MapRoute(
                 name: "CalendarOfUser",

@@ -36,21 +36,31 @@ namespace Oogstplanner.Services
             }
         }
 
-        public void Like(int calendarId)
+        public void Like(int calendarId, out bool wasUnlike)
         {
             var like = new Like { User = CurrentUser };
-            var calendarLikes = UnitOfWork.Calendars.GetById(calendarId).Likes;
+            var calendars = UnitOfWork.Calendars.GetById(calendarId);
 
-            if (calendarLikes.Any(l => l.User.Id == CurrentUser.Id))
+            if (calendars == null)
             {
+                wasUnlike = false;
                 return;
             }
                 
-            calendarLikes.Add(like);
-            UnitOfWork.Commit();
+            if (calendars.Likes.Any(l => l.User.Id == CurrentUser.Id))
+            {
+                UnLike(calendarId);
+                wasUnlike = true;
+            }
+            else
+            {
+                calendars.Likes.Add(like);
+                UnitOfWork.Commit();
+                wasUnlike = false;
+            }
         }
 
-        public void UnLike(int calendarId)
+        void UnLike(int calendarId)
         {
             var likeToDelete = UnitOfWork.Likes.SingleOrDefault(
                 l => l.Calendar.Id == calendarId && l.User.Id == CurrentUser.Id);

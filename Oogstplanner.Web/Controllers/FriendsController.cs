@@ -29,25 +29,9 @@ namespace Oogstplanner.Web.Controllers
         {
             try
             {
-                calendarLikingService.Like(calendarId);
-                return Json(new { success = true });
-            }
-            catch (Exception ex) 
-            { 
-                // TODO: Implement logging
-                return Json(new { success = false });
-            }
-        }
-
-        //
-        // POST /zaaikalender/unlike
-        [HttpPost]
-        public JsonResult UnLike(int calendarId)
-        {
-            try
-            {
-                calendarLikingService.UnLike(calendarId);
-                return Json(new { success = true });
+                bool wasUnlike;
+                calendarLikingService.Like(calendarId, out wasUnlike);
+                return Json(new { success = true, wasUnlike });
             }
             catch (Exception ex) 
             { 

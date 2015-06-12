@@ -45,14 +45,17 @@ namespace Oogstplanner.Tests.Services
                 unitOfWorkMock.Object, 
                 userServiceMock.Object);
 
+            bool wasUnlike = false;
+
             // ACT
-            service.Like(It.IsAny<int>());
+            service.Like(It.IsAny<int>(), out wasUnlike);
 
             // ASSERT
             Assert.AreEqual(2, expectedLike.Count, 
                 "The like should be added to the calendar");
             unitOfWorkMock.Verify(mock => mock.Commit(), Times.Exactly(1),
                 "Changes should be committed.");
+            Assert.IsFalse(wasUnlike, "Since the user did not like the calendar this was not an unlike");
         }
 
         [Test]
@@ -60,6 +63,7 @@ namespace Oogstplanner.Tests.Services
         {
             // ARRANGE
             var calendarRepositoryMock = new Mock<ICalendarRepository>();
+            var likesRepositoryMock = new Mock<ILikesRepository>();
             var unitOfWorkMock = new Mock<IOogstplannerUnitOfWork>();
             var userServiceMock = new Mock<IUserService>();
 
@@ -73,6 +77,13 @@ namespace Oogstplanner.Tests.Services
 
             var expectedLike = new[] { new Like { User = new User { Id = expectedUserId } } };
 
+            likesRepositoryMock.Setup(mock =>
+                mock.SingleOrDefault(It.IsAny<Expression<Func<Like, bool>>>()))
+                .Returns(expectedLike[0]);
+
+            unitOfWorkMock.SetupGet(mock =>
+                mock.Likes).Returns(likesRepositoryMock.Object);
+
             calendarRepositoryMock.Setup(mock =>
                 mock.GetById(It.IsAny<int>()))
                 .Returns(new Calendar { Likes = expectedLike });
@@ -83,62 +94,31 @@ namespace Oogstplanner.Tests.Services
             var service = new CalendarLikingService(
                 unitOfWorkMock.Object, 
                 userServiceMock.Object);
+
+            bool wasUnlike;
                 
             // ACT
-            service.Like(It.IsAny<int>());
+            service.Like(It.IsAny<int>(), out wasUnlike);
 
             // ASSERT
             calendarRepositoryMock.Verify(mock =>
                 mock.Update(It.IsAny<Calendar>()), 
                 Times.Never,
                 "A like should not be added to the calendar.");
-            unitOfWorkMock.Verify(mock => mock.Commit(), Times.Never,
-                "Changes should not be committed.");
-        }
-
-        [Test]
-        public void Services_CalendarLiking_UnLike()
-        {
-            // ARRANGE
-            var likesRepositoryMock = new Mock<ILikesRepository>();
-            var unitOfWorkMock = new Mock<IOogstplannerUnitOfWork>();
-            var userServiceMock = new Mock<IUserService>();
-
-            const int expectedUserId = 1234;
-            var expectedUser = new User { Id = 4567 };
-
-            userServiceMock.Setup(mock => mock.GetCurrentUserId())
-                .Returns(expectedUserId);
-            userServiceMock.Setup(mock => mock.GetUser(expectedUserId))
-                .Returns(expectedUser);
-
-            var expectedLike = new Like { User = new User { Id = expectedUserId } };
-
-            likesRepositoryMock.Setup(mock =>
-                mock.SingleOrDefault(It.IsAny<Expression<Func<Like, bool>>>()))
-                .Returns(expectedLike);
-
-            unitOfWorkMock.SetupGet(mock =>
-                mock.Likes).Returns(likesRepositoryMock.Object);
-
-            var service = new CalendarLikingService(
-                unitOfWorkMock.Object, 
-                userServiceMock.Object);
-
-            // ACT
-            service.UnLike(It.IsAny<int>());
-
-            // ASSERT
-            likesRepositoryMock.Verify(mock => mock.Delete(expectedLike), Times.Once,
-                "If found like should be deleted.");
+            likesRepositoryMock.Verify(mock =>
+                mock.Delete(It.IsAny<Like>()), 
+                Times.Once,
+                "A like should not be deleted from the calendar.");
             unitOfWorkMock.Verify(mock => mock.Commit(), Times.Once,
                 "Changes should be committed.");
+            Assert.IsTrue(wasUnlike, "Since the user already liked the calendar this was an unlike");
         }
-
+            
         [Test]
         public void Services_CalendarLiking_UnLike_NotFound()
         {
             // ARRANGE
+            var calendarRepositoryMock = new Mock<ICalendarRepository>();
             var likesRepositoryMock = new Mock<ILikesRepository>();
             var unitOfWorkMock = new Mock<IOogstplannerUnitOfWork>();
             var userServiceMock = new Mock<IUserService>();
@@ -150,6 +130,9 @@ namespace Oogstplanner.Tests.Services
                 .Returns(expectedUserId);
             userServiceMock.Setup(mock => mock.GetUser(expectedUserId))
                 .Returns(expectedUser);
+
+            calendarRepositoryMock.Setup(mock => mock.GetById(It.IsAny<int>()))
+                .Returns(default(Calendar));
 
             Like expectedLike = null;
 
@@ -158,14 +141,19 @@ namespace Oogstplanner.Tests.Services
                 .Returns(expectedLike);
 
             unitOfWorkMock.SetupGet(mock =>
+                mock.Calendars).Returns(calendarRepositoryMock.Object);
+
+            unitOfWorkMock.SetupGet(mock =>
                 mock.Likes).Returns(likesRepositoryMock.Object);
 
             var service = new CalendarLikingService(
                 unitOfWorkMock.Object, 
                 userServiceMock.Object);
 
+            bool wasUnlike;
+
             // ACT
-            service.UnLike(It.IsAny<int>());
+            service.Like(It.IsAny<int>(), out wasUnlike);
 
             // ASSERT
             likesRepositoryMock.Verify(mock => mock.Delete(expectedLike), Times.Never,

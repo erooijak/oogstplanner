@@ -270,7 +270,6 @@
     <Content Include="Content\Images\grass-texture.jpg" />
     <Content Include="Content\Images\like.png" />
     <Content Include="Content\Images\social.jpg" />
-    <Content Include="Content\Images\unlike.png" />
     <Content Include="Content\Images\Spring\6.jpg" />
     <Content Include="Content\Images\Spring\7.jpg" />
     <Content Include="Views\Calendar\NoCropsOtherUser.cshtml" />
