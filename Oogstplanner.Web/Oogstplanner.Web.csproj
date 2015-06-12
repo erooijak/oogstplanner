@@ -181,6 +181,7 @@
     <Compile Include="Utilities\Helpers\JsonHelper.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\FriendsController.cs" />
+    <Compile Include="Utilities\ExtensionMethods\HtmlHelperExtension.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Web.config" />
