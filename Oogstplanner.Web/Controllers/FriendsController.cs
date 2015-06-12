@@ -43,8 +43,9 @@ namespace Oogstplanner.Web.Controllers
         }
 
         //
-        // GET /zaaikalender/aantallikes/{calendarId}
+        // GET /zaaikalender/{calendarId}/aantal-likes
         [HttpGet]
+        [AllowAnonymous]
         public ActionResult GetLikesCount(int calendarId)
         {
             int amountOfLikes = calendarLikingService.GetLikes(calendarId).Count();
@@ -52,6 +53,10 @@ namespace Oogstplanner.Web.Controllers
             return new JsonStringResult(amountOfLikes.ToString());
         }
             
+        //
+        // GET /zaaikalender/{calendarId}/gebruikers-die-liken
+        [HttpGet]
+        [AllowAnonymous]
         public ContentResult GetLikesUserNames(int calendarId)
         {
             var users = calendarLikingService.GetLikes(calendarId).Select(l => l.User.Name);
