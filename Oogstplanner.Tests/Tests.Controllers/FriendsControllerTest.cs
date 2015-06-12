@@ -32,6 +32,37 @@ namespace Oogstplanner.Tests.Controllers
                 "One should be returned since there is one like returned from the service.");
         }
 
+        [Test]
+        public void Controllers_Friends_GetLikesUsers()
+        {
+            // ARRANGE
+            var calendarLikingServiceMock = new Mock<ICalendarLikingService>();
+
+            const string expectedName1 = "test name 1";
+            const string expectedName2 = "test name 2";
+            var expectedLikes = new[] 
+                { 
+                    new Like { User = new User { Name = expectedName1 } },
+                    new Like { User = new User { Name = expectedName2 } }
+                };
+
+            calendarLikingServiceMock.Setup(mock =>
+                mock.GetLikes(It.IsAny<int>()))
+                .Returns(expectedLikes);
+
+            var controller = new FriendsController(calendarLikingServiceMock.Object);
+
+            // ACT
+            var contentResult = controller.GetLikesUserNames(It.IsAny<int>());
+
+            // ASSERT
+            Assert.AreEqual(
+                "[\"" + expectedName1 + "\",\"" + expectedName2 + "\"]", 
+                contentResult.Content,
+                "The JSON string should contain user names of both users returned by " +
+                "the liking service.");
+        }
+
 
         [Test]
         public void Controllers_Friends_UnLikeSuccess()

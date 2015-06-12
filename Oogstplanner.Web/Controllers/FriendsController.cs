@@ -2,6 +2,8 @@
 using System.Linq;
 using System.Web.Mvc;
 
+using Newtonsoft.Json;
+
 using Oogstplanner.Services;
 using Oogstplanner.Web.Utilities.Helpers;
 
@@ -50,5 +52,12 @@ namespace Oogstplanner.Web.Controllers
             return new JsonStringResult(amountOfLikes.ToString());
         }
             
+        public ContentResult GetLikesUserNames(int calendarId)
+        {
+            var users = calendarLikingService.GetLikes(calendarId).Select(l => l.User.Name);
+            var usersJson = JsonConvert.SerializeObject(users);
+
+            return new JsonStringResult(usersJson);
+        }
     }
 }
