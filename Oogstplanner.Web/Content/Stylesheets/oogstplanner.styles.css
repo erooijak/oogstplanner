@@ -40,6 +40,9 @@ p {
     z-index: 1; 
     position: relative;
 }
+.left-padding {
+    padding-left: 15px;
+}
 #yearCalendar {
     color: black;
 }

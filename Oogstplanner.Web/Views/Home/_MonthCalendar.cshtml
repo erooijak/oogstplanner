@@ -27,6 +27,7 @@
             <h2 class="bold responsive-header1point5">OOGSTEN</h2>
         </div>
         }
+
     </div>
 
     @* Main rectangles row *@
@@ -34,7 +35,7 @@
         @if (Model.SowingActions.Any())
         {
         <div class="col-lg-@columnSize col-md-@columnSize col-sm-@columnSize col-xs-@columnSize rectangle-sowing bg-no-opacity imgsowing">
-            <div id="sowing">
+            <div id="sowing" class="left-padding">
                 <br/>
                 @foreach (var action in Model.SowingActions)
                 {
@@ -106,3 +107,9 @@
 
         
 } @* End form *@
+
+@* Solution to fix the wrong padding if only a harvesting column is available *@
+@if (!Model.SowingActions.Any() && Model.HarvestingActions.Any())
+{
+    <script>$('#harvesting').addClass('left-padding')</script>
+}
