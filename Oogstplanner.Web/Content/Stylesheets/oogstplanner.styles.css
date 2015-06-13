@@ -40,8 +40,14 @@ p {
 #yearCalendar {
     color: black;
 }
+.bold {
+    font-size: 24px;
+}
 .dark {
     color: #333;
+}
+.dark-background {
+    background-color: #1E1E1E;
 }
 .form-text {
     color: #333;

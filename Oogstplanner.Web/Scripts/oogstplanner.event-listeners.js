@@ -10,6 +10,7 @@
 
             if (oogstplanner.getHasActionAttributeValue(monthName) === true) {
                 oogstplanner.fillMonthCalendar(monthName);
+                oogstplanner.toMonthCalendar(); 
             }
             else {               
                 var dutchMonthName = Util.convertToDisplayMonth(monthName);

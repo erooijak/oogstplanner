@@ -5,19 +5,29 @@ class Oogstplanner {
     month : string;
 
     toMonthCalendar() {
+        
+        // We hide and show the elements, otherwise the corners of elements 
+        // can be visible in the other fullpage slide. 
+        // Note: needs to be called before fullpage page switch.
+        $('#crop-selection-box').hide();
+        $('#_MonthCalendar').show();
+
         $.fn.fullpage.moveSlideRight();
         $(window).scrollTop(0);
         this.makeNumericTextBoxesNumeric();
         this.makeCropPluralWhenCropCountIsBiggerThan1();
-
-        // Remove the crop-selection-box since the side is visible on the month calendar...
-        //$('#crop-selection-box').hide();
     }
 
     toMain() {
+
+        // We hide and show the elements, otherwise the corners of elements 
+        // can be visible in the other fullpage slide.
+        // Note: needs to be called before fullpage page switch.
+        $('#crop-selection-box').show(); 
+        $('#_MonthCalendar').hide();
+
         $.fn.fullpage.moveSlideLeft();
         $(window).scrollTop(0);
-        //$('#crop-selection-box').show(); TODO: Determine why this is no longer working.
 
         // Recalculate which months have actions because things might have changed.
         this.setHasActionAttributes();
@@ -31,7 +41,7 @@ class Oogstplanner {
         $.get('/zaaikalender/' + month, function (data) {
             $('#_MonthCalendar').html(data);
         })
-        .done(() => { that.toMonthCalendar(); that.bindFarmingActionRemoveFunctionToDeleteButton(); })
+        .done(() => { that.bindFarmingActionRemoveFunctionToDeleteButton(); })
         .fail(() =>  { Notification.error(); });
     }
 
@@ -71,9 +81,12 @@ class Oogstplanner {
         $.post('/zaaikalender/verwijder', { id: id }, function (response) {
             if (response.success === true) { 
                 that.fillMonthCalendar(that.month);
-
-                var monthHasNoActions = $('.farmingMonth').children().length === 2; // TODO: Determine why this is 2 instead of 0.
-                if (monthHasNoActions)
+            
+                var amountOfElementsLeftWhenLastIsRemoved = 1
+                var monthHasNoActionsLeft = $('.farmingMonth').children().length === amountOfElementsLeftWhenLastIsRemoved;
+                console.log($('.farmingMonth').children().length)
+                console.log(monthHasNoActionsLeft);
+                if (monthHasNoActionsLeft)
                 {
                     that.toMain();
                 }

@@ -2,12 +2,16 @@ var Oogstplanner = (function () {
     function Oogstplanner() {
     }
     Oogstplanner.prototype.toMonthCalendar = function () {
+        $('#crop-selection-box').hide();
+        $('#_MonthCalendar').show();
         $.fn.fullpage.moveSlideRight();
         $(window).scrollTop(0);
         this.makeNumericTextBoxesNumeric();
         this.makeCropPluralWhenCropCountIsBiggerThan1();
     };
     Oogstplanner.prototype.toMain = function () {
+        $('#crop-selection-box').show();
+        $('#_MonthCalendar').hide();
         $.fn.fullpage.moveSlideLeft();
         $(window).scrollTop(0);
         this.setHasActionAttributes();
@@ -18,7 +22,6 @@ var Oogstplanner = (function () {
         $.get('/zaaikalender/' + month, function (data) {
             $('#_MonthCalendar').html(data);
         }).done(function () {
-            that.toMonthCalendar();
             that.bindFarmingActionRemoveFunctionToDeleteButton();
         }).fail(function () {
             Notification.error();
@@ -55,8 +58,11 @@ var Oogstplanner = (function () {
         $.post('/zaaikalender/verwijder', { id: id }, function (response) {
             if (response.success === true) {
                 that.fillMonthCalendar(that.month);
-                var monthHasNoActions = $('.farmingMonth').children().length === 2;
-                if (monthHasNoActions) {
+                var amountOfElementsLeftWhenLastIsRemoved = 1;
+                var monthHasNoActionsLeft = $('.farmingMonth').children().length === amountOfElementsLeftWhenLastIsRemoved;
+                console.log($('.farmingMonth').children().length);
+                console.log(monthHasNoActionsLeft);
+                if (monthHasNoActionsLeft) {
                     that.toMain();
                 }
             }
