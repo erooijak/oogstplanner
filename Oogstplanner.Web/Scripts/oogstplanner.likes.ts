@@ -14,27 +14,33 @@ module Liker {
             }
             Liker.updateAmountOfLikes(calendarId);
         })
-        .then(function () { Liker.makeTextPluralWhenLikesNot1() })
-        .fail(function() { Notification.error(); });
+        .then(() => { Liker.makeTextPluralWhenLikesNot1() })
+        .fail(() => { Notification.error(); });
     }
 
     export function updateAmountOfLikes(calendarId : number) {
-        $.get('/zaaikalender/' + calendarId + '/aantal-likes', function (count) {
-            $('#amount-of-likes').text(count);
-        })
-        .then(function () { Liker.makeTextPluralWhenLikesNot1() })
-        .fail(function() { Notification.error(); });
+        Liker.getLikes(calendarId).done((count : number) =>( $('#amount-of-likes').text(count)))
+        .then(() => { Liker.makeTextPluralWhenLikesNot1() })
+        .fail(() => { Notification.error(); });
     }
 
     export function showUserList(calendarId : number) {
-        
-        // TODO: Seperate command and query (more places, find out how the scope works.
-        $.get('/zaaikalender/' + calendarId + '/gebruikers-die-liken', function (users : string[]) {
+
+        Liker.getUserList(calendarId).done((users) => {
             for (var i = 0; i < users.length; i++) {
                 alert(users[i]);
             };
         })
-        .fail(function() { Notification.error(); });
+        .fail(() => { Notification.error(); });
+    }
+
+    export function getLikes(calendarId : number) : JQueryPromise<number> {
+        return $.get('/zaaikalender/' + calendarId + '/aantal-likes');
+    }
+
+    export function getUserList(calendarId : number) : JQueryPromise<string[]> {
+
+        return $.get('/zaaikalender/' + calendarId + '/gebruikers-die-liken');
     }
 
     export function makeTextPluralWhenLikesNot1() {
@@ -59,12 +65,12 @@ $(function() {
 
     Liker.makeTextPluralWhenLikesNot1();
 
-    $(".like").on("click", function (e) {
+    $(".like").on("click", function () {
         var calendarId : number = $(this).data('calendar-id');
         Liker.like(calendarId);
     });
 
-    $(".user-likes").on("click", function (e) {
+    $(".user-likes").on("click", function () {
         var calendarId : number = $(this).data('calendar-id');
         Liker.showUserList(calendarId);
     });

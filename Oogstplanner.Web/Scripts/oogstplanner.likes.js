@@ -18,9 +18,7 @@ var Liker;
     }
     Liker.like = like;
     function updateAmountOfLikes(calendarId) {
-        $.get('/zaaikalender/' + calendarId + '/aantal-likes', function (count) {
-            $('#amount-of-likes').text(count);
-        }).then(function () {
+        Liker.getLikes(calendarId).done(function (count) { return ($('#amount-of-likes').text(count)); }).then(function () {
             Liker.makeTextPluralWhenLikesNot1();
         }).fail(function () {
             Notification.error();
@@ -28,7 +26,7 @@ var Liker;
     }
     Liker.updateAmountOfLikes = updateAmountOfLikes;
     function showUserList(calendarId) {
-        $.get('/zaaikalender/' + calendarId + '/gebruikers-die-liken', function (users) {
+        Liker.getUserList(calendarId).done(function (users) {
             for (var i = 0; i < users.length; i++) {
                 alert(users[i]);
             }
@@ -38,6 +36,14 @@ var Liker;
         });
     }
     Liker.showUserList = showUserList;
+    function getLikes(calendarId) {
+        return $.get('/zaaikalender/' + calendarId + '/aantal-likes');
+    }
+    Liker.getLikes = getLikes;
+    function getUserList(calendarId) {
+        return $.get('/zaaikalender/' + calendarId + '/gebruikers-die-liken');
+    }
+    Liker.getUserList = getUserList;
     function makeTextPluralWhenLikesNot1() {
         var peopleSingleOrPlural;
         var verbSingleOrPlural;
@@ -56,11 +62,11 @@ var Liker;
 })(Liker || (Liker = {}));
 $(function () {
     Liker.makeTextPluralWhenLikesNot1();
-    $(".like").on("click", function (e) {
+    $(".like").on("click", function () {
         var calendarId = $(this).data('calendar-id');
         Liker.like(calendarId);
     });
-    $(".user-likes").on("click", function (e) {
+    $(".user-likes").on("click", function () {
         var calendarId = $(this).data('calendar-id');
         Liker.showUserList(calendarId);
     });
