@@ -31,8 +31,8 @@ class Oogstplanner {
         $.get('/zaaikalender/' + month, function (data) {
             $('#_MonthCalendar').html(data);
         })
-        .done(function() { that.toMonthCalendar(); that.bindFarmingActionRemoveFunctionToDeleteButton(); })
-        .fail(function() { Notification.error(); });
+        .done(() => { that.toMonthCalendar(); that.bindFarmingActionRemoveFunctionToDeleteButton(); })
+        .fail(() =>  { Notification.error(); });
     }
 
     addFarmingAction(cropId : number, month : string, actionType : ActionType, cropCount : number) {
