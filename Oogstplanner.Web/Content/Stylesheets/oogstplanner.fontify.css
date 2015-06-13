@@ -14,9 +14,16 @@
     font-weight: normal;
     font-size: 18px;
 }
+.input-group .responsive-btn {
+    white-space: normal !important;
+}
 
 /* Bootstrap's xs and sm */
 @media(max-width: 991px) {
+    .responsive-header1point5 {
+        font-size: 16px;
+        font-size: 4vw;
+    }
     .responsive-header2 {
         font-size: 16px;
         font-size: 3vw;
@@ -29,6 +36,20 @@
         color: white;
         font-weight: normal;
         font-size: 12px;
-        font-size: 2vw;
+        font-size: 2.5vw;
     }
 }
+/* Bootstrap xs override */
+@media (max-width:769px) {
+    .responsive-header1point5 {
+        font-size: 14px;
+        font-size: 6vw;
+    }
+    .responsive-form-text-large-white {
+        color: white;
+        font-weight: normal;
+        font-size: 12px;
+        font-size: 3.5vw;
+    }
+}
+ 

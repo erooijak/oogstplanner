@@ -6,8 +6,6 @@ var Oogstplanner = (function () {
         $('#_MonthCalendar').show();
         $.fn.fullpage.moveSlideRight();
         $(window).scrollTop(0);
-        this.makeNumericTextBoxesNumeric();
-        this.makeCropPluralWhenCropCountIsBiggerThan1();
     };
     Oogstplanner.prototype.toMain = function () {
         $('#crop-selection-box').show();
@@ -23,6 +21,8 @@ var Oogstplanner = (function () {
             $('#_MonthCalendar').html(data);
         }).done(function () {
             that.bindFarmingActionRemoveFunctionToDeleteButton();
+            that.makeNumericTextBoxesNumeric();
+            that.makeCropPluralWhenCropCountIsBiggerThan1();
         }).fail(function () {
             Notification.error();
         });
@@ -128,10 +128,10 @@ var Oogstplanner = (function () {
         });
     };
     Oogstplanner.prototype.makeCropPluralWhenCropCountIsBiggerThan1 = function () {
-        $('.form-group').each(function () {
+        $('.form-inline').each(function () {
             var input = $(this).find('input:first');
             var span = $(this).find('.crop-count-crop-word:first');
-            input.change(function () {
+            input.on('change', function () {
                 span.text($(this).val() == 1 ? 'plant' : 'planten');
             });
             input.trigger('change');

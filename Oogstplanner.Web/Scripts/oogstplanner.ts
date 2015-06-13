@@ -9,13 +9,12 @@ class Oogstplanner {
         // We hide and show the elements, otherwise the corners of elements 
         // can be visible in the other fullpage slide. 
         // Note: needs to be called before fullpage page switch.
+
         $('#crop-selection-box').hide();
         $('#_MonthCalendar').show();
 
         $.fn.fullpage.moveSlideRight();
         $(window).scrollTop(0);
-        this.makeNumericTextBoxesNumeric();
-        this.makeCropPluralWhenCropCountIsBiggerThan1();
     }
 
     toMain() {
@@ -41,7 +40,11 @@ class Oogstplanner {
         $.get('/zaaikalender/' + month, function (data) {
             $('#_MonthCalendar').html(data);
         })
-        .done(() => { that.bindFarmingActionRemoveFunctionToDeleteButton(); })
+        .done(() => { 
+            that.bindFarmingActionRemoveFunctionToDeleteButton(); 
+            that.makeNumericTextBoxesNumeric();
+            that.makeCropPluralWhenCropCountIsBiggerThan1();
+        })
         .fail(() =>  { Notification.error(); });
     }
 
@@ -199,10 +202,12 @@ class Oogstplanner {
     makeCropPluralWhenCropCountIsBiggerThan1() {
 
         // Every crop count input field needs a span label with crop or crops depending on the count.
-        $('.form-group').each(function() {
+
+        // Below works for double form:
+        $('.form-inline').each(function() {
             var input = $(this).find('input:first');
-            var span = $(this).find('.crop-count-crop-word:first');
-            input.change(function() {
+            var span = $(this).find('.crop-count-crop-word:first'); 
+            input.on('change', function() {
                 span.text( $(this).val() == 1 ? 'plant' : 'planten' );
             });      
 
