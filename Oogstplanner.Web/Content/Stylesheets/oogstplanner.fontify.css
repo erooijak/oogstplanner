@@ -17,6 +17,9 @@
 .input-group .responsive-btn {
     white-space: normal !important;
 }
+.responsive-img {
+    width: 5vw;
+}
 
 /* Bootstrap's xs and sm */
 @media(max-width: 991px) {
