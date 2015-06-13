@@ -34,7 +34,6 @@ p {
 .rectangle-harvesting {
     background-color: #013220; /* Dark green */
 }
-
 #sowing, #harvesting {
     /* Bring input fields to front */
     z-index: 1; 

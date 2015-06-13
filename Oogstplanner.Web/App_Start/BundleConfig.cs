@@ -26,7 +26,8 @@ namespace Oogstplanner.Web
             bundles.Add(new StyleBundle("~/Content/Stylesheets/oogstplanner.sowing-and-harvesting").Include(
                 "~/Content/Stylesheets/jquery.fullPage.css",
                 "~/Content/Stylesheets/typeaheadjs.css",
-                "~/Content/Stylesheets/oogstplanner.fontify.css"
+                "~/Content/Stylesheets/oogstplanner.fontify.css",
+                "~/Content/Stylesheets/bootstrap-rows.css"
             ));
 
             bundles.Add(new ScriptBundle("~/Scripts/jquery").Include(

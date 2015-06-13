@@ -60,8 +60,6 @@ var Oogstplanner = (function () {
                 that.fillMonthCalendar(that.month);
                 var amountOfElementsLeftWhenLastIsRemoved = 1;
                 var monthHasNoActionsLeft = $('.farmingMonth').children().length === amountOfElementsLeftWhenLastIsRemoved;
-                console.log($('.farmingMonth').children().length);
-                console.log(monthHasNoActionsLeft);
                 if (monthHasNoActionsLeft) {
                     that.toMain();
                 }

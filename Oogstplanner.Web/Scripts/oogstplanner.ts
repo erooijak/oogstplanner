@@ -87,8 +87,6 @@ class Oogstplanner {
             
                 var amountOfElementsLeftWhenLastIsRemoved = 1
                 var monthHasNoActionsLeft = $('.farmingMonth').children().length === amountOfElementsLeftWhenLastIsRemoved;
-                console.log($('.farmingMonth').children().length)
-                console.log(monthHasNoActionsLeft);
                 if (monthHasNoActionsLeft)
                 {
                     that.toMain();
@@ -152,7 +150,7 @@ class Oogstplanner {
         });
 
     }
-   
+        
     resetValidation() {
 
         // Removes validation from input-fields

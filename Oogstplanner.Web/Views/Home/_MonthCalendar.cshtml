@@ -32,72 +32,74 @@
 
     @* Main rectangles row *@
     <div class="row text-left farmingMonth">
-        @if (Model.SowingActions.Any())
-        {
-        <div class="col-lg-@columnSize col-md-@columnSize col-sm-@columnSize col-xs-@columnSize rectangle-sowing bg-no-opacity imgsowing">
-            <div id="sowing" class="left-padding">
-                <br/>
-                @foreach (var action in Model.SowingActions)
-                {
-                    @Html.HiddenFor(model => action.Id)
-                    <div class="form-inline">
-                        <div class="form-group responsive-form-text-large-white">
-                            <div class="row">
-                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">   
-                                    <div class="input-group btn-responsive">
-                                    	<span class="input-group-btn">
-                                        	<div class="btn btn-danger input-xs remove-farming-action" id="@string.Format("{0}", action.Id)"><span class="glyphicon glyphicon-remove"></span></div>
-                                    	</span>
-                                    	@Html.TextBoxFor(model => action.CropCount, new { @class = "form-control input-xs numeric-text-box crop-counter-textbox", type = "number", min = "1", max = "999" }) 
+        <div class="row-same-height">
+            @if (Model.SowingActions.Any())
+            {
+            <div class="col-lg-@columnSize col-md-@columnSize col-sm-@columnSize col-xs-@columnSize col-xs-height rectangle-sowing bg-no-opacity imgsowing">
+                <div id="sowing" class="left-padding">
+                    <br/>
+                    @foreach (var action in Model.SowingActions)
+                    {
+                        @Html.HiddenFor(model => action.Id)
+                        <div class="form-inline">
+                            <div class="form-group responsive-form-text-large-white">
+                                <div class="row">
+                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">   
+                                        <div class="input-group btn-responsive">
+                                        	<span class="input-group-btn">
+                                            	<div class="btn btn-danger input-xs remove-farming-action" id="@string.Format("{0}", action.Id)"><span class="glyphicon glyphicon-remove"></span></div>
+                                        	</span>
+                                        	@Html.TextBoxFor(model => action.CropCount, new { @class = "form-control input-xs numeric-text-box crop-counter-textbox", type = "number", min = "1", max = "999" }) 
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">   
-                                    @Html.DisplayFor(model => action.Crop.Name)
-                                    @action.Crop.Race
-                                    <span class="crop-count-crop-word">plant(en)</span>
-                                    <br/>
+                                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">   
+                                        @Html.DisplayFor(model => action.Crop.Name)
+                                        @action.Crop.Race
+                                        <span class="crop-count-crop-word">plant(en)</span>
+                                        <br/>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                }
-                <br/>
+                    }
+                    <br/>
+                </div>
             </div>
-        </div>
-        }
-        @if (Model.HarvestingActions.Any())
-        {
-        <div class="col-lg-@columnSize col-md-@columnSize col-sm-@columnSize col-xs-@columnSize rectangle-harvesting bg-no-opacity imgharvesting">
-            <div id="harvesting">
-                <br/>
-                @foreach (var action in Model.HarvestingActions)
-                {
-                    @Html.HiddenFor(model => action.Id)
-                    <div class="form-inline">
-                        <div class="form-group responsive-form-text-large-white">
-                            <div class="row" class="action-item">
-                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">   
-                                    <div class="input-group btn-responsive">
-                                        <span class="input-group-btn">
-                                            <div class="btn btn-danger input-xs remove-farming-action" id="@string.Format("{0}", action.Id)"><span class="glyphicon glyphicon-remove"></span></div>
-                                        </span>
-                                        @Html.TextBoxFor(model => action.CropCount, new { @class = "form-control input-xs numeric-text-box crop-counter-textbox", type = "number", min = "1", max = "999" }) 
+            }
+            @if (Model.HarvestingActions.Any())
+            {
+            <div class="col-lg-@columnSize col-md-@columnSize col-sm-@columnSize col-xs-@columnSize col-xs-height rectangle-harvesting bg-no-opacity imgharvesting">
+                <div id="harvesting">
+                    <br/>
+                    @foreach (var action in Model.HarvestingActions)
+                    {
+                        @Html.HiddenFor(model => action.Id)
+                        <div class="form-inline">
+                            <div class="form-group responsive-form-text-large-white">
+                                <div class="row" class="action-item">
+                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">   
+                                        <div class="input-group btn-responsive">
+                                            <span class="input-group-btn">
+                                                <div class="btn btn-danger input-xs remove-farming-action" id="@string.Format("{0}", action.Id)"><span class="glyphicon glyphicon-remove"></span></div>
+                                            </span>
+                                            @Html.TextBoxFor(model => action.CropCount, new { @class = "form-control input-xs numeric-text-box crop-counter-textbox", type = "number", min = "1", max = "999" }) 
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">   
-                                    @Html.DisplayFor(model => action.Crop.Name)
-                                    @action.Crop.Race
-                                    <span class="crop-count-crop-word">plant(en)</span>
-                                    <br/>
+                                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">   
+                                        @Html.DisplayFor(model => action.Crop.Name)
+                                        @action.Crop.Race
+                                        <span class="crop-count-crop-word">plant(en)</span>
+                                        <br/>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                }
-                <br/>
+                    }
+                    <br/>
+                </div>
             </div>
+            }
         </div>
-        }
     </div> @* End row *@
 
     <br/>

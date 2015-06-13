@@ -279,6 +279,7 @@
     <Content Include="Content\Images\bonen.jpg" />
     <Content Include="Content\Images\planten.jpg" />
     <Content Include="Content\Images\grond.jpg" />
+    <Content Include="Content\Stylesheets\bootstrap-rows.css" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
