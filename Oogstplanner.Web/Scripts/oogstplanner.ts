@@ -86,7 +86,10 @@ class Oogstplanner {
                 that.fillMonthCalendar(that.month);
             
                 var amountOfElementsLeftWhenLastIsRemoved = 1
-                var monthHasNoActionsLeft = $('.farmingMonth').children().length === amountOfElementsLeftWhenLastIsRemoved;
+                var monthHasNoActionsLeft = 
+                    $('#harvesting').find('.form-inline').length 
+                    + $('#sowing').find('.form-inline').length === amountOfElementsLeftWhenLastIsRemoved;
+
                 if (monthHasNoActionsLeft)
                 {
                     that.toMain();
