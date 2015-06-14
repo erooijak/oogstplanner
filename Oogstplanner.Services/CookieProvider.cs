@@ -6,32 +6,6 @@ namespace Oogstplanner.Services
 {
     public class CookieProvider : ICookieProvider
     {
-        string anonymousUserKey;
-        public string AnonymousUserCookieKey
-        {
-            get
-            {
-                if (anonymousUserKey == null)
-                {
-                    anonymousUserKey = ConfigurationManager.AppSettings["AnonymousUserCookieKey"];
-                }
-                return anonymousUserKey;
-            }
-        }
-
-        double? anonymousUserCookieExpiration;
-        public double AnonymousUserCookieExpiration
-        {
-            get
-            {
-                if (anonymousUserCookieExpiration == null)
-                {
-                    anonymousUserCookieExpiration = Convert.ToDouble(ConfigurationManager.AppSettings["AnonymousUserCookieExpiration"]);
-                }
-                return (double)anonymousUserCookieExpiration;
-            }
-        }
-
         public void SetCookie(string key, string value, double expirationInDays)
         {
             var cookie = new HttpCookie(key, value);

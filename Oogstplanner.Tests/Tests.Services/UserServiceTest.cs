@@ -15,7 +15,7 @@ namespace Oogstplanner.Tests.Services
     [TestFixture]
     public class UserServiceTest
     {
-        [Ignore] // Test cannot run in batch because of configuration manager bug.
+        [Ignore] // Test cannot run in batch because of configuration manager error.
         [Test]
         public void Services_User_AddUser()
         {
@@ -68,7 +68,7 @@ namespace Oogstplanner.Tests.Services
                 "Changes should be committed only once since an existing user is updated.");
         }
 
-        [Ignore] // Test cannot run in batch because of configuration manager bug.
+        [Ignore] // Test cannot run in batch because of configuration manager error.
         [Test]
         public void Services_User_AddUser_CookieRemoved()
         {
@@ -109,7 +109,7 @@ namespace Oogstplanner.Tests.Services
                 "otherwise the user with the cookie's name cannot be found after logging out");
         }
 
-        [Ignore] // Test cannot run in batch because of configuration manager bug.
+        [Ignore] // Test cannot run in batch because of configuration manager error.
         [Test]
         public void Services_User_AddUser_New()
         {

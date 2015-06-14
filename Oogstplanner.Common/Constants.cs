@@ -7,7 +7,8 @@ namespace Oogstplanner.Common
     {
         public static string AnonymousUserCookieKey
         {
-            get {
+            get 
+            {
                 return ConfigurationManager.AppSettings["AnonymousUserCookieKey"];
             }
         }

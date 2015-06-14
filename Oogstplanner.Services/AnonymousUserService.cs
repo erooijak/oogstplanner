@@ -1,6 +1,6 @@
 ﻿using System;
-using System.Configuration;
 
+using Oogstplanner.Common;
 using Oogstplanner.Data;
 using Oogstplanner.Models;
 
@@ -24,32 +24,6 @@ namespace Oogstplanner.Services
 
             this.cookieProvider = cookieProvider;
             this.lastActivityUpdator = lastActivityUpdator;
-        }
-
-        string anonymousUserKey;
-        protected string AnonymousUserCookieKey
-        {
-            get
-            {
-                if (anonymousUserKey == null)
-                {
-                    anonymousUserKey = ConfigurationManager.AppSettings["AnonymousUserCookieKey"];
-                }
-                return anonymousUserKey;
-            }
-        }
-
-        double? anonymousUserCookieExpiration;
-        protected double AnonymousUserCookieExpiration
-        {
-            get
-            {
-                if (anonymousUserCookieExpiration == null)
-                {
-                    anonymousUserCookieExpiration = Convert.ToDouble(ConfigurationManager.AppSettings["AnonymousUserCookieExpiration"]);
-                }
-                return (double)anonymousUserCookieExpiration;
-            }
         }
             
         protected User CurrentAnonymousUser 
@@ -80,13 +54,16 @@ namespace Oogstplanner.Services
             { 
                 if (guidOnClient == null)
                 {
-                    guidOnClient = cookieProvider.GetCookie(AnonymousUserCookieKey);
+                    guidOnClient = cookieProvider.GetCookie(Constants.AnonymousUserCookieKey);
                 }
                 return guidOnClient;
             }
             set 
             { 
-                cookieProvider.SetCookie(AnonymousUserCookieKey, value, AnonymousUserCookieExpiration); 
+                cookieProvider.SetCookie(
+                    Constants.AnonymousUserCookieKey, 
+                    value, 
+                    Constants.AnonymousUserCookieExpiration); 
             }
         }
             
@@ -124,9 +101,9 @@ namespace Oogstplanner.Services
         {
             lastActivityUpdator.UpdateLastActivity(userId);
             cookieProvider.SetCookie(
-                AnonymousUserCookieKey, 
-                cookieProvider.GetCookie(AnonymousUserCookieKey), 
-                AnonymousUserCookieExpiration); 
+                Constants.AnonymousUserCookieKey, 
+                cookieProvider.GetCookie(Constants.AnonymousUserCookieKey), 
+                Constants.AnonymousUserCookieExpiration); 
         }
     }
 }
