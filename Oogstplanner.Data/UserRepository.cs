@@ -7,9 +7,9 @@ namespace Oogstplanner.Data
 {
     public class UserRepository : EntityFrameworkRepository<User>, IUserRepository
     {
-        public UserRepository(IOogstplannerContext db) : base(db)
-        {
-        }
+        public UserRepository(IOogstplannerContext db) 
+            : base(db)
+        { }
             
         public User GetUserByUserName(string name)
         {

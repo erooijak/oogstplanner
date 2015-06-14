@@ -8,8 +8,7 @@ namespace Oogstplanner.Services
     public class CropProvider : ServiceBase, ICropProvider
     {
         public CropProvider(IOogstplannerUnitOfWork unitOfWork) : base(unitOfWork)
-        {
-        }
+        { }
 
         public IEnumerable<Crop> GetAllCrops()
         {

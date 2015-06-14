@@ -7,9 +7,9 @@ namespace Oogstplanner.Data
     public class PasswordRecoveryRepository 
         : EntityFrameworkRepository<PasswordResetToken>, IPasswordRecoveryRepository
     {
-        public PasswordRecoveryRepository(IOogstplannerContext db) : base(db)
-        {
-        }
+        public PasswordRecoveryRepository(IOogstplannerContext db) 
+            : base(db)
+        { }
 
         public PasswordResetToken GetByToken(string token)
         {

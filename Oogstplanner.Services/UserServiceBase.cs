@@ -7,8 +7,7 @@ namespace Oogstplanner.Services
     {
         protected UserServiceBase(IOogstplannerUnitOfWork unitOfWork)
             : base(unitOfWork)
-        {
-        }
+        { }
 
         public User GetUser(int id)
         {

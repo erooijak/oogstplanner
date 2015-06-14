@@ -6,9 +6,9 @@ namespace Oogstplanner.Data
 {
     public class CalendarRepository : EntityFrameworkRepository<Calendar>, ICalendarRepository
     {
-        public CalendarRepository(IOogstplannerContext db) : base(db)
-        {
-        }
+        public CalendarRepository(IOogstplannerContext db) 
+            : base(db)
+        { }
 
         public Calendar GetByUserId(int userId)
         {

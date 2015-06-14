@@ -9,9 +9,9 @@ namespace Oogstplanner.Data
 {
     public class FarmingActionRepository : EntityFrameworkRepository<FarmingAction>, IFarmingActionRepository
     {
-        public FarmingActionRepository(IOogstplannerContext db) : base(db)
-        {
-        }
+        public FarmingActionRepository(IOogstplannerContext db) 
+            : base(db)
+        { }
 
         public IEnumerable<FarmingAction> GetFarmingActions(Expression<Func<FarmingAction, bool>> predicate)
         {

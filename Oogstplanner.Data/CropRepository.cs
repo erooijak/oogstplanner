@@ -4,8 +4,8 @@ namespace Oogstplanner.Data
 {
     public class CropRepository : EntityFrameworkRepository<Crop>, ICropRepository
     {
-        public CropRepository(IOogstplannerContext db) : base(db)
-        {
-        }           
+        public CropRepository(IOogstplannerContext db) 
+            : base(db)
+        { }           
     }
 }

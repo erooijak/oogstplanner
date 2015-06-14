@@ -10,8 +10,7 @@ namespace Oogstplanner.Services
     {
         public PasswordRecoveryService(IOogstplannerUnitOfWork unitOfWork) 
             : base(unitOfWork)
-        {
-        }
+        { }
 
         public void StoreResetToken(string email, string token)
         {
