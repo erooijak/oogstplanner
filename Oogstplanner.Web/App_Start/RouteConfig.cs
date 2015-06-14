@@ -71,7 +71,7 @@ namespace Oogstplanner.Web
             routes.MapRoute(
                 name: "LikeCalendar",
                 url: "zaaikalender/like",
-                defaults: new { controller = "Friends", action = "Like" }
+                defaults: new { controller = "Community", action = "Like" }
             );
 
             // Maps to same controller and action as /zaaikalender url
@@ -84,13 +84,13 @@ namespace Oogstplanner.Web
             routes.MapRoute(
                 name: "CalendarLikesCount",
                 url: "zaaikalender/{calendarId}/aantal-likes",
-                defaults: new { controller = "Friends", action = "GetLikesCount" }
+                defaults: new { controller = "Community", action = "GetLikesCount" }
             );
 
             routes.MapRoute(
                 name: "CalendarLikesUsers",
                 url: "zaaikalender/{calendarId}/gebruikers-die-liken",
-                defaults: new { controller = "Friends", action = "GetLikesUserNames" }
+                defaults: new { controller = "Community", action = "GetLikesUserNames" }
             );
 
             routes.MapRoute(

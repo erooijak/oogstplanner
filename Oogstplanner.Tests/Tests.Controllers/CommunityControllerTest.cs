@@ -11,10 +11,10 @@ using Oogstplanner.Web.Controllers;
 namespace Oogstplanner.Tests.Controllers
 {
     [TestFixture]
-    public class FriendsControllerTest
+    public class CommunityControllerTest
     {       
         [Test]
-        public void Controllers_Friends_GetLikesAmount()
+        public void Controllers_Community_GetLikesAmount()
         {
             // ARRANGE
             var calendarLikingServiceMock = new Mock<ICalendarLikingService>();
@@ -22,7 +22,7 @@ namespace Oogstplanner.Tests.Controllers
                 mock.GetLikes(It.IsAny<int>()))
                 .Returns(new[] { new Like() });
 
-            var controller = new FriendsController(calendarLikingServiceMock.Object);
+            var controller = new CommunityController(calendarLikingServiceMock.Object);
 
             // ACT
             var contentResult = controller.GetLikesCount(It.IsAny<int>()) as ContentResult;
@@ -33,7 +33,7 @@ namespace Oogstplanner.Tests.Controllers
         }
 
         [Test]
-        public void Controllers_Friends_GetLikesUsers()
+        public void Controllers_Community_GetLikesUsers()
         {
             // ARRANGE
             var calendarLikingServiceMock = new Mock<ICalendarLikingService>();
@@ -50,7 +50,7 @@ namespace Oogstplanner.Tests.Controllers
                 mock.GetLikes(It.IsAny<int>()))
                 .Returns(expectedLikes);
 
-            var controller = new FriendsController(calendarLikingServiceMock.Object);
+            var controller = new CommunityController(calendarLikingServiceMock.Object);
 
             // AC6
             var contentResult = controller.GetLikesUserNames(It.IsAny<int>());
@@ -65,7 +65,7 @@ namespace Oogstplanner.Tests.Controllers
 
 
         [Test]
-        public void Controllers_Friends_UnLikeSuccess()
+        public void Controllers_Community_UnLikeSuccess()
         {
             // ARRANGE
             var calendarLikingServiceMock = new Mock<ICalendarLikingService>();
@@ -73,7 +73,7 @@ namespace Oogstplanner.Tests.Controllers
             calendarLikingServiceMock.Setup(mock =>
                 mock.Like(It.IsAny<int>(), out wasUnlike));
 
-            var controller = new FriendsController(calendarLikingServiceMock.Object);
+            var controller = new CommunityController(calendarLikingServiceMock.Object);
 
             // ACT
             var viewResult = controller.Like(It.IsAny<int>());
@@ -91,7 +91,7 @@ namespace Oogstplanner.Tests.Controllers
         }
 
         [Test]
-        public void Controllers_Friends_UnLikeFailure()
+        public void Controllers_Community_UnLikeFailure()
         {
             // ARRANGE
             var calendarLikingServiceMock = new Mock<ICalendarLikingService>();
@@ -99,7 +99,7 @@ namespace Oogstplanner.Tests.Controllers
             calendarLikingServiceMock.Setup(mock => mock.Like(It.IsAny<int>(), out wasUnlike))
                 .Throws<Exception>();
 
-            var controller = new FriendsController(calendarLikingServiceMock.Object);
+            var controller = new CommunityController(calendarLikingServiceMock.Object);
 
             // ACT
             var viewResult = controller.Like(It.IsAny<int>());
@@ -110,12 +110,12 @@ namespace Oogstplanner.Tests.Controllers
         }
 
         [Test]
-        public void Controllers_Friends_LikeSucces()
+        public void Controllers_Community_LikeSucces()
         {
             // ARRANGE
             var calendarLikingServiceMock = new Mock<ICalendarLikingService>();
 
-            var controller = new FriendsController(calendarLikingServiceMock.Object);
+            var controller = new CommunityController(calendarLikingServiceMock.Object);
 
             // ACT
             var viewResult = controller.Like(It.IsAny<int>());
@@ -132,7 +132,7 @@ namespace Oogstplanner.Tests.Controllers
         }
 
         [Test]
-        public void Controllers_Friends_LikeFailure()
+        public void Controllers_Community_LikeFailure()
         {
             // ARRANGE
             var calendarLikingServiceMock = new Mock<ICalendarLikingService>();
@@ -140,7 +140,7 @@ namespace Oogstplanner.Tests.Controllers
             calendarLikingServiceMock.Setup(mock => mock.Like(It.IsAny<int>(), out wasUnlike))
                 .Throws<Exception>();
 
-            var controller = new FriendsController(calendarLikingServiceMock.Object);
+            var controller = new CommunityController(calendarLikingServiceMock.Object);
 
             // ACT
             var viewResult = controller.Like(It.IsAny<int>()) as JsonResult;

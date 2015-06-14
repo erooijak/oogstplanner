@@ -10,11 +10,11 @@ using Oogstplanner.Web.Utilities.Helpers;
 namespace Oogstplanner.Web.Controllers
 {
     [Authorize]
-    public sealed class FriendsController : Controller
+    public sealed class CommunityController : Controller
     {        
         readonly ICalendarLikingService calendarLikingService;
 
-        public FriendsController(ICalendarLikingService calendarLikingService)
+        public CommunityController(ICalendarLikingService calendarLikingService)
         {
             if (calendarLikingService == null)
             {
