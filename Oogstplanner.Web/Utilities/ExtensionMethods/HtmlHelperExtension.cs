@@ -22,8 +22,7 @@ namespace Oogstplanner.Web.Utilities.ExtensionMethods
             this HtmlHelper html, 
             string text, 
             string action, 
-            string controller,
-            params object[] overloadsPlaceholder)
+            string controller)
         {
             var context = html.ViewContext;
             if (context.Controller.ControllerContext.IsChildAction)
