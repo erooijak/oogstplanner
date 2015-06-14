@@ -3,4 +3,5 @@
  */
 interface JQuery {
     fullpage(settings) : void;
+    webuiPopover(settings) : void;
 }

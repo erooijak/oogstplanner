@@ -1,5 +1,5 @@
 ﻿/// <reference path="typings/jquery.d.ts" />
-
+/// <reference path="typings/jquery.plugins.d.ts" />
 module Liker {
     
     export function like(calendarId : number) {
@@ -14,23 +14,13 @@ module Liker {
             }
             Liker.updateAmountOfLikes(calendarId);
         })
-        .then(() => { Liker.makeTextPluralWhenLikesNot1() })
+        .then(() => { Liker.makeTextPluralWhenLikesNot1(); Liker.makeLinkUnclickableWhenZeroLikes(); })
         .fail(() => { Notification.error(); });
     }
 
     export function updateAmountOfLikes(calendarId : number) {
         Liker.getLikes(calendarId).done((count : number) =>( $('#amount-of-likes').text(count)))
-        .then(() => { Liker.makeTextPluralWhenLikesNot1() })
-        .fail(() => { Notification.error(); });
-    }
-
-    export function showUserList(calendarId : number) {
-
-        Liker.getUserList(calendarId).done((users) => {
-            for (var i = 0; i < users.length; i++) {
-                alert(users[i]);
-            };
-        })
+        .then(() => { Liker.makeTextPluralWhenLikesNot1(); Liker.makeLinkUnclickableWhenZeroLikes(); })
         .fail(() => { Notification.error(); });
     }
 
@@ -38,11 +28,16 @@ module Liker {
         return $.get('/zaaikalender/' + calendarId + '/aantal-likes');
     }
 
-    export function getUserList(calendarId : number) : JQueryPromise<string[]> {
-
-        return $.get('/zaaikalender/' + calendarId + '/gebruikers-die-liken');
+    export function makeLinkUnclickableWhenZeroLikes() {
+        if (parseInt( $('#amount-of-likes').text() ) == 0) {
+            $('.user-likes').addClass('disabled');
+            Liker.disablePopover();
+        } else {
+            $('.user-likes').removeClass('disabled');
+            Liker.enablePopover();
+        }
     }
-
+        
     export function makeTextPluralWhenLikesNot1() {
 
         var peopleSingleOrPlural : string;
@@ -59,20 +54,42 @@ module Liker {
         $('#people-single-or-plural').text(peopleSingleOrPlural);  
         $('#people-single-or-plural-verb').text(verbSingleOrPlural);  
     }
+
+    export function enablePopover() {
+        $('.user-likes').webuiPopover({   
+            type: 'async',
+            url: '/zaaikalender/' + $('.user-likes').data('calendar-id') + '/gebruikers-die-liken',
+            title: '<span class="dark"> Mensen die dit leuk vinden<\/span>',
+            cache: false,
+            closeable: true,
+            content: function(users){
+                var html = '<ul>';
+                for (var i = 0; i < users.length; i++) { 
+                    var name = users[i];
+                    html += "<li><a href='/gebruiker/" + name + "'>" + name + "</a></li>"; 
+                }
+                html += '</ul>';
+                return html;
+            }   
+        });
+    }
+
+    export function disablePopover() {
+        $('.user-likes').webuiPopover('destroy');
+    }
 }
 
 $(function() {
 
     Liker.makeTextPluralWhenLikesNot1();
 
-    $(".like").on("click", function () {
-        var calendarId : number = $(this).data('calendar-id');
+    var calendarId : number = $('.user-likes').data('calendar-id');
+
+    $('.like').on('click', function () {
         Liker.like(calendarId);
     });
 
-    $(".user-likes").on("click", function () {
-        var calendarId : number = $(this).data('calendar-id');
-        Liker.showUserList(calendarId);
-    });
+    Liker.enablePopover();
+    Liker.makeLinkUnclickableWhenZeroLikes();
 
 });

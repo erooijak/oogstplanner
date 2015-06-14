@@ -30,6 +30,9 @@ namespace Oogstplanner.Web
                 "~/Content/Stylesheets/bootstrap-rows.css"
             ));
 
+            bundles.Add(new StyleBundle("~/Content/Stylesheets/oogstplanner.likes").Include(
+                "~/Content/Stylesheets/jquery.webui-popover.css"));
+
             bundles.Add(new ScriptBundle("~/Scripts/jquery").Include(
                 "~/Scripts/jquery-{version}.min.js",
                 "~/Scripts/jquery-ui-{version}.min.js",
@@ -62,6 +65,8 @@ namespace Oogstplanner.Web
                 "~/Scripts/oogstplanner.crop-selection-box.js"));
 
             bundles.Add(new ScriptBundle("~/Scripts/oogstplanner.likes").Include(
+                "~/Scripts/jquery.webui-popover.js",
+                "~/Scripts/oogstplanner.popover.js",
                 "~/Scripts/oogstplanner.likes.js"));
                 
             BundleTable.EnableOptimizations = true;

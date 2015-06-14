@@ -12,6 +12,7 @@ var Liker;
             Liker.updateAmountOfLikes(calendarId);
         }).then(function () {
             Liker.makeTextPluralWhenLikesNot1();
+            Liker.makeLinkUnclickableWhenZeroLikes();
         }).fail(function () {
             Notification.error();
         });
@@ -20,30 +21,27 @@ var Liker;
     function updateAmountOfLikes(calendarId) {
         Liker.getLikes(calendarId).done(function (count) { return ($('#amount-of-likes').text(count)); }).then(function () {
             Liker.makeTextPluralWhenLikesNot1();
+            Liker.makeLinkUnclickableWhenZeroLikes();
         }).fail(function () {
             Notification.error();
         });
     }
     Liker.updateAmountOfLikes = updateAmountOfLikes;
-    function showUserList(calendarId) {
-        Liker.getUserList(calendarId).done(function (users) {
-            for (var i = 0; i < users.length; i++) {
-                alert(users[i]);
-            }
-            ;
-        }).fail(function () {
-            Notification.error();
-        });
-    }
-    Liker.showUserList = showUserList;
     function getLikes(calendarId) {
         return $.get('/zaaikalender/' + calendarId + '/aantal-likes');
     }
     Liker.getLikes = getLikes;
-    function getUserList(calendarId) {
-        return $.get('/zaaikalender/' + calendarId + '/gebruikers-die-liken');
+    function makeLinkUnclickableWhenZeroLikes() {
+        if (parseInt($('#amount-of-likes').text()) == 0) {
+            $('.user-likes').addClass('disabled');
+            Liker.disablePopover();
+        }
+        else {
+            $('.user-likes').removeClass('disabled');
+            Liker.enablePopover();
+        }
     }
-    Liker.getUserList = getUserList;
+    Liker.makeLinkUnclickableWhenZeroLikes = makeLinkUnclickableWhenZeroLikes;
     function makeTextPluralWhenLikesNot1() {
         var peopleSingleOrPlural;
         var verbSingleOrPlural;
@@ -59,16 +57,37 @@ var Liker;
         $('#people-single-or-plural-verb').text(verbSingleOrPlural);
     }
     Liker.makeTextPluralWhenLikesNot1 = makeTextPluralWhenLikesNot1;
+    function enablePopover() {
+        $('.user-likes').webuiPopover({
+            type: 'async',
+            url: '/zaaikalender/' + $('.user-likes').data('calendar-id') + '/gebruikers-die-liken',
+            title: '<span class="dark"> Mensen die dit leuk vinden<\/span>',
+            cache: false,
+            closeable: true,
+            content: function (users) {
+                var html = '<ul>';
+                for (var i = 0; i < users.length; i++) {
+                    var name = users[i];
+                    html += "<li><a href='/gebruiker/" + name + "'>" + name + "</a></li>";
+                }
+                html += '</ul>';
+                return html;
+            }
+        });
+    }
+    Liker.enablePopover = enablePopover;
+    function disablePopover() {
+        $('.user-likes').webuiPopover('destroy');
+    }
+    Liker.disablePopover = disablePopover;
 })(Liker || (Liker = {}));
 $(function () {
     Liker.makeTextPluralWhenLikesNot1();
-    $(".like").on("click", function () {
-        var calendarId = $(this).data('calendar-id');
+    var calendarId = $('.user-likes').data('calendar-id');
+    $('.like').on('click', function () {
         Liker.like(calendarId);
     });
-    $(".user-likes").on("click", function () {
-        var calendarId = $(this).data('calendar-id');
-        Liker.showUserList(calendarId);
-    });
+    Liker.enablePopover();
+    Liker.makeLinkUnclickableWhenZeroLikes();
 });
 //# sourceMappingURL=oogstplanner.likes.js.map

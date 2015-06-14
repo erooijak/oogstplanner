@@ -22,4 +22,5 @@ $(function () {
     });
 
     oogstplanner.makeNumericTextBoxesNumeric();
+
 });

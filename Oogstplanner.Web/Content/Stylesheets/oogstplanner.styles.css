@@ -114,6 +114,11 @@ p {
 .no-highlighting strong {
     font-weight: normal;
 }
+.disabled, .disabled:hover {
+    color: inherit;
+    text-decoration: none;
+    cursor: text;
+}
 .draggable {
     font-size: 10px;
     -ms-user-select: none;

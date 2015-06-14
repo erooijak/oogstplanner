@@ -281,6 +281,9 @@
     <Content Include="Content\Images\grond.jpg" />
     <Content Include="Content\Stylesheets\bootstrap-rows.css" />
     <Content Include="Content\Images\emmer.png" />
+    <Content Include="Scripts\jquery.webui-popover.js" />
+    <Content Include="Content\Stylesheets\jquery.webui-popover.css" />
+    <Content Include="Content\Images\loading.gif" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
