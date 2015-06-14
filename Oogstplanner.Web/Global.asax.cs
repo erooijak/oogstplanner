@@ -16,7 +16,7 @@ namespace Oogstplanner.Web
             if (!WebSecurity.Initialized) 
             {
                 WebSecurity.InitializeDatabaseConnection(
-                    ConfigurationHelper.ConnectionStringName, 
+                    Constants.ConnectionStringName, 
                     userTableName: "Users", 
                     userIdColumn: "UserId", 
                     userNameColumn: "Name", 

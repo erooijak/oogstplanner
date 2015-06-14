@@ -31,6 +31,7 @@
     <Reference Include="System" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.Configuration" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -38,8 +39,8 @@
     <Compile Include="MonthHelper.cs" />
     <Compile Include="SecurityException.cs" />
     <Compile Include="MembershipHelper.cs" />
-    <Compile Include="ConfigurationHelper.cs" />
     <Compile Include="UserNotFoundException.cs" />
+    <Compile Include="Constants.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

@@ -30,7 +30,6 @@ namespace Oogstplanner.Tests.Services
 
             var service = new LastActivityUpdator(unitOfWorkMock.Object);
 
-
             // ACT
             service.UpdateLastActivity(expectedUserId);
 

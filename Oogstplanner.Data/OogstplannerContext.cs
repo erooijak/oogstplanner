@@ -15,7 +15,7 @@ namespace Oogstplanner.Data
         public IDbSet<FarmingAction> FarmingActions { get; set; }
 
         public OogstplannerContext() 
-            : base(string.Format("name={0}", ConfigurationHelper.ConnectionStringName))
+            : base(string.Format("name={0}", Constants.ConnectionStringName))
         {
         }
 
