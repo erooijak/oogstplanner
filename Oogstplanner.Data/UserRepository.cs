@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using System.Collections.Generic;
 
 using Oogstplanner.Common;
 using Oogstplanner.Models;
@@ -45,6 +46,16 @@ namespace Oogstplanner.Data
             }
 
             return user.Id; 
+        }
+
+        public IEnumerable<User> GetRecentlyActiveUsers(int count) 
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public IEnumerable<User> SearchUsers(string searchTerm)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

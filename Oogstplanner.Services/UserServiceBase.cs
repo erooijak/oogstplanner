@@ -1,4 +1,6 @@
-﻿using Oogstplanner.Data;
+﻿using System.Collections.Generic;
+
+using Oogstplanner.Data;
 using Oogstplanner.Models;
 
 namespace Oogstplanner.Services
@@ -17,6 +19,16 @@ namespace Oogstplanner.Services
         public User GetUserByName(string name)
         {
             return UnitOfWork.Users.GetUserByUserName(name);
+        }
+
+        public IEnumerable<User> SearchUsers(string searchTerm)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public IEnumerable<User> GetRecentlyActiveUsers(int count)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }
