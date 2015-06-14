@@ -35,7 +35,7 @@ namespace Oogstplanner.Web
 
             // Note: If a constructor requests an IUserService this should be of
             //       type UserService and not AnonymousUserService (therefore the Except).
-            builder.RegisterAssemblyTypes(typeof(ServiceBase).Assembly)
+            builder.RegisterAssemblyTypes(typeof(UserServiceBase).Assembly)
                 .Except<AnonymousUserService>()
                 .AsImplementedInterfaces()
                 .InstancePerRequest();

@@ -58,6 +58,8 @@
     <Compile Include="ServiceBase.cs" />
     <Compile Include="Contracts\ICalendarLikingService.cs" />
     <Compile Include="CalendarLikingService.cs" />
+    <Compile Include="UserServiceBase.cs" />
+    <Compile Include="Contracts\ICommunityService.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

@@ -6,7 +6,7 @@ using Oogstplanner.Models;
 
 namespace Oogstplanner.Services
 {
-    public class AnonymousUserService : ServiceBase, IUserService
+    public class AnonymousUserService : UserServiceBase, IUserService
     {
         readonly ICookieProvider cookieProvider;
 
@@ -101,16 +101,6 @@ namespace Oogstplanner.Services
         public int GetCurrentUserId()
         {
             return CurrentAnonymousUser.Id;
-        }
-
-        public User GetUser(int id)
-        {
-            return UnitOfWork.Users.GetById(id);
-        }
-
-        public User GetUserByName(string name)
-        {
-            return UnitOfWork.Users.GetUserByUserName(name);
         }
     }
 }

@@ -8,7 +8,7 @@ using Oogstplanner.Models;
 
 namespace Oogstplanner.Services
 {
-    public class UserService : ServiceBase, IUserService
+    public class UserService : UserServiceBase, IUserService
     {
         readonly ICookieProvider cookieProvider;
 
@@ -92,15 +92,5 @@ namespace Oogstplanner.Services
           
             return currentUserId;
         }
-
-        public User GetUser(int id)
-        {
-            return UnitOfWork.Users.GetById(id);
-        }    
-
-        public User GetUserByName(string name)
-        {
-            return UnitOfWork.Users.GetUserByUserName(name);
-        }      
     }
 }
