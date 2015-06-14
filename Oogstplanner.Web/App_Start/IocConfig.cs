@@ -33,9 +33,12 @@ namespace Oogstplanner.Web
                 .As<IRepositoryProvider>()
                 .InstancePerRequest();
 
-            // Note: If a constructor requests an IUserService this should be of
-            //       type UserService and not AnonymousUserService (therefore the Except).
-            builder.RegisterAssemblyTypes(typeof(UserServiceBase).Assembly)
+            // Note: CommunityService is the base class for both AnonymousUserService and
+            //       UserService.
+            //       If a constructor requests an IUserService this should be of
+            //       type UserService and not AnonymousUserService.
+            //       To accomplish this the AnonymousUserService is not registered below.
+            builder.RegisterAssemblyTypes(typeof(CommunityService).Assembly)
                 .Except<AnonymousUserService>()
                 .AsImplementedInterfaces()
                 .InstancePerRequest();

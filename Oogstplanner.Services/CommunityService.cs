@@ -5,9 +5,9 @@ using Oogstplanner.Models;
 
 namespace Oogstplanner.Services
 {
-    public abstract class UserServiceBase : ServiceBase, ICommunityService
+    public class CommunityService : ServiceBase, ICommunityService
     {
-        protected UserServiceBase(IOogstplannerUnitOfWork unitOfWork)
+        public CommunityService(IOogstplannerUnitOfWork unitOfWork)
             : base(unitOfWork)
         { }
 

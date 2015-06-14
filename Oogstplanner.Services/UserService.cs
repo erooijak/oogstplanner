@@ -8,7 +8,7 @@ using Oogstplanner.Models;
 
 namespace Oogstplanner.Services
 {
-    public class UserService : UserServiceBase, IUserService
+    public class UserService : CommunityService, IUserService
     {
         readonly ICookieProvider cookieProvider;
 

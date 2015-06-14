@@ -6,7 +6,7 @@ using Oogstplanner.Models;
 
 namespace Oogstplanner.Services
 {
-    public class AnonymousUserService : UserServiceBase, IUserService
+    public class AnonymousUserService : CommunityService, IUserService
     {
         readonly ICookieProvider cookieProvider;
 
