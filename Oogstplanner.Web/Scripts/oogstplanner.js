@@ -1,5 +1,6 @@
 var Oogstplanner = (function () {
     function Oogstplanner() {
+        this.hasActionSymbolClass = 'bg-watering-can';
     }
     Oogstplanner.prototype.toMonthCalendar = function () {
         $('#crop-selection-box').hide();
@@ -33,6 +34,9 @@ var Oogstplanner = (function () {
     Oogstplanner.prototype.setHasActionAttributeValue = function (monthName, value) {
         $('[data-month=' + monthName + ']').data("hasAction", value);
     };
+    Oogstplanner.prototype.setHasActionSymbol = function (monthName) {
+        $('[data-month=' + monthName + ']').addClass(this.hasActionSymbolClass);
+    };
     Oogstplanner.prototype.getHasActionAttributeValue = function (monthName) {
         return $('[data-month=' + monthName + ']').data('hasAction');
     };
@@ -41,6 +45,7 @@ var Oogstplanner = (function () {
         $('[data-month]').each(function (i, monthSquare) {
             var monthName = $(monthSquare).data('month');
             that.setHasActionAttributeValue(monthName, false);
+            $(monthSquare).removeClass(that.hasActionSymbolClass);
         });
     };
     Oogstplanner.prototype.setHasActionAttributes = function () {
@@ -50,6 +55,7 @@ var Oogstplanner = (function () {
             for (var i = 0; i < monthNames.length; i++) {
                 var monthName = monthNames[i];
                 that.setHasActionAttributeValue(monthName, true);
+                that.setHasActionSymbol(monthName);
             }
         });
     };

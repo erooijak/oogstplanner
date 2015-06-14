@@ -3,6 +3,7 @@
 class Oogstplanner {
 	
     month : string;
+    hasActionSymbolClass = 'bg-watering-can';
 
     toMonthCalendar() {
         
@@ -56,6 +57,10 @@ class Oogstplanner {
         $('[data-month=' + monthName + ']').data("hasAction", value);
     }
 
+    setHasActionSymbol(monthName) {
+        $('[data-month=' + monthName + ']').addClass(this.hasActionSymbolClass);
+    }
+
     getHasActionAttributeValue(monthName : string) {
         return $('[data-month=' + monthName + ']').data('hasAction');
     }
@@ -65,6 +70,7 @@ class Oogstplanner {
         $('[data-month]').each(function (i, monthSquare) {
             var monthName = $(monthSquare).data('month');
             that.setHasActionAttributeValue(monthName, false);
+            $(monthSquare).removeClass(that.hasActionSymbolClass);
         });
     }
 
@@ -75,8 +81,9 @@ class Oogstplanner {
             for (var i = 0; i < monthNames.length; i++) {
                 var monthName = monthNames[i];
                 that.setHasActionAttributeValue(monthName, true);
+                that.setHasActionSymbol(monthName);
             }
-        })
+        });
     }
 
     removeFarmingAction(id : number) {

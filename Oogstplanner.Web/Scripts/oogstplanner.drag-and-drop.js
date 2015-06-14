@@ -62,10 +62,14 @@ $(function () {
             var cropCount = dragged.cropCount;
             oogstplanner.addFarmingAction(cropId, month, actionType, cropCount);
             oogstplanner.setHasActionAttributeValue(month, true);
+            oogstplanner.setHasActionSymbol(month);
+            console.log(month);
             var monthNames = Util.getMonthNames();
             var indexCurrentMonth = monthNames.indexOf(month);
             var oppositeMonth = Util.getOppositeMonth(actionType, indexCurrentMonth, dragged.growingTime);
+            console.log(oppositeMonth);
             oogstplanner.setHasActionAttributeValue(oppositeMonth, true);
+            oogstplanner.setHasActionSymbol(oppositeMonth);
         }
     });
 });

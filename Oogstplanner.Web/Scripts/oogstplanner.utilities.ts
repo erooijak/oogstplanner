@@ -56,7 +56,7 @@
         var monthCount = monthNames.length; // 12
 
         return actionType === ActionType.HARVESTING 
-            ? monthNames[monthCount - indexCurrentMonth - (growingTime % monthCount)]
+            ? monthNames[(indexCurrentMonth + monthCount - growingTime % monthCount) % monthCount]
             : monthNames[(indexCurrentMonth + growingTime) % monthCount]
     }
 
