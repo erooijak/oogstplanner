@@ -131,6 +131,7 @@
     <Compile Include="Tests.Models\YearCalendarViewModelTest.cs" />
     <Compile Include="Tests.Services\CalendarLikingServiceTest.cs" />
     <Compile Include="Tests.Controllers\CommunityControllerTest.cs" />
+    <Compile Include="Tests.Services\LastActivityUpdatorTest.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

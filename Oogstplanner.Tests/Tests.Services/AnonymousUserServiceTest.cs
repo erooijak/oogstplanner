@@ -17,6 +17,7 @@ namespace Oogstplanner.Tests.Services
         {
             // ARRANGE
             var cookieProviderMock = new Mock<ICookieProvider>();
+            var lastActivityUpdatorMock = new Mock<ILastActivityUpdator>();
             var unitOfWorkMock = new Mock<IOogstplannerUnitOfWork>();
             var userRepositoryMock = new Mock<IUserRepository>();
             var calendarRepositoryMock = new Mock<ICalendarRepository>();
@@ -27,7 +28,9 @@ namespace Oogstplanner.Tests.Services
                 .Returns(calendarRepositoryMock.Object);
 
             var service = new AnonymousUserService(
-                unitOfWorkMock.Object, cookieProviderMock.Object);
+                unitOfWorkMock.Object, 
+                cookieProviderMock.Object,
+                lastActivityUpdatorMock.Object);
                 
             const string expectedUserName = "Test";
             const string expectedFullName = "Test Test";
@@ -53,6 +56,7 @@ namespace Oogstplanner.Tests.Services
         {
             // ARRANGE
             var cookieProviderMock = new Mock<ICookieProvider>();
+            var lastActivityUpdatorMock = new Mock<ILastActivityUpdator>();
             var unitOfWorkMock = new Mock<IOogstplannerUnitOfWork>();
             var userRepositoryMock = new Mock<IUserRepository>();
 
@@ -75,7 +79,9 @@ namespace Oogstplanner.Tests.Services
                 .Returns(expectedCookieValue);
 
             var service = new AnonymousUserService(
-                unitOfWorkMock.Object, cookieProviderMock.Object);
+                unitOfWorkMock.Object, 
+                cookieProviderMock.Object,
+                lastActivityUpdatorMock.Object);
                 
             // ACT
             var result = service.GetCurrentUserId();
@@ -85,15 +91,58 @@ namespace Oogstplanner.Tests.Services
                 mock.GetUserByUserName(expectedCookieValue), 
                 Times.Once(),
                 "When a cookie is available the user should be retrieved.");
-            cookieProviderMock.Verify(mock =>
-                mock.SetCookie(
-                    It.IsAny<string>(),
-                    It.IsAny<string>(),
-                    It.IsAny<double>()),
-                Times.Never(),
-                "A new cookie should not be set.");
             Assert.AreEqual(expectedUserId, result,
                 "The user id of the user should be retrieved.");
+        }
+
+        [Test]
+        public void Services_AnonymousUser_GetCurrentUserId_UpdateLastActivity()
+        {
+            // ARRANGE
+            var cookieProviderMock = new Mock<ICookieProvider>();
+            var lastActivityUpdatorMock = new Mock<ILastActivityUpdator>();
+            var unitOfWorkMock = new Mock<IOogstplannerUnitOfWork>();
+            var userRepositoryMock = new Mock<IUserRepository>();
+
+            var expectedCookieValue = Guid.NewGuid().ToString();
+            var expectedUserId = new Random().Next();
+            var expectedUser = new User { Id = expectedUserId };
+
+            cookieProviderMock.Setup(mock =>
+                mock.GetCookie(It.IsAny<string>()))
+                .Returns(expectedCookieValue);
+            userRepositoryMock.Setup(mock =>
+                mock.GetUserByUserName(expectedCookieValue))
+                .Returns(expectedUser);
+
+            unitOfWorkMock.SetupGet(mock => mock.Users)
+                .Returns(userRepositoryMock.Object);
+
+            cookieProviderMock.Setup(mock =>
+                mock.GetCookie(It.IsAny<string>()))
+                .Returns(expectedCookieValue);
+
+            var service = new AnonymousUserService(
+                unitOfWorkMock.Object, 
+                cookieProviderMock.Object,
+                lastActivityUpdatorMock.Object);
+
+            // ACT
+            service.GetCurrentUserId();
+          
+            // ASSERT
+            lastActivityUpdatorMock.Verify(mock =>
+                mock.UpdateLastActivity(expectedUserId),
+                Times.Once,
+                "The update last activity method should be called with the " +
+                "current user's id every time the current user id is retrieved.");
+            cookieProviderMock.Verify(mock =>
+                mock.SetCookie(
+                    It.IsAny<string>(), 
+                    It.IsAny<string>(), 
+                    It.IsAny<double>()),
+                Times.Once,
+                "Cookie should be set to expire later. ");
         }
 
         [Test]
@@ -101,6 +150,7 @@ namespace Oogstplanner.Tests.Services
         {
             // ARRANGE
             var cookieProviderMock = new Mock<ICookieProvider>();
+            var lastActivityUpdatorMock = new Mock<ILastActivityUpdator>();
             var unitOfWorkMock = new Mock<IOogstplannerUnitOfWork>();
             var userRepositoryMock = new Mock<IUserRepository>();
             var calendarRepositoryMock = new Mock<ICalendarRepository>();
@@ -121,7 +171,9 @@ namespace Oogstplanner.Tests.Services
                 .Returns(expectedUser);
 
             var service = new AnonymousUserService(
-                unitOfWorkMock.Object, cookieProviderMock.Object);
+                unitOfWorkMock.Object, 
+                cookieProviderMock.Object,
+                lastActivityUpdatorMock.Object);
 
             // ACT
             service.GetCurrentUserId();
@@ -132,8 +184,9 @@ namespace Oogstplanner.Tests.Services
                     It.IsAny<string>(),
                     It.IsAny<string>(),
                     It.IsAny<double>()),
-                Times.Once(),
-                "A new cookie should be set.");
+                Times.Exactly(2),
+                "A new cookie should be set (and expiration time updated " +
+                "for the logging).");
             unitOfWorkMock.Verify(mock => mock.Commit(), Times.Once,
                 "Changes should be committed.");
         }
@@ -143,6 +196,7 @@ namespace Oogstplanner.Tests.Services
         {
             // ARRANGE
             var cookieProviderMock = new Mock<ICookieProvider>();
+            var lastActivityUpdatorMock = new Mock<ILastActivityUpdator>();
             var unitOfWorkMock = new Mock<IOogstplannerUnitOfWork>();
             var userRepositoryMock = new Mock<IUserRepository>();
 
@@ -157,7 +211,9 @@ namespace Oogstplanner.Tests.Services
                 .Returns(expectedUser);
 
             var service = new AnonymousUserService(
-                unitOfWorkMock.Object, cookieProviderMock.Object);
+                unitOfWorkMock.Object, 
+                cookieProviderMock.Object,
+                lastActivityUpdatorMock.Object);
 
             // ACT
             var result = service.GetUser(expectedUserId);
@@ -173,6 +229,7 @@ namespace Oogstplanner.Tests.Services
         {
             // ARRANGE
             var cookieProviderMock = new Mock<ICookieProvider>();
+            var lastActivityUpdatorMock = new Mock<ILastActivityUpdator>();
             var unitOfWorkMock = new Mock<IOogstplannerUnitOfWork>();
             var userRepositoryMock = new Mock<IUserRepository>();
 
@@ -195,7 +252,9 @@ namespace Oogstplanner.Tests.Services
                 .Returns(expectedCookieValue);
 
             var service = new AnonymousUserService(
-                unitOfWorkMock.Object, cookieProviderMock.Object);
+                unitOfWorkMock.Object, 
+                cookieProviderMock.Object,
+                lastActivityUpdatorMock.Object);
 
             // ACT
             service.GetCurrentUserId();

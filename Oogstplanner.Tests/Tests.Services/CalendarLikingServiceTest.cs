@@ -101,10 +101,6 @@ namespace Oogstplanner.Tests.Services
             service.Like(It.IsAny<int>(), out wasUnlike);
 
             // ASSERT
-            calendarRepositoryMock.Verify(mock =>
-                mock.Update(It.IsAny<Calendar>()), 
-                Times.Never,
-                "A like should not be added to the calendar.");
             likesRepositoryMock.Verify(mock =>
                 mock.Delete(It.IsAny<Like>()), 
                 Times.Once,

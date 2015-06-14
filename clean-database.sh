@@ -2,7 +2,7 @@
 
 # Summary: 
 #   This script will remove users, calendars and farming actions of anonymous users that 
-#   are more than one week old.
+#   were last active more than one week ago.
 #
 # Dependencies: 
 #   PostgreSQL 8+
@@ -37,5 +37,5 @@ fi
 psql -U postgres -d $database -c \
   "DELETE FROM \"Users\"  \
    WHERE \"AuthenticationStatus\" = 0 AND \
-         \"CreationDate\" < now()::date - 8;"
+         \"LastActive\" < now()::date - 8;"
 

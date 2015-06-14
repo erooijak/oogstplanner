@@ -11,16 +11,25 @@ namespace Oogstplanner.Services
     public class UserService : CommunityService, IUserService
     {
         readonly ICookieProvider cookieProvider;
+        readonly ILastActivityUpdator lastActivityUpdator;
 
-        public UserService(IOogstplannerUnitOfWork unitOfWork, ICookieProvider cookieProvider) 
+        public UserService(
+            IOogstplannerUnitOfWork unitOfWork, 
+            ICookieProvider cookieProvider,
+            ILastActivityUpdator lastActivityUpdator) 
             : base(unitOfWork)
         {
             if (cookieProvider == null)
             {
                 throw new ArgumentNullException("cookieProvider");
             }
+            if (lastActivityUpdator == null)
+            {
+                throw new ArgumentNullException("lastActivityUpdator");
+            }
 
             this.cookieProvider = cookieProvider;
+            this.lastActivityUpdator = lastActivityUpdator;
         }
 
         string anonymousUserKey;
@@ -70,7 +79,7 @@ namespace Oogstplanner.Services
                         FullName = fullName,
                         Email = email,
                         AuthenticationStatus = AuthenticatedStatus.Authenticated, // by definition
-                        CreationDate = DateTime.Now
+                        LastActive = DateTime.Now
                     };
                 var calendar = new Calendar { Name = "Mijn kalender" };
                 newUser.Calendars.Add(calendar);
@@ -89,7 +98,9 @@ namespace Oogstplanner.Services
             int currentUserId = currentUserEmailOrName.Contains("@")
                 ? UnitOfWork.Users.GetUserIdByEmail(currentUserEmailOrName)
                 : UnitOfWork.Users.GetUserIdByName(currentUserEmailOrName);
-          
+
+            lastActivityUpdator.UpdateLastActivity(currentUserId);
+
             return currentUserId;
         }
     }

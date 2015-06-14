@@ -313,6 +313,7 @@
     <None Include="App_Data\Migrations\201506090021_Initial.sql" />
     <None Include="Scripts\oogstplanner.likes.ts" />
     <None Include="Content\Images\favicon.ico" />
+    <None Include="App_Data\Migrations\201506142119_ChangeCreationDateToLastActive.sql" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Oogstplanner.Data\Oogstplanner.Data.csproj">

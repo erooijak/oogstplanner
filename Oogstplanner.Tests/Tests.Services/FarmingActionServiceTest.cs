@@ -57,7 +57,8 @@ namespace Oogstplanner.Tests.Services
             var fakeUserServices = new FakeUserServices();
             fakeUserServices.ReturnedUserService = 
                 new UserService(unitOfWorkMock.Object, 
-                    new Mock<ICookieProvider>().Object);
+                    new Mock<ICookieProvider>().Object,
+                    new Mock<ILastActivityUpdator>().Object);
                 
             var expectedUserId = new Random().Next();
 
@@ -118,7 +119,8 @@ namespace Oogstplanner.Tests.Services
             var fakeUserServices = new FakeUserServices();
             fakeUserServices.ReturnedUserService = 
                 new UserService(unitOfWorkMock.Object, 
-                    new Mock<ICookieProvider>().Object);
+                    new Mock<ICookieProvider>().Object,
+                    new Mock<ILastActivityUpdator>().Object);
 
             var expectedUserId = new Random().Next();
 
@@ -174,8 +176,9 @@ namespace Oogstplanner.Tests.Services
 
             var fakeUserServices = new FakeUserServices();
             fakeUserServices.ReturnedUserService = 
-                new UserService(unitOfWorkMock.Object,
-                    new Mock<ICookieProvider>().Object);
+                new UserService(unitOfWorkMock.Object, 
+                    new Mock<ICookieProvider>().Object,
+                    new Mock<ILastActivityUpdator>().Object);
 
             const int expectedUserId = 1;
             const int anotherUserId = 2;
@@ -233,7 +236,8 @@ namespace Oogstplanner.Tests.Services
             var fakeUserServices = new FakeUserServices();
             fakeUserServices.ReturnedUserService = 
                 new UserService(unitOfWorkMock.Object, 
-                    new Mock<ICookieProvider>().Object);
+                    new Mock<ICookieProvider>().Object,
+                    new Mock<ILastActivityUpdator>().Object);
 
             var expectedUserId = new Random().Next();
 
@@ -295,7 +299,8 @@ namespace Oogstplanner.Tests.Services
             var fakeUserServices = new FakeUserServices();
             fakeUserServices.ReturnedUserService = 
                 new UserService(unitOfWorkMock.Object, 
-                    new Mock<ICookieProvider>().Object);
+                    new Mock<ICookieProvider>().Object,
+                    new Mock<ILastActivityUpdator>().Object);
 
             const int expectedUserId = 1;
             const int anotherUserId = 2;
@@ -353,7 +358,8 @@ namespace Oogstplanner.Tests.Services
             var fakeUserServices = new FakeUserServices();
             fakeUserServices.ReturnedUserService = 
                 new UserService(unitOfWorkMock.Object, 
-                    new Mock<ICookieProvider>().Object);
+                    new Mock<ICookieProvider>().Object,
+                    new Mock<ILastActivityUpdator>().Object);
 
             var expectedUserId = new Random().Next();
 
@@ -420,7 +426,8 @@ namespace Oogstplanner.Tests.Services
             var fakeUserServices = new FakeUserServices();
             fakeUserServices.ReturnedUserService = 
                 new UserService(unitOfWorkMock.Object, 
-                    new Mock<ICookieProvider>().Object);
+                    new Mock<ICookieProvider>().Object,
+                    new Mock<ILastActivityUpdator>().Object);
 
             var expectedUserId = new Random().Next();
 
@@ -485,7 +492,8 @@ namespace Oogstplanner.Tests.Services
             var fakeUserServices = new FakeUserServices();
             fakeUserServices.ReturnedUserService = 
                 new UserService(unitOfWorkMock.Object, 
-                    new Mock<ICookieProvider>().Object);
+                    new Mock<ICookieProvider>().Object,
+                    new Mock<ILastActivityUpdator>().Object);
 
             const int expectedUserId = 1;
             const int anotherUserId = 2;

@@ -28,7 +28,8 @@ namespace Oogstplanner.Tests.Services
             var fakeUserServices = new FakeUserServices();
             fakeUserServices.ReturnedUserService = 
                 new UserService(unitOfWorkMock.Object, 
-                    new Mock<ICookieProvider>().Object);
+                    new Mock<ICookieProvider>().Object,
+                    new Mock<ILastActivityUpdator>().Object);
 
             var userServiceMock = new Mock<IUserService>();
             var authenticationServiceMock = new Mock<IAuthenticationService>();
@@ -232,7 +233,8 @@ namespace Oogstplanner.Tests.Services
             var fakeUserServices = new FakeUserServices();
             fakeUserServices.ReturnedUserService = 
                 new UserService(unitOfWorkMock.Object, 
-                    new Mock<ICookieProvider>().Object);
+                    new Mock<ICookieProvider>().Object,
+                    new Mock<ILastActivityUpdator>().Object);
             var userServiceMock = new Mock<IUserService>();
             var authenticationServiceMock = new Mock<IAuthenticationService>();
 
@@ -292,7 +294,8 @@ namespace Oogstplanner.Tests.Services
             var fakeUserServices = new FakeUserServices();
             fakeUserServices.ReturnedUserService = 
                 new UserService(unitOfWorkMock.Object, 
-                    new Mock<ICookieProvider>().Object);
+                    new Mock<ICookieProvider>().Object,
+                    new Mock<ILastActivityUpdator>().Object);
             var userServiceMock = new Mock<IUserService>();
             var authenticationServiceMock = new Mock<IAuthenticationService>();
            
@@ -345,7 +348,8 @@ namespace Oogstplanner.Tests.Services
             var fakeUserServices = new FakeUserServices();
             fakeUserServices.ReturnedUserService = 
                 new UserService(unitOfWorkMock.Object, 
-                    new Mock<ICookieProvider>().Object);
+                    new Mock<ICookieProvider>().Object,
+                    new Mock<ILastActivityUpdator>().Object);
             var userServiceMock = new Mock<IUserService>();
             var authenticationServiceMock = new Mock<IAuthenticationService>();
 

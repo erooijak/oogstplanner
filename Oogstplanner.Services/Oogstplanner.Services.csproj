@@ -60,6 +60,8 @@
     <Compile Include="CalendarLikingService.cs" />
     <Compile Include="Contracts\ICommunityService.cs" />
     <Compile Include="CommunityService.cs" />
+    <Compile Include="Contracts\ILastActivityUpdator.cs" />
+    <Compile Include="LastActivityUpdator.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

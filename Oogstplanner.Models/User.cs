@@ -16,7 +16,7 @@ namespace Oogstplanner.Models
         public string FullName { get; set; }
         public string Email { get; set; }
         public AuthenticatedStatus AuthenticationStatus { get; set; }
-        public DateTime CreationDate { get; set; }
+        public DateTime LastActive { get; set; }
 
         public virtual ICollection<Calendar> Calendars { get; set; }
     }

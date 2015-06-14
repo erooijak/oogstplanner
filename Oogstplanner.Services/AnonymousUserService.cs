@@ -9,16 +9,21 @@ namespace Oogstplanner.Services
     public class AnonymousUserService : CommunityService, IUserService
     {
         readonly ICookieProvider cookieProvider;
+        readonly ILastActivityUpdator lastActivityUpdator;
 
-        public AnonymousUserService(IOogstplannerUnitOfWork unitOfWork, ICookieProvider cookieProvider)
+        public AnonymousUserService(
+            IOogstplannerUnitOfWork unitOfWork, 
+            ICookieProvider cookieProvider,
+            ILastActivityUpdator lastActivityUpdator)
             : base(unitOfWork)
         {
-            if (cookieProvider == null)
+            if (lastActivityUpdator == null)
             {
-                throw new ArgumentNullException("cookieProvider");
+                throw new ArgumentNullException("lastActivityUpdator");
             }
 
             this.cookieProvider = cookieProvider;
+            this.lastActivityUpdator = lastActivityUpdator;
         }
 
         string anonymousUserKey;
@@ -91,7 +96,7 @@ namespace Oogstplanner.Services
                 {
                     Name = userName,
                     AuthenticationStatus = AuthenticatedStatus.Anonymous, // by definition
-                    CreationDate = DateTime.Now
+                    LastActive = DateTime.Now
                 };
             user.Calendars.Add(new Calendar { Name = "Mijn kalender" } );
             UnitOfWork.Users.Add(user);
@@ -100,7 +105,28 @@ namespace Oogstplanner.Services
 
         public int GetCurrentUserId()
         {
-            return CurrentAnonymousUser.Id;
+            int currentUserId = CurrentAnonymousUser.Id;
+            UpdateLastActivity(currentUserId);
+
+            return currentUserId;
+        }
+
+        /// <summary>
+        /// Update last activity and set the cookie to expire later. 
+        /// </summary>
+        /// <remarks>
+        /// If the latter is not done the clean-database.sh script will
+        /// remove the user while the cookie still exists, thus causing
+        /// an error that the guid from the client cookie cannot be found.
+        /// </remarks>
+        /// <param name="userId">User identifier.</param>
+        void UpdateLastActivity(int userId)
+        {
+            lastActivityUpdator.UpdateLastActivity(userId);
+            cookieProvider.SetCookie(
+                AnonymousUserCookieKey, 
+                cookieProvider.GetCookie(AnonymousUserCookieKey), 
+                AnonymousUserCookieExpiration); 
         }
     }
 }
