@@ -47,9 +47,6 @@ var Util;
     function getOppositeMonth(actionType, indexCurrentMonth, growingTime) {
         var monthNames = this.getMonthNames();
         var monthCount = monthNames.length;
-        console.log(Math.abs((indexCurrentMonth - growingTime)) % monthCount);
-        console.log(Math.abs((indexCurrentMonth - growingTime)));
-        console.log(indexCurrentMonth - growingTime);
         return actionType === ActionType.HARVESTING ? monthNames[(indexCurrentMonth + monthCount - growingTime % monthCount) % monthCount] : monthNames[(indexCurrentMonth + growingTime) % monthCount];
     }
     Util.getOppositeMonth = getOppositeMonth;
