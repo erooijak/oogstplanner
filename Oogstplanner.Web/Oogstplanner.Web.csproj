@@ -314,6 +314,7 @@
     <None Include="Scripts\oogstplanner.likes.ts" />
     <None Include="Content\Images\favicon.ico" />
     <None Include="App_Data\Migrations\201506142119_ChangeCreationDateToLastActive.sql" />
+    <None Include="App_Data\Migrations\201506200119_RemoveFollowers.sql" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Oogstplanner.Data\Oogstplanner.Data.csproj">

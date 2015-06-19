@@ -9,10 +9,10 @@ namespace Oogstplanner.Data
     {
         public IDbSet<Crop> Crops { get; set; }
         public IDbSet<User> Users { get; set; }
-        public IDbSet<Follower> Followers { get; set; }
         public IDbSet<PasswordResetToken> PasswordResetTokens { get; set; }
         public IDbSet<Calendar> Calendars { get; set; }
         public IDbSet<FarmingAction> FarmingActions { get; set; }
+        public IDbSet<Like> Likes { get; set; }
 
         public OogstplannerContext() 
             : base(string.Format("name={0}", Constants.ConnectionStringName))
