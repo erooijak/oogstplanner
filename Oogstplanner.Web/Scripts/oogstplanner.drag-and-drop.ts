@@ -104,14 +104,12 @@ $(function() {
 
             oogstplanner.setHasActionAttributeValue(month, true);
             oogstplanner.setHasActionSymbol(month);
-            console.log(month);
             
             var monthNames : string[] = Util.getMonthNames();
 
             var indexCurrentMonth : number = monthNames.indexOf(month);
             var oppositeMonth = Util.getOppositeMonth(actionType, indexCurrentMonth, dragged.growingTime);
 
-            console.log(oppositeMonth);
             oogstplanner.setHasActionAttributeValue(oppositeMonth, true);
             oogstplanner.setHasActionSymbol(oppositeMonth);
         }
