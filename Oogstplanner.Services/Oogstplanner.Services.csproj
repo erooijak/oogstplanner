@@ -62,6 +62,7 @@
     <Compile Include="CommunityService.cs" />
     <Compile Include="Contracts\ILastActivityUpdator.cs" />
     <Compile Include="LastActivityUpdator.cs" />
+    <Compile Include="AnonymousUserLastActivityUpdator.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

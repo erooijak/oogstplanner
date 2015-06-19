@@ -136,13 +136,6 @@ namespace Oogstplanner.Tests.Services
                 Times.Once,
                 "The update last activity method should be called with the " +
                 "current user's id every time the current user id is retrieved.");
-            cookieProviderMock.Verify(mock =>
-                mock.SetCookie(
-                    It.IsAny<string>(), 
-                    It.IsAny<string>(), 
-                    It.IsAny<double>()),
-                Times.Once,
-                "Cookie should be set to expire later. ");
         }
 
         [Test]
@@ -184,9 +177,8 @@ namespace Oogstplanner.Tests.Services
                     It.IsAny<string>(),
                     It.IsAny<string>(),
                     It.IsAny<double>()),
-                Times.Exactly(2),
-                "A new cookie should be set (and expiration time updated " +
-                "for the logging).");
+                Times.Once,
+                "A new cookie should be set");
             unitOfWorkMock.Verify(mock => mock.Commit(), Times.Once,
                 "Changes should be committed.");
         }

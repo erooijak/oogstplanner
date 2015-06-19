@@ -33,21 +33,56 @@ namespace Oogstplanner.Web
                 .As<IRepositoryProvider>()
                 .InstancePerRequest();
 
-            // Note: CommunityService is the base class for both AnonymousUserService and
+            // Note: ServiceBase     is the base class for both AnonymousUserService and
             //       UserService.
             //       If a constructor requests an IUserService this should be of
             //       type UserService and not AnonymousUserService.
             //       To accomplish this the AnonymousUserService is not registered below.
-            builder.RegisterAssemblyTypes(typeof(CommunityService).Assembly)
+            //
+            //       Furthermore, the LastActivityUpdator and the decorator 
+            //       AnonymousUserLastActivityUpdator are registered differently.
+            builder.RegisterAssemblyTypes(typeof(ServiceBase).Assembly)
+                .Except<UserService>()
                 .Except<AnonymousUserService>()
+                .Except<LastActivityUpdator>()
+                .Except<AnonymousUserLastActivityUpdator>()
                 .AsImplementedInterfaces()
                 .InstancePerRequest();
 
-            builder.RegisterType<AnonymousUserService>()
-                .Keyed<IUserService>(AuthenticatedStatus.Anonymous)
+            builder.RegisterType<LastActivityUpdator>()
+                .Named<ILastActivityUpdator>("lastActivityUpdator")
                 .InstancePerRequest();
+            builder.RegisterType<AnonymousUserLastActivityUpdator>()
+                .Named<ILastActivityUpdator>("anonymousUserLastActivityUpdator")
+                .InstancePerRequest();
+
+            builder.RegisterDecorator<ILastActivityUpdator>(
+                (c, inner) => c.ResolveNamed<ILastActivityUpdator>("anonymousUserLastActivityUpdator", 
+                    TypedParameter.From(inner)),
+                fromKey: "lastActivityUpdator")
+                .As<ILastActivityUpdator>()
+                .InstancePerRequest();
+
+            builder.Register(c => new UserService(
+                c.Resolve<IOogstplannerUnitOfWork>(),
+                c.Resolve<ICookieProvider>(),
+                c.ResolveNamed<ILastActivityUpdator>("lastActivityUpdator")))
+                .As<IUserService>()
+                .InstancePerRequest();
+            builder.Register(c => new AnonymousUserService(
+                c.Resolve<IOogstplannerUnitOfWork>(),
+                c.Resolve<ICookieProvider>(),
+                c.ResolveNamed<ILastActivityUpdator>("anonymousUserLastActivityUpdator")))
+                .InstancePerRequest();
+      
             builder.RegisterType<UserService>()
                 .Keyed<IUserService>(AuthenticatedStatus.Authenticated)
+                .InstancePerRequest();
+            builder.RegisterType<AnonymousUserService>()
+                .Keyed<IUserService>(AuthenticatedStatus.Anonymous)
+                .WithParameter(
+                    (p, c) => p.Name == "updator", 
+                    (p, c) => c.ResolveNamed<ILastActivityUpdator>("anonymousUserLastActivityUpdator"))
                 .InstancePerRequest();
 
             var container = builder.Build();

@@ -14,16 +14,16 @@ namespace Oogstplanner.Services
         public AnonymousUserService(
             IOogstplannerUnitOfWork unitOfWork, 
             ICookieProvider cookieProvider,
-            ILastActivityUpdator lastActivityUpdator)
+            ILastActivityUpdator anonymousUserLastActivityUpdator)
             : base(unitOfWork)
         {
-            if (lastActivityUpdator == null)
+            if (anonymousUserLastActivityUpdator == null)
             {
-                throw new ArgumentNullException("lastActivityUpdator");
+                throw new ArgumentNullException("anonymousUserLastActivityUpdator");
             }
 
             this.cookieProvider = cookieProvider;
-            this.lastActivityUpdator = lastActivityUpdator;
+            this.lastActivityUpdator = anonymousUserLastActivityUpdator;
         }
             
         protected User CurrentAnonymousUser 
@@ -83,27 +83,9 @@ namespace Oogstplanner.Services
         public int GetCurrentUserId()
         {
             int currentUserId = CurrentAnonymousUser.Id;
-            UpdateLastActivity(currentUserId);
+            lastActivityUpdator.UpdateLastActivity(currentUserId);
 
             return currentUserId;
-        }
-
-        /// <summary>
-        /// Update last activity and set the cookie to expire later. 
-        /// </summary>
-        /// <remarks>
-        /// If the latter is not done the clean-database.sh script will
-        /// remove the user while the cookie still exists, thus causing
-        /// an error that the guid from the client cookie cannot be found.
-        /// </remarks>
-        /// <param name="userId">User identifier.</param>
-        void UpdateLastActivity(int userId)
-        {
-            lastActivityUpdator.UpdateLastActivity(userId);
-            cookieProvider.SetCookie(
-                Constants.AnonymousUserCookieKey, 
-                cookieProvider.GetCookie(Constants.AnonymousUserCookieKey), 
-                Constants.AnonymousUserCookieExpiration); 
         }
     }
 }
