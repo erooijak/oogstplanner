@@ -1,5 +1,4 @@
 # Oogstplanner
-==============
 
 ## Synopsis
 
@@ -22,7 +21,7 @@ To enable lost password e-mailing remove the _ prefix from the Oogstplanner.Web/
 The application uses the Model-View-Controller architecture powered by ASP.NET MVC. 
 
 ![MVC Architecture](https://raw.githubusercontent.com/erooijak/oogstplanner/master/architecture.jpg)  
-*Layers of Model-View-Controller architecture with UnitOfWork (Task) pattern*
+*Layers of Model-View-Controller architecture with UnitOfWork (Task) pattern (image [source](https://merroun.wordpress.com/2012/03/28/mvvm-mvp-and-mvc-software-patterns-againts-3-layered-architecture/))*
 
 Here, HTTP requests to certain URLs (configured in [RouteConfig.cs](https://github.com/erooijak/oogstplanner/blob/master/Oogstplanner.Web/App_Start/RouteConfig.cs)) (triggered by JavaScript events in [Oogstplanner.Web/Scripts](https://github.com/erooijak/oogstplanner/tree/master/Oogstplanner.Web/Scripts) or browser navigation) are mapped to specific controller action methods ([Oogstplanner.Web/Controllers](https://github.com/erooijak/oogstplanner/tree/master/Oogstplanner.Web/Controllers)). These controllers use services ([Oogstplanner.Services](https://github.com/erooijak/oogstplanner/tree/master/Oogstplanner.Services)) to do operations via the data access layer ([Oogstplanner.Data](https://github.com/erooijak/oogstplanner/tree/master/Oogstplanner.Data)) using the data model representation ([Oogstplanner.Models](https://github.com/erooijak/oogstplanner/tree/master/Oogstplanner.Models)). Specifically, the Unit of Work ([OogstplannerUnitOfWork](https://github.com/erooijak/oogstplanner/blob/master/Oogstplanner.Data/OogstplannerUnitOfWork.cs)) coordinates the work of the repositories using a single [OogstplannerContext](https://github.com/erooijak/oogstplanner/blob/master/Oogstplanner.Data/OogstplannerContext.cs). The repositories being classes that provide methods on the context, and the context being an abstraction layer which queries the database. Based on the feedback of the services the controller update the Views ([Oogstplanner.Web/Views](https://github.com/erooijak/oogstplanner/tree/master/Oogstplanner.Web/Views)) which are rendered in the browser as HTML.
 
@@ -85,7 +84,7 @@ Currently the system is in the Minimal Viable Product stage. There are a lot of 
 - [ ] Improved mobile support.
 - [ ] Improved CSS styling.
 - [ ] Logging of errors.
-- [ ] American crops and language.
+- [ ] Data and language of other countries.
 - [ ] Integration with external seeds webshop.
 - [ ] Add area for blog posts and articles.
 
