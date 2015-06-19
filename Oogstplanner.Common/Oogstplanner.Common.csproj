@@ -37,10 +37,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="EnumExtension.cs" />
     <Compile Include="MonthHelper.cs" />
-    <Compile Include="SecurityException.cs" />
     <Compile Include="MembershipHelper.cs" />
-    <Compile Include="UserNotFoundException.cs" />
     <Compile Include="Constants.cs" />
+    <Compile Include="UserNotFoundException.cs" />
+    <Compile Include="SecurityException.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
