@@ -33,7 +33,7 @@ namespace Oogstplanner.Services
                 if (string.IsNullOrEmpty(GuidOnClient))
                 {
                     var guid = Guid.NewGuid().ToString();
-                    AddUser(guid, null, null);
+                    AddUser(guid, null, null); // TODO: this is violating SRP and CQS.
                     GuidOnClient = guid;
 
                     return UnitOfWork.Users.GetUserByUserName(guid);

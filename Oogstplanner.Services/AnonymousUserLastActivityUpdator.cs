@@ -42,9 +42,16 @@ namespace Oogstplanner.Services
         {
             lastActivityUpdator.UpdateLastActivity(userId);
 
+            var guidOnClient = cookieProvider.GetCookie(Constants.AnonymousUserCookieKey);
+
+            if (string.IsNullOrEmpty(guidOnClient))
+            {
+                return;
+            }
+
             cookieProvider.SetCookie(
                 Constants.AnonymousUserCookieKey, 
-                cookieProvider.GetCookie(Constants.AnonymousUserCookieKey), 
+                guidOnClient, 
                 Constants.AnonymousUserCookieExpiration); 
         }
     }
