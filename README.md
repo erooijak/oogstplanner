@@ -1,5 +1,3 @@
-# Oogstplanner
-
 ## Synopsis
 
 ASP.NET MVC 4 harvesting planner app running on [Mono](http://www.mono-project.com) using a [PostgreSQL](http://www.postgresql.org/) database.
