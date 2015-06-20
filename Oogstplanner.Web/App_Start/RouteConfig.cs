@@ -166,12 +166,6 @@ namespace Oogstplanner.Web
             );
 
             routes.MapRoute(
-                name: "CommunityLastActiveUsers",
-                url: "gemeenschap/actief",
-                defaults: new {  controller = "Community", action = "LastActiveUsers" }
-            );
-
-            routes.MapRoute(
                 name: "Community",
                 url: "gemeenschap",
                 defaults: new {  controller = "Community", action = "Index" }
