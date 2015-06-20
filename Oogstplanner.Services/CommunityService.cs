@@ -23,12 +23,12 @@ namespace Oogstplanner.Services
 
         public IEnumerable<User> SearchUsers(string searchTerm)
         {
-            throw new System.NotImplementedException();
+            return UnitOfWork.Users.SearchUsers(searchTerm);
         }
 
         public IEnumerable<User> GetRecentlyActiveUsers(int count)
         {
-            throw new System.NotImplementedException();
+            return UnitOfWork.Users.GetRecentlyActiveUsers(count);
         }
     }
 }

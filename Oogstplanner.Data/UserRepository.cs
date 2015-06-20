@@ -50,12 +50,14 @@ namespace Oogstplanner.Data
 
         public IEnumerable<User> GetRecentlyActiveUsers(int count) 
         {
-            throw new System.NotImplementedException();
+            return DbSet.OrderByDescending(u => u.LastActive).Take(count);
         }
 
         public IEnumerable<User> SearchUsers(string searchTerm)
         {
-            throw new System.NotImplementedException();
+            return DbSet.Where(u => 
+                u.AuthenticationStatus == AuthenticatedStatus.Authenticated
+                && (u.Name.Contains(searchTerm) || u.FullName.Contains(searchTerm)));
         }
     }
 }

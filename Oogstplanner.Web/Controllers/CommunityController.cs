@@ -13,8 +13,11 @@ namespace Oogstplanner.Web.Controllers
     public sealed class CommunityController : Controller
     {        
         readonly ICalendarLikingService calendarLikingService;
+        readonly ICommunityService communityService;
 
-        public CommunityController(ICalendarLikingService calendarLikingService)
+        public CommunityController(
+            ICalendarLikingService calendarLikingService,
+            ICommunityService communityService)
         {
             if (calendarLikingService == null)
             {
@@ -22,6 +25,16 @@ namespace Oogstplanner.Web.Controllers
             }
       
             this.calendarLikingService = calendarLikingService;
+            this.communityService = communityService;
+        }
+
+        //
+        // GET /gemeenschap/
+        [HttpGet]
+        [AllowAnonymous]
+        public ViewResult Index()
+        {
+            return View();
         }
             
         //
@@ -63,6 +76,29 @@ namespace Oogstplanner.Web.Controllers
             var usersJson = JsonConvert.SerializeObject(users);
 
             return new JsonStringResult(usersJson);
+        }
+
+        //
+        // GET /gemeenschap/zoek/{searchTerm}
+        [HttpGet]
+        [AllowAnonymous]
+        public ContentResult SearchUsers(string searchTerm)
+        {
+            var users = communityService.SearchUsers(searchTerm);
+
+            throw new NotImplementedException();
+        }
+
+        //
+        // GET /gemeenschap/actief
+        [HttpGet]
+        [AllowAnonymous]
+        public ContentResult LastActiveUsers(int page = 1, int pageSize = 10)
+        {
+            const int maxUsers = 3;
+            var users = communityService.GetRecentlyActiveUsers(3);
+
+            throw new NotImplementedException();
         }
     }
 }

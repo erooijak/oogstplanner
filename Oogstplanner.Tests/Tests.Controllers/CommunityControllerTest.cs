@@ -18,11 +18,14 @@ namespace Oogstplanner.Tests.Controllers
         {
             // ARRANGE
             var calendarLikingServiceMock = new Mock<ICalendarLikingService>();
+            var communityServiceMock = new Mock<ICommunityService>();
             calendarLikingServiceMock.Setup(mock =>
                 mock.GetLikes(It.IsAny<int>()))
                 .Returns(new[] { new Like() });
 
-            var controller = new CommunityController(calendarLikingServiceMock.Object);
+            var controller = new CommunityController(
+                calendarLikingServiceMock.Object,
+                communityServiceMock.Object);
 
             // ACT
             var contentResult = controller.GetLikesCount(It.IsAny<int>()) as ContentResult;
@@ -37,6 +40,7 @@ namespace Oogstplanner.Tests.Controllers
         {
             // ARRANGE
             var calendarLikingServiceMock = new Mock<ICalendarLikingService>();
+            var communityServiceMock = new Mock<ICommunityService>();
 
             const string expectedName1 = "test name 1";
             const string expectedName2 = "test name 2";
@@ -50,9 +54,11 @@ namespace Oogstplanner.Tests.Controllers
                 mock.GetLikes(It.IsAny<int>()))
                 .Returns(expectedLikes);
 
-            var controller = new CommunityController(calendarLikingServiceMock.Object);
+            var controller = new CommunityController(
+                calendarLikingServiceMock.Object,
+                communityServiceMock.Object);
 
-            // AC6
+            // ACT
             var contentResult = controller.GetLikesUserNames(It.IsAny<int>());
 
             // ASSERT
@@ -63,17 +69,19 @@ namespace Oogstplanner.Tests.Controllers
                 "the liking service.");
         }
 
-
         [Test]
         public void Controllers_Community_UnLikeSuccess()
         {
             // ARRANGE
             var calendarLikingServiceMock = new Mock<ICalendarLikingService>();
+            var communityServiceMock = new Mock<ICommunityService>();
             bool wasUnlike = true;
             calendarLikingServiceMock.Setup(mock =>
                 mock.Like(It.IsAny<int>(), out wasUnlike));
 
-            var controller = new CommunityController(calendarLikingServiceMock.Object);
+            var controller = new CommunityController(
+                calendarLikingServiceMock.Object,
+                communityServiceMock.Object);
 
             // ACT
             var viewResult = controller.Like(It.IsAny<int>());
@@ -95,11 +103,14 @@ namespace Oogstplanner.Tests.Controllers
         {
             // ARRANGE
             var calendarLikingServiceMock = new Mock<ICalendarLikingService>();
+            var communityServiceMock = new Mock<ICommunityService>();
             bool wasUnlike;
             calendarLikingServiceMock.Setup(mock => mock.Like(It.IsAny<int>(), out wasUnlike))
                 .Throws<Exception>();
 
-            var controller = new CommunityController(calendarLikingServiceMock.Object);
+            var controller = new CommunityController(
+                calendarLikingServiceMock.Object,
+                communityServiceMock.Object);
 
             // ACT
             var viewResult = controller.Like(It.IsAny<int>());
@@ -114,8 +125,11 @@ namespace Oogstplanner.Tests.Controllers
         {
             // ARRANGE
             var calendarLikingServiceMock = new Mock<ICalendarLikingService>();
+            var communityServiceMock = new Mock<ICommunityService>();
 
-            var controller = new CommunityController(calendarLikingServiceMock.Object);
+            var controller = new CommunityController(
+                calendarLikingServiceMock.Object,
+                communityServiceMock.Object);
 
             // ACT
             var viewResult = controller.Like(It.IsAny<int>());
@@ -136,11 +150,14 @@ namespace Oogstplanner.Tests.Controllers
         {
             // ARRANGE
             var calendarLikingServiceMock = new Mock<ICalendarLikingService>();
+            var communityServiceMock = new Mock<ICommunityService>();
             bool wasUnlike;
             calendarLikingServiceMock.Setup(mock => mock.Like(It.IsAny<int>(), out wasUnlike))
                 .Throws<Exception>();
 
-            var controller = new CommunityController(calendarLikingServiceMock.Object);
+            var controller = new CommunityController(
+                calendarLikingServiceMock.Object,
+                communityServiceMock.Object);
 
             // ACT
             var viewResult = controller.Like(It.IsAny<int>()) as JsonResult;

@@ -159,6 +159,24 @@ namespace Oogstplanner.Web
                 defaults: new { controller = "Account", action = "UserInfo" }
             );
 
+            routes.MapRoute(
+                name: "CommunitySearchUsers",
+                url: "gemeenschap/zoek/{searchTerm}",
+                defaults: new {  controller = "Community", action = "SearchUsers" }
+            );
+
+            routes.MapRoute(
+                name: "CommunityLastActiveUsers",
+                url: "gemeenschap/actief",
+                defaults: new {  controller = "Community", action = "LastActiveUsers" }
+            );
+
+            routes.MapRoute(
+                name: "Community",
+                url: "gemeenschap",
+                defaults: new {  controller = "Community", action = "Index" }
+            );
+
             routes.MapRoute (
                 "Default",
                 "{controller}/{action}/{id}",
