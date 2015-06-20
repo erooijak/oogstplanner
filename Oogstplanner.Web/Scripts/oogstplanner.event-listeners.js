@@ -23,7 +23,7 @@
     });
 
     /* Add click listener to login or register button which shows modal popup. */
-    $('.registerOrLogin').on('click', function () {
+    $('.register-or-login').on('click', function () {
         BootstrapDialog.show({
             title: 'De oogstplanner gemeenschap',
             message: $('<div></div>').load('/gebruiker/inloggenofregistreren')
