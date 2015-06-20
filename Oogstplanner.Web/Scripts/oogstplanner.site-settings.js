@@ -21,6 +21,10 @@ $(function () {
         oogstplanner.showLoginBox();
     });
 
+    $('#search-button').on('click', function () { 
+        window.location.href='/gemeenschap/zoek/' + $('#search-input').val() 
+    });
+
     oogstplanner.makeNumericTextBoxesNumeric();
 
 });

@@ -294,6 +294,11 @@
     <Content Include="Views\Community\Index.cshtml" />
     <Content Include="Views\Community\Search.cshtml" />
     <Content Include="Views\Community\_SearchResult.cshtml" />
+    <Content Include="Views\Community\_CropOfTheYear.cshtml" />
+    <Content Include="Views\Community\_CropOfTheMonth.cshtml" />
+    <Content Include="Content\Images\aubergine.jpg" />
+    <Content Include="Content\Images\broccoli.jpg" />
+    <Content Include="Content\Images\snijbiet.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>

@@ -162,7 +162,7 @@ namespace Oogstplanner.Web
             routes.MapRoute(
                 name: "CommunitySearchUsers",
                 url: "gemeenschap/zoek/{searchTerm}",
-                defaults: new {  controller = "Community", action = "SearchUsers" }
+                defaults: new {  controller = "Community", action = "Search" }
             );
 
             routes.MapRoute(

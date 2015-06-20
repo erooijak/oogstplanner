@@ -16,7 +16,7 @@
     <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
         <h3 class="dark">Vind andere mensen op OogstPlanner.nl</h3>
         <div class="input-group btn-responsive">
-            <input  type="text" class="form-control" placeholder="Naam of gebruikersnaam" />
+            <input id="search-input" type="text" class="form-control" placeholder="Naam of gebruikersnaam"/>
             <span class="input-group-btn">
                 <div class="btn btn-primary input-xs" id="search-button"><span class="glyphicon glyphicon-search"></span></div>
             </span>
@@ -24,53 +24,14 @@
     
         <br/><h3 class="dark">Recent actieve mensen</h3>
 
-        <div class="well marginalized">
-            <div class="row">
-            @foreach(var user in Model)
-            {
-                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                    <h4>@user.Name</h4>
-                    <div align="center">
-                        <a href="/gebruiker/@user.Name"><img alt="Gebruikersplaatje" src="/Content/Images/social.jpg" class="img-circle img-responsive" /><br/></a>
-                    </div>
-                    @foreach (var c in user.Calendars)
-                    {
-                        @Html.ActionLink(c.Name, "YearForUser", "Calendar", new { userName = user.Name }, null)<br/>
-                        <i>Aantal likes: <strong>@c.Likes.Count()</strong></i>
-
-                        @* Check if user is doing something this month and if so display it in the list.*@
-                        var action = c.FarmingActions.FirstOrDefault(fa => (int)fa.Month == Math.Pow(2, DateTime.Now.Month-1));
-                        if (action != null)
-                        {
-                            <br/><span>@if (action.Action == ActionType.Sowing) { <span>Zaait</span> } else { <span>Oogst</span> } 
-                            deze maand: @action.Crop.Name</span>
-                        }
-                    }
-                </div>
-            }
-            </div>
-            <div class="row">
-                @Html.PagedListPager(Model, page => Url.Action("Index", new { page, pageSize = Model.PageSize }))
-                <span class="dark">@Model.FirstItemOnPage tot @Model.LastItemOnPage van @Model.TotalItemCount laatst actieve gebruikers.</span>
-            </div>
-        </div> @* End search results well *@
+        @{ Html.RenderPartial("_SearchResult"); }
 
     </div> @* End first column *@
 
     <div class="col-lg-4 col-md-4 hidden-sm hidden-xs">
-        
-        <br/><h3 class="dark">Het gewas van @DateTime.Now.Year is: </h3>
-        <img alt="Broccoli: gewas van het jaar" src="/Content/Images/broccoli.jpg" class="img-circle img-responsive" /><br/>
-        <h5><i>Broccoli</i></h5>
-
-        @if (Request.IsAuthenticated)
-        {
-            <span>Bekijk uw @Html.ActionLink("eigen profiel", "Info", "Account")</span>
-        }
-        else
-        {
-            <span class="registerOrLogin">Meld u aan bij de <a href="#">de oogstplanner gemeenschap</a> om grip op gezaaide broccoli nooit kwijt te raken.</span>
-        }
+        <br/>
+        <br/>
+        @{ Html.RenderPartial("_CropOfTheYear"); }
 
     </div>
     

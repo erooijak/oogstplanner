@@ -167,5 +167,61 @@ namespace Oogstplanner.Tests.Controllers
                 "If the retrieval is unsuccessful the controller should return this.");
         }
 
+        [Test]
+        public void Controllers_Community_Search()
+        {
+            // ARRANGE
+            var calendarLikingServiceMock = new Mock<ICalendarLikingService>();
+            var communityServiceMock = new Mock<ICommunityService>();
+
+            var controller = new CommunityController(
+                calendarLikingServiceMock.Object,
+                communityServiceMock.Object);
+
+            const string expectedSearchTerm = "testttt";
+
+            // ACT
+            var viewResult = controller.Search(
+                expectedSearchTerm,
+                new Random().Next(1,10),
+                new Random().Next(1,10));
+
+            // ASSERT
+            communityServiceMock.Verify(mock =>
+                mock.SearchUsers(expectedSearchTerm),
+                Times.Once,
+                "Users with the specific search term should be searched.");
+            Assert.AreEqual("", viewResult.ViewBag.SearchDescription,
+                "No search description (information after paging) should be displayed on the page.");
+            Assert.AreEqual(expectedSearchTerm, viewResult.ViewBag.SearchTerm,
+                "Search term should be returned to page.");
+        }
+
+        [Test]
+        public void Controllers_Community_Index()
+        {
+            // ARRANGE
+            var calendarLikingServiceMock = new Mock<ICalendarLikingService>();
+            var communityServiceMock = new Mock<ICommunityService>();
+
+            var controller = new CommunityController(
+                calendarLikingServiceMock.Object,
+                communityServiceMock.Object);
+
+            // ACT
+            var viewResult = controller.Index(
+                new Random().Next(1,10),
+                new Random().Next(1,10)) as ViewResult;
+
+            // ASSERT
+            communityServiceMock.Verify(mock =>
+                mock.GetRecentlyActiveUsers(It.IsAny<int>()),
+                Times.Once,
+                "Recently active users should be retrieved");
+            Assert.AreEqual("laatst actieve gebruikers", 
+                viewResult.ViewBag.SearchDescription,
+                "Search term should be returned to page.");
+        }
+
     }
 }

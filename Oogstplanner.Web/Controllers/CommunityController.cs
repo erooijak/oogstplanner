@@ -40,10 +40,10 @@ namespace Oogstplanner.Web.Controllers
         [AllowAnonymous]
         public ActionResult Index(int page = 1, int pageSize = 3)
         {
+            ViewBag.SearchDescription = "laatst actieve gebruikers";
+
             // Just to keep performance down if we happen to scale to millions of users.
             const int maxUsers = 1000;
-
-            ViewBag.Action = "Index";
 
             var users = communityService.GetRecentlyActiveUsers(maxUsers);
             var model = users.ToPagedList(page, pageSize); 
@@ -96,9 +96,11 @@ namespace Oogstplanner.Web.Controllers
         // GET /gemeenschap/zoek/{searchTerm}
         [HttpGet]
         [AllowAnonymous]
-        public ViewResult SearchUsers(string searchTerm, int page = 1, int pageSize = 3)
+        public ViewResult Search(string searchTerm, int page = 1, int pageSize = 3)
         {
-            // TODO: Implement caching
+            ViewBag.SearchDescription = string.Empty;
+            ViewBag.SearchTerm = searchTerm;
+
             var users = communityService.SearchUsers(searchTerm);
             var model = new PagedList<User>(users, page, pageSize);
 

@@ -1,0 +1,13 @@
+﻿<br/><h3 class="dark">Het gewas van de maand @DateTime.Now.ToString("MMMM", new CultureInfo("nl-NL")) is: </h3>
+<img alt="Snijbiet: gewas van de maand" src="/Content/Images/snijbiet.jpg" class="img-circle img-responsive" />
+<h5><i>Snijbiet</i></h5>
+
+@if (Request.IsAuthenticated)
+{
+    <span>Bekijk uw @Html.ActionLink("eigen profiel", "Info", "Account")</span>
+}
+else
+{
+    <span class="registerOrLogin">Meld u aan bij de <a href="#">de oogstplanner gemeenschap</a> 
+    om te kijken wanneer u uw snijbiet dient te zaaien om het met de kerst te kunnen serveren.</span>
+}
