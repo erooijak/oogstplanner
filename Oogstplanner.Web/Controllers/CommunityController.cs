@@ -59,7 +59,7 @@ namespace Oogstplanner.Web.Controllers
             try
             {
                 bool wasUnlike;
-                calendarLikingService.Like(calendarId, out wasUnlike);
+                calendarLikingService.ToggleLike(calendarId, out wasUnlike);
                 return Json(new { success = true, wasUnlike });
             }
             catch (Exception ex) 

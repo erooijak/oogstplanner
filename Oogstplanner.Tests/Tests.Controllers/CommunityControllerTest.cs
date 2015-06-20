@@ -77,7 +77,7 @@ namespace Oogstplanner.Tests.Controllers
             var communityServiceMock = new Mock<ICommunityService>();
             bool wasUnlike = true;
             calendarLikingServiceMock.Setup(mock =>
-                mock.Like(It.IsAny<int>(), out wasUnlike));
+                mock.ToggleLike(It.IsAny<int>(), out wasUnlike));
 
             var controller = new CommunityController(
                 calendarLikingServiceMock.Object,
@@ -89,7 +89,7 @@ namespace Oogstplanner.Tests.Controllers
             // ASSERT
             calendarLikingServiceMock
                 .Verify(mock => 
-                    mock.Like(It.IsAny<int>(), out wasUnlike), 
+                    mock.ToggleLike(It.IsAny<int>(), out wasUnlike), 
                     Times.Once, 
                     "The Like method should be called once.");
             Assert.IsTrue(viewResult.Data.ToString().Contains("success = True"),
@@ -105,7 +105,7 @@ namespace Oogstplanner.Tests.Controllers
             var calendarLikingServiceMock = new Mock<ICalendarLikingService>();
             var communityServiceMock = new Mock<ICommunityService>();
             bool wasUnlike;
-            calendarLikingServiceMock.Setup(mock => mock.Like(It.IsAny<int>(), out wasUnlike))
+            calendarLikingServiceMock.Setup(mock => mock.ToggleLike(It.IsAny<int>(), out wasUnlike))
                 .Throws<Exception>();
 
             var controller = new CommunityController(
@@ -138,7 +138,7 @@ namespace Oogstplanner.Tests.Controllers
             bool wasUnlike;
             calendarLikingServiceMock
                 .Verify(mock => 
-                    mock.Like(It.IsAny<int>(), out wasUnlike), 
+                    mock.ToggleLike(It.IsAny<int>(), out wasUnlike), 
                     Times.Once, 
                     "The Like method should be called once.");
             Assert.IsTrue(viewResult.Data.ToString().Contains("success = True"),
@@ -152,7 +152,7 @@ namespace Oogstplanner.Tests.Controllers
             var calendarLikingServiceMock = new Mock<ICalendarLikingService>();
             var communityServiceMock = new Mock<ICommunityService>();
             bool wasUnlike;
-            calendarLikingServiceMock.Setup(mock => mock.Like(It.IsAny<int>(), out wasUnlike))
+            calendarLikingServiceMock.Setup(mock => mock.ToggleLike(It.IsAny<int>(), out wasUnlike))
                 .Throws<Exception>();
 
             var controller = new CommunityController(

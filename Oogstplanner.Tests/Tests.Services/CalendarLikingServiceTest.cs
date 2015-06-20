@@ -48,7 +48,7 @@ namespace Oogstplanner.Tests.Services
             bool wasUnlike = false;
 
             // ACT
-            service.Like(It.IsAny<int>(), out wasUnlike);
+            service.ToggleLike(It.IsAny<int>(), out wasUnlike);
 
             // ASSERT
             Assert.AreEqual(2, expectedLike.Count, 
@@ -98,7 +98,7 @@ namespace Oogstplanner.Tests.Services
             bool wasUnlike;
                 
             // ACT
-            service.Like(It.IsAny<int>(), out wasUnlike);
+            service.ToggleLike(It.IsAny<int>(), out wasUnlike);
 
             // ASSERT
             likesRepositoryMock.Verify(mock =>
@@ -149,7 +149,7 @@ namespace Oogstplanner.Tests.Services
             bool wasUnlike;
 
             // ACT
-            service.Like(It.IsAny<int>(), out wasUnlike);
+            service.ToggleLike(It.IsAny<int>(), out wasUnlike);
 
             // ASSERT
             likesRepositoryMock.Verify(mock => mock.Delete(expectedLike), Times.Never,

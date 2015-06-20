@@ -36,7 +36,7 @@ namespace Oogstplanner.Services
             }
         }
 
-        public void Like(int calendarId, out bool wasUnlike)
+        public void ToggleLike(int calendarId, out bool wasUnlike)
         {
             var like = new Like { User = CurrentUser };
             var calendar = UnitOfWork.Calendars.GetById(calendarId);
