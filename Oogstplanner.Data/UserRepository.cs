@@ -50,7 +50,8 @@ namespace Oogstplanner.Data
 
         public IEnumerable<User> GetRecentlyActiveUsers(int count) 
         {
-            return DbSet.OrderByDescending(u => u.LastActive).Take(count);
+            return DbSet.Where(u => u.AuthenticationStatus == AuthenticatedStatus.Authenticated)
+                .OrderByDescending(u => u.LastActive).Take(count).ToList();
         }
 
         public IEnumerable<User> SearchUsers(string searchTerm)
