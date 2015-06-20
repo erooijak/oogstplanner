@@ -17,6 +17,120 @@ namespace Oogstplanner.Tests.Controllers
     [TestFixture]
     public class CalendarControllerTest
     {
+        static Stack<MonthViewModel> GetExpectedMonthOrdering()
+        {
+            return new Stack<MonthViewModel>(new[] 
+                {   
+                    new MonthViewModel("august", "AUGUSTUS", true), 
+                    new MonthViewModel("may", "MEI", false),
+                    new MonthViewModel("february", "FEBRUARI", false),
+                    new MonthViewModel("november", "NOVEMBER", false),
+                    new MonthViewModel("july", "JULI", false),
+                    new MonthViewModel("april", "APRIL", true),
+                    new MonthViewModel("january","JANUARI", false),
+                    new MonthViewModel("october", "OKTOBER", false),     
+                    new MonthViewModel("june", "JUNI", false),
+                    new MonthViewModel("march", "MAART", false),
+                    new MonthViewModel("december", "DECEMBER", false),
+                    new MonthViewModel("september", "SEPTEMBER", false)       
+                });  
+
+        }
+
+        [Test]
+        public void Controllers_Calendar_SowingAndHarvesting_DisplayMonthOrdering()
+        {
+            // ARRANGE
+            var expectedMonthOrdering = GetExpectedMonthOrdering();
+
+            var calendarServiceMock = new Mock<ICalendarService>();
+            var farmingActionServiceMock = new Mock<IFarmingActionService>();
+            var cropProviderMock = new Mock<ICropProvider>();
+
+            var controller = new CalendarController(
+                calendarServiceMock.Object,
+                farmingActionServiceMock.Object,
+                cropProviderMock.Object
+            );
+
+            // ACT
+            var result = (SowingAndHarvestingViewModel)((ViewResult)controller.SowingAndHarvesting()).Model;
+
+            // ASSERT
+            while (expectedMonthOrdering.Count != 0)
+            {
+                var expected = expectedMonthOrdering.Pop().MonthForDisplay;
+                var actual = result.OrderedMonthViewModels.Pop().MonthForDisplay;
+
+                Assert.AreEqual(expected, actual,
+                    "The months for display should be equal since they are " +
+                    "ordered in the above way to have proper display.");
+            }
+        }
+
+        [Test]
+        public void Controllers_Calendar_SowingAndHarvesting_DataMonthOrdering()
+        {
+            // ARRANGE
+            var expectedMonthOrdering = GetExpectedMonthOrdering();
+
+            var calendarServiceMock = new Mock<ICalendarService>();
+            var farmingActionServiceMock = new Mock<IFarmingActionService>();
+            var cropProviderMock = new Mock<ICropProvider>();
+
+            var controller = new CalendarController(
+                calendarServiceMock.Object,
+                farmingActionServiceMock.Object,
+                cropProviderMock.Object
+            );
+
+            // ACT
+            var result = (SowingAndHarvestingViewModel)((ViewResult)controller.SowingAndHarvesting()).Model;
+
+            // ASSERT
+            while (expectedMonthOrdering.Count != 0)
+            {
+                var expected = expectedMonthOrdering.Pop().MonthForDataAttribute;
+                var actual = result.OrderedMonthViewModels.Pop().MonthForDataAttribute;
+
+                Assert.AreEqual(expected, actual,
+                    "The months in the data attributes should be in the correct order and format.");
+            }
+        }
+
+        [Test]
+        public void Controllers_Calendar_SowingAndHarvesting_HasActions()
+        {
+            // ARRANGE
+            var expectedMonthOrdering = GetExpectedMonthOrdering();
+
+            var calendarServiceMock = new Mock<ICalendarService>();
+            var farmingActionServiceMock = new Mock<IFarmingActionService>();
+            var cropProviderMock = new Mock<ICropProvider>();
+            calendarServiceMock.Setup(c => c.GetMonthsWithAction())
+                .Returns(Month.April | Month.August);
+
+            var controller = new CalendarController(
+                calendarServiceMock.Object,
+                farmingActionServiceMock.Object,
+                cropProviderMock.Object
+            );
+
+            // ACT
+            var result = (SowingAndHarvestingViewModel)((ViewResult)controller.SowingAndHarvesting()).Model;
+
+            // ASSERT
+            while (expectedMonthOrdering.Count != 0)
+            {
+                var expected = expectedMonthOrdering.Pop().HasAction;
+                var actual = result.OrderedMonthViewModels.Pop().HasAction;
+
+                Assert.AreEqual(expected, actual,
+                    "The has action attribute should be equal to April and August " +
+                    "since that is returned by the mock.");
+            }
+        } 
+
         [Test]
         public void Controllers_Calendar_Month()
         {
@@ -44,7 +158,7 @@ namespace Oogstplanner.Tests.Controllers
             var viewResult = controller.Month(Month.April) as PartialViewResult;
 
             // ASSERT
-            Assert.AreEqual("~/Views/Home/_MonthCalendar.cshtml", viewResult.ViewName,
+            Assert.AreEqual("~/Views/Calendar/_MonthCalendar.cshtml", viewResult.ViewName,
                 "Month should return the _MonthCalendar.cshtml partial view.");
             Assert.AreEqual(expectedMonth, ((MonthCalendarViewModel)viewResult.Model).DisplayMonth,
                 "And model should be the viewmodel returned by the service.");

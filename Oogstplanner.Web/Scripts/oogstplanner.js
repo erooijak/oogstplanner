@@ -86,8 +86,8 @@ var Oogstplanner = (function () {
     };
     Oogstplanner.prototype.removeAccount = function () {
         $.post('/gebruiker/verwijderen').done(function () {
-            Util.refreshPage();
             Notification.informational('Account verwijderd', 'Uw account is succesvol verwijderd.');
+            Util.refreshPage();
         }).fail(function () { return Notification.error(); });
     };
     Oogstplanner.prototype.resizeCropSelectionBox = function () {

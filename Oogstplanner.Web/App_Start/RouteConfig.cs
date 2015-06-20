@@ -17,7 +17,7 @@ namespace Oogstplanner.Web
             routes.MapRoute(
                 name: "SowingAndHarvesting",
                 url: "zaaienenoogsten",
-                defaults: new { controller = "Home", action = "SowingAndHarvesting" }
+                defaults: new { controller = "Home", action = "Calendar" }
             );
 
             routes.MapRoute(

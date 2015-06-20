@@ -82,12 +82,12 @@
 
 @if (Model.IsOwnCalendar)
 {
-    <span>@Html.ActionLink("Ga naar Zaaien en oogsten", "SowingAndHarvesting",  "Home",  null, null)</span>
+    <span>@Html.ActionLink("Ga naar Zaaien en oogsten", "SowingAndHarvesting", "Calendar", null, null)</span>
 }
 else
 {
-    <span>Naar @Html.ActionLink("profiel van " + Model.UserName, "UserInfo",  "Account",  new { userName = Model.UserName }, null)<br/></span>
-    <span>...Of ga naar @Html.ActionLink("Zaaien en oogsten", "SowingAndHarvesting",  "Home",  null, null) om uw eigen kalender samen te stellen</span>
+    <span>Naar @Html.ActionLink("profiel van " + Model.UserName, "UserInfo", "Account", new { userName = Model.UserName }, null)<br/></span>
+    <span>...Of ga naar @Html.ActionLink("Zaaien en oogsten", "SowingAndHarvesting", "Calendar", null, null) om uw eigen kalender samen te stellen</span>
 }
 
 </div> @* End yearcalendar *@
