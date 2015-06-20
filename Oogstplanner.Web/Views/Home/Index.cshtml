@@ -26,13 +26,14 @@
 
                 <div class="panel panel-default dark visible-xs">
                     <h4>@Html.ActionLink("Oogst of zaai een gewas", "SowingAndHarvesting",  "Home",  null, null)</h4>
-                    <!-- @Html.ActionLink("Vind een andere gebruiker", "TODO",  "TODO",  null, null)<br/> -->
-                    <!--@Html.ActionLink("Veelgestelde vragen lijst (FAQ)", "TODO",  "TODO",  null, null)<br/> -->
                 </div>
                 <div class="panel panel-default dark visible-xs">
                     <h4>@Html.ActionLink("Bekijk uw zaaikalender", "Year",  "Calendar",  null, null)</h4>
                 </div>
-
+                <div class="panel panel-default dark visible-xs">
+                    <h4>@Html.ActionLink("Gemeenschap", "Index",  "Community",  null, null)</h4>
+                    <!--@Html.ActionLink("Veelgestelde vragen lijst (FAQ)", "TODO",  "TODO",  null, null)<br/> -->
+                </div>
 
             </div>
         </div> @* End first column *@
@@ -44,12 +45,19 @@
                 <div class="col-lg-12 col-md-6 col-sm-6">
                     <img src="/Content/Images/planten.jpg" alt="oogsten of zaaien" /><br/>            
                     @Html.ActionLink("Oogst of zaai een gewas", "SowingAndHarvesting",  "Home", null, new { @class = "btn-lg btn-primary no-underline" } )<br/><br/>
-                    <!-- @Html.ActionLink("Vind een andere gebruiker", "TODO",  "TODO",  null, null)<br/> -->
                 </div>
                 <div class="col-lg-12 col-md-6 col-sm-6">
                     <img src="/Content/Images/bonen.jpg" alt="zaaikalender" /><br/>
-                    @Html.ActionLink("Bekijk uw zaaikalender", "Year",  "Calendar", null, new { @class = "btn-lg btn-primary no-underline" } )
-                    <!--@Html.ActionLink("Veelgestelde vragen lijst (FAQ)", "TODO",  "TODO",  null, null)<br/> -->
+
+                    @* 50% change of displaying one link or the other. (Only one link fits the page.) *@
+                    @if (new Random().Next(2) == 1)
+                    {
+                        @Html.ActionLink("Bekijk uw zaaikalender", "Year",  "Calendar", null, new { @class = "btn-lg btn-primary no-underline" } )<br/><br/>
+                    }
+                    else
+                    {
+                        @Html.ActionLink("Gemeenschap", "Index",  "Community", null, new { @class = "btn-lg btn-primary no-underline" } )<br/><br/>
+                    }
                 </div>
             </div>
         </div> @* End second column *@

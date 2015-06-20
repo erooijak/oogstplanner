@@ -3,7 +3,9 @@ using System.Linq;
 using System.Web.Mvc;
 
 using Newtonsoft.Json;
+using PagedList;
 
+using Oogstplanner.Models;
 using Oogstplanner.Services;
 using Oogstplanner.Web.Utilities.Helpers;
 
@@ -23,6 +25,10 @@ namespace Oogstplanner.Web.Controllers
             {
                 throw new ArgumentNullException("calendarLikingService");
             }
+            if (communityService == null)
+            {
+                throw new ArgumentException("communityService");
+            }
       
             this.calendarLikingService = calendarLikingService;
             this.communityService = communityService;
@@ -32,9 +38,15 @@ namespace Oogstplanner.Web.Controllers
         // GET /gemeenschap/
         [HttpGet]
         [AllowAnonymous]
-        public ViewResult Index()
+        public ActionResult Index(int page = 1, int pageSize = 3)
         {
-            return View();
+            // Just to keep performance down if we happen to scale to millions of users.
+            const int maxUsers = 1000;
+
+            var users = communityService.GetRecentlyActiveUsers(maxUsers);
+            var model = users.ToPagedList(page, pageSize); 
+
+            return View(model);
         }
             
         //
@@ -82,23 +94,14 @@ namespace Oogstplanner.Web.Controllers
         // GET /gemeenschap/zoek/{searchTerm}
         [HttpGet]
         [AllowAnonymous]
-        public ContentResult SearchUsers(string searchTerm)
+        public ViewResult SearchUsers(string searchTerm, int page = 1, int pageSize = 3)
         {
+            // TODO: Implement caching
             var users = communityService.SearchUsers(searchTerm);
+            var model = new PagedList<User>(users, page, pageSize);
 
-            throw new NotImplementedException();
+            return View(model);
         }
-
-        //
-        // GET /gemeenschap/actief
-        [HttpGet]
-        [AllowAnonymous]
-        public ContentResult LastActiveUsers(int page = 1, int pageSize = 10)
-        {
-            const int maxUsers = 3;
-            var users = communityService.GetRecentlyActiveUsers(3);
-
-            throw new NotImplementedException();
-        }
+            
     }
 }

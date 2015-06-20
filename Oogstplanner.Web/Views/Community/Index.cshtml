@@ -1,0 +1,65 @@
+﻿@model PagedList<User>
+
+@{
+    ViewBag.Title = "Gemeenschap";
+}
+
+@* @Styles.Render("~/Content/Stylesheets/oogstplanner.community") *@
+
+@* START RESPONSIVE RECTANGLE LAYOUT *@
+
+@* Top bar *@
+<div id="top"></div>
+
+<div class="row" id="search">
+
+    <h1 class="dark">Gemeenschap</h1>
+
+    <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+        <h3 class="dark">Vind andere mensen op OogstPlanner.nl</h3>
+        <div class="input-group btn-responsive">
+            <input  type="text" class="form-control" />
+            <span class="input-group-btn">
+                <div class="btn btn-primary input-xs" id="search-button"><span class="glyphicon glyphicon-search"></span></div>
+            </span>
+        </div>
+    
+        <br/><h3 class="dark">Recent actieve mensen</h3>
+
+        <div class="row well dark marginalized">
+            @foreach(var user in Model)
+            {
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                    <h4>@user.Name</h4>
+                    <a href="/gebruiker/@user.Name"><img alt="Gebruikersplaatje" src="/Content/Images/social.jpg" class="img-circle img-responsive" /><br/></a>
+
+                    @foreach (var c in user.Calendars)
+                    {
+                        @Html.ActionLink(c.Name, "YearForUser", "Calendar", new { userName = user.Name }, null)<br/>
+                        <i>Aantal likes: <strong>@c.Likes.Count()</strong></i>
+                    }
+                </div>
+            }
+
+            @Html.PagedListPager(Model, page => Url.Action("Index", new { page, pageSize = Model.PageSize }))
+            <span class="dark">@Model.FirstItemOnPage tot @Model.LastItemOnPage van @Model.TotalItemCount laatst actieve gebruikers.</span>
+
+        </div> @* End search results well *@
+
+    </div> @* End first column *@
+
+    <div class="col-lg-4 col-md-4 hidden-sm hidden-xs">
+        @if (Request.IsAuthenticated)
+        {
+            <span class="dark">Bekijk uw @Html.ActionLink("eigen profiel", "Info", "Account")</span>
+        }
+        else
+        {
+            <span class="registerOrLogin dark">Meld u zelf aan bij de <a href="#">de oogstplanner gemeenschap</a></span>
+        }
+    </div>
+    
+
+</div>@* End row *@
+@* END RESPONSIVE RECTANGLES LAYOUT *@
+ 

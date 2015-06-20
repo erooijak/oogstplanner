@@ -42,6 +42,7 @@
                 <li class="active">@Html.BootstrapActiveActionLink("Welkom", "Index",  "Home")</li>
                 <li>@Html.BootstrapActiveActionLink("Zaaien en oogsten", "SowingAndHarvesting",  "Home")</li>
                 <li>@Html.BootstrapActiveActionLink("Zaaikalender", "Year",  "Calendar")</li>
+                <li>@Html.BootstrapActiveActionLink("Gemeenschap", "Index",  "Community")</li>
             </ul>
 
 @if (Request.IsAuthenticated)
@@ -63,7 +64,7 @@
 else
 {
             <ul class="nav navbar-nav navbar-right">
-                <li class="registerOrLogin"><a href="#">De oogstplanner gemeenschap&nbsp;</a></li>
+                <li class="registerOrLogin"><a href="#">Aanmelden&nbsp;</a></li>
             </ul>
 }
 

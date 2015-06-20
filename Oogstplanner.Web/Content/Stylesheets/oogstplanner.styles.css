@@ -1,6 +1,6 @@
 ﻿/* Some styling that we like */
 
-@import url(http://fonts.googleapis.com/css?family=Lato:400,900);
+/* Slow internet so disable this @import url(http://fonts.googleapis.com/css?family=Lato:400,900); */
 
 body {
     font-family: 'Lato',verdana, sans-serif;
@@ -104,6 +104,9 @@ p {
 }
 #selected-crop-info {
     font-size: 12px;
+}
+.row .well {
+    margin: 0px;
 }
 .crop-counter-textbox {
     width: 50px;
