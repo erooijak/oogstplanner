@@ -58,7 +58,7 @@ namespace Oogstplanner.Data
         {
             return DbSet.Where(u => 
                 u.AuthenticationStatus == AuthenticatedStatus.Authenticated
-                && (u.Name.Contains(searchTerm) || u.FullName.Contains(searchTerm)))
+                && (u.Name.ToLower().Contains(searchTerm) || u.FullName.ToLower().Contains(searchTerm)))
                     .OrderByDescending(u => u.LastActive);
         }
     }
