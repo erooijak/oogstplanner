@@ -109,6 +109,22 @@ class Oogstplanner {
         });
     }
 
+    bindRemoveAccount() : void {
+        var that = this;
+
+        $('#remove-account').bind('click', function (e) {
+            e.preventDefault();
+            Notification.confirmation('Weet u zeker dat u uw account, alle data in de zaaikalender, en al uw verkregen en gegeven likes volledig wilt verwijderen?', 
+                () => { that.removeAccount(); });            
+        });
+    }
+
+    removeAccount() : void {
+        $.post('/gebruiker/verwijderen')
+        .done(() => { Notification.informational('Account verwijderd', 'Uw account is succesvol verwijderd.'); Util.refreshPage();  })
+        .fail(() => Notification.error());
+    }
+
     // TODO: refactor code below
     resizeCropSelectionBox() {
 

@@ -274,6 +274,36 @@ namespace Oogstplanner.Tests.Services
         }
 
         [Test]
+        public void Services_User_RemoveUser()
+        {
+            // ARRANGE
+            var cookieProviderMock = new Mock<ICookieProvider>();
+            var lastActivityUpdatorMock = new Mock<ILastActivityUpdator>();
+            var userRepositoryMock = new Mock<IUserRepository>();
+            var unitOfWorkMock = new Mock<IOogstplannerUnitOfWork>();
+            unitOfWorkMock.SetupGet(mock => mock.Users)
+                .Returns(userRepositoryMock.Object);
+
+            var service = new UserService(
+                unitOfWorkMock.Object, 
+                cookieProviderMock.Object,
+                lastActivityUpdatorMock.Object);
+
+            var expectedId = new Random().Next();
+
+            // ACT
+            service.RemoveUser(expectedId);
+
+            // ASSERT
+            userRepositoryMock.Verify(mock =>
+                mock.Delete(expectedId),
+                Times.Once,
+                "The repository's delete method should be called with the correct id.");
+            unitOfWorkMock.Verify(mock => mock.Commit(), Times.Once,
+                "Change should be committed.");
+        }
+
+        [Test]
         public void Services_User_NoCommitsOnQueries()
         {
             // ARRANGE

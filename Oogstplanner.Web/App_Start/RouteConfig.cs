@@ -124,6 +124,12 @@ namespace Oogstplanner.Web
             );
 
             routes.MapRoute(
+                name: "RemoveUser",
+                url: "gebruiker/verwijderen",
+                defaults: new { controller = "Account", action = "Remove" }
+            );
+
+            routes.MapRoute(
                 name: "LostPassword",
                 url: "gebruiker/wachtwoordvergeten",
                 defaults: new { controller = "Account", action = "LostPassword" }

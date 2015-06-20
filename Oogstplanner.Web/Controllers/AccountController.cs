@@ -15,12 +15,12 @@ namespace Oogstplanner.Web.Controllers
     [Authorize]
     public sealed class AccountController : Controller
     {
-        readonly IUserService userService;
+        readonly IDeletableUserService userService;
         readonly IMembershipService membershipService;
         readonly IPasswordRecoveryService passwordRecoveryService;
 
         public AccountController(
-            IUserService userService,
+            IDeletableUserService userService,
             IMembershipService membershipService,
             IPasswordRecoveryService passwordRecoveryService)
         {
@@ -112,6 +112,29 @@ namespace Oogstplanner.Web.Controllers
             Session.Abandon();
 
             return RedirectToAction("Index", "Home");
+        }
+
+        //
+        // POST: /gebruiker/verwijderen/
+        [HttpPost]
+        public JsonResult Remove()
+        {   
+            try 
+            {
+                var currentUserId = userService.GetCurrentUserId();
+                var userName = userService.GetUser(currentUserId).Name;
+
+                userService.RemoveUser(currentUserId);
+                membershipService.RemoveUser(userName);
+                membershipService.SignOut();
+
+                return Json(new { success = true });
+            }
+            catch
+            {
+                // TODO: Implement logging
+                return Json(new { success = false });
+            }
         }
 
         //

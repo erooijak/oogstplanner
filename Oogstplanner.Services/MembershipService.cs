@@ -42,6 +42,11 @@ namespace Oogstplanner.Services
         {
             Roles.AddUserToRole(userName, "user");
         }
+
+        public void RemoveUser(string userName)
+        {
+            Membership.DeleteUser(userName);
+        }
            
         public void SignOut()
         {

@@ -1,14 +1,13 @@
 ﻿using System;
-using System.Configuration;
 using System.Web;
 
-using Oogstplanner.Common;
 using Oogstplanner.Data;
+using Oogstplanner.Common;
 using Oogstplanner.Models;
 
 namespace Oogstplanner.Services
 {
-    public class UserService : CommunityService, IUserService
+    public class UserService : CommunityService, IUserService, IDeletableUserService
     {
         readonly ICookieProvider cookieProvider;
         readonly ILastActivityUpdator lastActivityUpdator;
@@ -89,6 +88,12 @@ namespace Oogstplanner.Services
             lastActivityUpdator.UpdateLastActivity(currentUserId);
 
             return currentUserId;
+        }
+
+        public void RemoveUser(int userId)
+        {
+            UnitOfWork.Users.Delete(userId);
+            UnitOfWork.Commit();
         }
     }
 }

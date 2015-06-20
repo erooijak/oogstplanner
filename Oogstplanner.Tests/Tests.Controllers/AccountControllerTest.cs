@@ -19,7 +19,7 @@ namespace Oogstplanner.Tests.Controllers
         [Test]
         public void Controllers_Account_LoginOrRegisterModal()
         {
-            var userServiceMock = new Mock<IUserService>();
+            var userServiceMock = new Mock<IDeletableUserService>();
             var membershipServiceMock = new Mock<IMembershipService>();
             var passwordRecoveryServiceMock = new Mock<IPasswordRecoveryService>();
 
@@ -40,7 +40,7 @@ namespace Oogstplanner.Tests.Controllers
         public void Controllers_Account_Login_Success()
         {
             // ARRANGE
-            var userServiceMock = new Mock<IUserService>();
+            var userServiceMock = new Mock<IDeletableUserService>();
             var membershipServiceMock = new Mock<IMembershipService>();
             var passwordRecoveryServiceMock = new Mock<IPasswordRecoveryService>();
 
@@ -78,7 +78,7 @@ namespace Oogstplanner.Tests.Controllers
         public void Controllers_Account_Login_SuccessNoAuthCookie()
         {
             // ARRANGE
-            var userServiceMock = new Mock<IUserService>();
+            var userServiceMock = new Mock<IDeletableUserService>();
             var membershipServiceMock = new Mock<IMembershipService>();
             var passwordRecoveryServiceMock = new Mock<IPasswordRecoveryService>();
 
@@ -113,7 +113,7 @@ namespace Oogstplanner.Tests.Controllers
         public void Controllers_Account_Login_Failure()
         {
             // ARRANGE
-            var userServiceMock = new Mock<IUserService>();
+            var userServiceMock = new Mock<IDeletableUserService>();
             var membershipServiceMock = new Mock<IMembershipService>();
             var passwordRecoveryServiceMock = new Mock<IPasswordRecoveryService>();
 
@@ -141,7 +141,7 @@ namespace Oogstplanner.Tests.Controllers
         public void Controllers_Account_Login_MembershipUserInvalid()
         {
             // ARRANGE
-            var userServiceMock = new Mock<IUserService>();
+            var userServiceMock = new Mock<IDeletableUserService>();
             var membershipServiceMock = new Mock<IMembershipService>();
             var passwordRecoveryServiceMock = new Mock<IPasswordRecoveryService>();
 
@@ -174,7 +174,7 @@ namespace Oogstplanner.Tests.Controllers
         public void Controllers_Account_Register_Success()
         {
             // ARRANGE
-            var userServiceMock = new Mock<IUserService>();
+            var userServiceMock = new Mock<IDeletableUserService>();
             var membershipServiceMock = new Mock<IMembershipService>();
             var passwordRecoveryServiceMock = new Mock<IPasswordRecoveryService>();
 
@@ -229,10 +229,82 @@ namespace Oogstplanner.Tests.Controllers
         }
 
         [Test]
+        public void Controllers_Account_Remove_Success()
+        {
+            // ARRANGE
+            var userServiceMock = new Mock<IDeletableUserService>();
+            var membershipServiceMock = new Mock<IMembershipService>();
+            var passwordRecoveryServiceMock = new Mock<IPasswordRecoveryService>();
+
+            const int expectedUserId = 12;
+            const string expectedUserName = "testttt";
+
+            userServiceMock.Setup(mock =>
+                mock.GetCurrentUserId())
+                .Returns(expectedUserId);
+
+            userServiceMock.Setup(mock =>
+                mock.GetUser(expectedUserId))
+                .Returns(new User { Name = expectedUserName });
+
+            var controller = new AccountController(
+                userServiceMock.Object, 
+                membershipServiceMock.Object, 
+                passwordRecoveryServiceMock.Object);
+
+            // ACT
+            var actionResult = controller.Remove();
+
+            // ASSERT
+            userServiceMock
+                .Verify(mock => 
+                    mock.RemoveUser(expectedUserId), 
+                    Times.Once(),
+                    "The user should be removed via the user service.");
+            membershipServiceMock
+                .Verify(mock => 
+                    mock.RemoveUser(expectedUserName), 
+                    Times.Once(),
+                    "The user's should be removed from the membership.");
+            membershipServiceMock
+                .Verify(mock => 
+                    mock.SignOut(), 
+                    Times.Once(),
+                    "The user should be signed out.");
+            Assert.IsTrue(actionResult.Data.ToString().Contains("success = True"),
+                "Success should be returned");
+        }
+
+        [Test]
+        public void Controllers_Account_Remove_Failure()
+        {
+            // ARRANGE
+            var userServiceMock = new Mock<IDeletableUserService>();
+            var membershipServiceMock = new Mock<IMembershipService>();
+            var passwordRecoveryServiceMock = new Mock<IPasswordRecoveryService>();
+
+            userServiceMock.Setup(mock =>
+                mock.GetCurrentUserId())
+                .Throws(new InsufficientMemoryException());
+
+            var controller = new AccountController(
+                userServiceMock.Object, 
+                membershipServiceMock.Object, 
+                passwordRecoveryServiceMock.Object);
+
+            // ACT
+            var actionResult = controller.Remove();
+
+            // ASSERT
+            Assert.IsTrue(actionResult.Data.ToString().Contains("success = False"),
+                "If something fails the controller should return this.");
+        }
+
+        [Test]
         public void Controllers_Account_Register_Failure()
         {
             // ARRANGE
-            var userServiceMock = new Mock<IUserService>();
+            var userServiceMock = new Mock<IDeletableUserService>();
             var membershipServiceMock = new Mock<IMembershipService>();
             var passwordRecoveryServiceMock = new Mock<IPasswordRecoveryService>();
 
@@ -257,7 +329,7 @@ namespace Oogstplanner.Tests.Controllers
         public void Controllers_Account_Register_FailureUserCreation()
         {
             // ARRANGE
-            var userServiceMock = new Mock<IUserService>();
+            var userServiceMock = new Mock<IDeletableUserService>();
             var membershipServiceMock = new Mock<IMembershipService>();
             var passwordRecoveryServiceMock = new Mock<IPasswordRecoveryService>();
 
@@ -309,7 +381,7 @@ namespace Oogstplanner.Tests.Controllers
         public void Controllers_Account_LogOff()
         {
             // ARRANGE
-            var userServiceMock = new Mock<IUserService>();
+            var userServiceMock = new Mock<IDeletableUserService>();
             var membershipServiceMock = new Mock<IMembershipService>();
             var passwordRecoveryServiceMock = new Mock<IPasswordRecoveryService>();
 
@@ -338,7 +410,7 @@ namespace Oogstplanner.Tests.Controllers
         public void Controllers_Account_LostPassword_NonExistingEmail()
         {
             // ARRANGE
-            var userServiceMock = new Mock<IUserService>();
+            var userServiceMock = new Mock<IDeletableUserService>();
             var membershipServiceMock = new Mock<IMembershipService>();
             var passwordRecoveryServiceMock = new Mock<IPasswordRecoveryService>();
 
@@ -367,7 +439,7 @@ namespace Oogstplanner.Tests.Controllers
         public void Controllers_Account_LostPassword_Failure()
         {
             // ARRANGE
-            var userServiceMock = new Mock<IUserService>();
+            var userServiceMock = new Mock<IDeletableUserService>();
             var membershipServiceMock = new Mock<IMembershipService>();
             var passwordRecoveryServiceMock = new Mock<IPasswordRecoveryService>();
 
@@ -406,7 +478,7 @@ namespace Oogstplanner.Tests.Controllers
         public void Controllers_Account_ResetPasswordView()
         {
             // ARRANGE
-            var userServiceMock = new Mock<IUserService>();
+            var userServiceMock = new Mock<IDeletableUserService>();
             var membershipServiceMock = new Mock<IMembershipService>();
             var passwordRecoveryServiceMock = new Mock<IPasswordRecoveryService>();
 
@@ -434,7 +506,7 @@ namespace Oogstplanner.Tests.Controllers
         public void Controllers_Account_ResetPasswordSuccess()
         {
             // ARRANGE
-            var userServiceMock = new Mock<IUserService>();
+            var userServiceMock = new Mock<IDeletableUserService>();
             var membershipServiceMock = new Mock<IMembershipService>();
             var passwordRecoveryServiceMock = new Mock<IPasswordRecoveryService>();
 
@@ -480,7 +552,7 @@ namespace Oogstplanner.Tests.Controllers
         public void Controllers_Account_ResetPasswordFailureTokenExpired()
         {
             // ARRANGE
-            var userServiceMock = new Mock<IUserService>();
+            var userServiceMock = new Mock<IDeletableUserService>();
             var membershipServiceMock = new Mock<IMembershipService>();
             var passwordRecoveryServiceMock = new Mock<IPasswordRecoveryService>();
 
@@ -527,7 +599,7 @@ namespace Oogstplanner.Tests.Controllers
         public void Controllers_Account_ResetPasswordFailureTokenTimeStampNotFound()
         {
             // ARRANGE
-            var userServiceMock = new Mock<IUserService>();
+            var userServiceMock = new Mock<IDeletableUserService>();
             var membershipServiceMock = new Mock<IMembershipService>();
             var passwordRecoveryServiceMock = new Mock<IPasswordRecoveryService>();
 
@@ -574,7 +646,7 @@ namespace Oogstplanner.Tests.Controllers
         public void Controllers_Account_ResetPasswordFailureOnMembershipChange()
         {
             // ARRANGE
-            var userServiceMock = new Mock<IUserService>();
+            var userServiceMock = new Mock<IDeletableUserService>();
             var membershipServiceMock = new Mock<IMembershipService>();
             var passwordRecoveryServiceMock = new Mock<IPasswordRecoveryService>();
 
@@ -621,7 +693,7 @@ namespace Oogstplanner.Tests.Controllers
         public void Controllers_Account_Info()
         {
             // ARRANGE
-            var userServiceMock = new Mock<IUserService>();
+            var userServiceMock = new Mock<IDeletableUserService>();
             var membershipServiceMock = new Mock<IMembershipService>();
             var passwordRecoveryServiceMock = new Mock<IPasswordRecoveryService>();
 
@@ -649,7 +721,7 @@ namespace Oogstplanner.Tests.Controllers
         public void Controllers_Account_UserInfo()
         {
             // ARRANGE
-            var userServiceMock = new Mock<IUserService>();
+            var userServiceMock = new Mock<IDeletableUserService>();
             var membershipServiceMock = new Mock<IMembershipService>();
             var passwordRecoveryServiceMock = new Mock<IPasswordRecoveryService>();
 
@@ -679,7 +751,7 @@ namespace Oogstplanner.Tests.Controllers
         public void Controllers_Account_UserInfoNotFound()
         {
             // ARRANGE
-            var userServiceMock = new Mock<IUserService>();
+            var userServiceMock = new Mock<IDeletableUserService>();
             var membershipServiceMock = new Mock<IMembershipService>();
             var passwordRecoveryServiceMock = new Mock<IPasswordRecoveryService>();
 

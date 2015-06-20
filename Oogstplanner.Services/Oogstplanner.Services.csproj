@@ -63,6 +63,7 @@
     <Compile Include="Contracts\ILastActivityUpdator.cs" />
     <Compile Include="LastActivityUpdator.cs" />
     <Compile Include="AnonymousUserLastActivityUpdator.cs" />
+    <Compile Include="Contracts\IDeletableUserService.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

@@ -46,7 +46,12 @@ namespace Oogstplanner.Web
                 .Except<AnonymousUserService>()
                 .Except<LastActivityUpdator>()
                 .Except<AnonymousUserLastActivityUpdator>()
+                .Except<IDeletableUserService>()
                 .AsImplementedInterfaces()
+                .InstancePerRequest();
+
+            builder.RegisterType<UserService>()
+                .As<IDeletableUserService>()
                 .InstancePerRequest();
 
             builder.RegisterType<LastActivityUpdator>()

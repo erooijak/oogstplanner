@@ -75,6 +75,21 @@ var Oogstplanner = (function () {
             }
         });
     };
+    Oogstplanner.prototype.bindRemoveAccount = function () {
+        var that = this;
+        $('#remove-account').bind('click', function (e) {
+            e.preventDefault();
+            Notification.confirmation('Weet u zeker dat u uw account, alle data in de zaaikalender, en al uw verkregen en gegeven likes volledig wilt verwijderen?', function () {
+                that.removeAccount();
+            });
+        });
+    };
+    Oogstplanner.prototype.removeAccount = function () {
+        $.post('/gebruiker/verwijderen').done(function () {
+            Util.refreshPage();
+            Notification.informational('Account verwijderd', 'Uw account is succesvol verwijderd.');
+        }).fail(function () { return Notification.error(); });
+    };
     Oogstplanner.prototype.resizeCropSelectionBox = function () {
         if (matchMedia) {
             var mq = window.matchMedia("(max-width: 991px)");
