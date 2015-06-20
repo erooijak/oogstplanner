@@ -292,6 +292,8 @@
     <Content Include="Content\Stylesheets\jquery.webui-popover.css" />
     <Content Include="Content\Images\loading.gif" />
     <Content Include="Views\Community\Index.cshtml" />
+    <Content Include="Views\Community\Search.cshtml" />
+    <Content Include="Views\Community\_SearchResult.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>

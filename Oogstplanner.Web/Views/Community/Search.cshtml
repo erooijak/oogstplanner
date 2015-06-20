@@ -1,0 +1,51 @@
+﻿@model PagedList<User>
+
+@{
+    ViewBag.Title = "Zoek gebruikers op OogstPlanner.nl";
+}
+
+@* START RESPONSIVE RECTANGLE LAYOUT *@
+
+@* Top bar *@
+<div id="top"></div>
+
+<div class="row dark" id="search">
+
+    <h1>Gemeenschap</h1>
+
+    <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+        <h3 class="dark">Vind andere mensen op OogstPlanner.nl</h3>
+        <div class="input-group btn-responsive">
+            <input  type="text" class="form-control" placeholder="Naam of gebruikersnaam" />
+            <span class="input-group-btn">
+                <div class="btn btn-primary input-xs" id="search-button"><span class="glyphicon glyphicon-search"></span></div>
+            </span>
+        </div>
+    
+        <br/><h3 class="dark">Zoekresultaat van uw zoekterm @ViewBag.SearchTerm</h3>
+
+        @{ Html.RenderPartial("_SearchResult") };
+
+    </div> @* End first column *@
+
+    <div class="col-lg-4 col-md-4 hidden-sm hidden-xs">
+        
+        <br/><h3 class="dark">Het gewas van @DateTime.Now.Year is: </h3>
+        <img alt="Broccoli: gewas van het jaar" src="/Content/Images/broccoli.jpg" class="img-circle img-responsive" /><br/>
+        <h5><i>Broccoli</i></h5>
+
+        @if (Request.IsAuthenticated)
+        {
+            <span>Bekijk uw @Html.ActionLink("eigen profiel", "Info", "Account")</span>
+        }
+        else
+        {
+            <span class="registerOrLogin">Meld u aan bij de <a href="#">de oogstplanner gemeenschap</a> om grip op gezaaide broccoli nooit kwijt te raken.</span>
+        }
+
+    </div>
+    
+
+</div>@* End row *@
+@* END RESPONSIVE RECTANGLES LAYOUT *@
+ 

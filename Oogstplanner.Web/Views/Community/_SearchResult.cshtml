@@ -1,0 +1,32 @@
+﻿@model PagedList<User>
+
+<div class="well marginalized">
+    <div class="row">
+    @foreach(var user in Model)
+    {
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+            <h4>@user.Name</h4>
+            <div align="center">
+                <a href="/gebruiker/@user.Name"><img alt="Gebruikersplaatje" src="/Content/Images/social.jpg" class="img-circle img-responsive" /><br/></a>
+            </div>
+            @foreach (var c in user.Calendars)
+            {
+                @Html.ActionLink(c.Name, "YearForUser", "Calendar", new { userName = user.Name }, null)<br/>
+                <i>Aantal likes: <strong>@c.Likes.Count()</strong></i>
+
+                @* Check if user is doing something this month and if so display it in the list.*@
+                var action = c.FarmingActions.FirstOrDefault(fa => (int)fa.Month == Math.Pow(2, DateTime.Now.Month-1));
+                if (action != null)
+                {
+                    <br/><span>@if (action.Action == ActionType.Sowing) { <span>Zaait</span> } else { <span>Oogst</span> } 
+                    deze maand: @action.Crop.Name</span>
+                }
+            }
+        </div>
+    }
+    </div>
+    <div class="row">
+        @Html.PagedListPager(Model, page => Url.Action(@ViewBag.Action, new { page, pageSize = Model.PageSize }))
+        <span class="dark">@Model.FirstItemOnPage tot @Model.LastItemOnPage van @Model.TotalItemCount laatst actieve gebruikers.</span>
+    </div>
+</div> @* End search results well *@    

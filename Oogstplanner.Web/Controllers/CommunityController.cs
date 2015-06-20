@@ -43,6 +43,8 @@ namespace Oogstplanner.Web.Controllers
             // Just to keep performance down if we happen to scale to millions of users.
             const int maxUsers = 1000;
 
+            ViewBag.Action = "Index";
+
             var users = communityService.GetRecentlyActiveUsers(maxUsers);
             var model = users.ToPagedList(page, pageSize); 
 
