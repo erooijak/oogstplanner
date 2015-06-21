@@ -71,26 +71,34 @@ See http://www.philliphaydon.com/2013/06/setting-up-mono-on-nginx/ for an excell
 
 ## Future
 
-Currently the system is in the Minimal Viable Product stage. There are a lot of things that can be done to improve the application. Here are a few:
+Currently the system is in the minimal viable product (MVP) stage. There are a lot of things that can be done to improve the application. Here are a few:
 
-- [ ] Convert somewhat awkward JavaScript prototypes to AngularJS.
+- [ ] Convert somewhat awkward JavaScripts to [AngularJS](https://angularjs.org/).
 - [ ] Provide clickable tree view of available crops under the crops search button.
 - [ ] Crop searching on category or preferred harvesting or sowing month.
-- [ ] Calendar knows which year it is and seeds sowed in one year can be harvested in a later year.
-- [ ] Let user change name of calendar.
+- [ ] Make calendar span multiple years (i.e., seeds sowed in one year can be harvested in a later year or vice versa).
+- [ ] Multiple calendars for users.
+- [ ] Editing of user profile.
+- [ ] Choosing profile image.
 - [ ] Comments on user profile.
-- [ ] Improved mobile support.
+- [ ] Improved mobile support (especially on sowing/harvesting page).
 - [ ] Improved CSS styling.
 - [ ] Logging of errors.
 - [ ] Data and language of other countries.
 - [ ] Integration with external seeds webshop.
 - [ ] Add area for blog posts and articles.
+- [ ] Export sowing calendar to PDF, Google Calendar and/or Excel.
+- [ ] Only show sowing or harvesting calendar.
+- [ ] Improve SEO.
+- [ ] Provide effects (e.g., shaking of login modal dialog on error, loading symbol while loading).
+- [ ] Integrate with external APIs (e.g., weather forecast).
+- [ ] Integration with food recipes, calories and/or vitamins.
 
 Suggestions are very welcome.
 
 ## Contributors
 
-Elisa, Jeroen and Erwin.
+Elisa, Jeroen, Anna, Stefan and Erwin.
 
 ## License
 
