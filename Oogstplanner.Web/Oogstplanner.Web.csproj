@@ -333,6 +333,7 @@
     <None Include="Content\Images\favicon.ico" />
     <None Include="App_Data\Migrations\201520062344_Initial.sql" />
     <None Include="Content\fonts\glyphicons-halflings-regular.woff2" />
+    <None Include="App_Data\Migrations\201521061354_LikesOnDeleteCascade.sql" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Oogstplanner.Data\Oogstplanner.Data.csproj">

@@ -280,9 +280,12 @@ namespace Oogstplanner.Tests.Services
             var cookieProviderMock = new Mock<ICookieProvider>();
             var lastActivityUpdatorMock = new Mock<ILastActivityUpdator>();
             var userRepositoryMock = new Mock<IUserRepository>();
+            var likesRepositoryMock = new Mock<ILikesRepository>();
             var unitOfWorkMock = new Mock<IOogstplannerUnitOfWork>();
             unitOfWorkMock.SetupGet(mock => mock.Users)
                 .Returns(userRepositoryMock.Object);
+            unitOfWorkMock.SetupGet(mock => mock.Likes)
+                .Returns(likesRepositoryMock.Object);
 
             var service = new UserService(
                 unitOfWorkMock.Object, 
@@ -295,10 +298,16 @@ namespace Oogstplanner.Tests.Services
             service.RemoveUser(expectedId);
 
             // ASSERT
+            likesRepositoryMock.Verify(mock =>
+                mock.DeleteLikesBelongingToUser(expectedId),
+                Times.Once,
+                "The likes repository's delete method should be called " +
+                "with the correct id.");
             userRepositoryMock.Verify(mock =>
                 mock.Delete(expectedId),
                 Times.Once,
-                "The repository's delete method should be called with the correct id.");
+                "The user repository's delete method should be called " +
+                "with the correct id.");
             unitOfWorkMock.Verify(mock => mock.Commit(), Times.Once,
                 "Change should be committed.");
         }

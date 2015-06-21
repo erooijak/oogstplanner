@@ -10,5 +10,6 @@ namespace Oogstplanner.Data
     {
         Like SingleOrDefault(Expression<Func<Like, bool>> predicate);
         IEnumerable<Like> GetByCalendarId(int calendarId);
+        void DeleteLikesBelongingToUser(int userId);
     }
 }

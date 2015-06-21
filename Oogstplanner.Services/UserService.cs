@@ -92,6 +92,7 @@ namespace Oogstplanner.Services
 
         public void RemoveUser(int userId)
         {
+            UnitOfWork.Likes.DeleteLikesBelongingToUser(userId);
             UnitOfWork.Users.Delete(userId);
             UnitOfWork.Commit();
         }

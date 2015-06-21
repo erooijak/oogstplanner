@@ -71,7 +71,7 @@ namespace Oogstplanner.Web.Controllers
                 else
                 {
                     // If we got this far, something failed, redisplay form
-                    ModelState.AddModelError("login", "De gebruikersnaam/e-mailadres of het wachtwoord is incorrect.");
+                    ModelState.AddModelError("login", "De gebruikersnaam/het e-mailadres of het wachtwoord is incorrect.");
                 }
             }
                 

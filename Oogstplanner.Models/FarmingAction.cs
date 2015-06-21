@@ -17,7 +17,7 @@ namespace Oogstplanner.Models
         [Required]
         public virtual Calendar Calendar { get; set; }
 
-        /// <summary>
+        /// <summary> 
         /// This methods converts the action to its counterpart.
         /// </summary>
         /// <example>

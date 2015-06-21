@@ -114,7 +114,7 @@ class Oogstplanner {
 
         $('#remove-account').bind('click', function (e) {
             e.preventDefault();
-            Notification.confirmation('Weet u zeker dat u uw account, alle data in de zaaikalender, en al uw verkregen en gegeven likes volledig wilt verwijderen?', 
+            Notification.confirmation('Weet u zeker dat u uw account, alle data in uw zaaikalender, en al uw verkregen en gegeven likes volledig wilt verwijderen?', 
                 () => { that.removeAccount(); });            
         });
     }

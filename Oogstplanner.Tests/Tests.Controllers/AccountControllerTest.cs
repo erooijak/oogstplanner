@@ -164,7 +164,7 @@ namespace Oogstplanner.Tests.Controllers
             controller.Login(model);
 
             // ASSERT
-            Assert.AreEqual("De gebruikersnaam/e-mailadres of het wachtwoord is incorrect.",
+            Assert.AreEqual("De gebruikersnaam/het e-mailadres of het wachtwoord is incorrect.",
                 controller.ViewData.ModelState["login"].Errors[0].ErrorMessage,
                 "When the user has entered valid information, but the credentials are not valid" +
                 "an error message should be displayed.");

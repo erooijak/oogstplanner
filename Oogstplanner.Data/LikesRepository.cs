@@ -22,5 +22,15 @@ namespace Oogstplanner.Data
         {
             return DbSet.Where(l => l.Calendar.Id == calendarId).ToList();
         }
+
+        public void DeleteLikesBelongingToUser(int userId)
+        {
+            var likes = DbSet.Where(l => l.User.Id == userId || l.Calendar.User.Id == userId);
+
+            foreach (var like in likes)
+            {
+                DbSet.Remove(like);
+            }
+        }
     }
 }
