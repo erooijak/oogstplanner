@@ -24,8 +24,8 @@ namespace Oogstplanner.Models
         [Display(Name = "Naam")]
         public string FullName { get; set; }
 
-        [Required(ErrorMessage = "Gebruikersnaam is niet ingevuld.")]
         [Display(Name = "Gebruikersnaam")]
+        [RegularExpression("^[^@]+$", ErrorMessage = "Geen geldige gebruikersnaam.")]
         public string UserName { get; set; }
 
         [Required(ErrorMessage = "E-mailadres is niet ingevuld.")]
