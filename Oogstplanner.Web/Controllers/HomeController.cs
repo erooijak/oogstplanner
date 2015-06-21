@@ -15,19 +15,19 @@ namespace Oogstplanner.Web.Controllers
     {
         readonly ICalendarService calendarService;
 
-        public HomeController(ICalendarService calendarService)
-        {
-            if (calendarService == null)
-            {
-                throw new ArgumentNullException("calendarService");
-            }
-
-            this.calendarService = calendarService;
-        }
+        public HomeController()
+        { }
 
         //
         // GET: /welkom
         public ActionResult Index()
+        {
+            return View();
+        }
+
+        //
+        // GET: /veelgesteldevragen
+        public ActionResult Faq()
         {
             return View();
         }
