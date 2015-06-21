@@ -36,7 +36,7 @@
         </div>
         <div id="collapse-one" class="panel-collapse collapse">
             <div class="panel-body">
-                Op @Html.ActionLink("zaaien en oogsten", "SowingAndHarvesting", "Calendar", null, null) kunt u gewassen zaaien en oogsten.
+                Op @Html.ActionLink("zaaien en oogsten", "SowingAndHarvesting", "Calendar", null, new { @target = "_blank" }) kunt u gewassen zaaien en oogsten.
                 Hier volgt een illustratie van dit proces:
                 <br/>
                 <br/>
@@ -140,7 +140,7 @@
             <div class="panel-body">
                 @if (Request.IsAuthenticated)
                 {
-                    <span>Ga naar uw @Html.ActionLink("profiel", "Info", "Account", null, null), 
+                    <span>Ga naar uw @Html.ActionLink("profiel", "Info", "Account", null, new { @target = "_blank" }), 
                     klik op de knop "account verwijderen" en druk op "Ok".</span>
                 }
                 else
