@@ -44,7 +44,7 @@ namespace Oogstplanner.Tests.Controllers
 
             // ACT
             var viewResult = controller.Index();
-            var actualResult = ((IEnumerable<Crop>)viewResult.ViewData.Model).Single().Name;
+            var actualResult = ((IEnumerable<CropViewModel>)viewResult.ViewData.Model).Single().Name;
 
             // ASSERT
             Assert.AreEqual(expectedResult, actualResult,

@@ -46,6 +46,7 @@
     <Compile Include="Like.cs" />
     <Compile Include="Months.cs" />
     <Compile Include="ExtensionMethods\MonthsExtension.cs" />
+    <Compile Include="ViewModels\CropViewModel.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Crop>
+﻿@model IEnumerable<CropViewModel>
 
 @{
     ViewBag.Title = "Gewassen";
@@ -16,12 +16,14 @@
     <tbody>
         @foreach (var crop in Model) {
         <tr>
-            <td>@crop.Name</td><td>@crop.Race</td><td>@crop.Category</td><td>@crop.AreaPerCrop</td>
-            <td>@crop.AreaPerBag</td><td>@crop.PricePerBag</td>
-
-            @* Get the descriptions of the months except the first one (assuming enum value is NotSet) *@
-            <td>@string.Join(", ", crop.SowingMonths.GetDescriptions().Skip(1).ToArray())</td>
-            <td>@string.Join(", ", crop.HarvestingMonths.GetDescriptions().Skip(1).ToArray())</td>
+            <td>@crop.Name</td>
+            <td>@crop.Race</td>
+            <td>@crop.Category</td>
+            <td>@crop.AreaPerCrop</td>
+            <td>@crop.AreaPerBag</td>
+            <td>@crop.PricePerBag</td>
+            <td>@crop.SowingMonths</td>
+            <td>@crop.HarvestingMonths</td>
         </tr>
     	}
     </tbody>	
