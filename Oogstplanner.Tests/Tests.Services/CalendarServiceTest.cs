@@ -222,7 +222,7 @@ namespace Oogstplanner.Tests.Services
                 "The calendar should be set as belonging to the user who requested it" +
                 "since the user id on the calendar is the same as the user id of the requesting user.");
         }
-
+            
         [Test]
         public void Services_Calendar_GetMonthCalendar()
         {
@@ -278,6 +278,34 @@ namespace Oogstplanner.Tests.Services
                 "The harvesting actions retrieved from the service should be in the view model.");
             Assert.IsNotEmpty(result.DisplayMonth,
                 "Display month should have a value.");
+        }
+
+        [Test]
+        public void Services_Calendar_GetMonthCalendarFailure()
+        {
+            // ARRANGE
+            var farmingActionServiceMock = new Mock<IFarmingActionService>();
+            var unitOfWorkMock = new Mock<IOogstplannerUnitOfWork>();
+
+            var fakeUserServices = new FakeUserServices();
+            fakeUserServices.ReturnedUserService = 
+                new UserService(unitOfWorkMock.Object, 
+                    new Mock<ICookieProvider>().Object,
+                    new Mock<ILastActivityUpdator>().Object);
+            var authenticationServiceMock = new Mock<IAuthenticationService>();
+
+            var service = new CalendarService(
+                unitOfWorkMock.Object, 
+                farmingActionServiceMock.Object,
+                fakeUserServices,
+                authenticationServiceMock.Object);
+
+            var expectedMonths = Months.June | Months.April;
+
+            // ACT AND ASSERT
+            Assert.Throws<ArgumentException>(() => service.GetMonthCalendar(expectedMonths),
+                "When multiple months are selected the get month calendar method should throw" +
+                "an ArgumentException.");
         }
 
         [Test]

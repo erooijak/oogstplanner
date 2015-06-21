@@ -79,6 +79,12 @@ namespace Oogstplanner.Services
 
         public MonthCalendarViewModel GetMonthCalendar(Months month)
         {
+            /* If input is not power of two more than one month is selected in flags enumeration. */
+            if ((month & (month - 1)) != 0)
+            {
+                throw new ArgumentException("Months should have no more than one bit set.");
+            }
+
             return new MonthCalendarViewModel 
             {
                 DisplayMonth = month.GetDescription(),
@@ -111,6 +117,12 @@ namespace Oogstplanner.Services
 
         MonthCalendarViewModel GetMonthCalendar(int userId, Months month)
         {
+            /* If input is not power of two more than one month is selected in flags enumeration. */
+            if ((month & (month - 1)) != 0)
+            {
+                throw new ArgumentException("Months should have no more than one bit set.");
+            }
+
             return new MonthCalendarViewModel 
             {
                 DisplayMonth = month.GetDescription(),
