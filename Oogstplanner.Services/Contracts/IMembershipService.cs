@@ -1,4 +1,6 @@
-﻿using Oogstplanner.Models;
+﻿using System.Web.Security;
+
+using Oogstplanner.Models;
 
 namespace Oogstplanner.Services
 {
@@ -6,6 +8,7 @@ namespace Oogstplanner.Services
     {
         bool ValidateUser(string userNameOrEmail, string password);
         void SetAuthCookie(string userNameOrEmail, bool createPersistentCookie);
+        MembershipUser GetMembershipUserByEmail(string email);
         bool TryCreateUser(string username, string password, string email, out ModelError modelError);
         void AddUserToRole(string userName, string role);
         void SignOut();

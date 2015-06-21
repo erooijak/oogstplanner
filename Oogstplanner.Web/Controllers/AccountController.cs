@@ -152,7 +152,7 @@ namespace Oogstplanner.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = passwordRecoveryService.GetMembershipUserByEmail(model.Email);
+                var user = membershipService.GetMembershipUserByEmail(model.Email);
 
                 if (user != null)
                 {
@@ -204,7 +204,8 @@ namespace Oogstplanner.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = passwordRecoveryService.GetMembershipUserFromToken(model.ReturnToken);
+                var email = passwordRecoveryService.GetEmailFromToken(model.ReturnToken);
+                var user = membershipService.GetMembershipUserByEmail(email);
 
                 var timeStamp = passwordRecoveryService.GetTokenTimeStamp(model.ReturnToken);
                 var currentTime = DateTime.Now;

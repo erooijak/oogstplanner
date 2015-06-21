@@ -470,7 +470,7 @@ namespace Oogstplanner.Tests.Controllers
 
             var userMock = new Mock<MembershipUser>();
             userMock.Setup(u => u.ProviderUserKey).Returns(Guid.NewGuid());
-            passwordRecoveryServiceMock.Setup(mock => 
+            membershipServiceMock.Setup(mock => 
                 mock.GetMembershipUserByEmail(It.IsAny<string>()))
                 .Returns(userMock.Object);
 
@@ -548,8 +548,13 @@ namespace Oogstplanner.Tests.Controllers
             userMock.Setup(mock => mock.ChangePassword(resettedPassword, newPassword))
                 .Returns(true);
 
+            const string expectedMail = "test@example.com";
+
             passwordRecoveryServiceMock.Setup(mock => 
-                mock.GetMembershipUserFromToken(returnToken))
+                mock.GetEmailFromToken(returnToken))
+                .Returns(expectedMail);
+            membershipServiceMock.Setup(mock => 
+                mock.GetMembershipUserByEmail(expectedMail))
                 .Returns(userMock.Object);
             passwordRecoveryServiceMock.Setup(mock => 
                 mock.GetTokenTimeStamp(returnToken))
@@ -596,8 +601,13 @@ namespace Oogstplanner.Tests.Controllers
             userMock.Setup(mock => mock.ChangePassword(resettedPassword, newPassword))
                 .Returns(true);
 
+            const string expectedMail = "test@example.com";
+
             passwordRecoveryServiceMock.Setup(mock => 
-                mock.GetMembershipUserFromToken(returnToken))
+                mock.GetEmailFromToken(returnToken))
+                .Returns(expectedMail);
+            membershipServiceMock.Setup(mock => 
+                mock.GetMembershipUserByEmail(expectedMail))
                 .Returns(userMock.Object);
             passwordRecoveryServiceMock.Setup(mock => 
                 mock.GetTokenTimeStamp(returnToken))
@@ -645,8 +655,13 @@ namespace Oogstplanner.Tests.Controllers
             userMock.Setup(mock => mock.ChangePassword(resettedPassword, newPassword))
                 .Returns(true);
 
+            const string expectedMail = "test@example.com";
+
             passwordRecoveryServiceMock.Setup(mock => 
-                mock.GetMembershipUserFromToken(returnToken))
+                mock.GetEmailFromToken(returnToken))
+                .Returns(expectedMail);
+            membershipServiceMock.Setup(mock => 
+                mock.GetMembershipUserByEmail(expectedMail))
                 .Returns(userMock.Object);
             passwordRecoveryServiceMock.Setup(mock => 
                 mock.GetTokenTimeStamp(returnToken))
@@ -694,8 +709,13 @@ namespace Oogstplanner.Tests.Controllers
             userMock.Setup(mock => mock.ChangePassword(resettedPassword, newPassword))
                 .Returns(false);
 
+            const string expectedMail = "test@example.com";
+
             passwordRecoveryServiceMock.Setup(mock => 
-                mock.GetMembershipUserFromToken(returnToken))
+                mock.GetEmailFromToken(returnToken))
+                .Returns(expectedMail);
+            membershipServiceMock.Setup(mock => 
+                mock.GetMembershipUserByEmail(expectedMail))
                 .Returns(userMock.Object);
             passwordRecoveryServiceMock.Setup(mock => 
                 mock.GetTokenTimeStamp(returnToken))

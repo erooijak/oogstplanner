@@ -38,6 +38,18 @@ namespace Oogstplanner.Services
             }
         }
 
+        public MembershipUser GetMembershipUserByEmail(string email)
+        {
+            if (string.IsNullOrEmpty(email))
+            {
+                return null;
+            }
+
+            string userName = Membership.GetUserNameByEmail(email);
+
+            return Membership.GetUser(userName);
+        }
+
         public void AddUserToRole(string userName, string role)
         {
             Roles.AddUserToRole(userName, "user");

@@ -25,7 +25,7 @@ namespace Oogstplanner.Services
             UnitOfWork.Commit();
         }
 
-        public MembershipUser GetMembershipUserFromToken(string token)
+        public string GetEmailFromToken(string token)
         {
             var passwordResetInstance = UnitOfWork.PasswordRecovery.GetByToken(token);
             if (passwordResetInstance == null)
@@ -33,20 +33,7 @@ namespace Oogstplanner.Services
                 return null;
             }
 
-            string email = passwordResetInstance.Email;
-            return GetMembershipUserByEmail(email);
-        }
-
-        public MembershipUser GetMembershipUserByEmail(string email)
-        {
-            if (string.IsNullOrEmpty(email))
-            {
-                return null;
-            }
-
-            string userName = Membership.GetUserNameByEmail(email);
-
-            return Membership.GetUser(userName);
+            return passwordResetInstance.Email;
         }
 
         public DateTime? GetTokenTimeStamp(string token)
