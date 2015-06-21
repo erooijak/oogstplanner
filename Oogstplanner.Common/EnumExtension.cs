@@ -1,6 +1,7 @@
 ﻿using System;
-using System.Reflection;
+using System.Collections.Generic;
 using System.ComponentModel;
+using System.Reflection;
 
 namespace Oogstplanner.Common
 {
@@ -24,5 +25,15 @@ namespace Oogstplanner.Common
             return element.ToString();
         }
 
+        public static IEnumerable<string> GetDescriptions(this Enum element)
+        {
+            foreach (Enum value in Enum.GetValues(element.GetType()))
+            {
+                if (element.HasFlag(value))
+                {
+                    yield return value.GetDescription();
+                }
+            }
+        }
     }
 }
