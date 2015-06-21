@@ -127,6 +127,15 @@ var Oogstplanner = (function () {
             height: rowHeight
         });
     };
+    Oogstplanner.prototype.changeLengthFaqLinkText = function () {
+        console.log($(window).width());
+        if ($(window).width() > 668 && $(window).width() < 850) {
+            $("a[href='/veelgesteldevragen']").first().text("FAQ");
+        }
+        else {
+            $("a[href='/veelgesteldevragen']").first().text("Veelgestelde vragen");
+        }
+    };
     Oogstplanner.prototype.resetValidation = function () {
         $('.input-validation-error').removeClass('input-validation-error');
         $('.field-validation-error').removeClass('field-validation-error');

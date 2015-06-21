@@ -176,6 +176,16 @@ class Oogstplanner {
         });
 
     }
+
+    changeLengthFaqLinkText() {
+        
+        /* Change link in upper screen based on window width so menu stays in one row. */
+        if ($(window).width() > 668 && $(window).width() < 850 ) {
+            $("a[href='/veelgesteldevragen']").first().text("FAQ")
+        } else { 
+            $("a[href='/veelgesteldevragen']").first().text("Veelgestelde vragen")
+        }
+    }
         
     resetValidation() {
 
