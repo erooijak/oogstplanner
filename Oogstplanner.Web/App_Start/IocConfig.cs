@@ -33,14 +33,15 @@ namespace Oogstplanner.Web
                 .As<IRepositoryProvider>()
                 .InstancePerRequest();
 
-            // Note: ServiceBase     is the base class for both AnonymousUserService and
-            //       UserService.
-            //       If a constructor requests an IUserService this should be of
-            //       type UserService and not AnonymousUserService.
-            //       To accomplish this the AnonymousUserService is not registered below.
-            //
-            //       Furthermore, the LastActivityUpdator and the decorator 
-            //       AnonymousUserLastActivityUpdator are registered differently.
+            /* Note:    ServiceBase is the base class for all services including both 
+             *          AnonymousUserService and UserService.
+             *          If a constructor requests an IUserService this should be of
+             *          type UserService and not AnonymousUserService.
+             *          To accomplish this the AnonymousUserService is not registered below.
+             *
+             *          Furthermore, the LastActivityUpdator and the decorator 
+             *          AnonymousUserLastActivityUpdator are registered differently. */
+             
             builder.RegisterAssemblyTypes(typeof(ServiceBase).Assembly)
                 .Except<UserService>()
                 .Except<AnonymousUserService>()
@@ -57,6 +58,7 @@ namespace Oogstplanner.Web
             builder.RegisterType<LastActivityUpdator>()
                 .Named<ILastActivityUpdator>("lastActivityUpdator")
                 .InstancePerRequest();
+
             builder.RegisterType<AnonymousUserLastActivityUpdator>()
                 .Named<ILastActivityUpdator>("anonymousUserLastActivityUpdator")
                 .InstancePerRequest();
@@ -74,6 +76,7 @@ namespace Oogstplanner.Web
                 c.ResolveNamed<ILastActivityUpdator>("lastActivityUpdator")))
                 .As<IUserService>()
                 .InstancePerRequest();
+
             builder.Register(c => new AnonymousUserService(
                 c.Resolve<IOogstplannerUnitOfWork>(),
                 c.Resolve<ICookieProvider>(),
@@ -83,6 +86,7 @@ namespace Oogstplanner.Web
             builder.RegisterType<UserService>()
                 .Keyed<IUserService>(AuthenticatedStatus.Authenticated)
                 .InstancePerRequest();
+
             builder.RegisterType<AnonymousUserService>()
                 .Keyed<IUserService>(AuthenticatedStatus.Anonymous)
                 .WithParameter(
