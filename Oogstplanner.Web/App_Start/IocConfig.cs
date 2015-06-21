@@ -35,12 +35,21 @@ namespace Oogstplanner.Web
 
             /* Note:    ServiceBase is the base class for all services including both 
              *          AnonymousUserService and UserService.
-             *          If a constructor requests an IUserService this should be of
-             *          type UserService and not AnonymousUserService.
-             *          To accomplish this the AnonymousUserService is not registered below.
+             * 
+             *          If a constructor requests an IDeletableUserService or IUserService 
+             *          the provided dependency should be of type UserService and not 
+             *          AnonymousUserService.
+             *          To accomplish this the AnonymousUserService is not registered below
+             *          and the IDeletableUserService is registered explicitly.
+             *          
+             *          Since it can only be determined at runtime if a user is authenticated
+             *          or not a keyed IUserService with as key the authentication status 
+             *          provided by the AuthenticationService is injected in controllers who 
+             *          depend on a user being authenticated or not. 
              *
-             *          Furthermore, the LastActivityUpdator and the decorator 
-             *          AnonymousUserLastActivityUpdator are registered differently. */
+             *          Furthermore, the decorator of LastActivityUpdator called 
+             *          AnonymousUserLastActivityUpdator needs to be registered as a decorator. 
+             */
              
             builder.RegisterAssemblyTypes(typeof(ServiceBase).Assembly)
                 .Except<UserService>()
