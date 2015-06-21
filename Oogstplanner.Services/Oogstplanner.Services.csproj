@@ -65,7 +65,7 @@
     <Compile Include="AnonymousUserLastActivityUpdator.cs" />
     <Compile Include="Contracts\IDeletableUserService.cs" />
     <Compile Include="Contracts\IEmailService.cs" />
-    <Compile Include="GMailService.cs" />
+    <Compile Include="GmailService.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

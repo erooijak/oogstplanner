@@ -1,16 +1,13 @@
-﻿using System.Net.Mail;
-using System.Net.Security;
+﻿using System.Net;
+using System.Net.Mail;
 
-using Oogstplanner.Common;
 using Oogstplanner.Data;
-using System.Security.Cryptography.X509Certificates;
-using System.Net;
 
 namespace Oogstplanner.Services
 {
-    public class GMailService : ServiceBase, IEmailService
+    public class GmailService : ServiceBase, IEmailService
     {
-        public GMailService(IOogstplannerUnitOfWork unitOfWork) 
+        public GmailService(IOogstplannerUnitOfWork unitOfWork) 
             : base(unitOfWork)
         { }
             
