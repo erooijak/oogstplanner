@@ -568,11 +568,11 @@ namespace Oogstplanner.Tests.Controllers
             };
 
             // ACT
-            controller.ResetPassword(model);
+            var result = controller.ResetPassword(model) as RedirectToRouteResult;
 
             // ASSERT
-            Assert.AreEqual(controller.ViewData["Message"], "Wachtwoord succesvol veranderd.",
-                "The message that the password was changed succesfully should be displayed.");
+            Assert.AreEqual(result.RouteName, "Welcome",
+                "When password was changed succesfully user should be rerouted to welcome.");
         }
 
         [Test]
