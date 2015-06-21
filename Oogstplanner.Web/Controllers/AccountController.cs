@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Net.Mail;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
@@ -18,11 +17,13 @@ namespace Oogstplanner.Web.Controllers
         readonly IDeletableUserService userService;
         readonly IMembershipService membershipService;
         readonly IPasswordRecoveryService passwordRecoveryService;
+        readonly IEmailService emailService;
 
         public AccountController(
             IDeletableUserService userService,
             IMembershipService membershipService,
-            IPasswordRecoveryService passwordRecoveryService)
+            IPasswordRecoveryService passwordRecoveryService,
+            IEmailService emailService)
         {
             if (userService == null)
             {
@@ -36,10 +37,15 @@ namespace Oogstplanner.Web.Controllers
             {
                 throw new ArgumentNullException("passwordRecoveryService");
             }
+            if (emailService == null)
+            {
+                throw new ArgumentNullException("emailService");
+            }
 
             this.userService = userService;
             this.membershipService = membershipService;
             this.passwordRecoveryService = passwordRecoveryService;
+            this.emailService = emailService;
         }
 
         //
@@ -159,31 +165,20 @@ namespace Oogstplanner.Web.Controllers
                     // Email stuff
                     const string subject = "Reset uw wachtwoord voor de Oogstplanner";
                     string body = "Gebruik binnen 24 uur de volgende link om uw wachtwoord te resetten: " + resetLink;
-                    const string from = "donotreply@oogstplanner.nl";
+                    string userMailAddress = model.Email;
 
-                    var message = new MailMessage(from, model.Email) 
+                    try
                     {
-                        Subject = subject,
-                        Body = body
-                    };
-                            
-                    // Attempt to send the email and store the token.
-                    using (var client = new SmtpClient()) 
-                    {
-                        try 
-                        {
-                            client.Send(message);
-                            passwordRecoveryService.StoreResetToken(model.Email, token);
-                            ViewBag.Message = "Reset link is succesvol verzonden.";
-                        }
-                        catch (Exception e) 
-                        {
-                            ModelState.AddModelError("", "Er is een probleem opgetreden bij het verzenden van de e-mail: " + e.Message);
-                        }
+                        emailService.SendEmail(subject, body, userMailAddress);
+                        passwordRecoveryService.StoreResetToken(userMailAddress, token);
+                        ViewBag.Message = "Reset link is succesvol verzonden.";
                     }
-
+                    catch (Exception e)
+                    {
+                        ModelState.AddModelError("", 
+                            "Er is een probleem opgetreden bij het verzenden van de e-mail: " + e.Message);
+                    }
                 }
-
             }
                 
             return new EmptyResult();
@@ -262,7 +257,7 @@ namespace Oogstplanner.Web.Controllers
             int positionLastSlash = requestedPath.LastIndexOf('/') + 1;
             string userName = requestedPath.Substring(positionLastSlash, requestedPath.Length - positionLastSlash).TrimEnd('/');
 
-            User user = null;
+            User user;
             try 
             {
                 user = userService.GetUserByName(userName);

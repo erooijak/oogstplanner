@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Configuration;
+using System.Net.Configuration;
 
 namespace Oogstplanner.Common
 {

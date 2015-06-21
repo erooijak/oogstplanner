@@ -22,11 +22,13 @@ namespace Oogstplanner.Tests.Controllers
             var userServiceMock = new Mock<IDeletableUserService>();
             var membershipServiceMock = new Mock<IMembershipService>();
             var passwordRecoveryServiceMock = new Mock<IPasswordRecoveryService>();
+            var emailServiceMock = new Mock<IEmailService>();
 
             var controller = new AccountController(
                 userServiceMock.Object, 
                 membershipServiceMock.Object, 
-                passwordRecoveryServiceMock.Object);
+                passwordRecoveryServiceMock.Object,
+                emailServiceMock.Object);
                 
             // ACT
             var actionResult = controller.LoginOrRegisterModal() as PartialViewResult;
@@ -43,6 +45,7 @@ namespace Oogstplanner.Tests.Controllers
             var userServiceMock = new Mock<IDeletableUserService>();
             var membershipServiceMock = new Mock<IMembershipService>();
             var passwordRecoveryServiceMock = new Mock<IPasswordRecoveryService>();
+            var emailServiceMock = new Mock<IEmailService>();
 
             membershipServiceMock.Setup(mock => mock.ValidateUser(It.IsAny<string>(), It.IsAny<string>()))
                 .Returns(true);
@@ -50,7 +53,8 @@ namespace Oogstplanner.Tests.Controllers
             var controller = new AccountController(
                 userServiceMock.Object, 
                 membershipServiceMock.Object, 
-                passwordRecoveryServiceMock.Object);
+                passwordRecoveryServiceMock.Object,
+                emailServiceMock.Object);
 
             const string expectedUserNameOrPassword = "test@test.de";
             var model = new LoginModel
@@ -81,6 +85,7 @@ namespace Oogstplanner.Tests.Controllers
             var userServiceMock = new Mock<IDeletableUserService>();
             var membershipServiceMock = new Mock<IMembershipService>();
             var passwordRecoveryServiceMock = new Mock<IPasswordRecoveryService>();
+            var emailServiceMock = new Mock<IEmailService>();
 
             membershipServiceMock.Setup(mock => mock.ValidateUser(It.IsAny<string>(), It.IsAny<string>()))
                 .Returns(true);
@@ -88,7 +93,8 @@ namespace Oogstplanner.Tests.Controllers
             var controller = new AccountController(
                 userServiceMock.Object, 
                 membershipServiceMock.Object, 
-                passwordRecoveryServiceMock.Object);
+                passwordRecoveryServiceMock.Object,
+                emailServiceMock.Object);
                 
             const string expectedUserNameOrPassword = "test@test.de";
             var model = new LoginModel
@@ -116,6 +122,7 @@ namespace Oogstplanner.Tests.Controllers
             var userServiceMock = new Mock<IDeletableUserService>();
             var membershipServiceMock = new Mock<IMembershipService>();
             var passwordRecoveryServiceMock = new Mock<IPasswordRecoveryService>();
+            var emailServiceMock = new Mock<IEmailService>();
 
             membershipServiceMock.Setup(mock => mock.ValidateUser(It.IsAny<string>(), It.IsAny<string>()))
                 .Returns(true);
@@ -123,7 +130,8 @@ namespace Oogstplanner.Tests.Controllers
             var controller = new AccountController(
                 userServiceMock.Object, 
                 membershipServiceMock.Object, 
-                passwordRecoveryServiceMock.Object);
+                passwordRecoveryServiceMock.Object,
+                emailServiceMock.Object);
 
             var model = new LoginModel();
 
@@ -144,6 +152,7 @@ namespace Oogstplanner.Tests.Controllers
             var userServiceMock = new Mock<IDeletableUserService>();
             var membershipServiceMock = new Mock<IMembershipService>();
             var passwordRecoveryServiceMock = new Mock<IPasswordRecoveryService>();
+            var emailServiceMock = new Mock<IEmailService>();
 
             membershipServiceMock.Setup(mock => mock.ValidateUser(It.IsAny<string>(), It.IsAny<string>()))
                 .Returns(false);
@@ -151,7 +160,8 @@ namespace Oogstplanner.Tests.Controllers
             var controller = new AccountController(
                 userServiceMock.Object, 
                 membershipServiceMock.Object, 
-                passwordRecoveryServiceMock.Object);
+                passwordRecoveryServiceMock.Object,
+                emailServiceMock.Object);
                 
             var model = new LoginModel
                 {
@@ -177,6 +187,7 @@ namespace Oogstplanner.Tests.Controllers
             var userServiceMock = new Mock<IDeletableUserService>();
             var membershipServiceMock = new Mock<IMembershipService>();
             var passwordRecoveryServiceMock = new Mock<IPasswordRecoveryService>();
+            var emailServiceMock = new Mock<IEmailService>();
 
             var expectedModelError = 
                 new Oogstplanner.Models.ModelError();
@@ -192,7 +203,8 @@ namespace Oogstplanner.Tests.Controllers
             var controller = new AccountController(
                 userServiceMock.Object, 
                 membershipServiceMock.Object, 
-                passwordRecoveryServiceMock.Object);
+                passwordRecoveryServiceMock.Object,
+                emailServiceMock.Object);
 
             const string expectedUserName = "Piet";
             const string expectedFullName = "Piet Jansma";
@@ -235,6 +247,7 @@ namespace Oogstplanner.Tests.Controllers
             var userServiceMock = new Mock<IDeletableUserService>();
             var membershipServiceMock = new Mock<IMembershipService>();
             var passwordRecoveryServiceMock = new Mock<IPasswordRecoveryService>();
+            var emailServiceMock = new Mock<IEmailService>();
 
             const int expectedUserId = 12;
             const string expectedUserName = "testttt";
@@ -250,7 +263,8 @@ namespace Oogstplanner.Tests.Controllers
             var controller = new AccountController(
                 userServiceMock.Object, 
                 membershipServiceMock.Object, 
-                passwordRecoveryServiceMock.Object);
+                passwordRecoveryServiceMock.Object,
+                emailServiceMock.Object);
 
             // ACT
             var actionResult = controller.Remove();
@@ -282,6 +296,7 @@ namespace Oogstplanner.Tests.Controllers
             var userServiceMock = new Mock<IDeletableUserService>();
             var membershipServiceMock = new Mock<IMembershipService>();
             var passwordRecoveryServiceMock = new Mock<IPasswordRecoveryService>();
+            var emailServiceMock = new Mock<IEmailService>();
 
             userServiceMock.Setup(mock =>
                 mock.GetCurrentUserId())
@@ -290,7 +305,8 @@ namespace Oogstplanner.Tests.Controllers
             var controller = new AccountController(
                 userServiceMock.Object, 
                 membershipServiceMock.Object, 
-                passwordRecoveryServiceMock.Object);
+                passwordRecoveryServiceMock.Object,
+                emailServiceMock.Object);
 
             // ACT
             var actionResult = controller.Remove();
@@ -307,11 +323,13 @@ namespace Oogstplanner.Tests.Controllers
             var userServiceMock = new Mock<IDeletableUserService>();
             var membershipServiceMock = new Mock<IMembershipService>();
             var passwordRecoveryServiceMock = new Mock<IPasswordRecoveryService>();
+            var emailServiceMock = new Mock<IEmailService>();
 
             var controller = new AccountController(
                 userServiceMock.Object,
                 membershipServiceMock.Object, 
-                passwordRecoveryServiceMock.Object);
+                passwordRecoveryServiceMock.Object,
+                emailServiceMock.Object);
 
             var model = new RegisterModel();
 
@@ -332,6 +350,7 @@ namespace Oogstplanner.Tests.Controllers
             var userServiceMock = new Mock<IDeletableUserService>();
             var membershipServiceMock = new Mock<IMembershipService>();
             var passwordRecoveryServiceMock = new Mock<IPasswordRecoveryService>();
+            var emailServiceMock = new Mock<IEmailService>();
 
             const string expectedModelErrorField = "Password";
             const string expectedModelErrorMessage = "Wrong password";
@@ -353,7 +372,8 @@ namespace Oogstplanner.Tests.Controllers
             var controller = new AccountController(
                 userServiceMock.Object, 
                 membershipServiceMock.Object, 
-                passwordRecoveryServiceMock.Object);  
+                passwordRecoveryServiceMock.Object,
+                emailServiceMock.Object);  
 
             const string expectedUserName = "Piet";
             const string expectedFullName = "Piet Jansma";
@@ -384,11 +404,13 @@ namespace Oogstplanner.Tests.Controllers
             var userServiceMock = new Mock<IDeletableUserService>();
             var membershipServiceMock = new Mock<IMembershipService>();
             var passwordRecoveryServiceMock = new Mock<IPasswordRecoveryService>();
+            var emailServiceMock = new Mock<IEmailService>();
 
             var controller = new AccountController(
                 userServiceMock.Object, 
                 membershipServiceMock.Object, 
-                passwordRecoveryServiceMock.Object);
+                passwordRecoveryServiceMock.Object,
+                emailServiceMock.Object);
                 
             controller.SetMockControllerContext();
 
@@ -413,11 +435,13 @@ namespace Oogstplanner.Tests.Controllers
             var userServiceMock = new Mock<IDeletableUserService>();
             var membershipServiceMock = new Mock<IMembershipService>();
             var passwordRecoveryServiceMock = new Mock<IPasswordRecoveryService>();
+            var emailServiceMock = new Mock<IEmailService>();
 
             var controller = new AccountController(
-                                 userServiceMock.Object, 
-                                 membershipServiceMock.Object, 
-                                 passwordRecoveryServiceMock.Object);
+                userServiceMock.Object, 
+                membershipServiceMock.Object, 
+                passwordRecoveryServiceMock.Object,
+                emailServiceMock.Object);
                 
             const string expectedEmail = "test@test.de";
             var model = new LostPasswordModel
@@ -436,16 +460,16 @@ namespace Oogstplanner.Tests.Controllers
         }
 
         [Test]
-        public void Controllers_Account_LostPassword_Failure()
+        public void Controllers_Account_LostPassword_Success()
         {
             // ARRANGE
             var userServiceMock = new Mock<IDeletableUserService>();
             var membershipServiceMock = new Mock<IMembershipService>();
             var passwordRecoveryServiceMock = new Mock<IPasswordRecoveryService>();
+            var emailServiceMock = new Mock<IEmailService>();
 
             var userMock = new Mock<MembershipUser>();
             userMock.Setup(u => u.ProviderUserKey).Returns(Guid.NewGuid());
-
             passwordRecoveryServiceMock.Setup(mock => 
                 mock.GetMembershipUserByEmail(It.IsAny<string>()))
                 .Returns(userMock.Object);
@@ -453,7 +477,8 @@ namespace Oogstplanner.Tests.Controllers
             var controller = new AccountController(
                 userServiceMock.Object, 
                 membershipServiceMock.Object, 
-                passwordRecoveryServiceMock.Object);
+                passwordRecoveryServiceMock.Object,
+                emailServiceMock.Object);
 
             controller.SetMockControllerContext();
 
@@ -467,11 +492,9 @@ namespace Oogstplanner.Tests.Controllers
             controller.LostPassword(model);
 
             // ASSERT
-            Assert.IsTrue( 
-                (controller.ViewData.ModelState[""].Errors[0].ErrorMessage)
-                .Contains("Er is een probleem opgetreden bij het verzenden van de e-mail: The SMTP host was not specified"),
-                "When the sending of a message fails this should be added to model. " +
-                "(It fails since no SMTP host is specified in the unit test project.)");
+            emailServiceMock.Verify(mock => mock.SendEmail(
+                    It.IsAny<string>(), It.IsAny<string>(), expectedEmail), Times.Once,
+                "The send e-mail function should be called with the specified e-mail.");
         }
 
         [Test]
@@ -481,11 +504,13 @@ namespace Oogstplanner.Tests.Controllers
             var userServiceMock = new Mock<IDeletableUserService>();
             var membershipServiceMock = new Mock<IMembershipService>();
             var passwordRecoveryServiceMock = new Mock<IPasswordRecoveryService>();
+            var emailServiceMock = new Mock<IEmailService>();
 
             var controller = new AccountController(
                 userServiceMock.Object, 
                 membershipServiceMock.Object, 
-                passwordRecoveryServiceMock.Object);
+                passwordRecoveryServiceMock.Object,
+                emailServiceMock.Object);
 
             var expectedReturnToken = Guid.NewGuid().ToString();
             var model = new ResetPasswordModel
@@ -509,6 +534,7 @@ namespace Oogstplanner.Tests.Controllers
             var userServiceMock = new Mock<IDeletableUserService>();
             var membershipServiceMock = new Mock<IMembershipService>();
             var passwordRecoveryServiceMock = new Mock<IPasswordRecoveryService>();
+            var emailServiceMock = new Mock<IEmailService>();
 
             var returnToken = Guid.NewGuid().ToString();
             const string resettedPassword = "Random";
@@ -532,7 +558,8 @@ namespace Oogstplanner.Tests.Controllers
             var controller = new AccountController(
                 userServiceMock.Object, 
                 membershipServiceMock.Object, 
-                passwordRecoveryServiceMock.Object);
+                passwordRecoveryServiceMock.Object,
+                emailServiceMock.Object);
                 
             var model = new ResetPasswordModel
             {
@@ -555,6 +582,7 @@ namespace Oogstplanner.Tests.Controllers
             var userServiceMock = new Mock<IDeletableUserService>();
             var membershipServiceMock = new Mock<IMembershipService>();
             var passwordRecoveryServiceMock = new Mock<IPasswordRecoveryService>();
+            var emailServiceMock = new Mock<IEmailService>();
 
             var returnToken = Guid.NewGuid().ToString();
             const string resettedPassword = "Random";
@@ -578,7 +606,8 @@ namespace Oogstplanner.Tests.Controllers
             var controller = new AccountController(
                 userServiceMock.Object, 
                 membershipServiceMock.Object, 
-                passwordRecoveryServiceMock.Object);
+                passwordRecoveryServiceMock.Object,
+                emailServiceMock.Object);
 
             var model = new ResetPasswordModel
                 {
@@ -602,6 +631,7 @@ namespace Oogstplanner.Tests.Controllers
             var userServiceMock = new Mock<IDeletableUserService>();
             var membershipServiceMock = new Mock<IMembershipService>();
             var passwordRecoveryServiceMock = new Mock<IPasswordRecoveryService>();
+            var emailServiceMock = new Mock<IEmailService>();
 
             var returnToken = Guid.NewGuid().ToString();
             const string resettedPassword = "Random";
@@ -625,7 +655,8 @@ namespace Oogstplanner.Tests.Controllers
             var controller = new AccountController(
                 userServiceMock.Object, 
                 membershipServiceMock.Object, 
-                passwordRecoveryServiceMock.Object);
+                passwordRecoveryServiceMock.Object,
+                emailServiceMock.Object);
 
             var model = new ResetPasswordModel
                 {
@@ -649,6 +680,7 @@ namespace Oogstplanner.Tests.Controllers
             var userServiceMock = new Mock<IDeletableUserService>();
             var membershipServiceMock = new Mock<IMembershipService>();
             var passwordRecoveryServiceMock = new Mock<IPasswordRecoveryService>();
+            var emailServiceMock = new Mock<IEmailService>();
 
             var returnToken = Guid.NewGuid().ToString();
             const string resettedPassword = "Random";
@@ -672,7 +704,8 @@ namespace Oogstplanner.Tests.Controllers
             var controller = new AccountController(
                 userServiceMock.Object, 
                 membershipServiceMock.Object, 
-                passwordRecoveryServiceMock.Object);
+                passwordRecoveryServiceMock.Object,
+                emailServiceMock.Object);
 
             var model = new ResetPasswordModel
                 {
@@ -696,6 +729,7 @@ namespace Oogstplanner.Tests.Controllers
             var userServiceMock = new Mock<IDeletableUserService>();
             var membershipServiceMock = new Mock<IMembershipService>();
             var passwordRecoveryServiceMock = new Mock<IPasswordRecoveryService>();
+            var emailServiceMock = new Mock<IEmailService>();
 
             const int expectedUserId = 1;
             var expectedUser = new User { Id = expectedUserId };
@@ -708,7 +742,8 @@ namespace Oogstplanner.Tests.Controllers
             var controller = new AccountController(
                 userServiceMock.Object, 
                 membershipServiceMock.Object, 
-                passwordRecoveryServiceMock.Object);
+                passwordRecoveryServiceMock.Object,
+                emailServiceMock.Object);
                 
             // ACT
             var viewResult = controller.Info() as ViewResult;
@@ -724,6 +759,7 @@ namespace Oogstplanner.Tests.Controllers
             var userServiceMock = new Mock<IDeletableUserService>();
             var membershipServiceMock = new Mock<IMembershipService>();
             var passwordRecoveryServiceMock = new Mock<IPasswordRecoveryService>();
+            var emailServiceMock = new Mock<IEmailService>();
 
             var expectedUser = new User();
 
@@ -733,7 +769,8 @@ namespace Oogstplanner.Tests.Controllers
             var controller = new AccountController(
                 userServiceMock.Object, 
                 membershipServiceMock.Object, 
-                passwordRecoveryServiceMock.Object);
+                passwordRecoveryServiceMock.Object,
+                emailServiceMock.Object);
 
             controller.SetMockControllerContext();
 
@@ -754,14 +791,16 @@ namespace Oogstplanner.Tests.Controllers
             var userServiceMock = new Mock<IDeletableUserService>();
             var membershipServiceMock = new Mock<IMembershipService>();
             var passwordRecoveryServiceMock = new Mock<IPasswordRecoveryService>();
-
+            var emailServiceMock = new Mock<IEmailService>();
+            
             userServiceMock.Setup(mock => mock.GetUserByName(It.IsAny<string>()))
                 .Throws<UserNotFoundException>();
 
             var controller = new AccountController(
                 userServiceMock.Object, 
                 membershipServiceMock.Object, 
-                passwordRecoveryServiceMock.Object);
+                passwordRecoveryServiceMock.Object,
+                emailServiceMock.Object);
 
             controller.SetMockControllerContext();
 
