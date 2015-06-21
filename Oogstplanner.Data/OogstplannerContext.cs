@@ -16,8 +16,7 @@ namespace Oogstplanner.Data
 
         public OogstplannerContext() 
             : base(string.Format("name={0}", Constants.ConnectionStringName))
-        {
-        }
+        { }
 
         IDbSet<T> IOogstplannerContext.Set<T>()
         {
