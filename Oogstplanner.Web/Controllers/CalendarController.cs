@@ -189,7 +189,7 @@ namespace Oogstplanner.Web.Controllers
             try 
             {
                 // Remove this and related farming action from database
-                farmingActionService.RemoveAction(id);
+                farmingActionService.RemoveActionPair(id);
             } 
             catch (Exception ex) 
             {
@@ -219,7 +219,7 @@ namespace Oogstplanner.Web.Controllers
 
             try
             {
-                farmingActionService.AddAction(farmingAction);
+                farmingActionService.AddActionPair(farmingAction);
                 return Json(new { success = true });
             }
             catch (Exception ex) 

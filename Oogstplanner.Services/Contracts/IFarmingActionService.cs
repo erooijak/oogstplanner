@@ -8,8 +8,8 @@ namespace Oogstplanner.Services
     {           
         IEnumerable<FarmingAction> GetHarvestingActions(int userId, Months month);        
         IEnumerable<FarmingAction> GetSowingActions(int userId, Months month);        
-        void AddAction(FarmingAction farmingAction);        
-        void RemoveAction(int id);
+        void AddActionPair(FarmingAction farmingAction);        
+        void RemoveActionPair(int id);
         void UpdateCropCounts(IList<int> ids, IList<int> counts);
     }
 }

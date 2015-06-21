@@ -97,7 +97,7 @@ namespace Oogstplanner.Tests.Services
                 authenticationServiceMock.Object);
 
             // ACT
-            service.AddAction(addedFarmingAction);;
+            service.AddActionPair(addedFarmingAction);;
 
             // ASSERT
             farmingActionRepositoryMock.Verify(mock => mock.Update(
@@ -155,7 +155,7 @@ namespace Oogstplanner.Tests.Services
                 authenticationServiceMock.Object);
 
             // ACT
-            service.AddAction(addedFarmingAction);;
+            service.AddActionPair(addedFarmingAction);;
 
             // ASSERT
             farmingActionRepositoryMock.Verify(mock => mock.Add(
@@ -219,7 +219,7 @@ namespace Oogstplanner.Tests.Services
 
             // ACT
             // ASSERT
-            Assert.Throws<SecurityException>(() => service.AddAction(addedFarmingAction),
+            Assert.Throws<SecurityException>(() => service.AddActionPair(addedFarmingAction),
                 "When a user tries to update another user's action a security exception" +
                 "should be thrown.");
             unitOfWorkMock.Verify(mock => mock.Commit(), Times.Never,
@@ -276,7 +276,7 @@ namespace Oogstplanner.Tests.Services
                 authenticationServiceMock.Object);
 
             // ACT
-            service.RemoveAction(expectedFarmingActionId);;
+            service.RemoveActionPair(expectedFarmingActionId);;
 
             // ASSERT
             farmingActionRepositoryMock.Verify(mock => mock.Delete(returnedAction),
@@ -341,7 +341,7 @@ namespace Oogstplanner.Tests.Services
                 
             // ACT
             // ASSERT
-            Assert.Throws<SecurityException>(() => service.RemoveAction(expectedFarmingActionId),
+            Assert.Throws<SecurityException>(() => service.RemoveActionPair(expectedFarmingActionId),
                 "When a user tries to delete another user's action a security exception" +
                 "should be thrown.");
             unitOfWorkMock.Verify(mock => mock.Commit(), Times.Never,

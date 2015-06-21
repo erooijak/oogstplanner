@@ -474,7 +474,7 @@ namespace Oogstplanner.Tests.Controllers
             // ASSERT
             farmingActionServiceMock
                 .Verify(mock => 
-                    mock.RemoveAction(idToRemove), 
+                    mock.RemoveActionPair(idToRemove), 
                     Times.Once, 
                     "The RemoveAction method should be called.");
             Assert.AreEqual("{ success = True }", viewResult.Data.ToString(),
@@ -492,7 +492,7 @@ namespace Oogstplanner.Tests.Controllers
             const int idToRemove = 1;
 
             farmingActionServiceMock.Setup(mock => 
-                mock.RemoveAction(idToRemove))
+                mock.RemoveActionPair(idToRemove))
                 .Throws(new IndexOutOfRangeException());
 
             var controller = new CalendarController(
@@ -533,7 +533,7 @@ namespace Oogstplanner.Tests.Controllers
             // ASSERT
             farmingActionServiceMock
                 .Verify(mock => 
-                    mock.AddAction(It.IsAny<FarmingAction>()), 
+                    mock.AddActionPair(It.IsAny<FarmingAction>()), 
                     Times.Once, 
                     "The AddFarmingAction method should be called.");
             Assert.AreEqual("{ success = True }", viewResult.Data.ToString(),
@@ -556,7 +556,7 @@ namespace Oogstplanner.Tests.Controllers
 
             farmingActionServiceMock
                 .Setup(mock => 
-                    mock.AddAction(It.IsAny<FarmingAction>()))
+                    mock.AddActionPair(It.IsAny<FarmingAction>()))
                 .Throws(new ArgumentOutOfRangeException());
 
             // ACT
@@ -569,7 +569,7 @@ namespace Oogstplanner.Tests.Controllers
             // ASSERT
             farmingActionServiceMock
                 .Verify(mock => 
-                    mock.AddAction(It.IsAny<FarmingAction>()), 
+                    mock.AddActionPair(It.IsAny<FarmingAction>()), 
                     Times.Once, 
                     "The AddFarmingAction method should be called.");
             Assert.AreEqual("{ success = False }", viewResult.Data.ToString(),

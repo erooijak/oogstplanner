@@ -60,7 +60,7 @@ namespace Oogstplanner.Services
                 && fa.Month.HasFlag(month));
         }
             
-        public void AddAction(FarmingAction farmingAction)
+        public void AddActionPair(FarmingAction farmingAction)
         {
             // Create the related farmingaction (the sowing or harvesting counter part)
             var relatedFarmingAction = farmingAction.CreateRelated();
@@ -75,7 +75,7 @@ namespace Oogstplanner.Services
             UnitOfWork.Commit();
         }
             
-        public void RemoveAction(int id)
+        public void RemoveActionPair(int id)
         {
             // Get the farming action.
             var farmingAction = UnitOfWork.FarmingActions.GetById(id);
