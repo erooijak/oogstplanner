@@ -167,6 +167,7 @@
     <Folder Include="Utilities\Filters\" />
     <Folder Include="Views\Error\" />
     <Folder Include="Views\Community\" />
+    <Folder Include="Content\Images\Faq\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\HomeController.cs" />
@@ -303,6 +304,8 @@
     <Content Include="Content\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Content\Stylesheets\oogstplanner.faq.css" />
+    <Content Include="Content\Images\Faq\like.png" />
+    <Content Include="Content\Images\Faq\zaaienenoogsten.png" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>

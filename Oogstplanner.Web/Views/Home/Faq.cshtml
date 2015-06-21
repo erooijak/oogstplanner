@@ -8,14 +8,336 @@
 
 @* Top bar *@
 <div id="top"></div>
-   
-<br />
-<br />
-<br />
+
+<h1 class="dark">Veelgestelde vragen</h1>
 
 <div class="alert alert-warning alert-dismissible" role="alert">
-    <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-    Deze sectie bevat de antwoorden op <strong>veelgestelde vragen (FAQ)</strong>. Als u een antwoord op uw vraag niet kan vinden zorg dan dat u ons contacteert.
+    <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Sluiten</span></button>
+    Deze sectie bevat de antwoorden op <strong>veelgestelde vragen (FAQ)</strong>. 
+    Als u een antwoord op uw vraag niet kan vinden zorg dan dat u ons <a href="mailto:oogstplanner@gmail.com">contacteert</a>.
 </div>
 
 <br />
+
+<div class="panel-group dark" id="accordion">
+
+    <h2 class="faq-header">Functionele vragen</h2>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <a class="accordion-toggle collapsed" 
+                   data-toggle="collapse" 
+                   data-parent="#accordion" 
+                   href="#collapse-one">
+                    Hoe zaai of oogst ik een gewas?
+                </a>
+            </h4>
+        </div>
+        <div id="collapse-one" class="panel-collapse collapse">
+            <div class="panel-body">
+                Op @Html.ActionLink("zaaien en oogsten", "SowingAndHarvesting", "Calendar", null, null) kunt u gewassen zaaien en oogsten.
+                Hier volgt een illustratie van dit proces:
+                <br/>
+                <br/>
+                <div align="center">
+                    <img src="/Content/Images/Faq/zaaienenoogsten.png" alt="zaaien en oogsten illustratie" class="img-responsive center"/>
+                </div>
+                <br/>
+                <ol>
+                    <li>In het zoekvak kunt u zoeken naar de gewassen in onze database.</li> 
+                    <li>
+                        Alle gewassen kunt u eventueel bekijken via de link
+                        @Html.ActionLink("Gewassen database", "Index", "Crop", null, new { @target = "_blank" }).
+                    </li>
+                    <li>
+                        Na het zoeken verschijnt er een vierkant met informatie over het gewas. Hier kunt aanvinken of u
+                        het gewas wilt zaaien of oogsten en het aantal stuks van het gewas dat u wilt zaaien of oogsten. Als u uw keuze heeft gemaakt
+                        kunt u het vierkant slepen naar de gewenste maand. De beste maanden om respectievelijk te zaaien of oogsten zullen tijdens 
+                        het slepen oplichten.
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <a class="accordion-toggle collapsed" 
+                   data-toggle="collapse" 
+                   data-parent="#accordion" 
+                   href="#collapse-two">
+                    Hoe like ik een zaaikalender?
+                </a>
+            </h4>
+        </div>
+        <div id="collapse-two" class="panel-collapse collapse">
+            <div class="panel-body">
+                <ul>
+                    <li>U zoekt eerst andere mensen via de @Html.ActionLink("gemeenschap", "Index", "Community", null, new { @target = "_blank" }).</li>
+                    <li>Vervolgens kunt u van deze persoon de kalender bekijken door te klikken op "Mijn kalender".</li>
+                    <li>Bij de kalender kunt u op de groene duim klikken om de zaaikalender te liken.</li>
+                </ul>
+                <br/>
+                <br/>
+                <div align="center">
+                    <img src="/Content/Images/Faq/like.png" alt="like illustratie" class="img-responsive center"/>
+                </div>
+                <br/>
+                <br/>
+                NB: Het liken werkt als een lichtknopje, als u er twee keer op drukt is de toestand weer zoals deze was.
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <a class="accordion-toggle collapsed" 
+                   data-toggle="collapse" 
+                   data-parent="#accordion" 
+                   href="#collapse-three">
+                    Waarom werkt het slepen en neerzetten van een gewas bij zaaien en oogsten niet op mijn mobiel?
+                </a>
+            </h4>
+        </div>
+        <div id="collapse-three" class="panel-collapse collapse">
+            <div class="panel-body">
+                Het is lastig om slepen en neerzetten goed werkzaam te krijgen op mobiel. Dit is een bekend probleem en <strong>OogstPlanner.nl</strong> 
+                werkt aan een oplossing of alternatief.
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <a class="accordion-toggle collapsed" 
+                   data-toggle="collapse" 
+                   data-parent="#accordion" 
+                   href="#collapse-four">
+                    Hoe print ik een kalender uit?
+                </a>
+            </h4>
+        </div>
+        <div id="collapse-four" class="panel-collapse collapse">
+            <div class="panel-body">
+               Bekijk @Html.ActionLink("uw zaaikalender", "Year", "Calendar", null, new { @target = "_blank" }) en druk op CTRL+P.
+            </div>
+        </div>
+    </div>
+
+    <h2 class="faq-header">Generieke vragen</h2>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <a class="accordion-toggle collapsed" 
+                   data-toggle="collapse" 
+                   data-parent="#accordion" 
+                   href="#collapse-five">
+                    Is het registreren van een account noodzakelijk?
+               </a>
+            </h4>
+        </div>
+        <div id="collapse-five" class="panel-collapse collapse">
+            <div class="panel-body">
+                Account registratie op <strong>OogstPlanner.nl</strong> is noodzakelijk indien u de zaaikalender van anderen of uzelf wilt liken. Ook is het 
+                nodig als u gevonden wilt kunnen worden door anderen en/of uw zaaikalender wilt opslaan in onze database.
+                Als u deze functionaliteit niet wilt of nodig heeft kunt u als anonieme gebruiker gebruikmaken van <strong>OogstPlanner.nl</strong>.
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <a class="accordion-toggle collapsed" 
+                   data-toggle="collapse" 
+                   data-parent="#accordion" 
+                   href="#collapse-six">
+                    Hoe lang blijft een anonieme account actief?
+                </a>
+            </h4>
+        </div>
+        <div id="collapse-six" class="panel-collapse collapse">
+            <div class="panel-body">
+                Uw anonieme account blijft vanaf het laatste bezoek zeven dagen actief. Daarna wordt de bijbehorende zaaikalender verwijderd.
+                Indien u uw cookies verwijderd of vanaf een andere computer <strong>OogstPlanner.nl</strong> bezoekt is de data niet toegankelijk.
+                Om data op te slaan en vanaf elke locatie te bezoeken 
+                @if (Request.IsAuthenticated) 
+                {
+                    <span>dient u geregistreerd te zijn bij de <strong>OogstPlanner.nl.</strong></span>
+                }
+                else
+                {
+                    <span>adviseren wij u om u <a href="#" class="register-or-login">aan te melden</a>.</span>
+                }
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <a class="accordion-toggle collapsed" 
+                   data-toggle="collapse" 
+                   data-parent="#accordion" 
+                   href="#collapse-seven">
+                   Hoe wordt mijn wachtwoord op OogstPlanner.nl opgeslagen?
+                </a>
+            </h4>
+        </div>
+        <div id="collapse-seven" class="panel-collapse collapse">
+            <div class="panel-body">
+                Uw wachtwoord wordt gehashed (onherkenbaar getransformeerd) opgeslagen in onze database middels het SHA-1 algoritme.
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <a class="accordion-toggle collapsed" 
+                   data-toggle="collapse" 
+                   data-parent="#accordion" 
+                   href="#collapse-eight">
+                   Waar heeft OogstPlanner.nl de icoontjes, plaatjes en het favicon vandaan?
+                </a>
+            </h4>
+        </div>
+        <div id="collapse-eight" class="panel-collapse collapse">
+            <div class="panel-body">
+                Het favicon (pictogram geassocieerd met een website) "Raised Garden" is gemaakt door brnblnk en komt 
+                <a href="http://www.favicon.cc/?action=icon&file_id=197467" target="_blank">hier</a> vandaan via favicon.cc<br/>
+                Het icoontje van de emmer is gemaakt door Yohann Berger en komt 
+                <a href="https://thenounproject.com/term/watering-can/37906" target="_blank">hier</a>
+                via de Noun Project.<br/>
+                Verder zijn alle plaatjes vrij van copyright. Ze komen van 
+                <a href="https://www.pixabay.com" target="_blank">www.pixabay.com</a>.
+            </div>
+        </div>
+    </div>
+
+     <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <a class="accordion-toggle collapsed" 
+                   data-toggle="collapse" 
+                   data-parent="#accordion" 
+                   href="#collapse-nine">
+                    Waar komt de informatie (groeitijd, prijs per zakje, oppervlakte, et cetera) over de gewassen vandaan?
+                </a>
+            </h4>
+        </div>
+        <div id="collapse-nine" class="panel-collapse collapse">
+            <div class="panel-body">
+                De informatie betreffende zaden is met toestemming vergaard van De Bolster. 
+                Zie <a href="http://www.bolster.nl" target="_blank">de website van De Bolster</a> voor informatie over biologisch dynamische zaden.
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <a class="accordion-toggle collapsed" 
+                   data-toggle="collapse" 
+                   data-parent="#accordion" 
+                   href="#collapse-ten">
+                    Hoe kan ik mijn account verwijderen?
+                </a>
+            </h4>
+        </div>
+        <div id="collapse-ten" class="panel-collapse collapse">
+            <div class="panel-body">
+                @if (Request.IsAuthenticated)
+                {
+                    <span>Ga naar uw @Html.ActionLink("profiel", "Info", "Account", null, null), 
+                    klik op de knop "account verwijderen" en druk op "Ok".</span>
+                }
+                else
+                {
+                    <span>Indien u bent <a href="#" class="register-or-login">ingelogd</a> bij de Oogstplanner gemeenschap
+                    gaat u naar uw profiel, 
+                    klikt u op de knop "account verwijderen" en drukt op "Ok".</span>
+                }
+            </div>
+        </div>
+    </div>
+
+    <h2 class="faq-header">Juridische vragen</h2>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <a class="accordion-toggle collapsed" 
+                   data-toggle="collapse" 
+                   data-parent="#accordion" 
+                   href="#collapse-eleven">
+                    Kan OogstPlanner.nl aansprakelijk worden gehouden voor verstrekte informatie betreffende zaai- en oogsttijden?
+                </a>
+            </h4>
+        </div>
+        <div id="collapse-eleven" class="panel-collapse collapse">
+            <div class="panel-body">
+                <strong>Neen</strong>. De tijd dat het duurt voor een gewas om tot ontspruiting te komen is sterk afhankelijk van grond, 
+                klimaat, locatie, weer en andere factoren. 
+                De zaai- en oogsttijden die <strong>OogstPlanner.nl</strong> verstrekt zijn een indicatie. Hoewel we erg ons best doen om 
+                indicatie zo accuraat mogelijk te maken, kunnen we niet aansprakelijk worden gehouden als de indicatie niet overeenkomt met 
+                de werkelijkheid.
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <a class="accordion-toggle collapsed" 
+                   data-toggle="collapse" 
+                   data-parent="#accordion" 
+                   href="#collapse-twelve">
+                   Maakt OogstPlanner.nl gebruik van tracking cookies?
+                </a>
+            </h4>
+        </div>
+        <div id="collapse-twelve" class="panel-collapse collapse">
+            <div class="panel-body">
+                Neen. <strong>OogstPlanner.nl</strong> maakt geen gebruik van tracking cookies. Wel wordt er een cookie geplaats bij anonieme
+                gebruikers om deze te koppelen aan een zaaikalender. Dit cookie wordt zeven dagen opgeslagen in de browser. Daarnaast plaatst
+                <strong>OogstPlanner.nl</strong> een cookie om uw sessie bij te houden.
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <a class="accordion-toggle collapsed" 
+                   data-toggle="collapse" 
+                   data-parent="#accordion" 
+                   href="#collapse-thirteen">
+                    Wanneer word ik betaald?
+               </a>
+            </h4>
+        </div>
+        <div id="collapse-thirteen" class="panel-collapse collapse">
+            <div class="panel-body">
+                U wordt <strong>niet</strong> betaald voor uw activiteiten op de <strong>OogstPlanner.nl</strong> .
+                <br />
+            </div>
+        </div>
+    </div>
+
+    <h2 class="faq-header">Overige vragen</h2>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <a class="accordion-toggle collapsed" 
+                   data-toggle="collapse" 
+                   data-parent="#accordion" href="#collapse-fourteen">
+                    Hoe kan ik meehelpen aan het verbeteren van OogstPlanner.nl?
+                </a>
+            </h4>
+        </div>
+        <div id="collapse-fourteen" class="panel-collapse collapse">
+            <div class="panel-body">
+                Als u een domeinexpert bent (e.g., permacultuur expert, thuisboer, square meter gardening fanatiekeling) horen wij graag van u
+                wat u mist of verbeterd wilt zien. Verder kunnen we hulp gebruiken met het verbeteren van de website. 
+                Als u overweg kunt met CSS, JavaScript, Mono, Linux en/of C# en wilt meehelpen bent u meer dan welkom om een steentje bij te dragen.
+                <a href="https://github.com/erooijak/oogstplanner/blob/master/README.md#future" target="_blank">Hier</a> vindt u een lijst met geïdentificeerde verbeterpunten.
+            </div>
+        </div>
+    </div>
+</div>
