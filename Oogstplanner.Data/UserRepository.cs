@@ -56,6 +56,8 @@ namespace Oogstplanner.Data
 
         public IEnumerable<User> SearchUsers(string searchTerm)
         {
+            searchTerm = searchTerm.ToLower();
+
             return DbSet.Where(u => 
                 u.AuthenticationStatus == AuthenticatedStatus.Authenticated
                 && (u.Name.ToLower().Contains(searchTerm) || u.FullName.ToLower().Contains(searchTerm)))
