@@ -171,7 +171,6 @@ namespace Oogstplanner.Web.Controllers
                     {
                         emailService.SendEmail(subject, body, userMailAddress);
                         passwordRecoveryService.StoreResetToken(userMailAddress, token);
-                        ViewBag.Message = "Reset link is succesvol verzonden.";
                     }
                     catch (Exception e)
                     {
@@ -185,13 +184,13 @@ namespace Oogstplanner.Web.Controllers
         }
 
         //
-        // GET: /gebruiker/wachtwoordreset/{token}
+        // GET: /gebruiker/wachtwoordreset
         [AllowAnonymous]
-        public ActionResult ResetPassword(string token)
+        public ActionResult ResetPassword(string rt)
         {
             var model = new ResetPasswordModel() 
             {
-                ReturnToken = token
+                ReturnToken = rt
             };
 
             return View(model);
@@ -227,9 +226,14 @@ namespace Oogstplanner.Web.Controllers
                     model.Password
                 );
 
-                ViewBag.Message = isChangeSuccess 
-                    ? "Wachtwoord succesvol veranderd." 
-                    : "Er is iets fout gegaan!";
+                if (isChangeSuccess)
+                {
+                    return RedirectToRoute("Welcome");
+                }
+                else
+                {
+                    ViewBag.Message = "Er is iets fout gegaan!";
+                }
             }
 
             return View(model);
