@@ -79,7 +79,7 @@ var Oogstplanner = (function () {
         var that = this;
         $('#remove-account').bind('click', function (e) {
             e.preventDefault();
-            Notification.confirmation('Weet u zeker dat u uw account, alle data in de zaaikalender, en al uw verkregen en gegeven likes volledig wilt verwijderen?', function () {
+            Notification.confirmation('Weet u zeker dat u uw account, alle data in uw zaaikalender, en al uw verkregen en gegeven likes volledig wilt verwijderen?', function () {
                 that.removeAccount();
             });
         });
@@ -128,7 +128,7 @@ var Oogstplanner = (function () {
         });
     };
     Oogstplanner.prototype.changeLengthFaqLinkText = function () {
-        if ($(window).width() > 668 && $(window).width() < 850) {
+        if ($(window).width() > 750 && $(window).width() < 850) {
             $("a[href='/veelgesteldevragen']").first().text("FAQ");
         }
         else {
