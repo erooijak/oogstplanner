@@ -30,4 +30,9 @@
         });
     });
 
+    /* When search button is clicked search for users */
+    $('#search-button').on('click', function () { 
+        window.location.href='/gemeenschap/zoek/' + $('#search-input').val() 
+    });
+
 });

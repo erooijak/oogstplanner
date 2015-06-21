@@ -13,18 +13,6 @@ $(function () {
         oogstplanner.resizeCropSelectionBox();
     });
 
-    $('#register-link').click(function () {
-        oogstplanner.showSignupBox();
-    });
-
-    $('#signin-link').click(function () {
-        oogstplanner.showLoginBox();
-    });
-
-    $('#search-button').on('click', function () { 
-        window.location.href='/gemeenschap/zoek/' + $('#search-input').val() 
-    });
-
     oogstplanner.makeNumericTextBoxesNumeric();
 
 });
