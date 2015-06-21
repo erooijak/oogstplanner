@@ -77,7 +77,7 @@ Currently the system is in the minimal viable product (MVP) stage. There are a l
 - [ ] Provide clickable tree view of available crops under the crops search button.
 - [ ] Crop searching on category or preferred harvesting or sowing month.
 - [ ] Make calendar span multiple years (i.e., seeds sowed in one year can be harvested in a later year or vice versa).
-- [ ] Multiple calendars for users.
+- [ ] Multiple calendars for one user.
 - [ ] Editing of user profile.
 - [ ] Choosing profile image.
 - [ ] Comments on user profile.
@@ -89,6 +89,7 @@ Currently the system is in the minimal viable product (MVP) stage. There are a l
 - [ ] Add area for blog posts and articles.
 - [ ] Export sowing calendar to PDF, Google Calendar and/or Excel.
 - [ ] Only show sowing or harvesting calendar.
+- [ ] Refactor code (e.g., split up FarmingAction class in sowing and harvesting part).
 - [ ] Improve SEO.
 - [ ] Provide effects (e.g., shaking of login modal dialog on error, loading symbol while loading).
 - [ ] Integrate with external APIs (e.g., weather forecast).
