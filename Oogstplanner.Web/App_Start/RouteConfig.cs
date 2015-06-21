@@ -8,6 +8,7 @@ namespace Oogstplanner.Web
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute ("{resource}.axd/{*pathInfo}");
+
             routes.MapRoute(
                 name: "Welcome",
                 url: "welkom",
@@ -15,9 +16,15 @@ namespace Oogstplanner.Web
             );
 
             routes.MapRoute(
+                name: "Faq",
+                url: "veelgesteldevragen",
+                defaults: new { controller = "Home", action = "Faq" }
+            );
+
+            routes.MapRoute(
                 name: "SowingAndHarvesting",
                 url: "zaaienenoogsten",
-                defaults: new { controller = "Home", action = "Calendar" }
+                defaults: new { controller = "Calendar", action = "SowingAndHarvesting" }
             );
 
             routes.MapRoute(

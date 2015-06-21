@@ -299,6 +299,10 @@
     <Content Include="Views\Calendar\_CropSearch.cshtml" />
     <Content Include="Views\Calendar\_MonthCalendar.cshtml" />
     <Content Include="Views\Calendar\SowingAndHarvesting.cshtml" />
+    <Content Include="Views\Home\Faq.cshtml" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\Stylesheets\oogstplanner.faq.css" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
@@ -328,6 +332,7 @@
     <None Include="Scripts\oogstplanner.likes.ts" />
     <None Include="Content\Images\favicon.ico" />
     <None Include="App_Data\Migrations\201520062344_Initial.sql" />
+    <None Include="Content\fonts\glyphicons-halflings-regular.woff2" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Oogstplanner.Data\Oogstplanner.Data.csproj">

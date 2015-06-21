@@ -33,6 +33,9 @@ namespace Oogstplanner.Web
             bundles.Add(new StyleBundle("~/Content/Stylesheets/oogstplanner.likes").Include(
                 "~/Content/Stylesheets/jquery.webui-popover.css"));
 
+            bundles.Add(new StyleBundle("~/Content/Stylesheets/oogstplanner.faq").Include(
+                "~/Content/Stylesheets/oogstplanner.faq.css"));
+
             bundles.Add(new ScriptBundle("~/Scripts/jquery").Include(
                 "~/Scripts/jquery-{version}.min.js",
                 "~/Scripts/jquery-ui-{version}.min.js",
