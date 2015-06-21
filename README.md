@@ -95,7 +95,7 @@ Currently the system is in the minimal viable product (MVP) stage. There are a l
 - [ ] Integrate with external APIs (e.g., weather forecast).
 - [ ] Integration with food recipes, calories and/or vitamins.
 
-Suggestions are very welcome.
+Suggestions and/or pull requests are very welcome.
 
 ## Contributors
 

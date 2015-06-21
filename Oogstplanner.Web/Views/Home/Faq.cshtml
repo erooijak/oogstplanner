@@ -125,7 +125,6 @@
         </div>
     </div>
 
-    <h2 class="faq-header">Generieke vragen</h2>
     <div class="panel panel-default">
         <div class="panel-heading">
             <h4 class="panel-title">
@@ -133,14 +132,66 @@
                    data-toggle="collapse" 
                    data-parent="#accordion" 
                    href="#collapse-five">
-                    Is het registreren van een account noodzakelijk?
-               </a>
+                    Hoe kan ik mijn account verwijderen?
+                </a>
             </h4>
         </div>
         <div id="collapse-five" class="panel-collapse collapse">
             <div class="panel-body">
+                @if (Request.IsAuthenticated)
+                {
+                    <span>Ga naar uw @Html.ActionLink("profiel", "Info", "Account", null, null), 
+                    klik op de knop "account verwijderen" en druk op "Ok".</span>
+                }
+                else
+                {
+                    <span>Indien u bent <a href="#" class="register-or-login">ingelogd</a> bij de Oogstplanner gemeenschap
+                    gaat u naar uw profiel, 
+                    klikt u op de knop "account verwijderen" en drukt op "Ok".</span>
+                }
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <a class="accordion-toggle collapsed" 
+                   data-toggle="collapse" 
+                   data-parent="#accordion" 
+                   href="#collapse-six">
+                    Wat kan ik doen als ik mijn wachtwoord ben vergeten?
+                </a>
+            </h4>
+        </div>
+        <div id="collapse-six" class="panel-collapse collapse">
+            <div class="panel-body">
+                Indien u een valide e-mailadres heeft opgegeven kunt u een wachtwoord reset link versturen
+                naar dit e-mailadres. Dit doet u door naar
+                <a href="#" class="register-or-login">aanmelden</a> te gaan
+                en vervolgens naar "Wachtwoord vergeten".
+                U ontvangt vervolgens op uw e-mailadres een wachtwoord reset link die u 24 uur lang kunt gebruiken om uw wachtwoord
+                aan te passen.
+            </div>
+        </div>
+    </div>
+
+    <h2 class="faq-header">Generieke vragen</h2>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <a class="accordion-toggle collapsed" 
+                   data-toggle="collapse" 
+                   data-parent="#accordion" 
+                   href="#collapse-seven">
+                    Is het registreren van een account noodzakelijk?
+               </a>
+            </h4>
+        </div>
+        <div id="collapse-seven" class="panel-collapse collapse">
+            <div class="panel-body">
                 Account registratie op <strong>OogstPlanner.nl</strong> is noodzakelijk indien u de zaaikalender van anderen of uzelf wilt liken. Ook is het 
-                nodig als u gevonden wilt kunnen worden door anderen en/of uw zaaikalender wilt opslaan in onze database.
+                nodig als u gevonden wilt kunnen worden door anderen en/of uw zaaikalender wilt opslaan in onze database zodat u hem overal kan benaderen.
                 Als u deze functionaliteit niet wilt of nodig heeft kunt u als anonieme gebruiker gebruikmaken van <strong>OogstPlanner.nl</strong>.
             </div>
         </div>
@@ -151,12 +202,12 @@
                 <a class="accordion-toggle collapsed" 
                    data-toggle="collapse" 
                    data-parent="#accordion" 
-                   href="#collapse-six">
+                   href="#collapse-eight">
                     Hoe lang blijft een anonieme account actief?
                 </a>
             </h4>
         </div>
-        <div id="collapse-six" class="panel-collapse collapse">
+        <div id="collapse-eight" class="panel-collapse collapse">
             <div class="panel-body">
                 Uw anonieme account blijft vanaf het laatste bezoek zeven dagen actief. Daarna wordt de bijbehorende zaaikalender verwijderd.
                 Indien u uw cookies verwijderd of vanaf een andere computer <strong>OogstPlanner.nl</strong> bezoekt is de data niet toegankelijk.
@@ -178,12 +229,12 @@
                 <a class="accordion-toggle collapsed" 
                    data-toggle="collapse" 
                    data-parent="#accordion" 
-                   href="#collapse-seven">
+                   href="#collapse-nine">
                    Hoe wordt mijn wachtwoord op OogstPlanner.nl opgeslagen?
                 </a>
             </h4>
         </div>
-        <div id="collapse-seven" class="panel-collapse collapse">
+        <div id="collapse-nine" class="panel-collapse collapse">
             <div class="panel-body">
                 Uw wachtwoord wordt gehashed (onherkenbaar getransformeerd) opgeslagen in onze database middels het SHA-1 algoritme.
             </div>
@@ -195,17 +246,17 @@
                 <a class="accordion-toggle collapsed" 
                    data-toggle="collapse" 
                    data-parent="#accordion" 
-                   href="#collapse-eight">
+                   href="#collapse-ten">
                    Waar heeft OogstPlanner.nl de icoontjes, plaatjes en het favicon vandaan?
                 </a>
             </h4>
         </div>
-        <div id="collapse-eight" class="panel-collapse collapse">
+        <div id="collapse-ten" class="panel-collapse collapse">
             <div class="panel-body">
                 Het favicon (pictogram geassocieerd met een website) "Raised Garden" is gemaakt door brnblnk en komt 
                 <a href="http://www.favicon.cc/?action=icon&file_id=197467" target="_blank">hier</a> vandaan via favicon.cc<br/>
                 Het icoontje van de emmer is gemaakt door Yohann Berger en komt 
-                <a href="https://thenounproject.com/term/watering-can/37906" target="_blank">hier</a>
+                <a href="https://thenounproject.com/term/watering-can/37906" target="_blank">hier</a> vandaan 
                 via de Noun Project.<br/>
                 Verder zijn alle plaatjes vrij van copyright. Ze komen van 
                 <a href="https://www.pixabay.com" target="_blank">www.pixabay.com</a>.
@@ -219,47 +270,19 @@
                 <a class="accordion-toggle collapsed" 
                    data-toggle="collapse" 
                    data-parent="#accordion" 
-                   href="#collapse-nine">
+                   href="#collapse-eleven">
                     Waar komt de informatie (groeitijd, prijs per zakje, oppervlakte, et cetera) over de gewassen vandaan?
                 </a>
             </h4>
         </div>
-        <div id="collapse-nine" class="panel-collapse collapse">
+        <div id="collapse-eleven" class="panel-collapse collapse">
             <div class="panel-body">
                 De informatie betreffende zaden is met toestemming vergaard van De Bolster. 
                 Zie <a href="http://www.bolster.nl" target="_blank">de website van De Bolster</a> voor informatie over biologisch dynamische zaden.
             </div>
         </div>
     </div>
-
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <h4 class="panel-title">
-                <a class="accordion-toggle collapsed" 
-                   data-toggle="collapse" 
-                   data-parent="#accordion" 
-                   href="#collapse-ten">
-                    Hoe kan ik mijn account verwijderen?
-                </a>
-            </h4>
-        </div>
-        <div id="collapse-ten" class="panel-collapse collapse">
-            <div class="panel-body">
-                @if (Request.IsAuthenticated)
-                {
-                    <span>Ga naar uw @Html.ActionLink("profiel", "Info", "Account", null, null), 
-                    klik op de knop "account verwijderen" en druk op "Ok".</span>
-                }
-                else
-                {
-                    <span>Indien u bent <a href="#" class="register-or-login">ingelogd</a> bij de Oogstplanner gemeenschap
-                    gaat u naar uw profiel, 
-                    klikt u op de knop "account verwijderen" en drukt op "Ok".</span>
-                }
-            </div>
-        </div>
-    </div>
-
+        
     <h2 class="faq-header">Juridische vragen</h2>
     <div class="panel panel-default">
         <div class="panel-heading">
@@ -267,12 +290,12 @@
                 <a class="accordion-toggle collapsed" 
                    data-toggle="collapse" 
                    data-parent="#accordion" 
-                   href="#collapse-eleven">
+                   href="#collapse-twelve">
                     Kan OogstPlanner.nl aansprakelijk worden gehouden voor verstrekte informatie betreffende zaai- en oogsttijden?
                 </a>
             </h4>
         </div>
-        <div id="collapse-eleven" class="panel-collapse collapse">
+        <div id="collapse-twelve" class="panel-collapse collapse">
             <div class="panel-body">
                 <strong>Neen</strong>. De tijd dat het duurt voor een gewas om tot ontspruiting te komen is sterk afhankelijk van grond, 
                 klimaat, locatie, weer en andere factoren. 
@@ -288,12 +311,12 @@
                 <a class="accordion-toggle collapsed" 
                    data-toggle="collapse" 
                    data-parent="#accordion" 
-                   href="#collapse-twelve">
+                   href="#collapse-thirteen">
                    Maakt OogstPlanner.nl gebruik van tracking cookies?
                 </a>
             </h4>
         </div>
-        <div id="collapse-twelve" class="panel-collapse collapse">
+        <div id="collapse-thirteen" class="panel-collapse collapse">
             <div class="panel-body">
                 Neen. <strong>OogstPlanner.nl</strong> maakt geen gebruik van tracking cookies. Wel wordt er een cookie geplaats bij anonieme
                 gebruikers om deze te koppelen aan een zaaikalender. Dit cookie wordt zeven dagen opgeslagen in de browser. Daarnaast plaatst
@@ -307,12 +330,12 @@
                 <a class="accordion-toggle collapsed" 
                    data-toggle="collapse" 
                    data-parent="#accordion" 
-                   href="#collapse-thirteen">
+                   href="#collapse-fourteen">
                     Wanneer word ik betaald?
                </a>
             </h4>
         </div>
-        <div id="collapse-thirteen" class="panel-collapse collapse">
+        <div id="collapse-fourteen" class="panel-collapse collapse">
             <div class="panel-body">
                 U wordt <strong>niet</strong> betaald voor uw activiteiten op de <strong>OogstPlanner.nl</strong> .
                 <br />
@@ -326,12 +349,12 @@
             <h4 class="panel-title">
                 <a class="accordion-toggle collapsed" 
                    data-toggle="collapse" 
-                   data-parent="#accordion" href="#collapse-fourteen">
+                   data-parent="#accordion" href="#collapse-fifteen">
                     Hoe kan ik meehelpen aan het verbeteren van OogstPlanner.nl?
                 </a>
             </h4>
         </div>
-        <div id="collapse-fourteen" class="panel-collapse collapse">
+        <div id="collapse-fifteen" class="panel-collapse collapse">
             <div class="panel-body">
                 Als u een domeinexpert bent (e.g., permacultuur expert, thuisboer, square meter gardening fanatiekeling) horen wij graag van u
                 wat u mist of verbeterd wilt zien. Verder kunnen we hulp gebruiken met het verbeteren van de website. 
