@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 using NUnit.Framework;
 
@@ -67,6 +68,20 @@ namespace Oogstplanner.Tests.Utilities
             // ASSERT
             Assert.AreEqual(Test3.One.ToString(), result, 
                 "When no description attribute the method should return string value.");
+        }
+
+        [Test]
+        public void Utilities_EnumExtension_GetDescriptions()
+        {
+            // ARRANGE
+            var flags = Test2.One | Test2.Two;
+
+            // ACT
+            var result = flags.GetDescriptions();
+
+            // ASSERT
+            Assert.IsTrue(result.Contains(Description1) && result.Contains(Description2), 
+                "Description attributes should be returned.");
         }
     }
 }
