@@ -14,8 +14,8 @@ namespace Oogstplanner.Tests.Utilities
         public void Utilities_MonthExtension_Subtract()
         {
             // ACT
-            var expected = Month.July;
-            var actual = Month.December.Subtract(5);
+            var expected = Months.July;
+            var actual = Months.December.Subtract(5);
 
             // ASSERT
             Assert.AreEqual(expected, actual, "December minus five months should equal July.");
@@ -25,8 +25,8 @@ namespace Oogstplanner.Tests.Utilities
         public void Utilities_MonthExtension_Add()
         {
             // ACT
-            var expected = Month.June;
-            var actual = Month.January.Add(5);
+            var expected = Months.June;
+            var actual = Months.January.Add(5);
 
             // ASSERT
             Assert.AreEqual(expected, actual, "January plus five months should equal June.");
@@ -36,8 +36,8 @@ namespace Oogstplanner.Tests.Utilities
         public void Utilities_MonthExtension_Add_2()
         {
             // ACT
-            var expected = Month.June;
-            var actual = Month.May.Add(1);
+            var expected = Months.June;
+            var actual = Months.May.Add(1);
 
             // ASSERT
             Assert.AreEqual(expected, actual, "May plus one month should equal June.");
@@ -47,8 +47,8 @@ namespace Oogstplanner.Tests.Utilities
         public void Utilities_MonthExtension_Subtract_OverTheEdge()
         {
             // ACT
-            var expected = Month.July;
-            var actual = Month.January.Subtract(6);
+            var expected = Months.July;
+            var actual = Months.January.Subtract(6);
 
             // ASSERT
             Assert.AreEqual(expected, actual, "January minus six months should equal July.");
@@ -58,8 +58,8 @@ namespace Oogstplanner.Tests.Utilities
         public void Utilities_MonthExtension_Add_OverTheEdge()
         {
             // ACT
-            var expected = Month.March;
-            var actual = Month.November.Add(4);
+            var expected = Months.March;
+            var actual = Months.November.Add(4);
 
             // ASSERT
             Assert.AreEqual(expected, actual, "November plus four months should equal March.");
@@ -69,8 +69,8 @@ namespace Oogstplanner.Tests.Utilities
         public void Utilities_MonthExtension_Add_MoreThan12()
         {
             // ACT
-            var expected = Month.October;
-            var actual = Month.October.Add(24);
+            var expected = Months.October;
+            var actual = Months.October.Add(24);
 
             // ASSERT
             Assert.AreEqual(expected, actual, "October plus two years (24 months) should equal October.");
@@ -80,8 +80,8 @@ namespace Oogstplanner.Tests.Utilities
         public void Utilities_MonthExtension_Subtract_MoreThan12()
         {
             // ACT
-            var expected = Month.March;
-            var actual = Month.February.Subtract(23);
+            var expected = Months.March;
+            var actual = Months.February.Subtract(23);
 
             // ASSERT
             Assert.AreEqual(expected, actual, "February minus 23 months should equal March.");
@@ -90,15 +90,31 @@ namespace Oogstplanner.Tests.Utilities
         [Test]
         public void Utilities_MonthExtension_Add_Negative()
         {   
-            Assert.Throws<ArgumentOutOfRangeException>(() => Month.February.Add(-23),
+            Assert.Throws<ArgumentOutOfRangeException>(() => Months.February.Add(-23),
                 "Negative input should throw an ArgumentOutOfRangeException.");
         }
 
         [Test]
         public void Utilities_MonthExtension_Subtract_Negative()
         {   
-            Assert.Throws<ArgumentOutOfRangeException>(() => Month.February.Subtract(-23),
+            Assert.Throws<ArgumentOutOfRangeException>(() => Months.February.Subtract(-23),
                 "Negative input should throw an ArgumentOutOfRangeException.");
+        }
+
+        [Test]
+        public void Utilities_MonthExtension_Add_Flags()
+        {   
+            Assert.Throws<ArgumentException>(() 
+                => (Months.February | Months.March).Add(2),
+                "When multiple months are selected the method should throw an ArgumentException.");
+        }
+
+        [Test]
+        public void Utilities_MonthExtension_Subtract_Flags()
+        {   
+            Assert.Throws<ArgumentException>(() 
+                => (Months.February | Months.December).Subtract(2),
+                "When multiple months are selected the method should throw an ArgumentException.");
         }
     }
 }

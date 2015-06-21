@@ -46,14 +46,14 @@ namespace Oogstplanner.Services
             }
         }
             
-        public IEnumerable<FarmingAction> GetHarvestingActions(int userId, Month month)
+        public IEnumerable<FarmingAction> GetHarvestingActions(int userId, Months month)
         {
             return UnitOfWork.FarmingActions.GetFarmingActions(fa => fa.Calendar.User.Id == userId
                 && fa.Action == ActionType.Harvesting 
                 && fa.Month.HasFlag(month));
         }
             
-        public IEnumerable<FarmingAction> GetSowingActions(int userId, Month month)
+        public IEnumerable<FarmingAction> GetSowingActions(int userId, Months month)
         {
             return UnitOfWork.FarmingActions.GetFarmingActions(fa => fa.Calendar.User.Id == userId
                 && fa.Action == ActionType.Sowing 

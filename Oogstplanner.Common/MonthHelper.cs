@@ -8,12 +8,12 @@ namespace Oogstplanner.Common
 {
     public static class MonthHelper
     {
-        public static IEnumerable<Month> GetAllMonths()
+        public static IEnumerable<Months> GetAllMonths()
         {
-            return Enum.GetValues(typeof(Month)).Cast<Month>().Skip(1);
+            return Enum.GetValues(typeof(Months)).Cast<Months>().Skip(1);
         }
 
-        public static IEnumerable<Month> GetMonths(Month input)
+        public static IEnumerable<Months> GetMonths(Months input)
         {
             foreach (var value in GetAllMonths()) 
             {

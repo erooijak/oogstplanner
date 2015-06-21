@@ -13,7 +13,7 @@
         public double? AreaPerCrop { get; set; }
         public double? AreaPerBag { get; set; }
         public decimal? PricePerBag { get; set; }
-        public Month SowingMonths { get; set;}
-        public Month HarvestingMonths { get; set;}
+        public Months SowingMonths { get; set;}
+        public Months HarvestingMonths { get; set;}
     }       
 }

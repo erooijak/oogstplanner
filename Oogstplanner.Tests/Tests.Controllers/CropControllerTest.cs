@@ -25,7 +25,7 @@ namespace Oogstplanner.Tests.Controllers
             {
                 Id = 1,
                 Name = "Broccoli", 
-                SowingMonths = Month.May ^ Month.June ^ Month.October ^ Month.November 
+                SowingMonths = Months.May ^ Months.June ^ Months.October ^ Months.November 
             };
 
             var unitOfWorkMock = new Mock<IOogstplannerUnitOfWork>();

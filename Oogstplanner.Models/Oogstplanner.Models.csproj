@@ -37,15 +37,15 @@
     <Compile Include="Calendar.cs" />
     <Compile Include="Crop.cs" />
     <Compile Include="FarmingAction.cs" />
-    <Compile Include="Month.cs" />
     <Compile Include="User.cs" />
     <Compile Include="ModelError.cs" />
     <Compile Include="ViewModels\MonthCalendarViewModel.cs" />
     <Compile Include="ViewModels\MonthViewModel.cs" />
     <Compile Include="ViewModels\SowingAndHarvestingViewModel.cs" />
     <Compile Include="ViewModels\YearCalendarViewModel.cs" />
-    <Compile Include="ExtensionMethods\MonthExtension.cs" />
     <Compile Include="Like.cs" />
+    <Compile Include="Months.cs" />
+    <Compile Include="ExtensionMethods\MonthsExtension.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

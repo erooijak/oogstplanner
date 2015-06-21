@@ -108,7 +108,7 @@ namespace Oogstplanner.Tests.Controllers
             var farmingActionServiceMock = new Mock<IFarmingActionService>();
             var cropProviderMock = new Mock<ICropProvider>();
             calendarServiceMock.Setup(c => c.GetMonthsWithAction())
-                .Returns(Month.April | Month.August);
+                .Returns(Months.April | Months.August);
 
             var controller = new CalendarController(
                 calendarServiceMock.Object,
@@ -139,13 +139,13 @@ namespace Oogstplanner.Tests.Controllers
             var farmingActionServiceMock = new Mock<IFarmingActionService>();
             var cropProviderMock = new Mock<ICropProvider>();
 
-            var expectedMonth = Month.April.ToString();
+            var expectedMonth = Months.April.ToString();
             var expectedMonthCalendarViewModel = new MonthCalendarViewModel
             {
                 DisplayMonth = expectedMonth
             };
             calendarServiceMock.Setup(mock => 
-                mock.GetMonthCalendar(Month.April))
+                mock.GetMonthCalendar(Months.April))
                 .Returns(expectedMonthCalendarViewModel);
             
             var controller = new CalendarController(
@@ -155,7 +155,7 @@ namespace Oogstplanner.Tests.Controllers
             );
 
             // ACT
-            var viewResult = controller.Month(Month.April) as PartialViewResult;
+            var viewResult = controller.Month(Months.April) as PartialViewResult;
 
             // ASSERT
             Assert.AreEqual("~/Views/Calendar/_MonthCalendar.cshtml", viewResult.ViewName,
@@ -175,7 +175,7 @@ namespace Oogstplanner.Tests.Controllers
             var expectedYearCalendarViewModel = new YearCalendarViewModel();
             expectedYearCalendarViewModel.Add(new MonthCalendarViewModel 
                 { 
-                    DisplayMonth = Month.May.ToString(),
+                    DisplayMonth = Months.May.ToString(),
                     HarvestingActions = new[] { new FarmingAction() },
                     SowingActions = new List<FarmingAction>()
                 });
@@ -209,7 +209,7 @@ namespace Oogstplanner.Tests.Controllers
 
             expectedYearCalendarViewModel.Add(new MonthCalendarViewModel 
                 { 
-                    DisplayMonth = Month.May.ToString(),
+                    DisplayMonth = Months.May.ToString(),
                     HarvestingActions = new[] { new FarmingAction() },
                     SowingActions = new List<FarmingAction>()
                 });
@@ -273,7 +273,7 @@ namespace Oogstplanner.Tests.Controllers
 
             expectedYearCalendarViewModel.Add(new MonthCalendarViewModel 
                 { 
-                    DisplayMonth = Month.May.ToString(),
+                    DisplayMonth = Months.May.ToString(),
                     HarvestingActions = new List<FarmingAction>(),
                     SowingActions = new List<FarmingAction>()
                 });
@@ -316,7 +316,7 @@ namespace Oogstplanner.Tests.Controllers
 
             expectedYearCalendarViewModel.Add(new MonthCalendarViewModel 
                 { 
-                    DisplayMonth = Month.May.ToString(),
+                    DisplayMonth = Months.May.ToString(),
                     HarvestingActions = new List<FarmingAction>(),
                     SowingActions = new List<FarmingAction>(),
                 });
@@ -351,7 +351,7 @@ namespace Oogstplanner.Tests.Controllers
             var expectedYearCalendarViewModel = new YearCalendarViewModel();
             expectedYearCalendarViewModel.Add(new MonthCalendarViewModel 
                 { 
-                    DisplayMonth = Month.May.ToString(),
+                    DisplayMonth = Months.May.ToString(),
                     HarvestingActions = new List<FarmingAction>(),
                     SowingActions = new List<FarmingAction>()
                 });
@@ -526,7 +526,7 @@ namespace Oogstplanner.Tests.Controllers
             // ACT
             var viewResult = controller.AddFarmingAction(
                 1, 
-                Month.May, 
+                Months.May, 
                 ActionType.Harvesting, 
                 2) as JsonResult;
 
@@ -562,7 +562,7 @@ namespace Oogstplanner.Tests.Controllers
             // ACT
             var viewResult = controller.AddFarmingAction(
                 1, 
-                Month.May, 
+                Months.May, 
                 ActionType.Harvesting, 
                 2) as JsonResult;
 
@@ -586,7 +586,7 @@ namespace Oogstplanner.Tests.Controllers
 
             calendarServiceMock.Setup(mock =>
                 mock.GetMonthsWithAction())
-                .Returns(Month.June | Month.July);
+                .Returns(Months.June | Months.July);
 
             var controller = new CalendarController(
                 calendarServiceMock.Object,

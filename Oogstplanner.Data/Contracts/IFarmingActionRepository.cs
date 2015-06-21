@@ -10,6 +10,6 @@ namespace Oogstplanner.Data
     {
         IEnumerable<FarmingAction> GetFarmingActions(Expression<Func<FarmingAction, bool>> predicate);
         FarmingAction FindRelated(FarmingAction action);
-        Month GetMonthsWithAction(int userId);
+        Months GetMonthsWithAction(int userId);
     }
 }

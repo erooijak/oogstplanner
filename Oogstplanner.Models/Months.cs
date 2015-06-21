@@ -7,7 +7,7 @@ namespace Oogstplanner.Models
     /// Enumeration for the months of the year. Multiple months can be selected.
     /// </summary>
     [Flags]
-    public enum Month
+    public enum Months
     {
         /* 0b000000000000 */
         NotSet      = 0,
@@ -42,7 +42,7 @@ namespace Oogstplanner.Models
 
         /* 0b000010000000 */
         [Description("Augustus")]
-        August    = 128,   
+        August      = 128,   
 
         /* 0b000100000000 */
         [Description("September")]

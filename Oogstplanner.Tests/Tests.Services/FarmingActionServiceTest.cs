@@ -29,7 +29,7 @@ namespace Oogstplanner.Tests.Services
             var authenticationServiceMock = new Mock<IAuthenticationService>();
 
             var expectedUserId = new Random().Next();
-            var expectedMonth = Month.June;
+            var expectedMonth = Months.June;
 
             var service = new FarmingActionService(
                 unitOfWorkMock.Object, 
@@ -65,7 +65,7 @@ namespace Oogstplanner.Tests.Services
             var addedFarmingAction = new FarmingAction
             {
                 Calendar = new Calendar { User = new User { Id = expectedUserId } },
-                Month = Month.June,
+                Month = Months.June,
                 Action = ActionType.Harvesting,
                 Crop = new Crop { GrowingTime = 2 },
                 CropCount = 10
@@ -127,7 +127,7 @@ namespace Oogstplanner.Tests.Services
             var addedFarmingAction = new FarmingAction
                 {
                     Calendar = new Calendar { User = new User { Id = expectedUserId } },
-                    Month = Month.June,
+                    Month = Months.June,
                     Action = ActionType.Harvesting,
                     Crop = new Crop { GrowingTime = 2 },
                     CropCount = 10
@@ -186,7 +186,7 @@ namespace Oogstplanner.Tests.Services
             var addedFarmingAction = new FarmingAction
                 {
                     Calendar = new Calendar { User = new User { Id = expectedUserId } },
-                    Month = Month.June,
+                    Month = Months.June,
                     Action = ActionType.Harvesting,
                     Crop = new Crop { GrowingTime = 2 },
                     CropCount = 10

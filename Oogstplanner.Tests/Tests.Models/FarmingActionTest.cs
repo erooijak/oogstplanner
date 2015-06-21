@@ -14,7 +14,7 @@ namespace Oogstplanner.Tests.Models
             var initialAction = new FarmingAction 
                 { 
                     Action = ActionType.Sowing, 
-                    Month = Month.April,
+                    Month = Months.April,
                     Crop = new Crop { GrowingTime = 2 }
                 };
 
@@ -24,7 +24,7 @@ namespace Oogstplanner.Tests.Models
             // ASSERT
             Assert.AreEqual(ActionType.Harvesting, newAction.Action, 
                 "Should be converted to opposite action of sowing.");
-            Assert.AreEqual(Month.June, newAction.Month, 
+            Assert.AreEqual(Months.June, newAction.Month, 
                 "Months should be added when going from sowing to harvesting.");
         }
 
@@ -35,7 +35,7 @@ namespace Oogstplanner.Tests.Models
             var initialAction = new FarmingAction 
                 { 
                     Action = ActionType.Harvesting, 
-                    Month = Month.April,
+                    Month = Months.April,
                     Crop = new Crop { GrowingTime = 2 }
                 };
 
@@ -45,7 +45,7 @@ namespace Oogstplanner.Tests.Models
             // ASSERT
             Assert.AreEqual(ActionType.Sowing, newAction.Action, 
                 "Should be converted to opposite action of harvesting.");
-            Assert.AreEqual(Month.February, newAction.Month, 
+            Assert.AreEqual(Months.February, newAction.Month, 
                 "Months should be subtracted when going from harvesting to sowing.");
         }
     }

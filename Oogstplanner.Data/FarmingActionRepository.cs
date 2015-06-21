@@ -41,13 +41,13 @@ namespace Oogstplanner.Data
                 && fa.Month == relatedFarmingAction.Month);
         }
 
-        public Month GetMonthsWithAction(int userId)
+        public Months GetMonthsWithAction(int userId)
         {
             return DbSet.Where(fa => fa.Calendar.User.Id == userId)
                 .Select(fa => fa.Month)
                 .Distinct()
                 .ToList()
-                .Aggregate((Month)0, (acc, month) => acc |= month);
+                .Aggregate((Months)0, (acc, month) => acc |= month);
         }
             
     }

@@ -102,7 +102,7 @@ namespace Oogstplanner.Web.Controllers
         // 
         // GET: /zaaikalender/{month}
         // Returns the farming actions of the month.
-        public ActionResult Month(Month month)
+        public ActionResult Month(Months month)
         {
             var monthCalendarViewModel = calendarService.GetMonthCalendar(month);
 
@@ -203,7 +203,7 @@ namespace Oogstplanner.Web.Controllers
         //
         // POST /zaaikalender/toevoegen
         [HttpPost]
-        public JsonResult AddFarmingAction(int cropId, Month month, ActionType actionType, int cropCount)
+        public JsonResult AddFarmingAction(int cropId, Months month, ActionType actionType, int cropCount)
         {
             var crop = cropProvider.GetCrop(cropId);
             var calendar = calendarService.GetCalendar();

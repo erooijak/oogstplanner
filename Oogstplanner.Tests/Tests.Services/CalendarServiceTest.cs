@@ -98,12 +98,12 @@ namespace Oogstplanner.Tests.Services
 
             // ASSERT
             farmingActionServiceMock.Verify(mock =>
-                mock.GetHarvestingActions(expectedUserId, It.IsAny<Month>()),
+                mock.GetHarvestingActions(expectedUserId, It.IsAny<Months>()),
                 Times.Exactly(12),
                 "12 month calendars with harvesting actions should be retrieved " +
                 "for a year calendar.");
             farmingActionServiceMock.Verify(mock =>
-                mock.GetSowingActions(expectedUserId, It.IsAny<Month>()),
+                mock.GetSowingActions(expectedUserId, It.IsAny<Months>()),
                 Times.Exactly(12),
                 "12 month calendars with sowing actions should be retrieved " +
                 "for a year calendar.");
@@ -157,12 +157,12 @@ namespace Oogstplanner.Tests.Services
 
             // ASSERT
             farmingActionServiceMock.Verify(mock =>
-                mock.GetHarvestingActions(expectedUserId, It.IsAny<Month>()),
+                mock.GetHarvestingActions(expectedUserId, It.IsAny<Months>()),
                 Times.Exactly(12),
                 "12 month calendars with harvesting actions should be retrieved " +
                 "for a year calendar.");
             farmingActionServiceMock.Verify(mock =>
-                mock.GetSowingActions(expectedUserId, It.IsAny<Month>()),
+                mock.GetSowingActions(expectedUserId, It.IsAny<Months>()),
                 Times.Exactly(12),
                 "12 month calendars with sowing actions should be retrieved " +
                 "for a year calendar.");
@@ -239,7 +239,7 @@ namespace Oogstplanner.Tests.Services
             var authenticationServiceMock = new Mock<IAuthenticationService>();
 
             var expectedUserId = new Random().Next();
-            var expectedMonth = Month.May;
+            var expectedMonth = Months.May;
             var expectedHarvestingActions = new List<FarmingAction>();
             var expectedSowingActions = new List<FarmingAction>();
 
@@ -251,13 +251,13 @@ namespace Oogstplanner.Tests.Services
             farmingActionServiceMock.Setup(mock =>
                 mock.GetHarvestingActions(
                     expectedUserId,
-                    It.IsAny<Month>()))
+                    It.IsAny<Months>()))
                 .Returns(expectedHarvestingActions);
 
             farmingActionServiceMock.Setup(mock =>
                 mock.GetSowingActions(
                     expectedUserId,
-                    It.IsAny<Month>()))
+                    It.IsAny<Months>()))
                 .Returns(expectedSowingActions);
 
             var service = new CalendarService(
@@ -366,8 +366,8 @@ namespace Oogstplanner.Tests.Services
 
             // ACT
             service.GetMonthsWithAction();
-            service.GetMonthCalendar(It.IsAny<Month>());
-            service.GetMonthCalendar(It.IsAny<Month>());
+            service.GetMonthCalendar(It.IsAny<Months>());
+            service.GetMonthCalendar(It.IsAny<Months>());
             service.GetYearCalendar();
 
             // ASSERT

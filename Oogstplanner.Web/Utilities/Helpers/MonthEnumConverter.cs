@@ -11,8 +11,8 @@ namespace Oogstplanner.Web.Utilities.Helpers
     {
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
-            Debug.Assert(value is Month, "Input should be month enumeration.");
-            var enumValues = (Month)value;
+            Debug.Assert(value is Months, "Input should be month enumeration.");
+            var enumValues = (Months)value;
 
             writer.WriteStartArray();
 

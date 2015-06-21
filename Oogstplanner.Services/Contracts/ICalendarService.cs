@@ -7,7 +7,7 @@ namespace Oogstplanner.Services
         Calendar GetCalendar();
         YearCalendarViewModel GetYearCalendar();
         YearCalendarViewModel GetYearCalendar(string userName);
-        MonthCalendarViewModel GetMonthCalendar(Month month);
-        Month GetMonthsWithAction();
+        MonthCalendarViewModel GetMonthCalendar(Months month);
+        Months GetMonthsWithAction();
     }
 }

@@ -8,7 +8,7 @@ namespace Oogstplanner.Models
     public class FarmingAction
     {
         public int Id { get; set; }
-        public Month Month { get; set; }
+        public Months Month { get; set; }
         public ActionType Action { get; set; }
         public int CropCount { get ; set ; }
 

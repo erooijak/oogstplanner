@@ -128,7 +128,6 @@ var Oogstplanner = (function () {
         });
     };
     Oogstplanner.prototype.changeLengthFaqLinkText = function () {
-        console.log($(window).width());
         if ($(window).width() > 668 && $(window).width() < 850) {
             $("a[href='/veelgesteldevragen']").first().text("FAQ");
         }

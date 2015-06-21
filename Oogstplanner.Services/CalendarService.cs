@@ -77,7 +77,7 @@ namespace Oogstplanner.Services
             return yearCalendar;
         }
 
-        public MonthCalendarViewModel GetMonthCalendar(Month month)
+        public MonthCalendarViewModel GetMonthCalendar(Months month)
         {
             return new MonthCalendarViewModel 
             {
@@ -109,7 +109,7 @@ namespace Oogstplanner.Services
             return yearCalendar;
         }
 
-        MonthCalendarViewModel GetMonthCalendar(int userId, Month month)
+        MonthCalendarViewModel GetMonthCalendar(int userId, Months month)
         {
             return new MonthCalendarViewModel 
             {
@@ -119,7 +119,7 @@ namespace Oogstplanner.Services
             };
         }
 
-        public Month GetMonthsWithAction()
+        public Months GetMonthsWithAction()
         {
             return UnitOfWork.FarmingActions.GetMonthsWithAction(CurrentUserId);
         }
