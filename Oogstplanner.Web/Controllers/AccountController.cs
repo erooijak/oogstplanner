@@ -280,6 +280,12 @@ namespace Oogstplanner.Web.Controllers
                 throw new HttpException(500, "Er is iets fout gegaan.");
             }
 
+            // Quick fix to check if a user is watching his or her own page. True means
+            // that a remove link should be displayed.
+            // TODO: Refactor to view model.
+            ViewBag.IsOwnProfilePage = user != null && Request.IsAuthenticated
+                && userService.GetUser(userService.GetCurrentUserId()).Name == user.Name;
+           
             return View("Info", user);
         }
     }

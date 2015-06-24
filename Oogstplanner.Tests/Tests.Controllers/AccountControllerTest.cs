@@ -1,4 +1,7 @@
 ﻿using System;
+using System.IO;
+using System.Security.Principal;
+using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 
@@ -832,6 +835,56 @@ namespace Oogstplanner.Tests.Controllers
                 "The user does not exist view should be returned when the user cannot be found.");
             Assert.AreEqual(404, controller.Response.StatusCode,
                 "... with a 404 status code.");
+        }
+
+        [Test]
+        public void Controllers_Account_UserInfoOwnInfo()
+        {
+            // ARRANGE
+            var userServiceMock = new Mock<IDeletableUserService>();
+            var membershipServiceMock = new Mock<IMembershipService>();
+            var passwordRecoveryServiceMock = new Mock<IPasswordRecoveryService>();
+            var emailServiceMock = new Mock<IEmailService>();
+
+            const string expectedUserName = "TestUser";
+
+            userServiceMock.Setup(mock => mock.GetUserByName(It.IsAny<string>()))
+                .Returns(new User { Name = expectedUserName });
+
+            userServiceMock.Setup(mock => mock.GetCurrentUserId())
+                .Returns(It.IsAny<int>());
+
+            userServiceMock.Setup(mock => mock.GetUser(It.IsAny<int>()))
+                .Returns(new User { Name = expectedUserName });
+
+            var controller = new AccountController(
+                userServiceMock.Object, 
+                membershipServiceMock.Object, 
+                passwordRecoveryServiceMock.Object,
+                emailServiceMock.Object);
+
+            var controllerContextMock = new Mock<ControllerContext>();
+            controllerContextMock.SetupGet(mock => 
+                mock.HttpContext.User.Identity.Name)
+                .Returns(expectedUserName);
+
+            controllerContextMock.SetupGet(mock => 
+                mock.HttpContext.Request.IsAuthenticated)
+                .Returns(true);
+
+            controllerContextMock.SetupGet(mock => 
+                mock.HttpContext.Request.AppRelativeCurrentExecutionFilePath)
+                .Returns("");
+
+            controller.ControllerContext = controllerContextMock.Object;
+
+            // ACT
+            var viewResult = controller.UserInfo() as ViewResult;
+
+            // ASSERT
+            Assert.IsTrue(viewResult.ViewBag.IsOwnProfilePage,
+                "If a user requests his or her own profile page the viewbag" +
+                "property isownprofile page should be set to true.");
         }
     }
 }
