@@ -15,7 +15,7 @@
             else {               
                 var dutchMonthName = Util.convertToDisplayMonth(monthName);
                 Notification.informational(dutchMonthName + ' heeft geen zaai- of oogstmomenten.',
-                    'Bepaal eerst gewassen om te zaaien of te oogsten door deze rechts te zoeken en op de maand te slepen.');                    
+                    'Bepaal eerst gewassen om te zaaien of te oogsten door deze links te zoeken en op de maand te slepen.');                    
             }
 
         });
