@@ -8,47 +8,128 @@
 
 <url>
   <loc>http://www.oogstplanner.nl/</loc>
-  <lastmod>2015-06-21T21:26:43+00:00</lastmod>
+  <lastmod>2015-06-22T20:00:44+00:00</lastmod>
   <changefreq>monthly</changefreq>
+  <priority>1.00</priority>
 </url>
 <url>
   <loc>http://www.oogstplanner.nl/welkom</loc>
-  <lastmod>2015-06-21T21:26:43+00:00</lastmod>
+  <lastmod>2015-06-22T20:00:44+00:00</lastmod>
   <changefreq>monthly</changefreq>
+  <priority>0.80</priority>
 </url>
 <url>
   <loc>http://www.oogstplanner.nl/zaaienenoogsten</loc>
-  <lastmod>2015-06-21T21:26:43+00:00</lastmod>
+  <lastmod>2015-06-22T20:00:44+00:00</lastmod>
   <changefreq>monthly</changefreq>
+  <priority>0.80</priority>
 </url>
 <url>
   <loc>http://www.oogstplanner.nl/zaaikalender</loc>
-  <lastmod>2015-06-21T21:26:43+00:00</lastmod>
+  <lastmod>2015-06-22T20:00:44+00:00</lastmod>
   <changefreq>monthly</changefreq>
+  <priority>0.80</priority>
 </url>
 <url>
   <loc>http://www.oogstplanner.nl/gemeenschap</loc>
-  <lastmod>2015-06-21T21:26:43+00:00</lastmod>
+  <lastmod>2015-06-22T20:00:44+00:00</lastmod>
   <changefreq>monthly</changefreq>
+  <priority>0.80</priority>
 </url>
 <url>
   <loc>http://www.oogstplanner.nl/veelgesteldevragen</loc>
-  <lastmod>2015-06-21T21:26:43+00:00</lastmod>
+  <lastmod>2015-06-22T20:00:44+00:00</lastmod>
   <changefreq>monthly</changefreq>
+  <priority>0.80</priority>
 </url>
 <url>
   <loc>http://www.oogstplanner.nl/gewassen</loc>
-  <lastmod>2015-06-21T21:26:43+00:00</lastmod>
+  <lastmod>2015-06-22T20:00:44+00:00</lastmod>
   <changefreq>monthly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://www.oogstplanner.nl/gebruiker/Godefridus</loc>
+  <lastmod>2015-06-22T20:00:44+00:00</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://www.oogstplanner.nl/gebruiker/Godefridus/zaaikalender</loc>
+  <lastmod>2015-06-22T20:00:44+00:00</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://www.oogstplanner.nl/gebruiker/Iwan+Isabel</loc>
+  <lastmod>2015-06-22T20:00:44+00:00</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://www.oogstplanner.nl/gebruiker/Iwan+Isabel/zaaikalender</loc>
+  <lastmod>2015-06-22T20:00:44+00:00</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://www.oogstplanner.nl/gebruiker/Round-Up</loc>
+  <lastmod>2015-06-22T20:00:44+00:00</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://www.oogstplanner.nl/gebruiker/Round-Up/zaaikalender</loc>
+  <lastmod>2015-06-22T20:00:44+00:00</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://www.oogstplanner.nl/gemeenschap?page=2&amp;pageSize=3</loc>
+  <lastmod>2015-06-22T20:00:44+00:00</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://www.oogstplanner.nl/gebruiker/Erwin</loc>
+  <lastmod>2015-06-22T20:00:44+00:00</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://www.oogstplanner.nl/gebruiker/Erwin/zaaikalender</loc>
+  <lastmod>2015-06-22T20:00:44+00:00</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://www.oogstplanner.nl/gebruiker/Hark</loc>
+  <lastmod>2015-06-22T20:00:44+00:00</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://www.oogstplanner.nl/gebruiker/Hark/zaaikalender</loc>
+  <lastmod>2015-06-22T20:00:44+00:00</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
 </url>
 <url>
   <loc>http://www.oogstplanner.nl/gebruiker/De%20Mesclun%20Maestro</loc>
-  <lastmod>2015-06-21T21:26:43+00:00</lastmod>
+  <lastmod>2015-06-22T20:00:44+00:00</lastmod>
   <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
 </url>
 <url>
   <loc>http://www.oogstplanner.nl/gebruiker/De%20Mesclun%20Maestro/zaaikalender</loc>
-  <lastmod>2015-06-21T21:26:43+00:00</lastmod>
+  <lastmod>2015-06-22T20:00:44+00:00</lastmod>
   <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://www.oogstplanner.nl/gemeenschap?page=1&amp;pageSize=3</loc>
+  <lastmod>2015-06-22T20:00:44+00:00</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.51</priority>
 </url>
 </urlset>
