@@ -248,6 +248,8 @@ namespace Oogstplanner.Web.Controllers
             var id = userService.GetCurrentUserId();
             var currentUser = userService.GetUser(id);
 
+            ViewBag.IsOwnProfilePage = true;
+
             return View(currentUser);
         }
 
