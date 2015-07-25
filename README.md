@@ -81,7 +81,7 @@ Currently the system is in the minimal viable product (MVP) stage. There are a l
 - [ ] Editing of user profile.
 - [ ] Choosing profile image.
 - [ ] Comments on user profile.
-- [ ] Improved mobile support (especially on sowing/harvesting page).
+- [ ] Improved mobile support (especially on sowing/harvesting page). (For touch, try hammer.js)
 - [ ] Improved CSS styling.
 - [ ] Logging of errors.
 - [ ] Data and language of other countries.
