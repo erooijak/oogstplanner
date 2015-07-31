@@ -79,7 +79,7 @@ Currently the system is in the minimal viable product (MVP) stage. There are a l
 - [ ] Do not use view models in services since services should be decoupled from the view.
 - [ ] Try to Use AutoFixture for tests.
 
-#### Features
+##### Features
 - [ ] Provide clickable tree view of available crops under the crops search button.
 - [ ] Crop searching on category or preferred harvesting or sowing month.
 - [ ] Make calendar span multiple years (i.e., seeds sowed in one year can be harvested in a later year or vice versa).
