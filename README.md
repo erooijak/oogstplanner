@@ -76,7 +76,7 @@ Currently the system is in the minimal viable product (MVP) stage. There are a l
 ##### Architectural
 - [ ] Convert somewhat awkward JavaScripts to [AngularJS](https://angularjs.org/).
 - [ ] Use mediator pattern instead of services calling each other directly.
-- [ ] Do not use view models in services since services be decoupled from the view.
+- [ ] Do not use view models in services since services should be decoupled from the view.
 - [ ] Try to Use AutoFixture for tests.
 
 #### Features
