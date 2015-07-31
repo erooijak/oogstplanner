@@ -73,7 +73,13 @@ See http://www.philliphaydon.com/2013/06/setting-up-mono-on-nginx/ for an excell
 
 Currently the system is in the minimal viable product (MVP) stage. There are a lot of things that can be done to improve the application. Here are a few:
 
+##### Architectural
 - [ ] Convert somewhat awkward JavaScripts to [AngularJS](https://angularjs.org/).
+- [ ] Use mediator pattern instead of services calling each other directly.
+- [ ] Do not use view models in services since services be decoupled from the view.
+- [ ] Try to Use AutoFixture for tests.
+
+#### Features
 - [ ] Provide clickable tree view of available crops under the crops search button.
 - [ ] Crop searching on category or preferred harvesting or sowing month.
 - [ ] Make calendar span multiple years (i.e., seeds sowed in one year can be harvested in a later year or vice versa).
